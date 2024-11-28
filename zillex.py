@@ -177,7 +177,8 @@ class Lexer:
             if tok:
                 raise Exception('unmatched close token: %s' % (tok,))
         elif opentok.typ is TokType.PREFIX:
-            pass
+            if tok is None:
+                raise Exception('unclosed prefix: %s' % (opentok,))
         elif opentok.typ is TokType.DELIM:
             if tok is None:
                 raise Exception('unclosed open token: %s' % (opentok,))
