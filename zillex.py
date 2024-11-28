@@ -8,6 +8,7 @@ class TokType(StrEnum):
     STR = 'STR'
     NUM = 'NUM'
     ID = 'ID'
+    GROUP = 'GROUP'
     DELIM = 'DELIM'
 
 class Token:
@@ -15,6 +16,9 @@ class Token:
         self.typ = typ
         self.val = val
         self.pos = pos
+        self.comment = False
+        self.ifdef = False
+        self.children = None
 
         if typ is TokType.NUM:
             self.num = int(val)
@@ -23,6 +27,9 @@ class Token:
         if self.typ is TokType.STR:
             return '<%s %r>' % (self.typ, self.val,)
         return '<%s %s>' % (self.typ, self.val,)
+
+    def posstr(self):
+        return '%s:%d:%d' % self.pos
 
 class Lexer:
     def __init__(self, pathname):
@@ -131,7 +138,7 @@ class Lexer:
             tok = self.readtoken()
             if tok is None:
                 break
-            print(tok)
+            print(tok, tok.posstr())
         self.infl.close()
         self.infl = None
             
