@@ -30,7 +30,7 @@ class Token:
                 self.val = '<>'
             elif val == '(':
                 self.val = '()'
-            elif val in '\',%':
+            elif val in '\',.%':
                 self.val = val
                 self.prefix = True
             else:
@@ -87,7 +87,7 @@ class Lexer:
                 val = self.curchar
                 self.nextchar()
                 return Token(TokType.ID, val, pos)
-            if ch in '\',%':
+            if ch in '\',.%':
                 self.nextchar()
                 return Token(TokType.PREFIX, ch, pos)
             if ch in '<>()':
