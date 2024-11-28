@@ -189,10 +189,14 @@ class Lexer:
             raise Exception('bad opentok')
         return res
 
-    def dumptokens(self, ls, withpos=False, depth=0):
+    def dumptokens(self, ls, withpos=False, depth=0, prefix=None):
         for tok in ls:
-            print('%s%r' % ('  '*depth, tok,))
-            if tok.typ == TokType.GROUP:
+            if tok.typ is TokType.GROUP and tok.prefix:
+                self.dumptokens(tok.children, withpos=withpos, depth=depth, prefix=tok.val)
+                continue
+            prefstr = '' if prefix is None else prefix
+            print('%s%s%r' % ('  '*depth, prefstr, tok,))
+            if tok.typ is TokType.GROUP:
                 self.dumptokens(tok.children, withpos=withpos, depth=depth+1)
     
     def readfile(self):
