@@ -72,10 +72,10 @@ class Lexer:
                 val = self.curchar
                 self.nextchar()
                 return Token(TokType.ID, val, pos)
-            if ch.isalpha():
+            if ch.isalpha() or ch == '=':
                 val = ch
                 self.nextchar()
-                while self.curchar.isalpha() or self.curchar.isdigit() or self.curchar in '-?\\':
+                while self.curchar.isalpha() or self.curchar.isdigit() or self.curchar in '-=?\\':
                     if self.curchar == '\\':
                         self.nextchar()
                     val += self.curchar
