@@ -2,6 +2,27 @@
 
 import sys
 import os, os.path
+from enum import StrEnum
+
+class TokType(StrEnum):
+    STR = 'STR'
+    NUM = 'NUM'
+    ID = 'ID'
+    DELIM = 'DELIM'
+
+class Token:
+    def __init__(self, typ, val, pos):
+        self.typ = typ
+        self.val = val
+        self.pos = pos
+
+        if typ is TokType.NUM:
+            self.num = int(val)
+
+    def __repr__(self):
+        if self.typ is TokType.STR:
+            return '<%s %r>' % (self.typ, self.val,)
+        return '<%s %s>' % (self.typ, self.val,)
 
 class Lexer:
     def __init__(self, pathname):
@@ -43,7 +64,7 @@ class Lexer:
                     continue
                 val = self.curchar
                 self.nextchar()
-                return val, pos
+                return Token(TokType.ID, val, pos)
             if ch.isalpha():
                 val = ch
                 self.nextchar()
@@ -52,7 +73,7 @@ class Lexer:
                         self.nextchar()
                     val += self.curchar
                     self.nextchar()
-                return val, pos
+                return Token(TokType.ID, val, pos)
             if ch.isdigit():
                 val = ch
                 self.nextchar()
@@ -60,7 +81,7 @@ class Lexer:
                     val += self.curchar
                     self.nextchar()
                 val = int(val)
-                return val, pos
+                return Token(TokType.NUM, val, pos)
             if ch == '-':
                 val = ''
                 self.nextchar()
@@ -69,9 +90,10 @@ class Lexer:
                         val += self.curchar
                         self.nextchar()
                     val = -int(val)
-                    return val, pos
+                    return Token(TokType.NUM, val, pos)
                 else:
-                    return '-', pos
+                    return Token(TokType.ID, '-', pos)
+                
             if ch == '"':
                 val = ''
                 self.nextchar()
@@ -97,9 +119,10 @@ class Lexer:
                 if not self.curchar:
                     raise Exception('unterminated string')
                 self.nextchar()
-                return val, pos
+                return Token(TokType.STR, val, pos)
+            
             self.nextchar()
-            return ch, pos
+            return Token(TokType.ID, ch, pos)
 
     def readfile(self):
         self.infl = open(self.pathname)
