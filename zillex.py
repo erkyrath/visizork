@@ -17,6 +17,7 @@ class Token:
         self.typ = typ
         self.val = val
         self.pos = pos
+        self.prefix = None
         self.comment = False
         self.ifdef = False
         self.children = None
@@ -36,7 +37,7 @@ class Lexer:
     def __init__(self, pathname):
         self.pathname = pathname
         _, self.filename = os.path.split(pathname)
-        self.linenum = 0
+        self.linenum = 1
         self.charnum = 0
         self.infl = None
         self.curchar = None
