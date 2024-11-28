@@ -174,13 +174,18 @@ class Lexer:
             if tok.val == '>' and opentok.val != '<':
                 raise Exception('mismatched open paren: %s' % (opentok,))
         return res
+
+    def dumptokens(self, ls, withpos=False, depth=0):
+        for tok in ls:
+            print('%s%r' % ('  '*depth, tok,))
+            if tok.typ == TokType.GROUP:
+                self.dumptokens(tok.children, withpos=withpos, depth=depth+1)
     
     def readfile(self):
         self.infl = open(self.pathname)
         self.nextchar()
         res = self.readtokens()
-        for tok in res:
-            print(tok, tok.posstr())
+        self.dumptokens(res, withpos=True)
         self.infl.close()
         self.infl = None
             
