@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import os, os.path
 
 class Lexer:
@@ -35,10 +36,20 @@ class Lexer:
                 self.nextchar()
                 continue
             pos = self.getpos()
+            if ch == '\\':
+                self.nextchar()
+                if self.curchar == '\x0C':
+                    self.nextchar()
+                    continue
+                val = self.curchar
+                self.nextchar()
+                return val, pos
             if ch.isalpha():
                 val = ch
                 self.nextchar()
-                while self.curchar.isalpha() or self.curchar.isdigit() or self.curchar in '-?':
+                while self.curchar.isalpha() or self.curchar.isdigit() or self.curchar in '-?\\':
+                    if self.curchar == '\\':
+                        self.nextchar()
                     val += self.curchar
                     self.nextchar()
                 return val, pos
@@ -66,10 +77,13 @@ class Lexer:
                 self.nextchar()
                 while self.curchar and self.curchar != '"':
                     if self.curchar == '|':
-                        self.nextchar()
-                        if self.curchar != '\n':
-                            raise Exception('| not followed by newline')
                         val += '\n'
+                        self.nextchar()
+                        if self.curchar == '"':
+                            break
+                        if self.curchar == '\n':
+                            self.nextchar()
+                        continue
                     elif self.curchar == '\\':
                         self.nextchar()
                         if self.curchar != '"':
@@ -99,5 +113,6 @@ class Lexer:
         self.infl = None
             
 
-lex = Lexer('test.zil')
-lex.readfile()
+for filename in sys.argv[1:]:
+    lex = Lexer(filename)
+    lex.readfile()
