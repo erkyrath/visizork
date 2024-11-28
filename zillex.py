@@ -9,6 +9,7 @@ class TokType(StrEnum):
     NUM = 'NUM'
     ID = 'ID'
     GROUP = 'GROUP'
+    PREFIX = 'PREFIX'
     DELIM = 'DELIM'
 
 class Token:
@@ -24,7 +25,7 @@ class Token:
             self.num = int(val)
 
     def __repr__(self):
-        if self.typ is TokType.STR:
+        if self.typ is TokType.STR or self.typ is TokType.DELIM:
             return '<%s %r>' % (self.typ, self.val,)
         return '<%s %s>' % (self.typ, self.val,)
 
@@ -72,6 +73,12 @@ class Lexer:
                 val = self.curchar
                 self.nextchar()
                 return Token(TokType.ID, val, pos)
+            if ch in '\',%':
+                self.nextchar()
+                return Token(TokType.PREFIX, ch, pos)
+            if ch in '<>()':
+                self.nextchar()
+                return Token(TokType.DELIM, ch, pos)
             if ch.isalpha() or ch == '=':
                 val = ch
                 self.nextchar()
