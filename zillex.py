@@ -30,6 +30,9 @@ class Token:
                 self.val = '<>'
             elif val == '(':
                 self.val = '()'
+            elif val in '\',%':
+                self.val = val
+                self.prefix = True
             else:
                 raise Exception('bad val for GROUP')
 
@@ -152,13 +155,20 @@ class Lexer:
     def readtokens(self, opentok=None):
         res = []
         while True:
+            if opentok is not None and opentok.typ == TokType.PREFIX and res:
+                break
             tok = self.readtoken()
             if tok is None:
                 break
             if tok.typ is TokType.DELIM:
                 if tok.val in ')>':
                     break
-                ls = self.readtokens(tok)
+                ls = self.readtokens(opentok=tok)
+                gtok = Token(TokType.GROUP, tok.val, tok.pos, children=ls)
+                res.append(gtok)
+                continue
+            if tok.typ is TokType.PREFIX:
+                ls = self.readtokens(opentok=tok)
                 gtok = Token(TokType.GROUP, tok.val, tok.pos, children=ls)
                 res.append(gtok)
                 continue
@@ -166,13 +176,17 @@ class Lexer:
         if opentok is None:
             if tok:
                 raise Exception('unmatched close token: %s' % (tok,))
-        else:
+        elif opentok.typ is TokType.PREFIX:
+            pass
+        elif opentok.typ is TokType.DELIM:
             if tok is None:
                 raise Exception('unclosed open token: %s' % (opentok,))
             if tok.val == ')' and opentok.val != '(':
                 raise Exception('mismatched open paren: %s' % (opentok,))
             if tok.val == '>' and opentok.val != '<':
                 raise Exception('mismatched open paren: %s' % (opentok,))
+        else:
+            raise Exception('bad opentok')
         return res
 
     def dumptokens(self, ls, withpos=False, depth=0):
