@@ -30,7 +30,7 @@ class Token:
                 self.val = '<>'
             elif val == '(':
                 self.val = '()'
-            elif val in '\',.%':
+            elif val in '\',.!%':
                 self.val = val
                 self.prefix = True
             else:
@@ -87,7 +87,7 @@ class Lexer:
                 val = self.curchar
                 self.nextchar()
                 return Token(TokType.ID, val, pos)
-            if ch in '\',.%':
+            if ch in '\',.!%':
                 self.nextchar()
                 return Token(TokType.PREFIX, ch, pos)
             if ch in '<>()':
@@ -189,13 +189,12 @@ class Lexer:
             raise Exception('bad opentok')
         return res
 
-    def dumptokens(self, ls, withpos=False, depth=0, prefix=None):
+    def dumptokens(self, ls, withpos=False, depth=0, prefix=''):
         for tok in ls:
             if tok.typ is TokType.GROUP and tok.prefix:
-                self.dumptokens(tok.children, withpos=withpos, depth=depth, prefix=tok.val)
+                self.dumptokens(tok.children, withpos=withpos, depth=depth, prefix=prefix+tok.val)
                 continue
-            prefstr = '' if prefix is None else prefix
-            print('%s%s%r' % ('  '*depth, prefstr, tok,))
+            print('%s%s%r' % ('  '*depth, prefix, tok,))
             if tok.typ is TokType.GROUP:
                 self.dumptokens(tok.children, withpos=withpos, depth=depth+1)
     
