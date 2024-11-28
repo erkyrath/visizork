@@ -13,7 +13,7 @@ class TokType(StrEnum):
     DELIM = 'DELIM'
 
 class Token:
-    def __init__(self, typ, val, pos):
+    def __init__(self, typ, val, pos, children=None):
         self.typ = typ
         self.val = val
         self.pos = pos
@@ -24,10 +24,20 @@ class Token:
 
         if typ is TokType.NUM:
             self.num = int(val)
+        elif typ is TokType.GROUP:
+            self.children = children
+            if val == '<':
+                self.val = '<>'
+            elif val == '(':
+                self.val = '()'
+            else:
+                raise Exception('bad val for GROUP')
 
     def __repr__(self):
         if self.typ is TokType.STR or self.typ is TokType.DELIM:
             return '<%s %r>' % (self.typ, self.val,)
+        if self.typ is TokType.GROUP:
+            return '<%s %s (%d)>' % (self.typ, self.val, len(self.children),)
         return '<%s %s>' % (self.typ, self.val,)
 
     def posstr(self):
@@ -139,13 +149,37 @@ class Lexer:
             self.nextchar()
             return Token(TokType.ID, ch, pos)
 
-    def readfile(self):
-        self.infl = open(self.pathname)
-        self.nextchar()
+    def readtokens(self, opentok=None):
+        res = []
         while True:
             tok = self.readtoken()
             if tok is None:
                 break
+            if tok.typ is TokType.DELIM:
+                if tok.val in ')>':
+                    break
+                ls = self.readtokens(tok)
+                gtok = Token(TokType.GROUP, tok.val, tok.pos, children=ls)
+                res.append(gtok)
+                continue
+            res.append(tok)
+        if opentok is None:
+            if tok:
+                raise Exception('unmatched close token: %s' % (tok,))
+        else:
+            if tok is None:
+                raise Exception('unclosed open token: %s' % (opentok,))
+            if tok.val == ')' and opentok.val != '(':
+                raise Exception('mismatched open paren: %s' % (opentok,))
+            if tok.val == '>' and opentok.val != '<':
+                raise Exception('mismatched open paren: %s' % (opentok,))
+        return res
+    
+    def readfile(self):
+        self.infl = open(self.pathname)
+        self.nextchar()
+        res = self.readtokens()
+        for tok in res:
             print(tok, tok.posstr())
         self.infl.close()
         self.infl = None
