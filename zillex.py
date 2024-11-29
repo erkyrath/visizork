@@ -196,6 +196,20 @@ class Lexer:
             raise Exception('bad opentok')
         return res
 
+    def resolveincludes(self, ls):
+        res = []
+        for tok in ls:
+            if tok.matchform('IFILE', 1):
+                val = tok.children[1].val
+                val = val.lower()+'.zil'
+                incpath = os.path.join(self.dirname, val)
+                inclen = Lexer(incpath)
+                incls = inclen.readfile(includes=True)
+                res.extend(incls)
+            else:
+                res.append(tok)
+        return res
+
     def readfile(self, includes=False):
         self.infl = open(self.pathname)
         self.nextchar()
@@ -203,18 +217,7 @@ class Lexer:
         self.infl.close()
         self.infl = None
         if includes:
-            ires = []
-            for tok in res:
-                if tok.matchform('IFILE', 1):
-                    val = tok.children[1].val
-                    val = val.lower()+'.zil'
-                    incpath = os.path.join(self.dirname, val)
-                    inclen = Lexer(incpath)
-                    incls = inclen.readfile(includes=True)
-                    ires.extend(incls)
-                else:
-                    ires.append(tok)
-            res = ires
+            res = self.resolveincludes(res)
         return res
 
 def dumptokens(ls, withpos=False, depth=0, prefix='', atpos=None):
