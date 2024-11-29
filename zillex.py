@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-
-import sys
 import os, os.path
 from enum import StrEnum
 
@@ -231,7 +228,3 @@ def dumptokens(ls, withpos=False, depth=0, prefix='', atpos=None):
         if tok.typ is TokType.GROUP:
             dumptokens(tok.children, withpos=withpos, depth=depth+1)
     
-for filename in sys.argv[1:]:
-    lex = Lexer(filename)
-    ls = lex.readfile(includes=True)
-    dumptokens(ls, withpos=True)
