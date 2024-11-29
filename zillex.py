@@ -10,7 +10,7 @@ class TokType(StrEnum):
     DELIM = 'DELIM'
 
 class Token:
-    PREFIXCHARS = '\',.!%'
+    PREFIXCHARS = '\',.;!%'
     DELIMCHARS = '<>()'
     
     def __init__(self, typ, val, pos, children=None):
