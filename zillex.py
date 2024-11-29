@@ -46,10 +46,16 @@ class Token:
     def posstr(self):
         return '%s:%d:%d' % self.pos
 
+    def matchform(self, key, minlen):
+        if self.typ is TokType.GROUP and self.val == '<>' and self.children:
+            itok = self.children[0]
+            if itok.typ is TokType.ID and itok.val == key and len(self.children) >= 1+minlen:
+                return True
+
 class Lexer:
     def __init__(self, pathname):
         self.pathname = pathname
-        _, self.filename = os.path.split(pathname)
+        self.dirname, self.filename = os.path.split(pathname)
         self.linenum = 1
         self.charnum = 0
         self.infl = None
@@ -190,12 +196,25 @@ class Lexer:
             raise Exception('bad opentok')
         return res
 
-    def readfile(self):
+    def readfile(self, includes=False):
         self.infl = open(self.pathname)
         self.nextchar()
         res = self.readtokens()
         self.infl.close()
         self.infl = None
+        if includes:
+            ires = []
+            for tok in res:
+                if tok.matchform('IFILE', 1):
+                    val = tok.children[1].val
+                    val = val.lower()+'.zil'
+                    incpath = os.path.join(self.dirname, val)
+                    inclen = Lexer(incpath)
+                    incls = inclen.readfile(includes=True)
+                    ires.extend(incls)
+                else:
+                    ires.append(tok)
+            res = ires
         return res
 
 def dumptokens(ls, withpos=False, depth=0, prefix='', atpos=None):
@@ -211,5 +230,5 @@ def dumptokens(ls, withpos=False, depth=0, prefix='', atpos=None):
     
 for filename in sys.argv[1:]:
     lex = Lexer(filename)
-    ls = lex.readfile()
+    ls = lex.readfile(includes=True)
     dumptokens(ls, withpos=True)
