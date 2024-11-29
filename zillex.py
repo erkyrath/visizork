@@ -190,26 +190,26 @@ class Lexer:
             raise Exception('bad opentok')
         return res
 
-    def dumptokens(self, ls, withpos=False, depth=0, prefix='', atpos=None):
-        for tok in ls:
-            pos = atpos or tok.pos
-            if tok.typ is TokType.GROUP and tok.prefix:
-                self.dumptokens(tok.children, withpos=withpos, depth=depth, prefix=prefix+tok.val, atpos=pos)
-                continue
-            posstr = '' if not withpos else ' %s:%s:%s' % pos
-            print('%s%s%r%s' % ('  '*depth, prefix, tok, posstr))
-            if tok.typ is TokType.GROUP:
-                self.dumptokens(tok.children, withpos=withpos, depth=depth+1)
-    
     def readfile(self):
         self.infl = open(self.pathname)
         self.nextchar()
         res = self.readtokens()
-        self.dumptokens(res, withpos=True)
         self.infl.close()
         self.infl = None
-            
+        return res
 
+def dumptokens(ls, withpos=False, depth=0, prefix='', atpos=None):
+    for tok in ls:
+        pos = atpos or tok.pos
+        if tok.typ is TokType.GROUP and tok.prefix:
+            dumptokens(tok.children, withpos=withpos, depth=depth, prefix=prefix+tok.val, atpos=pos)
+            continue
+        posstr = '' if not withpos else ' %s:%s:%s' % pos
+        print('%s%s%r%s' % ('  '*depth, prefix, tok, posstr))
+        if tok.typ is TokType.GROUP:
+            dumptokens(tok.children, withpos=withpos, depth=depth+1)
+    
 for filename in sys.argv[1:]:
     lex = Lexer(filename)
-    lex.readfile()
+    ls = lex.readfile()
+    dumptokens(ls, withpos=True)
