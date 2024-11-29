@@ -220,14 +220,16 @@ class Lexer:
             res = self.resolveincludes(res)
         return res
 
-def dumptokens(ls, withpos=False, depth=0, prefix='', atpos=None):
+def dumptokens(ls, withpos=False, skipdead=False, depth=0, prefix='', atpos=None):
     for tok in ls:
+        if skipdead and (tok.comment or tok.ifdef):
+            continue
         pos = atpos or tok.pos
         if tok.typ is TokType.GROUP and tok.prefix:
-            dumptokens(tok.children, withpos=withpos, depth=depth, prefix=prefix+tok.val, atpos=pos)
+            dumptokens(tok.children, withpos=withpos, skipdead=skipdead, depth=depth, prefix=prefix+tok.val, atpos=pos)
             continue
         posstr = '' if not withpos else ' %s:%s:%s' % pos
         print('%s%s%r%s' % ('  '*depth, prefix, tok, posstr))
         if tok.typ is TokType.GROUP:
-            dumptokens(tok.children, withpos=withpos, depth=depth+1)
+            dumptokens(tok.children, withpos=withpos, skipdead=skipdead, depth=depth+1)
     
