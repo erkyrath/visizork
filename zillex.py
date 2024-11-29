@@ -10,6 +10,9 @@ class TokType(StrEnum):
     DELIM = 'DELIM'
 
 class Token:
+    PREFIXCHARS = '\',.!%'
+    DELIMCHARS = '<>()'
+    
     def __init__(self, typ, val, pos, children=None):
         self.typ = typ
         self.val = val
@@ -27,7 +30,7 @@ class Token:
                 self.val = '<>'
             elif val == '(':
                 self.val = '()'
-            elif val in '\',.!%':
+            elif val in Token.PREFIXCHARS:
                 self.val = val
                 self.prefix = True
             else:
@@ -90,10 +93,10 @@ class Lexer:
                 val = self.curchar
                 self.nextchar()
                 return Token(TokType.ID, val, pos)
-            if ch in '\',.!%':
+            if ch in Token.PREFIXCHARS:
                 self.nextchar()
                 return Token(TokType.PREFIX, ch, pos)
-            if ch in '<>()':
+            if ch in Token.DELIMCHARS:
                 self.nextchar()
                 return Token(TokType.DELIM, ch, pos)
             if ch.isalpha() or ch == '=':
