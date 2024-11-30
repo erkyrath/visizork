@@ -5,7 +5,9 @@ from zillex import Lexer, dumptokens
 from zilana import Zcode
 from zilana import markcomments, stripcomments
 from zilana import stripifdefs
+from txdparse import TXDData
 
+'''
 for filename in sys.argv[1:]:
     lex = Lexer(filename)
     ls = lex.readfile(includes=True)
@@ -16,3 +18,8 @@ for filename in sys.argv[1:]:
     zcode.build()
     for val in reversed(zcode.objects):
         print(val)
+'''
+
+dat = TXDData()
+dat.readdump('gamedat/game-dump.txt')
+print('routines:', len(dat.routines))
