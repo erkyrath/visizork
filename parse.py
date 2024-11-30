@@ -14,5 +14,5 @@ for filename in sys.argv[1:]:
     #dumptokens(ls, withpos=False, skipdead=False)
     zcode = Zcode(ls)
     zcode.build()
-    #for val in zcode.routines:
-    #    print(val)
+    for val in reversed(zcode.objects):
+        print(val)

@@ -72,6 +72,7 @@ class Zcode:
         self.tokls = tokls
         self.globals = []
         self.routines = []
+        self.objects = []
 
     def build(self):
         self.findall()
@@ -86,3 +87,8 @@ class Zcode:
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     self.routines.append( (idtok.val, tok.pos) )
+            if tok.matchform('OBJECT', 1):
+                idtok = tok.children[1]
+                if idtok.typ is TokType.ID:
+                    self.objects.append( (idtok.val, tok.pos) )
+                
