@@ -92,7 +92,7 @@ class Lexer:
             ch = self.curchar
             if not ch:
                 return None
-            if ch in (' ', '\t', '\n'):
+            if ch in (' ', '\t', '\x0C', '\n'):
                 self.nextchar()
                 continue
             pos = self.getpos()
