@@ -71,20 +71,22 @@ class Zcode:
     def __init__(self, tokls):
         self.tokls = tokls
         self.globals = []
+        self.routines = []
 
     def build(self):
-        #self.findifdefs(self.tokls)
         self.findglobals()
+        self.findroutines()
 
     def findglobals(self):
         for tok in self.tokls:
-            if tok.comment:
-                continue
-            if tok.ifdef:
-                continue
             if tok.matchform('GLOBAL', 1):
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     self.globals.append( (idtok.val, tok.pos) )
                     
-                                     
+    def findroutines(self):
+        for tok in self.tokls:
+            if tok.matchform('ROUTINE', 1):
+                idtok = tok.children[1]
+                if idtok.typ is TokType.ID:
+                    self.routines.append( (idtok.val, tok.pos) )

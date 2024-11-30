@@ -9,7 +9,10 @@ from zilana import stripifdefs
 for filename in sys.argv[1:]:
     lex = Lexer(filename)
     ls = lex.readfile(includes=True)
+    stripcomments(ls)
     stripifdefs(ls)
-    dumptokens(ls, withpos=False, skipdead=False)
-    #zcode = Zcode(ls)
-    #zcode.build()
+    #dumptokens(ls, withpos=False, skipdead=False)
+    zcode = Zcode(ls)
+    zcode.build()
+    for val in zcode.routines:
+        print(val)
