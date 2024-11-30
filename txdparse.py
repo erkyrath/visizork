@@ -19,18 +19,18 @@ class String:
         self.index = index
         self.text = text
         self.rtn = rtn
-        self.opcount = 0
         self.istrings = []
 
 class Routine:
     def __init__(self, addr, argcount):
         self.addr = addr
         self.argcount = argcount
+        self.opcodes = []
         self.istrings = []
         self.ismain = False
 
     def __repr__(self):
-        return '<Routine %X (%d args)>' % (self.addr, self.argcount,)
+        return '<Routine %X (%d args, %d opcodes)>' % (self.addr, self.argcount, len(self.opcodes),)
 
 class TXDData:
     def __init__(self):
@@ -76,8 +76,9 @@ class TXDData:
                         continue
                     match = pat_opcode.match(ln)
                     if match and rtn:
+                        addr = int(match.group(1), 16)
+                        rtn.opcodes.append(addr)
                         if match.group(2) in ('PRINT', 'PRINT_RET'):
-                            addr = int(match.group(1), 16)
                             text = String.unescape(match.group(3), stripquotes=True)
                             st = String(addr, None, text, rtn=rtn)
                             rtn.istrings.append(st)
