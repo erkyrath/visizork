@@ -1871,7 +1871,7 @@ Routine 6d1c, 4 locals (0000, 0000, 0000, 0000)
 
 Routine 6d6a, 0 locals ()
     Action routine for:
-        "verbos"
+      verb: "verbos"
 
  6d6b:  STORE           G47,#01
  6d6e:  STORE           G46,#00
@@ -1879,7 +1879,7 @@ Routine 6d6a, 0 locals ()
 
 Routine 6d80, 0 locals ()
     Action routine for:
-        "brief"
+      verb: "brief"
 
  6d81:  STORE           G47,#00
  6d84:  STORE           G46,#00
@@ -1887,14 +1887,14 @@ Routine 6d80, 0 locals ()
 
 Routine 6d96, 0 locals ()
     Action routine for:
-        "super"
+      verb: "super"
 
  6d97:  STORE           G46,#01
  6d9a:  PRINT_RET       "Super-brief descriptions."
 
 Routine 6db0, 0 locals ()
     Action routine for:
-        "i"
+      verb: "i"
 
  6db1:  GET_CHILD       G6f -> -(SP) [FALSE] 6dbc
  6db5:  CALL            8eaa (G6f) -> -(SP)
@@ -1903,7 +1903,7 @@ Routine 6db0, 0 locals ()
 
 Routine 6dcc, 2 locals (0001, 0000)
     Action routine for:
-        "q"
+      verb: "q"
 
  6dd1:  CALL            10582 -> -(SP)
  6dd6:  JZ              L00 [TRUE] 6e04
@@ -1917,7 +1917,7 @@ Routine 6dcc, 2 locals (0001, 0000)
 
 Routine 6e0e, 0 locals ()
     Action routine for:
-        "restar"
+      verb: "restar"
 
  6e0f:  CALL            10582 (#01) -> -(SP)
  6e15:  PRINT           "Do you wish to restart? (Y is affirmative): "
@@ -1930,7 +1930,7 @@ Routine 6e0e, 0 locals ()
 
 Routine 6e52, 0 locals ()
     Action routine for:
-        "restor"
+      verb: "restor"
 
  6e53:  RESTORE         [FALSE] 6e61
  6e55:  PRINT           "Ok."
@@ -1941,7 +1941,7 @@ Routine 6e52, 0 locals ()
 
 Routine 6e68, 0 locals ()
     Action routine for:
-        "save"
+      verb: "save"
 
  6e69:  SAVE            [FALSE] 6e70
  6e6b:  PRINT_RET       "Ok."
@@ -1949,7 +1949,7 @@ Routine 6e68, 0 locals ()
 
 Routine 6e78, 0 locals ()
     Action routine for:
-        "script"
+      verb: "script"
 
  6e79:  LOADW           #00,#08 -> -(SP)
  6e7d:  OR              (SP)+,#01 -> -(SP)
@@ -1961,7 +1961,7 @@ Routine 6e78, 0 locals ()
 
 Routine 6eac, 0 locals ()
     Action routine for:
-        "unscri"
+      verb: "unscri"
 
  6ead:  PRINT           "Here ends a transcript of interaction with"
  6eca:  NEW_LINE        
@@ -1973,7 +1973,7 @@ Routine 6eac, 0 locals ()
 
 Routine 6ee0, 1 local (0011)
     Action routine for:
-        "versio"
+      verb: "versio"
 
  6ee3:  PRINT           "ZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. "
  6f28:  PRINT           "All rights reserved."
@@ -1998,7 +1998,7 @@ Routine 6ee0, 1 local (0011)
 
 Routine 6fb8, 0 locals ()
     Action routine for:
-        "$ve"
+      verb: "$ve"
 
  6fb9:  PRINT           "Verifying disk..."
  6fc8:  NEW_LINE        
@@ -2009,13 +2009,13 @@ Routine 6fb8, 0 locals ()
 
 Routine 6ff0, 0 locals ()
     Action routine for:
-        "plugh"
+      verb: "plugh"
 
  6ff1:  PRINT_RET       "A hollow voice says \"Fool.\""
 
 Routine 7008, 1 local (0000)
     Action routine for:
-        "again"
+      verb: "again"
 
  700b:  JE              G7e,#89 [FALSE] 7017
  700f:  CALL            577c (G7e,G7d) -> -(SP)
@@ -2042,8 +2042,8 @@ Routine 7008, 1 local (0000)
 
 Routine 7060, 0 locals ()
     Action routine for:
-        "awake up OBJ"
-"awake OBJ"
+      verb: "awake up OBJ"
+      verb: "awake OBJ"
 
  7061:  TEST_ATTR       G76,#1e [FALSE] 70ab
  7066:  GET_PROP        G76,#07 -> -(SP)
@@ -2061,7 +2061,7 @@ Routine 7060, 0 locals ()
 
 Routine 70be, 0 locals ()
     Action routine for:
-        "answer"
+      verb: "answer"
 
  70bf:  PRINT           "Nobody seems to be awaiting your answer."
  70d6:  NEW_LINE        
@@ -2071,11 +2071,11 @@ Routine 70be, 0 locals ()
 
 Routine 70de, 0 locals ()
     Action routine for:
-        "strike OBJ with OBJ"
-"knock down OBJ"
-"stab OBJ with OBJ"
-"dispat OBJ with OBJ"
-"attack OBJ with OBJ"
+      verb: "strike OBJ with OBJ"
+      verb: "knock down OBJ"
+      verb: "stab OBJ with OBJ"
+      verb: "dispat OBJ with OBJ"
+      verb: "attack OBJ with OBJ"
 
  70df:  TEST_ATTR       G76,#1e [TRUE] 7105
  70e3:  PRINT           "I've known strange people, but fighting a "
@@ -2101,22 +2101,22 @@ Routine 70de, 0 locals ()
 
 Routine 717a, 0 locals ()
     Action routine for:
-        "back"
+      verb: "back"
 
  717b:  PRINT_RET       "Sorry, my memory is poor. Please give a direction."
 
 Routine 71a0, 0 locals ()
     Action routine for:
-        "blow up OBJ"
-"blast"
+      verb: "blow up OBJ"
+      verb: "blast"
 
  71a1:  PRINT_RET       "You can't blast anything by using words."
 
 Routine 71ba, 1 local (0000)
     Pre-action routine for:
-        "carry in OBJ"
-"climb in OBJ"
-"board OBJ"
+      verb: "carry in OBJ"
+      verb: "climb in OBJ"
+      verb: "board OBJ"
 
  71bd:  GET_PARENT      G6f -> L00
  71c0:  CALL            50d0 -> -(SP)
@@ -2142,9 +2142,9 @@ Routine 71ba, 1 local (0000)
 
 Routine 7224, 1 local (0000)
     Action routine for:
-        "carry in OBJ"
-"climb in OBJ"
-"board OBJ"
+      verb: "carry in OBJ"
+      verb: "climb in OBJ"
+      verb: "board OBJ"
 
  7227:  PRINT           "You are now in the "
  7230:  PRINT_OBJ       G76
@@ -2157,29 +2157,29 @@ Routine 7224, 1 local (0000)
 
 Routine 7244, 0 locals ()
     Action routine for:
-        "blow in OBJ"
+      verb: "blow in OBJ"
 
  7245:  CALL            577c (#17,G76,#06) -> -(SP)
  724d:  RET_POPPED      
 
 Routine 724e, 0 locals ()
     Action routine for:
-        "brush OBJ with OBJ"
-"brush OBJ"
+      verb: "brush OBJ with OBJ"
+      verb: "brush OBJ"
 
  724f:  PRINT_RET       "If you wish, but heaven only knows why."
 
 Routine 726a, 0 locals ()
     Action routine for:
-        "bug"
+      verb: "bug"
 
  726b:  PRINT_RET       "Bug? Not in a flawless program like this! (Cough, cough)."
 
 Routine 7298, 0 locals ()
     Pre-action routine for:
-        "light OBJ with OBJ"
-"burn down OBJ with OBJ"
-"burn OBJ with OBJ"
+      verb: "light OBJ with OBJ"
+      verb: "burn down OBJ with OBJ"
+      verb: "burn OBJ with OBJ"
 
  7299:  TEST_ATTR       G77,#19 [FALSE] 72a1
  729d:  TEST_ATTR       G77,#14 [TRUE] RFALSE
@@ -2189,9 +2189,9 @@ Routine 7298, 0 locals ()
 
 Routine 72b2, 0 locals ()
     Action routine for:
-        "light OBJ with OBJ"
-"burn down OBJ with OBJ"
-"burn OBJ with OBJ"
+      verb: "light OBJ with OBJ"
+      verb: "burn down OBJ with OBJ"
+      verb: "burn OBJ with OBJ"
 
  72b3:  CALL            50d0 -> -(SP)
  72b8:  JZ              (SP)+ [FALSE] RFALSE
@@ -2218,30 +2218,30 @@ Routine 72b2, 0 locals ()
 
 Routine 732e, 0 locals ()
     Action routine for:
-        "barf"
+      verb: "barf"
 
  732f:  PRINT_RET       "Preposterous!"
 
 Routine 733a, 0 locals ()
     Action routine for:
-        "go down OBJ"
-"climb down OBJ"
-"climb"
+      verb: "go down OBJ"
+      verb: "climb down OBJ"
+      verb: "climb"
 
  733b:  CALL            736e (#16,G76) -> -(SP)
  7342:  RET_POPPED      
 
 Routine 7344, 0 locals ()
     Action routine for:
-        "climb OBJ"
+      verb: "climb OBJ"
 
  7345:  CALL            736e (#17,G76) -> -(SP)
  734c:  RET_POPPED      
 
 Routine 734e, 0 locals ()
     Action routine for:
-        "carry on OBJ"
-"climb on OBJ"
+      verb: "carry on OBJ"
+      verb: "climb on OBJ"
 
  734f:  TEST_ATTR       G76,#1b [FALSE] 735b
  7353:  CALL            577c (#19,G76) -> -(SP)
@@ -2252,9 +2252,9 @@ Routine 734e, 0 locals ()
 
 Routine 736e, 5 locals (0017, 0000, 0000, 0000, 0000)
     Action routine for:
-        "go up OBJ"
-"climb up OBJ"
-"climb"
+      verb: "go up OBJ"
+      verb: "climb up OBJ"
+      verb: "climb"
 
  7379:  JZ              L01 [FALSE] 7382
  737c:  JZ              G76 [TRUE] 7382
@@ -2293,7 +2293,7 @@ Routine 736e, 5 locals (0017, 0000, 0000, 0000, 0000)
 
 Routine 7422, 0 locals ()
     Action routine for:
-        "close OBJ"
+      verb: "close OBJ"
 
  7423:  TEST_ATTR       G76,#13 [TRUE] 7447
  7427:  TEST_ATTR       G76,#17 [TRUE] 7447
@@ -2323,7 +2323,7 @@ Routine 7422, 0 locals ()
 
 Routine 74b2, 0 locals ()
     Action routine for:
-        "comman OBJ"
+      verb: "comman OBJ"
 
  74b3:  TEST_ATTR       G76,#1e [FALSE] 74cb
  74b7:  PRINT           "The "
@@ -2333,7 +2333,7 @@ Routine 74b2, 0 locals ()
 
 Routine 74d6, 0 locals ()
     Action routine for:
-        "count OBJ"
+      verb: "count OBJ"
 
  74d7:  JE              G76,#0a [FALSE] 74f6
  74db:  PRINT_RET       "Well, for one, you are playing Zork..."
@@ -2341,14 +2341,14 @@ Routine 74d6, 0 locals ()
 
 Routine 7504, 0 locals ()
     Action routine for:
-        "cross OBJ"
+      verb: "cross OBJ"
 
  7505:  PRINT_RET       "You can't cross that!"
 
 Routine 7510, 0 locals ()
     Action routine for:
-        "curse OBJ"
-"curse"
+      verb: "curse OBJ"
+      verb: "curse"
 
  7511:  JZ              G76 [TRUE] 753a
  7514:  TEST_ATTR       G76,#1e [FALSE] 752f
@@ -2358,7 +2358,7 @@ Routine 7510, 0 locals ()
 
 Routine 7562, 0 locals ()
     Action routine for:
-        "cut OBJ with OBJ"
+      verb: "cut OBJ with OBJ"
 
  7563:  TEST_ATTR       G76,#1e [FALSE] 7570
  7567:  CALL            577c (#13,G76,G77) -> -(SP)
@@ -2383,14 +2383,14 @@ Routine 7562, 0 locals ()
 
 Routine 761e, 0 locals ()
     Action routine for:
-        "deflat OBJ"
+      verb: "deflat OBJ"
 
  761f:  PRINT_RET       "Come on, now!"
 
 Routine 762a, 0 locals ()
     Action routine for:
-        "dig OBJ with OBJ"
-"dig in OBJ with OBJ"
+      verb: "dig OBJ with OBJ"
+      verb: "dig in OBJ with OBJ"
 
  762b:  JZ              G77 [FALSE] 7631
  762e:  STORE           G77,#01
@@ -2406,8 +2406,8 @@ Routine 762a, 0 locals ()
 
 Routine 7682, 0 locals ()
     Action routine for:
-        "carry out OBJ"
-"disemb OBJ"
+      verb: "carry out OBJ"
+      verb: "disemb OBJ"
 
  7683:  GET_PARENT      G6f -> -(SP)
  7686:  JE              (SP)+,G76 [TRUE] 7696
@@ -2425,31 +2425,31 @@ Routine 7682, 0 locals ()
 
 Routine 76ce, 0 locals ()
     Action routine for:
-        "disenc OBJ"
+      verb: "disenc OBJ"
 
  76cf:  PRINT_RET       "Nothing happens."
 
 Routine 76dc, 0 locals ()
     Action routine for:
-        "drink OBJ"
+      verb: "drink OBJ"
 
  76dd:  CALL            7712 -> -(SP)
  76e2:  RET_POPPED      
 
 Routine 76e4, 0 locals ()
     Action routine for:
-        "drink from OBJ"
+      verb: "drink from OBJ"
 
  76e5:  PRINT_RET       "How peculiar!"
 
 Routine 76f0, 0 locals ()
     Pre-action routine for:
-        "hide down OBJ"
-"pour OBJ from OBJ"
-"pour OBJ in OBJ"
-"pour OBJ"
-"leave OBJ"
-"drop OBJ"
+      verb: "hide down OBJ"
+      verb: "pour OBJ from OBJ"
+      verb: "pour OBJ in OBJ"
+      verb: "pour OBJ"
+      verb: "leave OBJ"
+      verb: "drop OBJ"
 
  76f1:  GET_PARENT      G6f -> -(SP)
  76f4:  JE              G76,(SP)+ [FALSE] RFALSE
@@ -2458,12 +2458,12 @@ Routine 76f0, 0 locals ()
 
 Routine 7700, 0 locals ()
     Action routine for:
-        "hide down OBJ"
-"pour OBJ from OBJ"
-"pour OBJ in OBJ"
-"pour OBJ"
-"leave OBJ"
-"drop OBJ"
+      verb: "hide down OBJ"
+      verb: "pour OBJ from OBJ"
+      verb: "pour OBJ in OBJ"
+      verb: "pour OBJ"
+      verb: "leave OBJ"
+      verb: "drop OBJ"
 
  7701:  CALL            91d6 -> -(SP)
  7706:  JZ              (SP)+ [TRUE] RFALSE
@@ -2471,7 +2471,7 @@ Routine 7700, 0 locals ()
 
 Routine 7712, 3 locals (0000, 0000, 0000)
     Action routine for:
-        "bite OBJ"
+      verb: "bite OBJ"
 
  7719:  TEST_ATTR       G76,#15 [TRUE] 7723
  771d:  PUSH            #00
@@ -2527,7 +2527,7 @@ Routine 780e, 0 locals ()
 
 Routine 7848, 5 locals (0000, 0000, 0000, 0000, 0000)
     Action routine for:
-        "echo"
+      verb: "echo"
 
  7853:  LOADB           G6e,#01 -> -(SP)
  7857:  JG              (SP)+,#00 [FALSE] 78a0
@@ -2553,7 +2553,7 @@ Routine 7848, 5 locals (0000, 0000, 0000, 0000, 0000)
 
 Routine 78ae, 0 locals ()
     Action routine for:
-        "enchan OBJ"
+      verb: "enchan OBJ"
 
  78af:  CALL            50d0 -> -(SP)
  78b4:  CALL            76ce -> -(SP)
@@ -2573,15 +2573,15 @@ Routine 78ba, 2 locals (0000, 0000)
 
 Routine 78ec, 0 locals ()
     Action routine for:
-        "enter"
+      verb: "enter"
 
  78ed:  CALL            9470 (#15) -> -(SP)
  78f3:  RET_POPPED      
 
 Routine 78f4, 0 locals ()
     Action routine for:
-        "gaze at OBJ"
-"descri OBJ"
+      verb: "gaze at OBJ"
+      verb: "descri OBJ"
 
  78f5:  GET_PROP        G76,#08 -> -(SP)
  78f9:  JZ              (SP)+ [TRUE] 7904
@@ -2599,24 +2599,24 @@ Routine 78f4, 0 locals ()
 
 Routine 7928, 0 locals ()
     Action routine for:
-        "exit OBJ"
-"exit"
+      verb: "exit OBJ"
+      verb: "exit"
 
  7929:  CALL            9470 (#14) -> -(SP)
  792f:  RET_POPPED      
 
 Routine 7930, 0 locals ()
     Action routine for:
-        "banish away OBJ"
-"banish out OBJ"
-"banish OBJ"
+      verb: "banish away OBJ"
+      verb: "banish out OBJ"
+      verb: "banish OBJ"
 
  7931:  PRINT_RET       "What a bizarre concept!"
 
 Routine 7944, 1 local (0000)
     Pre-action routine for:
-        "fill OBJ"
-"fill OBJ with OBJ"
+      verb: "fill OBJ"
+      verb: "fill OBJ with OBJ"
 
  7947:  JZ              G77 [FALSE] 7976
  794a:  GET_PROP_ADDR   G00,#05 -> L00
@@ -2634,8 +2634,8 @@ Routine 7944, 1 local (0000)
 
 Routine 7984, 0 locals ()
     Action routine for:
-        "fill OBJ"
-"fill OBJ with OBJ"
+      verb: "fill OBJ"
+      verb: "fill OBJ with OBJ"
 
  7985:  JZ              G77 [FALSE] 79be
  7988:  CALL            94a0 (#ee,G00) -> -(SP)
@@ -2651,9 +2651,9 @@ Routine 7984, 0 locals ()
 
 Routine 79d8, 1 local (0000)
     Action routine for:
-        "search for OBJ"
-"gaze for OBJ"
-"find OBJ"
+      verb: "search for OBJ"
+      verb: "gaze for OBJ"
+      verb: "find OBJ"
 
  79db:  GET_PARENT      G76 -> L00
  79de:  JE              G76,#01,#06 [FALSE] 7a0f
@@ -2685,21 +2685,21 @@ Routine 79d8, 1 local (0000)
 
 Routine 7a8e, 0 locals ()
     Action routine for:
-        "chase OBJ"
-"chase"
+      verb: "chase OBJ"
+      verb: "chase"
 
  7a8f:  PRINT_RET       "You're nuts!"
 
 Routine 7a96, 0 locals ()
     Action routine for:
-        "froboz"
+      verb: "froboz"
 
  7a97:  PRINT_RET       "The FROBOZZ Corporation created, owns, and operates this dungeon."
 
 Routine 7ac4, 0 locals ()
     Pre-action routine for:
-        "hand OBJ to OBJ"
-"donate OBJ to OBJ"
+      verb: "hand OBJ to OBJ"
+      verb: "donate OBJ to OBJ"
 
  7ac5:  CALL            94ec (G76) -> -(SP)
  7acb:  JZ              (SP)+ [FALSE] RFALSE
@@ -2709,8 +2709,8 @@ Routine 7ac4, 0 locals ()
 
 Routine 7af2, 0 locals ()
     Action routine for:
-        "hand OBJ to OBJ"
-"donate OBJ to OBJ"
+      verb: "hand OBJ to OBJ"
+      verb: "donate OBJ to OBJ"
 
  7af3:  TEST_ATTR       G77,#1e [TRUE] 7b0c
  7af7:  PRINT           "You can't give a "
@@ -2724,14 +2724,14 @@ Routine 7af2, 0 locals ()
 
 Routine 7b20, 0 locals ()
     Action routine for:
-        "hatch OBJ"
+      verb: "hatch OBJ"
 
  7b21:  PRINT_RET       "Bizarre!"
 
 Routine 7b2a, 0 locals ()
     Action routine for:
-        "hello OBJ"
-"hello"
+      verb: "hello OBJ"
+      verb: "hello"
 
  7b2b:  JZ              G76 [TRUE] 7b7d
  7b2f:  TEST_ATTR       G76,#1e [FALSE] 7b4d
@@ -2748,7 +2748,7 @@ Routine 7b2a, 0 locals ()
 
 Routine 7b88, 0 locals ()
     Action routine for:
-        "chant"
+      verb: "chant"
 
  7b89:  PRINT           "The incantation echoes back faintly, but nothing else happens."
  7bae:  NEW_LINE        
@@ -2758,15 +2758,15 @@ Routine 7b88, 0 locals ()
 
 Routine 7bb6, 0 locals ()
     Action routine for:
-        "inflat OBJ with OBJ"
-"blow up OBJ with OBJ"
+      verb: "inflat OBJ with OBJ"
+      verb: "blow up OBJ with OBJ"
 
  7bb7:  PRINT_RET       "How can you inflate that?"
 
 Routine 7bc6, 0 locals ()
     Action routine for:
-        "is OBJ on OBJ"
-"is OBJ in OBJ"
+      verb: "is OBJ on OBJ"
+      verb: "is OBJ in OBJ"
 
  7bc7:  JIN             G76,G77 [FALSE] 7be9
  7bcb:  PRINT           "Yes, it is "
@@ -2781,21 +2781,21 @@ Routine 7bc6, 0 locals ()
 
 Routine 7bf4, 0 locals ()
     Action routine for:
-        "kick OBJ"
+      verb: "kick OBJ"
 
  7bf5:  CALL            925c (S166) -> -(SP)
  7bfc:  RET_POPPED      
 
 Routine 7bfe, 0 locals ()
     Action routine for:
-        "kiss OBJ"
+      verb: "kiss OBJ"
 
  7bff:  PRINT_RET       "I'd sooner kiss a pig."
 
 Routine 7c12, 0 locals ()
     Action routine for:
-        "knock on OBJ"
-"knock at OBJ"
+      verb: "knock on OBJ"
+      verb: "knock at OBJ"
 
  7c13:  TEST_ATTR       G76,#17 [FALSE] 7c24
  7c17:  PRINT_RET       "Nobody's home."
@@ -2805,10 +2805,10 @@ Routine 7c12, 0 locals ()
 
 Routine 7c34, 0 locals ()
     Action routine for:
-        "flip off OBJ"
-"hide out OBJ"
-"douse OBJ"
-"blow out OBJ"
+      verb: "flip off OBJ"
+      verb: "hide out OBJ"
+      verb: "douse OBJ"
+      verb: "blow out OBJ"
 
  7c35:  TEST_ATTR       G76,#1f [FALSE] 7c76
  7c3a:  TEST_ATTR       G76,#14 [TRUE] 7c47
@@ -2828,10 +2828,10 @@ Routine 7c34, 0 locals ()
 
 Routine 7c84, 0 locals ()
     Action routine for:
-        "flip on OBJ with OBJ"
-"flip on OBJ"
-"light OBJ"
-"activa OBJ"
+      verb: "flip on OBJ with OBJ"
+      verb: "flip on OBJ"
+      verb: "light OBJ"
+      verb: "activa OBJ"
 
  7c85:  TEST_ATTR       G76,#1f [FALSE] 7cb8
  7c89:  TEST_ATTR       G76,#14 [FALSE] 7c96
@@ -2850,7 +2850,7 @@ Routine 7c84, 0 locals ()
 
 Routine 7cc6, 0 locals ()
     Action routine for:
-        "launch OBJ"
+      verb: "launch OBJ"
 
  7cc7:  TEST_ATTR       G76,#1b [FALSE] 7ce4
  7ccb:  PRINT_RET       "You can't launch that by saying \"launch\"!"
@@ -2858,19 +2858,19 @@ Routine 7cc6, 0 locals ()
 
 Routine 7cf6, 0 locals ()
     Action routine for:
-        "lean on OBJ"
+      verb: "lean on OBJ"
 
  7cf7:  PRINT_RET       "Getting tired?"
 
 Routine 7d04, 2 locals (0000, 0000)
     Action routine for:
-        "go over OBJ"
-"dive off OBJ"
-"dive from OBJ"
-"dive in OBJ"
-"dive across OBJ"
-"dive over OBJ"
-"dive"
+      verb: "go over OBJ"
+      verb: "dive off OBJ"
+      verb: "dive from OBJ"
+      verb: "dive in OBJ"
+      verb: "dive across OBJ"
+      verb: "dive over OBJ"
+      verb: "dive"
 
  7d09:  JZ              G76 [TRUE] 7d41
  7d0c:  JIN             G76,G00 [FALSE] 7d30
@@ -2907,15 +2907,15 @@ Routine 7d04, 2 locals (0000, 0000)
 
 Routine 7dda, 0 locals ()
     Action routine for:
-        "leave"
+      verb: "leave"
 
  7ddb:  CALL            9470 (#14) -> -(SP)
  7de1:  RET_POPPED      
 
 Routine 7de2, 0 locals ()
     Action routine for:
-        "listen for OBJ"
-"listen to OBJ"
+      verb: "listen for OBJ"
+      verb: "listen to OBJ"
 
  7de3:  PRINT           "The "
  7de6:  PRINT_OBJ       G76
@@ -2923,16 +2923,16 @@ Routine 7de2, 0 locals ()
 
 Routine 7df6, 0 locals ()
     Action routine for:
-        "lock OBJ with OBJ"
+      verb: "lock OBJ with OBJ"
 
  7df7:  PRINT_RET       "It doesn't seem to work."
 
 Routine 7e04, 0 locals ()
     Action routine for:
-        "gaze down OBJ"
-"gaze up OBJ"
-"gaze around OBJ"
-"gaze"
+      verb: "gaze down OBJ"
+      verb: "gaze up OBJ"
+      verb: "gaze around OBJ"
+      verb: "gaze"
 
  7e05:  CALL            8c9a (#01) -> -(SP)
  7e0b:  JZ              (SP)+ [TRUE] RFALSE
@@ -2941,7 +2941,7 @@ Routine 7e04, 0 locals ()
 
 Routine 7e16, 0 locals ()
     Action routine for:
-        "gaze behind OBJ"
+      verb: "gaze behind OBJ"
 
  7e17:  PRINT           "There is nothing behind the "
  7e22:  PRINT_OBJ       G76
@@ -2949,10 +2949,10 @@ Routine 7e16, 0 locals ()
 
 Routine 7e28, 0 locals ()
     Action routine for:
-        "gaze in OBJ"
-"gaze with OBJ"
-"descri on OBJ"
-"descri in OBJ"
+      verb: "gaze in OBJ"
+      verb: "gaze with OBJ"
+      verb: "descri on OBJ"
+      verb: "descri in OBJ"
 
  7e29:  TEST_ATTR       G76,#17 [FALSE] 7e62
  7e2d:  TEST_ATTR       G76,#0b [FALSE] 7e54
@@ -2985,7 +2985,7 @@ Routine 7e28, 0 locals ()
 
 Routine 7ebe, 0 locals ()
     Action routine for:
-        "gaze on OBJ"
+      verb: "gaze on OBJ"
 
  7ebf:  TEST_ATTR       G76,#0a [FALSE] 7ecb
  7ec3:  CALL            577c (#39,G76) -> -(SP)
@@ -2996,26 +2996,26 @@ Routine 7ebe, 0 locals ()
 
 Routine 7edc, 0 locals ()
     Action routine for:
-        "gaze under OBJ"
+      verb: "gaze under OBJ"
 
  7edd:  PRINT_RET       "There is nothing but dust there."
 
 Routine 7eea, 0 locals ()
     Action routine for:
-        "lower OBJ"
+      verb: "lower OBJ"
 
  7eeb:  CALL            925c (S170) -> -(SP)
  7ef2:  RET_POPPED      
 
 Routine 7ef4, 0 locals ()
     Action routine for:
-        "make OBJ"
+      verb: "make OBJ"
 
  7ef5:  PRINT_RET       "You can't do that."
 
 Routine 7efe, 0 locals ()
     Action routine for:
-        "liquif OBJ with OBJ"
+      verb: "liquif OBJ with OBJ"
 
  7eff:  PRINT           "It's not clear that a "
  7f0a:  PRINT_OBJ       G76
@@ -3023,12 +3023,12 @@ Routine 7efe, 0 locals ()
 
 Routine 7f18, 0 locals ()
     Pre-action routine for:
-        "pull up OBJ"
-"pull on OBJ"
-"pull OBJ"
-"roll OBJ"
-"roll up OBJ"
-"move OBJ"
+      verb: "pull up OBJ"
+      verb: "pull on OBJ"
+      verb: "pull OBJ"
+      verb: "roll OBJ"
+      verb: "roll up OBJ"
+      verb: "move OBJ"
 
  7f19:  CALL            94ec (G76) -> -(SP)
  7f1f:  JZ              (SP)+ [TRUE] RFALSE
@@ -3036,12 +3036,12 @@ Routine 7f18, 0 locals ()
 
 Routine 7f40, 0 locals ()
     Action routine for:
-        "pull up OBJ"
-"pull on OBJ"
-"pull OBJ"
-"roll OBJ"
-"roll up OBJ"
-"move OBJ"
+      verb: "pull up OBJ"
+      verb: "pull on OBJ"
+      verb: "pull OBJ"
+      verb: "roll OBJ"
+      verb: "roll up OBJ"
+      verb: "move OBJ"
 
  7f41:  TEST_ATTR       G76,#11 [FALSE] 7f5d
  7f45:  PRINT           "Moving the "
@@ -3053,16 +3053,16 @@ Routine 7f40, 0 locals ()
 
 Routine 7f6c, 0 locals ()
     Action routine for:
-        "mumble"
+      verb: "mumble"
 
  7f6d:  PRINT_RET       "You'll have to speak up if you expect me to hear you!"
 
 Routine 7f90, 0 locals ()
     Pre-action routine for:
-        "punctu OBJ with OBJ"
-"poke OBJ with OBJ"
-"block down OBJ with OBJ"
-"block OBJ with OBJ"
+      verb: "punctu OBJ with OBJ"
+      verb: "poke OBJ with OBJ"
+      verb: "block down OBJ with OBJ"
+      verb: "block OBJ with OBJ"
 
  7f91:  CALL            50d0 -> -(SP)
  7f96:  JZ              (SP)+ [FALSE] RTRUE
@@ -3080,10 +3080,10 @@ Routine 7f90, 0 locals ()
 
 Routine 7fd2, 0 locals ()
     Action routine for:
-        "punctu OBJ with OBJ"
-"poke OBJ with OBJ"
-"block down OBJ with OBJ"
-"block OBJ with OBJ"
+      verb: "punctu OBJ with OBJ"
+      verb: "poke OBJ with OBJ"
+      verb: "block down OBJ with OBJ"
+      verb: "block OBJ with OBJ"
 
  7fd3:  TEST_ATTR       G76,#1e [FALSE] 7fdf
  7fd7:  CALL            577c (#13,G76) -> -(SP)
@@ -3092,7 +3092,7 @@ Routine 7fd2, 0 locals ()
 
 Routine 7fe8, 0 locals ()
     Action routine for:
-        "odysse"
+      verb: "odysse"
 
  7fe9:  JE              G00,#b9 [FALSE] 8059
  7fee:  JIN             "cyclops",G00 [FALSE] 8059
@@ -3110,16 +3110,16 @@ Routine 7fe8, 0 locals ()
 
 Routine 806a, 0 locals ()
     Action routine for:
-        "grease OBJ with OBJ"
+      verb: "grease OBJ with OBJ"
 
  806b:  PRINT_RET       "You probably put spinach in your gas tank, too."
 
 Routine 8084, 2 locals (0000, 0000)
     Action routine for:
-        "open OBJ with OBJ"
-"open up OBJ"
-"open OBJ"
-"block in OBJ"
+      verb: "open OBJ with OBJ"
+      verb: "open up OBJ"
+      verb: "open OBJ"
+      verb: "block in OBJ"
 
  8089:  TEST_ATTR       G76,#13 [FALSE] 80f7
  808e:  GET_PROP        G76,#0a -> -(SP)
@@ -3163,7 +3163,7 @@ Routine 8084, 2 locals (0000, 0000)
 
 Routine 8136, 1 local (0000)
     Action routine for:
-        "chuck OBJ OBJ"
+      verb: "chuck OBJ OBJ"
 
  8139:  JE              G77,#f8 [FALSE] 816b
  813d:  GET_PARENT      G6f -> L00
@@ -3178,26 +3178,26 @@ Routine 8136, 1 local (0000)
 
 Routine 8170, 0 locals ()
     Action routine for:
-        "pick OBJ with OBJ"
-"pick OBJ"
+      verb: "pick OBJ with OBJ"
+      verb: "pick OBJ"
 
  8171:  PRINT_RET       "You can't pick that."
 
 Routine 817c, 0 locals ()
     Action routine for:
-        "play OBJ"
+      verb: "play OBJ"
 
  817d:  PRINT_RET       "That's silly!"
 
 Routine 818a, 0 locals ()
     Action routine for:
-        "fix OBJ with OBJ"
+      verb: "fix OBJ with OBJ"
 
  818b:  PRINT_RET       "This has no effect."
 
 Routine 8196, 0 locals ()
     Action routine for:
-        "pour OBJ on OBJ"
+      verb: "pour OBJ on OBJ"
 
  8197:  JE              G76,#ed [FALSE] 81e4
  819c:  CALL            78ba (G76) -> -(SP)
@@ -3220,7 +3220,7 @@ Routine 8196, 0 locals ()
 
 Routine 81fc, 0 locals ()
     Action routine for:
-        "pray"
+      verb: "pray"
 
  81fd:  JE              G00,#d4 [FALSE] 8208
  8201:  CALL            92b6 (#4e) -> -(SP)
@@ -3229,8 +3229,8 @@ Routine 81fc, 0 locals ()
 
 Routine 8228, 0 locals ()
     Action routine for:
-        "pump up OBJ with OBJ"
-"pump up OBJ"
+      verb: "pump up OBJ with OBJ"
+      verb: "pump up OBJ"
 
  8229:  JZ              G77 [TRUE] 8240
  822c:  JE              G77,#ad [TRUE] 8240
@@ -3244,33 +3244,33 @@ Routine 8228, 0 locals ()
 
 Routine 825e, 0 locals ()
     Action routine for:
-        "press on OBJ"
-"press OBJ"
+      verb: "press on OBJ"
+      verb: "press OBJ"
 
  825f:  CALL            925c (S171) -> -(SP)
  8266:  RET_POPPED      
 
 Routine 8268, 0 locals ()
     Action routine for:
-        "slide OBJ to OBJ"
-"slide OBJ OBJ"
-"press OBJ to OBJ"
-"press OBJ OBJ"
+      verb: "slide OBJ to OBJ"
+      verb: "slide OBJ OBJ"
+      verb: "press OBJ to OBJ"
+      verb: "press OBJ OBJ"
 
  8269:  PRINT_RET       "You can't push things to that."
 
 Routine 827a, 0 locals ()
     Pre-action routine for:
-        "chuck OBJ in OBJ"
-"squeez OBJ on OBJ"
-"hide OBJ in OBJ"
-"move OBJ in OBJ"
-"drop OBJ in OBJ"
-"drop OBJ down OBJ"
-"apply OBJ to OBJ"
-"chuck OBJ on OBJ"
-"hide OBJ on OBJ"
-"drop OBJ on OBJ"
+      verb: "chuck OBJ in OBJ"
+      verb: "squeez OBJ on OBJ"
+      verb: "hide OBJ in OBJ"
+      verb: "move OBJ in OBJ"
+      verb: "drop OBJ in OBJ"
+      verb: "drop OBJ down OBJ"
+      verb: "apply OBJ to OBJ"
+      verb: "chuck OBJ on OBJ"
+      verb: "hide OBJ on OBJ"
+      verb: "drop OBJ on OBJ"
 
  827b:  CALL            50d0 -> -(SP)
  8280:  JZ              (SP)+ [FALSE] RFALSE
@@ -3279,13 +3279,13 @@ Routine 827a, 0 locals ()
 
 Routine 828a, 1 local (0000)
     Action routine for:
-        "chuck OBJ in OBJ"
-"squeez OBJ on OBJ"
-"hide OBJ in OBJ"
-"move OBJ in OBJ"
-"drop OBJ in OBJ"
-"drop OBJ down OBJ"
-"apply OBJ to OBJ"
+      verb: "chuck OBJ in OBJ"
+      verb: "squeez OBJ on OBJ"
+      verb: "hide OBJ in OBJ"
+      verb: "move OBJ in OBJ"
+      verb: "drop OBJ in OBJ"
+      verb: "drop OBJ down OBJ"
+      verb: "apply OBJ to OBJ"
 
  828d:  TEST_ATTR       G77,#0b [TRUE] 82a9
  8291:  TEST_ATTR       G77,#17 [TRUE] 8299
@@ -3333,15 +3333,15 @@ Routine 828a, 1 local (0000)
 
 Routine 8354, 0 locals ()
     Action routine for:
-        "hide OBJ behind OBJ"
+      verb: "hide OBJ behind OBJ"
 
  8355:  PRINT_RET       "That hiding place is too obvious."
 
 Routine 836c, 0 locals ()
     Action routine for:
-        "chuck OBJ on OBJ"
-"hide OBJ on OBJ"
-"drop OBJ on OBJ"
+      verb: "chuck OBJ on OBJ"
+      verb: "hide OBJ on OBJ"
+      verb: "drop OBJ on OBJ"
 
  836d:  JE              G77,#08 [FALSE] 8379
  8371:  CALL            577c (#31,G76) -> -(SP)
@@ -3355,32 +3355,32 @@ Routine 836c, 0 locals ()
 
 Routine 839e, 0 locals ()
     Action routine for:
-        "slide OBJ under OBJ"
-"hide OBJ under OBJ"
-"press OBJ under OBJ"
+      verb: "slide OBJ under OBJ"
+      verb: "hide OBJ under OBJ"
+      verb: "press OBJ under OBJ"
 
  839f:  PRINT_RET       "You can't do that."
 
 Routine 83a8, 0 locals ()
     Action routine for:
-        "lift up OBJ"
-"lift OBJ"
+      verb: "lift up OBJ"
+      verb: "lift OBJ"
 
  83a9:  CALL            7eea -> -(SP)
  83ae:  RET_POPPED      
 
 Routine 83b0, 0 locals ()
     Action routine for:
-        "molest OBJ"
+      verb: "molest OBJ"
 
  83b1:  PRINT_RET       "What a (ahem!) strange idea."
 
 Routine 83c8, 0 locals ()
     Pre-action routine for:
-        "read OBJ with OBJ"
-"read from OBJ"
-"read OBJ"
-"gaze at OBJ with OBJ"
+      verb: "read OBJ with OBJ"
+      verb: "read from OBJ"
+      verb: "read OBJ"
+      verb: "gaze at OBJ with OBJ"
 
  83c9:  JZ              G42 [FALSE] 83dd
  83cc:  PRINT_RET       "It is impossible to read in the dark."
@@ -3392,10 +3392,10 @@ Routine 83c8, 0 locals ()
 
 Routine 83fa, 0 locals ()
     Action routine for:
-        "read OBJ with OBJ"
-"read from OBJ"
-"read OBJ"
-"gaze at OBJ with OBJ"
+      verb: "read OBJ with OBJ"
+      verb: "read from OBJ"
+      verb: "read OBJ"
+      verb: "gaze at OBJ with OBJ"
 
  83fb:  TEST_ATTR       G76,#10 [TRUE] 8413
  83ff:  PRINT           "How does one read a "
@@ -3408,20 +3408,20 @@ Routine 83fa, 0 locals ()
 
 Routine 841c, 0 locals ()
     Action routine for:
-        "read OBJ OBJ"
+      verb: "read OBJ OBJ"
 
  841d:  CALL            577c (#53,G76) -> -(SP)
  8424:  RTRUE           
 
 Routine 8426, 0 locals ()
     Action routine for:
-        "repent"
+      verb: "repent"
 
  8427:  PRINT_RET       "It could very well be too late!"
 
 Routine 843c, 0 locals ()
     Action routine for:
-        "answer OBJ"
+      verb: "answer OBJ"
 
  843d:  PRINT           "It is hardly likely that the "
  844e:  PRINT_OBJ       G76
@@ -3433,22 +3433,22 @@ Routine 843c, 0 locals ()
 
 Routine 8464, 0 locals ()
     Action routine for:
-        "peal OBJ with OBJ"
-"peal OBJ"
+      verb: "peal OBJ with OBJ"
+      verb: "peal OBJ"
 
  8465:  PRINT_RET       "How, exactly, can you ring that?"
 
 Routine 847a, 0 locals ()
     Action routine for:
-        "feel OBJ with OBJ"
-"feel OBJ"
+      verb: "feel OBJ with OBJ"
+      verb: "feel OBJ"
 
  847b:  CALL            925c (S172) -> -(SP)
  8482:  RET_POPPED      
 
 Routine 8484, 1 local (0000)
     Action routine for:
-        "say"
+      verb: "say"
 
  8487:  JZ              G6c [FALSE] 8493
  848a:  PRINT_RET       "Say what?"
@@ -3476,14 +3476,14 @@ orphan code fragment:
 
 Routine 8500, 0 locals ()
     Action routine for:
-        "search in OBJ"
-"search OBJ"
+      verb: "search in OBJ"
+      verb: "search OBJ"
 
  8501:  PRINT_RET       "You find nothing unusual."
 
 Routine 850e, 0 locals ()
     Action routine for:
-        "send for OBJ"
+      verb: "send for OBJ"
 
  850f:  TEST_ATTR       G76,#1e [FALSE] 8525
  8513:  PRINT           "Why would you send for the "
@@ -3493,22 +3493,22 @@ Routine 850e, 0 locals ()
 
 Routine 8534, 0 locals ()
     Pre-action routine for:
-        "hand OBJ OBJ"
-"donate OBJ OBJ"
+      verb: "hand OBJ OBJ"
+      verb: "donate OBJ OBJ"
 
  8535:  CALL            577c (#3f,G77,G76) -> -(SP)
  853d:  RTRUE           
 
 Routine 853e, 0 locals ()
     Action routine for:
-        "hand OBJ OBJ"
-"donate OBJ OBJ"
+      verb: "hand OBJ OBJ"
+      verb: "donate OBJ OBJ"
 
  853f:  PRINT_RET       "Foo!"
 
 Routine 8544, 0 locals ()
     Action routine for:
-        "shake OBJ"
+      verb: "shake OBJ"
 
  8545:  TEST_ATTR       G76,#1e [FALSE] 8558
  8549:  PRINT_RET       "This seems to have no effect."
@@ -3552,7 +3552,7 @@ Routine 85fc, 1 local (0000)
 
 Routine 8624, 0 locals ()
     Action routine for:
-        "hop"
+      verb: "hop"
 
  8625:  CALL            4e6c (G43) -> -(SP)
  862b:  PRINT_PADDR     (SP)+
@@ -3561,7 +3561,7 @@ Routine 8624, 0 locals ()
 
 Routine 8630, 0 locals ()
     Action routine for:
-        "smell OBJ"
+      verb: "smell OBJ"
 
  8631:  PRINT           "It smells like a "
  863e:  PRINT_OBJ       G76
@@ -3569,20 +3569,20 @@ Routine 8630, 0 locals ()
 
 Routine 8644, 0 locals ()
     Action routine for:
-        "spin OBJ"
+      verb: "spin OBJ"
 
  8645:  PRINT_RET       "You can't spin that!"
 
 Routine 864e, 0 locals ()
     Action routine for:
-        "spray OBJ on OBJ"
+      verb: "spray OBJ on OBJ"
 
  864f:  CALL            8656 -> -(SP)
  8654:  RET_POPPED      
 
 Routine 8656, 0 locals ()
     Action routine for:
-        "squeez OBJ"
+      verb: "squeez OBJ"
 
  8657:  TEST_ATTR       G76,#1e [FALSE] 8674
  865b:  PRINT           "The "
@@ -3595,14 +3595,14 @@ Routine 8656, 0 locals ()
 
 Routine 868a, 0 locals ()
     Action routine for:
-        "spray OBJ with OBJ"
+      verb: "spray OBJ with OBJ"
 
  868b:  CALL            577c (#77,G77,G76) -> -(SP)
  8693:  RET_POPPED      
 
 Routine 8694, 1 local (0000)
     Action routine for:
-        "stab OBJ"
+      verb: "stab OBJ"
 
  8697:  CALL            faec (G6f) -> L00
  869d:  JZ              L00 [TRUE] 86a9
@@ -3614,9 +3614,9 @@ Routine 8694, 1 local (0000)
 
 Routine 86ca, 0 locals ()
     Action routine for:
-        "carry up OBJ"
-"stand up OBJ"
-"stand"
+      verb: "carry up OBJ"
+      verb: "stand up OBJ"
+      verb: "stand"
 
  86cb:  GET_PARENT      G6f -> -(SP)
  86ce:  TEST_ATTR       (SP)+,#1b [FALSE] 86dd
@@ -3627,13 +3627,13 @@ Routine 86ca, 0 locals ()
 
 Routine 86f0, 0 locals ()
     Action routine for:
-        "stay"
+      verb: "stay"
 
  86f1:  PRINT_RET       "You will be lost without me!"
 
 Routine 8702, 0 locals ()
     Action routine for:
-        "strike OBJ"
+      verb: "strike OBJ"
 
  8703:  TEST_ATTR       G76,#1e [FALSE] 8746
  8708:  PRINT           "Since you aren't versed in hand-to-hand combat, you'd better attack the "
@@ -3644,8 +3644,8 @@ Routine 8702, 0 locals ()
 
 Routine 874e, 0 locals ()
     Action routine for:
-        "bathe in OBJ"
-"bathe"
+      verb: "bathe in OBJ"
+      verb: "bathe"
 
  874f:  CALL            94a0 (#ee,G00) -> -(SP)
  8756:  JZ              (SP)+ [TRUE] 8788
@@ -3663,8 +3663,8 @@ Routine 874e, 0 locals ()
 
 Routine 87a0, 0 locals ()
     Action routine for:
-        "swing OBJ at OBJ"
-"swing OBJ"
+      verb: "swing OBJ at OBJ"
+      verb: "swing OBJ"
 
  87a1:  JZ              G77 [FALSE] 87ab
  87a4:  PRINT_RET       "Whoosh!"
@@ -3673,11 +3673,11 @@ Routine 87a0, 0 locals ()
 
 Routine 87b4, 0 locals ()
     Pre-action routine for:
-        "carry OBJ from OBJ"
-"carry OBJ off OBJ"
-"carry OBJ out OBJ"
-"carry OBJ"
-"pick up OBJ"
+      verb: "carry OBJ from OBJ"
+      verb: "carry OBJ off OBJ"
+      verb: "carry OBJ out OBJ"
+      verb: "carry OBJ"
+      verb: "pick up OBJ"
 
  87b5:  JIN             G76,G6f [FALSE] 87d3
  87b9:  TEST_ATTR       G76,#00 [FALSE] 87ca
@@ -3707,11 +3707,11 @@ Routine 87b4, 0 locals ()
 
 Routine 8840, 0 locals ()
     Action routine for:
-        "carry OBJ from OBJ"
-"carry OBJ off OBJ"
-"carry OBJ out OBJ"
-"carry OBJ"
-"pick up OBJ"
+      verb: "carry OBJ from OBJ"
+      verb: "carry OBJ off OBJ"
+      verb: "carry OBJ out OBJ"
+      verb: "carry OBJ"
+      verb: "pick up OBJ"
 
  8841:  CALL            90f4 -> -(SP)
  8846:  JE              (SP)+,#01 [FALSE] RFALSE
@@ -3723,8 +3723,8 @@ Routine 8840, 0 locals ()
 
 Routine 8868, 0 locals ()
     Action routine for:
-        "ask OBJ"
-"talk to OBJ"
+      verb: "ask OBJ"
+      verb: "talk to OBJ"
 
  8869:  TEST_ATTR       G76,#1e [FALSE] 88ad
  886e:  JZ              G6c [TRUE] 8879
@@ -3744,11 +3744,11 @@ Routine 8868, 0 locals ()
 
 Routine 88c6, 2 locals (0000, 0000)
     Action routine for:
-        "go on OBJ"
-"go with OBJ"
-"go in OBJ"
-"enter OBJ"
-"climb with OBJ"
+      verb: "go on OBJ"
+      verb: "go with OBJ"
+      verb: "go in OBJ"
+      verb: "enter OBJ"
+      verb: "climb with OBJ"
 
  88cb:  TEST_ATTR       G76,#17 [FALSE] 88dc
  88cf:  CALL            94fc (G76) -> -(SP)
@@ -3782,8 +3782,8 @@ Routine 88c6, 2 locals (0000, 0000)
 
 Routine 896c, 0 locals ()
     Action routine for:
-        "chuck OBJ with OBJ"
-"chuck OBJ at OBJ"
+      verb: "chuck OBJ with OBJ"
+      verb: "chuck OBJ at OBJ"
 
  896d:  CALL            91d6 -> -(SP)
  8972:  JZ              (SP)+ [TRUE] RFALSE
@@ -3802,14 +3802,14 @@ Routine 896c, 0 locals ()
 
 Routine 89c4, 0 locals ()
     Action routine for:
-        "chuck OBJ over OBJ"
-"chuck OBJ off OBJ"
+      verb: "chuck OBJ over OBJ"
+      verb: "chuck OBJ off OBJ"
 
  89c5:  PRINT_RET       "You can't throw anything off of that!"
 
 Routine 89da, 0 locals ()
     Action routine for:
-        "attach OBJ to OBJ"
+      verb: "attach OBJ to OBJ"
 
  89db:  JE              G77,G6f [FALSE] 89f4
  89df:  PRINT_RET       "You can't tie anything to yourself."
@@ -3819,13 +3819,13 @@ Routine 89da, 0 locals ()
 
 Routine 8a06, 0 locals ()
     Action routine for:
-        "attach up OBJ with OBJ"
+      verb: "attach up OBJ with OBJ"
 
  8a07:  PRINT_RET       "You could certainly never tie it with that!"
 
 Routine 8a20, 0 locals ()
     Action routine for:
-        "temple"
+      verb: "temple"
 
  8a21:  JE              G00,#dc [FALSE] 8a2c
  8a25:  CALL            92b6 (#be) -> -(SP)
@@ -3837,42 +3837,42 @@ Routine 8a20, 0 locals ()
 
 Routine 8a44, 0 locals ()
     Pre-action routine for:
-        "flip OBJ for OBJ"
-"flip OBJ to OBJ"
-"flip OBJ with OBJ"
-"press OBJ with OBJ"
-"move OBJ with OBJ"
+      verb: "flip OBJ for OBJ"
+      verb: "flip OBJ to OBJ"
+      verb: "flip OBJ with OBJ"
+      verb: "press OBJ with OBJ"
+      verb: "move OBJ with OBJ"
 
  8a45:  TEST_ATTR       G76,#0f [TRUE] RFALSE
  8a49:  PRINT_RET       "You can't turn that!"
 
 Routine 8a54, 0 locals ()
     Action routine for:
-        "flip OBJ for OBJ"
-"flip OBJ to OBJ"
-"flip OBJ with OBJ"
-"press OBJ with OBJ"
-"move OBJ with OBJ"
+      verb: "flip OBJ for OBJ"
+      verb: "flip OBJ to OBJ"
+      verb: "flip OBJ with OBJ"
+      verb: "press OBJ with OBJ"
+      verb: "move OBJ with OBJ"
 
  8a55:  PRINT_RET       "This has no effect."
 
 Routine 8a60, 0 locals ()
     Action routine for:
-        "unlock OBJ with OBJ"
+      verb: "unlock OBJ with OBJ"
 
  8a61:  CALL            7df6 -> -(SP)
  8a66:  RET_POPPED      
 
 Routine 8a68, 0 locals ()
     Action routine for:
-        "free OBJ from OBJ"
-"free OBJ"
+      verb: "free OBJ from OBJ"
+      verb: "free OBJ"
 
  8a69:  PRINT_RET       "This cannot be tied, so it cannot be untied!"
 
 Routine 8a7e, 1 local (0003)
     Action routine for:
-        "wait"
+      verb: "wait"
 
  8a81:  PRINT           "Time passes..."
  8a8e:  NEW_LINE        
@@ -3885,8 +3885,8 @@ Routine 8a7e, 1 local (0003)
 
 Routine 8aa4, 5 locals (0000, 0000, 0000, 0000, 0000)
     Action routine for:
-        "go away OBJ"
-"go OBJ"
+      verb: "go away OBJ"
+      verb: "go OBJ"
 
  8aaf:  JZ              G5f [FALSE] 8aba
  8ab2:  CALL            577c (#8a,G76) -> -(SP)
@@ -3962,13 +3962,13 @@ Routine 8aa4, 5 locals (0000, 0000, 0000, 0000, 0000)
 
 Routine 8bcc, 0 locals ()
     Action routine for:
-        "go around OBJ"
+      verb: "go around OBJ"
 
  8bcd:  PRINT_RET       "Use compass directions for movement."
 
 Routine 8be6, 0 locals ()
     Action routine for:
-        "go to OBJ"
+      verb: "go to OBJ"
 
  8be7:  JIN             G76,G00 [TRUE] 8bf5
  8beb:  CALL            94a0 (G76,G00) -> -(SP)
@@ -3978,16 +3978,16 @@ Routine 8be6, 0 locals ()
 
 Routine 8c10, 0 locals ()
     Action routine for:
-        "brandi OBJ at OBJ"
-"brandi OBJ"
+      verb: "brandi OBJ at OBJ"
+      verb: "brandi OBJ"
 
  8c11:  CALL            925c (S179) -> -(SP)
  8c18:  RET_POPPED      
 
 Routine 8c1a, 0 locals ()
     Action routine for:
-        "wear OBJ"
-"hide on OBJ"
+      verb: "wear OBJ"
+      verb: "hide on OBJ"
 
  8c1b:  TEST_ATTR       G76,#00 [TRUE] 8c2d
  8c1f:  PRINT           "You can't wear the "
@@ -3998,14 +3998,14 @@ Routine 8c1a, 0 locals ()
 
 Routine 8c36, 0 locals ()
     Action routine for:
-        "win"
+      verb: "win"
 
  8c37:  PRINT_RET       "Naturally!"
 
 Routine 8c40, 0 locals ()
     Action routine for:
-        "wind up OBJ"
-"wind OBJ"
+      verb: "wind up OBJ"
+      verb: "wind OBJ"
 
  8c41:  PRINT           "You cannot wind up a "
  8c4c:  PRINT_OBJ       G76
@@ -4013,19 +4013,19 @@ Routine 8c40, 0 locals ()
 
 Routine 8c52, 0 locals ()
     Action routine for:
-        "wish"
+      verb: "wish"
 
  8c53:  PRINT_RET       "With luck, your wish will come true."
 
 Routine 8c6c, 0 locals ()
     Action routine for:
-        "scream"
+      verb: "scream"
 
  8c6d:  PRINT_RET       "Aaaarrrrgggghhhh!"
 
 Routine 8c7c, 0 locals ()
     Action routine for:
-        "zork"
+      verb: "zork"
 
  8c7d:  PRINT_RET       "At your service!"
 
@@ -8345,7 +8345,7 @@ Routine 103b8, 6 locals (0000, 0000, 0000, 0000, 0000, 0000)
 
 Routine 10404, 4 locals (0000, 0000, 0000, 0000)
     Action routine for:
-        "diagno"
+      verb: "diagno"
 
 1040d:  CALL            fa7e (#00) -> L00
 10413:  GET_PROP        G6f,#07 -> L01
@@ -8408,7 +8408,7 @@ Routine 10404, 4 locals (0000, 0000, 0000, 0000)
 
 Routine 10582, 1 local (0001)
     Action routine for:
-        "score"
+      verb: "score"
 
 10585:  PRINT           "Your score is "
 1058e:  PRINT_NUM       G01
