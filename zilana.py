@@ -1,26 +1,38 @@
 from zillex import Token, TokType
 
+
+def markcomments(ls):
+    def setcomment(tok):
+        tok.comment = True
+
+    for tok in ls:
+        if tok.typ is TokType.GROUP and tok.val == ';':
+            tok.itertree(setcomment)
+            continue
+        if tok.typ is TokType.GROUP:
+            markcomments(tok.children)
+            
+def stripcomments(ls):
+    newls = []
+    for tok in ls:
+        if tok.typ is TokType.GROUP and tok.val == ';':
+            continue
+        newls.append(tok)
+        if tok.typ is TokType.GROUP:
+            stripcomments(tok.children)
+    ls.clear()
+    ls.extend(newls)
+
+
 class Zcode:
     def __init__(self, tokls):
         self.tokls = tokls
         self.globals = []
 
     def build(self):
-        self.findcomments(self.tokls)
-        self.findifdefs(self.tokls)
+        #self.findifdefs(self.tokls)
         self.findglobals()
 
-    def findcomments(self, ls, incomment=False):
-        for tok in ls:
-            subcomment = incomment
-            if tok.typ is TokType.GROUP and tok.val == ';':
-                tok.comment = True
-                subcomment = True
-            if incomment:
-                tok.comment = True
-            if tok.typ is TokType.GROUP:
-                self.findcomments(tok.children, incomment=subcomment)
-                
     def findifdefs(self, ls, inifdef=False):
         for tok in ls:
             subifdef = inifdef

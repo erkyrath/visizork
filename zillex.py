@@ -46,6 +46,17 @@ class Token:
     def posstr(self):
         return '%s:%d:%d' % self.pos
 
+    def itertree(self, func):
+        res = func(self)
+        if res:
+            return True
+        if self.typ is TokType.GROUP:
+            for subtok in self.children:
+                res = subtok.itertree(func)
+                if res:
+                    return True
+        return False
+
     def matchform(self, key, minlen):
         if self.typ is TokType.GROUP and self.val == '<>' and self.children:
             itok = self.children[0]
