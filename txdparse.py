@@ -2,7 +2,11 @@ import re
 
 class String:
     @staticmethod
-    def unescape(text):
+    def unescape(text, stripquotes=False):
+        if stripquotes:
+            if not (text.startswith('"') and text.endswith('"')):
+                raise Exception('not quoted')
+            text = text[ 1 : -1 ]
         text = text.replace('\\n', '\n')
         text = text.replace('\\t', '\t')
         text = text.replace('\\"', '\"')
@@ -10,15 +14,19 @@ class String:
             raise Exception('unknown escape')
         return text
 
-    def __init__(self, addr, index, text):
+    def __init__(self, addr, index, text, rtn=None):
         self.addr = addr
         self.index = index
         self.text = text
+        self.rtn = rtn
+        self.opcount = 0
+        self.istrings = []
 
 class Routine:
     def __init__(self, addr, argcount):
         self.addr = addr
         self.argcount = argcount
+        self.istrings = []
 
     def __repr__(self):
         return '<Routine %X (%d args)>' % (self.addr, self.argcount,)
@@ -27,9 +35,11 @@ class TXDData:
     def __init__(self):
         self.routines = []
         self.strings = []
+        self.istrings = []
 
     def readdump(self, filename):
-        pat_routine = re.compile('^Routine ([0-9a-f]+), ([0-9]+) local[s]?')
+        pat_routine = re.compile('^(Routine|Main routine) ([0-9a-f]+), ([0-9]+) local[s]?')
+        pat_opcode = re.compile('^[ ]*([0-9a-f]+):[ ]+([A-Z0-9_]+)[ ]*(.*)$')
         pat_startrtns = re.compile('^\\[Start of code')
         pat_endrtns = re.compile('^\\[End of code')
         pat_text = re.compile('^([0-9a-f]+): S([0-9]+)[ ]+\"(.*)\"$')
@@ -45,6 +55,7 @@ class TXDData:
                     continue
                 if pat_endrtns.match(ln):
                     mode = None
+                    rtn = None
                     continue
                 if pat_starttext.match(ln):
                     mode = 'TEXT'
@@ -55,10 +66,23 @@ class TXDData:
                 if mode == 'ROUTINES':
                     match = pat_routine.match(ln)
                     if match:
-                        addr = int(match.group(1), 16)
-                        argcount = int(match.group(2))
+                        addr = int(match.group(2), 16)
+                        argcount = int(match.group(3))
                         rtn = Routine(addr, argcount)
                         self.routines.append(rtn)
+                        continue
+                    match = pat_opcode.match(ln)
+                    if match and rtn:
+                        if match.group(2) in ('PRINT', 'PRINT_RET'):
+                            addr = int(match.group(1), 16)
+                            text = String.unescape(match.group(3), stripquotes=True)
+                            st = String(addr, None, text, rtn=rtn)
+                            rtn.istrings.append(st)
+                            self.istrings.append(st)
+                        continue
+                    if ln:
+                        print('###', ln)
+                        ###raise Exception('unrecognized line in routine')
                 if mode == 'TEXT':
                     match = pat_text.match(ln)
                     if match:
