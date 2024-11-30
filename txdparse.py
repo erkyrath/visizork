@@ -22,10 +22,13 @@ class String:
         self.istrings = []
 
     def __repr__(self):
+        summary = self.text
+        if len(summary) > 40:
+            summary = summary[ : 40 ] + '...'
         rtnstr = ''
         if self.rtn:
             rtnstr = ' in rtn %X' % (self.rtn.addr,)
-        return '<String %X%s>' % (self.addr, rtnstr,)
+        return '<String %X%s: %r>' % (self.addr, rtnstr, summary,)
 
 class Routine:
     def __init__(self, addr, argcount):
