@@ -27,6 +27,7 @@ class Routine:
         self.addr = addr
         self.argcount = argcount
         self.istrings = []
+        self.ismain = False
 
     def __repr__(self):
         return '<Routine %X (%d args)>' % (self.addr, self.argcount,)
@@ -69,6 +70,8 @@ class TXDData:
                         addr = int(match.group(2), 16)
                         argcount = int(match.group(3))
                         rtn = Routine(addr, argcount)
+                        if match.group(1) == 'Main routine':
+                            rtn.ismain = True
                         self.routines.append(rtn)
                         continue
                     match = pat_opcode.match(ln)
