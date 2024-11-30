@@ -21,6 +21,12 @@ class String:
         self.rtn = rtn
         self.istrings = []
 
+    def __repr__(self):
+        rtnstr = ''
+        if self.rtn:
+            rtnstr = ' in rtn %X' % (self.rtn.addr,)
+        return '<String %X%s>' % (self.addr, rtnstr,)
+
 class Routine:
     def __init__(self, addr, argcount):
         self.addr = addr
