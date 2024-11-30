@@ -23,3 +23,4 @@ for filename in sys.argv[1:]:
 dat = TXDData()
 dat.readdump('gamedat/game-dump.txt')
 print('routines:', len(dat.routines))
+print('strings:', len(dat.strings))
