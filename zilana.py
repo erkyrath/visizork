@@ -31,11 +31,9 @@ def stripifdefs(ls):
             if ctok.matchform('COND', 0):
                 found = None
                 for cgrp in ctok.children[ 1 : ]:
-                    match = iseqzorknum(cgrp)
-                    if match:
-                        if match[0] == 1:
-                            found = match[1]
-                            break
+                    found = teststaticcond(cgrp)
+                    if found:
+                        break
                 if found:
                     newls.append(found)
                 continue
@@ -45,18 +43,26 @@ def stripifdefs(ls):
     ls.clear()
     ls.extend(newls)
 
-def iseqzorknum(cgrp):
+def teststaticcond(cgrp):
     if cgrp.typ is TokType.GROUP and cgrp.val == '()' and len(cgrp.children) == 2:
         condgrp = cgrp.children[0]
         resgrp = cgrp.children[1]
-        if condgrp.matchform('==?', 2):
-            keytok = condgrp.children[1]
-            valtok = condgrp.children[2]
-            if keytok.typ is TokType.GROUP and keytok.val == "," and keytok.children:
-                kidtok = keytok.children[0]
-                if kidtok.typ is TokType.ID and kidtok.val == 'ZORK-NUMBER':
-                    if valtok.typ is TokType.NUM:
-                        return (valtok.num, resgrp)
+        
+    if condgrp.typ is TokType.ID and condgrp.val == 'T':
+        return resgrp
+    if iseqzorknum(condgrp, 1):
+        return resgrp
+    return None
+    
+def iseqzorknum(condgrp, zorknum):
+    if condgrp.matchform('==?', 2):
+        keytok = condgrp.children[1]
+        valtok = condgrp.children[2]
+        if keytok.typ is TokType.GROUP and keytok.val == "," and keytok.children:
+            kidtok = keytok.children[0]
+            if kidtok.typ is TokType.ID and kidtok.val == 'ZORK-NUMBER':
+                if valtok.typ is TokType.NUM:
+                    return (valtok.num == zorknum)
                     
 
 class Zcode:
