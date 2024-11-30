@@ -50,6 +50,8 @@ def teststaticcond(cgrp):
         
     if condgrp.typ is TokType.ID and condgrp.val == 'T':
         return resgrp
+    if condgrp.matchform('GASSIGNED?', 1):
+        return resgrp
     if iseqzorknum(condgrp, 1):
         return resgrp
     return None
