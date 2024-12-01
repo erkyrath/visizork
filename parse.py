@@ -19,6 +19,7 @@ popt.add_option('-t', '--txd',
 (opts, args) = popt.parse_args()
 
 if opts.zilfile:
+    print('reading %s...' % (opts.zilfile,))
     lex = Lexer(opts.zilfile)
     ls = lex.readfile(includes=True)
     stripcomments(ls)
