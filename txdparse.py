@@ -37,6 +37,8 @@ class Routine:
         self.opcodes = []
         self.istrings = []
         self.ismain = False
+        self.action = None
+        self.acverbs = []
 
     def __repr__(self):
         return '<Routine %X (%d args, %d opcodes)>' % (self.addr, self.argcount, len(self.opcodes),)
@@ -55,6 +57,9 @@ class TXDData:
         pat_text = re.compile('^([0-9a-f]+): S([0-9]+)[ ]+\"(.*)\"$')
         pat_starttext = re.compile('^\\[Start of text')
         pat_endtext = re.compile('^\\[End of text')
+        pat_actiontype = re.compile('^[ ]*(Action|Pre-action) routine for:')
+        pat_acverb = re.compile('^[ ]*verb: "([^"]*)"')
+        pat_orphan = re.compile('^orphan code fragment:')
         with open(filename) as infl:
             rtn = None
             mode = None
@@ -93,9 +98,19 @@ class TXDData:
                             rtn.istrings.append(st)
                             self.istrings.append(st)
                         continue
+                    match = pat_actiontype.match(ln)
+                    if match and rtn:
+                        rtn.action = match.group(1)
+                        continue
+                    match = pat_acverb.match(ln)
+                    if match and rtn and rtn.action:
+                        rtn.acverbs.append(match.group(1))
+                        continue
+                    match = pat_orphan.match(ln)
+                    if match and rtn:
+                        continue
                     if ln:
-                        print('###', ln)
-                        ###raise Exception('unrecognized line in routine')
+                        raise Exception('unrecognized line in routine: ' + ln)
                 if mode == 'TEXT':
                     match = pat_text.match(ln)
                     if match:
