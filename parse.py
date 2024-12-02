@@ -13,6 +13,10 @@ popt = optparse.OptionParser()
 
 popt.add_option('-z', '--zil',
                 action='store', dest='zilfile')
+popt.add_option('--nostrip',
+                action='store_true', dest='nostrip')
+popt.add_option('--dump',
+                action='store_true', dest='dump')
 popt.add_option('-t', '--txd',
                 action='store_true', dest='txdfile')
 
@@ -22,8 +26,11 @@ if opts.zilfile:
     print('reading %s...' % (opts.zilfile,))
     lex = Lexer(opts.zilfile)
     ls = lex.readfile(includes=True)
-    stripcomments(ls)
-    stripifdefs(ls)
+    if not opts.nostrip:
+        stripcomments(ls)
+        stripifdefs(ls)
+    if opts.dump:
+        dumptokens(ls, withpos=False)
     zcode = Zcode(ls)
     zcode.build()
     print('globals:', len(zcode.globals))
