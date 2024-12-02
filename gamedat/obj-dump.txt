@@ -1,0 +1,2574 @@
+
+Story file is gamedat/zork1-r88-s840726.z3
+
+    **** Objects ****
+
+  Object count = 250
+
+  1. Attributes: 14, 28
+     Parent object: 247  Sibling object:   2  Child object:   0
+     Property address: 0bb8
+         Description: "pair of hands"
+          Properties:
+              [18] 46 dc 42 c2 42 b4 
+              [16] 82 
+
+  2. Attributes: None
+     Parent object: 247  Sibling object:   3  Child object:   0
+     Property address: 0bcb
+         Description: "zorkmid"
+          Properties:
+              [18] 4e 29 
+              [17] 2a 04 
+
+  3. Attributes: 14
+     Parent object: 247  Sibling object:   5  Child object:   0
+     Property address: 0bd9
+         Description: "way"
+          Properties:
+              [18] 46 f8 3e d2 4c 46 47 14 
+              [17] 29 e3 
+              [16] 85 f2 84 83 
+
+  4. Attributes: 7, 9, 14, 30
+     Parent object:   0  Sibling object:   0  Child object:   0
+     Property address: 0bee
+         Description: "cretin"
+          Properties:
+              [18] 3b 59 
+              [17] 00 00 
+              [ 7] 00 00 
+
+  5. Attributes: 30
+     Parent object: 247  Sibling object:   6  Child object:   0
+     Property address: 0bfd
+         Description: "you"
+          Properties:
+              [18] 45 93 45 e0 49 91 3e d9 
+              [17] 29 5c 
+
+  6. Attributes: 14
+     Parent object: 247  Sibling object:   7  Child object:   0
+     Property address: 0c0d
+         Description: "blast of air"
+          Properties:
+              [18] 45 1c 3b 6e 45 c4 3d 4a 
+
+  7. Attributes: None
+     Parent object: 247  Sibling object:   8  Child object:   0
+     Property address: 0c20
+         Description: "lurking grue"
+          Properties:
+              [18] 42 91 
+              [17] 28 c5 
+              [16] 88 87 ce 86 
+
+  8. Attributes: None
+     Parent object: 247  Sibling object:   9  Child object:   0
+     Property address: 0c35
+         Description: "ground"
+          Properties:
+              [18] 42 83 49 05 3f 6c 41 3a 
+              [17] 28 ab 
+
+  9. Attributes: 14
+     Parent object: 247  Sibling object:  10  Child object:   0
+     Property address: 0c47
+         Description: "sailor"
+          Properties:
+              [18] 48 fe 41 5d 3b de 
+              [17] 28 7d 
+
+ 10. Attributes: 14
+     Parent object: 247  Sibling object:  12  Child object:   0
+     Property address: 0c57
+         Description: "blessings"
+          Properties:
+              [18] 3c a9 42 59 
+
+ 11. Attributes: None
+     Parent object:   0  Sibling object:   0  Child object:   0
+     Property address: 0c64
+         Description: "such thing"
+          Properties:
+              [17] 27 d1 
+
+ 12. Attributes: 3, 14
+     Parent object: 247  Sibling object:  14  Child object:   0
+     Property address: 0c71
+         Description: "random object"
+          Properties:
+              [18] 43 cc 4b ba 42 f3 43 0f 
+
+ 13. Attributes: None
+     Parent object: 249  Sibling object:  92  Child object:   0
+     Property address: 0c86
+         Description: "pseudo"
+          Properties:
+              [17] 29 5c 
+
+ 14. Attributes: 28
+     Parent object: 247  Sibling object: 249  Child object:   0
+     Property address: 0c8f
+         Description: "number"
+          Properties:
+              [18] 43 a9 
+
+ 15. Attributes: 6
+     Parent object:  82  Sibling object:  16  Child object:   0
+     Property address: 0c98
+         Description: "Slide Room"
+          Properties:
+              [31] 18 
+              [30] 2d 
+              [22] 48 
+              [11] 99 f0 
+              [ 5] cd 
+
+ 16. Attributes: 6
+     Parent object:  82  Sibling object:  17  Child object:   0
+     Property address: 0cab
+         Description: "Coal Mine"
+          Properties:
+              [31] 11 
+              [29] 10 
+              [22] 15 
+              [11] 99 e2 
+
+ 17. Attributes: 6
+     Parent object:  82  Sibling object:  18  Child object:   0
+     Property address: 0cbe
+         Description: "Coal Mine"
+          Properties:
+              [30] 12 
+              [28] 11 
+              [24] 10 
+              [11] 99 e2 
+
+ 18. Attributes: 6
+     Parent object:  82  Sibling object:  19  Child object:   0
+     Property address: 0cd1
+         Description: "Coal Mine"
+          Properties:
+              [31] 12 
+              [28] 13 
+              [25] 11 
+              [11] 99 e2 
+
+ 19. Attributes: 6
+     Parent object:  82  Sibling object: 157  Child object:   0
+     Property address: 0ce4
+         Description: "Coal Mine"
+          Properties:
+              [31] 7c 
+              [30] 13 
+              [27] 12 
+              [11] 99 e2 
+
+ 20. Attributes: 6
+     Parent object:  82  Sibling object:  21  Child object:   0
+     Property address: 0cf7
+         Description: "Ladder Bottom"
+          Properties:
+              [29] ce 
+              [28] 76 
+              [23] 15 
+              [11] 99 4b 
+              [ 5] 75 
+
+ 21. Attributes: 6
+     Parent object:  82  Sibling object: 124  Child object:   0
+     Property address: 0d0e
+         Description: "Ladder Top"
+          Properties:
+              [23] 10 
+              [22] 14 
+              [11] 99 23 
+              [ 5] 75 49 
+
+ 22. Attributes: 6
+     Parent object:  82  Sibling object: 226  Child object:   0
+     Property address: 0d22
+         Description: "Smelly Room"
+          Properties:
+              [28] e2 
+              [22] 7c 
+              [11] 98 dc 
+              [ 5] 49 
+              [ 4] 46 42 7c d6 41 e9 7c d6 
+
+ 23. Attributes: 6
+     Parent object:  82  Sibling object:  24  Child object:   0
+     Property address: 0d3e
+         Description: "Squeaky Room"
+          Properties:
+              [31] de 
+              [30] 18 
+              [11] 98 6d 
+
+ 24. Attributes: 6
+     Parent object:  82  Sibling object:  25  Child object:   0
+     Property address: 0d4f
+         Description: "Mine Entrance"
+          Properties:
+              [29] 17 
+              [28] 0f 
+              [21] 17 
+              [11] 98 46 
+
+ 25. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  26  Child object:   0
+     Property address: 0d64
+         Description: "Canyon View"
+          Properties:
+              [30] 1a 
+              [29] 4c 
+              [28] 8f 43 
+              [26] 4a 
+              [22] 1a 
+              [17] 27 77 
+              [11] 97 9a 
+              [ 5] 5d 83 84 
+
+ 26. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  27  Child object:   0
+     Property address: 0d83
+         Description: "Rocky Ledge"
+          Properties:
+              [23] 19 
+              [22] 1b 
+              [11] 97 5a 
+              [ 5] 5d 83 
+
+ 27. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object: 136  Child object:   0
+     Property address: 0d99
+         Description: "Canyon Bottom"
+          Properties:
+              [31] 88 
+              [23] 1a 
+              [11] 97 2e 
+              [ 5] ee 5d 83 
+
+ 28. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  29  Child object:   0
+     Property address: 0db0
+         Description: "On the Rainbow"
+          Properties:
+              [30] 1d 
+              [29] 88 
+              [11] 96 b2 
+              [ 5] 84 
+
+ 29. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object: 126  Child object:   0
+     Property address: 0dc5
+         Description: "Aragain Falls"
+          Properties:
+              [31] 1e 
+              [29] 1c 9e 00 00 
+              [23] 1c 9e 00 00 
+              [22] 96 ac 
+              [17] 73 cb 
+              [ 5] ee 83 84 
+
+ 30. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  31  Child object:   0
+     Property address: 0de7
+         Description: "Shore"
+          Properties:
+              [31] 78 
+              [28] 1d 
+              [11] 96 40 
+              [ 5] ee 83 
+
+ 31. Attributes: 4, 9, 20
+     Parent object:  82  Sibling object: 130  Child object:   0
+     Property address: 0df7
+         Description: "Frigid River"
+          Properties:
+              [30] 1e 
+              [23] 95 1a 
+              [19] 1e 
+              [11] 96 26 
+              [ 5] ee 83 
+
+ 32. Attributes: 6, 9
+     Parent object:  82  Sibling object:  33  Child object:   0
+     Property address: 0e0c
+         Description: "White Cliffs Beach"
+          Properties:
+              [31] 21 a4 95 c7 
+              [17] 73 44 
+              [11] 95 cd 
+              [ 5] ee 5c 83 
+
+ 33. Attributes: 6, 9
+     Parent object:  82  Sibling object:  34  Child object:   0
+     Property address: 0e2b
+         Description: "White Cliffs Beach"
+          Properties:
+              [29] 27 a4 95 c7 
+              [28] 20 a4 95 c7 
+              [17] 73 44 
+              [11] 95 98 
+              [ 5] ee 5c 83 
+
+ 34. Attributes: 4, 9
+     Parent object:  82  Sibling object:  35  Child object:   0
+     Property address: 0e4f
+         Description: "Frigid River"
+          Properties:
+              [29] 21 
+              [23] 95 1a 
+              [22] 82 
+              [19] 21 
+              [11] 95 72 
+              [ 5] ee 83 
+
+ 35. Attributes: 4, 9
+     Parent object:  82  Sibling object:  36  Child object:   0
+     Property address: 0e66
+         Description: "Frigid River"
+          Properties:
+              [30] 95 27 
+              [29] 95 65 
+              [23] 95 1a 
+              [22] 22 
+              [19] 95 5b 
+              [11] 95 34 
+              [ 5] ee 83 
+
+ 36. Attributes: 4, 9, 20
+     Parent object:  82  Sibling object: 140  Child object:   0
+     Property address: 0e82
+         Description: "Frigid River"
+          Properties:
+              [30] 95 27 
+              [29] 8c 
+              [23] 95 1a 
+              [22] 23 
+              [19] 8c 
+              [11] 94 fc 
+              [ 5] ee 83 
+
+ 37. Attributes: 6
+     Parent object:  82  Sibling object:  38  Child object:   0
+     Property address: 0e9c
+         Description: "Chasm"
+          Properties:
+              [28] 26 
+              [27] 32 
+              [24] 29 
+              [23] 29 
+              [22] 93 12 
+              [11] 92 ef 
+              [ 5] b0 49 
+              [ 4] 3e 0e 7c 52 
+
+ 38. Attributes: 6
+     Parent object:  82  Sibling object: 138  Child object:   0
+     Property address: 0eb8
+         Description: "North-South Passage"
+          Properties:
+              [31] 25 
+              [28] 6b 
+              [27] 28 
+              [11] 92 dd 
+
+ 39. Attributes: 6
+     Parent object:  82  Sibling object:  40  Child object:   0
+     Property address: 0ed3
+         Description: "Damp Cave"
+          Properties:
+              [30] 21 
+              [29] 8a 
+              [28] 92 d5 
+              [11] 92 b4 
+              [ 5] b0 
+
+ 40. Attributes: 6
+     Parent object:  82  Sibling object: 107  Child object:   0
+     Property address: 0ee9
+         Description: "Deep Canyon"
+          Properties:
+              [30] d7 
+              [26] 32 
+              [24] 26 
+              [22] 8a 
+              [17] 66 f2 
+              [ 5] 49 
+
+ 41. Attributes: 6
+     Parent object:  82  Sibling object: 187  Child object:   0
+     Property address: 0f02
+         Description: "East-West Passage"
+          Properties:
+              [31] 25 
+              [30] 6b 
+              [29] 66 
+              [22] 25 
+              [13] 00 05 
+              [11] 92 79 
+              [ 5] 49 
+
+ 42. Attributes: 6
+     Parent object:  82  Sibling object:  43  Child object:   0
+     Property address: 0f22
+         Description: "Twisting Passage"
+          Properties:
+              [31] 96 
+              [30] 2f 
+              [11] 92 4f 
+
+ 43. Attributes: 6
+     Parent object:  82  Sibling object:  44  Child object:   0
+     Property address: 0f37
+         Description: "Winding Passage"
+          Properties:
+              [31] 98 
+              [30] 2e 
+              [11] 92 4f 
+
+ 44. Attributes: 6
+     Parent object:  82  Sibling object:  45  Child object:   0
+     Property address: 0f4c
+         Description: "Narrow Passage"
+          Properties:
+              [31] 6b 
+              [28] 98 
+              [11] 92 32 
+
+ 45. Attributes: 6
+     Parent object:  82  Sibling object:  46  Child object:   0
+     Property address: 0f61
+         Description: "Cold Passage"
+          Properties:
+              [29] 0f 
+              [28] 96 
+              [11] 92 16 
+
+ 46. Attributes: 6
+     Parent object:  82  Sibling object:  47  Child object:   0
+     Property address: 0f74
+         Description: "Cave"
+          Properties:
+              [31] 98 
+              [29] 2b 
+              [22] e8 
+              [17] 70 a5 
+              [11] 91 fe 
+              [ 5] 49 
+
+ 47. Attributes: 6
+     Parent object:  82  Sibling object: 152  Child object:   0
+     Property address: 0f88
+         Description: "Cave"
+          Properties:
+              [31] 96 
+              [29] 2a 
+              [28] bb 
+              [22] bb 
+              [11] 91 ec 
+              [ 5] 49 
+
+ 48. Attributes: 4
+     Parent object:  82  Sibling object:  49  Child object:   0
+     Property address: 0f9b
+         Description: "Stream"
+          Properties:
+              [30] 64 
+              [29] 91 e4 
+              [23] 91 e4 
+              [22] 64 
+              [19] 31 
+              [11] 91 b4 
+              [ 5] ee 
+              [ 4] 4b 12 7c 39 
+
+ 49. Attributes: 6
+     Parent object:  82  Sibling object: 172  Child object:   0
+     Property address: 0fb9
+         Description: "Stream View"
+          Properties:
+              [30] 32 
+              [29] 91 a5 
+              [11] 91 86 
+              [ 5] ee 
+              [ 4] 4b 12 7c 39 
+
+ 50. Attributes: 6
+     Parent object:  82  Sibling object: 190  Child object:   0
+     Property address: 0fd4
+         Description: "Reservoir South"
+          Properties:
+              [31] 64 a0 91 7b 
+              [30] d7 
+              [29] 31 
+              [25] 28 
+              [24] 25 
+              [17] 60 87 
+              [ 5] ee 
+              [ 4] 44 4a 7c 19 3e 0e 7c 52 
+
+ 51. Attributes: 6
+     Parent object:  82  Sibling object: 185  Child object:   0
+     Property address: 0ffd
+         Description: "Strange Passage"
+          Properties:
+              [30] c1 
+              [29] b9 
+              [21] b9 
+              [11] 91 28 
+
+ 52. Attributes: 5, 6
+     Parent object:  82  Sibling object:  53  Child object:   0
+     Property address: 1014
+         Description: "Maze"
+          Properties:
+              [29] 35 
+              [28] 3f 
+              [25] b9 
+              [11] 90 cd 
+
+ 53. Attributes: 5, 6
+     Parent object:  82  Sibling object:  54  Child object:   0
+     Property address: 1023
+         Description: "Maze"
+          Properties:
+              [29] 34 
+              [28] 3f 
+              [27] 3f 
+              [26] 35 
+              [11] 90 cd 
+
+ 54. Attributes: 5, 6
+     Parent object:  82  Sibling object:  55  Child object:   0
+     Property address: 1034
+         Description: "Maze"
+          Properties:
+              [30] 3c 
+              [29] 3a 
+              [28] 3b 
+              [22] 38 
+              [11] 90 cd 
+
+ 55. Attributes: 5, 6
+     Parent object:  82  Sibling object:  56  Child object:   0
+     Property address: 1045
+         Description: "Dead End"
+          Properties:
+              [28] 38 
+              [11] 90 e0 
+
+ 56. Attributes: 5, 6
+     Parent object:  82  Sibling object:  57  Child object:   0
+     Property address: 1054
+         Description: "Maze"
+          Properties:
+              [31] 37 
+              [30] 36 
+              [24] 3a 
+              [23] 3c 
+              [22] 57 d3 00 
+              [11] 90 cd 
+
+ 57. Attributes: 6
+     Parent object:  82  Sibling object:  58  Child object:   0
+     Property address: 1069
+         Description: "Grating Room"
+          Properties:
+              [24] 3a 
+              [23] 8f ae 91 11 00 
+              [17] 56 df 
+              [ 5] ae 
+
+ 58. Attributes: 5, 6
+     Parent object:  82  Sibling object:  59  Child object:   0
+     Property address: 1080
+         Description: "Maze"
+          Properties:
+              [27] 39 
+              [26] 36 
+              [24] 38 
+              [22] 3b 
+              [11] 90 cd 
+
+ 59. Attributes: 5, 6
+     Parent object:  82  Sibling object:  60  Child object:   0
+     Property address: 1091
+         Description: "Maze"
+          Properties:
+              [30] 3c 
+              [29] 36 
+              [23] 3a 
+              [11] 90 cd 
+
+ 60. Attributes: 5, 6
+     Parent object:  82  Sibling object:  61  Child object:   0
+     Property address: 10a0
+         Description: "Maze"
+          Properties:
+              [31] 40 
+              [30] 3b 
+              [29] 38 
+              [28] 36 
+              [26] 3c 
+              [22] 57 d3 00 
+              [11] 90 cd 
+
+ 61. Attributes: 5, 6
+     Parent object:  82  Sibling object:  62  Child object:   0
+     Property address: 10b7
+         Description: "Dead End"
+          Properties:
+              [31] 3e 
+              [11] 90 e0 
+
+ 62. Attributes: 5, 6
+     Parent object:  82  Sibling object:  63  Child object:   0
+     Property address: 10c6
+         Description: "Maze"
+          Properties:
+              [29] 3e 
+              [27] 3f 
+              [25] 3d 
+              [11] 90 cd 
+
+ 63. Attributes: 5, 6
+     Parent object:  82  Sibling object:  64  Child object:   0
+     Property address: 10d5
+         Description: "Maze"
+          Properties:
+              [30] 3e 
+              [29] 40 
+              [28] 34 
+              [23] 35 
+              [22] 57 d3 00 
+              [11] 90 cd 
+
+ 64. Attributes: 5, 6
+     Parent object:  82  Sibling object:  65  Child object:   0
+     Property address: 10ea
+         Description: "Maze"
+          Properties:
+              [30] 3f 
+              [29] 40 
+              [23] 3c 
+              [22] a7 
+              [11] 90 cd 
+
+ 65. Attributes: 5, 6
+     Parent object:  82  Sibling object: 167  Child object:   0
+     Property address: 10fb
+         Description: "Dead End"
+          Properties:
+              [29] a7 
+              [11] 90 e0 
+
+ 66. Attributes: 5, 6
+     Parent object:  82  Sibling object:  67  Child object:   0
+     Property address: 110a
+         Description: "Dead End"
+          Properties:
+              [28] 43 
+              [11] 90 e0 
+
+ 67. Attributes: 5, 6
+     Parent object:  82  Sibling object:  68  Child object:   0
+     Property address: 1119
+         Description: "Maze"
+          Properties:
+              [31] 46 
+              [30] 42 
+              [29] 44 
+              [11] 90 cd 
+
+ 68. Attributes: 5, 6
+     Parent object:  82  Sibling object:  69  Child object:   0
+     Property address: 1128
+         Description: "Maze"
+          Properties:
+              [31] 43 
+              [29] 45 
+              [23] a7 
+              [11] 90 cd 
+
+ 69. Attributes: 5, 6
+     Parent object:  82  Sibling object:  70  Child object:   0
+     Property address: 1137
+         Description: "Maze"
+          Properties:
+              [30] 44 
+              [28] 46 
+              [22] 57 d3 00 
+              [11] 90 cd 
+
+ 70. Attributes: 5, 6
+     Parent object:  82  Sibling object:  94  Child object:   0
+     Property address: 1148
+         Description: "Maze"
+          Properties:
+              [31] 46 
+              [30] 66 
+              [29] 43 
+              [28] 45 
+              [11] 90 cd 
+
+ 71. Attributes: 6
+     Parent object:  82  Sibling object: 102  Child object:   0
+     Property address: 1159
+         Description: "East of Chasm"
+          Properties:
+              [31] 48 
+              [30] 94 
+              [22] 90 2a 
+              [11] 90 09 
+              [ 4] 3e 0e 7c 52 
+
+ 72. Attributes: 6
+     Parent object:  82  Sibling object: 193  Child object:   0
+     Property address: 1174
+         Description: "Cellar"
+          Properties:
+              [31] 66 
+              [29] 8f be 
+              [28] 47 
+              [23] c1 b7 00 00 00 
+              [17] 52 53 
+              [13] 00 19 
+              [ 5] b7 cd 49 
+
+ 73. Attributes: 14, 24
+     Parent object: 249  Sibling object:  13  Child object:   0
+     Property address: 1193
+         Description: "stairs"
+          Properties:
+              [18] 4a b7 4a ef 4a b0 4a be 
+              [17] 28 6b 
+              [16] c7 f3 99 89 dc 
+
+ 74. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object: 143  Child object:   0
+     Property address: 11ab
+         Description: "Clearing"
+          Properties:
+              [31] 4d 
+              [30] 19 
+              [29] 4f 
+              [28] 4c 
+              [23] 8e e2 
+              [17] 79 74 
+              [11] 8f 83 
+              [ 5] f1 f4 f3 f2 
+
+ 75. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  76  Child object:   0
+     Property address: 11c9
+         Description: "Forest Path"
+          Properties:
+              [31] 8f 
+              [30] 4d 
+              [29] 4e 
+              [28] 51 
+              [23] 58 
+              [17] 79 74 
+              [11] 8f 4f 
+              [ 5] f1 f4 f3 f2 
+
+ 76. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object: 239  Child object:   0
+     Property address: 11ea
+         Description: "Forest"
+          Properties:
+              [31] 4a 
+              [30] 8f 33 
+              [29] 4e 
+              [28] 8f 43 
+              [26] 50 
+              [23] 8e e2 
+              [17] 79 74 
+              [11] 8e fb 
+              [ 5] f1 f4 f3 f2 
+
+ 77. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  78  Child object:   0
+     Property address: 120c
+         Description: "Forest"
+          Properties:
+              [31] 8f 0a 
+              [30] ef 
+              [29] 4b 
+              [28] 4a 
+              [23] 8e e2 
+              [17] 79 74 
+              [11] 8e fb 
+              [ 5] f1 f4 f3 f2 
+
+ 78. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  79  Child object:   0
+     Property address: 122b
+         Description: "Forest"
+          Properties:
+              [31] 8f 
+              [30] 4b 
+              [29] 8e ee 
+              [28] 4c 
+              [23] 8e e2 
+              [17] 79 74 
+              [11] 8e ca 
+              [ 5] f1 f4 f3 f2 
+
+ 79. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  80  Child object:   0
+     Property address: 124a
+         Description: "Behind House"
+          Properties:
+              [31] 51 
+              [30] 4a 
+              [29] cb eb 00 00 00 
+              [28] 50 
+              [26] 51 
+              [24] 50 
+              [21] cb eb 00 00 00 
+              [17] 4a ca 
+              [ 5] f3 eb 
+
+ 80. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  81  Child object:   0
+     Property address: 1272
+         Description: "South of House"
+          Properties:
+              [31] 8e a7 
+              [30] 4f 
+              [29] b4 
+              [28] 4c 
+              [27] 4f 
+              [26] b4 
+              [11] 8e b0 
+              [ 5] b6 fa f3 
+
+ 81. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object: 178  Child object:   0
+     Property address: 1292
+         Description: "North of House"
+          Properties:
+              [31] 4b 
+              [30] 4f 
+              [29] b4 
+              [28] 8e a7 
+              [25] 4f 
+              [24] b4 
+              [11] 8e 82 
+              [ 5] b6 fa f3 
+
+ 82. Attributes: None
+     Parent object:   0  Sibling object:   0  Child object: 180
+     Property address: 12b2
+         Description: ""
+          Properties:
+              [21] 52 
+
+ 83. Attributes: 17
+     Parent object:  86  Sibling object:   0  Child object:   0
+     Property address: 12b6
+         Description: "broken clockwork canary"
+          Properties:
+              [18] 3d ac 4c 62 
+              [17] 78 9f 
+              [16] e2 8b c2 8a 
+              [14] 8d e2 
+              [12] 00 01 
+
+ 84. Attributes: 8, 17
+     Parent object:  87  Sibling object:   0  Child object:   0
+     Property address: 12db
+         Description: "golden clockwork canary"
+          Properties:
+              [18] 3d ac 4c 62 
+              [17] 78 9f 
+              [16] 8b c2 8a 
+              [14] 8d a6 
+              [13] 00 06 
+              [12] 00 04 
+
+ 85. Attributes: 17
+     Parent object:   0  Sibling object:   0  Child object:   0
+     Property address: 1302
+         Description: "beautiful brass bauble"
+          Properties:
+              [18] 3c 47 4c 62 
+              [16] e9 fb 
+              [13] 00 01 
+              [12] 00 01 
+
+ 86. Attributes: 11, 17, 19
+     Parent object:   0  Sibling object:   0  Child object:  83
+     Property address: 1322
+         Description: "broken jewel-encrusted egg"
+          Properties:
+              [18] 40 06 4c 62 
+              [16] e2 8e 8d 8c 
+              [12] 00 02 
+              [11] 8d 9c 
+              [10] 00 06 
+
+ 87. Attributes: 8, 17, 19
+     Parent object:  89  Sibling object:   0  Child object:  84
+     Property address: 1349
+         Description: "jewel-encrusted egg"
+          Properties:
+              [18] 40 06 4c 62 
+              [17] 77 b8 
+              [16] 8e 8d a6 
+              [14] 8d 40 
+              [13] 00 05 
+              [12] 00 05 
+              [10] 00 06 
+
+ 88. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  75  Child object:  89
+     Property address: 1371
+         Description: "Up a Tree"
+          Properties:
+              [23] 8f 7b 
+              [22] 4b 
+              [17] 77 0d 
+              [ 5] f1 f2 f4 f3 
+
+ 89. Attributes: 8, 11, 17, 19, 26
+     Parent object:  88  Sibling object:   0  Child object:  87
+     Property address: 1388
+         Description: "bird's nest"
+          Properties:
+              [18] 46 11 
+              [16] 8e 
+              [14] 8d 32 
+              [10] 00 14 
+
+ 90. Attributes: 14
+     Parent object: 215  Sibling object: 184  Child object:   0
+     Property address: 139d
+         Description: "control panel"
+          Properties:
+              [18] 46 e3 
+              [16] 8f 
+
+ 91. Attributes: 17, 28
+     Parent object: 199  Sibling object:  99  Child object:   0
+     Property address: 13ae
+         Description: "wrench"
+          Properties:
+              [18] 4d e3 4c 0e 4c 1c 
+              [15] 00 0a 
+
+ 92. Attributes: 14, 24
+     Parent object: 249  Sibling object:  93  Child object:   0
+     Property address: 13be
+         Description: "white cliffs"
+          Properties:
+              [18] 3e 4d 3e 54 
+              [17] 79 8a 
+              [16] fc 
+
+ 93. Attributes: 14, 24
+     Parent object: 249  Sibling object: 117  Child object:   0
+     Property address: 13d2
+         Description: "cliff"
+          Properties:
+              [18] 4d 65 3e 4d 4d 6c 44 ac 
+              [17] 79 99 
+              [16] 91 90 
+
+ 94. Attributes: 6
+     Parent object:  82  Sibling object: 148  Child object:  95
+     Property address: 13e7
+         Description: "Studio"
+          Properties:
+              [28] 94 
+              [23] 52 bc 00 
+              [11] 90 64 
+              [ 5] ea 
+              [ 4] 3f 9d 7c b4 46 ce 7c c3 
+
+ 95. Attributes: 16, 17
+     Parent object:  94  Sibling object:   0  Child object:   0
+     Property address: 1403
+         Description: "ZORK owner's manual"
+          Properties:
+              [18] 45 5b 47 4c 46 ea 
+              [16] 93 92 f4 
+              [14] 8c c5 
+              [ 8] 8c d4 
+
+ 96. Attributes: 6
+     Parent object:  82  Sibling object: 230  Child object:  97
+     Property address: 1426
+         Description: "Engravings Cave"
+          Properties:
+              [30] 85 
+              [26] 6b 
+              [11] 93 70 
+
+ 97. Attributes: 9, 16
+     Parent object:  96  Sibling object:   0  Child object:   0
+     Property address: 143b
+         Description: "wall with engravings"
+          Properties:
+              [18] 4d 65 40 3e 43 94 
+              [16] b7 df 
+              [11] 8c 4f 
+              [ 8] 8c 5a 
+
+ 98. Attributes: 17, 28
+     Parent object:  99  Sibling object:   0  Child object:   0
+     Property address: 1457
+         Description: "viscous material"
+          Properties:
+              [18] 45 8c 42 a6 
+              [17] 5f ef 
+              [16] 94 
+              [15] 00 06 
+
+ 99. Attributes: 16, 17, 19
+     Parent object: 199  Sibling object: 123  Child object:  98
+     Property address: 1472
+         Description: "tube"
+          Properties:
+              [18] 4c 93 4c 23 46 ff 
+              [17] 60 06 
+              [15] 00 05 
+              [11] 8c 23 
+              [10] 00 07 
+              [ 8] 8c 34 
+
+100. Attributes: 4
+     Parent object:  82  Sibling object:  50  Child object: 101
+     Property address: 148e
+         Description: "Reservoir"
+          Properties:
+              [31] ac 
+              [29] 30 
+              [28] 32 
+              [23] 30 
+              [22] 91 7f 
+              [17] 61 7e 
+              [ 5] ee 
+              [ 4] 4b 12 7c 39 
+
+101. Attributes: 7, 17
+     Parent object: 100  Sibling object:   0  Child object:   0
+     Property address: 14ad
+         Description: "trunk of jewels"
+          Properties:
+              [18] 4c 8c 3e 15 43 ef 4c 62 
+              [17] 84 e1 
+              [16] b7 
+              [15] 00 23 
+              [14] 8b ff 
+              [13] 00 0f 
+              [12] 00 05 
+              [11] 8c 13 
+
+102. Attributes: 6
+     Parent object:  82  Sibling object:  72  Child object: 217
+     Property address: 14d6
+         Description: "The Troll Room"
+          Properties:
+              [30] 29 9d 8f fc 
+              [29] 46 9d 8f fc 
+              [28] 48 
+              [17] 85 82 
+              [11] 8f d3 
+
+103. Attributes: 16, 17, 26
+     Parent object: 154  Sibling object:   0  Child object:   0
+     Property address: 14f2
+         Description: "tour guidebook"
+          Properties:
+              [18] 42 98 3d 04 3d 12 42 9f 
+              [16] 96 95 
+              [14] 8a dc 
+              [ 8] 8a f6 
+
+104. Attributes: 17, 20, 25, 31
+     Parent object: 106  Sibling object:   0  Child object:   0
+     Property address: 1510
+         Description: "torch"
+          Properties:
+              [18] 4c 2a 43 d3 4c 62 
+              [17] 58 86 
+              [16] 98 97 
+              [15] 00 14 
+              [14] 8a c9 
+              [13] 00 0e 
+              [12] 00 06 
+
+105. Attributes: 6
+     Parent object:  82  Sibling object: 133  Child object: 106
+     Property address: 152f
+         Description: "Torch Room"
+          Properties:
+              [28] dc 
+              [23] 93 a4 
+              [22] dc 
+              [17] 59 a4 
+              [ 5] 49 
+              [ 4] 3f 8f 7c 8f 
+
+106. Attributes: 10, 11, 14, 19
+     Parent object: 105  Sibling object:   0  Child object: 104
+     Property address: 1548
+         Description: "pedestal"
+          Properties:
+              [18] 47 29 
+              [17] 85 1f 
+              [16] fc 99 
+              [10] 00 1e 
+
+107. Attributes: 6
+     Parent object:  82  Sibling object:  41  Child object: 114
+     Property address: 155c
+         Description: "Round Room"
+          Properties:
+              [31] 26 
+              [30] 8a 
+              [29] 29 
+              [28] 2c 
+              [25] 60 
+              [11] 92 91 
+
+108. Attributes: 16, 17, 26
+     Parent object: 156  Sibling object:   0  Child object:   0
+     Property address: 1571
+         Description: "tan label"
+          Properties:
+              [18] 44 3c 41 09 47 ca 
+              [16] 9e 9d 
+              [15] 00 02 
+              [ 8] 8a 06 
+
+109. Attributes: 7, 16, 17
+     Parent object: 194  Sibling object:   0  Child object:   0
+     Property address: 1589
+         Description: "ancient map"
+          Properties:
+              [18] 46 f1 45 62 
+              [16] 9f b7 df 
+              [15] 00 02 
+              [14] 89 b8 
+              [ 8] 89 cb 
+
+110. Attributes: 13, 17, 29
+     Parent object: 193  Sibling object: 111  Child object:   0
+     Property address: 15a5
+         Description: "sword"
+          Properties:
+              [18] 4b 6d 46 8f 42 21 3c 9b 
+              [17] 70 d3 
+              [16] a0 b7 9f 
+              [15] 00 1e 
+              [14] 89 a3 
+              [12] 00 00 
+
+111. Attributes: 12, 14, 16, 23
+     Parent object: 193  Sibling object: 164  Child object:   0
+     Property address: 15c4
+         Description: "wooden door"
+          Properties:
+              [18] 3f 9d 44 b3 4d ea 
+              [17] 6d 57 
+              [16] dd a3 a2 a1 
+              [ 8] 89 8e 
+
+112. Attributes: 14, 15
+     Parent object: 157  Sibling object:   0  Child object:   0
+     Property address: 15e0
+         Description: "switch"
+          Properties:
+              [18] 4b 66 
+              [17] 72 98 
+
+113. Attributes: 13, 14, 17, 29
+     Parent object: 114  Sibling object:   0  Child object:   0
+     Property address: 15ec
+         Description: "stiletto"
+          Properties:
+              [18] 4a f6 
+              [17] 53 d7 
+              [16] a4 
+              [15] 00 0a 
+
+114. Attributes: 7, 11, 13, 19, 30
+     Parent object: 107  Sibling object:   0  Child object: 115
+     Property address: 15ff
+         Description: "thief"
+          Properties:
+              [18] 4b c8 48 b8 45 4d 47 37 
+              [17] 69 d4 
+              [16] 9c 9b 9a 
+              [11] 8a a5 
+              [ 7] 00 05 
+
+115. Attributes: 13, 14
+     Parent object: 114  Sibling object: 113  Child object:   0
+     Property address: 161b
+         Description: "large bag"
+          Properties:
+              [18] 3c 08 
+              [17] 6c 3c 
+              [16] f9 a5 
+
+116. Attributes: 7, 17
+     Parent object: 126  Sibling object:   0  Child object:   0
+     Property address: 162a
+         Description: "beautiful jeweled scarab"
+          Properties:
+              [18] 49 28 3d 74 3c 55 4c 62 
+              [16] fb a7 a6 
+              [15] 00 08 
+              [13] 00 05 
+              [12] 00 05 
+
+117. Attributes: 14, 24
+     Parent object: 249  Sibling object: 131  Child object:   0
+     Property address: 1652
+         Description: "wooden ladder"
+          Properties:
+              [18] 44 43 
+              [16] dd a8 f2 
+
+118. Attributes: 6
+     Parent object:  82  Sibling object:  20  Child object: 119
+     Property address: 1665
+         Description: "Dead End"
+          Properties:
+              [31] 14 
+              [11] 99 6c 
+
+119. Attributes: 17, 26
+     Parent object: 118  Sibling object:   0  Child object:   0
+     Property address: 1674
+         Description: "small pile of coal"
+          Properties:
+              [18] 3e 77 47 5a 42 d7 
+              [16] f4 
+              [15] 00 14 
+
+120. Attributes: 6, 9
+     Parent object:  82  Sibling object:  30  Child object: 121
+     Property address: 168c
+         Description: "Sandy Beach"
+          Properties:
+              [28] 1e 
+              [27] 7e 
+              [11] 96 6b 
+              [ 5] ee 83 
+
+121. Attributes: 17, 28
+     Parent object: 120  Sibling object:   0  Child object:   0
+     Property address: 16a2
+         Description: "shovel"
+          Properties:
+              [18] 49 d0 4c 0e 4c 1c 
+              [15] 00 0f 
+
+122. Attributes: 17, 28
+     Parent object: 167  Sibling object: 128  Child object:   0
+     Property address: 16b2
+         Description: "skeleton key"
+          Properties:
+              [18] 43 fd 
+              [16] a9 
+              [15] 00 0a 
+
+123. Attributes: 17, 28
+     Parent object: 199  Sibling object: 159  Child object:   0
+     Property address: 16c4
+         Description: "screwdriver"
+          Properties:
+              [18] 49 52 4c 0e 4c 1c 3f c7 
+              [16] aa 
+
+124. Attributes: 6, 9
+     Parent object:  82  Sibling object:  22  Child object: 125
+     Property address: 16d9
+         Description: "Gas Room"
+          Properties:
+              [30] 13 
+              [23] 16 
+              [17] 71 01 
+              [11] 99 03 
+              [ 5] 49 
+              [ 4] 41 e9 7c d6 46 42 7c d6 
+
+125. Attributes: 17
+     Parent object: 124  Sibling object:   0  Child object:   0
+     Property address: 16f6
+         Description: "sapphire-encrusted bracelet"
+          Properties:
+              [18] 3d 27 43 e1 49 13 4c 62 
+              [16] ab 
+              [15] 00 0a 
+              [13] 00 05 
+              [12] 00 05 
+
+126. Attributes: 6
+     Parent object:  82  Sibling object: 120  Child object: 127
+     Property address: 1720
+         Description: "Sandy Cave"
+          Properties:
+              [24] 78 
+              [11] 96 9b 
+
+127. Attributes: 14
+     Parent object: 126  Sibling object: 116  Child object:   0
+     Property address: 172f
+         Description: "sand"
+          Properties:
+              [18] 49 05 
+              [17] 76 e3 
+
+128. Attributes: 13, 17, 28, 29
+     Parent object: 167  Sibling object: 165  Child object:   0
+     Property address: 173b
+         Description: "rusty knife"
+          Properties:
+              [18] 44 27 44 20 
+              [17] 57 fa 
+              [16] bb 
+              [15] 00 14 
+              [14] 89 82 
+
+129. Attributes: 9, 13, 17
+     Parent object: 201  Sibling object:   0  Child object:   0
+     Property address: 1755
+         Description: "rope"
+          Properties:
+              [18] 48 cd 42 ec 3e 85 
+              [17] 79 c6 
+              [16] f9 
+              [15] 00 0a 
+              [14] 89 76 
+
+130. Attributes: 4, 9
+     Parent object:  82  Sibling object:  32  Child object: 162
+     Property address: 176d
+         Description: "Frigid River"
+          Properties:
+              [30] 78 
+              [29] 20 
+              [23] 95 1a 
+              [22] 1f 
+              [19] 96 1b 
+              [17] 76 c9 
+              [11] 95 e7 
+              [ 5] ee 83 
+
+131. Attributes: 14
+     Parent object: 249  Sibling object: 132  Child object:   0
+     Property address: 178a
+         Description: "river"
+          Properties:
+              [18] 48 b1 
+              [17] 74 85 
+              [16] ac 
+
+132. Attributes: 14, 24
+     Parent object: 249  Sibling object: 145  Child object:   0
+     Property address: 1798
+         Description: "rainbow"
+          Properties:
+              [18] 48 2c 
+              [17] 74 14 
+
+133. Attributes: 6
+     Parent object:  82  Sibling object: 175  Child object: 134
+     Property address: 17a6
+         Description: "Dome Room"
+          Properties:
+              [29] 60 
+              [22] 69 a3 93 96 
+              [17] 5a 06 
+              [ 4] 3f 8f 7c 8f 
+
+134. Attributes: 14
+     Parent object: 133  Sibling object:   0  Child object:   0
+     Property address: 17bd
+         Description: "wooden railing"
+          Properties:
+              [18] 48 25 48 1e 
+              [16] dd 
+
+135. Attributes: 9, 14, 16
+     Parent object: 220  Sibling object:   0  Child object:   0
+     Property address: 17d0
+         Description: "prayer"
+          Properties:
+              [18] 47 bc 43 94 
+              [16] df b7 
+              [ 8] 89 0c 
+
+136. Attributes: 6, 20
+     Parent object:  82  Sibling object:  28  Child object: 137
+     Property address: 17e1
+         Description: "End of Rainbow"
+          Properties:
+              [30] 1c 9e 00 00 
+              [27] 1c 9e 00 00 
+              [24] 1b 
+              [23] 1c 9e 00 00 
+              [11] 96 df 
+              [ 5] ee 84 83 
+
+137. Attributes: 7, 17
+     Parent object: 136  Sibling object:   0  Child object:   0
+     Property address: 1805
+         Description: "pot of gold"
+          Properties:
+              [18] 47 a7 42 3d 4c 62 
+              [16] c2 
+              [15] 00 0f 
+              [14] 88 ff 
+              [13] 00 0a 
+              [12] 00 0a 
+
+138. Attributes: 6
+     Parent object:  82  Sibling object:  39  Child object: 139
+     Property address: 1824
+         Description: "Loud Room"
+          Properties:
+              [30] 27 
+              [29] 6b 
+              [23] 28 
+              [17] 65 b3 
+              [ 5] 49 
+
+139. Attributes: 9, 17
+     Parent object: 138  Sibling object:   0  Child object:   0
+     Property address: 1837
+         Description: "platinum bar"
+          Properties:
+              [18] 3c 16 47 7d 4c 62 
+              [16] ad f9 
+              [15] 00 14 
+              [13] 00 0a 
+              [12] 00 05 
+              [11] 88 f5 
+
+140. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object: 199  Child object: 141
+     Property address: 1857
+         Description: "Dam Base"
+          Properties:
+              [31] d7 
+              [23] d7 
+              [11] 94 b2 
+              [ 5] ee 83 
+
+141. Attributes: 17, 26
+     Parent object: 140  Sibling object:   0  Child object:   0
+     Property address: 186b
+         Description: "pile of plastic"
+          Properties:
+              [18] 3c e1 47 5a 47 76 4d 11 
+              [17] 76 74 
+              [16] e4 b5 
+              [15] 00 14 
+              [11] 88 e2 
+
+142. Attributes: 17, 26
+     Parent object:   0  Sibling object:   0  Child object:   0
+     Property address: 188c
+         Description: "punctured boat"
+          Properties:
+              [18] 3c e1 47 5a 47 76 
+              [17] 74 4e 
+              [16] e4 ae f9 
+              [15] 00 14 
+
+143. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  88  Child object: 144
+     Property address: 18a9
+         Description: "Clearing"
+          Properties:
+              [31] 8f 0a 
+              [30] 4d 
+              [29] 4e 
+              [28] 4b 
+              [22] 27 63 00 
+              [17] 56 98 
+              [ 5] f3 ae 
+
+144. Attributes: 13, 17, 26
+     Parent object: 143  Sibling object:   0  Child object:   0
+     Property address: 18c4
+         Description: "pile of leaves"
+          Properties:
+              [18] 44 a5 44 74 47 5a 
+              [17] 56 2d 
+              [15] 00 19 
+              [11] 88 d9 
+
+145. Attributes: 13, 14
+     Parent object: 249  Sibling object: 174  Child object:   0
+     Property address: 18e0
+         Description: "pile of bodies"
+          Properties:
+              [18] 3c e8 3c ef 48 72 47 5a 
+              [17] 6d 7b 
+              [16] af 
+
+146. Attributes: 13, 17
+     Parent object:   0  Sibling object:   0  Child object:   0
+     Property address: 18fa
+         Description: "small piece of vitreous slag"
+          Properties:
+              [18] 42 a6 47 4c 4a 1d 
+              [17] 73 00 
+              [16] f4 b0 
+              [15] 00 0a 
+
+147. Attributes: 17, 20, 25, 31
+     Parent object: 212  Sibling object:   0  Child object:   0
+     Property address: 191c
+         Description: "pair of candles"
+          Properties:
+              [18] 3d b3 46 dc 
+              [17] 6f ab 
+              [16] b1 
+              [15] 00 0a 
+              [14] 88 ca 
+
+148. Attributes: 6, 20
+     Parent object:  82  Sibling object:  71  Child object: 149
+     Property address: 1938
+         Description: "Gallery"
+          Properties:
+              [31] 5e 
+              [29] 47 
+              [11] 90 3a 
+
+149. Attributes: 17, 26
+     Parent object: 148  Sibling object:   0  Child object:   0
+     Property address: 1947
+         Description: "painting"
+          Properties:
+              [18] 46 d5 3b bb 3d ba 4c 62 
+              [17] 6e 07 
+              [16] fb 
+              [15] 00 0f 
+              [14] 88 9e 
+              [13] 00 04 
+              [12] 00 06 
+              [11] 88 bd 
+
+150. Attributes: 6
+     Parent object:  82  Sibling object:  48  Child object: 151
+     Property address: 196c
+         Description: "Mirror Room"
+          Properties:
+              [31] 2d 
+              [30] 2f 
+              [29] 2a 
+              [17] 58 b4 
+
+151. Attributes: 13, 14
+     Parent object: 150  Sibling object:   0  Child object:   0
+     Property address: 197f
+         Description: "mirror"
+          Properties:
+              [18] 48 64 45 a8 40 45 
+              [17] 58 f6 
+
+152. Attributes: 6, 20
+     Parent object:  82  Sibling object: 150  Child object: 153
+     Property address: 198f
+         Description: "Mirror Room"
+          Properties:
+              [31] 2c 
+              [30] 2e 
+              [29] 2b 
+              [17] 58 b4 
+
+153. Attributes: 13, 14
+     Parent object: 152  Sibling object:   0  Child object:   0
+     Property address: 19a2
+         Description: "mirror"
+          Properties:
+              [18] 48 64 45 a8 40 45 
+              [17] 58 f6 
+
+154. Attributes: 6, 20
+     Parent object:  82  Sibling object: 215  Child object: 155
+     Property address: 19b2
+         Description: "Dam Lobby"
+          Properties:
+              [31] c7 
+              [30] c7 
+              [28] d7 
+              [11] 94 2f 
+
+155. Attributes: 16, 17
+     Parent object: 154  Sibling object: 103  Child object:   0
+     Property address: 19c5
+         Description: "matchbook"
+          Properties:
+              [18] 45 77 45 85 45 7e 
+              [17] 6e a1 
+              [16] b2 
+              [15] 00 02 
+              [11] 87 bb 
+              [ 8] 87 d1 
+
+156. Attributes: 8, 11, 17, 26, 27
+     Parent object:   0  Sibling object:   0  Child object: 108
+     Property address: 19e2
+         Description: "magic boat"
+          Properties:
+              [18] 3c e1 48 17 
+              [17] 75 24 
+              [16] b5 b4 e4 b3 
+              [15] 00 14 
+              [10] 00 64 
+              [ 6] 00 04 
+
+157. Attributes: 6
+     Parent object:  82  Sibling object: 228  Child object: 158
+     Property address: 1a02
+         Description: "Machine Room"
+          Properties:
+              [31] e4 
+              [17] 71 cf 
+
+158. Attributes: 13, 14, 19
+     Parent object: 157  Sibling object: 112  Child object:   0
+     Property address: 1a11
+         Description: "machine"
+          Properties:
+              [18] 45 2a 47 1b 3f d5 44 ba 
+              [17] 72 44 
+              [10] 00 32 
+
+159. Attributes: 7, 14
+     Parent object: 199  Sibling object: 195  Child object:   0
+     Property address: 1a28
+         Description: "leak"
+          Properties:
+              [18] 44 82 3f b9 47 68 
+              [17] 5f b9 
+
+160. Attributes: 13, 19
+     Parent object: 180  Sibling object:   0  Child object: 161
+     Property address: 1a38
+         Description: "small mailbox"
+          Properties:
+              [18] 45 3f 3d 20 
+              [17] 6e 94 
+              [16] f4 
+              [10] 00 0a 
+
+161. Attributes: 16, 17, 26
+     Parent object: 160  Sibling object:   0  Child object:   0
+     Property address: 1a4d
+         Description: "leaflet"
+          Properties:
+              [18] 3b 60 44 7b 3d 0b 45 38 
+              [16] f4 
+              [15] 00 02 
+              [11] 87 6e 
+              [ 8] 87 77 
+
+162. Attributes: 17, 19
+     Parent object: 130  Sibling object:   0  Child object: 163
+     Property address: 1a69
+         Description: "red buoy"
+          Properties:
+              [18] 3d 7b 
+              [17] 27 5d 
+              [16] e8 
+              [15] 00 0a 
+              [14] 89 6a 
+              [10] 00 14 
+
+163. Attributes: 17
+     Parent object: 162  Sibling object:   0  Child object:   0
+     Property address: 1a82
+         Description: "large emerald"
+          Properties:
+              [18] 40 22 4c 62 
+              [16] f9 
+              [13] 00 05 
+              [12] 00 0a 
+
+164. Attributes: 17, 31
+     Parent object: 193  Sibling object: 183  Child object:   0
+     Property address: 1a97
+         Description: "brass lantern"
+          Properties:
+              [18] 44 51 44 5f 44 c8 
+              [17] 6e 32 
+              [16] e9 
+              [15] 00 0f 
+              [14] 87 4d 
+              [11] 87 5f 
+
+165. Attributes: 17
+     Parent object: 167  Sibling object: 166  Child object:   0
+     Property address: 1ab8
+         Description: "leather bag of coins"
+          Properties:
+              [18] 3c 08 3e 8c 4c 62 
+              [17] 84 dc 
+              [16] b7 b6 
+              [15] 00 0f 
+              [13] 00 0a 
+              [12] 00 05 
+              [11] 87 3e 
+
+166. Attributes: 17
+     Parent object: 167  Sibling object:   0  Child object:   0
+     Property address: 1ae1
+         Description: "burned-out lantern"
+          Properties:
+              [18] 44 5f 44 51 
+              [16] bb ba b9 b8 
+              [15] 00 14 
+              [14] 87 2e 
+
+167. Attributes: 5, 6
+     Parent object:  82  Sibling object:  66  Child object: 168
+     Property address: 1aff
+         Description: "Maze"
+          Properties:
+              [31] 44 
+              [30] 41 
+              [24] 40 
+              [11] 90 eb 
+
+168. Attributes: 13, 14
+     Parent object: 167  Sibling object: 122  Child object:   0
+     Property address: 1b0e
+         Description: "skeleton"
+          Properties:
+              [18] 3c fd 4a 01 3c ef 
+              [17] 58 31 
+
+169. Attributes: 13, 17, 29
+     Parent object: 202  Sibling object:   0  Child object:   0
+     Property address: 1b20
+         Description: "nasty knife"
+          Properties:
+              [18] 44 27 44 20 3c 9b 
+              [17] 58 2c 
+              [16] bd bc 
+              [14] 87 23 
+
+170. Attributes: 17
+     Parent object: 222  Sibling object:   0  Child object:   0
+     Property address: 1b3a
+         Description: "jade figurine"
+          Properties:
+              [18] 40 e6 4c 62 
+              [16] bf be 
+              [15] 00 0a 
+              [13] 00 05 
+              [12] 00 05 
+              [11] 87 17 
+
+171. Attributes: 17
+     Parent object:   0  Sibling object:   0  Child object:   0
+     Property address: 1b5a
+         Description: "huge diamond"
+          Properties:
+              [18] 3f 57 4c 62 
+              [16] c8 c0 
+              [13] 00 0a 
+              [12] 00 0a 
+              [11] 87 08 
+
+172. Attributes: 6
+     Parent object:  82  Sibling object: 100  Child object: 173
+     Property address: 1b75
+         Description: "Reservoir North"
+          Properties:
+              [31] bb 
+              [28] 64 a0 91 7b 
+              [17] 61 fd 
+              [ 5] ee 49 
+              [ 4] 44 4a 7c 19 
+
+173. Attributes: 17, 28
+     Parent object: 172  Sibling object:   0  Child object:   0
+     Property address: 1b95
+         Description: "hand-held air pump"
+          Properties:
+              [18] 47 df 3b 75 4c 0e 4c 1c 
+              [16] f4 c1 
+
+174. Attributes: 7, 14, 23
+     Parent object: 249  Sibling object: 176  Child object:   0
+     Property address: 1bb1
+         Description: "grating"
+          Properties:
+              [18] 42 67 42 6e 
+              [17] 57 30 
+
+175. Attributes: 6
+     Parent object:  82  Sibling object:  96  Child object: 208
+     Property address: 1bc1
+         Description: "Egyptian Room"
+          Properties:
+              [29] dc 
+              [23] dc 
+              [11] 93 7f 
+              [ 5] 49 
+
+176. Attributes: 14
+     Parent object: 249  Sibling object: 182  Child object:   0
+     Property address: 1bd4
+         Description: "crack"
+          Properties:
+              [18] 3e cb 
+              [17] 4f 8f 
+              [16] f2 
+
+177. Attributes: 14
+     Parent object: 178  Sibling object:   0  Child object:   0
+     Property address: 1be2
+         Description: "stone barrow"
+          Properties:
+              [18] 3c 2b 4c 07 
+              [17] 51 1c 
+              [16] c6 c7 
+
+178. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:   0  Child object: 179
+     Property address: 1bf7
+         Description: "Stone Barrow"
+          Properties:
+              [27] b4 
+              [17] 4f fb 
+              [11] 8e 5b 
+
+179. Attributes: 14, 23
+     Parent object: 178  Sibling object: 177  Child object:   0
+     Property address: 1c0b
+         Description: "stone door"
+          Properties:
+              [18] 3f 9d 
+              [17] 51 13 
+              [16] c8 c7 
+
+180. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  15  Child object: 181
+     Property address: 1c1e
+         Description: "West of House"
+          Properties:
+              [31] 51 
+              [30] 8e 4e 
+              [29] 4e 
+              [28] 50 
+              [27] 51 
+              [25] 50 
+              [24] b2 9c 00 00 
+              [21] b2 9c 00 00 
+              [17] 4a 9e 
+              [ 5] f3 fa 
+
+181. Attributes: 14, 23
+     Parent object: 180  Sibling object: 160  Child object:   0
+     Property address: 1c47
+         Description: "door"
+          Properties:
+              [18] 3f 9d 
+              [17] 6d 57 
+              [16] c9 ca 
+
+182. Attributes: 14
+     Parent object: 249  Sibling object: 205  Child object:   0
+     Property address: 1c56
+         Description: "boarded window"
+          Properties:
+              [18] 4d c0 
+              [17] 4f 61 
+              [16] ca 
+
+183. Attributes: 7, 14, 23
+     Parent object: 193  Sibling object: 192  Child object:   0
+     Property address: 1c6a
+         Description: "trap door"
+          Properties:
+              [18] 3f 9d 4c 5b 4c 54 3e c4 
+              [17] 52 05 
+              [16] cc cb 
+
+184. Attributes: 13, 14
+     Parent object: 215  Sibling object: 214  Child object:   0
+     Property address: 1c81
+         Description: "dam"
+          Properties:
+              [18] 3f 11 41 f0 41 f7 40 a0 
+              [17] 60 3a 
+
+185. Attributes: 6
+     Parent object:  82  Sibling object:  52  Child object: 186
+     Property address: 1c91
+         Description: "Cyclops Room"
+          Properties:
+              [30] 33 9f 91 15 
+              [26] 34 
+              [23] be a5 91 1c 
+              [17] 64 d2 
+              [ 5] 49 
+
+186. Attributes: 13, 14, 30
+     Parent object: 185  Sibling object:   0  Child object:   0
+     Property address: 1ca8
+         Description: "cyclops"
+          Properties:
+              [18] 3f 03 45 b6 40 84 
+              [17] 62 eb 
+              [16] ce cd 
+              [ 7] 27 10 
+
+187. Attributes: 6
+     Parent object:  82  Sibling object:  42  Child object: 188
+     Property address: 1cc0
+         Description: "Atlantis Room"
+          Properties:
+              [28] ac 
+              [23] 2f 
+              [11] 92 63 
+              [ 5] 49 
+
+188. Attributes: 17
+     Parent object: 187  Sibling object:   0  Child object:   0
+     Property address: 1cd3
+         Description: "crystal trident"
+          Properties:
+              [18] 4c 77 41 87 4c 62 
+              [16] d0 cf ef 
+              [15] 00 14 
+              [14] 86 da 
+              [13] 00 04 
+              [12] 00 0b 
+
+189. Attributes: 17, 21
+     Parent object: 224  Sibling object:   0  Child object:   0
+     Property address: 1cf6
+         Description: "clove of garlic"
+          Properties:
+              [18] 41 e2 3e 70 
+              [17] 85 36 
+
+190. Attributes: 6
+     Parent object:  82  Sibling object:  51  Child object: 191
+     Property address: 1d0a
+         Description: "Treasure Room"
+          Properties:
+              [22] b9 
+              [17] 6c e4 
+              [13] 00 19 
+              [11] 91 4c 
+              [ 5] 49 
+
+191. Attributes: 13, 17, 19
+     Parent object: 190  Sibling object:   0  Child object:   0
+     Property address: 1d21
+         Description: "chalice"
+          Properties:
+              [18] 3d f9 3e ee 49 ec 4c 62 
+              [17] 6c b3 
+              [16] d2 d1 
+              [15] 00 0a 
+              [13] 00 0a 
+              [12] 00 05 
+              [11] 86 ca 
+              [10] 00 05 
+
+192. Attributes: 13, 14
+     Parent object: 193  Sibling object:   0  Child object:   0
+     Property address: 1d47
+         Description: "carpet"
+          Properties:
+              [18] 48 db 3d c1 
+              [17] 52 fd 
+              [16] f9 d3 
+
+193. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object: 201  Child object: 194
+     Property address: 1d58
+         Description: "Living Room"
+          Properties:
+              [30] cb 
+              [29] 33 9f 8f b7 
+              [22] 52 e8 00 
+              [17] 51 36 
+              [ 5] 49 
+              [ 4] 45 f5 4f 7c 45 ee 4f 7c 
+
+194. Attributes: 8, 12, 13, 14, 19
+     Parent object: 193  Sibling object: 110  Child object: 109
+     Property address: 1d7b
+         Description: "trophy case"
+          Properties:
+              [18] 3d d6 
+              [17] 51 22 
+              [16] d4 
+              [10] 27 10 
+
+195. Attributes: 14
+     Parent object: 199  Sibling object: 196  Child object:   0
+     Property address: 1d90
+         Description: "blue button"
+          Properties:
+              [18] 3d 9e 4b 66 
+              [17] 5e e6 
+              [16] d5 
+
+196. Attributes: 14
+     Parent object: 199  Sibling object: 197  Child object:   0
+     Property address: 1da4
+         Description: "red button"
+          Properties:
+              [18] 3d 9e 4b 66 
+              [17] 5e e6 
+              [16] e8 
+
+197. Attributes: 14
+     Parent object: 199  Sibling object: 198  Child object:   0
+     Property address: 1db8
+         Description: "brown button"
+          Properties:
+              [18] 3d 9e 4b 66 
+              [17] 5e e6 
+              [16] da 
+
+198. Attributes: 14
+     Parent object: 199  Sibling object:   0  Child object:   0
+     Property address: 1dcc
+         Description: "yellow button"
+          Properties:
+              [18] 3d 9e 4b 66 
+              [17] 5e e6 
+              [16] d6 
+
+199. Attributes: 6
+     Parent object:  82  Sibling object: 154  Child object: 200
+     Property address: 1de2
+         Description: "Maintenance Room"
+          Properties:
+              [29] 9a 
+              [28] 9a 
+              [11] 94 5d 
+
+200. Attributes: 9, 11, 13, 19
+     Parent object: 199  Sibling object:  91  Child object:   0
+     Property address: 1df5
+         Description: "group of tool chests"
+          Properties:
+              [18] 3e 15 3e 1c 42 8a 4c 15 
+              [17] 5f 57 
+              [16] d7 
+
+201. Attributes: 6, 9
+     Parent object:  82  Sibling object: 203  Child object: 202
+     Property address: 1e13
+         Description: "Attic"
+          Properties:
+              [22] cb 
+              [11] 8f a8 
+              [ 5] 49 
+
+202. Attributes: 10, 11, 14, 19
+     Parent object: 201  Sibling object: 129  Child object: 169
+     Property address: 1e20
+         Description: "table"
+          Properties:
+              [18] 4b 74 
+              [10] 00 28 
+
+203. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  74  Child object: 204
+     Property address: 1e2c
+         Description: "Kitchen"
+          Properties:
+              [30] 4f eb 00 00 00 
+              [29] c1 
+              [23] c9 
+              [22] 5e a6 8f 9a 
+              [20] 4f eb 00 00 00 
+              [17] 4f 98 
+              [13] 00 0a 
+              [ 5] eb ea 49 
+
+204. Attributes: 10, 11, 14, 19
+     Parent object: 203  Sibling object:   0  Child object: 224
+     Property address: 1e53
+         Description: "kitchen table"
+          Properties:
+              [18] 4b 74 
+              [16] f5 
+              [10] 00 32 
+
+205. Attributes: 24
+     Parent object: 249  Sibling object: 234  Child object:   0
+     Property address: 1e67
+         Description: "chute"
+          Properties:
+              [18] 3e 38 48 3a 4a 32 
+              [17] 7a 87 
+              [16] dc e6 db 
+
+206. Attributes: 6, 9
+     Parent object:  82  Sibling object: 118  Child object: 207
+     Property address: 1e7b
+         Description: "Timber Room"
+          Properties:
+              [30] 14 
+              [29] e4 a2 99 ac 
+              [17] 73 19 
+              [11] 99 77 
+
+207. Attributes: 17
+     Parent object: 206  Sibling object:   0  Child object:   0
+     Property address: 1e92
+         Description: "broken timber"
+          Properties:
+              [18] 4b f9 47 5a 
+              [16] dd e2 
+              [15] 00 32 
+
+208. Attributes: 8, 9, 17, 19
+     Parent object: 175  Sibling object:   0  Child object: 209
+     Property address: 1ea9
+         Description: "gold coffin"
+          Properties:
+              [18] 3e 7e 3d dd 4c 62 
+              [16] c3 c2 
+              [15] 00 37 
+              [13] 00 0a 
+              [12] 00 0f 
+              [11] 86 f5 
+              [10] 00 23 
+
+209. Attributes: 17, 29
+     Parent object: 208  Sibling object:   0  Child object:   0
+     Property address: 1ecc
+         Description: "sceptre"
+          Properties:
+              [18] 49 36 49 2f 4c 62 
+              [17] 73 4f 
+              [16] e1 e0 df de 
+              [15] 00 03 
+              [14] 86 8a 
+              [13] 00 04 
+              [12] 00 06 
+              [11] 86 77 
+
+210. Attributes: 17
+     Parent object:   0  Sibling object:   0  Child object:   0
+     Property address: 1ef2
+         Description: "broken lantern"
+          Properties:
+              [18] 44 51 44 5f 
+              [16] e2 
+
+211. Attributes: 15, 16, 17, 19, 26
+     Parent object: 213  Sibling object:   0  Child object:   0
+     Property address: 1f05
+         Description: "black book"
+          Properties:
+              [18] 3d 04 47 bc 46 c7 3d 12 
+              [17] 6d 91 
+              [16] f9 e3 
+              [15] 00 0a 
+              [14] 85 d8 
+              [ 8] 85 e9 
+
+212. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object: 220  Child object: 213
+     Property address: 1f27
+         Description: "Altar"
+          Properties:
+              [31] dc 
+              [22] 2e 9b 94 1f 
+              [17] 73 38 
+              [11] 93 ee 
+
+213. Attributes: 10, 11, 14, 19
+     Parent object: 212  Sibling object: 147  Child object: 211
+     Property address: 1f3a
+         Description: "altar"
+          Properties:
+              [18] 3b 83 
+              [10] 00 32 
+
+214. Attributes: 13, 14
+     Parent object: 215  Sibling object:   0  Child object:   0
+     Property address: 1f46
+         Description: "green bubble"
+          Properties:
+              [18] 3d 6d 
+              [17] 5e 00 
+              [16] f4 e5 e4 
+
+215. Attributes: 6, 20
+     Parent object:  82  Sibling object: 212  Child object: 216
+     Property address: 1f5a
+         Description: "Dam"
+          Properties:
+              [31] 9a 
+              [30] 8c 
+              [29] 32 
+              [28] 28 
+              [22] 8c 
+              [17] 5c 83 
+              [ 5] ee 
+
+216. Attributes: 13, 14, 15
+     Parent object: 215  Sibling object:  90  Child object:   0
+     Property address: 1f6f
+         Description: "bolt"
+          Properties:
+              [18] 3c f6 46 34 
+              [17] 5d 77 
+              [16] e6 f9 
+
+217. Attributes: 11, 13, 30
+     Parent object: 102  Sibling object:   0  Child object: 218
+     Property address: 1f80
+         Description: "troll"
+          Properties:
+              [18] 4c 7e 
+              [17] 53 ff 
+              [16] bd 
+              [11] 8b e8 
+              [ 7] 00 02 
+
+218. Attributes: 13, 14, 17, 29
+     Parent object: 217  Sibling object:   0  Child object:   0
+     Property address: 1f94
+         Description: "bloody axe"
+          Properties:
+              [18] 3b fa 3b f3 
+              [17] 53 d1 
+              [16] e7 
+              [15] 00 19 
+
+219. Attributes: 13
+     Parent object:   0  Sibling object:   0  Child object:   0
+     Property address: 1fab
+         Description: "red hot brass bell"
+          Properties:
+              [18] 3c 6a 
+              [17] 4f 05 
+              [16] e9 ed e8 f4 
+              [11] 85 cf 
+
+220. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object: 105  Child object: 221
+     Property address: 1fc7
+         Description: "Temple"
+          Properties:
+              [31] 69 
+              [30] af 
+              [28] d4 
+              [23] 69 
+              [22] af 
+              [20] 69 
+              [11] 93 aa 
+              [ 5] 49 
+
+221. Attributes: 17
+     Parent object: 220  Sibling object: 135  Child object:   0
+     Property address: 1fe0
+         Description: "brass bell"
+          Properties:
+              [18] 3c 6a 
+              [17] 4e f8 
+              [16] f4 e9 
+
+222. Attributes: 6, 9
+     Parent object:  82  Sibling object:  23  Child object: 223
+     Property address: 1ff3
+         Description: "Bat Room"
+          Properties:
+              [30] e2 
+              [28] 17 
+              [17] 71 ae 
+
+223. Attributes: 13, 30
+     Parent object: 222  Sibling object: 170  Child object:   0
+     Property address: 2002
+         Description: "bat"
+          Properties:
+              [18] 3c 39 4d 18 
+              [17] 4e a8 
+              [16] eb ea 
+              [ 9] 71 73 
+
+224. Attributes: 17, 19, 26
+     Parent object: 204  Sibling object: 236  Child object: 225
+     Property address: 2014
+         Description: "brown sack"
+          Properties:
+              [18] 3c 08 48 f7 
+              [17] 7a c8 
+              [16] da d9 d8 
+              [15] 00 03 
+              [14] 86 b5 
+              [10] 00 0f 
+
+225. Attributes: 17, 21
+     Parent object: 224  Sibling object: 189  Child object:   0
+     Property address: 2033
+         Description: "lunch"
+          Properties:
+              [18] 41 56 49 0c 45 15 3f 65 
+              [16] ed ec 
+              [11] 85 c5 
+
+226. Attributes: 6
+     Parent object:  82  Sibling object: 222  Child object: 227
+     Property address: 2048
+         Description: "Shaft Room"
+          Properties:
+              [31] 16 
+              [29] de 
+              [22] 98 d0 
+              [11] 98 90 
+              [ 4] 3d f2 85 59 
+
+227. Attributes: 11, 12, 13, 19
+     Parent object: 226  Sibling object:   0  Child object:   0
+     Property address: 205f
+         Description: "basket"
+          Properties:
+              [18] 3d a5 3f dc 3c 32 
+              [17] 4e 39 
+              [11] 85 ba 
+              [10] 00 32 
+
+228. Attributes: 6, 9
+     Parent object:  82  Sibling object: 206  Child object: 229
+     Property address: 2075
+         Description: "Drafty Room"
+          Properties:
+              [30] ce a2 99 ac 
+              [28] 9d 
+              [20] ce a2 99 ac 
+              [17] 73 19 
+              [11] 99 b4 
+              [ 4] 3d f2 85 59 
+
+229. Attributes: 13
+     Parent object: 228  Sibling object:   0  Child object:   0
+     Property address: 2096
+         Description: "basket"
+          Properties:
+              [18] 3d a5 3f dc 3c 32 
+              [17] 4e 39 
+              [16] ee 
+              [11] 85 ae 
+
+230. Attributes: 6, 20
+     Parent object:  82  Sibling object: 232  Child object: 231
+     Property address: 20ab
+         Description: "Land of the Dead"
+          Properties:
+              [31] e8 
+              [20] e8 
+              [11] 93 2b 
+              [ 5] 91 
+
+231. Attributes: 17
+     Parent object: 230  Sibling object:   0  Child object:   0
+     Property address: 20c0
+         Description: "crystal skull"
+          Properties:
+              [18] 4a 16 42 d0 4c 62 
+              [16] ef 
+              [14] 85 8b 
+              [13] 00 0a 
+              [12] 00 0a 
+
+232. Attributes: 6, 20
+     Parent object:  82  Sibling object:  37  Child object: 233
+     Property address: 20de
+         Description: "Entrance to Hades"
+          Properties:
+              [28] e6 a1 93 19 
+              [23] 2e 
+              [21] e6 a1 93 19 
+              [17] 5a 7f 
+              [ 5] 91 
+              [ 4] 41 f0 7c 94 41 f7 7c 94 
+
+233. Attributes: 14, 30
+     Parent object: 232  Sibling object:   0  Child object:   0
+     Property address: 2106
+         Description: "number of ghosts"
+          Properties:
+              [18] 42 0c 4a 94 40 d1 41 72 
+              [17] 4d f4 
+              [16] f1 f0 
+
+234. Attributes: 14, 24
+     Parent object: 249  Sibling object: 235  Child object:   0
+     Property address: 2121
+         Description: "chimney"
+          Properties:
+              [18] 3e 23 
+              [17] 52 a2 
+              [16] f3 f2 
+
+235. Attributes: 14, 23
+     Parent object: 249  Sibling object: 238  Child object:   0
+     Property address: 2132
+         Description: "kitchen window"
+          Properties:
+              [18] 4d c0 
+              [17] 4d ab 
+              [16] f5 f4 
+
+236. Attributes: 12, 17, 19
+     Parent object: 204  Sibling object:   0  Child object: 237
+     Property address: 2147
+         Description: "glass bottle"
+          Properties:
+              [18] 3d 19 3e af 
+              [17] 62 9e 
+              [16] c5 c4 
+              [14] 86 eb 
+              [10] 00 04 
+
+237. Attributes: 13, 17, 22
+     Parent object: 236  Sibling object:   0  Child object:   0
+     Property address: 2162
+         Description: "quantity of water"
+          Properties:
+              [18] 4d 73 48 09 44 cf 42 ad 
+              [17] 4c ab 
+              [15] 00 04 
+
+238. Attributes: 22
+     Parent object: 249  Sibling object: 241  Child object:   0
+     Property address: 217f
+         Description: "water"
+          Properties:
+              [18] 4d 73 48 09 
+              [17] 4c ab 
+
+239. Attributes: 6, 9, 20
+     Parent object:  82  Sibling object:  77  Child object: 240
+     Property address: 218d
+         Description: "Forest"
+          Properties:
+              [31] 4d 
+              [30] 8f 2a 
+              [29] 4d 
+              [28] 4d 
+              [23] 8f 2a 
+              [11] 8f 18 
+              [ 5] f1 f3 
+
+240. Attributes: 14, 24
+     Parent object: 239  Sibling object:   0  Child object:   0
+     Property address: 21a7
+         Description: "mountain range"
+          Properties:
+              [18] 45 bd 48 41 
+              [17] 4c 95 
+              [16] f7 f6 
+
+241. Attributes: 14, 24
+     Parent object: 249  Sibling object: 242  Child object:   0
+     Property address: 21be
+         Description: "tree"
+          Properties:
+              [18] 4c 69 3d 2e 
+              [16] f9 f8 
+
+242. Attributes: 14
+     Parent object: 249  Sibling object: 243  Child object:   0
+     Property address: 21cc
+         Description: "forest"
+          Properties:
+              [18] 41 80 4c 70 47 61 42 e5 
+              [17] 4c 64 
+
+243. Attributes: 14
+     Parent object: 249  Sibling object: 244  Child object:   0
+     Property address: 21de
+         Description: "white house"
+          Properties:
+              [18] 43 32 
+              [17] 4b c7 
+              [16] fc fb fa 
+
+244. Attributes: 14
+     Parent object: 249  Sibling object:   0  Child object:   0
+     Property address: 21f2
+         Description: "songbird"
+          Properties:
+              [18] 3c 7f 4a 6a 
+              [17] 4b 9a 
+              [16] fd 
+
+245. Attributes: None
+     Parent object: 247  Sibling object: 246  Child object:   0
+     Property address: 2204
+         Description: "granite wall"
+          Properties:
+              [18] 4d 65 
+              [17] 4b 5e 
+              [16] fe 
+
+246. Attributes: None
+     Parent object: 247  Sibling object:   0  Child object:   0
+     Property address: 2216
+         Description: "surrounding wall"
+          Properties:
+              [18] 4d 65 4d 6c 
+              [16] ff 
+
+247. Attributes: 0, 1, 2, 3, 6, 7, 8, 10, 11, 12, 13, 18, 20
+     Parent object:   0  Sibling object:   0  Child object: 248
+     Property address: 222b
+         Description: ""
+          Properties:
+
+248. Attributes: 14
+     Parent object: 247  Sibling object:   1  Child object:   0
+     Property address: 222d
+         Description: "set of teeth"
+          Properties:
+              [18] 46 ab 4b 9e 
+              [17] 4b 29 
+
+249. Attributes: None
+     Parent object: 247  Sibling object: 245  Child object: 250
+     Property address: 223f
+         Description: ""
+          Properties:
+              [18] 4e 30 
+              [15] 00 00 
+              [14] 9a 38 
+              [11] 9a 38 
+              [10] 00 00 
+              [ 9] 29 e3 
+              [ 6] 00 01 
+              [ 5] f7 
+              [ 4] 41 4f 45 52 
+              [ 3] 00 00 
+              [ 2] 00 00 
+
+250. Attributes: 14
+     Parent object: 249  Sibling object:  73  Child object:   0
+     Property address: 2263
+         Description: "board"
+          Properties:
+              [18] 3c da 3c cc 
+              [17] 4b 1b 
