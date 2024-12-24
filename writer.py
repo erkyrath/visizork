@@ -262,11 +262,13 @@ def sourceloc(tup):
 
 
 def write_objects(filename, zcode):
-    counter = len(zcode.objects)
     ls = []
     for (name, type, desc, loc) in zcode.objects:
-        ls.append( (counter, name, type, desc, sourceloc(loc)) )
-        counter -= 1
+        if name in objname_to_num:
+            onum = objname_to_num[name]
+            ls.append( (onum, name, type, desc, sourceloc(loc)) )
+        else:
+            print('onum not found: %s "%s"' % (name, desc,))
     
     fl = open(filename, 'w')
     fl.write('window.gamedat_objects = ');

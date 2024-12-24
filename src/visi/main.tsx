@@ -47,7 +47,7 @@ function ObjectTree({ zstate } : { zstate:ZState })
     let ells = zstate.objects.map(tup => {
         let obj = (window as any).gamedat_object_ids.get(tup.onum);
         if (!obj) {
-            return <li key={ tup.onum }>???</li>;
+            return <li key={ tup.onum }>{ tup.onum }: ???</li>;
         }
         
         return (
