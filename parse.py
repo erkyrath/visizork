@@ -8,6 +8,7 @@ from zilana import Zcode
 from zilana import markcomments, stripcomments
 from zilana import stripifdefs
 from txdparse import TXDData
+from writer import write_objects
 
 popt = optparse.OptionParser()
 
@@ -17,6 +18,8 @@ popt.add_option('--nostrip',
                 action='store_true', dest='nostrip')
 popt.add_option('--dump',
                 action='store_true', dest='dump')
+popt.add_option('--gamedat',
+                action='store_true', dest='gamedat')
 popt.add_option('-t', '--txd',
                 action='store_true', dest='txdfile')
 
@@ -36,6 +39,8 @@ if opts.zilfile:
     print('globals:', len(zcode.globals))
     print('routines:', len(zcode.routines))
     print('objects:', len(zcode.objects))
+    if opts.gamedat:
+        write_objects('src/game/objects.js', zcode)
 
 if opts.txdfile:
     print('reading TXD dump...')
