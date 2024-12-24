@@ -2168,6 +2168,13 @@ GnustoEngine.prototype = {
         return 0;
     },
 
+    get_vm_report: function()
+    {
+        var report = {};
+        report.objects = [];
+        return report;
+    },
+
     ////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////
     //                                                            //

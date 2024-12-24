@@ -228,7 +228,6 @@ var GnustoRunner = Object.subClass({
         ui.flush();
         
         // Flush the status if we need to
-        // Should instead it be the first order? Might be better for screen readers etc
         if ( ui.status.length )
         {
             this.orders.push({
@@ -238,6 +237,9 @@ var GnustoRunner = Object.subClass({
             });
             ui.status = [];
         }
+
+        // Notify listeners that the game state has changed
+        window.dispatchEvent(new Event('zmachine-update'));
         
         // Return the orders to GlkIO
         return this.orders;
