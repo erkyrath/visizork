@@ -74,6 +74,7 @@ $(function()
     
     runner.fromParchment({ code: 'restart' });
 
+    // If we have the React app module loaded, launch that too.
     if (window.bundle) {
         window.bundle.init(runner.e);
     }
