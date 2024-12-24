@@ -2171,7 +2171,22 @@ GnustoEngine.prototype = {
     get_vm_report: function()
     {
         var report = {};
+        
+        MAX_OBJECTS = 250; //###
         report.objects = [];
+        var onum = 1;
+        while (onum <= MAX_OBJECTS) {
+            report.objects.push(
+                {
+                    obj: onum,
+                    parent: this._get_parent(onum),
+                    child: this._get_child(onum),
+                    sibling: this._get_sibling(onum),
+                }
+            );
+            onum++;
+        }
+        
         return report;
     },
 
