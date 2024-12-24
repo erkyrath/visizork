@@ -1,0 +1,21 @@
+{
+  "name": "VisiZork",
+  "version": "0.01",
+  "description": "An interactive fiction visualizer",
+  "author": "Andrew Plotkin <erkyrath@eblong.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.3",
+    "react-dom": "^18.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-replace": "^6.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/node": "^22.10.1",
+    "@types/react-dom": "^18.3.1",
+    "rollup": "^4.28.0",
+    "typescript": "^5.7"
+  }
+}
