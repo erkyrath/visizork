@@ -44,10 +44,28 @@ function MyApp()
 
 function ObjectTree({ zstate } : { zstate:ZState })
 {
-    let ells = zstate.objects.map(tup => {
+    let roots = [];
+    let map = new Map();
+    for (let tup of zstate.objects) {
+        map.set(tup.onum, tup);
+        if (tup.parent == 0)
+            roots.push(tup);
+    }
+
+    function showchild(tup: any) {
         let obj = (window as any).gamedat_object_ids.get(tup.onum);
         if (!obj) {
             return <li key={ tup.onum }>{ tup.onum }: ???</li>;
+        }
+
+        let children = [];
+        let val = tup.child;
+        while (val != 0) {
+            let ctup = map.get(val);
+            if (!ctup)
+                break;
+            children.push(ctup);
+            val = ctup.sibling;
         }
         
         return (
@@ -55,13 +73,16 @@ function ObjectTree({ zstate } : { zstate:ZState })
                 { tup.onum }: { obj.name } "{ obj.desc }"
                 { (obj.type=='ROOM' ? ' (R)' : '') }{': '}
                 { tup.parent } { tup.sibling } { tup.child }
+                <ul>
+                    { (children.length ? children.map(showchild) : null) }
+                </ul>
             </li>
         );
-    });
+    }
     
     return (
         <ul>
-            { ells }
+            { roots.map(showchild) }
         </ul>
     );
 }
