@@ -42,11 +42,21 @@ function MyApp()
     );
 }
 
+function objname(onum: number) : string
+{
+    let objects = (window as any).gamedat_objects;
+    if (!objects[onum]) {
+        return '(invalid)';
+    }
+    let val = objects[onum].objname;
+    return (val ? val : '(unnamed)');
+}
+
 function ObjectTree({ zstate } : { zstate:ZState })
 {
     let ells = zstate.objects.map(obj =>
         <li key={ obj.onum }>
-            { obj.onum } : { obj.parent } { obj.sibling } { obj.child }
+            { objname(obj.onum) } : { obj.parent } { obj.sibling } { obj.child }
         </li>
     );
     
