@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useContext, useReducer } from 'react';
 import { Root, createRoot } from 'react-dom/client';
 
+// This is the GnustoEngine, but I don't have type info for it yet.
 let engine: any;
 
 export function init(engineref: any)
