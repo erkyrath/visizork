@@ -58,10 +58,6 @@ $(function()
         $.extend( parchment.options, parchment_options );
     }
     
-    // Hide the #about, until we can do something more smart with it
-    //### will remove
-    $('#about').remove();
-
     var options = parchment.options;
     var storyfile = parchment.options.default_story;
     var responseArray = window.gameimage;
@@ -77,6 +73,10 @@ $(function()
     });
     
     runner.fromParchment({ code: 'restart' });
+
+    if (window.bundle) {
+        window.bundle.init(runner.e);
+    }
 });
 
 })( this, jQuery );

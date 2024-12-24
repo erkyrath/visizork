@@ -2,13 +2,14 @@
 
 /*
 
-Gnusto runner
+Gnusto runner (modified for GlkOte display)
 =============
 
 Copyright (c) 2011 The Parchment Contributors
 BSD licenced
 http://code.google.com/p/parchment
 
+GlkOte modifications by Andrew Plotkin
 */
 
 // A Gnusto runner
