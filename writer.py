@@ -82,7 +82,7 @@ num_to_objname = {
     79: 'EAST-OF-HOUSE',
     80: 'SOUTH-OF-HOUSE',
     81: 'NORTH-OF-HOUSE',
-    82: '',
+    82: 'ROOMS',
     83: 'BROKEN-CANARY',
     84: 'CANARY',
     85: 'BAUBLE',
@@ -247,9 +247,9 @@ num_to_objname = {
     244: 'SONGBIRD',
     245: 'GRANITE-WALL',
     246: 'WALL',
-    247: '',
+    247: 'GLOBAL-OBJECTS',
     248: 'TEETH',
-    249: '',
+    249: 'LOCAL-GLOBALS',
     250: 'BOARD',
 }
 
