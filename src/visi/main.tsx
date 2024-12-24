@@ -42,23 +42,20 @@ function MyApp()
     );
 }
 
-function objname(onum: number) : string
-{
-    let objects = (window as any).gamedat_objects;
-    if (!objects[onum]) {
-        return '(invalid)';
-    }
-    let val = objects[onum].objname;
-    return (val ? val : '(unnamed)');
-}
-
 function ObjectTree({ zstate } : { zstate:ZState })
 {
-    let ells = zstate.objects.map(obj =>
-        <li key={ obj.onum }>
-            { objname(obj.onum) } : { obj.parent } { obj.sibling } { obj.child }
-        </li>
-    );
+    let ells = zstate.objects.map(tup => {
+        let obj = (window as any).gamedat_object_ids.get(tup.onum);
+        if (!obj) {
+            return <li key={ tup.onum }>???</li>;
+        }
+        
+        return (
+            <li key={ tup.onum }>
+                { obj.name } "{ obj.desc }": { tup.parent } { tup.sibling } { tup.child }
+            </li>
+        );
+    });
     
     return (
         <ul>
