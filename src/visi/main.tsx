@@ -36,7 +36,7 @@ function MyApp()
     }, []);
     
     return (
-        <div>
+        <div className="ListPane">
             <ObjectTree zstate={ zstate } />
         </div>
     );
@@ -52,7 +52,7 @@ function ObjectTree({ zstate } : { zstate:ZState })
         
         return (
             <li key={ tup.onum }>
-                { obj.name } "{ obj.desc }"
+                { tup.onum }: { obj.name } "{ obj.desc }"
                 { (obj.type=='ROOM' ? ' (R)' : '') }{': '}
                 { tup.parent } { tup.sibling } { tup.child }
             </li>
