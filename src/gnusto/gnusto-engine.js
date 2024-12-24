@@ -2178,7 +2178,7 @@ GnustoEngine.prototype = {
         while (onum <= MAX_OBJECTS) {
             report.objects.push(
                 {
-                    obj: onum,
+                    onum: onum,
                     parent: this._get_parent(onum),
                     child: this._get_child(onum),
                     sibling: this._get_sibling(onum),

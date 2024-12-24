@@ -37,7 +37,22 @@ function MyApp()
     
     return (
         <div>
-            THE APP!
+            <ObjectTree zstate={ zstate } />
         </div>
+    );
+}
+
+function ObjectTree({ zstate } : { zstate:ZState })
+{
+    let ells = zstate.objects.map(obj =>
+        <li key={ obj.onum }>
+            { obj.onum } : { obj.parent } { obj.sibling } { obj.child }
+        </li>
+    );
+    
+    return (
+        <ul>
+            { ells }
+        </ul>
     );
 }
