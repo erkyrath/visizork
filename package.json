@@ -4,6 +4,9 @@
   "description": "An interactive fiction visualizer",
   "author": "Andrew Plotkin <erkyrath@eblong.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "npx tsc && npx rollup -c"
+  },
   "dependencies": {
     "react": "^18.3",
     "react-dom": "^18.3"
