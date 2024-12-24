@@ -73,9 +73,10 @@ function ObjectTree({ zstate } : { zstate:ZState })
                 { tup.onum }: { obj.name } "{ obj.desc }"
                 { (obj.type=='ROOM' ? ' (R)' : '') }{': '}
                 { tup.parent } { tup.sibling } { tup.child }
-                <ul>
-                    { (children.length ? children.map(showchild) : null) }
-                </ul>
+                { (children.length ? (
+                    <ul>
+                        { children.map(showchild) }
+                    </ul>) : null) }
             </li>
         );
     }
