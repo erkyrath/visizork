@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useContext, useEffect } from 'react';
 import { Root, createRoot } from 'react-dom/client';
 
+import { ZState } from './zstate';
+
 // This is the GnustoRunner and the GnustoEngine, but I don't have
 // type info for them yet.
 let runner: any;
@@ -18,20 +20,9 @@ export function init(runnerref: any)
         root.render( <MyApp /> );
 }
 
-type ZState = {
-    objects: any[];
-};
-
-function new_zstate() : ZState
-{
-    return {
-        objects: [],
-    };
-}
-
 function MyApp()
 {
-    const [ zstate, setZState ] = useState(engine.get_vm_report());
+    const [ zstate, setZState ] = useState(engine.get_vm_report() as ZState);
     console.log('### ...', zstate);
 
     useEffect(() => {
