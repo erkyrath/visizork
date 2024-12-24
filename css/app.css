@@ -1,0 +1,13 @@
+body {
+  margin: 0px;
+  height: 100%;
+}
+
+#gameport {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #CCAA88;
+  margin: 0px;
+}
