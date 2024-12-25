@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 
-import { ObjectData, ObjectDataIdMap, RoomIdSet, ROOM_HOLDER } from './gamedat';
+import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, ROOM_HOLDER } from './gamedat';
 import { ZState } from './zstate';
 
 import { ReactCtx } from './context';
@@ -11,9 +11,6 @@ export function ObjectTree()
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
 
-    let gamedat_object_ids = (window as any).gamedat_object_ids as ObjectDataIdMap;
-    let gamedat_object_room_ids = (window as any).gamedat_object_room_ids as RoomIdSet;
-    
     let roots = [];
     let map = new Map();
     for (let tup of zstate.objects) {
