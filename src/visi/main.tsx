@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useContext, useEffect } from 'react';
 import { Root, createRoot } from 'react-dom/client';
 
+import { ObjectData, ObjectDataIdMap } from './gamedat';
 import { ZState } from './zstate';
 
 // This is the GnustoRunner and the GnustoEngine, but I don't have
@@ -53,18 +54,25 @@ function ObjectTree({ zstate } : { zstate:ZState })
     }
 
     function showchild(tup: any) {
-        let obj = (window as any).gamedat_object_ids.get(tup.onum);
+        let gamedat_object_ids = (window as any).gamedat_object_ids as ObjectDataIdMap;
+        let obj = gamedat_object_ids.get(tup.onum);
         if (!obj) {
             return <li key={ tup.onum }>{ tup.onum }: ???</li>;
         }
 
         let children = [];
+        let childset = new Set();
         let val = tup.child;
         while (val != 0) {
+            if (childset.has(val)) {
+                console.log('BUG: loop in sibling chain');
+                break;
+            }
             let ctup = map.get(val);
             if (!ctup)
                 break;
             children.push(ctup);
+            childset.add(val);
             val = ctup.sibling;
         }
         
@@ -72,7 +80,6 @@ function ObjectTree({ zstate } : { zstate:ZState })
             <li key={ tup.onum }>
                 { tup.onum }: { obj.name } "{ obj.desc }"
                 { (obj.isroom ? ' (R)' : '') }{': '}
-                { tup.parent } { tup.sibling } { tup.child }
                 { (children.length ? (
                     <ul>
                         { children.map(showchild) }
