@@ -15,15 +15,15 @@
   // Create a new Class that inherits from this class
   Object.subClass = function(prop) {
     var _super = this.prototype,
-	proto = _super,
-	name,
-	Class;
+    proto = _super,
+    name,
+    Class;
    
     // Instantiate a base class (but only create the instance,
     // don't run the init constructor)
-	initializing = true;
-	proto = new this();
-	initializing = false;
+    initializing = true;
+    proto = new this();
+    initializing = false;
    
     // Copy the properties over onto the new prototype
     for (name in prop) {
@@ -33,7 +33,7 @@
         (function(name, fn){
           return function() {
             var tmp = this._super,
-			ret;
+            ret;
            
             // Add a new ._super() method that is the same method
             // but on the super-class
