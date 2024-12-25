@@ -13,12 +13,8 @@ export type ObjectData = {
     sourceloc: SourceLoc;
 };
 
-export type ObjectDataIdMap = Map<number, ObjectData>;
-export type ObjectDataNameMap = Map<string, ObjectData>;
-export type RoomIdSet = Set<number>;
-
 export const ROOM_HOLDER = (window as any).ROOM_HOLDER as number;
 
-export const gamedat_object_ids = (window as any).gamedat_object_ids as ObjectDataIdMap;
-export const gamedat_object_names = (window as any).gamedat_object_ids as ObjectDataNameMap;
-export const gamedat_object_room_ids = (window as any).gamedat_object_room_ids as RoomIdSet;
+export const gamedat_object_ids = (window as any).gamedat_object_ids as Map<number, ObjectData>;
+export const gamedat_object_names = (window as any).gamedat_object_ids as Map<string, ObjectData>;
+export const gamedat_object_room_ids = (window as any).gamedat_object_room_ids as Set<number>;
