@@ -7,7 +7,7 @@ window.gamedat_object_names = new Map();
         let obj = {
             onum: tup[0],
             name: tup[1],
-            type: tup[2],
+            isroom: (tup[2] == 'ROOM'),
             desc: tup[3],
             sourceloc: tup[4],
         };

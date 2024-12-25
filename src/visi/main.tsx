@@ -71,7 +71,7 @@ function ObjectTree({ zstate } : { zstate:ZState })
         return (
             <li key={ tup.onum }>
                 { tup.onum }: { obj.name } "{ obj.desc }"
-                { (obj.type=='ROOM' ? ' (R)' : '') }{': '}
+                { (obj.isroom ? ' (R)' : '') }{': '}
                 { tup.parent } { tup.sibling } { tup.child }
                 { (children.length ? (
                     <ul>
