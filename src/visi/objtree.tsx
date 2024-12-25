@@ -23,11 +23,11 @@ export function ObjectTree()
     }
 
     roots.sort((o1, o2) => {
-	if (gamedat_object_room_ids.has(o1.onum) && !gamedat_object_room_ids.has(o2.onum))
-	    return -1;
-	if (gamedat_object_room_ids.has(o2.onum) && !gamedat_object_room_ids.has(o1.onum))
-	    return 1;
-	return (o1.onum - o2.onum);
+        if (gamedat_object_room_ids.has(o1.onum) && !gamedat_object_room_ids.has(o2.onum))
+            return -1;
+        if (gamedat_object_room_ids.has(o2.onum) && !gamedat_object_room_ids.has(o1.onum))
+            return 1;
+        return (o1.onum - o2.onum);
     });
 
     function showchild(tup: any) {
@@ -37,22 +37,22 @@ export function ObjectTree()
         }
 
         let children = [];
-	if (tup.onum != ROOM_HOLDER) {
+        if (tup.onum != ROOM_HOLDER) {
             let childset = new Set();
             let val = tup.child;
             while (val != 0) {
-		if (childset.has(val)) {
+                if (childset.has(val)) {
                     console.log('BUG: loop in sibling chain');
                     break;
-		}
-		let ctup = map.get(val);
-		if (!ctup)
+                }
+                let ctup = map.get(val);
+                if (!ctup)
                     break;
-		children.push(ctup);
-		childset.add(val);
-		val = ctup.sibling;
+                children.push(ctup);
+                childset.add(val);
+                val = ctup.sibling;
             }
-	}
+        }
         
         return (
             <li key={ tup.onum }>
