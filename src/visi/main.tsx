@@ -45,7 +45,7 @@ function MyApp()
     return (
         <ReactCtx.Provider value={ rctx }>
             <div className="ListPane">
-                <ObjectTree zstate={ zstate } />
+                <ObjectTree />
             </div>
         </ReactCtx.Provider>
     );

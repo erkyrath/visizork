@@ -1,10 +1,16 @@
 import React from 'react';
+import { useState, useContext } from 'react';
 
 import { ObjectData, ObjectDataIdMap } from './gamedat';
 import { ZState } from './zstate';
 
-export function ObjectTree({ zstate } : { zstate:ZState })
+import { ReactCtx } from './context';
+
+export function ObjectTree()
 {
+    let rctx = useContext(ReactCtx);
+    let zstate = rctx.zstate;
+    
     let roots = [];
     let map = new Map();
     for (let tup of zstate.objects) {
