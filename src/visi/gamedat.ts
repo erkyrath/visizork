@@ -14,3 +14,6 @@ export type ObjectData = {
 };
 
 export type ObjectDataIdMap = Map<number, ObjectData>;
+export type RoomIdSet = Set<number>;
+
+export const ROOM_HOLDER = (window as any).ROOM_HOLDER as number;
