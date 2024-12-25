@@ -9,3 +9,10 @@ export type ZObject = {
 export type ZState = {
     objects: ZObject[];
 };
+
+export function zstate_empty() : ZState
+{
+    return {
+	objects: [],
+    };
+}

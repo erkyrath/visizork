@@ -4,6 +4,7 @@ import { Root, createRoot } from 'react-dom/client';
 
 import { ZState } from './zstate';
 
+import { ContextContent, ReactCtx } from './context';
 import { ObjectTree } from './objtree';
 
 // This is the GnustoRunner and the GnustoEngine, but I don't have
@@ -36,10 +37,16 @@ function MyApp()
             window.removeEventListener('zmachine-update', evhan);
         };
     }, []);
+
+    let rctx: ContextContent = {
+        zstate: zstate,
+    };
     
     return (
-        <div className="ListPane">
-            <ObjectTree zstate={ zstate } />
-        </div>
+        <ReactCtx.Provider value={ rctx }>
+            <div className="ListPane">
+                <ObjectTree zstate={ zstate } />
+            </div>
+        </ReactCtx.Provider>
     );
 }
