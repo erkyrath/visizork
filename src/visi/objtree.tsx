@@ -16,7 +16,7 @@ export function ObjectTree()
     let map = new Map();
     for (let tup of zstate.objects) {
         map.set(tup.onum, tup);
-        if (tup.parent == 0 || tup.parent == ROOM_HOLDER || tup.onum == PSEUDO_OBJECT)
+        if (tup.parent == 0 || tup.parent == ROOM_HOLDER || tup.parent == GLOBAL_OBJECTS || tup.onum == PSEUDO_OBJECT)
             roots.push(tup);
     }
 
@@ -36,7 +36,7 @@ export function ObjectTree()
         }
 
         let children: ZObject[] = [];
-        if (onum != ROOM_HOLDER && onum != LOCAL_GLOBALS) {
+        if (onum != ROOM_HOLDER && onum != LOCAL_GLOBALS && onum != GLOBAL_OBJECTS) {
             let childset = new Set();
             let val = tup.child;
             while (val != 0) {
@@ -82,6 +82,10 @@ export function ObjectTree()
                 { (onum == ROOM_HOLDER ? (
                     <ul>
                         <li>(contains all rooms)</li>
+                    </ul>) : null) }
+                { (onum == GLOBAL_OBJECTS ? (
+                    <ul>
+                        <li>(contains all global-scoped)</li>
                     </ul>) : null) }
                 { (onum == LOCAL_GLOBALS ? (
                     <ul>
