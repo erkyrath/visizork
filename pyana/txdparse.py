@@ -127,6 +127,9 @@ class Object:
         self.attrs = []
         self.propaddr = None
         self.description = None
+        self.parent = None
+        self.sibling = None
+        self.child = None
         self.props = {}
 
     def __repr__(self):
@@ -139,6 +142,7 @@ class ObjDumpData:
     def readdump(self, filename):
         pat_objhead = re.compile('^[ ]*([0-9]+)[.][ ]*Attributes:(.*)')
         pat_propaddr = re.compile('^[ ]*Property address: ([0-9a-fA-F]+)')
+        pat_tree = re.compile('^[ ]*Parent object:[ ]*([0-9]+)[ ]*Sibling object:[ ]*([0-9]+)[ ]*Child object:[ ]*([0-9]+)')
         pat_desc = re.compile('^[ ]*Description: "([^"]*)"')
         pat_prop = re.compile('^[ ]*\\[([0-9 ]+)\\]([ 0-9a-fA-F]*)')
         with open(filename) as infl:
@@ -158,6 +162,12 @@ class ObjDumpData:
                 match = pat_propaddr.match(ln)
                 if match:
                     curobj.propaddr = int(match.group(1), 16)
+                    continue
+                match = pat_tree.match(ln)
+                if match:
+                    curobj.parent = int(match.group(1))
+                    curobj.sibling = int(match.group(2))
+                    curobj.child = int(match.group(3))
                     continue
                 match = pat_desc.match(ln)
                 if match:
