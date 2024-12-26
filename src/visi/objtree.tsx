@@ -67,7 +67,7 @@ export function ObjectTree()
             label = 'room';
         else if (obj.origparent == GLOBAL_OBJECTS)
             label = 'glob';
-        else if (obj.origparent == LOCAL_GLOBALS)
+        else if (tup.parent != parentnum)
             label = 'scen';
         else
             label = 'obj';
