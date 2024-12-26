@@ -8,7 +8,7 @@ from zilana import Zcode
 from zilana import markcomments, stripcomments
 from zilana import stripifdefs
 from txdparse import TXDData, ObjDumpData
-from writer import write_objects, compute_room_distances
+from writer import write_objects, write_strings, compute_room_distances
 
 popt = optparse.OptionParser()
 
@@ -57,7 +57,10 @@ if opts.objdump:
     print('objects:', len(objdat.objects))
     
 if opts.gamedat:
-    if opts.zilfile:
-        compute_room_distances('src/game/distances.js', zcode)
     if opts.zilfile and opts.objdump:
         write_objects('src/game/objects.js', zcode, objdat)
+    if opts.txdfile and opts.objdump:
+        write_strings('src/game/strings.js', txdat, objdat)
+    if opts.zilfile:
+        compute_room_distances('src/game/distances.js', zcode)
+        

@@ -31,6 +31,25 @@ def sourceloc(tup):
     file, line, char = tup
     return { 'file':file, 'line':line, 'char':char }
 
+def write_strings(filename, txdat, objdat):
+    print('...writing string data:', filename)
+    load_gameinfo()
+
+    ls = []
+    for str in txdat.strings:
+        ls.append([ str.addr, str.text ])
+    for str in txdat.istrings:
+        ls.append([ str.addr, str.text, str.rtn.addr ])
+    for obj in objdat.objects:
+        ls.append([ obj.desc, obj.propaddr+1, obj.num ])
+
+    fl = open(filename, 'w')
+    fl.write('window.gamedat_strings = ');
+    json.dump(ls, fl, separators=(',', ':'))
+    fl.write('\n')
+    fl.close()
+    
+
 def write_objects(filename, zcode, objdat):
     print('...writing object data:', filename)
     load_gameinfo()
