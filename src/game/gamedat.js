@@ -6,6 +6,7 @@ window.gamedat_object_names = new Map();
 window.gamedat_object_room_ids = new Set();
 window.gamedat_object_global_ids = new Set();
 window.gamedat_object_treesort = new Map();
+window.gamedat_string_map = new Map();
 
 (function() {
     for (let obj of window.gamedat_objects) {
@@ -26,6 +27,10 @@ window.gamedat_object_treesort = new Map();
             gamedat_object_treesort.set(obj.onum, 4);
         else
             gamedat_object_treesort.set(obj.onum, 2);
+    }
+
+    for (let tup of window.gamedat_strings) {
+        gamedat_string_map.set(tup[0], tup[1]);
     }
 })();
 
