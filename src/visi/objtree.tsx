@@ -29,7 +29,7 @@ export function ObjectTree()
     }
 
     if (!gamedat_distances[advroom])
-        advroom = 180;
+        advroom = 180; //###
     let distmap = gamedat_distances[advroom];
 
     roots.sort((o1, o2) => {
