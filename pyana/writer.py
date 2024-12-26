@@ -41,7 +41,7 @@ def write_strings(filename, txdat, objdat):
     for str in txdat.istrings:
         ls.append([ str.addr, str.text, str.rtn.addr ])
     for obj in objdat.objects:
-        ls.append([ obj.desc, obj.propaddr+1, obj.num ])
+        ls.append([ obj.propaddr+1, obj.desc, obj.num ])
 
     fl = open(filename, 'w')
     fl.write('window.gamedat_strings = ');
