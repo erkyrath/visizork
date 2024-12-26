@@ -4,6 +4,8 @@ info_loaded = False
 
 objnum_to_name = {}
 objname_to_num = {}
+propnum_to_name = {}
+propname_to_num = {}
 
 def load_gameinfo():
     global info_loaded
@@ -19,6 +21,9 @@ def load_gameinfo():
         if typ == 'Object':
             objname_to_num[name] = num
             objnum_to_name[num] = name
+        if typ == 'Property':
+            propname_to_num[name] = num
+            propnum_to_name[num] = name
     fl.close()
     info_loaded = True
 
