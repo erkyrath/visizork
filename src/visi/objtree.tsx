@@ -20,7 +20,17 @@ export function ObjectTree()
             roots.push(tup);
     }
 
-    let distmap = gamedat_distances[180]; //###
+    let advroom = ADVENTURER;
+    while (true) {
+        let tup = map.get(advroom);
+        if (!tup || tup.parent == 0 || tup.parent == ROOM_HOLDER)
+            break;
+        advroom = tup.parent;
+    }
+
+    if (!gamedat_distances[advroom])
+        advroom = 180;
+    let distmap = gamedat_distances[advroom];
 
     roots.sort((o1, o2) => {
         let sort1 = gamedat_object_treesort.get(o1.onum) ?? 0;
