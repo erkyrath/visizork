@@ -118,6 +118,7 @@ var GnustoRunner = Object.subClass({
         var text, effect, effect1, effect2, stop, i;
         
         this.orders = [];
+        engine.reset_vm_report();
         
         while ( !stop )
         {

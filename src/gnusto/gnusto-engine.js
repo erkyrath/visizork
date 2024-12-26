@@ -2174,12 +2174,26 @@ GnustoEngine.prototype = {
     // Info which cannot be extracted from the game file:
     // MAX_OBJECTS
     m_report_info: null,
+    m_report: null,
 
+    // This is called right after the engine is constructed. We pass in
+    // various bits of information which are needed to structure the
+    // VM report.
     prepare_vm_report: function(obj)
     {
         m_report_info = obj;
     },
 
+    // This is called at the beginning of each turn. We will accumulate
+    // a list of functions called, strings printed, etc during the turn.
+    // turn.
+    reset_vm_report: function()
+    {
+        m_report = {};
+    },
+
+    // Called at the end of a turn (just before awaiting input) to get
+    // a report on the current state of affairs.
     get_vm_report: function()
     {
         if (!m_report_info)
