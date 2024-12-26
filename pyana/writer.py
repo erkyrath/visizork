@@ -31,15 +31,21 @@ def sourceloc(tup):
     file, line, char = tup
     return { 'file':file, 'line':line, 'char':char }
 
-def write_objects(filename, zcode):
+def write_objects(filename, zcode, objdat):
     load_gameinfo()
     ls = []
     for (name, type, desc, loc) in zcode.objects:
-        if name in objname_to_num:
-            onum = objname_to_num[name]
-            ls.append( (onum, name, type, desc, sourceloc(loc)) )
-        else:
+        if name not in objname_to_num:
             print('onum not found: %s "%s"' % (name, desc,))
+            continue
+        onum = objname_to_num[name]
+        dat = {
+            'onum':onum, 'name':name, 'desc':desc,
+            'sourceloc': sourceloc(loc),
+        }
+        if type == 'ROOM':
+            dat['isroom'] = True
+        ls.append(dat)
     
     fl = open(filename, 'w')
     fl.write('window.gamedat_objects = ');

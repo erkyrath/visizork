@@ -41,8 +41,6 @@ if opts.zilfile:
     print('globals:', len(zcode.globals))
     print('routines:', len(zcode.routines))
     print('objects:', len(zcode.objects))
-    if opts.gamedat:
-        write_objects('src/game/objects.js', zcode)
 
 if opts.txdfile:
     print('reading TXD dump...')
@@ -58,3 +56,8 @@ if opts.objdump:
     objdat.readdump('gamedat/obj-dump.txt')
     print('objects:', len(objdat.objects))
     
+if opts.gamedat:
+    if not opts.zilfile or not opts.objdump:
+        print('--gamedat requires --zil --obj')
+    else:
+        write_objects('src/game/objects.js', zcode, objdat)
