@@ -39,8 +39,13 @@ def write_objects(filename, zcode, objdat):
             print('onum not found: %s "%s"' % (name, desc,))
             continue
         onum = objname_to_num[name]
+        if onum not in objdat.objmap:
+            print('obj dump not found: %s' % (onum,))
+            continue
+        odump = objdat.objmap[onum]
         dat = {
             'onum':onum, 'name':name, 'desc':desc,
+            'origparent': odump.parent,
             'sourceloc': sourceloc(loc),
         }
         if type == 'ROOM':

@@ -138,6 +138,7 @@ class Object:
 class ObjDumpData:
     def __init__(self):
         self.objects = []
+        self.objmap = {}
 
     def readdump(self, filename):
         pat_objhead = re.compile('^[ ]*([0-9]+)[.][ ]*Attributes:(.*)')
@@ -158,6 +159,7 @@ class ObjDumpData:
                         ls = [ int(val.strip()) for val in ls ]
                         curobj.attrs = ls
                     self.objects.append(curobj)
+                    self.objmap[curobj.num] = curobj
                     continue
                 match = pat_propaddr.match(ln)
                 if match:
