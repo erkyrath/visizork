@@ -7,6 +7,13 @@
 # However, they didn't have the source code names, so I have done
 # additional work in matching up to the ZIL code.
 
+# Object table: $02B0
+# Global vars: $2271
+# ROM start: $2E53
+# Dictionary: $3B21
+# Functions (high memory): $4E37
+# Strings (high memory): $10B16
+
 Object 1 HANDS
 Object 2 ZORKMID
 Object 3 PATHOBJ
@@ -257,3 +264,34 @@ Object 247 GLOBAL-OBJECTS
 Object 248 TEETH
 Object 249 LOCAL-GLOBALS
 Object 250 BOARD
+
+Property 2 CONTFCN
+Property 3 ADVFCN
+Property 4 PSEUDO
+Property 5 GLOBAL
+Property 6 VTYPE
+Property 7 STRENGTH
+Property 8 TEXT
+Property 9 DESCFCN
+Property 10 CAPACITY
+Property 11 LDESC
+Property 12 TVALUE
+Property 13 VALUE
+Property 14 FDESC
+Property 15 SIZE
+Property 16 ADJECTIVE
+Property 17 ACTION
+Property 18 SYNONYM
+Property 19 LAND
+Property 20 OUT
+Property 21 IN
+Property 22 DOWN
+Property 23 UP
+Property 24 SW
+Property 25 SE
+Property 26 NW
+Property 27 NE
+Property 28 SOUTH
+Property 29 WEST
+Property 30 EAST
+Property 31 NORTH
