@@ -127,6 +127,7 @@ class Object:
         self.attrs = []
         self.propaddr = None
         self.description = None
+        self.props = {}
 
     def __repr__(self):
         return '<Object %d "%s">' % (self.num, self.desc,)
@@ -139,6 +140,7 @@ class ObjDumpData:
         pat_objhead = re.compile('^[ ]*([0-9]+)[.][ ]*Attributes:(.*)')
         pat_propaddr = re.compile('^[ ]*Property address: ([0-9a-fA-F]+)')
         pat_desc = re.compile('^[ ]*Description: "([^"]*)"')
+        pat_prop = re.compile('^[ ]*\\[([0-9 ]+)\\]([ 0-9a-fA-F]*)')
         with open(filename) as infl:
             curobj = None
             for ln in infl.readlines():
@@ -161,5 +163,12 @@ class ObjDumpData:
                 if match:
                     curobj.desc = match.group(1)
                     continue
-                    
+                match = pat_prop.match(ln)
+                if match:
+                    propnum = int(match.group(1).strip())
+                    ls = match.group(2).split(' ')
+                    ls = [ int(val, 16) for val in ls if val ]
+                    curobj.props[propnum] = ls
+                    continue
+                
 
