@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 
-import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, ROOM_HOLDER } from './gamedat';
+import { ObjectData, gamedat_object_ids, gamedat_object_room_ids } from './gamedat';
+import { ROOM_HOLDER, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
 import { ZState } from './zstate';
 
 import { ReactCtx } from './context';
@@ -49,11 +50,28 @@ export function ObjectTree()
                 childset.add(val);
                 val = ctup.sibling;
             }
+
+            if (tup.onum != LOCAL_GLOBALS && obj.scenery) {
+                for (let sval of obj.scenery) {
+                    let ctup = map.get(sval);
+                    if (!ctup)
+                        break;
+                    children.push(ctup);
+                }
+            }
         }
+
+        let label: string;
+        if (obj.isroom)
+            label = 'room';
+        else if (obj.origparent == LOCAL_GLOBALS)
+            label = 'scen';
+        else
+            label = 'obj';
         
         return (
             <li key={ tup.onum }>
-                { (obj.isroom ? 'room ' : 'obj ') }{ tup.onum }: { obj.name } "{ obj.desc }"
+                { label } { tup.onum }: { obj.name } "{ obj.desc }"
                 { (children.length ? (
                     <ul>
                         { children.map(showchild) }
