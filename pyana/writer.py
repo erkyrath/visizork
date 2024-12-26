@@ -61,12 +61,30 @@ def write_objects(filename, zcode, objdat):
     fl.write('\n')
     fl.close()
 
-def compute_room_distances(zcode):
+def compute_room_distances(filename, zcode):
+    load_gameinfo()
     map = zcode.mapconnections()
-    
+
+    dat = {}
+
+    for start in zcode.roomnames:
+        dist = compute_distance_from(zcode, map, start)
+        idist = dict([ (objname_to_num[key], val) for key, val in dist.items() ])
+        dat[objname_to_num[start]] = idist
+
+    jdat = json.dumps(dat)
+    jdat = jdat.replace(' ', '')
+        
+    fl = open(filename, 'w')
+    fl.write('window.gamedat_distances = ');
+    fl.write(jdat)
+    fl.write('\n')
+    fl.close()
+
+def compute_distance_from(zcode, map, fromroom):    
     reached = []
     reacheddist = {}
-    todo = [ ('WEST-OF-HOUSE', 0) ]
+    todo = [ (fromroom, 0) ]
     while todo:
         (cur, dist) = todo.pop(0)
         if cur in reacheddist:
@@ -79,6 +97,5 @@ def compute_room_distances(zcode):
     if len(reached) != len(zcode.roomnames):
         print('failed to reach all rooms!')
         
-    print('###', reached)
     return reacheddist
     

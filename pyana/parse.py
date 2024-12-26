@@ -8,7 +8,7 @@ from zilana import Zcode
 from zilana import markcomments, stripcomments
 from zilana import stripifdefs
 from txdparse import TXDData, ObjDumpData
-from writer import write_objects
+from writer import write_objects, compute_room_distances
 
 popt = optparse.OptionParser()
 
@@ -61,3 +61,4 @@ if opts.gamedat:
         print('--gamedat requires --zil --obj')
     else:
         write_objects('src/game/objects.js', zcode, objdat)
+        compute_room_distances('src/game/distances.js', zcode)
