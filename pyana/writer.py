@@ -32,6 +32,7 @@ def sourceloc(tup):
     return { 'file':file, 'line':line, 'char':char }
 
 def write_objects(filename, zcode, objdat):
+    print('...writing object data:', filename)
     load_gameinfo()
     ls = []
     for (name, type, desc, loc) in zcode.objects:
@@ -62,6 +63,7 @@ def write_objects(filename, zcode, objdat):
     fl.close()
 
 def compute_room_distances(filename, zcode):
+    print('...writing room distances:', filename)
     load_gameinfo()
     map = zcode.mapconnections()
 

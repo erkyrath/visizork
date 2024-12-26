@@ -57,8 +57,7 @@ if opts.objdump:
     print('objects:', len(objdat.objects))
     
 if opts.gamedat:
-    if not opts.zilfile or not opts.objdump:
-        print('--gamedat requires --zil --obj')
-    else:
-        write_objects('src/game/objects.js', zcode, objdat)
+    if opts.zilfile:
         compute_room_distances('src/game/distances.js', zcode)
+    if opts.zilfile and opts.objdump:
+        write_objects('src/game/objects.js', zcode, objdat)
