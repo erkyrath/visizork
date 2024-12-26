@@ -12,6 +12,8 @@ import { ObjectTree } from './objtree';
 let runner: any;
 let engine: any;
 
+const releaseTarget = process.env.NODE_ENV;
+
 export function init(runnerref: any)
 {
     runner = runnerref;
@@ -29,7 +31,6 @@ export function init(runnerref: any)
 function MyApp()
 {
     const [ zstate, setZState ] = useState(engine.get_vm_report() as ZState);
-    console.log('### ...', zstate);
 
     useEffect(() => {
         function evhan(ev: Event) {
@@ -40,6 +41,10 @@ function MyApp()
             window.removeEventListener('zmachine-update', evhan);
         };
     }, []);
+
+    if (releaseTarget == 'development') {
+        (window as any).curzstate = zstate;
+    }
 
     let rctx: ContextContent = {
         zstate: zstate,
