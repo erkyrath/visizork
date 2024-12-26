@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext } from 'react';
 
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids } from './gamedat';
-import { ROOM_HOLDER, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
+import { ROOM_HOLDER, PSEUDO_OBJECT, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
 import { ZState } from './zstate';
 
 import { ReactCtx } from './context';
@@ -16,7 +16,7 @@ export function ObjectTree()
     let map = new Map();
     for (let tup of zstate.objects) {
         map.set(tup.onum, tup);
-        if (tup.parent == 0 || tup.parent == ROOM_HOLDER)
+        if (tup.parent == 0 || tup.parent == ROOM_HOLDER || tup.onum == PSEUDO_OBJECT)
             roots.push(tup);
     }
 
