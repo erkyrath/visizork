@@ -1832,6 +1832,9 @@ GnustoEngine.prototype = {
 
     // Main point of entry for gnusto. Be sure to call start_game()
     // before calling this the first time.
+    // This runs the engine until it needs to interact with the runner
+    // (for input, a save/restore/restart/quite event, a window layout
+    // change, etc.) A complete turn may involve several run() calls.
     run: function ge_run() {
         var start_pc = 0;
         var turns = 0;
