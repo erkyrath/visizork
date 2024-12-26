@@ -2168,14 +2168,25 @@ GnustoEngine.prototype = {
         return 0;
     },
 
+    // Info which cannot be extracted from the game file:
+    // MAX_OBJECTS
+    m_report_info: null,
+
+    prepare_vm_report: function(obj)
+    {
+        m_report_info = obj;
+    },
+
     get_vm_report: function()
     {
+        if (!m_report_info)
+            return null;
+        
         var report = {};
         
-        MAX_OBJECTS = 250; //###
         report.objects = [];
         var onum = 1;
-        while (onum <= MAX_OBJECTS) {
+        while (onum <= m_report_info.MAX_OBJECTS) {
             report.objects.push(
                 {
                     onum: onum,

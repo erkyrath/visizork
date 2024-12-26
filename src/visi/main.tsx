@@ -16,6 +16,8 @@ export function init(runnerref: any)
 {
     runner = runnerref;
     engine = runner.e;
+
+    engine.prepare_vm_report({ MAX_OBJECTS:250 });
     
     const appel = document.getElementById('appbody') as HTMLElement;
     let root = createRoot(appel);
