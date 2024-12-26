@@ -23,3 +23,4 @@ export const PSEUDO_OBJECT = 13; //###
 export const gamedat_object_ids = (window as any).gamedat_object_ids as Map<number, ObjectData>;
 export const gamedat_object_names = (window as any).gamedat_object_ids as Map<string, ObjectData>;
 export const gamedat_object_room_ids = (window as any).gamedat_object_room_ids as Set<number>;
+export const gamedat_object_global_ids = (window as any).gamedat_object_room_ids as Set<number>;
