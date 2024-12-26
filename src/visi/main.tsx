@@ -6,6 +6,7 @@ import { ZState } from './zstate';
 
 import { ContextContent, ReactCtx } from './context';
 import { ObjectTree } from './objtree';
+import { StringActivity} from './activity';
 
 // This is the GnustoRunner and the GnustoEngine, but I don't have
 // type info for them yet.
@@ -56,7 +57,7 @@ function MyApp()
     return (
         <ReactCtx.Provider value={ rctx }>
             <div className="ListPane">
-                <ObjectTree />
+                <StringActivity />
             </div>
         </ReactCtx.Provider>
     );
