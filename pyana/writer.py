@@ -92,13 +92,10 @@ def compute_room_distances(filename, zcode):
         dist = compute_distance_from(zcode, map, start)
         idist = dict([ (objname_to_num[key], val) for key, val in dist.items() ])
         dat[objname_to_num[start]] = idist
-
-    jdat = json.dumps(dat)
-    jdat = jdat.replace(' ', '')
         
     fl = open(filename, 'w')
     fl.write('window.gamedat_distances = ');
-    fl.write(jdat)
+    json.dump(dat, fl, separators=(',', ':'))
     fl.write('\n')
     fl.close()
 
