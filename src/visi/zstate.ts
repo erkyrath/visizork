@@ -8,11 +8,13 @@ export type ZObject = {
 
 export type ZState = {
     objects: ZObject[];
+    strings: number[];
 };
 
 export function zstate_empty() : ZState
 {
     return {
         objects: [],
+        strings: [],
     };
 }
