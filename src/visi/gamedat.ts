@@ -10,6 +10,8 @@ export type ObjectData = {
     name: string;
     isroom?: boolean;
     desc: string;
+    origparent: number;
+    scenery?: number[];
     sourceloc: SourceLoc;
 };
 
