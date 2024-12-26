@@ -12,6 +12,9 @@ import { ObjectTree } from './objtree';
 let runner: any;
 let engine: any;
 
+/* Hack alert: we're not running in Node.js here! But the rollup
+   configuration replaces "process.env.NODE_ENV" with a static string,
+   so we can check it. */
 const releaseTarget = process.env.NODE_ENV;
 
 export function init(runnerref: any)
