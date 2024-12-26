@@ -19,7 +19,6 @@ class String:
         self.index = index
         self.text = text
         self.rtn = rtn
-        self.istrings = []
 
     def __repr__(self):
         summary = self.text
