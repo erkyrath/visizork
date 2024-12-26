@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext } from 'react';
 
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids, gamedat_object_treesort, gamedat_distances } from './gamedat';
-import { ROOM_HOLDER, PSEUDO_OBJECT, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
+import { ADVENTURER, ROOM_HOLDER, PSEUDO_OBJECT, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
 import { ZState, ZObject } from './zstate';
 
 import { ReactCtx } from './context';
