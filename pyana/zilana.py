@@ -125,7 +125,7 @@ class Zcode:
                                     exitmap[room].append( (itok.val, desttok.val) )
 
         # Special cases...
-        exitmap['GRATING-CLEARING'].append( ('DOWN', 'GRATING-ROOM') )
+        #exitmap['GRATING-CLEARING'].append( ('DOWN', 'GRATING-ROOM') )
         exitmap['LIVING-ROOM'].append( ('DOWN', 'CELLAR') )
         exitmap['STUDIO'].append( ('UP', 'KITCHEN') )
         exitmap['MAZE-2'].append( ('DOWN', 'MAZE-4') )

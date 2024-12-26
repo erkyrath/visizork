@@ -259,8 +259,6 @@ def sourceloc(tup):
     file, line, char = tup
     return { 'file':file, 'line':line, 'char':char }
 
-
-
 def write_objects(filename, zcode):
     ls = []
     for (name, type, desc, loc) in zcode.objects:
@@ -276,3 +274,21 @@ def write_objects(filename, zcode):
     fl.write('\n')
     fl.close()
 
+def compute_room_distances(zcode):
+    map = zcode.mapconnections()
+    
+    reached = []
+    reacheddist = {}
+    todo = [ ('WEST-OF-HOUSE', 0) ]
+    while todo:
+        (cur, dist) = todo.pop(0)
+        if cur in reacheddist:
+            continue
+        reached.append(cur)
+        reacheddist[cur] = dist
+        for (dir, dest) in map[cur]:
+            todo.append( (dest, dist+1) )
+
+    print('###', reached)
+    return reacheddist
+    
