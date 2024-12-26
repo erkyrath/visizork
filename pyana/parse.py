@@ -46,14 +46,15 @@ if opts.zilfile:
 
 if opts.txdfile:
     print('reading TXD dump...')
-    dat = TXDData()
-    dat.readdump('gamedat/game-dump.txt')
-    print('routines:', len(dat.routines))
-    print('strings:', len(dat.strings))
-    print('istrings:', len(dat.istrings))
+    txdat = TXDData()
+    txdat.readdump('gamedat/game-dump.txt')
+    print('routines:', len(txdat.routines))
+    print('strings:', len(txdat.strings))
+    print('istrings:', len(txdat.istrings))
 
 if opts.objdump:
     print('reading object dump...')
-    dat = ObjDumpData()
-    dat.readdump('gamedat/obj-dump.txt')
+    objdat = ObjDumpData()
+    objdat.readdump('gamedat/obj-dump.txt')
+    print('objects:', len(objdat.objects))
     
