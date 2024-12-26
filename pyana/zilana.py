@@ -73,6 +73,7 @@ class Zcode:
         self.globals = []
         self.routines = []
         self.objects = []
+        self.roomnames = []
 
     def build(self):
         self.findall()
@@ -99,4 +100,39 @@ class Zcode:
                             if proptok.children[1].typ is TokType.STR:
                                 desc = proptok.children[1].val
                     self.objects.append( (idtok.val, flag, desc, tok.pos) )
+                    if isroom:
+                        self.roomnames.append(idtok.val)
                 
+    def mapconnections(self):
+        exitmap = dict()
+        for room in self.roomnames:
+            exitmap[room] = []
+            
+        directions = set(['NORTH', 'EAST', 'WEST', 'SOUTH', 'NE', 'NW', 'SE', 'SW', 'UP', 'DOWN', 'IN', 'OUT', 'LAND'])
+        
+        for tok in self.tokls:
+            if tok.matchform('ROOM', 1):
+                room = tok.children[1].val
+                for prop in tok.children[2:]:
+                    if prop.typ is TokType.GROUP and prop.val == '()' and len(prop.children) >= 3:
+                        itok = prop.children[0]
+                        totok = prop.children[1]
+                        desttok = prop.children[2]
+                        if itok.typ is TokType.ID and itok.val in directions:
+                            if totok.typ is TokType.ID and totok.val == 'TO':
+                                if desttok.typ is TokType.ID and desttok.val in exitmap:
+                                    #print(room, itok.val, desttok.val)
+                                    exitmap[room].append( (itok.val, desttok.val) )
+
+        # Special cases...
+        exitmap['GRATING-CLEARING'].append( ('DOWN', 'GRATING-ROOM') )
+        exitmap['LIVING-ROOM'].append( ('DOWN', 'CELLAR') )
+        exitmap['STUDIO'].append( ('UP', 'KITCHEN') )
+        exitmap['MAZE-2'].append( ('DOWN', 'MAZE-4') )
+        exitmap['MAZE-7'].append( ('DOWN', 'DEAD-END-1') )
+        exitmap['MAZE-9'].append( ('DOWN', 'MAZE-11') )
+        exitmap['MAZE-12'].append( ('DOWN', 'MAZE-5') )
+
+        return exitmap
+        
+                        
