@@ -132,6 +132,14 @@ class Zcode:
         exitmap['MAZE-7'].append( ('DOWN', 'DEAD-END-1') )
         exitmap['MAZE-9'].append( ('DOWN', 'MAZE-11') )
         exitmap['MAZE-12'].append( ('DOWN', 'MAZE-5') )
+        exitmap['DAM-BASE'].append( ('LAUNCH', 'RIVER-1') )
+        exitmap['WHITE-CLIFFS-NORTH'].append( ('LAUNCH', 'RIVER-3') )
+        exitmap['WHITE-CLIFFS-SOUTH'].append( ('LAUNCH', 'RIVER-4') )
+        exitmap['SHORE'].append( ('LAUNCH', 'RIVER-5') )
+        exitmap['SANDY-BEACH'].append( ('LAUNCH', 'RIVER-4') )
+        exitmap['RESERVOIR-SOUTH'].append( ('LAUNCH', 'RESERVOIR') )
+        exitmap['RESERVOIR-NORTH'].append( ('LAUNCH', 'RESERVOIR') )
+        exitmap['STREAM-VIEW'].append( ('LAUNCH', 'IN-STREAM') )
 
         return exitmap
         

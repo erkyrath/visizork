@@ -289,6 +289,9 @@ def compute_room_distances(zcode):
         for (dir, dest) in map[cur]:
             todo.append( (dest, dist+1) )
 
+    if len(reached) != len(zcode.roomnames):
+        print('failed to reach all rooms!')
+        
     print('###', reached)
     return reacheddist
     
