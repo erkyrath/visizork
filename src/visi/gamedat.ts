@@ -25,3 +25,4 @@ export const gamedat_object_names = (window as any).gamedat_object_ids as Map<st
 export const gamedat_object_room_ids = (window as any).gamedat_object_room_ids as Set<number>;
 export const gamedat_object_global_ids = (window as any).gamedat_object_global_ids as Set<number>;
 export const gamedat_object_treesort = (window as any).gamedat_object_treesort as Map<number, number>;
+export const gamedat_distances = (window as any).gamedat_distances;

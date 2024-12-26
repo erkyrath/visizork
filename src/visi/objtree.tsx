@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 
-import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids, gamedat_object_treesort } from './gamedat';
+import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids, gamedat_object_treesort, gamedat_distances } from './gamedat';
 import { ROOM_HOLDER, PSEUDO_OBJECT, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
 import { ZState, ZObject } from './zstate';
 
@@ -20,11 +20,15 @@ export function ObjectTree()
             roots.push(tup);
     }
 
+    let distmap = gamedat_distances[180]; //###
+
     roots.sort((o1, o2) => {
         let sort1 = gamedat_object_treesort.get(o1.onum) ?? 0;
         let sort2 = gamedat_object_treesort.get(o2.onum) ?? 0;
         if (sort1 != sort2)
             return sort1 - sort2;
+        if (sort1 == 1)
+            return distmap[o1.onum] - distmap[o2.onum];
         return (o1.onum - o2.onum);
     });
 
