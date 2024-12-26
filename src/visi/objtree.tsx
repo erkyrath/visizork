@@ -35,7 +35,7 @@ export function ObjectTree()
         }
 
         let children = [];
-        if (tup.onum != ROOM_HOLDER) {
+        if (tup.onum != ROOM_HOLDER && tup.onum != LOCAL_GLOBALS) {
             let childset = new Set();
             let val = tup.child;
             while (val != 0) {
@@ -51,7 +51,7 @@ export function ObjectTree()
                 val = ctup.sibling;
             }
 
-            if (tup.onum != LOCAL_GLOBALS && obj.scenery) {
+            if (obj.scenery) {
                 for (let sval of obj.scenery) {
                     let ctup = map.get(sval);
                     if (!ctup)
@@ -64,6 +64,8 @@ export function ObjectTree()
         let label: string;
         if (obj.isroom)
             label = 'room';
+        else if (obj.origparent == GLOBAL_OBJECTS)
+            label = 'glob';
         else if (obj.origparent == LOCAL_GLOBALS)
             label = 'scen';
         else
@@ -79,6 +81,10 @@ export function ObjectTree()
                 { (tup.onum == ROOM_HOLDER ? (
                     <ul>
                         <li>(contains all rooms)</li>
+                    </ul>) : null) }
+                { (tup.onum == LOCAL_GLOBALS ? (
+                    <ul>
+                        <li>(contains all scenery)</li>
                     </ul>) : null) }
             </li>
         );
