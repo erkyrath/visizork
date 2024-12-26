@@ -622,7 +622,7 @@ function handleZ_dec(engine, a)
   }
 */
 function handleZ_print_addr(engine, a) {
-    return engine._handler_zOut('_zscii_from('+a[0]+')',0);
+    return engine._handler_zOut('_zscii_from(_vm_report_string("addr", '+a[0]+'))',0);
 }
 function handleZ_remove_obj(engine, a) {
     return "_remove_obj("+a[0]+','+a[1]+")";
@@ -644,7 +644,7 @@ function handleZ_jump(engine, a) {
     return "m_pc="+addr+";return";
 }
 function handleZ_print_paddr(engine, a) {
-    return engine._handler_zOut("_zscii_from("+engine.m_pc_translate_for_string(a[0])+")",0);
+    return engine._handler_zOut("_zscii_from(_vm_report_string('paddr', "+engine.m_pc_translate_for_string(a[0])+"))",0);
 }
 
 function handleZ_load( engine, a )
@@ -686,12 +686,12 @@ function handleZ_rfalse(engine, a) {
 }
 
 function handleZ_print(engine, a) {
-    return engine._handler_print('', 0);
+    return '_vm_report_string("inline",'+(engine.m_pc-1)+');'+engine._handler_print('', 0);
 }
 
 function handleZ_print_ret(engine, a) {
     engine.m_compilation_running = 0;
-    return engine._handler_print('\n', 1)+';_func_return(1);return';
+    return '_vm_report_string("inlineret",'+(engine.m_pc-1)+');'+engine._handler_print('\n', 1)+';_func_return(1);return';
 }
 
 function handleZ_nop(engine, a) {
@@ -2189,17 +2189,29 @@ GnustoEngine.prototype = {
     // turn.
     reset_vm_report: function()
     {
-        m_report = {};
+        m_report = {
+            strings: [],
+        };
+    },
+
+    _vm_report_string(where, val)
+    {
+        console.log('### string', where, val);
+        if (m_report)
+            m_report.strings.push(val);
+        return val;
     },
 
     // Called at the end of a turn (just before awaiting input) to get
     // a report on the current state of affairs.
     get_vm_report: function()
     {
-        if (!m_report_info)
+        if (!m_report_info || !m_report)
             return null;
         
-        var report = {};
+        var report = {
+            strings: m_report.strings,
+        };
         
         report.objects = [];
         var onum = 1;
@@ -4162,7 +4174,9 @@ GnustoEngine.prototype = {
             return "<void>";
         } else {
             var aa = this.m_property_list_addr_start + object*this.m_object_size;
-            return this._zscii_from(this.getUnsignedWord(aa)+1);
+            var ab = this.getUnsignedWord(aa)+1;
+            this._vm_report_string('obj', ab);
+            return this._zscii_from(ab);
         }
     },
 
