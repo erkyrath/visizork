@@ -20,8 +20,10 @@ window.gamedat_object_treesort = new Map();
         
         if (obj.isroom)
             gamedat_object_treesort.set(obj.onum, 1);
-        else if (gamedat_object_global_ids.has(obj.onum))
+        else if (obj.onum == 13) //### PSEUDO
             gamedat_object_treesort.set(obj.onum, 3);
+        else if (gamedat_object_global_ids.has(obj.onum))
+            gamedat_object_treesort.set(obj.onum, 4);
         else
             gamedat_object_treesort.set(obj.onum, 2);
     }
