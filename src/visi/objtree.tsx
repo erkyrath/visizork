@@ -28,14 +28,15 @@ export function ObjectTree()
         return (o1.onum - o2.onum);
     });
 
-    function showchild(tup: ZObject) {
-        let obj = gamedat_object_ids.get(tup.onum);
+    function showchild(tup: ZObject, parentnum: number) {
+        let onum = tup.onum;
+        let obj = gamedat_object_ids.get(onum);
         if (!obj) {
-            return <li key={ tup.onum }>{ tup.onum }: ???</li>;
+            return <li key={ onum }>{ onum }: ???</li>;
         }
 
         let children: ZObject[] = [];
-        if (tup.onum != ROOM_HOLDER && tup.onum != LOCAL_GLOBALS) {
+        if (onum != ROOM_HOLDER && onum != LOCAL_GLOBALS) {
             let childset = new Set();
             let val = tup.child;
             while (val != 0) {
@@ -72,17 +73,17 @@ export function ObjectTree()
             label = 'obj';
         
         return (
-            <li key={ tup.onum }>
-                { label } { tup.onum }: { obj.name } "{ obj.desc }"
+            <li key={ onum }>
+                { label } { onum }: { obj.name } "{ obj.desc }"
                 { (children.length ? (
                     <ul>
-                        { children.map(showchild) }
+                        { children.map((o) => showchild(o, onum)) }
                     </ul>) : null) }
-                { (tup.onum == ROOM_HOLDER ? (
+                { (onum == ROOM_HOLDER ? (
                     <ul>
                         <li>(contains all rooms)</li>
                     </ul>) : null) }
-                { (tup.onum == LOCAL_GLOBALS ? (
+                { (onum == LOCAL_GLOBALS ? (
                     <ul>
                         <li>(contains all scenery)</li>
                     </ul>) : null) }
@@ -92,7 +93,7 @@ export function ObjectTree()
     
     return (
         <ul>
-            { roots.map(showchild) }
+            { roots.map((o) => showchild(o, 0)) }
         </ul>
     );
 }
