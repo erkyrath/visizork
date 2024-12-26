@@ -50,6 +50,9 @@ def write_objects(filename, zcode, objdat):
         }
         if type == 'ROOM':
             dat['isroom'] = True
+        if 5 in odump.props:
+            # "GLOBAL" property
+            dat['scenery'] = odump.props[5]
         ls.append(dat)
     
     fl = open(filename, 'w')
