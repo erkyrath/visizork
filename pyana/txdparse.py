@@ -119,4 +119,47 @@ class TXDData:
                         text = String.unescape(match.group(3))
                         st = String(addr, index, text)
                         self.strings.append(st)
-                        
+
+
+class Object:
+    def __init__(self, num):
+        self.num = num
+        self.attrs = []
+        self.propaddr = None
+        self.description = None
+
+    def __repr__(self):
+        return '<Object %d "%s">' % (self.num, self.desc,)
+
+class ObjDumpData:
+    def __init__(self):
+        self.objects = []
+
+    def readdump(self, filename):
+        pat_objhead = re.compile('^[ ]*([0-9]+)[.][ ]*Attributes:(.*)')
+        pat_propaddr = re.compile('^[ ]*Property address: ([0-9a-fA-F]+)')
+        pat_desc = re.compile('^[ ]*Description: "([^"]*)"')
+        with open(filename) as infl:
+            curobj = None
+            for ln in infl.readlines():
+                ln = ln.rstrip()
+                match = pat_objhead.match(ln)
+                if match:
+                    curobj = Object(int(match.group(1)))
+                    val = match.group(2).strip()
+                    if val != 'None':
+                        ls = val.split(',')
+                        ls = [ int(val.strip()) for val in ls ]
+                        curobj.attrs = ls
+                    self.objects.append(curobj)
+                    continue
+                match = pat_propaddr.match(ln)
+                if match:
+                    curobj.propaddr = int(match.group(1), 16)
+                    continue
+                match = pat_desc.match(ln)
+                if match:
+                    curobj.desc = match.group(1)
+                    continue
+                    
+

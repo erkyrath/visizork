@@ -7,7 +7,7 @@ from zillex import Lexer, dumptokens
 from zilana import Zcode
 from zilana import markcomments, stripcomments
 from zilana import stripifdefs
-from txdparse import TXDData
+from txdparse import TXDData, ObjDumpData
 from writer import write_objects
 
 popt = optparse.OptionParser()
@@ -22,6 +22,8 @@ popt.add_option('--gamedat',
                 action='store_true', dest='gamedat')
 popt.add_option('-t', '--txd',
                 action='store_true', dest='txdfile')
+popt.add_option('-o', '--obj',
+                action='store_true', dest='objdump')
 
 (opts, args) = popt.parse_args()
 
@@ -49,3 +51,9 @@ if opts.txdfile:
     print('routines:', len(dat.routines))
     print('strings:', len(dat.strings))
     print('istrings:', len(dat.istrings))
+
+if opts.objdump:
+    print('reading object dump...')
+    dat = ObjDumpData()
+    dat.readdump('gamedat/obj-dump.txt')
+    
