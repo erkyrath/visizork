@@ -87,6 +87,19 @@ export function ObjectTree()
             label = 'scen';
         else
             label = 'obj';
+
+        let special: string = '';
+        switch (onum) {
+        case gamedat_ids.ROOMS:
+            special = '(contains all rooms)';
+            break;
+        case gamedat_ids.GLOBAL_OBJECTS:
+            special = '(contains all global-scoped objects)';
+            break;
+        case gamedat_ids.LOCAL_GLOBALS:
+            special = '(contains all scenery)';
+            break;
+        }
         
         return (
             <li key={ onum } className={ (onum==selected) ? 'Selected' : '' }>
@@ -95,17 +108,9 @@ export function ObjectTree()
                     <ul className="DataList">
                         { children.map((o) => showchild(o, onum)) }
                     </ul>) : null) }
-                { (onum == gamedat_ids.ROOMS ? (
+                { (special.length ? (
                     <ul className="DataList">
-                        <li>(contains all rooms)</li>
-                    </ul>) : null) }
-                { (onum == gamedat_ids.GLOBAL_OBJECTS ? (
-                    <ul className="DataList">
-                        <li>(contains all global-scoped)</li>
-                    </ul>) : null) }
-                { (onum == gamedat_ids.LOCAL_GLOBALS ? (
-                    <ul className="DataList">
-                        <li>(contains all scenery)</li>
+                        <li><i>{ special }</i></li>
                     </ul>) : null) }
             </li>
         );
