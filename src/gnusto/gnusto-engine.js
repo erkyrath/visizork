@@ -2196,7 +2196,6 @@ GnustoEngine.prototype = {
 
     _vm_report_string(where, val)
     {
-        console.log('### string', where, val);
         if (m_report)
             m_report.strings.push(val);
         return val;
