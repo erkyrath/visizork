@@ -144,8 +144,10 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
     }
     
     return (
-        <li className={ (onum==selected) ? 'Selected' : '' } onClick={ evhan_click }>
-            { label } { onum }: { obj.name } "{ obj.desc }"
+        <>
+            <li className={ (onum==selected) ? 'Selected' : '' } onClick={ evhan_click }>
+                { label } { onum }: { obj.name } "{ obj.desc }"
+            </li>
             { (childls.length ? (
                 <ul className="DataList">
                     { childls }
@@ -154,7 +156,7 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
                 <ul className="DataList">
                     <li><i>{ special }</i></li>
                 </ul>) : null) }
-        </li>
+        </>
     );
 }
 
