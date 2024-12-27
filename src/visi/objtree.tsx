@@ -10,9 +10,19 @@ import { ReactCtx } from './context';
 export type ObjTreeContextContent = {
     map: Map<number, ZObject>;
     selected: number;
+    setSelected: (val:number) => void;
 };
 
-const ObjTreeCtx = createContext({ map: new Map(), selected: -1 } as ObjTreeContextContent);
+function new_context() : ObjTreeContextContent
+{
+    return {
+        map: new Map(),
+        selected: -1,
+        setSelected: (val) => {},
+    };
+}
+
+const ObjTreeCtx = createContext(new_context());
 
 export function ObjectTree()
 {
@@ -55,7 +65,7 @@ export function ObjectTree()
         <ShowObject key={ o.onum } tup={ o } parentnum={ 0 } /> );
     
     return (
-        <ObjTreeCtx.Provider value={ { map, selected } }>
+        <ObjTreeCtx.Provider value={ { map, selected, setSelected } }>
             <ul className="DataList">
                 { rootls }
             </ul>
@@ -127,9 +137,14 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
 
     var childls = children.map((o) =>
         <ShowObject key={ o.onum } tup={ o } parentnum={ onum } /> );
+
+    function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+        ev.stopPropagation();
+        ctx.setSelected(onum);
+    }
     
     return (
-        <li className={ (onum==selected) ? 'Selected' : '' }>
+        <li className={ (onum==selected) ? 'Selected' : '' } onClick={ evhan_click }>
             { label } { onum }: { obj.name } "{ obj.desc }"
             { (childls.length ? (
                 <ul className="DataList">
