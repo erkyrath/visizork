@@ -72,7 +72,7 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
     let onum = tup.onum;
     let obj = gamedat_object_ids.get(onum);
     if (!obj) {
-        return <li key={ onum }>{ onum }: ???</li>;
+        return <li>{ onum }: ???</li>;
     }
 
     let children: ZObject[] = [];
@@ -129,7 +129,7 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
         <ShowObject key={ o.onum } tup={ o } parentnum={ onum } /> );
     
     return (
-        <li key={ onum } className={ (onum==selected) ? 'Selected' : '' }>
+        <li className={ (onum==selected) ? 'Selected' : '' }>
             { label } { onum }: { obj.name } "{ obj.desc }"
             { (childls.length ? (
                 <ul className="DataList">
