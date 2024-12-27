@@ -7,7 +7,8 @@ import { sourceloc_start } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
 import { ObjectTree } from './objtree';
-import { StringActivity} from './activity';
+import { StringActivity } from './activity';
+import { SourceView } from './sourceview';
 
 // This is the GnustoRunner and the GnustoEngine, but I don't have
 // type info for them yet.
@@ -54,6 +55,7 @@ function MyApp()
 
     let rctx: ContextContent = {
         zstate: zstate,
+        loc: loc,
     };
     
     return (
@@ -62,7 +64,7 @@ function MyApp()
                 <ObjectTree />
             </div>
             <div className="SourcePane">
-                <StringActivity />
+                <SourceView />
             </div>
         </ReactCtx.Provider>
     );
