@@ -37,6 +37,7 @@ window.gamedat_ids = {};
     gamedat_ids.GLOBAL_OBJECTS = gamedat_object_names.get('GLOBAL-OBJECTS').onum;
     gamedat_ids.LOCAL_GLOBALS = gamedat_object_names.get('LOCAL-GLOBALS').onum;
     gamedat_ids.ADVENTURER = gamedat_object_names.get('ADVENTURER').onum;
+    gamedat_ids.STARTROOM = gamedat_object_names.get('WEST-OF-HOUSE').onum;
     gamedat_ids.PSEUDO_OBJECT = gamedat_object_names.get('PSEUDO-OBJECT').onum;
 
 })();
