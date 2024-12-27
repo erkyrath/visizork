@@ -1,11 +1,18 @@
 import React from 'react';
-import { useState, useContext } from 'react';
+import { useState, useContext, createContext } from 'react';
 
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids, gamedat_object_treesort, gamedat_distances } from './gamedat';
 import { gamedat_ids } from './gamedat';
 import { ZState, ZObject } from './zstate';
 
 import { ReactCtx } from './context';
+
+export type ObjTreeContextContent = {
+    map: Map<number, ZObject>;
+    selected: number;
+};
+
+const ZObjectMapCtx = createContext({ map: new Map(), selected: -1 } as ObjTreeContextContent);
 
 export function ObjectTree()
 {
@@ -15,7 +22,7 @@ export function ObjectTree()
     let zstate = rctx.zstate;
 
     let roots: ZObject[] = [];
-    let map = new Map();
+    let map: Map<number, ZObject> = new Map();
     for (let tup of zstate.objects) {
         map.set(tup.onum, tup);
         if (tup.parent == 0 || tup.parent == gamedat_ids.ROOMS || tup.parent == gamedat_ids.GLOBAL_OBJECTS || tup.onum == gamedat_ids.PSEUDO_OBJECT)
@@ -44,81 +51,95 @@ export function ObjectTree()
         return (o1.onum - o2.onum);
     });
 
-    function showchild(tup: ZObject, parentnum: number) {
-        let onum = tup.onum;
-        let obj = gamedat_object_ids.get(onum);
-        if (!obj) {
-            return <li key={ onum }>{ onum }: ???</li>;
+    var rootls = roots.map((o) =>
+        <ShowObject key={ o.onum } tup={ o } parentnum={ 0 } /> );
+    
+    return (
+        <ZObjectMapCtx.Provider value={ { map, selected } }>
+            <ul className="DataList">
+                { rootls }
+            </ul>
+        </ZObjectMapCtx.Provider>
+    );
+}
+
+function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
+{
+    let ctx = useContext(ZObjectMapCtx);
+    let map = ctx.map;
+    let selected = ctx.selected;
+    
+    let onum = tup.onum;
+    let obj = gamedat_object_ids.get(onum);
+    if (!obj) {
+        return <li key={ onum }>{ onum }: ???</li>;
+    }
+
+    let children: ZObject[] = [];
+    if (onum != gamedat_ids.ROOMS && onum != gamedat_ids.LOCAL_GLOBALS && onum != gamedat_ids.GLOBAL_OBJECTS) {
+        let childset = new Set();
+        let val = tup.child;
+        while (val != 0) {
+            if (childset.has(val)) {
+                console.log('BUG: loop in sibling chain');
+                break;
+            }
+            let ctup = map.get(val);
+            if (!ctup)
+                break;
+            children.push(ctup);
+            childset.add(val);
+            val = ctup.sibling;
         }
 
-        let children: ZObject[] = [];
-        if (onum != gamedat_ids.ROOMS && onum != gamedat_ids.LOCAL_GLOBALS && onum != gamedat_ids.GLOBAL_OBJECTS) {
-            let childset = new Set();
-            let val = tup.child;
-            while (val != 0) {
-                if (childset.has(val)) {
-                    console.log('BUG: loop in sibling chain');
-                    break;
-                }
-                let ctup = map.get(val);
+        if (obj.scenery) {
+            for (let sval of obj.scenery) {
+                let ctup = map.get(sval);
                 if (!ctup)
                     break;
                 children.push(ctup);
-                childset.add(val);
-                val = ctup.sibling;
-            }
-
-            if (obj.scenery) {
-                for (let sval of obj.scenery) {
-                    let ctup = map.get(sval);
-                    if (!ctup)
-                        break;
-                    children.push(ctup);
-                }
             }
         }
-
-        let label: string;
-        if (obj.isroom)
-            label = 'room';
-        else if (gamedat_object_global_ids.has(onum))
-            label = 'glob';
-        else if (tup.parent != parentnum)
-            label = 'scen';
-        else
-            label = 'obj';
-
-        let special: string = '';
-        switch (onum) {
-        case gamedat_ids.ROOMS:
-            special = '(contains all rooms)';
-            break;
-        case gamedat_ids.GLOBAL_OBJECTS:
-            special = '(contains all global-scoped objects)';
-            break;
-        case gamedat_ids.LOCAL_GLOBALS:
-            special = '(contains all scenery)';
-            break;
-        }
-        
-        return (
-            <li key={ onum } className={ (onum==selected) ? 'Selected' : '' }>
-                { label } { onum }: { obj.name } "{ obj.desc }"
-                { (children.length ? (
-                    <ul className="DataList">
-                        { children.map((o) => showchild(o, onum)) }
-                    </ul>) : null) }
-                { (special.length ? (
-                    <ul className="DataList">
-                        <li><i>{ special }</i></li>
-                    </ul>) : null) }
-            </li>
-        );
     }
+
+    let label: string;
+    if (obj.isroom)
+        label = 'room';
+    else if (gamedat_object_global_ids.has(onum))
+        label = 'glob';
+    else if (tup.parent != parentnum)
+        label = 'scen';
+    else
+        label = 'obj';
+
+    let special: string = '';
+    switch (onum) {
+    case gamedat_ids.ROOMS:
+        special = '(contains all rooms)';
+        break;
+    case gamedat_ids.GLOBAL_OBJECTS:
+        special = '(contains all global-scoped objects)';
+        break;
+    case gamedat_ids.LOCAL_GLOBALS:
+        special = '(contains all scenery)';
+        break;
+    }
+
+    var childls = children.map((o) =>
+        <ShowObject key={ o.onum } tup={ o } parentnum={ onum } /> );
     
     return (
-        <ul className="DataList">
-            { roots.map((o) => showchild(o, 0)) }
-        </ul>
+        <li key={ onum } className={ (onum==selected) ? 'Selected' : '' }>
+            { label } { onum }: { obj.name } "{ obj.desc }"
+            { (childls.length ? (
+                <ul className="DataList">
+                    { childls }
+                </ul>) : null) }
+            { (special.length ? (
+                <ul className="DataList">
+                    <li><i>{ special }</i></li>
+                </ul>) : null) }
+        </li>
     );
 }
+
