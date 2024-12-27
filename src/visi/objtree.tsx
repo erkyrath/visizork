@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext } from 'react';
 
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids, gamedat_object_treesort, gamedat_distances } from './gamedat';
-import { gamedat_ids, ADVENTURER, PSEUDO_OBJECT, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
+import { gamedat_ids, PSEUDO_OBJECT, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
 import { ZState, ZObject } from './zstate';
 
 import { ReactCtx } from './context';
@@ -20,7 +20,7 @@ export function ObjectTree()
             roots.push(tup);
     }
 
-    let advroom = ADVENTURER;
+    let advroom: number = gamedat_ids.ADVENTURER;
     while (true) {
         let tup = map.get(advroom);
         if (!tup || tup.parent == 0 || tup.parent == gamedat_ids.ROOMS)
