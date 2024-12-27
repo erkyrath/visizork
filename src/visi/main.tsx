@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from 'react';
 import { Root, createRoot } from 'react-dom/client';
 
 import { ZState } from './zstate';
+import { sourceloc_start } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
 import { ObjectTree } from './objtree';
@@ -35,6 +36,7 @@ export function init(runnerref: any)
 function MyApp()
 {
     const [ zstate, setZState ] = useState(engine.get_vm_report() as ZState);
+    const [ loc, setLoc ] = useState(sourceloc_start());
 
     useEffect(() => {
         function evhan(ev: Event) {

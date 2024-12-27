@@ -5,6 +5,11 @@ export type SourceLoc = {
     char: number;
 };
 
+export function sourceloc_start() : SourceLoc
+{
+    return { file:'gverbs.zil', line: 78, char: 1 };
+}
+
 export type ObjectData = {
     onum: number;
     name: string;
@@ -15,7 +20,7 @@ export type ObjectData = {
     sourceloc: SourceLoc;
 };
 
-export const ROOM_HOLDER = (window as any).ROOM_HOLDER as number;
+export const gamedat_ids = (window as any).gamedat_ids;
 export const GLOBAL_OBJECTS = 247; //###
 export const LOCAL_GLOBALS = 249; //###
 export const PSEUDO_OBJECT = 13; //###

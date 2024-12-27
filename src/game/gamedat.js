@@ -1,12 +1,12 @@
 
-window.ROOM_HOLDER = 82;
-
 window.gamedat_object_ids = new Map();
 window.gamedat_object_names = new Map();
 window.gamedat_object_room_ids = new Set();
 window.gamedat_object_global_ids = new Set();
 window.gamedat_object_treesort = new Map();
 window.gamedat_string_map = new Map();
+
+window.gamedat_ids = {};
 
 (function() {
     for (let obj of window.gamedat_objects) {
@@ -21,7 +21,7 @@ window.gamedat_string_map = new Map();
         
         if (obj.isroom)
             gamedat_object_treesort.set(obj.onum, 1);
-        else if (obj.onum == 13) //### PSEUDO
+        else if (obj.name == 'PSEUDO-OBJECT')
             gamedat_object_treesort.set(obj.onum, 3);
         else if (gamedat_object_global_ids.has(obj.onum))
             gamedat_object_treesort.set(obj.onum, 4);
@@ -32,5 +32,12 @@ window.gamedat_string_map = new Map();
     for (let tup of window.gamedat_strings) {
         gamedat_string_map.set(tup[0], tup[1]);
     }
+
+    gamedat_ids.ROOMS = gamedat_object_names.get('ROOMS').onum;
+    gamedat_ids.GLOBAL_OBJECTS = gamedat_object_names.get('GLOBAL-OBJECTS').onum;
+    gamedat_ids.LOCAL_GLOBALS = gamedat_object_names.get('LOCAL-GLOBALS').onum;
+    gamedat_ids.ADVENTURER = gamedat_object_names.get('ADVENTURER').onum;
+    gamedat_ids.PSEUDO_OBJECT = gamedat_object_names.get('PSEUDO-OBJECT').onum;
+
 })();
 

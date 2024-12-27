@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext } from 'react';
 
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids, gamedat_object_treesort, gamedat_distances } from './gamedat';
-import { ADVENTURER, ROOM_HOLDER, PSEUDO_OBJECT, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
+import { gamedat_ids, ADVENTURER, PSEUDO_OBJECT, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
 import { ZState, ZObject } from './zstate';
 
 import { ReactCtx } from './context';
@@ -16,14 +16,14 @@ export function ObjectTree()
     let map = new Map();
     for (let tup of zstate.objects) {
         map.set(tup.onum, tup);
-        if (tup.parent == 0 || tup.parent == ROOM_HOLDER || tup.parent == GLOBAL_OBJECTS || tup.onum == PSEUDO_OBJECT)
+        if (tup.parent == 0 || tup.parent == gamedat_ids.ROOMS || tup.parent == GLOBAL_OBJECTS || tup.onum == PSEUDO_OBJECT)
             roots.push(tup);
     }
 
     let advroom = ADVENTURER;
     while (true) {
         let tup = map.get(advroom);
-        if (!tup || tup.parent == 0 || tup.parent == ROOM_HOLDER)
+        if (!tup || tup.parent == 0 || tup.parent == gamedat_ids.ROOMS)
             break;
         advroom = tup.parent;
     }
@@ -50,7 +50,7 @@ export function ObjectTree()
         }
 
         let children: ZObject[] = [];
-        if (onum != ROOM_HOLDER && onum != LOCAL_GLOBALS && onum != GLOBAL_OBJECTS) {
+        if (onum != gamedat_ids.ROOMS && onum != LOCAL_GLOBALS && onum != GLOBAL_OBJECTS) {
             let childset = new Set();
             let val = tup.child;
             while (val != 0) {
@@ -93,7 +93,7 @@ export function ObjectTree()
                     <ul className="DataList">
                         { children.map((o) => showchild(o, onum)) }
                     </ul>) : null) }
-                { (onum == ROOM_HOLDER ? (
+                { (onum == gamedat_ids.ROOMS ? (
                     <ul className="DataList">
                         <li>(contains all rooms)</li>
                     </ul>) : null) }
