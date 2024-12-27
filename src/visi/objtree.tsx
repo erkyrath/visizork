@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext } from 'react';
 
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids, gamedat_object_treesort, gamedat_distances } from './gamedat';
-import { gamedat_ids, PSEUDO_OBJECT, GLOBAL_OBJECTS, LOCAL_GLOBALS } from './gamedat';
+import { gamedat_ids } from './gamedat';
 import { ZState, ZObject } from './zstate';
 
 import { ReactCtx } from './context';
@@ -16,7 +16,7 @@ export function ObjectTree()
     let map = new Map();
     for (let tup of zstate.objects) {
         map.set(tup.onum, tup);
-        if (tup.parent == 0 || tup.parent == gamedat_ids.ROOMS || tup.parent == GLOBAL_OBJECTS || tup.onum == PSEUDO_OBJECT)
+        if (tup.parent == 0 || tup.parent == gamedat_ids.ROOMS || tup.parent == gamedat_ids.GLOBAL_OBJECTS || tup.onum == gamedat_ids.PSEUDO_OBJECT)
             roots.push(tup);
     }
 
@@ -50,7 +50,7 @@ export function ObjectTree()
         }
 
         let children: ZObject[] = [];
-        if (onum != gamedat_ids.ROOMS && onum != LOCAL_GLOBALS && onum != GLOBAL_OBJECTS) {
+        if (onum != gamedat_ids.ROOMS && onum != gamedat_ids.LOCAL_GLOBALS && onum != gamedat_ids.GLOBAL_OBJECTS) {
             let childset = new Set();
             let val = tup.child;
             while (val != 0) {
@@ -97,11 +97,11 @@ export function ObjectTree()
                     <ul className="DataList">
                         <li>(contains all rooms)</li>
                     </ul>) : null) }
-                { (onum == GLOBAL_OBJECTS ? (
+                { (onum == gamedat_ids.GLOBAL_OBJECTS ? (
                     <ul className="DataList">
                         <li>(contains all global-scoped)</li>
                     </ul>) : null) }
-                { (onum == LOCAL_GLOBALS ? (
+                { (onum == gamedat_ids.LOCAL_GLOBALS ? (
                     <ul className="DataList">
                         <li>(contains all scenery)</li>
                     </ul>) : null) }
