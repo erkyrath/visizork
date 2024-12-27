@@ -12,7 +12,7 @@ export type ObjTreeContextContent = {
     selected: number;
 };
 
-const ZObjectMapCtx = createContext({ map: new Map(), selected: -1 } as ObjTreeContextContent);
+const ObjTreeCtx = createContext({ map: new Map(), selected: -1 } as ObjTreeContextContent);
 
 export function ObjectTree()
 {
@@ -55,17 +55,17 @@ export function ObjectTree()
         <ShowObject key={ o.onum } tup={ o } parentnum={ 0 } /> );
     
     return (
-        <ZObjectMapCtx.Provider value={ { map, selected } }>
+        <ObjTreeCtx.Provider value={ { map, selected } }>
             <ul className="DataList">
                 { rootls }
             </ul>
-        </ZObjectMapCtx.Provider>
+        </ObjTreeCtx.Provider>
     );
 }
 
 function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
 {
-    let ctx = useContext(ZObjectMapCtx);
+    let ctx = useContext(ObjTreeCtx);
     let map = ctx.map;
     let selected = ctx.selected;
     
