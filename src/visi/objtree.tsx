@@ -9,6 +9,8 @@ import { ReactCtx } from './context';
 
 export function ObjectTree()
 {
+    const [ selected, setSelected ] = useState(-1);
+    
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
 
@@ -87,7 +89,7 @@ export function ObjectTree()
             label = 'obj';
         
         return (
-            <li key={ onum }>
+            <li key={ onum } className={ (onum==selected) ? 'Selected' : '' }>
                 { label } { onum }: { obj.name } "{ obj.desc }"
                 { (children.length ? (
                     <ul className="DataList">

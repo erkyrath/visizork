@@ -71,3 +71,6 @@ ul.DataList ul {
     padding-left: 20px;
 }
 
+.DataList li.Selected {
+    background: yellow;
+}
