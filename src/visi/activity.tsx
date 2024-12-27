@@ -23,7 +23,7 @@ export function StringActivity()
 	}
 	return (
 	    <li key={ counter++ }>
-		{ text }
+		{ addr }: { text }
 	    </li>
 	);
     });
