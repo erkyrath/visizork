@@ -90,19 +90,19 @@ export function ObjectTree()
             <li key={ onum }>
                 { label } { onum }: { obj.name } "{ obj.desc }"
                 { (children.length ? (
-                    <ul>
+                    <ul className="DataList">
                         { children.map((o) => showchild(o, onum)) }
                     </ul>) : null) }
                 { (onum == ROOM_HOLDER ? (
-                    <ul>
+                    <ul className="DataList">
                         <li>(contains all rooms)</li>
                     </ul>) : null) }
                 { (onum == GLOBAL_OBJECTS ? (
-                    <ul>
+                    <ul className="DataList">
                         <li>(contains all global-scoped)</li>
                     </ul>) : null) }
                 { (onum == LOCAL_GLOBALS ? (
-                    <ul>
+                    <ul className="DataList">
                         <li>(contains all scenery)</li>
                     </ul>) : null) }
             </li>
@@ -110,7 +110,7 @@ export function ObjectTree()
     }
     
     return (
-        <ul>
+        <ul className="DataList">
             { roots.map((o) => showchild(o, 0)) }
         </ul>
     );

@@ -56,7 +56,10 @@ function MyApp()
     
     return (
         <ReactCtx.Provider value={ rctx }>
-            <div className="ListPane">
+            <div className="ViewPane">
+                <ObjectTree />
+            </div>
+            <div className="SourcePane">
                 <StringActivity />
             </div>
         </ReactCtx.Provider>

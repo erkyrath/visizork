@@ -29,7 +29,7 @@ export function StringActivity()
     });
     
     return (
-        <ul>
+        <ul className="DataList">
             { ells }
         </ul>
     );
