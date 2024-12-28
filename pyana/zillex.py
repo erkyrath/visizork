@@ -61,7 +61,7 @@ class Token:
         if self.typ is TokType.ID:
             if type(key) is str:
                 return (self.val ==key)
-            if type(key) in (list, tuple):
+            if type(key) in (list, tuple, set):
                 return (self.val in key)
             if callable(key):
                 return key(self.val)

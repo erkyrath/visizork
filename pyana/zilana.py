@@ -111,6 +111,8 @@ class Zcode:
                                     desc = strtok.val
                                 else:
                                     self.strings.append( (strtok.val, strtok.pos) )
+                        if proptok.matchgroup(Zcode.directions, 1):
+                            self.findstringsintok(proptok)
                     self.objects.append( (idtok.val, flag, desc, tok.pos) )
                     if isroom:
                         self.roomnames.append(idtok.val)
