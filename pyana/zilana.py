@@ -184,7 +184,7 @@ class Zcode:
             if stok.typ is TokType.STR:
                 if stok.val not in ('', 'AUX', 'OPTIONAL'):
                     self.strings.append(ZString(stok.val, stok.pos, rname))
-            if stok.typ is TokType.GROUP and stok.val in ('<>', '()') and stok.children:
+            if stok.typ is TokType.GROUP and stok.val in ('<>', '()', "'") and stok.children:
                 if stok.children[0].typ is TokType.ID and stok.children[0].val in ('TELL', 'PRINTI'):
                     self.findstringsintell(stok, rname)
                 else:
