@@ -123,14 +123,15 @@ class Zcode:
     def findstringsintok(self, tok):
         for stok in tok.children:
             if stok.typ is TokType.STR:
-                self.strings.append( (stok.val, stok.pos) )
+                if stok.val:
+                    self.strings.append( (stok.val, stok.pos) )
             if stok.typ is TokType.GROUP and stok.val == '<>' and stok.children:
                 self.findstringsintok(stok)
         
     def findstringsinroutine(self, tok):
         for stok in tok.children:
             if stok.typ is TokType.STR:
-                if stok.val not in ('AUX', 'OPTIONAL'):
+                if stok.val not in ('', 'AUX', 'OPTIONAL'):
                     self.strings.append( (stok.val, stok.pos) )
             if stok.typ is TokType.GROUP and stok.val in ('<>', '()') and stok.children:
                 if stok.children[0].typ is TokType.ID and stok.children[0].val in ('TELL', 'PRINTI'):
