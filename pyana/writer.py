@@ -62,6 +62,16 @@ def write_strings(filename, zcode, txdat, objdat):
             strtext_to_pos[st.text] = []
         strtext_to_pos[st.text].append(st.pos)
 
+    istrtext_to_pos = {}
+    for st in zcode.istrings:
+        text = st.text.replace('.  ', '. ')
+        text = text.replace('    ****', '   ****')
+        istrtext_to_pos[(st.rtn, text)] = st.pos
+
+    funcaddr_to_name = {}
+    for zfunc, tfunc in zip(zcode.routines, txdat.routines):
+        funcaddr_to_name[tfunc.addr] = zfunc.name
+        
     ls = []
     for str in txdat.strings:
         posls = strtext_to_pos.get(str.text)
@@ -75,7 +85,9 @@ def write_strings(filename, zcode, txdat, objdat):
                 posval = [ sourceloc(val) for val in posls ]
         ls.append([ str.addr, str.text, posval ])
     for str in txdat.istrings:
-        ls.append([ str.addr, str.text, None, str.rtn.addr ])
+        fname = funcaddr_to_name[str.rtn.addr]
+        srcpos = istrtext_to_pos.get((fname, str.text))
+        ls.append([ str.addr, str.text, sourceloc(srcpos), str.rtn.addr ])
     for obj in objdat.objects:
         if not obj.desc:
             continue
