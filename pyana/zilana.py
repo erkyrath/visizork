@@ -112,6 +112,7 @@ class Zcode:
         self.tokls = tokls
         self.globals = []
         self.strings = []
+        self.istrings = []
         self.routines = []
         self.objects = []
         self.roomnames = []
@@ -181,9 +182,14 @@ class Zcode:
                     self.strings.append(ZString(stok.val, stok.pos))
             if stok.typ is TokType.GROUP and stok.val in ('<>', '()') and stok.children:
                 if stok.children[0].typ is TokType.ID and stok.children[0].val in ('TELL', 'PRINTI'):
-                    continue
-                self.findstringsinroutine(stok)
-            
+                    self.findstringsintell(stok)
+                else:
+                    self.findstringsinroutine(stok)
+
+    def findstringsintell(self, tok):
+        for stok in tok.children:
+            if stok.typ is TokType.STR:
+                self.istrings.append(ZString(stok.val, stok.pos))
             
     def mapconnections(self):
         exitmap = dict()
