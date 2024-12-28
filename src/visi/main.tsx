@@ -8,6 +8,7 @@ import { sourceloc_start } from './gamedat';
 import { ContextContent, ReactCtx } from './context';
 import { ObjectTree } from './objtree';
 import { StringActivity } from './activity';
+import { SourceFileList } from './filelist';
 import { SourceView } from './sourceview';
 
 // This is the GnustoRunner and the GnustoEngine, but I don't have
@@ -62,7 +63,7 @@ function MyApp()
     return (
         <ReactCtx.Provider value={ rctx }>
             <div className="ViewPane">
-                <ObjectTree />
+                <SourceFileList />
             </div>
             <div className="SourcePane">
                 <SourceView />

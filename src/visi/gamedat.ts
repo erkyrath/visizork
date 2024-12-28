@@ -10,6 +10,36 @@ export function sourceloc_start() : string
     return 'J:78:1';  // { file:'gverbs.zil', line: 78, char: 1 }
 }
 
+interface SourceFileMap {
+    [key: string]: string;
+}
+
+export const sourcefile_map: SourceFileMap = {
+    A: 'zork1.zil',
+    B: '1actions.zil',
+    C: '1dungeon.zil',
+    D: 'gclock.zil',
+    E: 'gglobals.zil',
+    F: 'gmacros.zil',
+    G: 'gmain.zil',
+    H: 'gparser.zil',
+    I: 'gsyntax.zil',
+    J: 'gverbs.zil',
+};
+
+export const sourcefile_list: [ string, string ][] = [
+    ['zork1.zil',    'A'],
+    ['1actions.zil', 'B'],
+    ['1dungeon.zil', 'C'],
+    ['gmain.zil',    'G'],
+    ['gmacros.zil',  'F'],
+    ['gglobals.zil', 'E'],
+    ['gparser.zil',  'H'],
+    ['gsyntax.zil',  'I'],
+    ['gverbs.zil',   'J'],
+    ['gclock.zil',   'D'],
+];
+
 export type ObjectData = {
     onum: number;
     name: string;
