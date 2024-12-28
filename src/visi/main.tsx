@@ -63,7 +63,7 @@ function MyApp()
     return (
         <ReactCtx.Provider value={ rctx }>
             <div className="ViewPane">
-                <SourceFileList />
+                <StringActivity />
             </div>
             <div className="SourcePane">
                 <SourceView />
