@@ -39,6 +39,7 @@ if opts.zilfile:
     zcode = Zcode(ls)
     zcode.build()
     print('globals:', len(zcode.globals))
+    print('static strings:', len(zcode.strings))
     print('routines:', len(zcode.routines))
     print('objects:', len(zcode.objects))
 

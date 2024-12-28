@@ -71,6 +71,7 @@ class Zcode:
     def __init__(self, tokls):
         self.tokls = tokls
         self.globals = []
+        self.strings = []
         self.routines = []
         self.objects = []
         self.roomnames = []
@@ -84,6 +85,11 @@ class Zcode:
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     self.globals.append( (idtok.val, tok.pos) )
+                if len(tok.children) >= 3:
+                    globtok = tok.children[2]
+                    if globtok.typ is TokType.GROUP and globtok.children:
+                        if globtok.children[0].val in ('TABLE', 'LTABLE'):
+                            self.findstringsintok(globtok)
             if tok.matchform('ROUTINE', 1):
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
@@ -102,7 +108,14 @@ class Zcode:
                     self.objects.append( (idtok.val, flag, desc, tok.pos) )
                     if isroom:
                         self.roomnames.append(idtok.val)
-                
+
+    def findstringsintok(self, tok):
+        for stok in tok.children:
+            if stok.typ is TokType.STR:
+                self.strings.append( (stok.val, stok.pos) )
+            if stok.typ is TokType.GROUP and stok.val == '<>' and stok.children:
+                self.findstringsintok(stok)
+        
     def mapconnections(self):
         exitmap = dict()
         for room in self.roomnames:
