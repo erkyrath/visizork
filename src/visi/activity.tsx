@@ -13,26 +13,26 @@ export function StringActivity()
 
     let counter = 0;
     let ells = zstate.strings.map((addr) => {
-	let text = gamedat_string_map.get(addr);
-	if (!text) {
-	    return (
-		<li key={ counter++ }>
-		    string not recognized: { addr }
-		</li>
-	    );
-	}
-	return (
-	    <li key={ counter++ }>
-		{ addr }: { text }
-	    </li>
-	);
+        let text = gamedat_string_map.get(addr);
+        if (!text) {
+            return (
+                <li key={ counter++ }>
+                    string not recognized: { addr }
+                </li>
+            );
+        }
+        return (
+            <li key={ counter++ }>
+                { addr }: { text }
+            </li>
+        );
     });
     
     return (
         <div className="ScrollContent">
             <ul className="DataList">
-		{ ells }
+                { ells }
             </ul>
-	</div>
+        </div>
     );
 }
