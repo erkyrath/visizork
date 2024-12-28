@@ -125,7 +125,7 @@ class Object:
         self.num = num
         self.attrs = []
         self.propaddr = None
-        self.description = None
+        self.desc = None
         self.parent = None
         self.sibling = None
         self.child = None
