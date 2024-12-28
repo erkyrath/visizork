@@ -13,8 +13,8 @@ export function StringActivity()
 
     let counter = 0;
     let ells = zstate.strings.map((addr) => {
-        let text = gamedat_string_map.get(addr);
-        if (!text) {
+        let strdat = gamedat_string_map.get(addr);
+        if (!strdat) {
             return (
                 <li key={ counter++ }>
                     string not recognized: { addr }
@@ -23,7 +23,7 @@ export function StringActivity()
         }
         return (
             <li key={ counter++ }>
-                { addr }: { text }
+                { addr }: { strdat.text } { strdat.sourceloc }
             </li>
         );
     });

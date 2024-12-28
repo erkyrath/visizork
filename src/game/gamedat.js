@@ -30,7 +30,7 @@ window.gamedat_ids = {};
     }
 
     for (let tup of window.gamedat_strings) {
-        gamedat_string_map.set(tup[0], tup[1]);
+        gamedat_string_map.set(tup[0], { text:tup[1], sourceloc:tup[2] });
     }
 
     gamedat_ids.ROOMS = gamedat_object_names.get('ROOMS').onum;
