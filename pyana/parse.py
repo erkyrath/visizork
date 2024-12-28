@@ -63,7 +63,7 @@ if opts.gamedat:
         write_objects('src/game/objects.js', zcode, objdat)
     if opts.zilfile and opts.txdfile:
         write_routines('src/game/routines.js', zcode, txdat)
-    if opts.txdfile and opts.objdump:
-        write_strings('src/game/strings.js', txdat, objdat)
+    if opts.zilfile and opts.txdfile and opts.objdump:
+        write_strings('src/game/strings.js', zcode, txdat, objdat)
     if opts.zilfile:
         compute_room_distances('src/game/distances.js', zcode)

@@ -41,21 +41,32 @@ def load_gameinfo():
     info_loaded = True
 
 def sourceloc(tup):
+    if tup is None:
+        return None
     file, line, char = tup
     filekey = sourcefile_map[file]
     return '%s:%d:%d' % (filekey, line, char,)
 
-def write_strings(filename, txdat, objdat):
+def write_strings(filename, zcode, txdat, objdat):
     print('...writing string data:', filename)
     load_gameinfo()
 
+    objname_to_descloc = {}
+    for obj in zcode.objects:
+        if obj.desc:
+            objname_to_descloc[obj.name] = obj.descpos
+
     ls = []
     for str in txdat.strings:
-        ls.append([ str.addr, str.text ])
+        ls.append([ str.addr, str.text, None ])
     for str in txdat.istrings:
-        ls.append([ str.addr, str.text, str.rtn.addr ])
+        ls.append([ str.addr, str.text, None, str.rtn.addr ])
     for obj in objdat.objects:
-        ls.append([ obj.propaddr+1, obj.desc, obj.num ])
+        if not obj.desc:
+            continue
+        oname = objnum_to_name[obj.num]
+        srcpos = objname_to_descloc.get(oname)
+        ls.append([ obj.propaddr+1, obj.desc, sourceloc(srcpos), obj.num ])
 
     fl = open(filename, 'w')
     fl.write('window.gamedat_strings = ');
