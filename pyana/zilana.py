@@ -13,15 +13,19 @@ class ZObject:
         return '<Z%s %s "%s">' % ('Room' if self.type == 'ROOM' else 'Object', self.name, desc,)
 
 class ZString:
-    def __init__(self, text, pos):
+    def __init__(self, text, pos, rtn=None):
         self.text = text
         self.pos = pos
+        self.rtn = rtn
 
     def __repr__(self):
         summary = self.text
         if len(summary) > 40:
             summary = summary[ : 40 ] + '...'
-        return '<ZString "%s">' % (summary,)
+        rtnstr = ''
+        if self.rtn:
+            rtnstr = '%s:' % (self.rtn,)
+        return '<ZString %s"%s">' % (rtnstr, summary)
     
 class ZGlobal:
     def __init__(self, name, pos):
@@ -137,13 +141,13 @@ class Zcode:
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     self.routines.append(ZRoutine(idtok.val, tok.pos))
-                    self.findstringsinroutine(tok)
+                    self.findstringsinroutine(tok, idtok.val)
             if tok.typ is TokType.GROUP and tok.val == "'" and tok.children[0].matchform('ROUTINE', 1):
                 qtok = tok.children[0]
                 idtok = qtok.children[1]
                 if idtok.typ is TokType.ID:
                     self.routines.append(ZRoutine(idtok.val, qtok.pos))
-                    self.findstringsinroutine(qtok)
+                    self.findstringsinroutine(qtok, idtok.val)
             isobj = tok.matchform('OBJECT', 1)
             isroom = tok.matchform('ROOM', 1)
             if isobj or isroom:
@@ -175,21 +179,21 @@ class Zcode:
             if stok.typ is TokType.GROUP and stok.val == '<>' and stok.children:
                 self.findstringsintok(stok)
         
-    def findstringsinroutine(self, tok):
+    def findstringsinroutine(self, tok, rname):
         for stok in tok.children:
             if stok.typ is TokType.STR:
                 if stok.val not in ('', 'AUX', 'OPTIONAL'):
-                    self.strings.append(ZString(stok.val, stok.pos))
+                    self.strings.append(ZString(stok.val, stok.pos, rname))
             if stok.typ is TokType.GROUP and stok.val in ('<>', '()') and stok.children:
                 if stok.children[0].typ is TokType.ID and stok.children[0].val in ('TELL', 'PRINTI'):
-                    self.findstringsintell(stok)
+                    self.findstringsintell(stok, rname)
                 else:
-                    self.findstringsinroutine(stok)
+                    self.findstringsinroutine(stok, rname)
 
-    def findstringsintell(self, tok):
+    def findstringsintell(self, tok, rname):
         for stok in tok.children:
             if stok.typ is TokType.STR:
-                self.istrings.append(ZString(stok.val, stok.pos))
+                self.istrings.append(ZString(stok.val, stok.pos, rname))
             
     def mapconnections(self):
         exitmap = dict()
