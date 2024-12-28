@@ -89,6 +89,8 @@ class Zcode:
                     self.globals.append( (idtok.val, tok.pos) )
                 if len(tok.children) >= 3:
                     globtok = tok.children[2]
+                    if globtok.typ is TokType.STR:
+                        self.strings.append( (globtok.val, globtok.pos) )
                     if globtok.typ is TokType.GROUP and globtok.children:
                         if globtok.children[0].val in ('TABLE', 'LTABLE'):
                             self.findstringsintok(globtok)
