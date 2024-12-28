@@ -17,8 +17,8 @@ export function SourceView()
     let char = parseInt(charstr);
 
     return (
-	<div className="ScrollContent">
-	    Location: { file }, { line }:{ char }
-	</div>
+        <div className="ScrollContent">
+            Location: { file }, { line }:{ char }
+        </div>
     );
 }
