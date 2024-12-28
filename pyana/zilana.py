@@ -8,8 +8,19 @@ class ZObject:
         self.pos = pos
 
     def __repr__(self):
-        return '<%s %s "%s">' % ('Room' if self.type == 'ROOM' else 'Object', self.name, self.desc,)
+        return '<Z%s %s "%s">' % ('Room' if self.type == 'ROOM' else 'Object', self.name, self.desc,)
 
+class ZString:
+    def __init__(self, text, pos):
+        self.text = text
+        self.pos = pos
+
+    def __repr__(self):
+        summary = self.text
+        if len(summary) > 40:
+            summary = summary[ : 40 ] + '...'
+        return '<ZString "%s">' % (summary,)
+    
 def markcomments(ls):
     def setcomment(tok):
         tok.comment = True
@@ -99,7 +110,7 @@ class Zcode:
                 if len(tok.children) >= 3:
                     globtok = tok.children[2]
                     if globtok.typ is TokType.STR:
-                        self.strings.append( (globtok.val, globtok.pos) )
+                        self.strings.append(ZString(globtok.val, globtok.pos))
                     if globtok.typ is TokType.GROUP and globtok.children:
                         if globtok.children[0].val in ('TABLE', 'LTABLE'):
                             self.findstringsintok(globtok)
@@ -128,7 +139,7 @@ class Zcode:
                                 if proptok.children[0].val == 'DESC':
                                     desc = strtok.val
                                 else:
-                                    self.strings.append( (strtok.val, strtok.pos) )
+                                    self.strings.append(ZString(strtok.val, strtok.pos))
                         if proptok.matchgroup(Zcode.directions, 1):
                             self.findstringsintok(proptok)
                     self.objects.append(ZObject(idtok.val, flag, desc, tok.pos))
@@ -139,7 +150,7 @@ class Zcode:
         for stok in tok.children:
             if stok.typ is TokType.STR:
                 if stok.val:
-                    self.strings.append( (stok.val, stok.pos) )
+                    self.strings.append(ZString(stok.val, stok.pos))
             if stok.typ is TokType.GROUP and stok.val == '<>' and stok.children:
                 self.findstringsintok(stok)
         
@@ -147,7 +158,7 @@ class Zcode:
         for stok in tok.children:
             if stok.typ is TokType.STR:
                 if stok.val not in ('', 'AUX', 'OPTIONAL'):
-                    self.strings.append( (stok.val, stok.pos) )
+                    self.strings.append(ZString(stok.val, stok.pos))
             if stok.typ is TokType.GROUP and stok.val in ('<>', '()') and stok.children:
                 if stok.children[0].typ is TokType.ID and stok.children[0].val in ('TELL', 'PRINTI'):
                     continue
