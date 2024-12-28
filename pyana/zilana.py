@@ -68,6 +68,8 @@ def iseqzorknum(condgrp, zorknum):
                     
 
 class Zcode:
+    directions = set(['NORTH', 'EAST', 'WEST', 'SOUTH', 'NE', 'NW', 'SE', 'SW', 'UP', 'DOWN', 'IN', 'OUT', 'LAND'])
+        
     def __init__(self, tokls):
         self.tokls = tokls
         self.globals = []
@@ -125,8 +127,6 @@ class Zcode:
         for room in self.roomnames:
             exitmap[room] = []
             
-        directions = set(['NORTH', 'EAST', 'WEST', 'SOUTH', 'NE', 'NW', 'SE', 'SW', 'UP', 'DOWN', 'IN', 'OUT', 'LAND'])
-        
         for tok in self.tokls:
             if tok.matchform('ROOM', 1):
                 room = tok.children[1].val
@@ -135,7 +135,7 @@ class Zcode:
                         itok = prop.children[0]
                         totok = prop.children[1]
                         desttok = prop.children[2]
-                        if itok.typ is TokType.ID and itok.val in directions:
+                        if itok.typ is TokType.ID and itok.val in Zcode.directions:
                             if totok.typ is TokType.ID and totok.val == 'TO':
                                 if desttok.typ is TokType.ID and desttok.val in exitmap:
                                     #print(room, itok.val, desttok.val)
