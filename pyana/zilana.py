@@ -133,7 +133,7 @@ class Zcode:
                 if stok.val not in ('AUX', 'OPTIONAL'):
                     self.strings.append( (stok.val, stok.pos) )
             if stok.typ is TokType.GROUP and stok.val in ('<>', '()') and stok.children:
-                if stok.children[0].typ is TokType.ID and stok.children[0].val == 'TELL':
+                if stok.children[0].typ is TokType.ID and stok.children[0].val in ('TELL', 'PRINTI'):
                     continue
                 self.findstringsinroutine(stok)
             
