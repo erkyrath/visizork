@@ -1,14 +1,16 @@
 from zillex import Token, TokType
 
 class ZObject:
-    def __init__(self, name, flag, desc, pos):
+    def __init__(self, name, flag, desc, descpos, pos):
         self.name = name
         self.type = flag
         self.desc = desc
+        self.descpos = descpos
         self.pos = pos
 
     def __repr__(self):
-        return '<Z%s %s "%s">' % ('Room' if self.type == 'ROOM' else 'Object', self.name, self.desc,)
+        desc = (self.desc or '')
+        return '<Z%s %s "%s">' % ('Room' if self.type == 'ROOM' else 'Object', self.name, desc,)
 
 class ZString:
     def __init__(self, text, pos):
@@ -146,6 +148,7 @@ class Zcode:
             if isobj or isroom:
                 flag = 'ROOM' if isroom else 'OBJ'
                 desc = None
+                descpos = None
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     for proptok in tok.children[2:]:
@@ -154,11 +157,12 @@ class Zcode:
                                 strtok = proptok.children[1]
                                 if proptok.children[0].val == 'DESC':
                                     desc = strtok.val
+                                    descpos = strtok.pos
                                 else:
                                     self.strings.append(ZString(strtok.val, strtok.pos))
                         if proptok.matchgroup(Zcode.directions, 1):
                             self.findstringsintok(proptok)
-                    self.objects.append(ZObject(idtok.val, flag, desc, tok.pos))
+                    self.objects.append(ZObject(idtok.val, flag, desc, descpos, tok.pos))
                     if isroom:
                         self.roomnames.append(idtok.val)
 
