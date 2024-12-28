@@ -62,7 +62,25 @@ def write_strings(filename, txdat, objdat):
     json.dump(ls, fl, separators=(',', ':'))
     fl.write('\n')
     fl.close()
-    
+
+def write_routines(filename, zcode, txdat):
+    print('...writing routine data:', filename)
+    if len(zcode.routines) != len(txdat.routines):
+        raise Exception('routine length mismatch')
+    ls = []
+    for zfunc, tfunc in zip(zcode.routines, txdat.routines):
+        dat = {
+            'name': zfunc.name,
+            'addr': tfunc.addr,
+            'sourceloc': sourceloc(zfunc.pos),
+        }
+        ls.append(dat)
+
+    fl = open(filename, 'w')
+    fl.write('window.gamedat_routines = ');
+    json.dump(ls, fl, separators=(',', ':'))
+    fl.write('\n')
+    fl.close()
 
 def write_objects(filename, zcode, objdat):
     print('...writing object data:', filename)
