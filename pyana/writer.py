@@ -56,9 +56,24 @@ def write_strings(filename, zcode, txdat, objdat):
         if obj.desc:
             objname_to_descloc[obj.name] = obj.descpos
 
+    strtext_to_pos = {}
+    for st in zcode.strings:
+        if st.text not in strtext_to_pos:
+            strtext_to_pos[st.text] = []
+        strtext_to_pos[st.text].append(st.pos)
+
     ls = []
     for str in txdat.strings:
-        ls.append([ str.addr, str.text, None ])
+        posls = strtext_to_pos.get(str.text)
+        posval = None
+        if not posls:
+            print('### missing str', str)
+        else:
+            if len(posls) == 1:
+                posval = sourceloc(posls[0])
+            else:
+                posval = [ sourceloc(val) for val in posls ]
+        ls.append([ str.addr, str.text, posval ])
     for str in txdat.istrings:
         ls.append([ str.addr, str.text, None, str.rtn.addr ])
     for obj in objdat.objects:
