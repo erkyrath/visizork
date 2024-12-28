@@ -99,6 +99,12 @@ class Zcode:
                 if idtok.typ is TokType.ID:
                     self.routines.append( (idtok.val, tok.pos) )
                     self.findstringsinroutine(tok)
+            if tok.typ is TokType.GROUP and tok.val == "'" and tok.children[0].matchform('ROUTINE', 1):
+                qtok = tok.children[0]
+                idtok = qtok.children[1]
+                if idtok.typ is TokType.ID:
+                    self.routines.append( (idtok.val, qtok.pos) )
+                    self.findstringsinroutine(qtok)
             isobj = tok.matchform('OBJECT', 1)
             isroom = tok.matchform('ROOM', 1)
             if isobj or isroom:
