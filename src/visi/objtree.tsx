@@ -82,6 +82,7 @@ export function ObjectTree()
 
 function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
 {
+    let rctx = useContext(ReactCtx);
     let ctx = useContext(ObjTreeCtx);
     let map = ctx.map;
     let selected = ctx.selected;
@@ -148,6 +149,9 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
         ctx.setSelected(onum);
+        let obj = gamedat_object_ids.get(onum);
+        if (obj)
+            rctx.setLoc(obj.sourceloc);
     }
     
     return (

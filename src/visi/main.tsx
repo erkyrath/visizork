@@ -56,6 +56,7 @@ function MyApp()
     let rctx: ContextContent = {
         zstate: zstate,
         loc: loc,
+        setLoc: setLoc,
     };
     
     return (
