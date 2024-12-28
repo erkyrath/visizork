@@ -96,6 +96,7 @@ class Zcode:
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     self.routines.append( (idtok.val, tok.pos) )
+                    self.findstringsinroutine(tok)
             isobj = tok.matchform('OBJECT', 1)
             isroom = tok.matchform('ROOM', 1)
             if isobj or isroom:
@@ -124,6 +125,17 @@ class Zcode:
             if stok.typ is TokType.GROUP and stok.val == '<>' and stok.children:
                 self.findstringsintok(stok)
         
+    def findstringsinroutine(self, tok):
+        for stok in tok.children:
+            if stok.typ is TokType.STR:
+                if stok.val not in ('AUX', 'OPTIONAL'):
+                    self.strings.append( (stok.val, stok.pos) )
+            if stok.typ is TokType.GROUP and stok.val in ('<>', '()') and stok.children:
+                if stok.children[0].typ is TokType.ID and stok.children[0].val == 'TELL':
+                    continue
+                self.findstringsinroutine(stok)
+            
+            
     def mapconnections(self):
         exitmap = dict()
         for room in self.roomnames:
