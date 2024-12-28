@@ -21,6 +21,14 @@ class ZString:
             summary = summary[ : 40 ] + '...'
         return '<ZString "%s">' % (summary,)
     
+class ZGlobal:
+    def __init__(self, name, pos):
+        self.name = name
+        self.pos = pos
+
+    def __repr__(self):
+        return '<ZGlobal %s>' % (self.name,)
+    
 def markcomments(ls):
     def setcomment(tok):
         tok.comment = True
@@ -106,7 +114,7 @@ class Zcode:
             if tok.matchform('GLOBAL', 1):
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
-                    self.globals.append( (idtok.val, tok.pos) )
+                    self.globals.append(ZGlobal(idtok.val, tok.pos))
                 if len(tok.children) >= 3:
                     globtok = tok.children[2]
                     if globtok.typ is TokType.STR:
