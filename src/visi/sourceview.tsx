@@ -3,7 +3,11 @@ import { useState, useContext } from 'react';
 
 import { ReactCtx } from './context';
 
-const sourcefile_map: any = {
+interface SourceFileMap {
+    [key: string]: string;
+}
+
+const sourcefile_map: SourceFileMap = {
     A: 'zork1.zil',
     B: '1actions.zil',
     C: '1dungeon.zil',
@@ -23,7 +27,7 @@ export function SourceView()
 
     let [ filestr, linestr, charstr ] = loc.split(':');
 
-    let file = sourcefile_map[filestr] as string;
+    let file = sourcefile_map[filestr] || '???';
     let line = parseInt(linestr);
     let char = parseInt(charstr);
 
