@@ -68,21 +68,21 @@ def write_objects(filename, zcode, objdat):
     print('...writing object data:', filename)
     load_gameinfo()
     ls = []
-    for (name, type, desc, loc) in zcode.objects:
-        if name not in objname_to_num:
-            print('onum not found: %s "%s"' % (name, desc,))
+    for obj in zcode.objects:
+        if obj.name not in objname_to_num:
+            print('onum not found: %s "%s"' % (obj.name, obj.desc,))
             continue
-        onum = objname_to_num[name]
+        onum = objname_to_num[obj.name]
         if onum not in objdat.objmap:
             print('obj dump not found: %s' % (onum,))
             continue
         odump = objdat.objmap[onum]
         dat = {
-            'onum':onum, 'name':name, 'desc':desc,
+            'onum':onum, 'name':obj.name, 'desc':obj.desc,
             'origparent': odump.parent,
-            'sourceloc': sourceloc(loc),
+            'sourceloc': sourceloc(obj.pos),
         }
-        if type == 'ROOM':
+        if obj.type == 'ROOM':
             dat['isroom'] = True
         if 5 in odump.props:
             # "GLOBAL" property

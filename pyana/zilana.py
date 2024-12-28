@@ -1,5 +1,14 @@
 from zillex import Token, TokType
 
+class ZObject:
+    def __init__(self, name, flag, desc, pos):
+        self.name = name
+        self.type = flag
+        self.desc = desc
+        self.pos = pos
+
+    def __repr__(self):
+        return '<%s %s "%s">' % ('Room' if self.type == 'ROOM' else 'Object', self.name, self.desc,)
 
 def markcomments(ls):
     def setcomment(tok):
@@ -122,7 +131,7 @@ class Zcode:
                                     self.strings.append( (strtok.val, strtok.pos) )
                         if proptok.matchgroup(Zcode.directions, 1):
                             self.findstringsintok(proptok)
-                    self.objects.append( (idtok.val, flag, desc, tok.pos) )
+                    self.objects.append(ZObject(idtok.val, flag, desc, tok.pos))
                     if isroom:
                         self.roomnames.append(idtok.val)
 
