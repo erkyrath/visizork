@@ -38,8 +38,9 @@ if opts.zilfile:
         dumptokens(ls, withpos=False)
     zcode = Zcode(ls)
     zcode.build()
+    strset = set([ val[0] for val in zcode.strings ])
     print('globals:', len(zcode.globals))
-    print('static strings:', len(zcode.strings))
+    print('static strings:', len(zcode.strings), '/', 'unique:', len(strset))
     print('routines:', len(zcode.routines))
     print('objects:', len(zcode.objects))
 

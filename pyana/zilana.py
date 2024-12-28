@@ -102,9 +102,13 @@ class Zcode:
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     for proptok in tok.children[2:]:
-                        if proptok.matchgroup('DESC', 1):
+                        if proptok.matchgroup(('DESC', 'LDESC', 'FDESC', 'TEXT'), 1):
                             if proptok.children[1].typ is TokType.STR:
-                                desc = proptok.children[1].val
+                                strtok = proptok.children[1]
+                                if proptok.children[0].val == 'DESC':
+                                    desc = strtok.val
+                                else:
+                                    self.strings.append( (strtok.val, strtok.pos) )
                     self.objects.append( (idtok.val, flag, desc, tok.pos) )
                     if isroom:
                         self.roomnames.append(idtok.val)

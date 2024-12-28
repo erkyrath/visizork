@@ -57,6 +57,16 @@ class Token:
                     return True
         return False
 
+    def idmatch(self, key):
+        if self.typ is TokType.ID:
+            if type(key) is str:
+                return (self.val ==key)
+            if type(key) in (list, tuple):
+                return (self.val in key)
+            if callable(key):
+                return key(self.val)
+            raise Exception('idmatch could not cope with key %s' % (key,))
+
     def matchform(self, key, minlen):
         if self.typ is TokType.GROUP and self.val == '<>' and self.children:
             itok = self.children[0]
@@ -66,7 +76,7 @@ class Token:
     def matchgroup(self, key, minlen):
         if self.typ is TokType.GROUP and self.val == '()' and self.children:
             itok = self.children[0]
-            if itok.typ is TokType.ID and itok.val == key and len(self.children) >= 1+minlen:
+            if itok.typ is TokType.ID and itok.idmatch(key) and len(self.children) >= 1+minlen:
                 return True
 
 class Lexer:
