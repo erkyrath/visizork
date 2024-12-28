@@ -29,8 +29,10 @@ export function StringActivity()
     });
     
     return (
-        <ul className="DataList">
-            { ells }
-        </ul>
+        <div className="ScrollContent">
+            <ul className="DataList">
+		{ ells }
+            </ul>
+	</div>
     );
 }

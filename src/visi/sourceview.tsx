@@ -9,7 +9,7 @@ export function SourceView()
     let loc = rctx.loc;
 
     return (
-	<div>
+	<div className="ScrollContent">
 	    Location: { loc.file }, { loc.line }:{ loc.char }
 	</div>
     );

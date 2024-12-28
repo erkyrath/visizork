@@ -63,12 +63,19 @@ export function ObjectTree()
 
     var rootls = roots.map((o) =>
         <ShowObject key={ o.onum } tup={ o } parentnum={ 0 } /> );
-    
+
+    function evhan_click_background(ev: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+        ev.stopPropagation();
+        setSelected(-1);
+    }
+
     return (
         <ObjTreeCtx.Provider value={ { map, selected, setSelected } }>
-            <ul className="DataList">
-                { rootls }
-            </ul>
+            <div className="ScrollContent" onClick={ evhan_click_background }>
+                <ul className="DataList">
+                    { rootls }
+                </ul>
+            </div>
         </ObjTreeCtx.Provider>
     );
 }
