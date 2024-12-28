@@ -5,9 +5,9 @@ export type SourceLoc = {
     char: number;
 };
 
-export function sourceloc_start() : SourceLoc
+export function sourceloc_start() : string
 {
-    return { file:'gverbs.zil', line: 78, char: 1 };
+    return 'J:78:1';  // { file:'gverbs.zil', line: 78, char: 1 }
 }
 
 export type ObjectData = {
@@ -17,7 +17,7 @@ export type ObjectData = {
     desc: string;
     origparent: number;
     scenery?: number[];
-    sourceloc: SourceLoc;
+    sourceloc: string;
 };
 
 export const gamedat_ids = (window as any).gamedat_ids;

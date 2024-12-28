@@ -1,12 +1,12 @@
 import { createContext } from 'react';
 
 import { ZState, zstate_empty } from './zstate';
-import { SourceLoc, sourceloc_start } from './gamedat';
+import { sourceloc_start } from './gamedat';
 
 export type ContextContent = {
     zstate: ZState;
-    loc: SourceLoc;
-    setLoc: (loc:SourceLoc) => void;
+    loc: string;
+    setLoc: (loc:string) => void;
 };
 
 export const ReactCtx = createContext({

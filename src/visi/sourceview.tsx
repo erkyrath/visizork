@@ -3,14 +3,33 @@ import { useState, useContext } from 'react';
 
 import { ReactCtx } from './context';
 
+const sourcefile_map: any = {
+    A: 'zork1.zil',
+    B: '1actions.zil',
+    C: '1dungeon.zil',
+    D: 'gclock.zil',
+    E: 'gglobals.zil',
+    F: 'gmacros.zil',
+    G: 'gmain.zil',
+    H: 'gparser.zil',
+    I: 'gsyntax.zil',
+    J: 'gverbs.zil',
+};
+
 export function SourceView()
 {
     let rctx = useContext(ReactCtx);
     let loc = rctx.loc;
 
+    let [ filestr, linestr, charstr ] = loc.split(':');
+
+    let file = sourcefile_map[filestr] as string;
+    let line = parseInt(linestr);
+    let char = parseInt(charstr);
+
     return (
 	<div className="ScrollContent">
-	    Location: { loc.file }, { loc.line }:{ loc.char }
+	    Location: { file }, { line }:{ char }
 	</div>
     );
 }
