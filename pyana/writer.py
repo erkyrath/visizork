@@ -1,5 +1,18 @@
 import json
 
+sourcefile_map = {
+    'zork1.zil':    'A',
+    '1actions.zil': 'B',
+    '1dungeon.zil': 'C',
+    'gclock.zil':   'D',
+    'gglobals.zil': 'E',
+    'gmacros.zil':  'F',
+    'gmain.zil':    'G',
+    'gparser.zil':  'H',
+    'gsyntax.zil':  'I',
+    'gverbs.zil':   'J',
+}
+
 info_loaded = False
 
 objnum_to_name = {}
@@ -29,7 +42,8 @@ def load_gameinfo():
 
 def sourceloc(tup):
     file, line, char = tup
-    return { 'file':file, 'line':line, 'char':char }
+    filekey = sourcefile_map[file]
+    return '%s:%d:%d' % (filekey, line, char,)
 
 def write_strings(filename, txdat, objdat):
     print('...writing string data:', filename)
