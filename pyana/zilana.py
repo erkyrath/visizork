@@ -89,7 +89,12 @@ def teststaticcond(cgrp):
     if cgrp.typ is TokType.GROUP and cgrp.val == '()' and len(cgrp.children) == 2:
         condgrp = cgrp.children[0]
         resgrp = cgrp.children[1]
-        
+
+    if condgrp.matchform('OR', 2):
+        for subcond in condgrp.children[1:]:
+            if iseqzorknum(subcond, 1):
+                return resgrp
+        return None
     if condgrp.typ is TokType.ID and condgrp.val == 'T':
         return resgrp
     if condgrp.matchform('GASSIGNED?', 1):
