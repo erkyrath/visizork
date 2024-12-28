@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
-import { sourcefile_list } from './gamedat';
+import { sourcefile_list, sourceloc_for_key } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -55,7 +55,7 @@ function SourceFile({ filename, filekey } : { filename:string, filekey:string })
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
         ctx.setSelected(filekey);
-        rctx.setLoc(filekey+':1:1');
+        rctx.setLoc(sourceloc_for_key(filekey));
     }
     
     return (

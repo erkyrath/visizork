@@ -10,6 +10,11 @@ export function sourceloc_start() : string
     return 'J:78:1';  // { file:'gverbs.zil', line: 78, char: 1 }
 }
 
+export function sourceloc_for_key(filekey: string) : string
+{
+    return filekey + ':1:1';
+}
+
 interface SourceFileMap {
     [key: string]: string;
 }
