@@ -6,15 +6,17 @@ import { gamedat_string_map } from './gamedat';
 
 import { ReactCtx } from './context';
 
+type SelPair = [ number, number ];
+
 export type ListContextContent = {
-    selected: number;
-    setSelected: (val:number) => void;
+    selected: SelPair;
+    setSelected: (tup:SelPair) => void;
 };
 
 function new_context() : ListContextContent
 {
     return {
-        selected: -1,
+        selected: [-1, -1],
         setSelected: (val) => {},
     };
 }
@@ -23,7 +25,7 @@ const ListCtx = createContext(new_context());
 
 export function StringActivity()
 {
-    const [ selected, setSelected ] = useState(-1);
+    const [ selected, setSelected ] = useState([-1, -1] as SelPair);
     
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
@@ -38,7 +40,7 @@ export function StringActivity()
     
     function evhan_click_background(ev: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         ev.stopPropagation();
-        setSelected(-1);
+        setSelected([-1, -1]);
     }
 
     return (
@@ -56,22 +58,23 @@ export function StringEntry({ addr, index }: { addr:number, index:number })
 {
     let rctx = useContext(ReactCtx);
     let ctx = useContext(ListCtx);
-    let selected = ctx.selected;
+    let [ selindex, seladdr ] = ctx.selected;
 
     let strdat = gamedat_string_map.get(addr);
+    let issel = (index == selindex && addr == seladdr);
 
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
-        ctx.setSelected(index);
+        ctx.setSelected([index, addr]);
         if (strdat) {
             rctx.setLoc(strdat.sourceloc);
         }
     }
     
     return (
-        <li className={ (index==selected) ? 'Selected' : '' } onClick={ evhan_click }>
+        <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
             { strdat ? (
-                <>{ addr }: { strdat.text } { strdat.sourceloc }</>
+                <>{ addr }: { strdat.text }</>
             ) : (
                 <>string not recognized: { addr }</>
             ) }
