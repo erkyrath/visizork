@@ -68,16 +68,13 @@ export function StringEntry({ addr, index }: { addr:number, index:number })
         }
     }
     
-    if (!strdat) {
-        return (
-            <li>
-                string not recognized: { addr }
-            </li>
-        );
-    }
     return (
         <li className={ (index==selected) ? 'Selected' : '' } onClick={ evhan_click }>
-            { addr }: { strdat.text } { strdat.sourceloc }
+            { strdat ? (
+                <>{ addr }: { strdat.text } { strdat.sourceloc }</>
+            ) : (
+                <>string not recognized: { addr }</>
+            ) }
         </li>
     );
 }
