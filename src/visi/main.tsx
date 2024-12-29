@@ -38,6 +38,7 @@ export function init(runnerref: any)
 function MyApp()
 {
     const [ zstate, setZState ] = useState(engine.get_vm_report() as ZState);
+    const [ tab, setTab ] = useState('objtree');
     const [ loc, setLoc ] = useState(sourceloc_start());
 
     useEffect(() => {
@@ -56,6 +57,8 @@ function MyApp()
 
     let rctx: ContextContent = {
         zstate: zstate,
+        tab: tab,
+        setTab: setTab,
         loc: loc,
         setLoc: setLoc,
     };
@@ -72,14 +75,37 @@ function MyApp()
     );
 }
 
+const tab_list = [
+    [ 'objtree', 'World' ],
+    [ 'activity', 'Trace' ],
+    [ 'filelist', 'Files' ],
+];
+
 function TabbedPane()
 {
+    let rctx = useContext(ReactCtx);
+
+    let ells = tab_list.map(([key, label]) => {
+        let cla = 'TabItem';
+        if (key == rctx.tab)
+            cla += ' Selected';
+        
+        function evhan_click(ev: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+            ev.stopPropagation();
+            rctx.setTab(key);
+        }
+    
+        return (
+            <div key={ key } className={ cla } onClick={ evhan_click }>
+                { label }
+            </div>
+        );
+    });
+    
     return (
         <>
             <div className="TabBar">
-                <div className="TabItem">World</div>
-                <div className="TabItem">Trace</div>
-                <div className="TabItem">Files</div>
+                { ells }
             </div>
             <div className="TabContent">
                 <ObjectTree />
