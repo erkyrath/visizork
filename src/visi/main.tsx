@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useContext, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Root, createRoot } from 'react-dom/client';
 
 import { ZState } from './zstate';
@@ -62,6 +63,8 @@ function MyApp()
         loc: loc,
         setLoc: setLoc,
     };
+
+    let menuel = document.getElementById('appcontrols');
     
     return (
         <ReactCtx.Provider value={ rctx }>
@@ -71,6 +74,7 @@ function MyApp()
             <div className="SourcePane">
                 <SourceView />
             </div>
+            { menuel ? createPortal(<div>Menu</div>, menuel) : null }
         </ReactCtx.Provider>
     );
 }
