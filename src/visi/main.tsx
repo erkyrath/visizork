@@ -101,6 +101,22 @@ function TabbedPane()
             </div>
         );
     });
+
+    let tabcontent;
+    switch (rctx.tab) {
+    case 'objtree':
+        tabcontent = <ObjectTree />;
+        break;
+    case 'activity':
+        tabcontent = <StringActivity />;
+        break;
+    case 'filelist':
+        tabcontent = <SourceFileList />;
+        break;
+    default:
+        tabcontent = <></>;
+        break;
+    }
     
     return (
         <>
@@ -108,7 +124,7 @@ function TabbedPane()
                 { ells }
             </div>
             <div className="TabContent">
-                <ObjectTree />
+                { tabcontent }
             </div>
         </>
     );
