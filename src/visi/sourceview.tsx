@@ -25,7 +25,7 @@ export function SourceView()
     }, [ loc ]);
     
     return (
-        <div className="ScrollContent">
+        <div id="scrollcontent_file" className="ScrollContent">
             <div>Location: { file }, { line }:{ char }</div>
             <div className="SourceRef" ref={ noderef }></div>
         </div>
@@ -63,6 +63,8 @@ function rebuild_sourcefile(nodel: HTMLDivElement, file: string, line: number, c
             for (let ln of lines) {
                 let linel = document.createElement('div');
                 linel.id = 'line_' + counter;
+                if (ln.length == 0)
+                    ln = ' ';
                 linel.appendChild(document.createTextNode(ln));
                 filel.appendChild(linel);
                 counter++;
@@ -70,6 +72,12 @@ function rebuild_sourcefile(nodel: HTMLDivElement, file: string, line: number, c
         }
         
         nodel.appendChild(filel);
+    }
+
+    let scrollel = document.getElementById('scrollcontent_file');
+    let linel = document.getElementById('line_'+line);
+    if (scrollel && linel) {
+        scrollel.scrollTop = linel.offsetTop;
     }
 }
 
