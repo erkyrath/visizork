@@ -20,10 +20,7 @@ export function SourceView()
 
     useEffect(() => {
         if (noderef.current) {
-            let el = document.createElement('div');
-            //###
-            el.appendChild(document.createTextNode(file+':'+line+':'+char));
-            noderef.current.appendChild(el);
+            rebuild_sourcefile(noderef.current, file, line, char);
         }
     }, [ loc ]);
     
@@ -33,6 +30,16 @@ export function SourceView()
             <div ref={ noderef }></div>
         </div>
     );
+}
+
+function rebuild_sourcefile(nodel: HTMLDivElement, file: string, line: number, char: number)
+{
+    while (nodel.firstChild) {
+        nodel.removeChild(nodel.firstChild);
+    }
+    let el = document.createElement('div');
+    el.appendChild(document.createTextNode(file+':'+line+':'+char));
+    nodel.appendChild(el);
 }
 
 const useRefDiv = () => useRef<HTMLDivElement>(null);
