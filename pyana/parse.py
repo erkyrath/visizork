@@ -9,6 +9,7 @@ from zilana import markcomments, stripcomments
 from zilana import stripifdefs
 from txdparse import TXDData, ObjDumpData
 from writer import write_objects, write_routines, write_strings, compute_room_distances
+from gensource import write_source
 
 popt = optparse.OptionParser()
 
@@ -24,6 +25,8 @@ popt.add_option('-t', '--txd',
                 action='store_true', dest='txdfile')
 popt.add_option('-o', '--obj',
                 action='store_true', dest='objdump')
+popt.add_option('--src',
+                action='store_true', dest='sourcelist')
 
 (opts, args) = popt.parse_args()
 
@@ -68,3 +71,6 @@ if opts.gamedat:
         write_strings('src/game/strings.js', zcode, txdat, objdat)
     if opts.zilfile:
         compute_room_distances('src/game/distances.js', zcode)
+
+if opts.sourcelist:
+    write_source('src/game/source.js')
