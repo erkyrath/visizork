@@ -63,11 +63,27 @@ function MyApp()
     return (
         <ReactCtx.Provider value={ rctx }>
             <div className="ViewPane">
-                <StringActivity />
+                <TabbedPane />
             </div>
             <div className="SourcePane">
                 <SourceView />
             </div>
         </ReactCtx.Provider>
+    );
+}
+
+function TabbedPane()
+{
+    return (
+        <>
+            <div className="TabBar">
+                <div className="TabItem">World</div>
+                <div className="TabItem">Trace</div>
+                <div className="TabItem">Files</div>
+            </div>
+            <div className="TabContent">
+                <ObjectTree />
+            </div>
+        </>
     );
 }
