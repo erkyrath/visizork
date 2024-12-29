@@ -27,19 +27,39 @@ export function SourceView()
     return (
         <div className="ScrollContent">
             <div>Location: { file }, { line }:{ char }</div>
-            <div ref={ noderef }></div>
+            <div className="SourceRef" ref={ noderef }></div>
         </div>
     );
 }
 
 function rebuild_sourcefile(nodel: HTMLDivElement, file: string, line: number, char: number)
 {
-    while (nodel.firstChild) {
-        nodel.removeChild(nodel.firstChild);
+    let fileid = 'sourcefile_' + file.replace('.zil', '');
+    
+    let filel;
+    for (let nod of nodel.children) {
+        if (nod.className == 'SourceFile') {
+            filel = nod;
+            break;
+        }
     }
-    let el = document.createElement('div');
-    el.appendChild(document.createTextNode(file+':'+line+':'+char));
-    nodel.appendChild(el);
+    
+    if (filel && filel.id == fileid) {
+        console.log('### keeping', fileid);
+    }
+    else {
+        console.log('### rebuilding', fileid);
+        while (nodel.firstChild) {
+            nodel.removeChild(nodel.firstChild);
+        }
+    
+        filel = document.createElement('div');
+        filel.id = fileid;
+        filel.className = 'SourceFile';
+        
+        filel.appendChild(document.createTextNode(file+':'+line+':'+char));
+        nodel.appendChild(filel);
+    }
 }
 
 const useRefDiv = () => useRef<HTMLDivElement>(null);
