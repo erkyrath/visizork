@@ -76,7 +76,7 @@ export function StringEntry({ addr, index }: { addr:number, index:number })
             { strdat ? (
                 <>{ addr }: { strdat.text }</>
             ) : (
-                <>string not recognized: { addr }</>
+                <>{ addr }: <i>string not recognized</i></>
             ) }
         </li>
     );
