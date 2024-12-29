@@ -67,6 +67,10 @@ interface AllDistanceMap {
     [key: number]: DistanceMap;
 };
 
+interface SourceLinesMap {
+    [key: string]: string[];
+};
+
 export const gamedat_ids = (window as any).gamedat_ids;
 
 export const gamedat_object_ids = (window as any).gamedat_object_ids as Map<number, ObjectData>;
@@ -75,5 +79,5 @@ export const gamedat_object_room_ids = (window as any).gamedat_object_room_ids a
 export const gamedat_object_global_ids = (window as any).gamedat_object_global_ids as Set<number>;
 export const gamedat_object_treesort = (window as any).gamedat_object_treesort as Map<number, number>;
 export const gamedat_string_map = (window as any).gamedat_string_map as Map<number, StringData>;
-export const gamedat_sourcefiles = (window as any).gamedat_sourcefiles as Map<string, string[]>;
+export const gamedat_sourcefiles = (window as any).gamedat_sourcefiles as SourceLinesMap;
 export const gamedat_distances = (window as any).gamedat_distances as AllDistanceMap;

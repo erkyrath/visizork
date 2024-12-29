@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext, useRef, useEffect } from 'react';
 
-import { sourcefile_map } from './gamedat';
+import { sourcefile_map, gamedat_sourcefiles } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -57,7 +57,18 @@ function rebuild_sourcefile(nodel: HTMLDivElement, file: string, line: number, c
         filel.id = fileid;
         filel.className = 'SourceFile';
         
-        filel.appendChild(document.createTextNode(file+':'+line+':'+char));
+        let lines = gamedat_sourcefiles[file];
+        if (lines) {
+            let counter = 1;
+            for (let ln of lines) {
+                let linel = document.createElement('div');
+                linel.id = 'line_' + counter;
+                linel.appendChild(document.createTextNode(ln));
+                filel.appendChild(linel);
+                counter++;
+            }
+        }
+        
         nodel.appendChild(filel);
     }
 }
