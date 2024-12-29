@@ -46,6 +46,11 @@ function rebuild_sourcefile(nodel: HTMLDivElement, file: string, line: number, c
     
     if (filel && filel.id == fileid) {
         console.log('### keeping', fileid);
+        let counter = 1;
+        for (let linel of filel.children) {
+            linel.className = (counter == line) ? 'Selected' : '';
+            counter++;
+        }
     }
     else {
         console.log('### rebuilding', fileid);
@@ -63,6 +68,8 @@ function rebuild_sourcefile(nodel: HTMLDivElement, file: string, line: number, c
             for (let ln of lines) {
                 let linel = document.createElement('div');
                 linel.id = 'line_' + counter;
+                if (counter == line)
+                    linel.className = 'Selected';
                 if (ln.length == 0)
                     ln = ' ';
                 linel.appendChild(document.createTextNode(ln));
@@ -77,7 +84,7 @@ function rebuild_sourcefile(nodel: HTMLDivElement, file: string, line: number, c
     let scrollel = document.getElementById('scrollcontent_file');
     let linel = document.getElementById('line_'+line);
     if (scrollel && linel) {
-        scrollel.scrollTop = linel.offsetTop;
+        scrollel.scrollTop = linel.offsetTop - Math.floor(scrollel.offsetHeight/4);
     }
 }
 

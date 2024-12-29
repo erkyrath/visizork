@@ -122,3 +122,7 @@ ul.DataList ul {
 .SourceFile {
     white-space: pre-wrap;
 }
+
+.SourceFile .Selected {
+    background: yellow;
+}
