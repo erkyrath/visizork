@@ -145,7 +145,7 @@ def write_objects(filename, zcode, objdat):
         dat = {
             'onum':onum, 'name':obj.name, 'desc':obj.desc,
             'origparent': odump.parent,
-            'sourceloc': sourceloc(obj.pos),
+            'sourceloc': sourceloc(tok=obj.objtok),
         }
         if obj.type == 'ROOM':
             dat['isroom'] = True

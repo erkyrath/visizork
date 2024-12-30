@@ -1,12 +1,12 @@
 from zillex import Token, TokType
 
 class ZObject:
-    def __init__(self, name, flag, desc, desctok, pos):
+    def __init__(self, name, flag, desc, desctok, objtok):
         self.name = name
         self.type = flag
         self.desc = desc
         self.desctok = desctok
-        self.pos = pos
+        self.objtok = objtok
 
     def __repr__(self):
         desc = (self.desc or '')
@@ -173,7 +173,7 @@ class Zcode:
                                     self.strings.append(ZString(strtok.val, strtok.pos, strtok.endpos))
                         if proptok.matchgroup(Zcode.directions, 1):
                             self.findstringsintok(proptok)
-                    self.objects.append(ZObject(idtok.val, flag, desc, desctok, tok.pos))
+                    self.objects.append(ZObject(idtok.val, flag, desc, desctok, tok))
                     if isroom:
                         self.roomnames.append(idtok.val)
 
