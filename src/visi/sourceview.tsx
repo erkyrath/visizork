@@ -23,7 +23,7 @@ export function SourceView()
     
     return (
         <div id="scrollcontent_file" className="ScrollContent">
-            <h2>{ filename }</h2>
+            <h2>Source file: { filename }</h2>
             <div className="SourceRef" ref={ noderef }></div>
         </div>
     );
@@ -37,12 +37,16 @@ function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
 
     let line = parseInt(loctup[1]);
     let char = parseInt(loctup[2]);
-    let endline: number|undefined;
-    let endchar: number|undefined;
+    let endline: number;
+    let endchar: number;
     
     if (loctup.length >= 5) {
         endline = parseInt(loctup[3]);
         endchar = parseInt(loctup[4]);
+    }
+    else {
+        endline = line+1;
+        endchar = 0;
     }
     
     let fileid = 'sourcefile_' + filename.replace('.zil', '');
@@ -57,11 +61,6 @@ function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
     
     if (filel && filel.id == fileid) {
         console.log('### keeping', fileid);
-        let counter = 1;
-        for (let linel of filel.children) {
-            linel.className = (counter == line) ? 'Selected' : '';
-            counter++;
-        }
     }
     else {
         console.log('### rebuilding', fileid);
@@ -79,8 +78,6 @@ function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
             for (let ln of lines) {
                 let linel = document.createElement('div');
                 linel.id = 'line_' + counter;
-                if (counter == line)
-                    linel.className = 'Selected';
                 if (ln.length == 0)
                     ln = ' ';
                 linel.appendChild(document.createTextNode(ln));
@@ -92,6 +89,12 @@ function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
         nodel.appendChild(filel);
     }
 
+    let counter = 1;
+    for (let linel of filel.children) {
+        linel.className = (counter == line) ? 'Selected' : '';
+        counter++;
+    }
+    
     let scrollel = document.getElementById('scrollcontent_file');
     let linel = document.getElementById('line_'+line);
     if (scrollel && linel) {
