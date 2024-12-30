@@ -130,3 +130,7 @@ ul.DataList ul {
 .SourceFile .Selected {
     background: yellow;
 }
+
+.SourceFile .SelRange {
+    background: #FFA;
+}

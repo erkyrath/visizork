@@ -45,8 +45,13 @@ function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
         endchar = parseInt(loctup[4]);
     }
     else {
-        endline = line+1;
-        endchar = 0;
+        endline = line;
+        endchar = 9999;
+    }
+
+    if (endchar == 0) {
+        endline--;
+        endchar = 9999;
     }
     
     let fileid = 'sourcefile_' + filename.replace('.zil', '');
@@ -89,10 +94,11 @@ function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
         nodel.appendChild(filel);
     }
 
+    let cla = ((line == endline) ? 'Selected' : 'SelRange');
     let counter = 1;
     for (let linel of filel.children) {
-        let issel = (counter >= line && (counter < endline || (counter == endline && endchar > 0)));
-        linel.className = (issel ? 'Selected' : '');
+        let issel = (counter >= line && counter <= endline);
+        linel.className = (issel ? cla : '');
         counter++;
     }
     
