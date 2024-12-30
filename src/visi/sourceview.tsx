@@ -91,7 +91,8 @@ function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
 
     let counter = 1;
     for (let linel of filel.children) {
-        linel.className = (counter == line) ? 'Selected' : '';
+        let issel = (counter >= line && (counter < endline || (counter == endline && endchar > 0)));
+        linel.className = (issel ? 'Selected' : '');
         counter++;
     }
     
