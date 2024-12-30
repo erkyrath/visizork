@@ -2192,7 +2192,7 @@ GnustoEngine.prototype = {
     {
         m_report = {
             strings: [],
-            calls: [],
+            calls: this.m_func_stack.slice(),
         };
     },
 
@@ -2235,7 +2235,8 @@ GnustoEngine.prototype = {
             onum++;
         }
 
-        var calltree = { type:'call', addr:this.getUnsignedWord(0x6), children:[] };
+        var initpc = this.getUnsignedWord(0x6) - 1;
+        var calltree = { type:'call', addr:initpc, children:[] };
         var stack = [ calltree ];
         for (var addr of m_report.calls) {
             if (addr >= 0) {
@@ -2247,7 +2248,7 @@ GnustoEngine.prototype = {
                 stack.pop();
             }
         }
-        report.calls = calltree;
+        report.calltree = calltree;
         
         return report;
     },
