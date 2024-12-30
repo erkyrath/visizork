@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "build": "npx tsc && npx rollup -c",
-    "min-gamedat.js": "npx terser --config-file terserrc.json -o js/gamedat.js -- src/game/objects.js src/game/strings.js src/game/routines.js src/game/distances.js src/game/source.js src/game/gamedat.js"
+    "min-gamedat.js": "npx terser --config-file terserrc.json -o js/gamedat.js -- src/game/objects.js src/game/strings.js src/game/routines.js src/game/distances.js src/game/source.js src/game/gamedat.js",
+    "min-lib.js": "npx terser --config-file terserrc.json -o js/lib.js -- src/lib/class.js src/lib/iff.js src/lib/jquery-1.12.4.min.js",
+    "min-gnusto.js": "npx terser --config-file terserrc.json -o js/gnusto.js -- src/gnusto/remedial.js src/gnusto/runner-g.js src/gnusto/gnusto-engine.js"
   },
   "dependencies": {
     "react": "^18.3",
