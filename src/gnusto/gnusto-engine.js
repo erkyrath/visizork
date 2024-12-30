@@ -1704,7 +1704,8 @@ GnustoEngine.prototype = {
         while (cursor < stacks.length) {
 
             this.m_call_stack.push(decodeStackInt(cursor, 3));
-            this.m_func_stack.push(-1); //###
+            this.m_func_stack.push(0); //###
+            this._vm_report_call(0); //###
             cursor+=3;
 
             ////////////////////////////////////////////////////////////////
@@ -2191,6 +2192,7 @@ GnustoEngine.prototype = {
     {
         m_report = {
             strings: [],
+            calls: [],
         };
     },
 
@@ -2199,6 +2201,13 @@ GnustoEngine.prototype = {
         if (m_report)
             m_report.strings.push(val);
         return val;
+    },
+
+    _vm_report_call(addr)
+    {
+        if (m_report)
+            m_report.calls.push(addr);
+        return addr;
     },
 
     // Called at the end of a turn (just before awaiting input) to get
@@ -2225,6 +2234,20 @@ GnustoEngine.prototype = {
             );
             onum++;
         }
+
+        var calltree = { type:'call', addr:this.getUnsignedWord(0x6), children:[] };
+        var stack = [ calltree ];
+        for (var addr of m_report.calls) {
+            if (addr >= 0) {
+                var call = { type:'call', addr:addr, children:[] };
+                stack[stack.length-1].children.push(call);
+                stack.push(call);
+            }
+            else {
+                stack.pop();
+            }
+        }
+        report.calls = calltree;
         
         return report;
     },
@@ -2994,6 +3017,7 @@ GnustoEngine.prototype = {
 
         this.m_call_stack.push(from_address);
         this.m_func_stack.push(to_address);
+        this._vm_report_call(to_address);
         this.m_pc = to_address;
 
         var count = this.m_memory[this.m_pc++];
@@ -3370,6 +3394,7 @@ GnustoEngine.prototype = {
         this.m_param_counts.shift();
         this.m_pc = this.m_call_stack.pop();
         this.m_func_stack.pop();
+        this._vm_report_call(-1);
 
         // Force the gamestack to be the length it was when this
         // routine started. (ZMSD 6.3.2.)
