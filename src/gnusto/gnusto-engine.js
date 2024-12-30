@@ -1508,8 +1508,6 @@ function gnusto_error(number) {
         }
     }
 
-    //### the only remaining use of FatalError(), which slams an error on the screen when constructed
-    //throw new FatalError(message);
     console.error(message);
     throw new Error(message);
 }
