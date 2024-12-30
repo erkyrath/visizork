@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
-import { ZState, ZObject } from './zstate';
-import { gamedat_string_map } from './gamedat';
+import { ZState, ZObject, ZFuncCall } from './zstate';
+import { gamedat_string_map, gamedat_routine_map } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -79,5 +79,41 @@ export function StringEntry({ addr, index }: { addr:number, index:number })
                 <>{ addr }: <i>string not recognized</i></>
             ) }
         </li>
+    );
+}
+
+export function CallActivity()
+{
+    let rctx = useContext(ReactCtx);
+    let zstate = rctx.zstate;
+
+    return (
+        <div className="ScrollContent">
+            <ul className="DataList">
+                <CallEntry call={ zstate.calltree } />
+            </ul>
+        </div>
+    );
+}
+
+export function CallEntry({ call }: { call:ZFuncCall })
+{
+    let func = gamedat_routine_map.get(call.addr);
+
+    let counter = 0;
+    let subls = call.children.map((subcall) => (
+        <CallEntry key={ counter++ } call={ subcall } />
+    ));
+    
+    return (
+        <>
+            <li>
+                call { call.addr }:{' '}
+                { (func ? func.name : '???') }
+            </li>
+            <ul className="DataList">
+                { (subls.length ? subls : null ) }
+            </ul>
+        </>
     );
 }

@@ -8,7 +8,7 @@ import { sourceloc_start } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
 import { ObjectTree } from './objtree';
-import { StringActivity } from './activity';
+import { StringActivity, CallActivity } from './activity';
 import { SourceFileList } from './filelist';
 import { SourceView } from './sourceview';
 
@@ -82,6 +82,7 @@ function MyApp()
 const tab_list = [
     [ 'objtree', 'World' ],
     [ 'activity', 'Trace' ],
+    [ 'functivity', 'Calls' ],
     [ 'filelist', 'Files' ],
 ];
 
@@ -113,6 +114,9 @@ function TabbedPane()
         break;
     case 'activity':
         tabcontent = <StringActivity />;
+        break;
+    case 'functivity':
+        tabcontent = <CallActivity />;
         break;
     case 'filelist':
         tabcontent = <SourceFileList />;
