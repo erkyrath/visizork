@@ -1,5 +1,3 @@
-'use strict';
-
 /*
 
 Gnusto runner (modified for GlkOte display)

@@ -1,5 +1,3 @@
-'use strict';
-
 // Taken from "Remedial Javascript" by Douglas Crockford:
 // http://javascript.crockford.com/remedial.html
 
