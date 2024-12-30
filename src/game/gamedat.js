@@ -5,6 +5,7 @@ window.gamedat_object_room_ids = new Set();
 window.gamedat_object_global_ids = new Set();
 window.gamedat_object_treesort = new Map();
 window.gamedat_string_map = new Map();
+window.gamedat_routine_map = new Map();
 
 window.gamedat_ids = {};
 
@@ -31,6 +32,10 @@ window.gamedat_ids = {};
 
     for (let tup of window.gamedat_strings) {
         gamedat_string_map.set(tup[0], { text:tup[1], sourceloc:tup[2] });
+    }
+
+    for (let obj of window.gamedat_routines) {
+        gamedat_routine_map.set(obj.addr, obj);
     }
 
     gamedat_ids.ROOMS = gamedat_object_names.get('ROOMS').onum;
