@@ -69,13 +69,13 @@ def write_strings(filename, zcode, txdat, objdat):
     for st in zcode.strings:
         if st.text not in strtext_to_pos:
             strtext_to_pos[st.text] = []
-        strtext_to_pos[st.text].append( (st.pos, st.endpos) )
+        strtext_to_pos[st.text].append(st)
 
     istrtext_to_pos = {}
     for st in zcode.istrings:
         text = st.text.replace('.  ', '. ')
         text = text.replace('    ****', '   ****')
-        istrtext_to_pos[(st.rtn, text)] = (st.pos, st.endpos)
+        istrtext_to_pos[(st.rtn, text)] = st
 
     funcaddr_to_name = {}
     for zfunc, tfunc in zip(zcode.routines, txdat.routines):
@@ -89,14 +89,14 @@ def write_strings(filename, zcode, txdat, objdat):
             print('ERROR: missing str', str)
         else:
             if len(posls) == 1:
-                posval = sourceloc(*posls[0])
+                posval = sourceloc(tok=posls[0])
             else:
-                posval = [ sourceloc(*val) for val in posls ]
+                posval = [ sourceloc(tok=val) for val in posls ]
         ls.append([ str.addr, str.text, posval ])
     for str in txdat.istrings:
         fname = funcaddr_to_name[str.rtn.addr]
-        srcpos = istrtext_to_pos.get((fname, str.text))
-        ls.append([ str.addr, str.text, sourceloc(*srcpos), str.rtn.addr ])
+        srctok = istrtext_to_pos.get((fname, str.text))
+        ls.append([ str.addr, str.text, sourceloc(tok=srctok), str.rtn.addr ])
     for obj in objdat.objects:
         if not obj.desc:
             continue
