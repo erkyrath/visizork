@@ -65,10 +65,9 @@ function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
     }
     
     if (filel && filel.id == fileid) {
-        console.log('### keeping', fileid);
+        // Keep the node list
     }
     else {
-        console.log('### rebuilding', fileid);
         while (nodel.firstChild) {
             nodel.removeChild(nodel.firstChild);
         }
