@@ -12,9 +12,7 @@
 function processBase64Zcode(base64data) {
     var data = atob(base64data);
     var image = new Uint8Array(data.length);
-    var ix;
-    
-    for (ix=0; ix<data.length; ix++)
+    for (var ix=0; ix<data.length; ix++)
         image[ix] = data.charCodeAt(ix);
     
     window.gameimage = image;
