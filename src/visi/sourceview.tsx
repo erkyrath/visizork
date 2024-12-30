@@ -100,7 +100,8 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, hilites: stri
     let counter = 1;
     for (let linel of filel.children) {
         let issel = (counter >= loc.line && counter <= loc.endline);
-        linel.className = (issel ? cla : '');
+        let ishi = hiset.has(counter);
+        linel.className = (issel ? cla : (ishi ? 'Hilit' : ''));
         counter++;
     }
     

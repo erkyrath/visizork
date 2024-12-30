@@ -134,3 +134,7 @@ ul.DataList ul {
 .SourceFile .SelRange {
     background: #FFA;
 }
+
+.SourceFile .Hilit {
+    background: #CCF;
+}
