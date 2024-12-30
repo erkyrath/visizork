@@ -1,11 +1,11 @@
 from zillex import Token, TokType
 
 class ZObject:
-    def __init__(self, name, flag, desc, descpos, pos):
+    def __init__(self, name, flag, desc, desctok, pos):
         self.name = name
         self.type = flag
         self.desc = desc
-        self.descpos = descpos
+        self.desctok = desctok
         self.pos = pos
 
     def __repr__(self):
@@ -159,7 +159,7 @@ class Zcode:
             if isobj or isroom:
                 flag = 'ROOM' if isroom else 'OBJ'
                 desc = None
-                descpos = None
+                desctok = None
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     for proptok in tok.children[2:]:
@@ -168,12 +168,12 @@ class Zcode:
                                 strtok = proptok.children[1]
                                 if proptok.children[0].val == 'DESC':
                                     desc = strtok.val
-                                    descpos = strtok.pos
+                                    desctok = strtok
                                 else:
                                     self.strings.append(ZString(strtok.val, strtok.pos, strtok.endpos))
                         if proptok.matchgroup(Zcode.directions, 1):
                             self.findstringsintok(proptok)
-                    self.objects.append(ZObject(idtok.val, flag, desc, descpos, tok.pos))
+                    self.objects.append(ZObject(idtok.val, flag, desc, desctok, tok.pos))
                     if isroom:
                         self.roomnames.append(idtok.val)
 

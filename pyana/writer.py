@@ -40,7 +40,10 @@ def load_gameinfo():
     fl.close()
     info_loaded = True
 
-def sourceloc(tup, endtup=None):
+def sourceloc(tup=None, endtup=None, tok=None):
+    if tok:
+        tup = tok.pos
+        endtup = tok.endpos
     if tup is None:
         return None
     file, line, char = tup
@@ -50,7 +53,7 @@ def sourceloc(tup, endtup=None):
         efile, eline, echar = endtup
         if file != efile:
             raise Exception('sourceloc span across files')
-        #res += ':%d:%d' % (eline, echar,)
+        res += ':%d:%d' % (eline, echar,)
     return res
 
 def write_strings(filename, zcode, txdat, objdat):
@@ -60,7 +63,7 @@ def write_strings(filename, zcode, txdat, objdat):
     objname_to_descloc = {}
     for obj in zcode.objects:
         if obj.desc:
-            objname_to_descloc[obj.name] = obj.descpos
+            objname_to_descloc[obj.name] = obj.desctok
 
     strtext_to_pos = {}
     for st in zcode.strings:
@@ -98,8 +101,8 @@ def write_strings(filename, zcode, txdat, objdat):
         if not obj.desc:
             continue
         oname = objnum_to_name[obj.num]
-        srcpos = objname_to_descloc.get(oname)
-        ls.append([ obj.propaddr+1, obj.desc, sourceloc(srcpos), obj.num ])
+        srctok = objname_to_descloc.get(oname)
+        ls.append([ obj.propaddr+1, obj.desc, sourceloc(tok=srctok), obj.num ])
 
     fl = open(filename, 'w')
     fl.write('window.gamedat_strings = ');
