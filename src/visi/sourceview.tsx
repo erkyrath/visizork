@@ -12,29 +12,40 @@ export function SourceView()
     let rctx = useContext(ReactCtx);
     let loc = rctx.loc;
 
-    let [ filestr, linestr, charstr ] = loc.split(':');
-
-    let file = sourcefile_map[filestr] || '???';
-    let line = parseInt(linestr);
-    let char = parseInt(charstr);
+    let filestr = loc[0];
+    let filename = sourcefile_map[filestr] || '???';
 
     useEffect(() => {
         if (noderef.current) {
-            rebuild_sourcefile(noderef.current, file, line, char);
+            rebuild_sourcefile(noderef.current, loc);
         }
     }, [ loc ]);
     
     return (
         <div id="scrollcontent_file" className="ScrollContent">
-            <div>Location: { file }, { line }:{ char }</div>
+            <h2>{ filename }</h2>
             <div className="SourceRef" ref={ noderef }></div>
         </div>
     );
 }
 
-function rebuild_sourcefile(nodel: HTMLDivElement, file: string, line: number, char: number)
+function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
 {
-    let fileid = 'sourcefile_' + file.replace('.zil', '');
+    let loctup = loc.split(':');
+    let filestr = loctup[0];
+    let filename = sourcefile_map[filestr] || '???';
+
+    let line = parseInt(loctup[1]);
+    let char = parseInt(loctup[2]);
+    let endline: number|undefined;
+    let endchar: number|undefined;
+    
+    if (loctup.length >= 5) {
+        endline = parseInt(loctup[3]);
+        endchar = parseInt(loctup[4]);
+    }
+    
+    let fileid = 'sourcefile_' + filename.replace('.zil', '');
     
     let filel;
     for (let nod of nodel.children) {
@@ -62,7 +73,7 @@ function rebuild_sourcefile(nodel: HTMLDivElement, file: string, line: number, c
         filel.id = fileid;
         filel.className = 'SourceFile';
         
-        let lines = gamedat_sourcefiles[file];
+        let lines = gamedat_sourcefiles[filename];
         if (lines) {
             let counter = 1;
             for (let ln of lines) {
