@@ -1,8 +1,10 @@
 
 export type SourceLoc = {
-    file: string;
+    filekey: string;
     line: number;
     char: number;
+    endline: number;
+    endchar: number;
 };
 
 export function sourceloc_start() : string
@@ -13,6 +15,46 @@ export function sourceloc_start() : string
 export function sourceloc_for_key(filekey: string) : string
 {
     return filekey + ':1:1:1:0';
+}
+
+export function parse_sourceloc(val: string) : SourceLoc|undefined
+{
+    if (!val.length)
+        return undefined;
+
+    let tup = val.split(':');
+    if (tup.length < 3)
+        return undefined;
+
+    let filekey = tup[0];
+    let line = parseInt(tup[1]);
+    let char = parseInt(tup[2]);
+    
+    if (tup.length < 5) {
+        return {
+            filekey: filekey,
+            line: line,
+            char: char,
+            endline: line,
+            endchar: 99999
+        };
+    }
+    
+    let endline = parseInt(tup[3]);
+    let endchar = parseInt(tup[4]);
+    
+    if (endchar == 0) {
+        endline -= 1;
+        endchar = 99999;
+    }
+    
+    return {
+        filekey: filekey,
+        line: line,
+        char: char,
+        endline: endline,
+        endchar: endchar
+    };
 }
 
 interface SourceFileMap {

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useContext, useRef, useEffect } from 'react';
 
 import { sourcefile_map, gamedat_sourcefiles } from './gamedat';
+import { gamedat_string_map, parse_sourceloc } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -10,6 +11,7 @@ export function SourceView()
     let noderef = useRefDiv();
     
     let rctx = useContext(ReactCtx);
+    let zstate = rctx.zstate;
     let loc = rctx.loc;
 
     let filestr = loc[0];
@@ -17,7 +19,11 @@ export function SourceView()
 
     useEffect(() => {
         if (noderef.current) {
-            rebuild_sourcefile(noderef.current, loc);
+            let hilites = zstate.strings.map((addr) => {
+                let dat = gamedat_string_map.get(addr);
+                return (dat ? dat.sourceloc : '');
+            });
+            rebuild_sourcefile(noderef.current, loc, hilites);
         }
     }, [ loc ]);
     
@@ -29,29 +35,26 @@ export function SourceView()
     );
 }
 
-function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
+function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, hilites: string[])
 {
-    let loctup = loc.split(':');
-    let filestr = loctup[0];
-    let filename = sourcefile_map[filestr] || '???';
-
-    let line = parseInt(loctup[1]);
-    let char = parseInt(loctup[2]);
-    let endline: number;
-    let endchar: number;
+    let loc = parse_sourceloc(locstr);
+    if (!loc)
+        return;
     
-    if (loctup.length >= 5) {
-        endline = parseInt(loctup[3]);
-        endchar = parseInt(loctup[4]);
-    }
-    else {
-        endline = line;
-        endchar = 9999;
-    }
+    let filename = sourcefile_map[loc.filekey] || '???';
 
-    if (endchar == 0) {
-        endline--;
-        endchar = 9999;
+    let hiset = new Set();
+    for (let val of hilites) {
+        let hiloc = parse_sourceloc(val);
+        if (!hiloc)
+            continue;
+        if (hiloc.filekey != loc.filekey)
+            continue;
+        let ix = hiloc.line;
+        while (ix <= hiloc.endline) {
+            hiset.add(ix);
+            ix++;
+        }
     }
     
     let fileid = 'sourcefile_' + filename.replace('.zil', '');
@@ -93,16 +96,16 @@ function rebuild_sourcefile(nodel: HTMLDivElement, loc: string)
         nodel.appendChild(filel);
     }
 
-    let cla = ((line == endline) ? 'Selected' : 'SelRange');
+    let cla = ((loc.line == loc.endline) ? 'Selected' : 'SelRange');
     let counter = 1;
     for (let linel of filel.children) {
-        let issel = (counter >= line && counter <= endline);
+        let issel = (counter >= loc.line && counter <= loc.endline);
         linel.className = (issel ? cla : '');
         counter++;
     }
     
     let scrollel = document.getElementById('scrollcontent_file');
-    let linel = document.getElementById('line_'+line);
+    let linel = document.getElementById('line_'+loc.line);
     if (scrollel && linel) {
         scrollel.scrollTop = linel.offsetTop - Math.floor(scrollel.offsetHeight/4);
     }
