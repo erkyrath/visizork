@@ -12,7 +12,7 @@ export function sourceloc_start() : string
 
 export function sourceloc_for_key(filekey: string) : string
 {
-    return filekey + ':1:1';
+    return filekey + ':1:1:1:0';
 }
 
 interface SourceFileMap {
