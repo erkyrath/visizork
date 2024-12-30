@@ -84,32 +84,54 @@ export function StringEntry({ addr, index }: { addr:number, index:number })
 
 export function CallActivity()
 {
+    const [ selected, setSelected ] = useState([-1, -1] as SelPair);
+    
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
 
+    function evhan_click_background(ev: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+        ev.stopPropagation();
+        setSelected([-1, -1]);
+    }
+
     return (
-        <div className="ScrollContent">
-            <ul className="DataList">
-                <CallEntry call={ zstate.calltree } />
-            </ul>
-        </div>
+        <ListCtx.Provider value={ { selected, setSelected } }>
+            <div className="ScrollContent" onClick={ evhan_click_background }>
+                <ul className="DataList">
+                    <CallEntry call={ zstate.calltree } />
+                </ul>
+            </div>
+        </ListCtx.Provider>
     );
 }
 
 export function CallEntry({ call }: { call:ZFuncCall })
 {
-    let func = gamedat_routine_map.get(call.addr);
+    let rctx = useContext(ReactCtx);
+    let ctx = useContext(ListCtx);
+    let [ selindex, seladdr ] = ctx.selected;
+
+    let funcdat = gamedat_routine_map.get(call.addr);
+    let issel = (call.addr == seladdr);
 
     let counter = 0;
     let subls = call.children.map((subcall) => (
         <CallEntry key={ counter++ } call={ subcall } />
     ));
     
+    function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+        ev.stopPropagation();
+        ctx.setSelected([-1, call.addr]);
+        if (funcdat) {
+            rctx.setLoc(funcdat.sourceloc);
+        }
+    }
+    
     return (
         <>
-            <li>
+            <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
                 call { call.addr }:{' '}
-                { (func ? func.name : '???') }
+                { (funcdat ? funcdat.name : '???') }
             </li>
             <ul className="DataList">
                 { (subls.length ? subls : null ) }
