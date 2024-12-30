@@ -37,9 +37,9 @@ class ZGlobal:
         return '<ZGlobal %s>' % (self.name,)
     
 class ZRoutine:
-    def __init__(self, name, pos):
+    def __init__(self, name, rtok):
         self.name = name
-        self.pos = pos
+        self.rtok = rtok
 
     def __repr__(self):
         return '<ZRoutine %s>' % (self.name,)
@@ -146,13 +146,13 @@ class Zcode:
             if tok.matchform('ROUTINE', 1):
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
-                    self.routines.append(ZRoutine(idtok.val, tok.pos))
+                    self.routines.append(ZRoutine(idtok.val, tok))
                     self.findstringsinroutine(tok, idtok.val)
             if tok.typ is TokType.GROUP and tok.val == "'" and tok.children[0].matchform('ROUTINE', 1):
                 qtok = tok.children[0]
                 idtok = qtok.children[1]
                 if idtok.typ is TokType.ID:
-                    self.routines.append(ZRoutine(idtok.val, qtok.pos))
+                    self.routines.append(ZRoutine(idtok.val, qtok))
                     self.findstringsinroutine(qtok, idtok.val)
             isobj = tok.matchform('OBJECT', 1)
             isroom = tok.matchform('ROOM', 1)

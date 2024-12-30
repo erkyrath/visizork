@@ -119,7 +119,7 @@ def write_routines(filename, zcode, txdat):
         dat = {
             'name': zfunc.name,
             'addr': tfunc.addr,
-            'sourceloc': sourceloc(zfunc.pos),
+            'sourceloc': sourceloc(tok=zfunc.rtok),
         }
         ls.append(dat)
 
