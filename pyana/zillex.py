@@ -13,10 +13,11 @@ class Token:
     PREFIXCHARS = '\',.;!%'
     DELIMCHARS = '<>()'
     
-    def __init__(self, typ, val, pos, children=None):
+    def __init__(self, typ, val, pos, children=None, endpos=None):
         self.typ = typ
         self.val = val
         self.pos = pos
+        self.endpos = endpos
         self.prefix = None
         self.comment = False
         self.ifdef = False
@@ -42,9 +43,6 @@ class Token:
         if self.typ is TokType.GROUP:
             return '<%s %s (%d els)>' % (self.typ, self.val, len(self.children),)
         return '<%s %s>' % (self.typ, self.val,)
-
-    def posstr(self):
-        return '%s:%d:%d' % self.pos
 
     def itertree(self, func):
         res = func(self)
@@ -119,7 +117,7 @@ class Lexer:
                     continue
                 val = self.curchar
                 self.nextchar()
-                return Token(TokType.ID, val, pos)
+                return Token(TokType.ID, val, pos, endpos=self.getpos())
             if ch in Token.PREFIXCHARS:
                 self.nextchar()
                 return Token(TokType.PREFIX, ch, pos)
@@ -134,7 +132,7 @@ class Lexer:
                         self.nextchar()
                     val += self.curchar
                     self.nextchar()
-                return Token(TokType.ID, val, pos)
+                return Token(TokType.ID, val, pos, endpos=self.getpos())
             if ch.isdigit():
                 val = ch
                 self.nextchar()
@@ -142,7 +140,7 @@ class Lexer:
                     val += self.curchar
                     self.nextchar()
                 val = int(val)
-                return Token(TokType.NUM, val, pos)
+                return Token(TokType.NUM, val, pos, endpos=self.getpos())
             if ch == '-':
                 val = ''
                 self.nextchar()
@@ -151,9 +149,9 @@ class Lexer:
                         val += self.curchar
                         self.nextchar()
                     val = -int(val)
-                    return Token(TokType.NUM, val, pos)
+                    return Token(TokType.NUM, val, pos, endpos=self.getpos())
                 else:
-                    return Token(TokType.ID, '-', pos)
+                    return Token(TokType.ID, '-', pos, endpos=self.getpos())
                 
             if ch == '"':
                 val = ''
@@ -180,10 +178,10 @@ class Lexer:
                 if not self.curchar:
                     raise Exception('unterminated string')
                 self.nextchar()
-                return Token(TokType.STR, val, pos)
+                return Token(TokType.STR, val, pos, endpos=self.getpos())
             
             self.nextchar()
-            return Token(TokType.ID, ch, pos)
+            return Token(TokType.ID, ch, pos, endpos=self.getpos())
 
     def readtokens(self, opentok=None):
         res = []
@@ -252,10 +250,16 @@ def dumptokens(ls, withpos=False, skipdead=False, depth=0, prefix='', atpos=None
         if skipdead and (tok.comment or tok.ifdef):
             continue
         pos = atpos or tok.pos
+        endpos = tok.endpos
         if tok.typ is TokType.GROUP and tok.prefix:
             dumptokens(tok.children, withpos=withpos, skipdead=skipdead, depth=depth, prefix=prefix+tok.val, atpos=pos)
             continue
-        posstr = '' if not withpos else ' %s:%s:%s' % pos
+        
+        posstr = ''
+        if withpos:
+            posstr = ' %s:%s:%s' % pos
+            if endpos:
+                posstr += ' - %s:%s:%s' % endpos
         print('%s%s%r%s' % ('  '*depth, prefix, tok, posstr))
         if tok.typ is TokType.GROUP:
             dumptokens(tok.children, withpos=withpos, skipdead=skipdead, depth=depth+1)
