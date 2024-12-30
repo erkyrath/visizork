@@ -40,12 +40,18 @@ def load_gameinfo():
     fl.close()
     info_loaded = True
 
-def sourceloc(tup):
+def sourceloc(tup, endtup=None):
     if tup is None:
         return None
     file, line, char = tup
     filekey = sourcefile_map[file]
-    return '%s:%d:%d' % (filekey, line, char,)
+    res = '%s:%d:%d' % (filekey, line, char,)
+    if endtup:
+        efile, eline, echar = endtup
+        if file != efile:
+            raise Exception('sourceloc span across files')
+        #res += ':%d:%d' % (eline, echar,)
+    return res
 
 def write_strings(filename, zcode, txdat, objdat):
     print('...writing string data:', filename)
@@ -60,13 +66,13 @@ def write_strings(filename, zcode, txdat, objdat):
     for st in zcode.strings:
         if st.text not in strtext_to_pos:
             strtext_to_pos[st.text] = []
-        strtext_to_pos[st.text].append(st.pos)
+        strtext_to_pos[st.text].append( (st.pos, st.endpos) )
 
     istrtext_to_pos = {}
     for st in zcode.istrings:
         text = st.text.replace('.  ', '. ')
         text = text.replace('    ****', '   ****')
-        istrtext_to_pos[(st.rtn, text)] = st.pos
+        istrtext_to_pos[(st.rtn, text)] = (st.pos, st.endpos)
 
     funcaddr_to_name = {}
     for zfunc, tfunc in zip(zcode.routines, txdat.routines):
@@ -77,17 +83,17 @@ def write_strings(filename, zcode, txdat, objdat):
         posls = strtext_to_pos.get(str.text)
         posval = None
         if not posls:
-            print('### missing str', str)
+            print('ERROR: missing str', str)
         else:
             if len(posls) == 1:
-                posval = sourceloc(posls[0])
+                posval = sourceloc(*posls[0])
             else:
-                posval = [ sourceloc(val) for val in posls ]
+                posval = [ sourceloc(*val) for val in posls ]
         ls.append([ str.addr, str.text, posval ])
     for str in txdat.istrings:
         fname = funcaddr_to_name[str.rtn.addr]
         srcpos = istrtext_to_pos.get((fname, str.text))
-        ls.append([ str.addr, str.text, sourceloc(srcpos), str.rtn.addr ])
+        ls.append([ str.addr, str.text, sourceloc(*srcpos), str.rtn.addr ])
     for obj in objdat.objects:
         if not obj.desc:
             continue
