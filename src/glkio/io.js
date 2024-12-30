@@ -337,6 +337,7 @@ var GlkIOClass = function(env, runner) {
     return {
         _classname: 'GlkIO',
         glkote: glkote,
+        error: glkote.error,
 
         init: init,
         get_status_width: get_status_width,

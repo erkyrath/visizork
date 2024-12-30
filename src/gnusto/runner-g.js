@@ -120,7 +120,13 @@ var GnustoRunner = Object.subClass({
         
         while ( !stop )
         {
-            engine.run();
+            try {
+                engine.run();
+            }
+            catch (ex) {
+                this.io.error(ex);
+                break;
+            }
 
             text = engine.consoleText();
             if ( text )
