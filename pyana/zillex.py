@@ -120,10 +120,10 @@ class Lexer:
                 return Token(TokType.ID, val, pos, endpos=self.getpos())
             if ch in Token.PREFIXCHARS:
                 self.nextchar()
-                return Token(TokType.PREFIX, ch, pos)
+                return Token(TokType.PREFIX, ch, pos, endpos=self.getpos())
             if ch in Token.DELIMCHARS:
                 self.nextchar()
-                return Token(TokType.DELIM, ch, pos)
+                return Token(TokType.DELIM, ch, pos, endpos=self.getpos())
             if ch.isalpha() or ch == '=':
                 val = ch
                 self.nextchar()
@@ -185,22 +185,28 @@ class Lexer:
 
     def readtokens(self, opentok=None):
         res = []
+        closetok = None
         while True:
             if opentok is not None and opentok.typ == TokType.PREFIX and res:
+                closetok = res[-1]
                 break
             tok = self.readtoken()
             if tok is None:
+                closetok = None
                 break
             if tok.typ is TokType.DELIM:
                 if tok.val in ')>':
+                    closetok = tok
                     break
-                ls = self.readtokens(opentok=tok)
-                gtok = Token(TokType.GROUP, tok.val, tok.pos, children=ls)
+                (ls, endls) = self.readtokens(opentok=tok)
+                endpos = endls.endpos if endls else None
+                gtok = Token(TokType.GROUP, tok.val, tok.pos, children=ls, endpos=endpos)
                 res.append(gtok)
                 continue
             if tok.typ is TokType.PREFIX:
-                ls = self.readtokens(opentok=tok)
-                gtok = Token(TokType.GROUP, tok.val, tok.pos, children=ls)
+                (ls, endls) = self.readtokens(opentok=tok)
+                endpos = endls.endpos if endls else None
+                gtok = Token(TokType.GROUP, tok.val, tok.pos, children=ls, endpos=endpos)
                 res.append(gtok)
                 continue
             res.append(tok)
@@ -219,7 +225,7 @@ class Lexer:
                 raise Exception('mismatched open paren: %s' % (opentok,))
         else:
             raise Exception('bad opentok')
-        return res
+        return (res, closetok)
 
     def resolveincludes(self, ls):
         res = []
@@ -238,7 +244,7 @@ class Lexer:
     def readfile(self, includes=False):
         self.infl = open(self.pathname)
         self.nextchar()
-        res = self.readtokens()
+        (res, _) = self.readtokens()
         self.infl.close()
         self.infl = None
         if includes:
