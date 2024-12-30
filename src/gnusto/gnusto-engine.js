@@ -1679,6 +1679,7 @@ GnustoEngine.prototype = {
         // and only move these over when we're sure everything's good.
         // Otherwise we could want to go back to how things were before.
         this.m_call_stack = [];
+        this.m_func_stack = [];
         this.m_gamestack = [];
         this.m_locals_stack = [];
         this.m_locals = [];
@@ -1703,6 +1704,7 @@ GnustoEngine.prototype = {
         while (cursor < stacks.length) {
 
             this.m_call_stack.push(decodeStackInt(cursor, 3));
+            this.m_func_stack.push(-1); //###
             cursor+=3;
 
             ////////////////////////////////////////////////////////////////
@@ -2248,6 +2250,7 @@ GnustoEngine.prototype = {
         this.m_gamestack_callbreaks = [];
 
         this.m_call_stack = [];
+        this.m_func_stack = [];
         this.m_locals = [];
         this.m_locals_stack = [];
         this.m_param_counts = [];
@@ -2990,6 +2993,7 @@ GnustoEngine.prototype = {
     _func_gosub: function ge_gosub(to_address, actuals, from_address, result_target) {
 
         this.m_call_stack.push(from_address);
+        this.m_func_stack.push(to_address);
         this.m_pc = to_address;
 
         var count = this.m_memory[this.m_pc++];
@@ -3365,6 +3369,7 @@ GnustoEngine.prototype = {
 
         this.m_param_counts.shift();
         this.m_pc = this.m_call_stack.pop();
+        this.m_func_stack.pop();
 
         // Force the gamestack to be the length it was when this
         // routine started. (ZMSD 6.3.2.)
@@ -4598,6 +4603,7 @@ GnustoEngine.prototype = {
         // As Gnusto can't be relied upon to have the correct PC at runtime, we store it at compile time
         this.m_undo.push({
             'm_call_stack': this.m_call_stack.slice(),
+            'm_func_stack': this.m_func_stack.slice(),
             'm_locals': this.m_locals.slice(),
             'm_locals_stack': this.m_locals_stack.slice(),
             'm_param_counts': this.m_param_counts.slice(),
@@ -4634,6 +4640,7 @@ GnustoEngine.prototype = {
         var undo_data = this.m_undo.pop();
 
         this.m_call_stack =undo_data.m_call_stack;
+        this.m_func_stack = undo_data.m_func_stack;
         this.m_locals = undo_data.m_locals;
         this.m_locals_stack = undo_data.m_locals_stack;
         this.m_param_counts = undo_data.m_param_counts;
@@ -4655,6 +4662,7 @@ GnustoEngine.prototype = {
             'm_memory': this.m_memory.slice(0, this.m_stat_start),
             'm_pc': this.m_pc + varcode_offset, // move onto target varcode,
             'm_call_stack': this.m_call_stack.slice(),
+            'm_func_stack': this.m_func_stack.slice(),
             'm_locals': this.m_locals.slice(),
             'm_locals_stack': this.m_locals_stack.slice(),
             'm_param_counts': this.m_param_counts.slice(),
@@ -4816,6 +4824,11 @@ GnustoEngine.prototype = {
     // |call_stack| stores all the return addresses for all the functions
     // which are currently executing.
     m_call_stack: [],
+
+    // |func_stack| stores the function addresses for functions currently
+    // executing. The engine does not use this info; it's purely for
+    // reporting.
+    m_func_stack: [],
 
     // |locals| is an array of the Z-machine's local variables.
     m_locals: [],
