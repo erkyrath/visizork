@@ -45,7 +45,7 @@ function MyApp()
     const [ sourcelocpos, setSourceLocPos ] = useState(0);
 
     function setLoc(loc:string, hi:boolean) {
-        let ls = [ ...sourcelocs, { loc:loc, lochi:hi } ];
+        let ls = [ ...sourcelocs.slice(0, sourcelocpos+1), { loc:loc, lochi:hi } ];
         setSourceLocs(ls);
         setSourceLocPos(ls.length-1);
     }
