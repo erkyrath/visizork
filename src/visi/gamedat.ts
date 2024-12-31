@@ -9,7 +9,7 @@ export type SourceLoc = {
 
 export function sourceloc_start() : string
 {
-    return 'J:78:1';  // { file:'gverbs.zil', line: 78, char: 1 }
+    return 'J:78:1:102:0';  // 'gverbs.zil', lines 78-101
 }
 
 export function sourceloc_for_key(filekey: string) : string
