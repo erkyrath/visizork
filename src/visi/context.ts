@@ -20,6 +20,7 @@ export type ContextContent = {
     sourcelocs: SourceLocState[];
     sourcelocpos: number;
     setLoc: (loc:string, hi:boolean) => void;
+    shiftLoc: (forward: boolean) => void;
 };
 
 export const ReactCtx = createContext({
@@ -29,5 +30,6 @@ export const ReactCtx = createContext({
     sourcelocs: [],
     sourcelocpos: 0,
     setLoc: (loc, hi) => {},
+    shiftLoc: (forward) => {},
 } as ContextContent);
 

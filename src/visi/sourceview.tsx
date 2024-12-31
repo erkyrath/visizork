@@ -51,12 +51,12 @@ export function SourceView()
 
     function evhan_click_back(ev: React.MouseEvent<HTMLElement, MouseEvent>) {
         ev.stopPropagation();
-        console.log('### back');
+        rctx.shiftLoc(false);
     }
     
     function evhan_click_forward(ev: React.MouseEvent<HTMLElement, MouseEvent>) {
         ev.stopPropagation();
-        console.log('### forward');
+        rctx.shiftLoc(true);
     }
     
     return (

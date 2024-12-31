@@ -50,6 +50,17 @@ function MyApp()
         setSourceLocPos(ls.length-1);
     }
 
+    function shiftLoc(forward: boolean) {
+        if (forward) {
+            if (sourcelocpos < sourcelocs.length-1)
+                setSourceLocPos(sourcelocpos+1);
+        }
+        else {
+            if (sourcelocpos > 0)
+                setSourceLocPos(sourcelocpos-1);
+        }
+    }
+
     useEffect(() => {
         function evhan(ev: Event) {
             setZState(engine.get_vm_report());
@@ -71,6 +82,7 @@ function MyApp()
         sourcelocs: sourcelocs,
         sourcelocpos: sourcelocpos,
         setLoc: setLoc,
+        shiftLoc: shiftLoc,
     };
 
     let menuel = document.getElementById('appcontrols');
