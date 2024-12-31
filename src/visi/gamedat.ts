@@ -99,7 +99,7 @@ export type ObjectData = {
 
 export type StringData = {
     text: string;
-    sourceloc: string;
+    sourceloc: string|string[];
 };
 
 export type RoutineData = {

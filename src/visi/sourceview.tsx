@@ -19,13 +19,21 @@ export function SourceView()
 
     useEffect(() => {
         if (noderef.current) {
-            let hilites = zstate.strings.map((addr) => {
+            let hilites: string[] = [];
+            for (let addr of zstate.strings) {
                 let dat = gamedat_string_map.get(addr);
-                return (dat ? dat.sourceloc : '');
-            });
+                if (dat) {
+                    if (typeof dat.sourceloc === 'string') {
+                        hilites.push(dat.sourceloc);
+                    }
+                    else {
+                        dat.sourceloc.map((val) => hilites.push(val));
+                    }
+                }
+            }
             rebuild_sourcefile(noderef.current, loc, hilites);
         }
-    }, [ loc ]);
+    }, [ loc, zstate ]);
     
     return (
         <>

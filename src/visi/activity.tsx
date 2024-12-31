@@ -67,7 +67,10 @@ export function StringEntry({ addr, index }: { addr:number, index:number })
         ev.stopPropagation();
         ctx.setSelected([index, addr]);
         if (strdat) {
-            rctx.setLoc(strdat.sourceloc);
+            if (typeof strdat.sourceloc === 'string')
+                rctx.setLoc(strdat.sourceloc);
+            else
+                rctx.setLoc(strdat.sourceloc[0]);                
         }
     }
     
@@ -126,12 +129,15 @@ export function CallEntry({ call }: { call:ZFuncCall })
             rctx.setLoc(funcdat.sourceloc);
         }
     }
+
+    let funcname = (funcdat ? funcdat.name : '???');
+    if (call.addr == 0)
+        funcname = 'false';
     
     return (
         <>
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
-                call { call.addr }:{' '}
-                { (funcdat ? funcdat.name : '???') }
+                call { call.addr }: { funcname }
             </li>
             <ul className="DataList">
                 { (subls.length ? subls : null ) }
