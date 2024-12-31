@@ -28,10 +28,16 @@ export function SourceView()
     }, [ loc ]);
     
     return (
-        <div id="scrollcontent_file" className="ScrollContent">
-            <h2>Source file: { filename }</h2>
-            <div className="SourceRef" ref={ noderef }></div>
-        </div>
+        <>
+            <div className="TabBar">
+                <div className="TabLabel">{ filename }</div>
+            </div>
+            <div className="TabContent">
+                <div id="scrollcontent_file" className="ScrollContent">
+                    <div className="SourceRef" ref={ noderef }></div>
+                </div>
+            </div>
+        </>
     );
 }
 

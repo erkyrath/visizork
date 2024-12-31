@@ -90,6 +90,13 @@ body {
     background: #EE0;
 }
 
+.TabBar .TabLabel {
+    display: inline-block;
+    font-size: 110%;
+    font-weight: bold;
+    margin: 4px 4px;
+}
+
 .TabContent {
     position: absolute;
     left: 0px;
