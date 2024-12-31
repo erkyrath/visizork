@@ -111,12 +111,14 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
         nodel.appendChild(filel);
     }
 
-    let cla = (lochi ? 'Selected' : 'SelRange');
     let counter = 1;
     for (let linel of filel.children) {
         let issel = (counter >= loc.line && counter <= loc.endline);
         let ishi = hiset.has(counter);
-        linel.className = (issel ? cla : (ishi ? 'Hilit' : ''));
+        let cla = (ishi ? 'Hilit' : '');
+        if (issel && (lochi || !ishi))
+            cla = (lochi ? 'Selected' : 'SelRange');
+        linel.className = cla;
         counter++;
     }
     
