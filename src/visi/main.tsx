@@ -7,6 +7,7 @@ import { ZState } from './zstate';
 import { sourceloc_start } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
+import { SourceLocState, new_sourcelocstate } from './context';
 import { ObjectTree } from './objtree';
 import { StringActivity, CallActivity } from './activity';
 import { SourceFileList } from './filelist';
@@ -40,12 +41,13 @@ function MyApp()
 {
     const [ zstate, setZState ] = useState(engine.get_vm_report() as ZState);
     const [ tab, setTab ] = useState('objtree');
-    const [ sourceloc, setSourceLoc ] = useState(sourceloc_start());
-    const [ sourcehi, setSourceHi ] = useState(false);
+    const [ sourcelocs, setSourceLocs ] = useState([ new_sourcelocstate() ]);
+    const [ sourcelocpos, setSourceLocPos ] = useState(0);
 
     function setLoc(loc:string, hi:boolean) {
-        setSourceLoc(loc);
-        setSourceHi(hi);
+        let ls = [ ...sourcelocs, { loc:loc, lochi:hi } ];
+        setSourceLocs(ls);
+        setSourceLocPos(ls.length-1);
     }
 
     useEffect(() => {
@@ -66,8 +68,8 @@ function MyApp()
         zstate: zstate,
         tab: tab,
         setTab: setTab,
-        sourceloc: sourceloc,
-        sourcehi: sourcehi,
+        sourcelocs: sourcelocs,
+        sourcelocpos: sourcelocpos,
         setLoc: setLoc,
     };
 

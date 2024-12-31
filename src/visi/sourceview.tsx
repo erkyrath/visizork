@@ -3,8 +3,10 @@ import { useState, useContext, useRef, useEffect } from 'react';
 
 import { sourcefile_map, gamedat_sourcefiles } from './gamedat';
 import { gamedat_string_map, parse_sourceloc } from './gamedat';
+import { sourceloc_start } from './gamedat';
 
 import { ReactCtx } from './context';
+import { SourceLocState } from './context';
 
 export function SourceView()
 {
@@ -12,8 +14,16 @@ export function SourceView()
     
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
-    let loc = rctx.sourceloc;
-    let lochi = rctx.sourcehi;
+
+    let loc: string;
+    let lochi: boolean;
+    if (rctx.sourcelocpos < rctx.sourcelocs.length) {
+        ({ loc, lochi } = rctx.sourcelocs[rctx.sourcelocpos]);
+    }
+    else {
+        loc = sourceloc_start();
+        lochi = false;
+    }
 
     let filestr = loc[0];
     let filename = sourcefile_map[filestr] || '???';
