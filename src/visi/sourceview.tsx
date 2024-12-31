@@ -35,10 +35,22 @@ export function SourceView()
             rebuild_sourcefile(noderef.current, loc, lochi, hilites);
         }
     }, [ loc, lochi, zstate ]);
+
+    function evhan_click_back(ev: React.MouseEvent<HTMLElement, MouseEvent>) {
+        ev.stopPropagation();
+        console.log('### back');
+    }
+    
+    function evhan_click_forward(ev: React.MouseEvent<HTMLElement, MouseEvent>) {
+        ev.stopPropagation();
+        console.log('### forward');
+    }
     
     return (
         <>
             <div className="TabBar">
+                <button className="NavButton" onClick={ evhan_click_back }>&lt;</button>
+                <button className="NavButton" onClick={ evhan_click_forward }>&gt;</button>
                 <div className="TabLabel">{ filename }</div>
             </div>
             <div className="TabContent">
@@ -130,3 +142,4 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
 }
 
 const useRefDiv = () => useRef<HTMLDivElement>(null);
+

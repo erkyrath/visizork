@@ -97,6 +97,23 @@ body {
     margin: 4px 4px;
 }
 
+.TabBar button.NavButton {
+    font-weight: bold;
+    background: #DDB;
+    border: 1px solid #888;
+    border-radius: 4px;
+    margin: 0px 2px;
+}
+
+.TabBar button.NavButton:disabled, .TabBar button.NavButton:disabled:active {
+    color: #888;
+    background: #DDB;
+}
+
+.TabBar button.NavButton:active {
+    background: yellow;
+}
+
 .TabContent {
     position: absolute;
     left: 0px;
