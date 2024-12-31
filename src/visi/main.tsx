@@ -40,7 +40,13 @@ function MyApp()
 {
     const [ zstate, setZState ] = useState(engine.get_vm_report() as ZState);
     const [ tab, setTab ] = useState('objtree');
-    const [ loc, setLoc ] = useState(sourceloc_start());
+    const [ sourceloc, setSourceLoc ] = useState(sourceloc_start());
+    const [ sourcehi, setSourceHi ] = useState(false);
+
+    function setLoc(loc:string, hi:boolean) {
+        setSourceLoc(loc);
+        setSourceHi(hi);
+    }
 
     useEffect(() => {
         function evhan(ev: Event) {
@@ -60,7 +66,8 @@ function MyApp()
         zstate: zstate,
         tab: tab,
         setTab: setTab,
-        loc: loc,
+        sourceloc: sourceloc,
+        sourcehi: sourcehi,
         setLoc: setLoc,
     };
 

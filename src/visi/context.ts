@@ -7,15 +7,17 @@ export type ContextContent = {
     zstate: ZState;
     tab: string;
     setTab: (loc:string) => void;
-    loc: string;
-    setLoc: (loc:string) => void;
+    sourceloc: string;
+    sourcehi: boolean;
+    setLoc: (loc:string, hi:boolean) => void;
 };
 
 export const ReactCtx = createContext({
     zstate: zstate_empty(),
     tab: '',
     setTab: (loc) => {},
-    loc: sourceloc_start(),
-    setLoc: (loc) => {},
+    sourceloc: sourceloc_start(),
+    sourcehi: false,
+    setLoc: (loc, hi) => {},
 } as ContextContent);
 

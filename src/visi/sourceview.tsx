@@ -12,7 +12,8 @@ export function SourceView()
     
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
-    let loc = rctx.loc;
+    let loc = rctx.sourceloc;
+    let lochi = rctx.sourcehi;
 
     let filestr = loc[0];
     let filename = sourcefile_map[filestr] || '???';
@@ -31,9 +32,9 @@ export function SourceView()
                     }
                 }
             }
-            rebuild_sourcefile(noderef.current, loc, hilites);
+            rebuild_sourcefile(noderef.current, loc, lochi, hilites);
         }
-    }, [ loc, zstate ]);
+    }, [ loc, lochi, zstate ]);
     
     return (
         <>
@@ -49,7 +50,7 @@ export function SourceView()
     );
 }
 
-function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, hilites: string[])
+function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolean, hilites: string[])
 {
     let loc = parse_sourceloc(locstr);
     if (!loc)
@@ -110,7 +111,7 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, hilites: stri
         nodel.appendChild(filel);
     }
 
-    let cla = ((loc.line == loc.endline) ? 'Selected' : 'SelRange');
+    let cla = (lochi ? 'Selected' : 'SelRange');
     let counter = 1;
     for (let linel of filel.children) {
         let issel = (counter >= loc.line && counter <= loc.endline);

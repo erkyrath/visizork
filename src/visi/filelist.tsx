@@ -55,7 +55,7 @@ function SourceFile({ filename, filekey } : { filename:string, filekey:string })
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
         ctx.setSelected(filekey);
-        rctx.setLoc(sourceloc_for_key(filekey));
+        rctx.setLoc(sourceloc_for_key(filekey), false);
     }
     
     return (

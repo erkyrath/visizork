@@ -68,9 +68,9 @@ export function StringEntry({ addr, index }: { addr:number, index:number })
         ctx.setSelected([index, addr]);
         if (strdat) {
             if (typeof strdat.sourceloc === 'string')
-                rctx.setLoc(strdat.sourceloc);
+                rctx.setLoc(strdat.sourceloc, true);
             else
-                rctx.setLoc(strdat.sourceloc[0]);                
+                rctx.setLoc(strdat.sourceloc[0], true);
         }
     }
     
@@ -126,7 +126,7 @@ export function CallEntry({ call }: { call:ZFuncCall })
         ev.stopPropagation();
         ctx.setSelected([-1, call.addr]);
         if (funcdat) {
-            rctx.setLoc(funcdat.sourceloc);
+            rctx.setLoc(funcdat.sourceloc, false);
         }
     }
 

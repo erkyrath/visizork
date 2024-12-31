@@ -151,7 +151,7 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
         ctx.setSelected(onum);
         let obj = gamedat_object_ids.get(onum);
         if (obj)
-            rctx.setLoc(obj.sourceloc);
+            rctx.setLoc(obj.sourceloc, false);
     }
     
     return (
