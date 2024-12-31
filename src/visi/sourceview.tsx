@@ -15,6 +15,9 @@ export function SourceView()
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
 
+    let atstart = (rctx.sourcelocpos == 0);
+    let atend = (rctx.sourcelocpos == rctx.sourcelocs.length-1);
+    
     let loc: string;
     let lochi: boolean;
     if (rctx.sourcelocpos < rctx.sourcelocs.length) {
@@ -59,8 +62,8 @@ export function SourceView()
     return (
         <>
             <div className="TabBar">
-                <button className="NavButton" onClick={ evhan_click_back }>&lt;</button>
-                <button className="NavButton" onClick={ evhan_click_forward }>&gt;</button>
+                <button className="NavButton" disabled={ atstart } onClick={ evhan_click_back }>&lt;</button>
+                <button className="NavButton" disabled={ atend } onClick={ evhan_click_forward }>&gt;</button>
                 <div className="TabLabel">{ filename }</div>
             </div>
             <div className="TabContent">
