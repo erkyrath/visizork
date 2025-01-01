@@ -67,13 +67,22 @@ def dumpcolors(ls):
     for (tok, color) in ls:
         print('%s: %s %s' % (color, tok.posstr(), tok, ))
 
+def posLE(tup1, tup2):
+    if len(tup1) > 2:
+        tup1 = tup1[ -2 : ]
+    if len(tup2) > 2:
+        tup2 = tup2[ -2 : ]
+    return (tup1 <= tup2)
+
+def posGT(tup1, tup2):
+    return not posLE(tup1, tup2)
+
 def color_file_lines(filename, colorls):
     colorls = list(colorls)
     res = []
     
     with open(filename) as infl:
         col = colorls and colorls.pop(0)
-        col = [] ###
         
         linenum = 1
         for ln in infl.readlines():
@@ -84,12 +93,31 @@ def color_file_lines(filename, colorls):
             
             while charnum < 1+len(ln):
                 lastcharnum = charnum
-                while col and posLE(col.endpos, (linenum, charnum)):
+                while col and posLE(col[0].endpos, (linenum, charnum)):
                     col = colorls and colorls.pop(0)
                 if not col:
                     charnum = 1+len(ln)
                     if lastcharnum < charnum:
                         curline.append( (None, ln[lastcharnum-1 : charnum-1]) )
+                    continue
+                
+                _, colline, colchar = col[0].pos
+                if posGT((colline, colchar), (linenum, charnum)):
+                    if colline > linenum:
+                        charnum = 1+len(ln)
+                    else:
+                        charnum = colchar
+                    if lastcharnum < charnum:
+                        curline.append( (None, ln[lastcharnum-1 : charnum-1]) )
+                    continue
+                
+                _, colendline, colendchar = col[0].endpos
+                if colendline > linenum:
+                    charnum = 1+len(ln)
+                else:
+                    charnum = colendchar
+                if lastcharnum < charnum:
+                    curline.append( (col[1], ln[lastcharnum-1 : charnum-1]) )
                     
             res.append(curline)
             linenum += 1
