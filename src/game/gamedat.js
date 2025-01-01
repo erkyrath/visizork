@@ -38,6 +38,9 @@ window.gamedat_ids = {};
         gamedat_routine_map.set(obj.addr, obj);
     }
 
+    gamedat_ids.MAX_OBJECTS = 250;
+    gamedat_ids.MAX_GLOBALS = 158;
+
     gamedat_ids.ROOMS = gamedat_object_names.get('ROOMS').onum;
     gamedat_ids.GLOBAL_OBJECTS = gamedat_object_names.get('GLOBAL-OBJECTS').onum;
     gamedat_ids.LOCAL_GLOBALS = gamedat_object_names.get('LOCAL-GLOBALS').onum;

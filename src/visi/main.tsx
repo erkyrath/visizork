@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { Root, createRoot } from 'react-dom/client';
 
 import { ZState } from './zstate';
-import { sourceloc_start } from './gamedat';
+import { gamedat_ids, sourceloc_start } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
 import { SourceLocState, new_sourcelocstate } from './context';
@@ -12,6 +12,7 @@ import { ObjectTree } from './objtree';
 import { StringActivity, CallActivity } from './activity';
 import { SourceFileList } from './filelist';
 import { SourceView } from './sourceview';
+import { GlobalState } from './globstate';
 
 // This is the GnustoRunner and the GnustoEngine, but I don't have
 // type info for them yet.
@@ -28,8 +29,7 @@ export function init(runnerref: any)
     runner = runnerref;
     engine = runner.e;
 
-    //### should pull from gamedat
-    engine.prepare_vm_report({ MAX_OBJECTS:250 });
+    engine.prepare_vm_report({ MAX_OBJECTS:gamedat_ids.MAX_OBJECTS });
     
     const appel = document.getElementById('appbody') as HTMLElement;
     let root = createRoot(appel);
@@ -104,6 +104,7 @@ const tab_list = [
     [ 'objtree', 'World' ],
     [ 'activity', 'Trace' ],
     [ 'functivity', 'Calls' ],
+    [ 'globals', 'Globals' ],
     [ 'filelist', 'Files' ],
 ];
 
@@ -138,6 +139,9 @@ function TabbedPane()
         break;
     case 'functivity':
         tabcontent = <CallActivity />;
+        break;
+    case 'globals':
+        tabcontent = <GlobalState />;
         break;
     case 'filelist':
         tabcontent = <SourceFileList />;
