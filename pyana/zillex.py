@@ -41,7 +41,10 @@ class Token:
         if self.typ is TokType.STR or self.typ is TokType.DELIM:
             return '<%s %r>' % (self.typ, self.val,)
         if self.typ is TokType.GROUP:
-            return '<%s %s (%d els)>' % (self.typ, self.val, len(self.children),)
+            val = self.val
+            if self.children and self.children[0].typ == TokType.ID:
+                val = val[0] + self.children[0].val + val[1:]
+            return '<%s %s (%d els)>' % (self.typ, val, len(self.children),)
         return '<%s %s>' % (self.typ, self.val,)
 
     def posstr(self, altpos=None):
