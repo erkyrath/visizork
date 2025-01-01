@@ -162,3 +162,19 @@ ul.DataList ul {
 .SourceFile .Hilit {
     background: #CCF;
 }
+
+.Src_Comment {
+    color: #484;
+}
+
+.Src_Str {
+    color: #A44;
+}
+
+.Src_Dict {
+    color: #488;
+}
+
+.Src_Id {
+    color: #44C;
+}

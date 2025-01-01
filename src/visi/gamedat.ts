@@ -115,8 +115,11 @@ interface AllDistanceMap {
     [key: number]: DistanceMap;
 };
 
+export type SourceSpan = string | [ string, string ];
+export type SourceLine = SourceSpan[];
+
 interface SourceLinesMap {
-    [key: string]: string[];
+    [key: string]: SourceLine[];
 };
 
 export const gamedat_ids = (window as any).gamedat_ids;
