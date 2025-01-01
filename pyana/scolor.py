@@ -24,6 +24,7 @@ def parse(filename):
 class Color(StrEnum):
     STR = 'STR'
     ID = 'ID'
+    DICT = 'DICT'
     COMMENT = 'COMMENT'
 
 linkids = set(['LOCAL-GLOBALS', 'BOARD', 'BOARD-F', 'ZORK-NUMBER', 'P-NOT-HERE'])
@@ -40,6 +41,19 @@ def colorize(tokls, res):
         if tok.typ is TokType.GROUP and tok.val == ';':
             res.append( (tok, Color.COMMENT) )
             continue
+        if tok.typ is TokType.GROUP and tok.val == '()' and tok.children:
+            if tok.children[0].idmatch('SYNONYM'):
+                for subtok in tok.children[1:]:
+                    if subtok.typ is TokType.ID:
+                        res.append( (subtok, Color.DICT) )
+                continue
+            if tok.children[0].idmatch('PSEUDO'):
+                for subtok in tok.children[1:]:
+                    if subtok.typ is TokType.STR:
+                        res.append( (subtok, Color.DICT) )
+                    if subtok.typ is TokType.ID and subtok.val in linkids:
+                        res.append( (subtok, Color.ID) )
+                continue
         if tok.children:
             colorize(tok.children, res)
 
