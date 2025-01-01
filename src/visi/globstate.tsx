@@ -10,11 +10,26 @@ export function GlobalState()
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
 
+    let counter = 0;
+    let globls = zstate.globals.map((val) => {
+        let index = counter++;
+        return <GlobalVar key={ index } index={ index } value={ val } />;
+    });
+
     return (
         <div className="ScrollContent">
             <ul className="DataList">
-
+                { globls }
             </ul>
-	</div>
+        </div>
+    );
+}
+
+export function GlobalVar({ index, value }: { index:number, value:number })
+{
+    return (
+        <li>
+            { index }: { value }
+        </li>
     );
 }

@@ -13,6 +13,7 @@ export type ZFuncCall = {
 };
 
 export type ZState = {
+    globals: number[];
     objects: ZObject[];
     strings: number[];
     calltree: ZFuncCall;
@@ -21,6 +22,7 @@ export type ZState = {
 export function zstate_empty() : ZState
 {
     return {
+        globals: [],
         objects: [],
         strings: [],
         calltree: { type:'call', addr:0, children:[] },
