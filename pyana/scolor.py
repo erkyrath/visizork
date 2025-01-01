@@ -19,7 +19,11 @@ def parse(filename):
     #dumptokens(tokls, withpos=True)
     res = []
     colorize(tokls, res)
-    dumpcolors(res)
+    #dumpcolors(res)
+    lines = color_file_lines(filename, res)
+    ###
+    for ln in lines:
+        print(ln)
 
 class Color(StrEnum):
     STR = 'STR'
@@ -41,6 +45,7 @@ def colorize(tokls, res):
         if tok.typ is TokType.GROUP and tok.val == ';':
             res.append( (tok, Color.COMMENT) )
             continue
+        ### %COND
         if tok.typ is TokType.GROUP and tok.val == '()' and tok.children:
             if tok.children[0].idmatch('SYNONYM'):
                 for subtok in tok.children[1:]:
@@ -54,11 +59,41 @@ def colorize(tokls, res):
                     if subtok.typ is TokType.ID and subtok.val in linkids:
                         res.append( (subtok, Color.ID) )
                 continue
+        ### <SYNTAX>, <SYNONYM>
         if tok.children:
             colorize(tok.children, res)
 
 def dumpcolors(ls):
     for (tok, color) in ls:
         print('%s: %s %s' % (color, tok.posstr(), tok, ))
+
+def color_file_lines(filename, colorls):
+    colorls = list(colorls)
+    res = []
+    
+    with open(filename) as infl:
+        col = colorls and colorls.pop(0)
+        col = [] ###
+        
+        linenum = 1
+        for ln in infl.readlines():
+            ln = ln.rstrip()
             
+            curline = []
+            charnum = 1
+            
+            while charnum < 1+len(ln):
+                lastcharnum = charnum
+                while col and posLE(col.endpos, (linenum, charnum)):
+                    col = colorls and colorls.pop(0)
+                if not col:
+                    charnum = 1+len(ln)
+                    if lastcharnum < charnum:
+                        curline.append( (None, ln[lastcharnum-1 : charnum-1]) )
+                    
+            res.append(curline)
+            linenum += 1
+
+    return res
+        
 parse(opts.zilfile)
