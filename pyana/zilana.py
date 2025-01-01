@@ -32,6 +32,7 @@ class ZGlobal:
     def __init__(self, name, pos):
         self.name = name
         self.pos = pos
+        self.valtok = None
 
     def __repr__(self):
         return '<ZGlobal %s>' % (self.name,)
@@ -134,10 +135,15 @@ class Zcode:
         for tok in self.tokls:
             if tok.matchform('GLOBAL', 1):
                 idtok = tok.children[1]
+                zglob = None
                 if idtok.typ is TokType.ID:
-                    self.globals.append(ZGlobal(idtok.val, tok.pos))
+                    zglob = ZGlobal(idtok.val, tok.pos)
+                    self.globals.append(zglob)
+                else:
+                    raise Exception('Global has no name')
                 if len(tok.children) >= 3:
                     globtok = tok.children[2]
+                    zglob.valtok = globtok
                     if globtok.typ is TokType.STR:
                         self.strings.append(ZString(globtok.val, globtok.pos, globtok.endpos))
                     if globtok.typ is TokType.GROUP and globtok.children:
