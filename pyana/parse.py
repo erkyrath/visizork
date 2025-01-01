@@ -9,7 +9,7 @@ from zilana import markcomments, stripcomments
 from zilana import stripifdefs
 from txdparse import TXDData, ObjDumpData
 from writer import write_objects, write_routines, write_strings, compute_room_distances
-from gensource import write_source
+from gensource import write_source, write_source_colored
 
 popt = optparse.OptionParser()
 
@@ -73,4 +73,4 @@ if opts.gamedat:
         compute_room_distances('src/game/distances.js', zcode)
 
 if opts.sourcelist:
-    write_source('src/game/source.js')
+    write_source_colored('src/game/source.js')

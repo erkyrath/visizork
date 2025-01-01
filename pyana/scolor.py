@@ -1,19 +1,8 @@
-#!/usr/bin/env python3
-
-import sys
-import optparse
 from enum import StrEnum
 
 from zillex import Lexer, TokType, dumptokens
 
-popt = optparse.OptionParser()
-
-popt.add_option('-z', '--zil',
-                action='store', dest='zilfile')
-
-(opts, args) = popt.parse_args()
-
-def parse(filename):
+def colorize_file(filename):
     lex = Lexer(filename)
     tokls = lex.readfile(includes=False)
     #dumptokens(tokls, withpos=True)
@@ -21,9 +10,7 @@ def parse(filename):
     colorize(tokls, res)
     #dumpcolors(res)
     lines = color_file_lines(filename, res)
-    ###
-    for ln in lines:
-        print(ln)
+    return lines
 
 class Color(StrEnum):
     STR = 'STR'
@@ -123,5 +110,4 @@ def color_file_lines(filename, colorls):
             linenum += 1
 
     return res
-        
-parse(opts.zilfile)
+
