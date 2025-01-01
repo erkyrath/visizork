@@ -23,12 +23,19 @@ def parse(filename):
 
 class Color(StrEnum):
     STR = 'STR'
+    ID = 'ID'
     COMMENT = 'COMMENT'
-    
+
+linkids = set(['LOCAL-GLOBALS', 'BOARD', 'BOARD-F', 'ZORK-NUMBER', 'P-NOT-HERE'])
+
 def colorize(tokls, res):
     for tok in tokls:
         if tok.typ is TokType.STR:
             res.append( (tok, Color.STR) )
+            continue
+        if tok.typ is TokType.ID:
+            if tok.val in linkids:
+                res.append( (tok, Color.ID) )
             continue
         if tok.typ is TokType.GROUP and tok.val == ';':
             res.append( (tok, Color.COMMENT) )
