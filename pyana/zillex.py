@@ -44,6 +44,13 @@ class Token:
             return '<%s %s (%d els)>' % (self.typ, self.val, len(self.children),)
         return '<%s %s>' % (self.typ, self.val,)
 
+    def posstr(self, altpos=None):
+        pos = altpos or self.pos
+        val = '%s:%s:%s' % pos
+        if self.endpos:
+            val += ' - %s:%s:%s' % self.endpos
+        return val
+
     def itertree(self, func):
         res = func(self)
         if res:
@@ -263,9 +270,7 @@ def dumptokens(ls, withpos=False, skipdead=False, depth=0, prefix='', atpos=None
         
         posstr = ''
         if withpos:
-            posstr = ' %s:%s:%s' % pos
-            if endpos:
-                posstr += ' - %s:%s:%s' % endpos
+            posstr = ' ' + tok.posstr(altpos=pos)
         print('%s%s%r%s' % ('  '*depth, prefix, tok, posstr))
         if tok.typ is TokType.GROUP:
             dumptokens(tok.children, withpos=withpos, skipdead=skipdead, depth=depth+1)
