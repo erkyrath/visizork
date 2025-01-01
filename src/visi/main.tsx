@@ -29,7 +29,10 @@ export function init(runnerref: any)
     runner = runnerref;
     engine = runner.e;
 
-    engine.prepare_vm_report({ MAX_OBJECTS:gamedat_ids.MAX_OBJECTS });
+    engine.prepare_vm_report({
+        MAX_OBJECTS: gamedat_ids.MAX_OBJECTS,
+        MAX_GLOBALS: gamedat_ids.MAX_GLOBALS,
+    });
     
     const appel = document.getElementById('appbody') as HTMLElement;
     let root = createRoot(appel);

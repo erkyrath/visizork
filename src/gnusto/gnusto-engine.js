@@ -2235,6 +2235,14 @@ GnustoEngine.prototype = {
             onum++;
         }
 
+        report.globals = [];
+        var gnum = 0;
+        while (gnum < m_report_info.MAX_GLOBALS) {
+            var gval = this.getUnsignedWord(this.m_vars_start+gnum*2);
+            report.globals.push(gval);
+            gnum++;
+        }
+
         var initpc = this.getUnsignedWord(0x6) - 1;
         var calltree = { type:'call', addr:initpc, children:[] };
         var stack = [ calltree ];
