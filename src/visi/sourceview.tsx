@@ -122,12 +122,26 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
         let lines = gamedat_sourcefiles[filename];
         if (lines) {
             let counter = 1;
-            for (let ln of lines) {
+            for (let srcln of lines) {
                 let linel = document.createElement('div');
                 linel.id = 'line_' + counter;
-                if (ln.length == 0)
-                    ln = ' ';
-                linel.appendChild(document.createTextNode(ln));
+                if (srcln.length == 0) {
+                    linel.appendChild(document.createTextNode(' '));
+                }
+                else {
+                    for (let span of srcln) {
+                        if (typeof span === 'string') {
+                            linel.appendChild(document.createTextNode(span.replace('\t', '    ')));
+                        }
+                        else {
+                            let [ cla, val ] = span;
+                            let spanel = document.createElement('span');
+                            spanel.className = 'Src_'+cla;
+                            spanel.appendChild(document.createTextNode(val.replace('\t', '    ')));
+                            linel.appendChild(spanel);
+                        }
+                    }
+                }
                 filel.appendChild(linel);
                 counter++;
             }
