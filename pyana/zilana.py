@@ -29,9 +29,9 @@ class ZString:
         return '<ZString %s"%s">' % (rtnstr, summary)
     
 class ZGlobal:
-    def __init__(self, name, pos):
+    def __init__(self, name, gtok):
         self.name = name
-        self.pos = pos
+        self.gtok = gtok
         self.valtok = None
 
     def __repr__(self):
@@ -137,7 +137,7 @@ class Zcode:
                 idtok = tok.children[1]
                 zglob = None
                 if idtok.typ is TokType.ID:
-                    zglob = ZGlobal(idtok.val, tok.pos)
+                    zglob = ZGlobal(idtok.val, tok)
                     self.globals.append(zglob)
                 else:
                     raise Exception('Global has no name')

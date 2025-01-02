@@ -145,7 +145,7 @@ def write_globals(filename, zcode):
         dat = {
             'name': glo.name,
             'num': globname_to_num[glo.name],
-            'sourceloc': sourceloc(tok=glo.valtok),
+            'sourceloc': sourceloc(tok=glo.gtok),
         }
         ls.append(dat)
 
