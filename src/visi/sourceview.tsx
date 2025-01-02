@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, useRef, useEffect } from 'react';
 
 import { sourcefile_map, gamedat_sourcefiles } from './gamedat';
-import { gamedat_object_names, gamedat_string_map, gamedat_routine_names, parse_sourceloc } from './gamedat';
+import { gamedat_global_names, gamedat_object_names, gamedat_string_map, gamedat_routine_names, parse_sourceloc } from './gamedat';
 import { sourceloc_start } from './gamedat';
 
 import { ReactCtx } from './context';
@@ -42,6 +42,12 @@ export function SourceView()
             rctx.setLoc(rtn.sourceloc, false);
             return;
         }
+        let glo = gamedat_global_names.get(val);
+        if (glo) {
+            rctx.setLoc(glo.sourceloc, false);
+            return;
+        }
+        console.log('BUG: clicked unknown id', val);
     }
 
     useEffect(() => {
