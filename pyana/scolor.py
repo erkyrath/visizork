@@ -34,7 +34,7 @@ def colorize(tokls, res):
             continue
         ### %COND
         if tok.typ is TokType.GROUP and tok.val == '()' and tok.children:
-            if tok.children[0].idmatch('SYNONYM'):
+            if tok.children[0].idmatch(('SYNONYM', 'ADJECTIVE')):
                 for subtok in tok.children[1:]:
                     if subtok.typ is TokType.ID:
                         res.append( (subtok, Color.DICT) )
