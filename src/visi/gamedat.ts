@@ -125,11 +125,12 @@ interface SourceLinesMap {
 export const gamedat_ids = (window as any).gamedat_ids;
 
 export const gamedat_object_ids = (window as any).gamedat_object_ids as Map<number, ObjectData>;
-export const gamedat_object_names = (window as any).gamedat_object_ids as Map<string, ObjectData>;
+export const gamedat_object_names = (window as any).gamedat_object_names as Map<string, ObjectData>;
 export const gamedat_object_room_ids = (window as any).gamedat_object_room_ids as Set<number>;
 export const gamedat_object_global_ids = (window as any).gamedat_object_global_ids as Set<number>;
 export const gamedat_object_treesort = (window as any).gamedat_object_treesort as Map<number, number>;
 export const gamedat_string_map = (window as any).gamedat_string_map as Map<number, StringData>;
-export const gamedat_routine_map = (window as any).gamedat_routine_map as Map<number, RoutineData>;
+export const gamedat_routine_addrs = (window as any).gamedat_routine_addrs as Map<number, RoutineData>;
+export const gamedat_routine_names = (window as any).gamedat_routine_names as Map<string, RoutineData>;
 export const gamedat_sourcefiles = (window as any).gamedat_sourcefiles as SourceLinesMap;
 export const gamedat_distances = (window as any).gamedat_distances as AllDistanceMap;

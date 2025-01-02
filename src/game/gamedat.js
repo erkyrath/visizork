@@ -5,7 +5,8 @@ window.gamedat_object_room_ids = new Set();
 window.gamedat_object_global_ids = new Set();
 window.gamedat_object_treesort = new Map();
 window.gamedat_string_map = new Map();
-window.gamedat_routine_map = new Map();
+window.gamedat_routine_addrs = new Map();
+window.gamedat_routine_names = new Map();
 
 window.gamedat_ids = {};
 
@@ -35,7 +36,8 @@ window.gamedat_ids = {};
     }
 
     for (let obj of window.gamedat_routines) {
-        gamedat_routine_map.set(obj.addr, obj);
+        gamedat_routine_addrs.set(obj.addr, obj);
+        gamedat_routine_names.set(obj.name, obj);
     }
 
     gamedat_ids.MAX_OBJECTS = 250;

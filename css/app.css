@@ -181,3 +181,10 @@ ul.DataList ul {
 .Src_Id {
     color: #A44;
 }
+
+a.Src_Id {
+    text-decoration: none;
+}
+a.Src_Id:hover {
+    text-decoration: underline;
+}

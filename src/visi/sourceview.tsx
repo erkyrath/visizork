@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, useRef, useEffect } from 'react';
 
 import { sourcefile_map, gamedat_sourcefiles } from './gamedat';
-import { gamedat_string_map, parse_sourceloc } from './gamedat';
+import { gamedat_object_names, gamedat_string_map, gamedat_routine_names, parse_sourceloc } from './gamedat';
 import { sourceloc_start } from './gamedat';
 
 import { ReactCtx } from './context';
@@ -31,6 +31,19 @@ export function SourceView()
     let filestr = loc[0];
     let filename = sourcefile_map[filestr] || '???';
 
+    function evhan_click_id(val: string) {
+        let obj = gamedat_object_names.get(val);
+        if (obj) {
+            rctx.setLoc(obj.sourceloc, false);
+            return;
+        }
+        let rtn = gamedat_routine_names.get(val);
+        if (rtn) {
+            rctx.setLoc(rtn.sourceloc, false);
+            return;
+        }
+    }
+
     useEffect(() => {
         if (noderef.current) {
             let hilites: string[] = [];
@@ -45,7 +58,7 @@ export function SourceView()
                     }
                 }
             }
-            rebuild_sourcefile(noderef.current, loc, lochi, hilites);
+            rebuild_sourcefile(noderef.current, loc, lochi, hilites, evhan_click_id);
         }
     }, [ loc, lochi, zstate ]);
 
@@ -77,7 +90,7 @@ export function SourceView()
 
 const pat_tab = new RegExp('\t', 'g');
 
-function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolean, hilites: string[])
+function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolean, hilites: string[], handle_click_id: (val:string)=>void)
 {
     let loc = parse_sourceloc(locstr);
     if (!loc)
@@ -109,10 +122,6 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
         }
     }
 
-    function handle_click(val: string) {
-        console.log('### click', val);
-    }
-    
     if (filel && filel.id == fileid) {
         // Keep the node list
     }
@@ -146,7 +155,7 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                                 spanel = document.createElement('a');
                                 spanel.setAttribute('href', '#')
                                 spanel.className = 'Src_'+cla;
-                                spanel.addEventListener('click', (ev) => { ev.preventDefault(); handle_click(val); });
+                                spanel.addEventListener('click', (ev) => { ev.preventDefault(); handle_click_id(val); });
                             }
                             else {
                                 spanel = document.createElement('span');

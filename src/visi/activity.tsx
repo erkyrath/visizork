@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZState, ZObject, ZFuncCall } from './zstate';
-import { gamedat_string_map, gamedat_routine_map } from './gamedat';
+import { gamedat_string_map, gamedat_routine_addrs } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -114,7 +114,7 @@ export function CallEntry({ call }: { call:ZFuncCall })
     let ctx = useContext(ListCtx);
     let [ selindex, seladdr ] = ctx.selected;
 
-    let funcdat = gamedat_routine_map.get(call.addr);
+    let funcdat = gamedat_routine_addrs.get(call.addr);
     let issel = (call.addr == seladdr);
 
     let counter = 0;
