@@ -299,4 +299,6 @@ Property 31 NORTH
 Global 0 HERE
 Global 1 SCORE
 Global 2 MOVES
+Global 63 BASE-SCORE
+Global 140 WON-FLAG
 ### need rest of globals!
