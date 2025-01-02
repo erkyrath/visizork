@@ -183,6 +183,11 @@ code {
     color: #84A;
 }
 
+.Src_Iddef {
+    color: #A44;
+    font-weight: bold;
+}
+
 .Src_Id {
     color: #A44;
 }

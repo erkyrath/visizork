@@ -23,6 +23,7 @@ def colorize_file(filename, zcode):
 class Color(StrEnum):
     STR = 'STR'
     ID = 'ID'
+    IDDEF = 'IDDEF'
     DICT = 'DICT'
     COMMENT = 'COMMENT'
 
@@ -33,7 +34,11 @@ def colorize(tokls, res):
             continue
         if tok.typ is TokType.ID:
             if tok.val in linkids:
-                res.append( (tok, Color.ID) )
+                stanzatok = linkids[tok.val]
+                if tokIN(tok, stanzatok):
+                    res.append( (tok, Color.IDDEF) )
+                else:
+                    res.append( (tok, Color.ID) )
             continue
         if tok.typ is TokType.GROUP and tok.val == ';':
             res.append( (tok, Color.COMMENT) )
@@ -69,6 +74,10 @@ def posLE(tup1, tup2):
 
 def posGT(tup1, tup2):
     return not posLE(tup1, tup2)
+
+def tokIN(tok1, tok2):
+    if posLE(tok2.pos, tok1.pos) and posLE(tok1.endpos, tok2.endpos):
+        return True
 
 def color_file_lines(filename, colorls):
     colorls = list(colorls)
