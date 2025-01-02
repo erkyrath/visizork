@@ -137,7 +137,7 @@ export function CallEntry({ call }: { call:ZFuncCall })
     return (
         <>
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
-                call { call.addr }: { funcname }
+                call { call.addr }: <code>{ funcname }</code>
             </li>
             <ul className="DataList">
                 { (subls.length ? subls : null ) }

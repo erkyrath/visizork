@@ -34,7 +34,7 @@ export function GlobalVar({ index, value }: { index:number, value:number })
     
     return (
         <li>
-            { index } { (glo ? glo.name : '???') }
+            { index } <code>{ (glo ? glo.name : '???') }</code>
             : { value }{' '}
             { (glob_is_object.has(index) ?
                <VarShowObject value={ value } />
