@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZState, ZObject } from './zstate';
-import { gamedat_object_ids } from './gamedat';
+import { gamedat_global_nums, gamedat_object_ids } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -30,9 +30,12 @@ const glob_is_object = new Set([0]);
 
 export function GlobalVar({ index, value }: { index:number, value:number })
 {
+    let glo = gamedat_global_nums.get(index);
+    
     return (
         <li>
-            { index }: { value }{' '}
+            { index } { (glo ? glo.name : '???') }
+            : { value }{' '}
             { (glob_is_object.has(index) ?
                <VarShowObject value={ value } />
                : null )}
