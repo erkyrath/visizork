@@ -150,6 +150,7 @@ ul.DataList ul {
 .SourceFile {
     white-space: pre-wrap;
     font-family: "Courier Prime";
+    font-size: 90%;
 }
 
 .SourceFile .Selected {

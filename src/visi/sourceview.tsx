@@ -75,6 +75,8 @@ export function SourceView()
     );
 }
 
+const pat_tab = new RegExp('\t', 'g');
+
 function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolean, hilites: string[])
 {
     let loc = parse_sourceloc(locstr);
@@ -131,13 +133,13 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                 else {
                     for (let span of srcln) {
                         if (typeof span === 'string') {
-                            linel.appendChild(document.createTextNode(span.replace('\t', '    ')));
+                            linel.appendChild(document.createTextNode(span.replace(pat_tab, '    ')));
                         }
                         else {
                             let [ cla, val ] = span;
                             let spanel = document.createElement('span');
                             spanel.className = 'Src_'+cla;
-                            spanel.appendChild(document.createTextNode(val.replace('\t', '    ')));
+                            spanel.appendChild(document.createTextNode(val.replace(pat_tab, '    ')));
                             linel.appendChild(spanel);
                         }
                     }

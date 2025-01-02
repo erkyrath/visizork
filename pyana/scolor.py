@@ -18,6 +18,7 @@ class Color(StrEnum):
     DICT = 'DICT'
     COMMENT = 'COMMENT'
 
+### get real linkids
 linkids = set(['LOCAL-GLOBALS', 'BOARD', 'BOARD-F', 'ZORK-NUMBER', 'P-NOT-HERE'])
 
 def colorize(tokls, res):
