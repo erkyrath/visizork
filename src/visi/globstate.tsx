@@ -26,7 +26,8 @@ export function GlobalState()
     );
 }
 
-const glob_is_object = new Set([0]);
+//###
+const glob_is_object = new Set([0, 111]);
 
 export function GlobalVar({ index, value }: { index:number, value:number })
 {

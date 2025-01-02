@@ -300,5 +300,10 @@ Global 0 HERE
 Global 1 SCORE
 Global 2 MOVES
 Global 63 BASE-SCORE
+Global 66 LIT
+Global 65 SPRAYED?
+Global 111 WINNER
 Global 140 WON-FLAG
+Global 151 SCORE-MAX
+Global 153 BIGFIX
 ### need rest of globals!
