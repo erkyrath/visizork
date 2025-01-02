@@ -2,10 +2,17 @@ from enum import StrEnum
 
 from zillex import Lexer, TokType, dumptokens
 
-def colorize_file(filename):
+linkids = set()
+
+def colorize_file(filename, zcode):
+    linkids.update([ obj.name for obj in zcode.objects ])
+    linkids.update([ rtn.name for rtn in zcode.routines ])
+    linkids.update([ glo.name for glo in zcode.globals ])
+    
     lex = Lexer(filename)
     tokls = lex.readfile(includes=False)
     #dumptokens(tokls, withpos=True)
+    
     res = []
     colorize(tokls, res)
     #dumpcolors(res)
@@ -17,9 +24,6 @@ class Color(StrEnum):
     ID = 'ID'
     DICT = 'DICT'
     COMMENT = 'COMMENT'
-
-### get real linkids
-linkids = set(['LOCAL-GLOBALS', 'BOARD', 'BOARD-F', 'ZORK-NUMBER', 'P-NOT-HERE'])
 
 def colorize(tokls, res):
     for tok in tokls:
@@ -47,7 +51,7 @@ def colorize(tokls, res):
                     if subtok.typ is TokType.ID and subtok.val in linkids:
                         res.append( (subtok, Color.ID) )
                 continue
-        ### <SYNTAX>, <SYNONYM>
+        ### <SYNTAX>, <SYNONYM>, <BUZZ>
         if tok.children:
             colorize(tok.children, res)
 

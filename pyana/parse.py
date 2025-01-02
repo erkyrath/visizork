@@ -73,4 +73,7 @@ if opts.gamedat:
         compute_room_distances('src/game/distances.js', zcode)
 
 if opts.sourcelist:
-    write_source_colored('src/game/source.js')
+    if not opts.zilfile:
+        print('need -z gamesrc/zork1.zil')
+    else:
+        write_source_colored('src/game/source.js', zcode)
