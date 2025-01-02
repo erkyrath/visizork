@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZState, ZObject } from './zstate';
-import { gamedat_global_nums, gamedat_object_ids } from './gamedat';
+import { gamedat_global_nums, gamedat_object_ids, gamedat_string_map } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -28,6 +28,7 @@ export function GlobalState()
 
 //###
 const glob_is_object = new Set([0, 111]);
+const glob_is_string = new Set([28, 29]);
 
 export function GlobalVar({ index, value }: { index:number, value:number })
 {
@@ -39,6 +40,9 @@ export function GlobalVar({ index, value }: { index:number, value:number })
             : { value }{' '}
             { (glob_is_object.has(index) ?
                <VarShowObject value={ value } />
+               : null )}
+            { (glob_is_string.has(index) ?
+               <VarShowString value={ value } />
                : null )}
         </li>
     );
@@ -53,6 +57,16 @@ function VarShowObject({ value }: { value:number })
     if (obj) {
         //### link?
         return (<span>({ obj.name })</span>);
+    }
+
+    return (<span>???</span>);
+}
+
+function VarShowString({ value }: { value:number })
+{
+    let obj = gamedat_string_map.get(2*value); //### packed string address
+    if (obj) {
+        return (<span>"{ obj.text }"</span>);
     }
 
     return (<span>???</span>);
