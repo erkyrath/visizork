@@ -24,3 +24,24 @@
     font-weight: bold;
     src: url("../font/CourierPrime-BoldItalic.ttf") format("truetype");
 }
+
+
+
+@font-face {
+    font-family: "Libre Baskerville";
+    font-style: normal;
+    src: url("../font/LibreBaskerville-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Libre Baskerville";
+    font-style: italic;
+    src: url("../font/LibreBaskerville-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Libre Baskerville";
+    font-style: normal;
+    font-weight: bold;
+    src: url("../font/LibreBaskerville-Bold.ttf") format("truetype");
+}
