@@ -19,6 +19,8 @@ objnum_to_name = {}
 objname_to_num = {}
 propnum_to_name = {}
 propname_to_num = {}
+globname_to_num = {}
+globnum_to_name = {}
 
 def load_gameinfo():
     global info_loaded
@@ -37,6 +39,9 @@ def load_gameinfo():
         if typ == 'Property':
             propname_to_num[name] = num
             propnum_to_name[num] = name
+        if typ == 'Global':
+            globname_to_num[name] = num
+            globnum_to_name[num] = name
     fl.close()
     info_loaded = True
 
@@ -126,6 +131,27 @@ def write_routines(filename, zcode, txdat):
     fl = open(filename, 'w')
     fl.write('window.gamedat_routines = ');
     json.dump(ls, fl, separators=(',', ':'))
+    fl.write('\n')
+    fl.close()
+
+def write_globals(filename, zcode):
+    print('...writing globals data:', filename)
+    load_gameinfo()
+    ls = []
+    for glo in zcode.globals:
+        if glo.name not in globname_to_num:
+            print('### missing global', glo.name)
+            continue
+        dat = {
+            'name': glo.name,
+            'num': globname_to_num[glo.name],
+            'sourceloc': sourceloc(tok=glo.valtok),
+        }
+        ls.append(dat)
+
+    fl = open(filename, 'w')
+    fl.write('window.gamedat_globals = ');
+    json.dump(ls, fl)
     fl.write('\n')
     fl.close()
 

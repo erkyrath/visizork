@@ -8,7 +8,7 @@ from zilana import Zcode
 from zilana import markcomments, stripcomments
 from zilana import stripifdefs
 from txdparse import TXDData, ObjDumpData
-from writer import write_objects, write_routines, write_strings, compute_room_distances
+from writer import write_globals, write_objects, write_routines, write_strings, compute_room_distances
 from gensource import write_source, write_source_colored
 
 popt = optparse.OptionParser()
@@ -63,6 +63,8 @@ if opts.objdump:
     print('objects:', len(objdat.objects))
     
 if opts.gamedat:
+    if opts.zilfile:
+        write_globals('src/game/globals.js', zcode)
     if opts.zilfile and opts.objdump:
         write_objects('src/game/objects.js', zcode, objdat)
     if opts.zilfile and opts.txdfile:

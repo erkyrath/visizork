@@ -295,3 +295,8 @@ Property 28 SOUTH
 Property 29 WEST
 Property 30 EAST
 Property 31 NORTH
+
+Global 0 HERE
+Global 1 SCORE
+Global 2 MOVES
+### need rest of globals!
