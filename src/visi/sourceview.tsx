@@ -108,6 +108,10 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
             break;
         }
     }
+
+    function handle_click(val: string) {
+        console.log('### click', val);
+    }
     
     if (filel && filel.id == fileid) {
         // Keep the node list
@@ -137,8 +141,17 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                         }
                         else {
                             let [ cla, val ] = span;
-                            let spanel = document.createElement('span');
-                            spanel.className = 'Src_'+cla;
+                            let spanel;
+                            if (cla == 'Id') {
+                                spanel = document.createElement('a');
+                                spanel.setAttribute('href', '#')
+                                spanel.className = 'Src_'+cla;
+                                spanel.addEventListener('click', (ev) => { ev.preventDefault(); handle_click(val); });
+                            }
+                            else {
+                                spanel = document.createElement('span');
+                                spanel.className = 'Src_'+cla;
+                            }
                             spanel.appendChild(document.createTextNode(val.replace(pat_tab, '    ')));
                             linel.appendChild(spanel);
                         }
