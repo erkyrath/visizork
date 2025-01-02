@@ -41,7 +41,7 @@ body {
     width: 50%;
     top: 50px;
     bottom: 0px;
-    background: #EEE;
+    background: white;
     margin: 0px;
     box-sizing: border-box;
 }
@@ -149,6 +149,7 @@ ul.DataList ul {
 
 .SourceFile {
     white-space: pre-wrap;
+    font-family: "Courier Prime";
 }
 
 .SourceFile .Selected {
@@ -168,13 +169,14 @@ ul.DataList ul {
 }
 
 .Src_Str {
-    color: #A44;
+    color: #44C;
+    font-weight: bold;
 }
 
 .Src_Dict {
-    color: #488;
+    color: #A48;
 }
 
 .Src_Id {
-    color: #44C;
+    color: #A44;
 }
