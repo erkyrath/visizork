@@ -91,7 +91,7 @@
 .GridWindow {
   background: #D0D0C0;
   overflow: hidden;
-  font-family: monaco, andale mono, lucidatypewriter, courier, courier new, monospace; /* necessary! */
+  font-family: "Courier Prime", "Courier", monospace; /* necessary! */
   font-size: 14px;
   padding: 6px 10px 6px 10px;
 }
@@ -170,7 +170,7 @@
 }
 
 .GridWindow .Input {
-  font-family: monaco, andale mono, lucidatypewriter, courier, courier new, monospace; /* necessary! */
+  font-family: "Courier Prime", "Courier", monospace; /* necessary! */
   font-size: 14px;
 }
 
@@ -222,7 +222,7 @@
 }
 
 .Style_preformatted {
-  font-family: monaco, andale mono, lucidatypewriter, courier, courier new, monospace;
+  font-family: "Courier Prime", "Courier", monospace;
 }
 
 .Style_header {
