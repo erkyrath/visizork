@@ -2192,22 +2192,32 @@ GnustoEngine.prototype = {
     {
         m_report = {
             strings: [],
-            calls: this.m_func_stack.slice(),
+            calls: [],
         };
+        for (var addr of this.m_func_stack)
+             m_report.calls.push({ t:'c', addr:addr });
     },
 
     _vm_report_string(where, val)
     {
-        if (m_report)
+        if (m_report) {
             m_report.strings.push(val);
+            m_report.calls.push({ t:'s', addr:val });
+        }
         return val;
     },
 
     _vm_report_call(addr)
     {
         if (m_report)
-            m_report.calls.push(addr);
+             m_report.calls.push({ t:'c', addr:addr });
         return addr;
+    },
+
+    _vm_report_return()
+    {
+        if (m_report)
+            m_report.calls.push({ t:'r' });
     },
 
     // Called at the end of a turn (just before awaiting input) to get
@@ -2246,13 +2256,13 @@ GnustoEngine.prototype = {
         var initpc = this.getUnsignedWord(0x6) - 1;
         var calltree = { type:'call', addr:initpc, children:[] };
         var stack = [ calltree ];
-        for (var addr of m_report.calls) {
-            if (addr >= 0) {
-                var call = { type:'call', addr:addr, children:[] };
+        for (var obj of m_report.calls) {
+            if (obj.t == 'c') {
+                var call = { type:'call', addr:obj.addr, children:[] };
                 stack[stack.length-1].children.push(call);
                 stack.push(call);
             }
-            else {
+            else if (obj.t == 'r') {
                 stack.pop();
             }
         }
@@ -3403,7 +3413,7 @@ GnustoEngine.prototype = {
         this.m_param_counts.shift();
         this.m_pc = this.m_call_stack.pop();
         this.m_func_stack.pop();
-        this._vm_report_call(-1);
+        this._vm_report_return();
 
         // Force the gamestack to be the length it was when this
         // routine started. (ZMSD 6.3.2.)
