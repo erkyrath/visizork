@@ -37,31 +37,32 @@ body {
 
 #appbody {
     position: absolute;
-    right: 0px;
-    width: 50%;
+    width: 100%;
     top: 50px;
     bottom: 0px;
-    background: white;
+    background: #EEE;
     margin: 0px;
     box-sizing: border-box;
 }
 
 .ViewPane {
     position: absolute;
-    left: 0px;
-    width: 100%;
+    right: 0px;
+    width: 50%;
     top: 0px;
     height: 50%;
+    background: white;
     box-sizing: border-box;
     border-bottom: 1px solid #888;
 }
 
 .SourcePane {
     position: absolute;
-    left: 0px;
-    width: 100%;
+    right: 0px;
+    width: 50%;
     bottom: 0px;
     height: 50%;
+    background: white;
     box-sizing: border-box;
 }
 
