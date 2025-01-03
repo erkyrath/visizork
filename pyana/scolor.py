@@ -49,6 +49,8 @@ def colorize(tokls, res):
                 for subtok in tok.children[1:]:
                     if subtok.typ is TokType.ID:
                         res.append( (subtok, Color.DICT) )
+                    if subtok.typ is TokType.GROUP and subtok.val == ';':
+                        res.append( (subtok, Color.COMMENT) )
                 continue
             if tok.children[0].idmatch('PSEUDO'):
                 for subtok in tok.children[1:]:
