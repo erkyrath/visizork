@@ -1,9 +1,19 @@
 import React from 'react';
+import { useContext } from 'react';
+
+import { ReactCtx } from './context';
 
 export function AboutPage()
 {
+    let rctx = useContext(ReactCtx);
+    
     let curroom = 'WEST-OF-HOUSE'; //###
     let firstobj = 'DOOR'; //###
+
+    function evhan_click_tab(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, tab: string) {
+        ev.preventDefault();
+        rctx.setTab(tab);
+    }
     
     return (
         <div className="ScrollContent">
@@ -24,7 +34,9 @@ export function AboutPage()
                     executing.
                 </p>
                 <p>
-                    Look at the <a href="#">World</a> tab for a start.
+                    Look at the
+                    {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'objtree') }>World</a>{' '}
+                    tab for a start.
                     This shows every object and room in the game.
                     You, the Adventurer, are in the topmost room:{' '}
                     <code>{ curroom }</code>.
