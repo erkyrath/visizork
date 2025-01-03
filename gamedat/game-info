@@ -304,7 +304,15 @@ Global 4 THIEF-MELEE
 Global 5 TROLL-MELEE
 Global 6 CYCLOPS-MELEE
 Global 7 HERO-MELEE
-
+Global 8 DEF3-RES
+Global 9 DEF2-RES
+Global 10 DEF1-RES
+Global 11 DEF3C
+Global 12 DEF3B
+Global 13 DEF3A
+Global 14 DEF2B
+Global 15 DEF2A
+Global 16 DEF1
 Global 17 SING-SONG
 Global 18 BDIGS
 Global 19 BEACH-DIG
