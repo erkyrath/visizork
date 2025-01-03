@@ -11,6 +11,7 @@ type SelPair = [ number, number ];
 export type ListContextContent = {
     selected: SelPair;
     setSelected: (tup:SelPair) => void;
+    collapse: boolean;
 };
 
 function new_context() : ListContextContent
@@ -18,6 +19,7 @@ function new_context() : ListContextContent
     return {
         selected: [-1, -1],
         setSelected: (val) => {},
+        collapse: true,
     };
 }
 
@@ -26,6 +28,7 @@ const ListCtx = createContext(new_context());
 export function StringActivity()
 {
     const [ selected, setSelected ] = useState([-1, -1] as SelPair);
+    let collapse = true; //###
     
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
@@ -44,7 +47,7 @@ export function StringActivity()
     }
 
     return (
-        <ListCtx.Provider value={ { selected, setSelected } }>
+        <ListCtx.Provider value={ { selected, setSelected, collapse } }>
             <div className="ScrollContent" onClick={ evhan_click_background }>
                 <ul className="DataList">
                     { ells }
@@ -88,6 +91,7 @@ export function StringEntry({ addr, index }: { addr:number, index:number })
 export function CallActivity()
 {
     const [ selected, setSelected ] = useState([-1, -1] as SelPair);
+    let collapse = true; //###
     
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
@@ -98,7 +102,7 @@ export function CallActivity()
     }
 
     return (
-        <ListCtx.Provider value={ { selected, setSelected } }>
+        <ListCtx.Provider value={ { selected, setSelected, collapse } }>
             <div className="ScrollContent" onClick={ evhan_click_background }>
                 <ul className="DataList">
                     <StackItem item={ zstate.calltree } />
@@ -157,6 +161,7 @@ export function StackCall({ call }: { call:ZStackCall })
 
     let funcdat = gamedat_routine_addrs.get(call.addr);
     let issel = (call.addr == seladdr);
+    let iscollapse = (ctx.collapse && !call.hasprint);
 
     let counter = 0;
     let subls = call.children.map((subitem) => (
@@ -180,9 +185,11 @@ export function StackCall({ call }: { call:ZStackCall })
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
                 call { call.addr }: <code>{ funcname }</code>
             </li>
-            <ul className="DataList">
-                { (subls.length ? subls : null ) }
-            </ul>
+            { ((subls.length && !iscollapse) ?
+               <ul className="DataList">
+                   { subls }
+               </ul>
+               : null ) }
         </>
     );
 }
