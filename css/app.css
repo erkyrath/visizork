@@ -24,15 +24,15 @@ body {
     right: 0px;
 }
 
-#gameport {
+#gamebody {
     position: absolute;
-    overflow: hidden;
-    left: 0px;
-    width: 50%;
+    width: 100%;
     top: 50px;
     bottom: 0px;
-    background: #CCAA88;
+    background: #0000;
+    pointer-events: none;
     margin: 0px;
+    box-sizing: border-box;
 }
 
 #appbody {
@@ -43,6 +43,18 @@ body {
     background: #EEE;
     margin: 0px;
     box-sizing: border-box;
+}
+
+#gameport {
+    position: absolute;
+    overflow: hidden;
+    left: 0px;
+    width: 50%;
+    top: 0px;
+    height: 100%;
+    background: #CCAA88;
+    margin: 0px;
+    pointer-events: auto;
 }
 
 .ViewPane {
