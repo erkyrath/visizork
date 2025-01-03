@@ -108,7 +108,6 @@ function MyApp()
 const tab_list = [
     [ 'objtree', 'World' ],
     [ 'activity', 'Trace' ],
-    [ 'functivity', 'Calls' ],
     [ 'globals', 'Globals' ],
     [ 'filelist', 'Files' ],
     [ 'about', '?' ],
@@ -141,9 +140,6 @@ function TabbedPane()
         tabcontent = <ObjectTree />;
         break;
     case 'activity':
-        tabcontent = <StringActivity />;
-        break;
-    case 'functivity':
         tabcontent = <CallActivity />;
         break;
     case 'globals':
