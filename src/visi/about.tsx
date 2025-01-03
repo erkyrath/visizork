@@ -1,15 +1,51 @@
 import React from 'react';
 import { useContext } from 'react';
 
+import { gamedat_ids, gamedat_object_ids } from './gamedat';
+import { ZState, ZObject } from './zstate';
+
 import { ReactCtx } from './context';
 
 export function AboutPage()
 {
     let rctx = useContext(ReactCtx);
-    
-    let curroom = 'WEST-OF-HOUSE'; //###
-    let firstobj = 'DOOR'; //###
+    let zstate = rctx.zstate;
 
+    let curroom = '???';
+    let firstobj = '';
+
+    let map: Map<number, ZObject> = new Map();
+    for (let tup of zstate.objects) {
+        map.set(tup.onum, tup);
+    }
+    
+    let advroom: number = gamedat_ids.ADVENTURER;
+    while (true) {
+        let tup = map.get(advroom);
+        if (!tup || tup.parent == 0 || tup.parent == gamedat_ids.ROOMS)
+            break;
+        advroom = tup.parent;
+    }
+
+    if (advroom != gamedat_ids.ADVENTURER) {
+        let obj = gamedat_object_ids.get(advroom);
+        if (obj) {
+            curroom = obj.name;
+        }
+
+        let child = map.get(advroom)!.child;
+        if (child && child == gamedat_ids.ADVENTURER) {
+            child = map.get(child)!.sibling;
+        }
+
+        if (child) {
+            let cobj = gamedat_object_ids.get(child);
+            if (cobj) {
+                firstobj = cobj.desc.toUpperCase();
+            }
+        }
+    }
+    
     function evhan_click_tab(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, tab: string) {
         ev.preventDefault();
         rctx.setTab(tab);
@@ -41,7 +77,10 @@ export function AboutPage()
                     You, the Adventurer, are in the topmost room:{' '}
                     <code>{ curroom }</code>.
                     Listed with you are the objects you
-                    can see. (Try "<code>EXAMINE { firstobj }</code>"!)
+                    can see.{' '}
+                    { (firstobj ?
+                       <>(Try "<code>EXAMINE { firstobj }</code>"!) </>
+                       : null) }
                     If you pick up an object, it will shift to be listed
                     under the <code>ADVENTURER</code>.
                 </p>
