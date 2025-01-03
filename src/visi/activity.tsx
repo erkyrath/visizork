@@ -114,7 +114,7 @@ export function CallActivity()
 
 export function StackItem({ item }: { item:ZStackItem })
 {
-    if (item.type == 'call')
+    if (item.type == 'call' && item.addr != 0)
         return <StackCall call={ item } />;
     if (item.type == 'print')
         return <StackPrint print={ item } />;
@@ -185,9 +185,9 @@ export function StackCall({ call }: { call:ZStackCall })
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
                 call { call.addr }: <code>{ funcname }</code>
             </li>
-            { ((subls.length && !iscollapse) ?
+            { (subls.length ?
                <ul className="DataList">
-                   { subls }
+                   { (iscollapse ? <li>calls...</li> : subls) }
                </ul>
                : null ) }
         </>

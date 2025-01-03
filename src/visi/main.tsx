@@ -107,7 +107,7 @@ function MyApp()
 
 const tab_list = [
     [ 'objtree', 'World' ],
-    [ 'activity', 'Trace' ],
+    [ 'activity', 'Activity' ],
     [ 'globals', 'Globals' ],
     [ 'filelist', 'Files' ],
     [ 'about', '?' ],
