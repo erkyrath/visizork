@@ -12,6 +12,7 @@ body {
     background: #FDA;
     box-sizing: border-box;
     border-bottom: 1px solid #FA8;
+    font-family: "Libre Baskerville", serif;
 }
 
 #header h1 {
