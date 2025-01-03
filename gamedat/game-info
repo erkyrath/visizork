@@ -369,22 +369,25 @@ Global 69 HS
 Global 70 SUPER-BRIEF
 Global 71 VERBOSE
 Global 72 ALWAYS-LIT
-
+Global 73 P-XADJN
 Global 74 P-XADJ
 Global 75 P-XNAM
 Global 76 P-MOBY-FOUND
-
+Global 77 P-AND
+Global 78 P-CEPTR
+Global 79 P-CSPTR
+Global 80 P-GETFLAGS
 Global 81 P-MATCHLEN
 Global 82 P-OCLAUSE
-
+Global 83 P-MERGE
 Global 84 P-BUTS
 Global 85 P-PRSI
 Global 86 P-PRSO
-
+Global 87 P-ADJN
 Global 88 P-ADVERB
 Global 89 P-ADJ
 Global 90 P-NAM
-
+GLobal 91 P-GWIMBIT
 Global 92 P-SLOCBITS
 
 Global 96 QUOTE-FLAG
