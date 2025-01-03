@@ -38,7 +38,7 @@ body {
     display: none;
     top: 48px;
     right: 0px;
-    width: 140px;
+    width: 160px;
     text-align: center;
     position: absolute;
     background: #FDA;
@@ -56,6 +56,10 @@ body {
     border: 1px solid #888;
     border-radius: 4px;
     margin: 2px 2px;
+}
+
+.Menu button.Selected {
+    border: 3px solid #888;
 }
 
 #gamebody {
