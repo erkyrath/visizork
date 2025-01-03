@@ -370,17 +370,45 @@ Global 70 SUPER-BRIEF
 Global 71 VERBOSE
 Global 72 ALWAYS-LIT
 
+Global 74 P-XADJ
+Global 75 P-XNAM
+Global 76 P-MOBY-FOUND
+
+Global 81 P-MATCHLEN
+Global 82 P-OCLAUSE
+
+Global 84 P-BUTS
+Global 85 P-PRSI
+Global 86 P-PRSO
+
+Global 88 P-ADVERB
+Global 89 P-ADJ
+Global 90 P-NAM
+
+Global 92 P-SLOCBITS
+
 Global 96 QUOTE-FLAG
+
+Global 100 P-ITBL
+
+Global 104 P-MERGED
 
 Global 108 P-CONT
 
 Global 111 WINNER
 
+Global 115 P-SYNTAX
+Global 116 P-ONEOBJ
+Global 117 P-TABLE
 Global 118 PRSO
 Global 119 PRSI
 Global 120 PRSA
 Global 121 GWIM-DISABLE
-
+Global 122 P-NOT-HERE
+Global 123 P-MULT
+Global 124 L-PRSI
+Global 125 L-PRSO
+Global 126 L-PRSA
 Global 127 P-WON
 Global 128 PLAYER
 Global 129 CLOCK-WAIT
