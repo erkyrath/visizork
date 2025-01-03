@@ -53,6 +53,7 @@ export function GlobalState()
 //###
 const glob_is_object = new Set([0, 111]);
 const glob_is_string = new Set([28, 29]);
+const glob_is_table = new Set([18, 21, 22, 23, 25, 27, 37]);
 
 export function GlobalVar({ index, value }: { index:number, value:number })
 {
@@ -80,6 +81,9 @@ export function GlobalVar({ index, value }: { index:number, value:number })
             { (glob_is_string.has(index) ?
                <VarShowString value={ value } />
                : null )}
+            { (glob_is_table.has(index) ?
+               <span>(table)</span>
+               : null )}
         </li>
     );
 }
@@ -92,7 +96,7 @@ function VarShowObject({ value }: { value:number })
     let obj = gamedat_object_ids.get(value);
     if (obj) {
         //### link?
-        return (<span>({ obj.name })</span>);
+        return (<span>(<code>{ obj.name }</code>)</span>);
     }
 
     return (<span>???</span>);
