@@ -259,6 +259,11 @@ body {
     font-size: 120%;
 }
 
+.AboutPage h2 {
+    font-size: 110%;
+    font-family: "Libre Baskerville", serif;
+}
+
 ul.DataList {
     list-style: none;
     padding-left: 0px;

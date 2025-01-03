@@ -14,6 +14,7 @@ import { StringActivity, CallActivity } from './activity';
 import { SourceFileList } from './filelist';
 import { SourceView } from './sourceview';
 import { GlobalState } from './globstate';
+import { AboutPage } from './about';
 
 // This is the GnustoRunner and the GnustoEngine, but I don't have
 // type info for them yet.
@@ -110,6 +111,7 @@ const tab_list = [
     [ 'functivity', 'Calls' ],
     [ 'globals', 'Globals' ],
     [ 'filelist', 'Files' ],
+    [ 'about', '?' ],
 ];
 
 function TabbedPane()
@@ -149,6 +151,9 @@ function TabbedPane()
         break;
     case 'filelist':
         tabcontent = <SourceFileList />;
+        break;
+    case 'about':
+        tabcontent = <AboutPage />;
         break;
     default:
         tabcontent = <></>;
