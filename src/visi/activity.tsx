@@ -25,69 +25,6 @@ function new_context() : ListContextContent
 
 const ListCtx = createContext(new_context());
 
-export function StringActivity()
-{
-    const [ selected, setSelected ] = useState([-1, -1] as SelPair);
-    let collapse = true; //###
-    
-    let rctx = useContext(ReactCtx);
-    let zstate = rctx.zstate;
-
-    let counter = 0;
-    let ells = zstate.strings.map((addr) => {
-        let key = counter++;
-        return (
-            <StringEntry key={ key } index={ key } addr={ addr } />
-        );
-    });
-    
-    function evhan_click_background(ev: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-        ev.stopPropagation();
-        setSelected([-1, -1]);
-    }
-
-    return (
-        <ListCtx.Provider value={ { selected, setSelected, collapse } }>
-            <div className="ScrollContent" onClick={ evhan_click_background }>
-                <ul className="DataList">
-                    { ells }
-                </ul>
-            </div>
-        </ListCtx.Provider>
-    );
-}
-
-export function StringEntry({ addr, index }: { addr:number, index:number })
-{
-    let rctx = useContext(ReactCtx);
-    let ctx = useContext(ListCtx);
-    let [ selindex, seladdr ] = ctx.selected;
-
-    let strdat = gamedat_string_map.get(addr);
-    let issel = (index == selindex && addr == seladdr);
-
-    function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
-        ev.stopPropagation();
-        ctx.setSelected([index, addr]);
-        if (strdat) {
-            if (typeof strdat.sourceloc === 'string')
-                rctx.setLoc(strdat.sourceloc, true);
-            else
-                rctx.setLoc(strdat.sourceloc[0], true);
-        }
-    }
-    
-    return (
-        <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
-            { strdat ? (
-                <>{ addr }: { strdat.text }</>
-            ) : (
-                <>{ addr }: <i>string not recognized</i></>
-            ) }
-        </li>
-    );
-}
-
 export function CallActivity()
 {
     const [ selected, setSelected ] = useState([-1, -1] as SelPair);

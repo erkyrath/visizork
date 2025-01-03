@@ -10,7 +10,7 @@ import { ContextContent, ReactCtx } from './context';
 import { SourceLocState, new_sourcelocstate } from './context';
 import { AppMenu } from './menu';
 import { ObjectTree } from './objtree';
-import { StringActivity, CallActivity } from './activity';
+import { CallActivity } from './activity';
 import { SourceFileList } from './filelist';
 import { SourceView } from './sourceview';
 import { GlobalState } from './globstate';
