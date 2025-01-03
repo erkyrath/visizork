@@ -390,15 +390,21 @@ Global 90 P-NAM
 Global 91 P-GWIMBIT
 Global 92 P-SLOCBITS
 
+Global 94 P-NUMBER
+Global 95 P-WALK-DIR
 Global 96 QUOTE-FLAG
+Global 97 P-NCN
 
 Global 100 P-ITBL
 
 Global 104 P-MERGED
 
 Global 108 P-CONT
-
+Global 109 P-INBUF
+Global 110 P-LEXV
 Global 111 WINNER
+Global 112 P-DIR
+Global 113 P-LEN
 
 Global 115 P-SYNTAX
 Global 116 P-ONEOBJ
