@@ -123,22 +123,27 @@ export function StackPrint({ print }: { print:ZStackPrint })
     let ctx = useContext(ListCtx);
     let [ selindex, seladdr ] = ctx.selected;
 
+    let strdat = gamedat_string_map.get(print.addr);
     let issel = (print.addr == seladdr);
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
         ctx.setSelected([-1, print.addr]);
-        /*###
-        if (funcdat) {
-            rctx.setLoc(funcdat.sourceloc, false);
-            }
-            */
+        if (strdat) {
+            let loc = (typeof strdat.sourceloc === 'string') ? strdat.sourceloc : strdat.sourceloc[0]; //###?
+            rctx.setLoc(loc, true);
+        }
     }
 
     return (
         <>
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
                 print { print.addr }: 
+                { strdat ? (
+                    <> <b>"{ strdat.text }"</b></>
+                ) : (
+                    <> <i>string not recognized</i></>
+                ) }
             </li>
         </>
     );
