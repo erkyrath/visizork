@@ -43,6 +43,8 @@ body {
     background: #EEE;
     margin: 0px;
     box-sizing: border-box;
+    font-family: "Lato";
+    line-height: 1.33;
 }
 
 #gameport {
@@ -163,6 +165,7 @@ body {
 
 .TabBar .TabItem {
     display: inline-block;
+    font-size: 85%;
     margin: 4px 4px;
     padding: 2px 8px;
     background: #EEE;
@@ -176,7 +179,6 @@ body {
 
 .TabBar .TabLabel {
     display: inline-block;
-    font-size: 110%;
     font-weight: bold;
     margin: 4px 4px;
 }
@@ -233,7 +235,6 @@ ul.DataList ul {
 
 code {
     font-family: "Courier Prime";
-    font-size: 90%;
 }
 
 .SourceFile {
