@@ -53,7 +53,7 @@ export function GlobalState()
 //###
 const glob_is_object = new Set([0, 111]);
 const glob_is_string = new Set([28, 29]);
-const glob_is_table = new Set([18, 21, 22, 23, 25, 27, 37]);
+const glob_is_table = new Set([3, 4, 5, 6, 7, 18, 21, 22, 23, 25, 27, 34, 37, 38]);
 
 export function GlobalVar({ index, value }: { index:number, value:number })
 {
