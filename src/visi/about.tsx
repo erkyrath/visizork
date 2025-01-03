@@ -47,9 +47,11 @@ export function AboutPage()
                 </p>
                 <p>
                     The other tabs display other aspects of the Z-machine.
-                    {' '}<a href="#">Trace</a> shows the functions called in
+                    {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'activity') }>Trace</a>{' '}
+                    shows the functions called in
                     the most recent turn, and what they printed.
-                    {' '}<a href="#">Globals</a> shows the global variable
+                    {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'globals') }>Globals</a>{' '}
+                    shows the global variable
                     state of the world. (Objects have property variables
                     as well, which you can view from the World tab.)
                 </p>
