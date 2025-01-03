@@ -10,6 +10,7 @@ export type ZStackCall = {
     type: 'call';
     addr: number;
     children: ZStackItem[];
+    hasprint?: boolean;
 };
 
 export type ZStackPrint = {

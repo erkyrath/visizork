@@ -2265,6 +2265,15 @@ GnustoEngine.prototype = {
             else if (obj.t == 's') {
                 var print = { type:'print', addr:obj.addr };
                 stack[stack.length-1].children.push(print);
+                if (!stack[stack.length-1].hasprint) {
+                    var ix = stack.length-1;
+                    while (ix >= 0) {
+                        if (stack[ix].hasprint)
+                            break;
+                        stack[ix].hasprint = true;
+                        ix--;
+                    }
+                }
             }
             else if (obj.t == 'r') {
                 stack.pop();
