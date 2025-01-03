@@ -48,9 +48,7 @@ body {
 #gameport {
     position: absolute;
     overflow: hidden;
-    left: 0px;
-    width: 50%;
-    top: 0px;
+    width: 100%;
     height: 100%;
     background: #CCAA88;
     margin: 0px;
@@ -59,23 +57,59 @@ body {
 
 .ViewPane {
     position: absolute;
-    right: 0px;
-    width: 50%;
-    top: 0px;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     background: white;
     box-sizing: border-box;
-    border-bottom: 1px solid #888;
 }
 
 .SourcePane {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    box-sizing: border-box;
+}
+
+.Arrange12 #gameport {
+    left: 0px;
+    width: 50%;
+    top: 0px;
+    height: 100%;
+}
+.Arrange12 .ViewPane {
+    right: 0px;
+    width: 50%;
+    top: 0px;
+    height: 50%;
+    border-bottom: 1px solid #888;
+}
+.Arrange12 .SourcePane {
     right: 0px;
     width: 50%;
     bottom: 0px;
     height: 50%;
-    background: white;
-    box-sizing: border-box;
+}
+
+.Arrange111 #gameport {
+    left: 0px;
+    width: 33%;
+    top: 0px;
+    height: 100%;
+}
+.Arrange111 .ViewPane {
+    left: 33%;
+    right: 33%;
+    width: 34%;
+    top: 0px;
+    height: 100%;
+    border-right: 1px solid #888;
+}
+.Arrange111 .SourcePane {
+    right: 0px;
+    width: 33%;
+    bottom: 0px;
+    height: 100%;
 }
 
 .TabBar {
