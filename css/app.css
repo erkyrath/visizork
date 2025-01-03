@@ -5,6 +5,7 @@ body {
 
 #header {
     position: absolute;
+    z-index: 1;
     width: 100%;
     top: 0px;
     height: 50px;
@@ -22,6 +23,39 @@ body {
     position: absolute;
     height: 50px;
     right: 0px;
+    font-family: "Lato";
+}
+
+#menubutton {
+    background: white;
+    color: black;
+    border: 1px solid #888;
+    border-radius: 4px;
+    margin: 14px 8px;
+}
+
+.Menu {
+    display: none;
+    top: 48px;
+    right: 0px;
+    width: 140px;
+    text-align: center;
+    position: absolute;
+    background: #FDA;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.Menu.MenuOpen {
+    display: block;
+}
+
+.Menu button {
+    background: white;
+    color: black;
+    border: 1px solid #888;
+    border-radius: 4px;
+    margin: 2px 2px;
 }
 
 #gamebody {

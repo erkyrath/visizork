@@ -8,6 +8,7 @@ import { gamedat_ids, sourceloc_start } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
 import { SourceLocState, new_sourcelocstate } from './context';
+import { AppMenu } from './menu';
 import { ObjectTree } from './objtree';
 import { StringActivity, CallActivity } from './activity';
 import { SourceFileList } from './filelist';
@@ -98,7 +99,7 @@ function MyApp()
             <div className="SourcePane">
                 <SourceView />
             </div>
-            { menuel ? createPortal(<div>Menu</div>, menuel) : null }
+            { menuel ? createPortal(<AppMenu />, menuel) : null }
         </ReactCtx.Provider>
     );
 }
