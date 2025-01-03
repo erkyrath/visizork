@@ -112,6 +112,43 @@ body {
     height: 100%;
 }
 
+.Arrange21 #gameport {
+    left: 0px;
+    width: 50%;
+    top: 0px;
+    height: 50%;
+}
+.Arrange21 .ViewPane {
+    left: 0px;
+    width: 50%;
+    bottom: 0px;
+    height: 50%;
+    border-right: 1px solid #888;
+}
+.Arrange21 .SourcePane {
+    right: 0px;
+    width: 50%;
+    height: 100%;
+}
+
+.Arrange121 #gameport {
+    left: 0px;
+    width: 50%;
+    top: 0px;
+    height: 50%;
+}
+.Arrange121 .ViewPane {
+    right: 0px;
+    width: 50%;
+    top: 0px;
+    height: 50%;
+}
+.Arrange121 .SourcePane {
+    width: 100%;
+    bottom: 0px;
+    height: 50%;
+}
+
 .TabBar {
     position: absolute;
     left: 0px;
