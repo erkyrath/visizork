@@ -72,7 +72,7 @@ export function AboutPage()
                     <a target="_blank" href="https://pr-if.org/doc/play-if-card/">here's
                     a quick intro</a>.)
                     As the game responds, the panes on the right will display
-                    the current game state and the source code that is
+                    the current game state and the code that is
                     executing.
                 </p>
                 <p>
@@ -85,7 +85,7 @@ export function AboutPage()
                     Listed with you are the objects you
                     can see.{' '}
                     { (firstobj ?
-                       <>(Try "<code>EXAMINE { firstobj }</code>"!) </>
+                       <>(Try typing "<code>EXAMINE { firstobj }</code>"!) </>
                        : null) }
                     If you pick up an object, it will shift to be listed
                     under the <code>ADVENTURER</code>.
@@ -108,3 +108,7 @@ export function AboutPage()
         </div>
     );
 }
+
+//### about Z-machine?
+//### which version of Zork and why
+//### software acknowledgements
