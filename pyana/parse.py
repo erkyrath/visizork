@@ -5,7 +5,7 @@ import optparse
 
 from zillex import Lexer, dumptokens
 from zilana import Zcode
-from zilana import markcomments, stripcomments
+from zilana import stripcomments
 from zilana import stripifdefs
 from txdparse import TXDData, ObjDumpData
 from writer import write_globals, write_objects, write_routines, write_strings, compute_room_distances
