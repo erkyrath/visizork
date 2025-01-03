@@ -44,6 +44,12 @@ export function AboutPage()
                 firstobj = cobj.desc.toUpperCase();
             }
         }
+        else if (obj && obj.scenery && obj.scenery.length) {
+            let cobj = gamedat_object_ids.get(obj.scenery[0]);
+            if (cobj) {
+                firstobj = cobj.desc.toUpperCase();
+            }
+        }
     }
     
     function evhan_click_tab(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, tab: string) {
