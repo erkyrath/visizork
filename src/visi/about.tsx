@@ -92,7 +92,7 @@ export function AboutPage()
                 </p>
                 <p>
                     The other tabs display other aspects of the Z-machine.
-                    {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'activity') }>Trace</a>{' '}
+                    {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'activity') }>Activity</a>{' '}
                     shows the functions called in
                     the most recent turn, and what they printed.
                     {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'globals') }>Globals</a>{' '}
