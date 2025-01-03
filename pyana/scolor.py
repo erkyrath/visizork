@@ -1,6 +1,7 @@
 from enum import StrEnum
 
 from zillex import Lexer, TokType, dumptokens
+from zilana import teststaticcond
 
 linkids = {}
 
@@ -40,10 +41,26 @@ def colorize(tokls, res):
                 else:
                     res.append( (tok, Color.ID) )
             continue
+        
         if tok.typ is TokType.GROUP and tok.val == ';':
             res.append( (tok, Color.COMMENT) )
             continue
-        ### %COND
+        
+        if tok.typ is TokType.GROUP and tok.val == '%' and tok.children:
+            ctok = tok.children[0]
+            if ctok.matchform('COND', 0):
+                found = None
+                for cgrp in ctok.children[ 1 : ]:
+                    if found:
+                        res.append( (cgrp, Color.COMMENT) )
+                        continue
+                    found = teststaticcond(cgrp)
+                    if found:
+                        colorize([ cgrp ], res)
+                    else:
+                        res.append( (cgrp, Color.COMMENT) )
+                        continue
+                continue
         if tok.typ is TokType.GROUP and tok.val == '()' and tok.children:
             if tok.children[0].idmatch(('SYNONYM', 'ADJECTIVE')):
                 for subtok in tok.children[1:]:
