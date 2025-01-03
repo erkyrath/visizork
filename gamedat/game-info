@@ -299,6 +299,11 @@ Property 31 NORTH
 Global 0 HERE
 Global 1 SCORE
 Global 2 MOVES
+Global 3 VILLAINS
+Global 4 THIEF-MELEE
+Global 5 TROLL-MELEE
+Global 6 CYCLOPS-MELEE
+Global 7 HERO-MELEE
 Global 17 SING-SONG
 Global 18 BDIGS
 Global 19 BEACH-DIG
