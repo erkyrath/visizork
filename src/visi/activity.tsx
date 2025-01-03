@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
-import { ZState, ZObject, ZFuncCall } from './zstate';
+import { ZState, ZObject, ZStackCall, ZStackItem, ZStackPrint } from './zstate';
 import { gamedat_string_map, gamedat_routine_addrs } from './gamedat';
 
 import { ReactCtx } from './context';
@@ -101,14 +101,23 @@ export function CallActivity()
         <ListCtx.Provider value={ { selected, setSelected } }>
             <div className="ScrollContent" onClick={ evhan_click_background }>
                 <ul className="DataList">
-                    <CallEntry call={ zstate.calltree } />
+                    <StackItem item={ zstate.calltree } />
                 </ul>
             </div>
         </ListCtx.Provider>
     );
 }
 
-export function CallEntry({ call }: { call:ZFuncCall })
+export function StackItem({ item }: { item:ZStackItem })
+{
+    if (item.type == 'call')
+        return <StackCall call={ item } />;
+    if (item.type == 'print')
+        return <li>PRINT</li>;
+    return null;
+}
+
+export function StackCall({ call }: { call:ZStackCall })
 {
     let rctx = useContext(ReactCtx);
     let ctx = useContext(ListCtx);
@@ -118,8 +127,8 @@ export function CallEntry({ call }: { call:ZFuncCall })
     let issel = (call.addr == seladdr);
 
     let counter = 0;
-    let subls = call.children.map((subcall) => (
-        <CallEntry key={ counter++ } call={ subcall } />
+    let subls = call.children.map((subitem) => (
+        <StackItem key={ counter++ } item={ subitem } />
     ));
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {

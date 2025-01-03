@@ -6,17 +6,24 @@ export type ZObject = {
     sibling: number;
 };
 
-export type ZFuncCall = {
+export type ZStackCall = {
     type: 'call';
     addr: number;
-    children: ZFuncCall[];
+    children: ZStackItem[];
 };
+
+export type ZStackPrint = {
+    type: 'print';
+    addr: number;
+};
+
+export type ZStackItem = ZStackCall | ZStackPrint;
 
 export type ZState = {
     globals: number[];
     objects: ZObject[];
     strings: number[];
-    calltree: ZFuncCall;
+    calltree: ZStackItem;
 };
 
 export function zstate_empty() : ZState
