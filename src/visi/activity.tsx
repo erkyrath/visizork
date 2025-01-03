@@ -113,8 +113,35 @@ export function StackItem({ item }: { item:ZStackItem })
     if (item.type == 'call')
         return <StackCall call={ item } />;
     if (item.type == 'print')
-        return <li>PRINT</li>;
+        return <StackPrint print={ item } />;
     return null;
+}
+
+export function StackPrint({ print }: { print:ZStackPrint })
+{
+    let rctx = useContext(ReactCtx);
+    let ctx = useContext(ListCtx);
+    let [ selindex, seladdr ] = ctx.selected;
+
+    let issel = (print.addr == seladdr);
+    
+    function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+        ev.stopPropagation();
+        ctx.setSelected([-1, print.addr]);
+        /*###
+        if (funcdat) {
+            rctx.setLoc(funcdat.sourceloc, false);
+            }
+            */
+    }
+
+    return (
+        <>
+            <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
+                print { print.addr }: 
+            </li>
+        </>
+    );
 }
 
 export function StackCall({ call }: { call:ZStackCall })
@@ -131,6 +158,10 @@ export function StackCall({ call }: { call:ZStackCall })
         <StackItem key={ counter++ } item={ subitem } />
     ));
     
+    let funcname = (funcdat ? funcdat.name : '???');
+    if (call.addr == 0)
+        funcname = 'false';
+    
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
         ctx.setSelected([-1, call.addr]);
@@ -139,10 +170,6 @@ export function StackCall({ call }: { call:ZStackCall })
         }
     }
 
-    let funcname = (funcdat ? funcdat.name : '???');
-    if (call.addr == 0)
-        funcname = 'false';
-    
     return (
         <>
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
