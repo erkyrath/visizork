@@ -49,6 +49,7 @@ def colorize(tokls, res):
         if tok.typ is TokType.GROUP and tok.val == '%' and tok.children:
             ctok = tok.children[0]
             if ctok.matchform('COND', 0):
+                colorize([ ctok.children[0] ], res)
                 found = None
                 for cgrp in ctok.children[ 1 : ]:
                     if found:
