@@ -27,6 +27,7 @@ const ObjTreeCtx = createContext(new_context());
 export function ObjectTree()
 {
     const [ selected, setSelected ] = useState(-1);
+    const [ follow, setFollow ] = useState('adv');
     
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
@@ -39,7 +40,8 @@ export function ObjectTree()
             roots.push(tup);
     }
 
-    let advroom: number = gamedat_ids.ADVENTURER;
+    let advroom: number = (follow == 'thief') ? gamedat_ids.THIEF : gamedat_ids.ADVENTURER;
+    
     while (true) {
         let tup = map.get(advroom);
         if (!tup || tup.parent == 0 || tup.parent == gamedat_ids.ROOMS)
@@ -64,6 +66,10 @@ export function ObjectTree()
     var rootls = roots.map((o) =>
         <ShowObject key={ o.onum } tup={ o } parentnum={ 0 } /> );
 
+    function evhan_follow_change(val: string) {
+        setFollow(val);
+    }
+    
     function evhan_click_background(ev: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         ev.stopPropagation();
         setSelected(-1);
@@ -72,6 +78,13 @@ export function ObjectTree()
     return (
         <ObjTreeCtx.Provider value={ { map, selected, setSelected } }>
             <div className="ScrollContent" onClick={ evhan_click_background }>
+                <div>
+                    Follow{' '}
+                    <input id="followadv_radio" type="radio" name="follow" value="adv" checked={ follow=='adv' } onChange={ (ev) => evhan_follow_change('adv') } />
+                    <label htmlFor="followadv_radio">Adventurer</label>{' '}
+                    <input id="followthief_radio" type="radio" name="follow" value="thief" checked={ follow=='thief' } onChange={ (ev) => evhan_follow_change('thief') } />
+                    <label htmlFor="followthief_radio">Thief</label>
+                </div>
                 <ul className="DataList">
                     { rootls }
                 </ul>
