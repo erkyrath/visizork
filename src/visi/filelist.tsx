@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
-import { sourcefile_list, sourceloc_for_key } from './gamedat';
+import { sourcefile_list, gamedat_sourcefiles, sourceloc_for_key } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -52,6 +52,8 @@ function SourceFile({ filename, filekey } : { filename:string, filekey:string })
     let ctx = useContext(FileListCtx);
     let selected = ctx.selected;
 
+    let linecount = gamedat_sourcefiles[filename].length;
+    
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
         ctx.setSelected(filekey);
@@ -60,7 +62,7 @@ function SourceFile({ filename, filekey } : { filename:string, filekey:string })
     
     return (
         <li className={ (filekey==selected) ? 'Selected' : '' } onClick={ evhan_click }>
-            { filename }
+            { filename } &nbsp; <i>({ linecount } lines)</i>
         </li>
     );
 }
