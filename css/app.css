@@ -20,8 +20,8 @@ body {
 #header h1 {
     font-size: 20px;
     margin-left: 20px;
-    color: #640;
-    text-shadow: 2px 2px 3px #FDA, -2px -2px 3px #FDA;
+    color: #740;
+    text-shadow: 2px 2px 3px #FFEED4, -2px -2px 3px #FFEED4;
 }
 
 #appcontrols {
