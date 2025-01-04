@@ -51,7 +51,7 @@ export function GlobalState()
 }
 
 //###
-const glob_is_object = new Set([0, 111]);
+const glob_is_object = new Set([0, 64, 106, 107, 111]);
 const glob_is_string = new Set([28, 29]);
 const glob_is_table = new Set([3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 21, 22, 23, 25, 27, 34, 37, 38, 49, 52, 53, 54, 55, 56, 57, 67, 68]);
 
@@ -67,7 +67,7 @@ export function GlobalVar({ index, value }: { index:number, value:number })
         ev.stopPropagation();
         ctx.setSelected(index);
         let obj = gamedat_global_nums.get(index);
-        if (obj)
+        if (obj && obj.sourceloc.length)
             rctx.setLoc(obj.sourceloc, false);
     }
     
