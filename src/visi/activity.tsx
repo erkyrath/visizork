@@ -87,7 +87,6 @@ export function StackPrint({ print }: { print:ZStackPrint })
     return (
         <>
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
-                print { print.addr }: 
                 { strdat ? (
                     <>
                         {' '}<span className="PrintString">&#x201C;{ strdat.text }&#x201D;</span>
@@ -130,11 +129,11 @@ export function StackCall({ call }: { call:ZStackCall })
     return (
         <>
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
-                call { call.addr }: <code>{ funcname }</code>
+                <code>&lt;{ funcname }&gt;</code>
             </li>
             { (subls.length ?
                <ul className="DataList">
-                   { (iscollapse ? <li>calls...</li> : subls) }
+                   { (iscollapse ? <li>...</li> : subls) }
                </ul>
                : null ) }
         </>
