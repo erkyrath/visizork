@@ -455,8 +455,8 @@ Global 150 FALSE-FLAG
 Global 151 SCORE-MAX
 Global 152 LOW-DIRECTION
 Global 153 BIGFIX
-#Global 154
-#Global 155
-#Global 156
-#Global 157
-
+Global 154 PREPOSITIONS
+Global 155 ACTIONS
+Global 156 PREACTIONS
+Global 157 VERBS
+# 152, 154-157 not defined via <GLOBAL>
