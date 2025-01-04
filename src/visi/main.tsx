@@ -46,6 +46,7 @@ function MyApp()
 {
     const [ zstate, setZState ] = useState(engine.get_vm_report() as ZState);
     const [ tab, setTab ] = useState('objtree');
+    const [ shownumbers, setShowNumbers ] = useState(false);
     const [ sourcelocs, setSourceLocs ] = useState([ new_sourcelocstate() ]);
     const [ sourcelocpos, setSourceLocPos ] = useState(0);
 
@@ -84,6 +85,8 @@ function MyApp()
         zstate: zstate,
         tab: tab,
         setTab: setTab,
+        shownumbers: shownumbers,
+        setShowNumbers: setShowNumbers,
         sourcelocs: sourcelocs,
         sourcelocpos: sourcelocpos,
         setLoc: setLoc,

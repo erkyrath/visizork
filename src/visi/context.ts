@@ -16,6 +16,8 @@ export function new_sourcelocstate() : SourceLocState
 export type ContextContent = {
     zstate: ZState;
     tab: string;
+    shownumbers: boolean;
+    setShowNumbers: (loc:boolean) => void;
     setTab: (loc:string) => void;
     sourcelocs: SourceLocState[];
     sourcelocpos: number;
@@ -26,6 +28,8 @@ export type ContextContent = {
 export const ReactCtx = createContext({
     zstate: zstate_empty(),
     tab: '',
+    shownumbers: false,
+    setShowNumbers: (val) => {},
     setTab: (loc) => {},
     sourcelocs: [],
     sourcelocpos: 0,

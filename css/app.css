@@ -67,6 +67,10 @@ body {
     border: 3px solid #888;
 }
 
+.Menu label {
+    font-size: 85%;
+}
+
 #gamebody {
     position: absolute;
     width: 100%;
