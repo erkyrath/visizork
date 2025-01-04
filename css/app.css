@@ -290,22 +290,31 @@ code {
     font-family: "Courier Prime";
 }
 
+#scrollcontent_file.ScrollContent {
+    padding-left: 8px;
+}
+
 .SourceFile {
     white-space: pre-wrap;
     font-family: "Courier Prime";
     font-size: 90%;
 }
 
+.SourceFile div {
+    border-left: 8px solid #FFFFFE;
+    padding-left: 8px;
+}
+
 .SourceFile .Selected {
-    background: yellow;
+    background: #FFDD88;
 }
 
 .SourceFile .SelRange {
-    background: #FFA;
+    border-left: 8px solid #FFDD88;
 }
 
 .SourceFile .Hilit {
-    background: #CCF;
+    background: #FFF4DD;
 }
 
 .Src_Comment {
