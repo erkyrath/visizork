@@ -309,11 +309,11 @@ code {
 }
 
 .Src_Comment {
-    color: #484;
+    color: #494;
 }
 
 .Src_Str {
-    color: #44C;
+    color: #A44;
     font-weight: bold;
 }
 
@@ -322,12 +322,12 @@ code {
 }
 
 .Src_Iddef {
-    color: #A44;
+    color: #44C;
     font-weight: bold;
 }
 
 .Src_Id {
-    color: #A44;
+    color: #44C;
 }
 
 a.Src_Id {
