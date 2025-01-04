@@ -46,6 +46,9 @@ body {
     background: #FDA;
     box-sizing: border-box;
     padding: 10px;
+    border-left: 1px solid #FA8;
+    border-bottom: 1px solid #FA8;
+    border-bottom-left-radius: 8px;
 }
 
 .Menu.MenuOpen {
