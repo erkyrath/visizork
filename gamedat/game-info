@@ -340,10 +340,12 @@ Global 40 GATE-FLAG
 Global 41 XC
 Global 42 XB
 Global 43 EGYPT-FLAG
+# 43 unused
 Global 44 MIRROR-MUNG
 Global 45 GRUNLOCK
 Global 46 GRATE-REVEALED
 Global 47 LEAVES-GONE
+# 47 unused
 Global 48 RUG-MOVED
 Global 49 BAT-DROPS
 Global 50 CAGE-TOP
@@ -389,7 +391,8 @@ Global 89 P-ADJ
 Global 90 P-NAM
 Global 91 P-GWIMBIT
 Global 92 P-SLOCBITS
-
+Global 93 P-DIRECTION
+# 93 unused
 Global 94 P-NUMBER
 Global 95 P-WALK-DIR
 Global 96 QUOTE-FLAG
@@ -418,6 +421,7 @@ Global 118 PRSO
 Global 119 PRSI
 Global 120 PRSA
 Global 121 GWIM-DISABLE
+# 121 almost unused
 Global 122 P-NOT-HERE
 Global 123 P-MULT
 Global 124 L-PRSI
@@ -446,8 +450,13 @@ Global 146 EMPTY-HANDED
 Global 147 DOME-FLAG
 Global 148 DEFLATE
 Global 149 CYCLOPS-FLAG
-
+Global 150 FALSE-FLAG
+# 150 used to block chimney down
 Global 151 SCORE-MAX
-
+Global 152 LOW-DIRECTION
 Global 153 BIGFIX
-### need rest of globals!
+#Global 154
+#Global 155
+#Global 156
+#Global 157
+
