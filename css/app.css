@@ -294,6 +294,15 @@ code {
     font-family: "Courier Prime";
 }
 
+.ObjLabel {
+    font-size: 75%;
+    color: #888;
+    padding: 0px 2px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
 .PrintString {
     font-family: "Libre Baskerville", serif;
     font-size: 90%;

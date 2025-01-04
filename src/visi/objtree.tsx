@@ -122,13 +122,13 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
 
     let label: string;
     if (obj.isroom)
-        label = 'room';
+        label = 'R';
     else if (gamedat_object_global_ids.has(onum))
-        label = 'glob';
+        label = 'G';
     else if (tup.parent != parentnum)
-        label = 'scen';
+        label = 'S';
     else
-        label = 'obj';
+        label = 'O';
 
     let special: string = '';
     switch (onum) {
@@ -166,7 +166,8 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
     return (
         <>
             <li className={ cla } onClick={ evhan_click }>
-                { label } <code>{ obj.name }</code>
+                <span className="ObjLabel">{ label }</span>
+                {' '}<code>{ obj.name }</code>
                 {' '}
                 { ((obj.desc && obj.desc.length) ?
                    <span className="PrintString">&#x201C;{ obj.desc }&#x201D;</span>
