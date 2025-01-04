@@ -396,8 +396,11 @@ Global 96 QUOTE-FLAG
 Global 97 P-NCN
 
 Global 100 P-ITBL
-
+Global 101 P-AADJ
+Global 102 P-ANAM
+Global 103 P-ACLAUSE
 Global 104 P-MERGED
+Global 105 P-OFLAG
 
 Global 108 P-CONT
 Global 109 P-INBUF
