@@ -56,6 +56,9 @@ function SourceFile({ filename, filekey } : { filename:string, filekey:string })
     let selected = ctx.selected;
 
     let linecount = gamedat_sourcefiles[filename].length;
+    let cla = 'Filename';
+    if (filekey==selected)
+        cla += ' Selected ';
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
@@ -64,7 +67,7 @@ function SourceFile({ filename, filekey } : { filename:string, filekey:string })
     }
     
     return (
-        <li className={ (filekey==selected) ? 'Selected' : '' } onClick={ evhan_click }>
+        <li className={ cla } onClick={ evhan_click }>
             { filename } &nbsp; <i>({ linecount } lines)</i>
         </li>
     );

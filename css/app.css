@@ -303,6 +303,11 @@ ul.DataList ul {
     margin-top: 6px;
 }
 
+.DataList li.Filename {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
 code {
     font-family: "Courier Prime";
 }
