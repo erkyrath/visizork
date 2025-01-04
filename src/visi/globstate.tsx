@@ -73,7 +73,10 @@ export function GlobalVar({ index, value }: { index:number, value:number })
     
     return (
         <li className={ (index==selected) ? 'Selected' : '' } onClick={ evhan_click }>
-            { index } <code>{ (glo ? glo.name : '???') }</code>
+            { (rctx.shownumbers ?
+               <span>{ index }: </span>
+               : null) }
+            <code>{ (glo ? glo.name : '???') }</code>
             : { value }{' '}
             { (glob_is_object.has(index) ?
                <VarShowObject value={ value } />

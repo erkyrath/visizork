@@ -167,6 +167,9 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
         <>
             <li className={ cla } onClick={ evhan_click }>
                 <span className="ObjLabel">{ label }</span>
+                { (rctx.shownumbers ?
+                   <span> { onum }:</span>
+                   : null) }
                 {' '}<code>{ obj.name }</code>
                 {' '}
                 { ((obj.desc && obj.desc.length) ?
