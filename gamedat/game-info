@@ -394,21 +394,23 @@ Global 94 P-NUMBER
 Global 95 P-WALK-DIR
 Global 96 QUOTE-FLAG
 Global 97 P-NCN
-
+Global 98 P-VTBL
+Global 99 P-OTBL
 Global 100 P-ITBL
 Global 101 P-AADJ
 Global 102 P-ANAM
 Global 103 P-ACLAUSE
 Global 104 P-MERGED
 Global 105 P-OFLAG
-
+Global 106 P-IT-LOC
+Global 107 P-IT-OBJECT
 Global 108 P-CONT
 Global 109 P-INBUF
 Global 110 P-LEXV
 Global 111 WINNER
 Global 112 P-DIR
 Global 113 P-LEN
-
+Global 114 P-CCSRC
 Global 115 P-SYNTAX
 Global 116 P-ONEOBJ
 Global 117 P-TABLE
