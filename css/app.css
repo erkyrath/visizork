@@ -40,7 +40,7 @@ body {
     display: none;
     top: 48px;
     right: 0px;
-    width: 160px;
+    width: 240px;
     text-align: center;
     position: absolute;
     background: #FDA;
@@ -60,11 +60,17 @@ body {
     color: black;
     border: 1px solid #888;
     border-radius: 4px;
-    margin: 2px 2px;
+    padding: 4px 4px;
+    margin: 2px 4px;
 }
 
 .Menu button.Selected {
-    border: 3px solid #888;
+    background: #FFD066;
+}
+
+.Menu img.ArrangeIcon {
+    width: 32px;
+    height: 24px;
 }
 
 .Menu label {
