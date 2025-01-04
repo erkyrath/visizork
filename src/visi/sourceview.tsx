@@ -184,9 +184,22 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
     for (let linel of filel.children) {
         let issel = (counter >= loc.line && counter <= loc.endline);
         let ishi = hiset.has(counter);
-        let cla = (ishi ? 'Hilit' : '');
-        if (issel && (lochi || !ishi))
-            cla = (lochi ? 'Selected' : 'SelRange');
+        let cla = '';
+        if (lochi) {
+            if (issel)
+                cla = 'Selected';
+            else if (ishi)
+                cla = 'Hilit';
+        }
+        else {
+            if (ishi)
+                cla = 'Hilit';
+            if (issel) {
+                if (cla.length)
+                    cla += ' ';
+                cla += 'SelRange';
+            }
+        }
         linel.className = cla;
         counter++;
     }
