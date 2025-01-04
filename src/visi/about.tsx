@@ -95,9 +95,9 @@ export function AboutPage()
                     {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'activity') }>Activity</a>{' '}
                     shows the functions called in
                     the most recent turn, and what they printed.
-                    {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'globals') }>Globals</a>{' '}
-                    shows the global variable
-                    state of the world. (Objects have property variables
+                    {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'globals') }>State</a>{' '}
+                    shows the state of the world &#x2014; the 158 global variables
+                    at least. (Objects have property variables
                     as well, which you can view from the World tab.)
                 </p>
                 <p>
