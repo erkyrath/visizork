@@ -153,12 +153,25 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
         if (obj)
             rctx.setLoc(obj.sourceloc, false);
     }
+
+    let cla = '';
+    if (onum == selected)
+        cla = 'Selected';
+    if (obj.isroom) {
+        if (cla.length)
+            cla += ' ';
+        cla += 'IsRoom';
+    }
     
     return (
         <>
-            <li className={ (onum==selected) ? 'Selected' : '' } onClick={ evhan_click }>
+            <li className={ cla } onClick={ evhan_click }>
                 { label } <code>{ obj.name }</code>
-                {' '}<span className="PrintString">&#x201C;{ obj.desc }&#x201D;</span>
+                {' '}
+                { ((obj.desc && obj.desc.length) ?
+                   <span className="PrintString">&#x201C;{ obj.desc }&#x201D;</span>
+                   :
+                   <i>(nameless)</i> ) }
             </li>
             { (childls.length ? (
                 <ul className="DataList">

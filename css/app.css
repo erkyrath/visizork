@@ -286,6 +286,10 @@ ul.DataList ul {
     background: #FFDD88;
 }
 
+.DataList li.IsRoom {
+    margin-top: 6px;
+}
+
 code {
     font-family: "Courier Prime";
 }
