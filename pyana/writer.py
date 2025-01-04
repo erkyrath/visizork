@@ -50,7 +50,7 @@ def sourceloc(tup=None, endtup=None, tok=None):
         tup = tok.pos
         endtup = tok.endpos
     if tup is None:
-        return None
+        return ''
     file, line, char = tup
     filekey = sourcefile_map[file]
     res = '%s:%d:%d' % (filekey, line, char,)
@@ -140,8 +140,7 @@ def write_globals(filename, zcode):
     ls = []
     for glo in zcode.globals:
         if glo.name not in globname_to_num:
-            print('### missing global', glo.name)
-            continue
+            raise Exception('missing global ' + glo.name)
         dat = {
             'name': glo.name,
             'num': globname_to_num[glo.name],
