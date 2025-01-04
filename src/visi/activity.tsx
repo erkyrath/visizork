@@ -28,7 +28,7 @@ const ListCtx = createContext(new_context());
 export function CallActivity()
 {
     const [ selected, setSelected ] = useState([-1, -1] as SelPair);
-    let collapse = true; //###
+    const [ collapse, setCollapse ] = useState(true);
     
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
@@ -38,9 +38,17 @@ export function CallActivity()
         setSelected([-1, -1]);
     }
 
+    function evhan_change_collapse(ev: ChangeEv) {
+        setCollapse(!collapse);
+    }
+
     return (
         <ListCtx.Provider value={ { selected, setSelected, collapse } }>
             <div className="ScrollContent" onClick={ evhan_click_background }>
+                <div>
+                    <input id="collapse_checkbox" type="checkbox" checked={ collapse } onChange={ evhan_change_collapse } />
+                    <label htmlFor="collapse_checkbox">Collapse non-printing calls</label>
+                </div>
                 <ul className="DataList">
                     <StackItem item={ zstate.calltree } />
                 </ul>
@@ -130,3 +138,5 @@ export function StackCall({ call }: { call:ZStackCall })
         </>
     );
 }
+
+type ChangeEv = React.ChangeEvent<HTMLInputElement>;
