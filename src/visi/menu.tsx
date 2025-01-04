@@ -27,7 +27,9 @@ export function AppMenu()
 
     return (
         <>
-            <button id="menubutton" onClick={ handle_click_menu }>Menu</button>
+            <button id="menubutton" className={ menuopen ? 'Selected' : '' } onClick={ handle_click_menu }>
+                <img src="css/menu.svg" />
+            </button>
             <div className={ menuopen ? 'Menu MenuOpen' : 'Menu' }>
                 <div>
                     <ArrangeButton arrange='12' curarrange={ arrangement} handle={ handle_click_arrange } />

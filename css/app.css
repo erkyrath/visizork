@@ -37,6 +37,15 @@ body {
     border: 1px solid #888;
     border-radius: 4px;
     margin: 14px 8px;
+    padding: 2px 2px 0px 2px;
+}
+#menubutton.Selected {
+    background: #F0C056;
+}
+
+#menubutton img {
+    width: 24px;
+    height: 18px;
 }
 
 .Menu {
