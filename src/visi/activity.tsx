@@ -89,7 +89,9 @@ export function StackPrint({ print }: { print:ZStackPrint })
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
                 print { print.addr }: 
                 { strdat ? (
-                    <> <b>"{ strdat.text }"</b></>
+                    <>
+                        {' '}<span className="PrintString">&#x201C;{ strdat.text }&#x201D;</span>
+                    </>
                 ) : (
                     <> <i>string not recognized</i></>
                 ) }

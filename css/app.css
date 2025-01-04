@@ -290,6 +290,12 @@ code {
     font-family: "Courier Prime";
 }
 
+.PrintString {
+    font-family: "Libre Baskerville", serif;
+    font-size: 90%;
+    font-weight: bold;
+}
+
 #scrollcontent_file.ScrollContent {
     padding-left: 8px;
 }

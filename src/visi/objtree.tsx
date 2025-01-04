@@ -157,7 +157,8 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
     return (
         <>
             <li className={ (onum==selected) ? 'Selected' : '' } onClick={ evhan_click }>
-                { label } { onum }: <code>{ obj.name }</code> "{ obj.desc }"
+                { label } { onum }: <code>{ obj.name }</code>
+                {' '}<span className="PrintString">&#x201C;{ obj.desc }&#x201D;</span>
             </li>
             { (childls.length ? (
                 <ul className="DataList">
