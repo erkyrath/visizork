@@ -60,7 +60,7 @@
      can change that, but don't touch the position or margin. */
   position: absolute;
   margin: 0px;
-  background: white;
+  background: #FFF4DD;
 }
 
 .BufferWindow {
@@ -89,7 +89,7 @@
 }
 
 .GridWindow {
-  background: #D0D0C0;
+  background: #D0C0A0;
   overflow: hidden;
   font-family: "Courier Prime", "Courier", monospace; /* necessary! */
   font-size: 15px;
