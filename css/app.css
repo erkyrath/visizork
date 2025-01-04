@@ -9,7 +9,9 @@ body {
     width: 100%;
     top: 0px;
     height: 50px;
-    background: #FDA;
+    background-color: #FDA;
+    background-image: url("stone.png");
+    background-size: 489px 50px;
     box-sizing: border-box;
     border-bottom: 1px solid #FA8;
     font-family: "Libre Baskerville", serif;
@@ -19,6 +21,7 @@ body {
     font-size: 20px;
     margin-left: 20px;
     color: #640;
+    text-shadow: 2px 2px 3px #FDA, -2px -2px 3px #FDA;
 }
 
 #appcontrols {
@@ -65,7 +68,7 @@ body {
 }
 
 .Menu button.Selected {
-    background: #FFD066;
+    background: #F0C056;
 }
 
 .Menu img.ArrangeIcon {
