@@ -47,6 +47,7 @@ export function AppMenu()
 function ArrangeButton({ arrange, curarrange, handle }: { arrange:string, curarrange:string, handle:(key:string)=>void })
 {
     let issel = (arrange == curarrange);
+    let imgsrc = "css/arrange-" + arrange + ".svg";
     
     function handle_click_arrange(ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         ev.stopPropagation();
@@ -54,7 +55,7 @@ function ArrangeButton({ arrange, curarrange, handle }: { arrange:string, curarr
     }
     
     return (
-        <button className={ issel ? 'Selected' : '' } onClick={ handle_click_arrange }>{ arrange }</button>
+        <button className={ issel ? 'Selected' : '' } onClick={ handle_click_arrange }><img className="ArrangeIcon" src={ imgsrc } /></button>
     );
 }
 
