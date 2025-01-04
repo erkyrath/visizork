@@ -74,7 +74,7 @@ export function GlobalVar({ index, value }: { index:number, value:number })
     return (
         <li className={ (index==selected) ? 'Selected' : '' } onClick={ evhan_click }>
             { (rctx.shownumbers ?
-               <span>{ index }: </span>
+               <span className="ShowAddr">{ index }: </span>
                : null) }
             <code>{ (glo ? glo.name : '???') }</code>
             : { value }{' '}

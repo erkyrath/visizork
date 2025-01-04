@@ -87,6 +87,9 @@ export function StackPrint({ print }: { print:ZStackPrint })
     return (
         <>
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
+                { (rctx.shownumbers ?
+                   <span className="ShowAddr">{ print.addr }: </span>
+                   : null) }
                 { strdat ? (
                     <>
                         {' '}<span className="PrintString">&#x201C;{ strdat.text }&#x201D;</span>
@@ -129,6 +132,9 @@ export function StackCall({ call }: { call:ZStackCall })
     return (
         <>
             <li className={ issel ? 'Selected' : '' } onClick={ evhan_click }>
+                { (rctx.shownumbers ?
+                   <span className="ShowAddr">{ call.addr }: </span>
+                   : null) }
                 <code>&lt;{ funcname }&gt;</code>
             </li>
             { (subls.length ?

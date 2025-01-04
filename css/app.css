@@ -316,6 +316,10 @@ code {
     font-weight: bold;
 }
 
+.ShowAddr {
+    font-size: 85%;
+}
+
 #scrollcontent_file.ScrollContent {
     padding-left: 8px;
 }
