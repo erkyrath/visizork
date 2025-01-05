@@ -60,6 +60,7 @@ export function GlobalVar({ index, value }: { index:number, value:number })
     let glo = gamedat_global_nums.get(index);
 
     let vartype = null;
+    let withnum = false;
     if (glo) {
         switch (glo.vartype) {
         case 'OBJ':
@@ -70,7 +71,8 @@ export function GlobalVar({ index, value }: { index:number, value:number })
             break;
         case '':
         case undefined:
-            vartype = null;
+            vartype = <span>{ value }</span>;
+            withnum = true;
             break;
         default:
             vartype = <span>{ glo.vartype }</span>;
@@ -91,8 +93,12 @@ export function GlobalVar({ index, value }: { index:number, value:number })
             { (rctx.shownumbers ?
                <span className="ShowAddr">{ index }: </span>
                : null) }
-            <code>{ (glo ? glo.name : '???') }</code>
-            : { value }{' '}
+            <code>{ (glo ? glo.name : '???') }</code>:{' '}
+            { ((rctx.shownumbers && !withnum) ?
+               <>
+                   <span className="ShowAddr">({ value })</span>{' '}
+               </>
+               : null) }
             { vartype ? vartype : null }
         </li>
     );
@@ -106,17 +112,17 @@ function VarShowObject({ value }: { value:number })
     let obj = gamedat_object_ids.get(value);
     if (obj) {
         //### link?
-        return (<span>(<code>{ obj.name }</code>)</span>);
+        return (<span><code>{ obj.name }</code></span>);
     }
 
-    return (<span>???</span>);
+    return (<i>invalid object { value }</i>);
 }
 
 function VarShowString({ value }: { value:number })
 {
     let obj = gamedat_string_map.get(unpack_address(value));
     if (obj) {
-        return (<span>"{ obj.text }"</span>);
+        return (<span className="PrintString">&#x201C;{ obj.text }&#x201D;</span>);
     }
 
     return (<span>???</span>);
