@@ -132,7 +132,7 @@ var GlkIOClass = function(env, runner) {
                     vmquit = true;
                     var windat = {
                         content: [
-                            { style:'emphasized', text:'END OF SESSION' },
+                            { style:'emphasized', text:'The Z-machine has shut down. Reload this page to restart.' },
                         ],
                     };
                     buffercontent.push({});
