@@ -3,6 +3,7 @@ import { useState, useContext, createContext } from 'react';
 
 import { ZState, ZObject } from './zstate';
 import { gamedat_global_nums, gamedat_object_ids, gamedat_string_map } from './gamedat';
+import { unpack_address } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -50,11 +51,6 @@ export function GlobalState()
     );
 }
 
-//###
-const glob_is_object = new Set([0, 64, 106, 107, 111]);
-const glob_is_string = new Set([28, 29]);
-const glob_is_table = new Set([3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 21, 22, 23, 25, 27, 34, 37, 38, 49, 52, 53, 54, 55, 56, 57, 67, 68]);
-
 export function GlobalVar({ index, value }: { index:number, value:number })
 {
     let rctx = useContext(ReactCtx);
@@ -62,6 +58,25 @@ export function GlobalVar({ index, value }: { index:number, value:number })
     let selected = ctx.selected;
 
     let glo = gamedat_global_nums.get(index);
+
+    let vartype = null;
+    if (glo) {
+        switch (glo.vartype) {
+        case 'OBJ':
+            vartype = <VarShowObject value={ value } />;
+            break;
+        case 'STR':
+            vartype = <VarShowString value={ value } />;
+            break;
+        case '':
+        case undefined:
+            vartype = null;
+            break;
+        default:
+            vartype = <span>{ glo.vartype }</span>;
+            break;
+        }
+    }
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
@@ -78,15 +93,7 @@ export function GlobalVar({ index, value }: { index:number, value:number })
                : null) }
             <code>{ (glo ? glo.name : '???') }</code>
             : { value }{' '}
-            { (glob_is_object.has(index) ?
-               <VarShowObject value={ value } />
-               : null )}
-            { (glob_is_string.has(index) ?
-               <VarShowString value={ value } />
-               : null )}
-            { (glob_is_table.has(index) ?
-               <span>(table)</span>
-               : null )}
+            { vartype ? vartype : null }
         </li>
     );
 }
@@ -107,7 +114,7 @@ function VarShowObject({ value }: { value:number })
 
 function VarShowString({ value }: { value:number })
 {
-    let obj = gamedat_string_map.get(2*value); //### packed string address
+    let obj = gamedat_string_map.get(unpack_address(value));
     if (obj) {
         return (<span>"{ obj.text }"</span>);
     }

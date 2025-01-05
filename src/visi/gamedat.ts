@@ -1,4 +1,9 @@
 
+export function unpack_address(val: number) : number
+{
+    return val * 2;
+}
+
 export type SourceLoc = {
     filekey: string;
     line: number;
@@ -90,6 +95,7 @@ export const sourcefile_list: [ string, string ][] = [
 export type GlobalData = {
     name: string;
     num: number;
+    vartype?: string;
     sourceloc: string;
 };
 
