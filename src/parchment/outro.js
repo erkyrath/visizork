@@ -32,6 +32,7 @@ var StoryClass = IFF.subClass({
     }
 });
 
+// This function becomes runner.toParchment.
 function fromRunner( runner, event )
 {
     var code = event.code;
