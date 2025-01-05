@@ -43,6 +43,11 @@ export function GlobalState()
     return (
         <GlobListCtx.Provider value={ { selected, setSelected } }>
             <div className="ScrollContent" onClick={ evhan_click_background }>
+                { (rctx.shownumbers ?
+                   <div>
+                       Global variables begin at address { rctx.zstate.globtableaddr }.
+                   </div>
+                   : null) }
                 <ul className="DataList">
                     { globls }
                 </ul>

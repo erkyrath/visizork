@@ -2228,6 +2228,8 @@ GnustoEngine.prototype = {
             return null;
         
         var report = {
+            globtableaddr: this.m_vars_start,
+            objtableaddr: this.m_objs_start,
             strings: m_report.strings,
         };
         

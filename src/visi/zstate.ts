@@ -21,6 +21,8 @@ export type ZStackPrint = {
 export type ZStackItem = ZStackCall | ZStackPrint;
 
 export type ZState = {
+    globtableaddr: number;
+    objtableaddr: number;
     globals: number[];
     objects: ZObject[];
     strings: number[];
@@ -30,6 +32,8 @@ export type ZState = {
 export function zstate_empty() : ZState
 {
     return {
+        globtableaddr: 0,
+        objtableaddr: 0,
         globals: [],
         objects: [],
         strings: [],
