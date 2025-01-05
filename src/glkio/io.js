@@ -20,7 +20,6 @@ var GlkIOClass = function(env, runner) {
         var engine = runner.e;
         var layout_dirty = false;
         var run = false;
-        var orders = null;
         var echoline = null;
         
         if (obj.type == 'init') {
@@ -39,14 +38,29 @@ var GlkIOClass = function(env, runner) {
             echoline = obj.value;
             run = true;
         }
+        else if (obj.type == 'specialsave') {
+            echoline = obj.echoline;
+            run = true;
+        }
         else {
             console.log('BUG: unhandled accept', obj);
         }
 
+        var orders = null;
         /* If this is initial startup or a player input, run the engine
            a turn. */
         if (run) {
             orders = runner.run();
+        }
+
+        if (orders != null && orders.length && orders[0].code == 'save') {
+            var dia = glkote.getlibrary('Dialog');
+            var reqgen = obj.gen;
+            dia.open(true, 'save', 'zork', (val)=>{
+                console.log('###', val);
+                accept({ type:'specialsave', gen: reqgen, echoline: echoline });
+            });
+            return;
         }
 
         var newgen = obj.gen + 1;

@@ -130,7 +130,7 @@ var GnustoRunner = Object.subClass({
             {
                 stop = 1;
                 engine.saveGame();
-                this.toParchment({
+                this.orders.push({
                     code: 'save',
                     data: engine.saveGameData()
                 });
@@ -138,7 +138,7 @@ var GnustoRunner = Object.subClass({
             if ( effect == GNUSTO_EFFECT_RESTORE )
             {
                 stop = 1;
-                this.toParchment({ code: 'restore' });
+                //### ? this.toParchment({ code: 'restore' });
             }
             if ( effect == GNUSTO_EFFECT_QUIT )
             {
