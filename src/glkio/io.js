@@ -40,7 +40,7 @@ var GlkIOClass = function(env, runner) {
             run = true;
         }
         else {
-            console.log('### unhandled accept', obj);
+            console.log('BUG: unhandled accept', obj);
         }
 
         /* If this is initial startup or a player input, run the engine
