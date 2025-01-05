@@ -55,14 +55,19 @@ var GlkIOClass = function(env, runner) {
         }
 
         if (orders != null && orders.length && orders[0].code == 'save') {
+            var data = orders[0].data;
             var dia = glkote.getlibrary('Dialog');
             var reqgen = obj.gen;
             dia.open(true, 'save', 'zork', (val)=>{
-                console.log('###', val);
+                console.log('###', data, val);
+                var success = false;
+                if (val) {
+                    success = Dialog.file_write(val, data, false);
+                }
                 accept({
                     type:'specialsave',
                     gen: reqgen,
-                    success: false,
+                    success: success,
                     echoline: echoline
                 });
             });
