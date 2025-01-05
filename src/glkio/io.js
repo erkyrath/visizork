@@ -71,10 +71,11 @@ var GlkIOClass = function(env, runner) {
             var windat = {
                 append: true,
                 content: [
-                    { style:'input', text:echoline+'\n' },
+                    { style:'input', text:echoline },
                 ],
             };
             buffercontent.push(windat);
+            buffercontent.push({});
         }
         
         if (orders !== null) {
