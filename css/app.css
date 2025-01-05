@@ -297,6 +297,9 @@ body {
 .AboutPage a.Internal {
     color: #A40;
 }
+.AboutPage code {
+    font-size: 90%
+}
 
 ul.DataList {
     list-style: none;

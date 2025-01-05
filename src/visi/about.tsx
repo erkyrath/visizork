@@ -93,7 +93,7 @@ export function AboutPage()
                     Listed with you are the objects you
                     can see.{' '}
                     { (firstobj ?
-                       <>(Try typing "<code>EXAMINE { firstobj }</code>"!) </>
+                       <>(Try typing &#x201C;<code>EXAMINE { firstobj }</code>&#x201D;!) </>
                        : null) }
                     Objects you pick up will be listed directly under
                     the <code>ADVENTURER</code>; they will move with
