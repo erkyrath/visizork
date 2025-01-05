@@ -65,6 +65,7 @@ var GlkIOClass = function(env, runner) {
         var buffercontent = [];
         var newinput = null;
         var clearbuffer = false;
+        var vmquit = false;
 
         if (echoline != null) {
             var windat = {
@@ -125,13 +126,25 @@ var GlkIOClass = function(env, runner) {
                         id: 1, gen: newgen, type: 'char',
                     };
                 }
+                
+                if (ord.code == 'quit') {
+                    vmquit = true;
+                    var windat = {
+                        content: [
+                            { style:'emphasized', text:'END OF SESSION' },
+                        ],
+                    };
+                    buffercontent.push({});
+                    buffercontent.push(windat);
+                    buffercontent.push({});
+                }
             }
         }
 
         /* Rebuild the status line if the game updated *or* the window
            changed size. */
         if (layout_dirty || run) {
-            //### version 3 only
+            //TODO: this is for version 3 only
             var statusline = engine.getStatusLine(get_status_width());
             
             gridcontent.push({
@@ -159,7 +172,10 @@ var GlkIOClass = function(env, runner) {
             }
         }
 
-        if (newinput) {
+        if (vmquit) {
+            update.input = [];
+        }
+        else if (newinput) {
             update.input = [ newinput ];
         }
 
