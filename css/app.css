@@ -329,6 +329,9 @@ ul.DataList ul {
 code {
     font-family: "Courier Prime";
 }
+code .Small {
+    font-size: 90%;
+}
 
 .ObjLabel {
     font-size: 75%;

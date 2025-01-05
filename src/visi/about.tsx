@@ -119,11 +119,21 @@ export function AboutPage()
                     The version you see here dates from 1984. (The serial number
                     &#x201C;840726&#x201D; shows the compile date.) By this point,
                     the Infocom folks had combined the common parts of
-                    Zork 1, 2, and 3 &#x2014; the parser and generic actions &#x2014;
-                    into a (roughly) common library shared between the
-                    three games. You'll see quite a bit of code which
-                    is meant for Zork 2 or 3; these segments are compiled
-                    out (inactive) for Zork 1.
+                    Zork 1, 2, and 3 into a common library.
+                    This library, containing the
+                    parser and generic action code, was shared with (almost)
+                    no changes between the three games. These versions
+                    were referred to in the source as the "Renovated"
+                    versions.
+                </p>
+                <p>
+                    The common library (the files &#x201C;gverbs.zil&#x201D;,
+                    &#x201C;gparser.zil&#x201D;, etc) did contain bits of
+                    code specific to each of the three games. (For example,
+                    the game title banners printed in{' '}
+                    <code className="Small">V-VERSION</code>.)
+                    The passages meant for Zork 2 and 3 were dropped when
+                    compiling Zork 1.
                 </p>
                 <p>
                     This 1984 release is the one most commonly seen today,
