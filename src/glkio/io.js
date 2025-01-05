@@ -64,6 +64,7 @@ var GlkIOClass = function(env, runner) {
         var gridcontent = [];
         var buffercontent = [];
         var newinput = null;
+        var clearbuffer = false;
 
         if (echoline != null) {
             var windat = {
@@ -106,6 +107,11 @@ var GlkIOClass = function(env, runner) {
                         append = false;
                     }
                 }
+
+                if (ord.code == 'clear') {
+                    // Could check "name:main" here, but it's not useful
+                    clearbuffer = true;
+                }
                 
                 if (ord.code == 'read') {
                     newinput = {
@@ -139,10 +145,10 @@ var GlkIOClass = function(env, runner) {
             update.content = [];
 
             if (buffercontent.length) {
-                update.content.push(
-                    //### clear flag goes at this level
-                    { id: 1, text: buffercontent, }
-                );
+                var dat = { id: 1, text: buffercontent, };
+                if (clearbuffer)
+                    dat.clear = true;
+                update.content.push(dat);
             }
 
             if (gridcontent.length) {
