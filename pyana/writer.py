@@ -1,4 +1,5 @@
 import json
+import re
 
 sourcefile_map = {
     'zork1.zil':    'A',
@@ -26,12 +27,14 @@ def load_gameinfo():
     global info_loaded
     if info_loaded:
         return
+    pat = re.compile(r'(\S+)\s+(\S+)\s+(\S+)\s*(.*)?')
     fl = open('gamedat/game-info')
     for ln in fl.readlines():
         ln = ln.strip()
         if not ln or ln.startswith('#'):
             continue
-        typ, num, name = ln.split()
+        match = pat.match(ln)
+        typ, num, name = match.group(1), match.group(2), match.group(3)
         num = int(num)
         if typ == 'Object':
             objname_to_num[name] = num

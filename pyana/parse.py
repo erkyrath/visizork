@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# python3 pyana/parse.py -z gamesrc/zork1.zil --obj --txd --gamedat
+# python3 pyana/parse.py -z gamesrc/zork1.zil --src
+
 import sys
 import optparse
 
