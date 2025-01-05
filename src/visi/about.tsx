@@ -95,8 +95,9 @@ export function AboutPage()
                     { (firstobj ?
                        <>(Try typing "<code>EXAMINE { firstobj }</code>"!) </>
                        : null) }
-                    If you pick up an object, it will shift to be listed
-                    under the <code>ADVENTURER</code>.
+                    Objects you pick up will be listed directly under
+                    the <code>ADVENTURER</code>; they will move with
+                    you as part of your inventory.
                 </p>
                 <p>
                     The other tabs display other aspects of the Z-machine.
@@ -130,21 +131,20 @@ export function AboutPage()
                     Zork 1, 2, and 3 into a common library.
                     This library, containing the
                     parser and generic action code, was shared with (almost)
-                    no changes between the three games. These versions
-                    were referred to in the source as the "Renovated"
-                    versions.
+                    no changes between the three games.
                 </p>
                 <p>
                     The common library (the files &#x201C;gverbs.zil&#x201D;,
                     &#x201C;gparser.zil&#x201D;, etc) did contain bits of
                     code specific to each of the three games. (For example,
                     the game title banners printed in{' '}
-                    <code className="Small"><a className="Internal" href="#" onClick={ (ev)=>evhan_click_routine(ev, 'V-VERSION') }>V-VERSION</a></code>.)
-                    The passages meant for Zork 2 and 3 were dropped when
+                    <code><a className="Internal" href="#" onClick={ (ev)=>evhan_click_routine(ev, 'V-VERSION') }>V-VERSION</a></code>.)
+                    The passages meant for Zork 2 and 3 were skipped when
                     compiling Zork 1.
                 </p>
                 <p>
-                    This 1984 release is the one most commonly seen today,
+                    This &#x201C;renovated&#x201D; 1984 release is
+                    the one most commonly seen today,
                     because it was included in the &#x201C;
                     <a target="_blank" href="https://archive.org/details/lost-treasures-of-infocom">Lost Treasures of Infocom</a>
                     &#x201D; collection and later collections.
