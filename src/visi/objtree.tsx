@@ -85,6 +85,11 @@ export function ObjectTree()
                     <input id="followthief_radio" type="radio" name="follow" value="thief" checked={ follow=='thief' } onChange={ (ev) => evhan_follow_change('thief') } />
                     <label htmlFor="followthief_radio">Thief</label>
                 </div>
+                { (rctx.shownumbers ?
+                   <div>
+                       Object table begins at address { rctx.zstate.objtableaddr }.
+                   </div>
+                   : null) }
                 <ul className="DataList">
                     { rootls }
                 </ul>
