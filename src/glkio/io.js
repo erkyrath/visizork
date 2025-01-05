@@ -111,6 +111,7 @@ var GlkIOClass = function(env, runner) {
                 if (ord.code == 'clear') {
                     // Could check "name:main" here, but it's not useful
                     clearbuffer = true;
+                    buffercontent.length = 0;
                 }
                 
                 if (ord.code == 'read') {
