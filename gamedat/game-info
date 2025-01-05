@@ -314,8 +314,8 @@ Global 14 DEF2B  DATA
 Global 15 DEF2A  DATA
 Global 16 DEF1  DATA
 Global 17 SING-SONG
-Global 18 BDIGS
-Global 19 BEACH-DIG  DATA
+Global 18 BDIGS  DATA
+Global 19 BEACH-DIG
 Global 20 BUOY-FLAG
 Global 21 RIVER-LAUNCH  DATA
 Global 22 RIVER-NEXT  DATA
@@ -429,7 +429,7 @@ Global 128 PLAYER
 Global 129 CLOCK-WAIT
 Global 130 C-INTS
 Global 131 C-DEMONS
-Global 132 C-TABLE
+Global 132 C-TABLE  TABLE
 Global 133 LOAD-ALLOWED
 Global 134 LOAD-MAX
 Global 135 ABOVE-GROUND  DATA
@@ -450,9 +450,9 @@ Global 149 CYCLOPS-FLAG
 Global 150 FALSE-FLAG
 # 150 used to block chimney down
 Global 151 SCORE-MAX
-Global 152 LOW-DIRECTION  Created from DIRECTIONS
+Global 152 LOW-DIRECTION  table created from DIRECTIONS
 Global 153 BIGFIX
-Global 154 PREPOSITIONS  Created from SYNTAX
-Global 155 ACTIONS  Created from SYNTAX
-Global 156 PREACTIONS  Created from SYNTAX
-Global 157 VERBS  Created from SYNTAX
+Global 154 PREPOSITIONS  table created from SYNTAX
+Global 155 ACTIONS  table created from SYNTAX
+Global 156 PREACTIONS  table created from SYNTAX
+Global 157 VERBS  table created from SYNTAX
