@@ -79,35 +79,6 @@ var GnustoRunner = Object.subClass({
         }
     },
 
-    //### currently not used for startup!
-    restart: function()
-    {
-        var engine = this.e;
-        var io = this.io;
-
-        if (!io.glkote.inited()) {
-            // calls GlkOte.init()
-            io.init();
-        }
-        
-        // Header variables
-        //### should be v4+
-        var winwidth = io.get_status_width();
-        engine.setByte( 255, 0x20 );
-        engine.setByte( winwidth, 0x21 );
-        engine.setWord( winwidth, 0x22 );
-        engine.setWord( 255, 0x24 );
-        
-        // Set up the ifvms.js ZVMUI
-        //###io.target = io.container.empty();
-        this.orders = [];
-        // The header bit we pass in is "game sets to force all-monospace"
-        this.ui = new ZVMUI( this, engine.getByte( 0x11 ) & 0x02 );
-        //### this is not currently a thing
-        io.event( this.orders );
-        this.orders = [];
-    },
-
     // Handle Gnusto's non-StructIO friendly IO protocol
     run: function()
     {
@@ -175,9 +146,7 @@ var GnustoRunner = Object.subClass({
             }
             if ( effect == GNUSTO_EFFECT_RESTART )
             {
-                engine.resetStory();
-                this.restart();
-                ui = this.ui;
+                this.io.error('RESTART effect not used');
             }
             if ( effect == GNUSTO_EFFECT_FLAGS_CHANGED )
             {

@@ -700,7 +700,7 @@ function handleZ_nop(engine, a) {
 
 function handleZ_restart(engine, a) {
     engine.m_compilation_running=0;
-    return "m_effects=["+GNUSTO_EFFECT_RESTART+"];return";
+    return "resetStory();return";
 }
 
 function handleZ_ret_popped(engine, a) {
