@@ -69,13 +69,23 @@ export function GlobalVar({ index, value }: { index:number, value:number })
         case 'STR':
             vartype = <VarShowString value={ value } />;
             break;
+        case 'DATA':
+            vartype = <i>data table in source</i>;
+            break;
+        case 'TABLE':
+            vartype = <i>runtime table</i>;
+            break;
+        case 'UNUSED':
+            vartype = <>{ value } <i>(not used)</i></>
+            withnum = true;
+            break;
         case '':
         case undefined:
-            vartype = <span>{ value }</span>;
+            vartype = <span>{ (value < 32768) ? value : (value - 65536) }</span>;
             withnum = true;
             break;
         default:
-            vartype = <span>{ glo.vartype }</span>;
+            vartype = <i>{ glo.vartype }</i>;
             break;
         }
     }
