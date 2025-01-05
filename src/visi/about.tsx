@@ -104,6 +104,33 @@ export function AboutPage()
                     Click on any function, object, or variable to see its
                     definition in the source code.
                 </p>
+                <h2>Which Zork is this?</h2>
+                <p>
+                    The first version of Zork was written in 1977 by energetic
+                    MIT students, in a LISP-y language called MDL. A few
+                    years later, as part of Infocom, they rewrote it &#x2014; 
+                    piecewise &#x2014; with a homebrew portable tool they called ZIL.
+                    (For &#x201C;Zork Implementation Language&#x201D;.)
+                </p>
+                <p>
+                    The version you see here dates from 1984. (The serial number
+                    &#x201C;840726&#x201D; shows the compile date.) By this point,
+                    the Infocom folks had combined the common parts of
+                    Zork 1, 2, and 3 &#x2014; the parser and generic actions &#x2014;
+                    into a (roughly) common library shared between the
+                    three games. You'll see quite a bit of code which
+                    is meant for Zork 2 or 3; these segments are compiled
+                    out (inactive) for Zork 1.
+                </p>
+                <p>
+                    This 1984 release is the one most commonly seen today,
+                    because it was included in the &#x201C;Lost Treasures of
+                    Infocom&#x201D; collection and later collections.
+                    I have therefore selected it for this exhibit.
+                    That was not the final version, however. In 1987
+                    Infocom released the &#x201C;Solid Gold&#x201D; edition with
+                    built-in InvisiClues.
+                </p>
             </div>
         </div>
     );
