@@ -151,12 +151,35 @@ export function AboutPage()
                     version of the{' '}
                     <a target="_blank" href="https://github.com/curiousdannii/parchment">Parchment</a> Z-machine interpreter
                     by Marnanel Thurman, Atul Varma, and Dannii Willis.
+                    You can find this, and the rest of the Visible Zorker
+                    machinery, on{' '}
+                    <a target="_blank" href="https://github.com/erkyrath/visizork">Github</a>.
+                </p>
+                <p>
+                    I used TXD from the{' '}
+                    <a target="_blank" href="https://ifarchive.org/indexes/if-archive/infocom/tools/ztools/">ZTools</a>
+                    {' '}package to analyze the Zork game file. That
+                    process was invaluably aided by the{' '}
+                    <a target="_blank" href="https://ifarchive.org/indexes/if-archive/infocom/tools/reform/">Infocom analysis work</a>
+                    {' '}done in 2007 by Allen Garvin, Ben Rudiak-Gould,
+                    and Ethan Dicks.
+                </p>
+                <p>
+                    The fonts used are Courier Prime, Lato, and
+                    Libre Baskerville. The header background is copied from
+                    Infocom's Zork hint maps.
+                </p>
+                <p>
+                    Zork itself was originally written by Tim Anderson,
+                    Marc Blank, Bruce Daniels, and Dave Lebling. The
+                    commercial versions are copyright 1981 (etc) by Infocom,
+                    then Activision, then renamed to Mediagenic,
+                    then Bobby Kotick bought it and renamed it Activision,
+                    then Vivendi bought it and merged it with Blizzard,
+                    then Microsoft consumed the lot. Got it? Good.
                 </p>
             </div>
         </div>
     );
 }
 
-//### about Z-machine?
-//### which version of Zork and why
-//### software acknowledgements
