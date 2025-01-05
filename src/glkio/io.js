@@ -7,8 +7,6 @@ var GlkIOClass = function(env, runner) {
     var glkote = GlkOte;
     var content_metrics = null;
 
-    var generation = 0;
-
     function init()
     {
         var subenv = { ...env, accept:accept };
