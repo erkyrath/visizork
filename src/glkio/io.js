@@ -40,6 +40,7 @@ var GlkIOClass = function(env, runner) {
         }
         else if (obj.type == 'specialsave') {
             echoline = obj.echoline;
+            engine.answer(0, obj.success ? 1 : 0);
             run = true;
         }
         else {
@@ -58,7 +59,12 @@ var GlkIOClass = function(env, runner) {
             var reqgen = obj.gen;
             dia.open(true, 'save', 'zork', (val)=>{
                 console.log('###', val);
-                accept({ type:'specialsave', gen: reqgen, echoline: echoline });
+                accept({
+                    type:'specialsave',
+                    gen: reqgen,
+                    success: false,
+                    echoline: echoline
+                });
             });
             return;
         }
