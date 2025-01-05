@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 
-import { gamedat_ids, gamedat_object_ids } from './gamedat';
+import { gamedat_ids, gamedat_object_ids, gamedat_routine_names } from './gamedat';
 import { ZState, ZObject } from './zstate';
 
 import { ReactCtx } from './context';
@@ -55,6 +55,14 @@ export function AboutPage()
     function evhan_click_tab(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, tab: string) {
         ev.preventDefault();
         rctx.setTab(tab);
+    }
+    
+    function evhan_click_routine(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, rtn: string) {
+        ev.preventDefault();
+        let funcdat = gamedat_routine_names.get(rtn);
+        if (funcdat) {
+            rctx.setLoc(funcdat.sourceloc, false);
+        }
     }
     
     return (
@@ -131,7 +139,7 @@ export function AboutPage()
                     &#x201C;gparser.zil&#x201D;, etc) did contain bits of
                     code specific to each of the three games. (For example,
                     the game title banners printed in{' '}
-                    <code className="Small">V-VERSION</code>.)
+                    <code className="Small"><a href="#" onClick={ (ev)=>evhan_click_routine(ev, 'V-VERSION') }>V-VERSION</a></code>.)
                     The passages meant for Zork 2 and 3 were dropped when
                     compiling Zork 1.
                 </p>
