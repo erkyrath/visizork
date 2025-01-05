@@ -22,6 +22,7 @@ propnum_to_name = {}
 propname_to_num = {}
 globname_to_num = {}
 globnum_to_name = {}
+globname_to_vartype = {}
 
 def load_gameinfo():
     global info_loaded
@@ -35,6 +36,7 @@ def load_gameinfo():
             continue
         match = pat.match(ln)
         typ, num, name = match.group(1), match.group(2), match.group(3)
+        extra = match.group(4)
         num = int(num)
         if typ == 'Object':
             objname_to_num[name] = num
@@ -45,6 +47,8 @@ def load_gameinfo():
         if typ == 'Global':
             globname_to_num[name] = num
             globnum_to_name[num] = name
+            if extra:
+                globname_to_vartype[name] = extra
     fl.close()
     info_loaded = True
 
@@ -149,6 +153,8 @@ def write_globals(filename, zcode):
             'num': globname_to_num[glo.name],
             'sourceloc': sourceloc(tok=glo.gtok),
         }
+        if glo.name in globname_to_vartype:
+            dat['vartype'] = globname_to_vartype[glo.name]
         ls.append(dat)
 
     fl = open(filename, 'w')
