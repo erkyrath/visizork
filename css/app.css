@@ -312,12 +312,18 @@ ul.DataList ul {
 }
 
 .DataList li.IsRoom {
-    margin-top: 6px;
+    margin-top: 10px;
 }
 
 .DataList li.Filename {
     margin-top: 4px;
     margin-bottom: 4px;
+}
+
+.DataList li.ContainsLabel {
+    font-size: 85%;
+    font-style: italic;
+    padding-left: 25px;
 }
 
 code {

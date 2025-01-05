@@ -63,7 +63,7 @@ export function ObjectTree()
         return (o1.onum - o2.onum);
     });
 
-    var rootls = roots.map((o) =>
+    let rootls = roots.map((o) =>
         <ShowObject key={ o.onum } tup={ o } parentnum={ 0 } /> );
 
     function evhan_follow_change(val: string) {
@@ -156,8 +156,15 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
         break;
     }
 
-    var childls = children.map((o) =>
+    let childls = children.map((o) =>
         <ShowObject key={ o.onum } tup={ o } parentnum={ onum } /> );
+    let childlabel = '';
+    if (!obj.isroom) {
+        if (onum == gamedat_ids.ADVENTURER || onum == gamedat_ids.THIEF || onum == gamedat_ids.TROLL)
+            childlabel = 'carries';
+        else
+            childlabel = 'contains'
+    }
 
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
@@ -192,6 +199,9 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
             </li>
             { (childls.length ? (
                 <ul className="DataList">
+                    { (childlabel.length ?
+                       <li className="ContainsLabel">{ childlabel }...</li>
+                       : null) }
                     { childls }
                 </ul>) : null) }
             { (special.length ? (
