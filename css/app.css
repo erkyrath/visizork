@@ -291,6 +291,10 @@ body {
 }
 
 .AboutPage a {
+    color: #00C;
+}
+
+.AboutPage a.Internal {
     color: #A40;
 }
 

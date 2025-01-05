@@ -85,7 +85,7 @@ export function AboutPage()
                 </p>
                 <p>
                     Look at the
-                    {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'objtree') }>World</a>{' '}
+                    {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'objtree') }>World</a>{' '}
                     tab for a start.
                     This shows every object and room in the game.
                     You, the Adventurer, are in the topmost room:{' '}
@@ -100,10 +100,10 @@ export function AboutPage()
                 </p>
                 <p>
                     The other tabs display other aspects of the Z-machine.
-                    {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'activity') }>Activity</a>{' '}
+                    {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'activity') }>Activity</a>{' '}
                     shows the functions called in
                     the most recent turn, and what they printed.
-                    {' '}<a href="#" onClick={ (ev)=>evhan_click_tab(ev, 'globals') }>State</a>{' '}
+                    {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'globals') }>State</a>{' '}
                     shows the state of the world &#x2014; the 158 global variables
                     at least. (Objects have property variables
                     as well, which you can view from the World tab.)
@@ -139,7 +139,7 @@ export function AboutPage()
                     &#x201C;gparser.zil&#x201D;, etc) did contain bits of
                     code specific to each of the three games. (For example,
                     the game title banners printed in{' '}
-                    <code className="Small"><a href="#" onClick={ (ev)=>evhan_click_routine(ev, 'V-VERSION') }>V-VERSION</a></code>.)
+                    <code className="Small"><a className="Internal" href="#" onClick={ (ev)=>evhan_click_routine(ev, 'V-VERSION') }>V-VERSION</a></code>.)
                     The passages meant for Zork 2 and 3 were dropped when
                     compiling Zork 1.
                 </p>
