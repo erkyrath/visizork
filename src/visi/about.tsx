@@ -109,8 +109,11 @@ export function AboutPage()
                     The first version of Zork was written in 1977 by energetic
                     MIT students, in a LISP-y language called MDL. A few
                     years later, as part of Infocom, they rewrote it &#x2014; 
-                    piecewise &#x2014; with a homebrew portable tool they called ZIL.
-                    (For &#x201C;Zork Implementation Language&#x201D;.)
+                    piecewise &#x2014; with a homebrew portable tool they called{' '}
+                    <a target="_blank" href="https://blog.zarfhome.com/2019/04/what-is-zil-anyway">ZIL</a>.
+                    (For &#x201C;
+                    <a target="_blank" href="https://blog.zarfhome.com/2019/04/what-is-zil-anyway">Zork Implementation Language</a>
+                    &#x201D;.)
                 </p>
                 <p>
                     The version you see here dates from 1984. (The serial number
@@ -124,12 +127,30 @@ export function AboutPage()
                 </p>
                 <p>
                     This 1984 release is the one most commonly seen today,
-                    because it was included in the &#x201C;Lost Treasures of
-                    Infocom&#x201D; collection and later collections.
+                    because it was included in the &#x201C;
+                    <a target="_blank" href="https://archive.org/details/lost-treasures-of-infocom">Lost Treasures of Infocom</a>
+                    &#x201D; collection and later collections.
                     I have therefore selected it for this exhibit.
                     That was not the final version, however. In 1987
                     Infocom released the &#x201C;Solid Gold&#x201D; edition with
-                    built-in InvisiClues.
+                    built-in InvisiClues. Archived evidence indicates that
+                    they continued updating the source well into 1988.
+                </p>
+                <h2>Sources and acknowledgements</h2>
+                <p>
+                    Zork's source code was first{' '}
+                    <a target="_blank" href="https://github.com/historicalsource/zork1">publicly released</a>
+                    {' '}by Jason Scott in April 2019.
+                    I (Andrew Plotkin) then combed through all known versions
+                    and posted my{' '}
+                    <a target="_blank" href="https://eblong.com/infocom/">Obsessively Complete Infocom Catalog</a>,
+                    which now includes this Visible Zorker exhibition.
+                </p>
+                <p>
+                    The Visible Zorker is built on a seriously customized
+                    version of the{' '}
+                    <a target="_blank" href="https://github.com/curiousdannii/parchment">Parchment</a> Z-machine interpreter
+                    by Marnanel Thurman, Atul Varma, and Dannii Willis.
                 </p>
             </div>
         </div>
