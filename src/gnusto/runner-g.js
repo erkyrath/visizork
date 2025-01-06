@@ -44,7 +44,11 @@ var GnustoRunner = Object.subClass({
         this.io.init();
     },
 
-    // Handle Gnusto's non-StructIO friendly IO protocol
+    // Execute one game turn (until the game reaches an input point).
+    // Return the game's output in the form of a Gnusto-style orders
+    // array.
+    // This is called from GlkIO.accept(), which is called to launch the game
+    // and then again for every game input.
     run: function()
     {
         var engine = this.e;

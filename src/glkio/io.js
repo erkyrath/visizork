@@ -52,11 +52,14 @@ var GlkIOClass = function(env, runner) {
 
         var orders = null;
         /* If this is initial startup or a player input, run the engine
-           a turn. */
+           a turn and collect the output. (In the form of a Gnusto-style
+           orders array.) */
         if (run) {
             orders = runner.run();
         }
 
+        /* Convert the orders array to a GlkOte-style update. */
+        
         if (orders != null && orders.length && orders[0].code == 'save') {
             var data = orders[0].data;
             var dia = glkote.getlibrary('Dialog');
