@@ -53,12 +53,17 @@ var GlkIOClass = function(env, runner) {
         var orders = null;
         /* If this is initial startup or a player input, run the engine
            a turn and collect the output. (In the form of a Gnusto-style
-           orders array.) */
+           orders array.)
+           If this is an arrange event (that is, the window changed size)
+           then we *don't* run the engine; we just redraw the status line. */
         if (run) {
             orders = runner.run();
         }
 
-        /* Convert the orders array to a GlkOte-style update. */
+        /* Two special cases: waiting for a SAVE or RESTORE file prompt.
+           We call out to the dialog.js library to handle that. When
+           the player selects a filename (or cancels), we'll restart
+           accept() with a new special event type. */
         
         if (orders != null && orders.length && orders[0].code == 'save') {
             var data = orders[0].data;
@@ -99,6 +104,9 @@ var GlkIOClass = function(env, runner) {
             });
             return;
         }
+
+        /* Convert the orders array to a GlkOte-style update. (If we have
+           an orders array.) */
         
         var newgen = obj.gen + 1;
         var update = {
