@@ -1658,8 +1658,8 @@ GnustoEngine.prototype = {
 
                     var run_length = mem[cursor_compressed++]+1;
 
-                    temp = temp.concat(this.m_original_memory.slice(cursor_original,
-                                                                    cursor_original+run_length));
+                    var run = this.m_original_memory.slice(cursor_original, cursor_original+run_length);
+                    run.map((val) => temp.push(val));
 
                     cursor_original += run_length;
 
@@ -1671,7 +1671,7 @@ GnustoEngine.prototype = {
 
             }
 
-            mem = temp;
+            mem = new Uint8Array(temp);
         }
         else {
             mem = new Uint8Array(mem);
