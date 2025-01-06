@@ -25,6 +25,7 @@ const GlobListCtx = createContext(new_context());
 export function GlobalState()
 {
     const [ selected, setSelected ] = useState(-1);
+    const [ sort, setSort ] = useState('addr');
     
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
@@ -40,9 +41,20 @@ export function GlobalState()
         setSelected(-1);
     }
 
+    function evhan_sort_change(val: string) {
+        setSort(val);
+    }
+    
     return (
         <GlobListCtx.Provider value={ { selected, setSelected } }>
             <div className="ScrollContent" onClick={ evhan_click_background }>
+                <div>
+                    Sort by{' '}
+                    <input id="sortaddr_radio" type="radio" name="sort" value="addr" checked={ sort=='addr' } onChange={ (ev) => evhan_sort_change('addr') } />
+                    <label htmlFor="sortaddr_radio">Address</label>{' '}
+                    <input id="sortalpha_radio" type="radio" name="sort" value="alpha" checked={ sort=='alpha' } onChange={ (ev) => evhan_sort_change('alpha') } />
+                    <label htmlFor="sortalpha_radio">Alpha</label>
+                </div>
                 { (rctx.shownumbers ?
                    <div>
                        Global variables begin at address { rctx.zstate.globtableaddr }.
