@@ -33,60 +33,15 @@ var GnustoRunner = Object.subClass({
         this.orders = [];
         // The header bit we pass in is "game sets to force all-monospace"
         this.ui = new ZVMUI( this, engine.getByte( 0x11 ) & 0x02 );
-        
-        this.orders = [];
-        // calls GlkOte.init()
-        this.io.init();
-    },
-    
-    // Handler for events from Parchment
-    fromParchment: function( event )
-    {
-        console.log('### fromParchment', event);
-        var code = event.code;
-        var engine = this.e;
-        var run;
-        
-        // Load the story file
-        if ( code == 'load' )
-        {
-            engine.loadStory( event.data );
-        }
 
-        // (Re)start the engine
-        if ( code == 'restart' )
-        {
-        }
+        // The ZVMUI constructor adds some orders for creating the game
+        // windows. But we don't rely on those (the IO layer will just
+        // do it) so we clear the orders here.
+        this.orders = [];
         
-        // Save a savefile
-        if ( code == 'save' )
-        {
-            engine.answer( 0, event.result || 1 );
-            run = 1;
-        }
-        
-        // Restore a savefile
-        if ( code == 'restore' )
-        {
-            if ( !this.ui )
-            {
-                this.restart();
-            }
-            if ( event.data )
-            {
-                engine.loadSavedGame( event.data )
-            }
-            else
-            {
-                engine.answer( 0, 0 );
-            }
-            run = 1;
-        }
-        
-        if ( run )
-        {
-            this.run();
-        }
+        // Start the IO layer. This calls GlkOte.init(), which runs the first
+        // game turn.
+        this.io.init();
     },
 
     // Handle Gnusto's non-StructIO friendly IO protocol
