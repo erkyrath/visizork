@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 
-import { ZState, ZObject } from './zstate';
+import { ZState, ZObject, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
 
 import { ReactCtx } from './context';
@@ -59,6 +59,8 @@ export function ObjectPage({ onum } : { onum:number })
         label = 'scenery'; ###*/
     else
         label = 'object';
+
+    let props = zobj_properties(zstate, onum);
 
     function evhan_click_back(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
         ev.preventDefault();
