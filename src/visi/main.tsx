@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { Root, createRoot } from 'react-dom/client';
 
 import { ZState } from './zstate';
-import { gamedat_ids, sourceloc_start } from './gamedat';
+import { gamedat_ids, gamedat_object_ids, sourceloc_start } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
 import { SourceLocState, new_sourcelocstate } from './context';
@@ -62,6 +62,10 @@ function MyApp()
     function setObjPageWrap(onum: number) {
         setTab('objtree');
         setObjPage(onum);
+        
+        let obj = gamedat_object_ids.get(onum);
+        if (obj)
+            rctx.setLoc(obj.sourceloc, false);
     }
     
     function setLoc(loc: string, hi: boolean) {
