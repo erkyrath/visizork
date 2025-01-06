@@ -47,6 +47,7 @@ window.gamedat_ids = {};
         gamedat_routine_names.set(obj.name, obj);
     }
 
+    gamedat_ids.GAMEID = 'zork1-r88-s840726';
     gamedat_ids.MAX_OBJECTS = 250;
     gamedat_ids.MAX_GLOBALS = 158;
 
