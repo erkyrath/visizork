@@ -191,7 +191,7 @@ def write_objects(filename, zcode, objdat):
     
     fl = open(filename, 'w')
     fl.write('window.gamedat_objects = ');
-    json.dump(ls, fl)
+    json.dump(ls, fl, separators=(',', ':'))
     fl.write('\n')
     fl.close()
 
