@@ -138,6 +138,7 @@ export const gamedat_ids = (window as any).gamedat_ids;
 
 export const gamedat_global_nums = (window as any).gamedat_global_nums as Map<number, GlobalData>;
 export const gamedat_global_names = (window as any).gamedat_global_names as Map<string, GlobalData>;
+export const gamedat_globals_sorted = (window as any).gamedat_globals_sorted as GlobalData[];
 export const gamedat_object_ids = (window as any).gamedat_object_ids as Map<number, ObjectData>;
 export const gamedat_object_names = (window as any).gamedat_object_names as Map<string, ObjectData>;
 export const gamedat_object_room_ids = (window as any).gamedat_object_room_ids as Set<number>;

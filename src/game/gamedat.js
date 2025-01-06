@@ -1,6 +1,7 @@
 
 window.gamedat_global_nums = new Map();
 window.gamedat_global_names = new Map();
+window.gamedat_globals_sorted = [];
 window.gamedat_object_ids = new Map();
 window.gamedat_object_names = new Map();
 window.gamedat_object_room_ids = new Set();
@@ -14,9 +15,17 @@ window.gamedat_ids = {};
 
 (function() {
     for (let obj of window.gamedat_globals) {
+        if (gamedat_global_names.has(obj.name))
+            continue;
         gamedat_global_nums.set(obj.num, obj);
         gamedat_global_names.set(obj.name, obj);
+        gamedat_globals_sorted.push(obj);
     }
+    gamedat_globals_sorted.sort((g1, g2) => {
+        if (g1.name < g2.name) return -1;
+        if (g1.name > g2.name) return 1;
+        return 0;
+    });
     
     for (let obj of window.gamedat_objects) {
         gamedat_object_ids.set(obj.onum, obj);

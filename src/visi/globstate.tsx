@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZState, ZObject } from './zstate';
-import { gamedat_global_nums, gamedat_object_ids, gamedat_string_map } from './gamedat';
+import { gamedat_global_nums, gamedat_globals_sorted, gamedat_object_ids, gamedat_string_map } from './gamedat';
 import { unpack_address } from './gamedat';
 
 import { ReactCtx } from './context';
@@ -31,10 +31,18 @@ export function GlobalState()
     let zstate = rctx.zstate;
 
     let counter = 0;
-    let globls = zstate.globals.map((val) => {
-        let index = counter++;
-        return <GlobalVar key={ index } index={ index } value={ val } />;
-    });
+    let globls = [];
+    while (counter < zstate.globals.length) {
+        let index;
+        if (sort == 'alpha') {
+            index = gamedat_globals_sorted[counter].num;
+        }
+        else {
+            index = counter;
+        }
+        globls.push(<GlobalVar key={ index } index={ index } value={ zstate.globals[index] } />);
+        counter++;
+    }
 
     function evhan_click_background(ev: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         ev.stopPropagation();
