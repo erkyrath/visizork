@@ -349,11 +349,13 @@ code {
 button.ObjPage {
     font-family: "Courier Prime";
     font-weight: bold;
+    font-size: 85%;
+    line-height: 1em;
     background: white;
-    color: black;
+    color: #444;
     border: 1px solid #888;
     border-radius: 8px;
-    padding: 2px 4px 0px 4px;
+    padding: 3px 2px 0px 3px;
 }
 
 .ObjPageBack {
