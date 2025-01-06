@@ -64,6 +64,7 @@ export function zobj_properties(zstate: ZState, onum: number): ZProp[]
         pos += (1+len);
     }
 
+    res.reverse();
     return res;
 }
 
