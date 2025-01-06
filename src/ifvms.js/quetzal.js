@@ -68,7 +68,7 @@ var Quetzal = IFF.subClass({
 
         // Add the chunks
         this.chunks = [
-            {type: 'IFhd', data: ifhd},
+            {type: 'IFhd', data: new Array(ifhd)},
             {type: (this.compressed ? 'CMem' : 'UMem'), data: this.memory},
             {type: 'Stks', data: this.stacks}
         ];
