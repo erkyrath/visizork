@@ -178,6 +178,7 @@ def write_objects(filename, zcode, objdat):
         odump = objdat.objmap[onum]
         dat = {
             'onum':onum, 'name':obj.name, 'desc':obj.desc,
+            'propaddr': odump.propaddr,
             'origparent': odump.parent,
             'sourceloc': sourceloc(tok=obj.objtok),
         }

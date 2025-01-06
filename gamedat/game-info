@@ -8,6 +8,7 @@
 # additional work in matching up to the ZIL code.
 
 # Object table: $02B0
+# Object properties: $0BB8 to $2270
 # Global vars: $2271 / 8817
 # ROM start: $2E53 / 11859
 # Dictionary: $3B21 / 15137

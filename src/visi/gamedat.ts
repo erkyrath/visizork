@@ -104,6 +104,7 @@ export type ObjectData = {
     name: string;
     isroom?: boolean;
     desc: string;
+    propaddr: number;
     origparent: number;
     scenery?: number[];
     sourceloc: string;
