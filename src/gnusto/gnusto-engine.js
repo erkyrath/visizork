@@ -2184,8 +2184,9 @@ GnustoEngine.prototype = {
     },
 
     // Info which cannot be extracted from the game file:
-    // MAX_OBJECTS
+    // MAX_OBJECTS, MAX_GLOBALS
     m_report_info: null,
+    // The accumulated info which will go into the report:
     m_report: null,
 
     // This is called right after the engine is constructed. We pass in
