@@ -222,7 +222,7 @@ body {
     width: 100%;
     top: 0px;
     height: 32px;
-    background: #D0C0A0;
+    background: #DFDCCF;
     overflow: hidden;
     padding-left: 8px;
     box-sizing: border-box;
@@ -250,7 +250,7 @@ body {
 
 .TabBar button.NavButton {
     font-weight: bold;
-    background: #DDB;
+    background: #F4F4F0;
     border: 1px solid #888;
     border-radius: 4px;
     margin: 0px 2px;
@@ -258,7 +258,7 @@ body {
 
 .TabBar button.NavButton:disabled, .TabBar button.NavButton:disabled:active {
     color: #888;
-    background: #DDB;
+    background: #DFDCCF;
 }
 
 .TabBar button.NavButton:active {
