@@ -53,12 +53,10 @@ $(function()
     };
     
     // Load it up!
-    runner.fromParchment({
-        code: 'load',
-        data: ( new StoryClass( responseArray ) ).data
-    });
-    
-    runner.fromParchment({ code: 'restart' });
+    runner.load( ( new StoryClass( responseArray ) ).data );
+
+    // And launch the game.
+    runner.startGame();
 
     // If we have the React app module loaded, launch that too.
     if (window.bundle) {

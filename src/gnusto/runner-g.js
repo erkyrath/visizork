@@ -22,10 +22,27 @@ var GnustoRunner = Object.subClass({
         this.io = new GlkIOClass( env, this );
         
     },
+
+    load: function ( data )
+    {
+        engine.loadStory( data );
+    },
+
+    startGame: function ()
+    {
+        this.orders = [];
+        // The header bit we pass in is "game sets to force all-monospace"
+        this.ui = new ZVMUI( this, engine.getByte( 0x11 ) & 0x02 );
+        
+        this.orders = [];
+        // calls GlkOte.init()
+        this.io.init();
+    },
     
     // Handler for events from Parchment
     fromParchment: function( event )
     {
+        console.log('### fromParchment', event);
         var code = event.code;
         var engine = this.e;
         var run;
@@ -39,13 +56,6 @@ var GnustoRunner = Object.subClass({
         // (Re)start the engine
         if ( code == 'restart' )
         {
-            this.orders = [];
-            // The header bit we pass in is "game sets to force all-monospace"
-            this.ui = new ZVMUI( this, engine.getByte( 0x11 ) & 0x02 );
-            
-            this.orders = [];
-            // calls GlkOte.init()
-            this.io.init();
         }
         
         // Save a savefile
