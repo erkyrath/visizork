@@ -41,6 +41,11 @@ var GlkIOClass = function(env, runner) {
             engine.answer(0, obj.success ? 1 : 0);
             run = true;
         }
+        else if (obj.type == 'specialrestore') {
+            echoline = obj.echoline;
+            engine.answer(0, obj.success ? 1 : 0);
+            run = true;
+        }
         else {
             console.log('BUG: unhandled accept', obj);
         }
@@ -56,8 +61,7 @@ var GlkIOClass = function(env, runner) {
             var data = orders[0].data;
             var dia = glkote.getlibrary('Dialog');
             var reqgen = obj.gen;
-            dia.open(true, 'save', 'zork', (val)=>{
-                console.log('###', data, val);
+            dia.open(true, 'save', gamedat_ids.GAMEID, (val)=>{
                 var success = false;
                 if (val) {
                     success = Dialog.file_write(val, data, false);
@@ -71,7 +75,28 @@ var GlkIOClass = function(env, runner) {
             });
             return;
         }
-
+        if (orders != null && orders.length && orders[0].code == 'restore') {
+            var dia = glkote.getlibrary('Dialog');
+            var reqgen = obj.gen;
+            dia.open(false, 'save', gamedat_ids.GAMEID, (val)=>{
+                var success = false;
+                if (val) {
+                    var data = Dialog.file_read(val, false);
+                    if (data != null) {
+                        engine.loadSavedGame(data);
+                        success = true;
+                    }
+                }
+                accept({
+                    type:'specialrestore',
+                    gen: reqgen,
+                    success: success,
+                    echoline: echoline
+                });
+            });
+            return;
+        }
+        
         var newgen = obj.gen + 1;
         var update = {
             type: 'update',
