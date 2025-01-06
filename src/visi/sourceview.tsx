@@ -50,6 +50,10 @@ export function SourceView()
         console.log('BUG: clicked unknown id', val);
     }
 
+    function evhan_click_obj(onum: number) {
+        rctx.setObjPage(onum);
+    }
+    
     useEffect(() => {
         if (noderef.current) {
             let hilites: string[] = [];
@@ -64,7 +68,7 @@ export function SourceView()
                     }
                 }
             }
-            rebuild_sourcefile(noderef.current, loc, lochi, hilites, evhan_click_id);
+            rebuild_sourcefile(noderef.current, loc, lochi, hilites, evhan_click_id, evhan_click_obj);
         }
     }, [ loc, lochi, zstate ]);
 
@@ -96,7 +100,7 @@ export function SourceView()
 
 const pat_tab = new RegExp('\t', 'g');
 
-function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolean, hilites: string[], handle_click_id: (val:string)=>void)
+function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolean, hilites: string[], handle_click_id: (val:string)=>void, handle_click_obj: (val:number)=>void)
 {
     let loc = parse_sourceloc(locstr);
     if (!loc)
@@ -162,6 +166,18 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                                 spanel.setAttribute('href', '#')
                                 spanel.className = 'Src_'+cla;
                                 spanel.addEventListener('click', (ev) => { ev.preventDefault(); handle_click_id(val); });
+                            }
+                            else if (cla == 'Iddef') {
+                                let obj = gamedat_object_names.get(val);
+                                if (obj) {
+                                    var butel = document.createElement('button');
+                                    butel.className = 'ObjPage';
+                                    butel.appendChild(document.createTextNode('i'));
+                                    butel.addEventListener('click', (ev) => { ev.preventDefault(); handle_click_obj(obj.onum); });
+                                    linel.appendChild(butel);
+                                }
+                                spanel = document.createElement('span');
+                                spanel.className = 'Src_'+cla;
                             }
                             else {
                                 spanel = document.createElement('span');
