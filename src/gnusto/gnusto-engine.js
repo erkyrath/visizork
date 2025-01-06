@@ -1673,6 +1673,9 @@ GnustoEngine.prototype = {
 
             mem = temp;
         }
+        else {
+            mem = new Uint8Array(mem);
+        }
 
         // Firstly, zap all the important variables...
         // FIXME: Eventually we should work into copies,
@@ -1760,7 +1763,9 @@ GnustoEngine.prototype = {
         }
 
         // Restore the memory.
-        this.m_memory = mem.concat(this.m_memory.slice(mem.length));
+        var newmem = this.m_memory.slice();
+        newmem.set(mem, 0);
+        this.m_memory = newmem;
 
         var offset = (this.m_version<=4? 1: 3) + 1;
         this.m_pc = pc-offset; // rewind to before the varcode_offset
