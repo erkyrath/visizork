@@ -138,7 +138,9 @@ var GnustoRunner = Object.subClass({
             if ( effect == GNUSTO_EFFECT_RESTORE )
             {
                 stop = 1;
-                //### ? this.toParchment({ code: 'restore' });
+                this.orders.push({
+                    code: 'restore'
+                });
             }
             if ( effect == GNUSTO_EFFECT_QUIT )
             {
