@@ -58,17 +58,24 @@ var Quetzal = IFF.subClass({
 
         // Format the IFhd chunk correctly
         var pc = this.pc;
-        var ifhd = new Uint8Array(13);
-        ifhd.set(this.release, 0);
-        ifhd.set(this.serial, 2);
-        ifhd.set(this.checksum, 8);
+        var ifhd = new Array(13);
+        ifhd[0] = this.release[0];
+        ifhd[1] = this.release[1];
+        ifhd[2] = this.serial[0];
+        ifhd[3] = this.serial[1];
+        ifhd[4] = this.serial[2];
+        ifhd[5] = this.serial[3];
+        ifhd[6] = this.serial[4];
+        ifhd[7] = this.serial[5];
+        ifhd[8] = this.checksum[0];
+        ifhd[9] = this.checksum[1];
         ifhd[10] = (pc >> 16) & 0xFF;
         ifhd[11] = (pc >> 8) & 0xFF;
         ifhd[12] = pc & 0xFF;
 
         // Add the chunks
         this.chunks = [
-            {type: 'IFhd', data: new Array(ifhd)},
+            {type: 'IFhd', data: ifhd},
             {type: (this.compressed ? 'CMem' : 'UMem'), data: this.memory},
             {type: 'Stks', data: this.stacks}
         ];
