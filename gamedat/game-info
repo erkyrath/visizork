@@ -362,6 +362,7 @@ Global 62 DEAD
 Global 63 BASE-SCORE
 Global 64 DESC-OBJECT  OBJ
 Global 65 SPRAYED?
+# 65 is not set until zork 2
 Global 66 LIT
 Global 67 WHEEEEE  DATA
 Global 68 JUMPLOSS  DATA

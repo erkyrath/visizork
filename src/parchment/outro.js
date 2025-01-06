@@ -32,23 +32,6 @@ var StoryClass = IFF.subClass({
     }
 });
 
-// This function becomes runner.toParchment.
-function fromRunner( runner, event )
-{
-    var code = event.code;
-    
-    if ( code == 'save' )
-    {
-        console.log('### save handler', event);
-    }
-    
-    if ( code == 'restore' )
-    {
-        console.log('### restore handler', event);
-    }
-    
-    runner.fromParchment( event );
-}
 
 // Load Parchment, start it all up!
 $(function()
@@ -65,7 +48,9 @@ $(function()
 
     var runner = window.runner = new GnustoRunner(parchment.options);
 
-    runner.toParchment = function( event ) { fromRunner( runner, event ); };
+    runner.toParchment = function( event ) {
+        console.log('BUG: toParchment/fromRunner should not be called', event);
+    };
     
     // Load it up!
     runner.fromParchment({
