@@ -10,6 +10,7 @@ import { ContextContent, ReactCtx } from './context';
 import { SourceLocState, new_sourcelocstate } from './context';
 import { AppMenu } from './menu';
 import { ObjectTree } from './objtree';
+import { ObjectPage } from './objpage';
 import { CallActivity } from './activity';
 import { SourceFileList } from './filelist';
 import { SourceView } from './sourceview';
@@ -48,11 +49,17 @@ function MyApp()
 {
     const [ zstate, setZState ] = useState(engine.get_vm_report() as ZState);
     const [ tab, setTab ] = useState('objtree');
+    const [ objpage, setObjPage ] = useState(0);
     const [ shownumbers, setShowNumbers ] = useState(false);
     const [ sourcelocs, setSourceLocs ] = useState([ new_sourcelocstate() ]);
     const [ sourcelocpos, setSourceLocPos ] = useState(0);
 
-    function setLoc(loc:string, hi:boolean) {
+    function setTabWrap(tab: string) {
+        setTab(tab);
+        setObjPage(0);
+    }
+    
+    function setLoc(loc: string, hi: boolean) {
         let ls = [ ...sourcelocs.slice(0, sourcelocpos+1), { loc:loc, lochi:hi } ];
         setSourceLocs(ls);
         setSourceLocPos(ls.length-1);
@@ -86,7 +93,8 @@ function MyApp()
     let rctx: ContextContent = {
         zstate: zstate,
         tab: tab,
-        setTab: setTab,
+        setTab: setTabWrap,
+        objpage: objpage,
         shownumbers: shownumbers,
         setShowNumbers: setShowNumbers,
         sourcelocs: sourcelocs,
@@ -142,7 +150,10 @@ function TabbedPane()
     let tabcontent;
     switch (rctx.tab) {
     case 'objtree':
-        tabcontent = <ObjectTree />;
+        if (rctx.objpage == 0)
+            tabcontent = <ObjectTree />;
+        else
+            tabcontent = <ObjectPage onum={ rctx.objpage } />;
         break;
     case 'activity':
         tabcontent = <CallActivity />;

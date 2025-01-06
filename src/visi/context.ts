@@ -17,6 +17,7 @@ export type ContextContent = {
     zstate: ZState;
     tab: string;
     shownumbers: boolean;
+    objpage: number;
     setShowNumbers: (loc:boolean) => void;
     setTab: (loc:string) => void;
     sourcelocs: SourceLocState[];
@@ -29,6 +30,7 @@ export const ReactCtx = createContext({
     zstate: zstate_empty(),
     tab: '',
     shownumbers: false,
+    objpage: 0,
     setShowNumbers: (val) => {},
     setTab: (loc) => {},
     sourcelocs: [],
