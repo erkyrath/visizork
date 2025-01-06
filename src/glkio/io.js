@@ -90,7 +90,7 @@ var GlkIOClass = function(env, runner) {
         var clearbuffer = false;
         var vmquit = false;
 
-        if (echoline != null) {
+        if (echoline != null && orders !== null && orders.length) {
             var windat = {
                 append: true,
                 content: [
