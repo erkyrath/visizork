@@ -115,9 +115,18 @@ export function ObjectPage({ onum } : { onum:number })
 
 function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
 {
+    let counter = 0;
+    let valls = values.map((val) => {
+        let index = counter++;
+        return (
+            <span key={ index }> { val }</span>
+        );
+    });
+    
     return (
         <li>
-            { pnum } { values.length }
+            { pnum }:
+            { valls }
         </li>
     );
 }
