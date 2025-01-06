@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useContext } from 'react';
+import { useState, useMemo, useContext } from 'react';
 
 import { ZState, ZObject, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
@@ -11,6 +11,11 @@ export function ObjectPage({ onum } : { onum:number })
 {
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
+
+    let props = useMemo(
+        () => zobj_properties(zstate, onum),
+        [ zstate, onum ]
+    );
 
     let obj = gamedat_object_ids.get(onum);
     if (!obj) {
@@ -49,6 +54,10 @@ export function ObjectPage({ onum } : { onum:number })
             <code>{ obj.name }</code>
         </span>
     );
+
+    let propls = props.map((prop) =>
+        <ObjProperty key={ prop.pnum } pnum={ prop.pnum } values={ prop.values } />
+    );
     
     let label: string;
     if (obj.isroom)
@@ -59,8 +68,6 @@ export function ObjectPage({ onum } : { onum:number })
         label = 'scenery'; ###*/
     else
         label = 'object';
-
-    let props = zobj_properties(zstate, onum);
 
     function evhan_click_back(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
         ev.preventDefault();
@@ -94,6 +101,23 @@ export function ObjectPage({ onum } : { onum:number })
                    { childls }
                </div>
                : null) }
+            { (propls.length ?
+               <div>
+                   Properties:
+                   <ul className="DataList">
+                       { propls }
+                   </ul>
+               </div>
+               : null) }
         </div>
+    );
+}
+
+function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
+{
+    return (
+        <li>
+            { pnum } { values.length }
+        </li>
     );
 }
