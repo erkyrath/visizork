@@ -55,8 +55,16 @@ export function ObjectPage({ onum } : { onum:number })
     else
         label = 'object';
 
+    function evhan_click_back(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+        ev.preventDefault();
+        rctx.setTab('objtree');
+    }
+    
     return (
         <div className="ScrollContent">
+            <div className="ObjPageBack">
+                <a href="#" onClick={ evhan_click_back }>Back to World</a>
+            </div>
             <div>
                 <code><b>{ obj.name }</b></code> &nbsp; ({ label })
             </div>

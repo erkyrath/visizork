@@ -356,6 +356,14 @@ button.ObjPage {
     padding: 2px 4px 0px 4px;
 }
 
+.ObjPageBack {
+    float: right;
+}
+.ObjPageBack a {
+    font-size: 85%;
+    color: #A40;
+}
+
 .PrintString {
     font-family: "Libre Baskerville", serif;
     font-size: 90%;
