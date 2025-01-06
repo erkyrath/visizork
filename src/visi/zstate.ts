@@ -27,6 +27,7 @@ export type ZState = {
     objects: ZObject[];
     strings: number[];
     calltree: ZStackItem;
+    proptable: Uint8Array;
 };
 
 export function zstate_empty() : ZState
@@ -38,5 +39,6 @@ export function zstate_empty() : ZState
         objects: [],
         strings: [],
         calltree: { type:'call', addr:0, children:[] },
+        proptable: new Uint8Array(),
     };
 }
