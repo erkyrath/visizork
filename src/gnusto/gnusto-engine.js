@@ -1677,6 +1677,9 @@ GnustoEngine.prototype = {
             mem = new Uint8Array(mem);
         }
 
+        // We need to hang onto this to recreate the first func_stack entries post restore.
+        var old_func_stack = this.m_func_stack;
+        
         // Firstly, zap all the important variables...
         // FIXME: Eventually we should work into copies,
         // and only move these over when we're sure everything's good.
@@ -1707,8 +1710,11 @@ GnustoEngine.prototype = {
         while (cursor < stacks.length) {
 
             this.m_call_stack.push(decodeStackInt(cursor, 3));
-            this.m_func_stack.push(0); //###
-            this._vm_report_call(0); //###
+
+            var oldval = old_func_stack[this.m_func_stack.length];
+            this.m_func_stack.push(oldval);
+            this._vm_report_call(oldval);
+            
             cursor+=3;
 
             ////////////////////////////////////////////////////////////////
