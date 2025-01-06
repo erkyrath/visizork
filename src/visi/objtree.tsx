@@ -171,7 +171,7 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
             childlabel = 'contains'
     }
 
-    function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+    function evhan_click_select(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
         ctx.setSelected(onum);
         let obj = gamedat_object_ids.get(onum);
@@ -179,6 +179,11 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
             rctx.setLoc(obj.sourceloc, false);
     }
 
+    function evhan_click_showpage(ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        ev.stopPropagation();
+        rctx.setObjPage(onum);
+    }
+    
     let cla = '';
     if (onum == selected)
         cla = 'Selected';
@@ -190,8 +195,9 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
     
     return (
         <>
-            <li className={ cla } onClick={ evhan_click }>
+            <li className={ cla } onClick={ evhan_click_select }>
                 <span className="ObjLabel">{ label }</span>
+                <button className="ObjPage" onClick={ evhan_click_showpage }>i</button>
                 { (rctx.shownumbers ?
                    <span className="ShowAddr"> { onum }:</span>
                    : null) }

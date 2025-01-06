@@ -18,6 +18,7 @@ export type ContextContent = {
     tab: string;
     shownumbers: boolean;
     objpage: number;
+    setObjPage: (loc:number) => void;
     setShowNumbers: (loc:boolean) => void;
     setTab: (loc:string) => void;
     sourcelocs: SourceLocState[];
@@ -31,6 +32,7 @@ export const ReactCtx = createContext({
     tab: '',
     shownumbers: false,
     objpage: 0,
+    setObjPage: (val) => {},
     setShowNumbers: (val) => {},
     setTab: (loc) => {},
     sourcelocs: [],

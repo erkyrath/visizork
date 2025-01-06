@@ -346,6 +346,16 @@ code {
     margin-right: 4px;
 }
 
+button.ObjPage {
+    font-family: "Courier Prime";
+    font-weight: bold;
+    background: white;
+    color: black;
+    border: 1px solid #888;
+    border-radius: 8px;
+    padding: 2px 4px 0px 4px;
+}
+
 .PrintString {
     font-family: "Libre Baskerville", serif;
     font-size: 90%;

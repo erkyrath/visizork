@@ -58,6 +58,11 @@ function MyApp()
         setTab(tab);
         setObjPage(0);
     }
+
+    function setObjPageWrap(onum: number) {
+        setTab('objtree');
+        setObjPage(onum);
+    }
     
     function setLoc(loc: string, hi: boolean) {
         let ls = [ ...sourcelocs.slice(0, sourcelocpos+1), { loc:loc, lochi:hi } ];
@@ -95,6 +100,7 @@ function MyApp()
         tab: tab,
         setTab: setTabWrap,
         objpage: objpage,
+        setObjPage: setObjPageWrap,
         shownumbers: shownumbers,
         setShowNumbers: setShowNumbers,
         sourcelocs: sourcelocs,
