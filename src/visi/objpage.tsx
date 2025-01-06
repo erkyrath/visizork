@@ -49,7 +49,7 @@ export function ObjectPage({ onum } : { onum:number })
     let counter = 0;
     let childls = children.map((obj) =>
         <span key={ obj.onum }>
-            {' '}
+            {counter++ ? ', ' : ' '}
             <ObjPageLink onum={ obj.onum } />
             <code>{ obj.name }</code>
         </span>
