@@ -54,6 +54,7 @@ $(function()
     
     // Load it up!
     runner.load( ( new StoryClass( responseArray ) ).data );
+    runner.createSaveFiles(window.gamedat_savefiles);
 
     // And launch the game.
     runner.startGame();

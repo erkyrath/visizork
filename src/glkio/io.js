@@ -416,6 +416,18 @@ var GlkIOClass = function(env, runner) {
         
         return res;
     }
+
+    function create_save_file(name, data)
+    {
+        var dia = glkote.getlibrary('Dialog');
+
+        var ref = Dialog.file_construct_ref(name, 'save', gamedat_ids.GAMEID);
+        if (Dialog.file_ref_exists(ref)) {
+            return;
+        }
+
+        Dialog.file_write(ref, data, false);
+    }
     
     return {
         _classname: 'GlkIO',
@@ -424,5 +436,6 @@ var GlkIOClass = function(env, runner) {
 
         init: init,
         get_status_width: get_status_width,
+        create_save_file: create_save_file,
     };
 };
