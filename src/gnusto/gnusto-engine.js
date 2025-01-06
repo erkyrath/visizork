@@ -2185,7 +2185,9 @@ GnustoEngine.prototype = {
 
     // Info which cannot be extracted from the game file:
     // MAX_OBJECTS, MAX_GLOBALS
+    // PROP_TABLE_START, PROP_TABLE_END
     m_report_info: null,
+    
     // The accumulated info which will go into the report:
     m_report: null,
 
@@ -2242,6 +2244,7 @@ GnustoEngine.prototype = {
         var report = {
             globtableaddr: this.m_vars_start,
             objtableaddr: this.m_objs_start,
+            proptable: this.m_memory.slice(m_report_info.PROP_TABLE_START, m_report_info.PROP_TABLE_END),
             strings: m_report.strings,
         };
         

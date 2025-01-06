@@ -34,6 +34,8 @@ export function init(runnerref: any)
     engine.prepare_vm_report({
         MAX_OBJECTS: gamedat_ids.MAX_OBJECTS,
         MAX_GLOBALS: gamedat_ids.MAX_GLOBALS,
+        PROP_TABLE_START: gamedat_ids.PROP_TABLE_START,
+        PROP_TABLE_END: gamedat_ids.PROP_TABLE_END,
     });
     
     const appel = document.getElementById('appbody') as HTMLElement;
