@@ -5,6 +5,7 @@ import { ZState, ZObject } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
 
 import { ReactCtx } from './context';
+import { ObjPageLink } from './widgets';
 
 export function ObjectPage({ onum } : { onum:number })
 {
@@ -42,7 +43,11 @@ export function ObjectPage({ onum } : { onum:number })
 
     let counter = 0;
     let childls = children.map((obj) =>
-        <span key={ obj.onum }> <code>{ obj.name }</code></span>
+        <span key={ obj.onum }>
+            {' '}
+            <ObjPageLink onum={ obj.onum } />
+            <code>{ obj.name }</code>
+        </span>
     );
     
     let label: string;
@@ -76,7 +81,9 @@ export function ObjectPage({ onum } : { onum:number })
                : null) }
             { (parent ?
                <div>
-                   Contained in: <code>{ parent.name }</code>
+                   Contained in:{' '}
+                   <ObjPageLink onum={ parent.onum } />
+                   <code>{ parent.name }</code>
                </div>
                : null) }
             { (childls.length ?

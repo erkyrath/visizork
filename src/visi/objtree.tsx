@@ -6,6 +6,7 @@ import { gamedat_ids } from './gamedat';
 import { ZState, ZObject } from './zstate';
 
 import { ReactCtx } from './context';
+import { ObjPageLink } from './widgets';
 
 export type ObjTreeContextContent = {
     map: Map<number, ZObject>;
@@ -179,11 +180,6 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
             rctx.setLoc(obj.sourceloc, false);
     }
 
-    function evhan_click_showpage(ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-        ev.stopPropagation();
-        rctx.setObjPage(onum);
-    }
-    
     let cla = '';
     if (onum == selected)
         cla = 'Selected';
@@ -197,11 +193,11 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
         <>
             <li className={ cla } onClick={ evhan_click_select }>
                 <span className="ObjLabel">{ label }</span>
-                <button className="ObjPage" onClick={ evhan_click_showpage }>i</button>
                 { (rctx.shownumbers ?
                    <span className="ShowAddr"> { onum }:</span>
                    : null) }
-                {' '}<code>{ obj.name }</code>
+                <ObjPageLink onum={ onum } />
+                <code>{ obj.name }</code>
                 {' '}
                 { ((obj.desc && obj.desc.length) ?
                    <span className="PrintString">&#x201C;{ obj.desc }&#x201D;</span>

@@ -356,6 +356,8 @@ button.ObjPage {
     border: 1px solid #888;
     border-radius: 8px;
     padding: 3px 2px 0px 3px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .ObjPageBack {
