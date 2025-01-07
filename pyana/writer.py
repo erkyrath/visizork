@@ -127,6 +127,22 @@ def write_strings(filename, zcode, txdat, objdat):
     fl.write('\n')
     fl.close()
 
+def write_propattrs(filename):
+    print('...writing property and attribute data:', filename)
+    load_gameinfo()
+
+    propls = [ { 'num':num, 'name':name } for (num, name) in property_list ]
+    attrls = [ { 'num':num, 'name':name } for (num, name) in attribute_list ]
+
+    fl = open(filename, 'w')
+    fl.write('window.gamedat_properties = ');
+    json.dump(propls, fl)
+    fl.write('\n')
+    fl.write('window.gamedat_attributes = ');
+    json.dump(attrls, fl)
+    fl.write('\n')
+    fl.close()
+    
 def write_routines(filename, zcode, txdat):
     print('...writing routine data:', filename)
     if len(zcode.routines) != len(txdat.routines):
