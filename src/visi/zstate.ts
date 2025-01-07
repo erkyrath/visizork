@@ -94,15 +94,20 @@ export function zstateplus_empty() : ZStatePlus
         proptable: new Uint8Array(),
 
         origglobals: [],
+        origprops: new Map(),
     };
 }
 
 export interface ZStatePlus extends ZState
 {
     origglobals: number[];
+    origprops: Map<number, ZProp[]>;
 }
 
+// These are initialized on the first get_updated_report() call,
+// so they represent the game-start situation.
 let origglobals: number[] | undefined;
+let origprops: Map<number, ZProp[]> | undefined;
 
 export function get_updated_report(engine: GnustoEngine) : ZStatePlus
 {
@@ -112,6 +117,18 @@ export function get_updated_report(engine: GnustoEngine) : ZStatePlus
         origglobals = report.globals;
     }
 
-    return { ...report, origglobals: origglobals };
+    if (origprops === undefined) {
+        origprops = new Map();
+        for (let obj of report.objects) {
+            let res = zobj_properties(report, obj.onum);
+            origprops.set(obj.onum, res);
+        }
+    }
+
+    return {
+        ...report,
+        origglobals: origglobals,
+        origprops: origprops
+    };
 }
 
