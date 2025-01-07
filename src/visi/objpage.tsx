@@ -56,6 +56,23 @@ export function ObjectPage({ onum } : { onum:number })
         </span>
     );
 
+    let globholdls = [];
+    if (obj.iscenery && obj.iscenery.length) {
+        let counter = 0;
+        for (var sconum of obj.iscenery) {
+            let scobj = gamedat_object_ids.get(sconum);
+            if (scobj) {
+                globholdls.push(
+                    <span key={ counter++ }>
+                        {counter++ ? ', ' : ' '}
+                        <ObjPageLink onum={ scobj.onum } />
+                        <code>{ scobj.name }</code>
+                    </span>
+                );
+            }
+        }
+    }
+
     let propls = props.map((prop) =>
         <ObjProperty key={ prop.pnum } pnum={ prop.pnum } values={ prop.values } />
     );
@@ -75,8 +92,6 @@ export function ObjectPage({ onum } : { onum:number })
         rctx.setTab('objtree');
     }
 
-    //### Scenery-in?
-    
     return (
         <div className="ScrollContent">
             <div className="ObjPageBack">
@@ -97,6 +112,12 @@ export function ObjectPage({ onum } : { onum:number })
                        Contained in:{' '}
                        <ObjPageLink onum={ parent.onum } />
                        <code>{ parent.name }</code>
+                   </li>
+                   : null) }
+                { (globholdls.length ?
+                   <li>
+                       Scenery in:{' '}
+                       { globholdls }
                    </li>
                    : null) }
                 { (childls.length ?

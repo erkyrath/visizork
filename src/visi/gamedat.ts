@@ -118,6 +118,7 @@ export type ObjectData = {
     propaddr: number;
     origparent: number;
     scenery?: number[];
+    iscenery?: number[];
     sourceloc: string;
 };
 
