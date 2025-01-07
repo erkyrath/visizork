@@ -2189,7 +2189,7 @@ GnustoEngine.prototype = {
     m_report_info: null,
     
     // The accumulated info which will go into the report:
-    m_report: null,
+    m_report_accum: null,
 
     // This is called right after the engine is constructed. We pass in
     // various bits of information which are needed to structure the
@@ -2204,48 +2204,48 @@ GnustoEngine.prototype = {
     // turn.
     reset_vm_report: function()
     {
-        m_report = {
+        m_report_accum = {
             strings: [],
             calls: [],
         };
         for (var addr of this.m_func_stack)
-             m_report.calls.push({ t:'c', addr:addr });
+             m_report_accum.calls.push({ t:'c', addr:addr });
     },
 
     _vm_report_string(where, val)
     {
-        if (m_report) {
-            m_report.strings.push(val);
-            m_report.calls.push({ t:'s', addr:val });
+        if (m_report_accum) {
+            m_report_accum.strings.push(val);
+            m_report_accum.calls.push({ t:'s', addr:val });
         }
         return val;
     },
 
     _vm_report_call(addr)
     {
-        if (m_report)
-             m_report.calls.push({ t:'c', addr:addr });
+        if (m_report_accum)
+             m_report_accum.calls.push({ t:'c', addr:addr });
         return addr;
     },
 
     _vm_report_return()
     {
-        if (m_report)
-            m_report.calls.push({ t:'r' });
+        if (m_report_accum)
+            m_report_accum.calls.push({ t:'r' });
     },
 
     // Called at the end of a turn (just before awaiting input) to get
     // a report on the current state of affairs.
     get_vm_report: function()
     {
-        if (!m_report_info || !m_report)
+        if (!m_report_info || !m_report_accum)
             return null;
         
         var report = {
             globtableaddr: this.m_vars_start,
             objtableaddr: this.m_objs_start,
             proptable: this.m_memory.slice(m_report_info.PROP_TABLE_START, m_report_info.PROP_TABLE_END),
-            strings: m_report.strings,
+            strings: m_report_accum.strings,
         };
         
         report.objects = [];
@@ -2273,7 +2273,7 @@ GnustoEngine.prototype = {
         var initpc = this.getUnsignedWord(0x6) - 1;
         var calltree = { type:'call', addr:initpc, children:[] };
         var stack = [ calltree ];
-        for (var obj of m_report.calls) {
+        for (var obj of m_report_accum.calls) {
             if (obj.t == 'c') {
                 var call = { type:'call', addr:obj.addr, children:[] };
                 stack[stack.length-1].children.push(call);
