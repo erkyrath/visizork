@@ -74,6 +74,8 @@ export function ObjectPage({ onum } : { onum:number })
         ev.preventDefault();
         rctx.setTab('objtree');
     }
+
+    //### Scenery-in?
     
     return (
         <div className="ScrollContent">
@@ -135,6 +137,9 @@ function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
     case 'RTN':
         propvalues = <RoutineProp values={ values } />;
         break;
+    case 'OBJS':
+        propvalues = <ObjectsProp values={ values } />;
+        break;        
     default:
         propvalues = <BytesProp values={ values } />;
         break;
@@ -208,3 +213,33 @@ function RoutineProp({ values } : { values:number[] })
     
     return (<a className="Src_Id" href="#" onClick={ evhan_click }><code>{ obj.name }</code></a>);
 }
+
+function ObjectsProp({ values } : { values:number[] })
+{
+    let counter = 0;
+    let ells = values.map((onum) => (
+        <ObjectProp key={ counter++ } onum={ onum } />
+    ));
+
+    return <span>{ ells }</span>;
+}
+
+function ObjectProp({ onum } : { onum:number })
+{
+    let rctx = useContext(ReactCtx);
+    
+    if (onum == 0)
+        return (<i>nothing</i>);
+    
+    let obj = gamedat_object_ids.get(onum);
+    if (!obj)
+        return (<i>??? { onum }</i>);
+
+    return (
+        <>
+            {' '}
+            <ObjPageLink onum={ onum } />
+            <code>{ obj.name }</code>
+        </>);
+}
+
