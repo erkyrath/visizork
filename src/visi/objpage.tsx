@@ -202,8 +202,32 @@ function ObjPropertyList({ pnum, values, origvalues }: { pnum:number, values:num
         break;
     }
 
+    let changeflag;
+    if (values.length == origvalues.length) {
+        changeflag = false;
+        let ix = 0;
+        while (ix < values.length) {
+            if (values[ix] != origvalues[ix]) {
+                changeflag = true;
+                break;
+            }
+            ix++;
+        }
+    }
+    else {
+        changeflag = true;
+    }
+    
+    let origtext = 'Original value: ';
+    if (changeflag) {
+        origtext += origvalues.join(' ');
+    }
+
     return (
         <li>
+            { (changeflag ?
+               <span className="ChangedNote" title={ origtext }>*</span>
+               : null) }
             { (rctx.shownumbers ?
                <span className="ShowAddr">{ pnum }: </span>
                : null) }
