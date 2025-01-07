@@ -6,6 +6,7 @@ import { gamedat_global_nums, gamedat_globals_sorted, gamedat_object_ids, gameda
 import { unpack_address } from './gamedat';
 
 import { ReactCtx } from './context';
+import { ObjPageLink } from './widgets';
 
 export type GlobListContextContent = {
     selected: number;
@@ -167,7 +168,12 @@ function VarShowObject({ value }: { value:number })
     let obj = gamedat_object_ids.get(value);
     if (obj) {
         //### link?
-        return (<span><code>{ obj.name }</code></span>);
+        return (
+            <>
+                <ObjPageLink onum={ value } />
+                <span><code>{ obj.name }</code></span>
+            </>
+        );
     }
 
     return (<i>invalid object { value }</i>);
