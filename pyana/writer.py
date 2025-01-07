@@ -134,9 +134,14 @@ def write_propattrs(filename):
     print('...writing property and attribute data:', filename)
     load_gameinfo()
 
-    propls = [ { 'num':num, 'name':name } for (num, name) in property_list ]
     attrls = [ { 'num':num, 'name':name } for (num, name) in attribute_list ]
 
+    propls = [ { 'num':num, 'name':name } for (num, name) in property_list ]
+    for obj in propls:
+        val = propname_to_vartype.get(obj['name'])
+        if val:
+            obj['vartype'] = val
+    
     fl = open(filename, 'w')
     fl.write('window.gamedat_properties = ');
     json.dump(propls, fl)
