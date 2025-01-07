@@ -34,6 +34,7 @@ export type ZStackPrint = {
 export type ZStackItem = ZStackCall | ZStackPrint;
 
 export type ZState = {
+    counter: number;
     globtableaddr: number;
     objtableaddr: number;
     globals: number[];
@@ -83,6 +84,7 @@ export function zobj_properties(zstate: ZState, onum: number): ZProp[]
 export function zstateplus_empty() : ZStatePlus
 {
     return {
+        counter: -1,
         globtableaddr: 0,
         objtableaddr: 0,
         globals: [],
@@ -103,7 +105,7 @@ export interface ZStatePlus extends ZState
 export function get_updated_report(engine: GnustoEngine) : ZStatePlus
 {
     let report = engine.get_vm_report();
-    console.log('### got report');
+    console.log('### got report', report.counter);
 
     return { ...report, origglobals: [] };
 }
