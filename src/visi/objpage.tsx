@@ -275,11 +275,15 @@ function RoutineProp({ values } : { values:number[] })
 function ObjectsProp({ values } : { values:number[] })
 {
     let counter = 0;
-    let ells = values.map((onum) => (
-        <span key={ counter++ }>
-            <ObjectProp onum={ onum } />{' '}
-        </span>
-    ));
+    let ells = values.map((onum) => {
+        let index = counter++;
+        return (
+            <span key={ index }>
+                { index ? ', ' : '' }
+                <ObjectProp onum={ onum } />
+            </span>
+        );
+    });
 
     return <span>{ ells }</span>;
 }
