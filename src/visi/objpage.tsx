@@ -212,6 +212,8 @@ function IntProp({ values } : { values:number[] })
 
 function StrProp({ values } : { values:number[] })
 {
+    let rctx = useContext(ReactCtx);
+    
     if (values.length != 2)
         return BytesProp({ values });
 
@@ -221,7 +223,14 @@ function StrProp({ values } : { values:number[] })
     if (!obj)
         return BytesProp({ values });
     
-    return (<span className="PrintString">&#x201C;{ obj.text }&#x201D;</span>);
+    return (
+        <>
+            { (rctx.shownumbers ?
+               <span className="ShowAddr">({ val }) </span>
+               : null) }
+            <span className="PrintString">&#x201C;{ obj.text }&#x201D;</span>
+        </>
+    );
 }
 
 function RoutineProp({ values } : { values:number[] })
@@ -233,7 +242,14 @@ function RoutineProp({ values } : { values:number[] })
 
     let val = values[0] * 0x100 + values[1];
     if (val == 0)
-        return (<i>no function</i>);
+        return (
+            <>
+                { (rctx.shownumbers ?
+                   <span className="ShowAddr">(0) </span>
+                   : null) }
+                <i>no function</i>
+            </>
+        );
     
     let obj = gamedat_routine_addrs.get(unpack_address(val));
 
@@ -246,14 +262,23 @@ function RoutineProp({ values } : { values:number[] })
             rctx.setLoc(obj.sourceloc, false);
     }
     
-    return (<a className="Src_Id" href="#" onClick={ evhan_click }><code>{ obj.name }</code></a>);
+    return (
+        <>
+            { (rctx.shownumbers ?
+               <span className="ShowAddr">({ val }) </span>
+               : null) }
+            <a className="Src_Id" href="#" onClick={ evhan_click }><code>{ obj.name }</code></a>
+        </>
+    );
 }
 
 function ObjectsProp({ values } : { values:number[] })
 {
     let counter = 0;
     let ells = values.map((onum) => (
-        <ObjectProp key={ counter++ } onum={ onum } />
+        <span key={ counter++ }>
+            <ObjectProp onum={ onum } />{' '}
+        </span>
     ));
 
     return <span>{ ells }</span>;
@@ -272,7 +297,9 @@ function ObjectProp({ onum } : { onum:number })
 
     return (
         <>
-            {' '}
+            { (rctx.shownumbers ?
+               <span className="ShowAddr">({ onum }) </span>
+               : null) }
             <ObjPageLink onum={ onum } />
             <code>{ obj.name }</code>
         </>);
