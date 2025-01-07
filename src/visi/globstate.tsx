@@ -167,7 +167,6 @@ function VarShowObject({ value }: { value:number })
 
     let obj = gamedat_object_ids.get(value);
     if (obj) {
-        //### link?
         return (
             <>
                 <ObjPageLink onum={ value } />
