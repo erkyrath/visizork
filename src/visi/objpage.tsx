@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useMemo, useContext } from 'react';
 
-import { ZObject, zobj_properties } from './zstate';
+import { ZObject, ZProp, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
 import { unpack_address, gamedat_string_map, gamedat_routine_addrs, gamedat_property_nums, gamedat_global_nums } from './gamedat';
 
@@ -79,9 +79,28 @@ export function ObjectPage({ onum } : { onum:number })
         }
     }
 
-    let propls = props.map((prop) =>
-        <ObjPropertyList key={ prop.pnum } pnum={ prop.pnum } values={ prop.values } />
-    );
+    // These should have the same length and order as props.
+    let origprops = zstate.origprops.get(onum);
+
+    let propls = [];
+    let index = 0;
+    while (index < props.length) {
+        let prop = props[index];
+        let origprop: ZProp|undefined;
+        if (origprops)
+            origprop = origprops[index];
+        let origvalues: number[];
+        if (!origprop || origprop.pnum != prop.pnum)
+            origvalues = [];
+        else
+            origvalues = origprop.values;
+
+        propls.push(
+            <ObjPropertyList key={ prop.pnum } pnum={ prop.pnum } values={ prop.values } origvalues={ origvalues } />
+        );
+
+        index++;
+    }
     
     let label: string;
     if (obj.isroom)
@@ -148,7 +167,7 @@ export function ObjectPage({ onum } : { onum:number })
     );
 }
 
-function ObjPropertyList({ pnum, values }: { pnum:number, values:number[] })
+function ObjPropertyList({ pnum, values, origvalues }: { pnum:number, values:number[], origvalues:number[] })
 {
     let rctx = useContext(ReactCtx);
     
@@ -182,7 +201,7 @@ function ObjPropertyList({ pnum, values }: { pnum:number, values:number[] })
         propvalues = <BytesProp values={ values } />;
         break;
     }
-    
+
     return (
         <li>
             { (rctx.shownumbers ?
