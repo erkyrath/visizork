@@ -299,14 +299,14 @@ Attribute 29 WEAPONBIT
 Attribute 30 ACTORBIT
 Attribute 31 LIGHTBIT
 
-Property 2 CONTFCN
-Property 3 ADVFCN
+Property 2 CONTFCN  FUNC
+Property 3 ADVFCN  FUNC
 Property 4 PSEUDO
 Property 5 GLOBAL
 Property 6 VTYPE
 Property 7 STRENGTH
 Property 8 TEXT
-Property 9 DESCFCN
+Property 9 DESCFCN  FUNC
 Property 10 CAPACITY
 Property 11 LDESC
 Property 12 TVALUE
@@ -314,21 +314,21 @@ Property 13 VALUE
 Property 14 FDESC
 Property 15 SIZE
 Property 16 ADJECTIVE
-Property 17 ACTION
+Property 17 ACTION  FUNC
 Property 18 SYNONYM
-Property 19 LAND
-Property 20 OUT
-Property 21 IN
-Property 22 DOWN
-Property 23 UP
-Property 24 SW
-Property 25 SE
-Property 26 NW
-Property 27 NE
-Property 28 SOUTH
-Property 29 WEST
-Property 30 EAST
-Property 31 NORTH
+Property 19 LAND  DIR
+Property 20 OUT  DIR
+Property 21 IN  DIR
+Property 22 DOWN  DIR
+Property 23 UP  DIR
+Property 24 SW  DIR
+Property 25 SE  DIR
+Property 26 NW  DIR
+Property 27 NE  DIR
+Property 28 SOUTH  DIR
+Property 29 WEST  DIR
+Property 30 EAST  DIR
+Property 31 NORTH  DIR
 
 Global 0 HERE   OBJ
 Global 1 SCORE

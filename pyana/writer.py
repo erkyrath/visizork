@@ -25,6 +25,7 @@ globnum_to_name = {}
 globname_to_vartype = {}
 attribute_list = []
 property_list = []
+propname_to_vartype = {}
 
 def load_gameinfo():
     global info_loaded
@@ -47,6 +48,8 @@ def load_gameinfo():
             propname_to_num[name] = num
             propnum_to_name[num] = name
             property_list.append( (num, name) )
+            if extra:
+                propname_to_vartype[name] = extra
         if typ == 'Attribute':
             attribute_list.append( (num, name) )
         if typ == 'Global':
