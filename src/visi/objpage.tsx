@@ -311,6 +311,8 @@ function ObjectProp({ onum } : { onum:number })
 
 function DirProp({ values } : { values:number[] })
 {
+    let rctx = useContext(ReactCtx);
+    
     if (values.length == 1) {
         return <ObjectProp onum={ values[0] } />;
     }
@@ -332,12 +334,16 @@ function DirProp({ values } : { values:number[] })
 
     if (values.length == 4) {
         // ROOM if (GLOBAL+16) [ else fail-message ]
-        let glob = gamedat_global_nums.get(values[1]-16);
+        let globnum = values[1] - 16;
+        let glob = gamedat_global_nums.get(globnum);
         let hasfail = !(values[2] == 0 && values[3] == 0);
         return (
             <>
                 <ObjectProp onum={ values[0] } />
                 {' '}<i>if</i>{' '}
+                { (rctx.shownumbers ?
+                   <span className="ShowAddr">({ globnum }) </span>
+                   : null) }
                 <code>{ (glob ? glob.name : '???' ) }</code>
                 { (hasfail ?
                    <>
