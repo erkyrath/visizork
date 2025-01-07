@@ -3,7 +3,7 @@ import { useState, useMemo, useContext } from 'react';
 
 import { ZObject, ZProp, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
-import { unpack_address, gamedat_string_map, gamedat_routine_addrs, gamedat_property_nums, gamedat_global_nums } from './gamedat';
+import { unpack_address, gamedat_string_map, gamedat_routine_addrs, gamedat_property_nums, gamedat_attribute_nums, gamedat_global_nums } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -101,6 +101,22 @@ export function ObjectPage({ onum } : { onum:number })
 
         index++;
     }
+
+    let attrls = [];
+    index = 0;
+    while (index < 32) {
+        if (tup.attrs & (1 << (31-index))) {
+            let attr = gamedat_attribute_nums.get(index);
+            if (attr) {
+                attrls.push(
+                    <span key={ index }>
+                        <code>{ attr.name }</code>{' '}
+                    </span>
+                );
+            }
+        }
+        index++;
+    }
     
     let label: string;
     if (obj.isroom)
@@ -152,6 +168,12 @@ export function ObjectPage({ onum } : { onum:number })
                    <li>
                        Contains:{' '}
                        { childls }
+                   </li>
+                   : null) }
+                { (attrls.length ?
+                   <li>
+                       Attributes:{' '}
+                       { attrls }
                    </li>
                    : null) }
                 { (propls.length ?
@@ -220,6 +242,7 @@ function ObjPropertyList({ pnum, values, origvalues }: { pnum:number, values:num
     
     let origtext = 'Original value: ';
     if (changeflag) {
+        //### this could be nicer for STR and INT
         origtext += origvalues.join(' ');
     }
 
