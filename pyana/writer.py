@@ -196,6 +196,7 @@ def write_objects(filename, zcode, objdat):
     print('...writing object data:', filename)
     load_gameinfo()
     ls = []
+    map = {}
     for obj in zcode.objects:
         if obj.name not in objname_to_num:
             print('onum not found: %s "%s"' % (obj.name, obj.desc,))
@@ -217,6 +218,16 @@ def write_objects(filename, zcode, objdat):
             # "GLOBAL" property
             dat['scenery'] = odump.props[5]
         ls.append(dat)
+        map[dat['onum']] = dat
+
+    for (onum, dat) in map.items():
+        scenls = dat.get('scenery')
+        if scenls:
+            for val in scenls:
+                idat = map[val]
+                if 'iscenery' not in idat:
+                    idat['iscenery'] = []
+                idat['iscenery'].append(onum)
     
     fl = open(filename, 'w')
     fl.write('window.gamedat_objects = ');
