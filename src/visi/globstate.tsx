@@ -40,7 +40,7 @@ export function GlobalState()
         else {
             index = counter;
         }
-        globls.push(<GlobalVar key={ index } index={ index } value={ zstate.globals[index] } />);
+        globls.push(<GlobalVar key={ index } index={ index } value={ zstate.globals[index] } origvalue={ zstate.origglobals[index] } />);
         counter++;
     }
 
@@ -76,12 +76,13 @@ export function GlobalState()
     );
 }
 
-export function GlobalVar({ index, value }: { index:number, value:number })
+export function GlobalVar({ index, value, origvalue }: { index:number, value:number, origvalue:number })
 {
     let rctx = useContext(ReactCtx);
     let ctx = useContext(GlobListCtx);
     let selected = ctx.selected;
-
+    
+    let changed = (value != origvalue);
     let glo = gamedat_global_nums.get(index);
 
     let vartype = null;
@@ -114,6 +115,11 @@ export function GlobalVar({ index, value }: { index:number, value:number })
             break;
         }
     }
+
+    let origtext = '';
+    if (changed) {
+        origtext = 'original value: ' + origvalue;
+    }
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
@@ -129,6 +135,9 @@ export function GlobalVar({ index, value }: { index:number, value:number })
                <span className="ShowAddr">{ index }: </span>
                : null) }
             <code>{ (glo ? glo.name : '???') }</code>:{' '}
+            { (changed ?
+               <span className="ChangedNote" title={ origtext }>*</span>
+               : null) }
             { ((rctx.shownumbers && !withnum) ?
                <>
                    <span className="ShowAddr">({ value })</span>{' '}
