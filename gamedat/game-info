@@ -266,10 +266,10 @@ Object 248 TEETH
 Object 249 LOCAL-GLOBALS
 Object 250 BOARD
 
-Attribute 0
-Attribute 1
-Attribute 2
-Attribute 3
+Attribute 0 WEARBIT
+Attribute 1 STAGGERED
+Attribute 2 FIGHTBIT
+Attribute 3 TOUCHBIT
 Attribute 4 NONLANDBIT
 Attribute 5 MAZEBIT
 Attribute 6 RLANDBIT
@@ -284,7 +284,7 @@ Attribute 14 NDESCBIT
 Attribute 15 TURNBIT
 Attribute 16 READBIT
 Attribute 17 TAKEBIT
-Attribute 18
+Attribute 18 RMUNGBIT
 Attribute 19 CONTBIT
 Attribute 20 ONBIT
 Attribute 21 FOODBIT
