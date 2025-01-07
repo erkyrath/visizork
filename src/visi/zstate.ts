@@ -82,6 +82,12 @@ export function zobj_properties(zstate: ZState, onum: number): ZProp[]
     return res;
 }
 
+export interface ZStatePlus extends ZState
+{
+    origglobals: number[];
+    origprops: Map<number, ZProp[]>;
+}
+
 export function zstateplus_empty() : ZStatePlus
 {
     return {
@@ -97,12 +103,6 @@ export function zstateplus_empty() : ZStatePlus
         origglobals: [],
         origprops: new Map(),
     };
-}
-
-export interface ZStatePlus extends ZState
-{
-    origglobals: number[];
-    origprops: Map<number, ZProp[]>;
 }
 
 // These are initialized on the first get_updated_report() call,
