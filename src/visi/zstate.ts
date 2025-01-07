@@ -17,6 +17,7 @@ export type ZObject = {
     parent: number;
     child: number;
     sibling: number;
+    attrs: number;
 };
 
 export type ZStackCall = {
