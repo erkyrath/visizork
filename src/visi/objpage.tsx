@@ -3,6 +3,7 @@ import { useState, useMemo, useContext } from 'react';
 
 import { ZObject, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
+import { gamedat_property_nums } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -115,6 +116,11 @@ export function ObjectPage({ onum } : { onum:number })
 
 function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
 {
+    let prop = gamedat_property_nums.get(pnum);
+    if (!prop) {
+        return <li>??? { prop }</li>;
+    }
+    
     let counter = 0;
     let valls = values.map((val) => {
         let index = counter++;
@@ -125,7 +131,7 @@ function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
     
     return (
         <li>
-            { pnum }:
+            <code>{ prop.name }</code>:
             { valls }
         </li>
     );

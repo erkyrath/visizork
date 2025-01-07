@@ -92,6 +92,17 @@ export const sourcefile_list: [ string, string ][] = [
     ['gclock.zil',   'D'],
 ];
 
+export type AttributeData = {
+    name: string;
+    num: number;
+};
+
+export type PropertyData = {
+    name: string;
+    num: number;
+    vartype?: string;
+};
+
 export type GlobalData = {
     name: string;
     num: number;
@@ -137,6 +148,8 @@ interface SourceLinesMap {
 
 export const gamedat_ids = (window as any).gamedat_ids;
 
+export const gamedat_property_nums = (window as any).gamedat_property_nums as Map<number, PropertyData>;
+export const gamedat_attribute_nums = (window as any).gamedat_attribute_nums as Map<number, AttributeData>;
 export const gamedat_global_nums = (window as any).gamedat_global_nums as Map<number, GlobalData>;
 export const gamedat_global_names = (window as any).gamedat_global_names as Map<string, GlobalData>;
 export const gamedat_globals_sorted = (window as any).gamedat_globals_sorted as GlobalData[];
