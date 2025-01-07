@@ -83,33 +83,35 @@ export function ObjectPage({ onum } : { onum:number })
             <div>
                 <code><b>{ obj.name }</b></code> &nbsp; ({ label })
             </div>
-            { (obj.desc ?
-               <div>
-                   Printed name:{' '}
-                   <span className="PrintString">&#x201C;{ obj.desc }&#x201D;</span>
-               </div>
-               : null) }
-            { (parent ?
-               <div>
-                   Contained in:{' '}
-                   <ObjPageLink onum={ parent.onum } />
-                   <code>{ parent.name }</code>
-               </div>
-               : null) }
-            { (childls.length ?
-               <div>
-                   Contains:{' '}
-                   { childls }
-               </div>
-               : null) }
-            { (propls.length ?
-               <div>
-                   Properties:
-                   <ul className="DataList">
-                       { propls }
-                   </ul>
-               </div>
-               : null) }
+            <ul className="DataList">
+                { (obj.desc ?
+                   <li>
+                       Printed name:{' '}
+                       <span className="PrintString">&#x201C;{ obj.desc }&#x201D;</span>
+                   </li>
+                   : null) }
+                { (parent ?
+                   <li>
+                       Contained in:{' '}
+                       <ObjPageLink onum={ parent.onum } />
+                       <code>{ parent.name }</code>
+                   </li>
+                   : null) }
+                { (childls.length ?
+                   <li>
+                       Contains:{' '}
+                       { childls }
+                   </li>
+                   : null) }
+                { (propls.length ?
+                   <li>
+                       Properties:
+                       <ul className="DataList">
+                           { propls }
+                       </ul>
+                   </li>
+                   : null) }
+            </ul>
         </div>
     );
 }
