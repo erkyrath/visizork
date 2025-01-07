@@ -186,6 +186,8 @@ function StrProp({ values } : { values:number[] })
 
 function RoutineProp({ values } : { values:number[] })
 {
+    let rctx = useContext(ReactCtx);
+    
     if (values.length != 2)
         return BytesProp({ values });
 
@@ -198,6 +200,11 @@ function RoutineProp({ values } : { values:number[] })
     if (!obj)
         return BytesProp({ values });
 
-    //### linkify
-    return (<code>{ obj.name }</code>);
+    function evhan_click(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+        ev.preventDefault();
+        if (obj)
+            rctx.setLoc(obj.sourceloc, false);
+    }
+    
+    return (<a className="Src_Id" href="#" onClick={ evhan_click }><code>{ obj.name }</code></a>);
 }
