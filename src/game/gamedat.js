@@ -10,10 +10,20 @@ window.gamedat_object_treesort = new Map();
 window.gamedat_string_map = new Map();
 window.gamedat_routine_addrs = new Map();
 window.gamedat_routine_names = new Map();
+window.gamedat_property_nums = new Map();
+window.gamedat_attribute_nums = new Map();
 
 window.gamedat_ids = {};
 
 (function() {
+    for (let obj of window.gamedat_properties) {
+        gamedat_property_nums.set(obj.num, obj);
+    }
+    
+    for (let obj of window.gamedat_attributes) {
+        gamedat_attribute_nums.set(obj.num, obj);
+    }
+
     for (let obj of window.gamedat_globals) {
         if (gamedat_global_names.has(obj.name))
             continue;
