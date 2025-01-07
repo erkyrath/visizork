@@ -3,7 +3,7 @@ import { useState, useMemo, useContext } from 'react';
 
 import { ZObject, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
-import { unpack_address, gamedat_string_map, gamedat_routine_addrs, gamedat_property_nums } from './gamedat';
+import { unpack_address, gamedat_string_map, gamedat_routine_addrs, gamedat_property_nums, gamedat_global_nums } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -180,6 +180,8 @@ function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
     );
 }
 
+//### shownumbers!
+
 function BytesProp({ values } : { values:number[] })
 {
     let counter = 0;
@@ -272,12 +274,50 @@ function ObjectProp({ onum } : { onum:number })
 
 function DirProp({ values } : { values:number[] })
 {
-    if (values.length == 1)
-        return <ObjectProp onum={ values[0] } />
+    if (values.length == 1) {
+        return <ObjectProp onum={ values[0] } />;
+    }
 
-    if (values.length == 2)
-        return <StrProp values={ values } />
-        
+    if (values.length == 2) {
+        // can't go that way message
+        return <StrProp values={ values } />;
+    }
+
+    if (values.length == 3) {
+        // call this routine to decide
+        return (
+            <>
+                <i>call</i>{' '}
+                <RoutineProp values={ values.slice(0, 2) } />
+            </>
+        );
+    }
+
+    if (values.length == 4) {
+        // ROOM if (GLOBAL+16) [ else fail-message ]
+        let glob = gamedat_global_nums.get(values[1]-16);
+        let hasfail = !(values[2] == 0 && values[3] == 0);
+        return (
+            <>
+                <ObjectProp onum={ values[0] } />
+                {' '}<i>if</i>{' '}
+                <code>{ (glob ? glob.name : '???' ) }</code>
+                { (hasfail ?
+                   <>
+                       {' '}<i>else</i>{' '}
+                       <StrProp values={ values.slice(2, 4) } />
+                   </>
+                   : null) }
+            </>
+        );
+    }
+    
+    //### per-packed-func 0              [3]
+    //### STONE-BARROW WON-FLAG+16 0 0   [4]
+    //### STRANGE-PASSAGE MAGIC-FLAG+16 else-packed-str [4]
+    //### KITCHEN KITCHEN-WINDOW 0 0 0   [5]
+    //### GRATING-CLEARING GRATE else-packed-str 0 [5]
+    
     //###
     return BytesProp({ values });
 }
