@@ -141,6 +141,8 @@ export function ObjectPage({ onum } : { onum:number })
 
 function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
 {
+    let rctx = useContext(ReactCtx);
+    
     let prop = gamedat_property_nums.get(pnum);
     if (!prop) {
         return <li>??? { prop }</li>;
@@ -174,12 +176,16 @@ function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
     
     return (
         <li>
+            { (rctx.shownumbers ?
+               <span className="ShowAddr">{ pnum }: </span>
+               : null) }
             <code>{ prop.name }</code>:{' '}
             { propvalues }
         </li>
     );
 }
 
+//### change stars! (whole-prop changes)
 //### shownumbers!
 
 function BytesProp({ values } : { values:number[] })
