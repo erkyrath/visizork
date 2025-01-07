@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
-import { ZState, ZObject, ZStackCall, ZStackItem, ZStackPrint } from './zstate';
+import { ZObject, ZStackCall, ZStackItem, ZStackPrint } from './zstate';
 import { gamedat_string_map, gamedat_routine_addrs } from './gamedat';
 
 import { ReactCtx } from './context';

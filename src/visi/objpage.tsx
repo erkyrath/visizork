@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useMemo, useContext } from 'react';
 
-import { ZState, ZObject, zobj_properties } from './zstate';
+import { ZObject, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
 
 import { ReactCtx } from './context';
