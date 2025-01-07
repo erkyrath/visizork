@@ -301,7 +301,7 @@ Attribute 31 LIGHTBIT
 
 Property 2 CONTFCN  RTN
 Property 3 ADVFCN  RTN
-Property 4 PSEUDO
+Property 4 PSEUDO  WORDRTNS
 Property 5 GLOBAL  OBJS
 Property 6 VTYPE  INT
 Property 7 STRENGTH  INT
@@ -313,9 +313,9 @@ Property 12 TVALUE  INT
 Property 13 VALUE  INT
 Property 14 FDESC  STR
 Property 15 SIZE  INT
-Property 16 ADJECTIVE
+Property 16 ADJECTIVE ADJS
 Property 17 ACTION  RTN
-Property 18 SYNONYM
+Property 18 SYNONYM  WORDS
 Property 19 LAND  DIR
 Property 20 OUT  DIR
 Property 21 IN  DIR
