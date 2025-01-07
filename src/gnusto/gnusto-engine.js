@@ -2271,12 +2271,20 @@ GnustoEngine.prototype = {
         report.objects = [];
         var onum = 1;
         while (onum <= m_report_info.MAX_OBJECTS) {
+            var addr = this.m_object_tree_start + onum*this.m_object_size;
+            // Storing all attributes in an int is okay for v3, but it would
+            // be a nuisance in v4+.
+            var attrs = (this.m_memory[addr+0] * 0x1000000
+                         + this.m_memory[addr+1] * 0x10000
+                         + this.m_memory[addr+2] * 0x100
+                         + this.m_memory[addr+3]);
             report.objects.push(
                 {
                     onum: onum,
                     parent: this._get_parent(onum),
                     child: this._get_child(onum),
                     sibling: this._get_sibling(onum),
+                    attrs: attrs,
                 }
             );
             onum++;
