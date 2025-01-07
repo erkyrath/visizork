@@ -1,5 +1,17 @@
 import { gamedat_object_ids, gamedat_ids } from './gamedat';
 
+/* Highly abbreviated typedef for GnustoRunner. This shows only the
+   bit used by VisiZorkApp. */
+export type GnustoRunner = {
+    e: GnustoEngine;
+};
+
+/* Highly abbreviated typedef for GnustoEngine. */
+export type GnustoEngine = {
+    prepare_vm_report: (dat:any) => void;
+    get_vm_report: () => ZState;
+};
+
 export type ZObject = {
     onum: number;
     parent: number;
@@ -80,3 +92,13 @@ export function zstate_empty() : ZState
         proptable: new Uint8Array(),
     };
 }
+
+export interface ZStatePlus extends ZState
+{
+    origglobals: number[];
+}
+
+export function get_updated_report(engine: GnustoEngine)
+{
+}
+

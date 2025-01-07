@@ -3,7 +3,8 @@ import { useState, useContext, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Root, createRoot } from 'react-dom/client';
 
-import { ZState } from './zstate';
+import { ZState, get_updated_report } from './zstate';
+import { GnustoRunner, GnustoEngine } from './zstate';
 import { gamedat_ids, gamedat_object_ids, sourceloc_start } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
@@ -17,10 +18,8 @@ import { SourceView } from './sourceview';
 import { GlobalState } from './globstate';
 import { AboutPage } from './about';
 
-// This is the GnustoRunner and the GnustoEngine, but I don't have
-// type info for them yet.
-let runner: any;
-let engine: any;
+let runner: GnustoRunner;
+let engine: GnustoEngine;
 
 /* Hack alert: we're not running in Node.js here! But the rollup
    configuration replaces "process.env.NODE_ENV" with a static string,
@@ -42,10 +41,10 @@ export function init(runnerref: any)
     const appel = document.getElementById('appbody') as HTMLElement;
     let root = createRoot(appel);
     if (root)
-        root.render( <MyApp /> );
+        root.render( <VisiZorkApp /> );
 }
 
-function MyApp()
+function VisiZorkApp()
 {
     const [ zstate, setZState ] = useState(engine.get_vm_report() as ZState);
     const [ tab, setTab ] = useState('objtree');
