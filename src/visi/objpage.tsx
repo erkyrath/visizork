@@ -51,6 +51,9 @@ export function ObjectPage({ onum } : { onum:number })
     let childls = children.map((obj) =>
         <span key={ obj.onum }>
             {counter++ ? ', ' : ' '}
+            { (rctx.shownumbers ?
+               <span className="ShowAddr">({ obj.onum }) </span>
+               : null) }
             <ObjPageLink onum={ obj.onum } />
             <code>{ obj.name }</code>
         </span>
@@ -65,6 +68,9 @@ export function ObjectPage({ onum } : { onum:number })
                 globholdls.push(
                     <span key={ counter++ }>
                         {counter++ ? ', ' : ' '}
+                        { (rctx.shownumbers ?
+                           <span className="ShowAddr">({ scobj.onum }) </span>
+                           : null) }
                         <ObjPageLink onum={ scobj.onum } />
                         <code>{ scobj.name }</code>
                     </span>
@@ -110,6 +116,9 @@ export function ObjectPage({ onum } : { onum:number })
                 { (parent ?
                    <li>
                        Contained in:{' '}
+                       { (rctx.shownumbers ?
+                          <span className="ShowAddr">({ parent.onum }) </span>
+                          : null) }
                        <ObjPageLink onum={ parent.onum } />
                        <code>{ parent.name }</code>
                    </li>
