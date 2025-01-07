@@ -160,7 +160,13 @@ function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
         break;
     case 'OBJS':
         propvalues = <ObjectsProp values={ values } />;
-        break;        
+        break;
+    case 'DIR':
+        propvalues = <DirProp values={ values } />;
+        break;
+    //### ADJS
+    //### WORDS
+    //### WORDRTNS
     default:
         propvalues = <BytesProp values={ values } />;
         break;
@@ -262,5 +268,17 @@ function ObjectProp({ onum } : { onum:number })
             <ObjPageLink onum={ onum } />
             <code>{ obj.name }</code>
         </>);
+}
+
+function DirProp({ values } : { values:number[] })
+{
+    if (values.length == 1)
+        return <ObjectProp onum={ values[0] } />
+
+    if (values.length == 2)
+        return <StrProp values={ values } />
+        
+    //###
+    return BytesProp({ values });
 }
 
