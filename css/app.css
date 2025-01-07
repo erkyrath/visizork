@@ -349,6 +349,15 @@ code {
     margin-right: 4px;
     margin-top: 4px;
 }
+.ObjLabelRoom {
+    background: #C75;
+}
+.ObjLabelGlob {
+    background: #69C;
+}
+.ObjLabelItem {
+    background: #87C;
+}
 
 button.ObjPage {
     font-family: "Courier Prime";
