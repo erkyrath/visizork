@@ -284,7 +284,7 @@ function DirProp({ values } : { values:number[] })
     }
 
     if (values.length == 3) {
-        // call this routine to decide
+        // call this routine to decide (then a null byte)
         return (
             <>
                 <i>call</i>{' '}
@@ -311,14 +311,27 @@ function DirProp({ values } : { values:number[] })
             </>
         );
     }
-    
-    //### per-packed-func 0              [3]
-    //### STONE-BARROW WON-FLAG+16 0 0   [4]
-    //### STRANGE-PASSAGE MAGIC-FLAG+16 else-packed-str [4]
-    //### KITCHEN KITCHEN-WINDOW 0 0 0   [5]
-    //### GRATING-CLEARING GRATE else-packed-str 0 [5]
-    
-    //###
+
+    if (values.length == 5) {
+        // ROOM if OBJ has open [ else fail-message] (then null byte)
+        let hasfail = !(values[2] == 0 && values[3] == 0);
+        return (
+            <>
+                <ObjectProp onum={ values[0] } />
+                {' '}<i>if</i>{' '}
+                <ObjectProp onum={ values[1] } />
+                {' '}<i>open</i>
+                { (hasfail ?
+                   <>
+                       {' '}<i>else</i>{' '}
+                       <StrProp values={ values.slice(2, 4) } />
+                   </>
+                   : null) }
+            </>
+        );
+    }
+
+    // Shouldn't get here...
     return BytesProp({ values });
 }
 
