@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Root, createRoot } from 'react-dom/client';
 
-import { ZState, get_updated_report } from './zstate';
+import { ZStatePlus, get_updated_report } from './zstate';
 import { GnustoRunner, GnustoEngine } from './zstate';
 import { gamedat_ids, gamedat_object_ids, sourceloc_start } from './gamedat';
 
@@ -46,7 +46,7 @@ export function init(runnerref: any)
 
 function VisiZorkApp()
 {
-    const [ zstate, setZState ] = useState(engine.get_vm_report() as ZState);
+    const [ zstate, setZState ] = useState(get_updated_report(engine));
     const [ tab, setTab ] = useState('objtree');
     const [ objpage, setObjPage ] = useState(0);
     const [ shownumbers, setShowNumbers ] = useState(false);
@@ -86,7 +86,7 @@ function VisiZorkApp()
 
     useEffect(() => {
         function evhan(ev: Event) {
-            setZState(engine.get_vm_report());
+            setZState(get_updated_report(engine));
         };
         window.addEventListener('zmachine-update', evhan);
         return () => {

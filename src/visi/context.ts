@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { ZState, zstate_empty } from './zstate';
+import { ZStatePlus, zstateplus_empty } from './zstate';
 import { sourceloc_start } from './gamedat';
 
 export type SourceLocState = {
@@ -14,7 +14,7 @@ export function new_sourcelocstate() : SourceLocState
 }
 
 export type ContextContent = {
-    zstate: ZState;
+    zstate: ZStatePlus;
     tab: string;
     shownumbers: boolean;
     objpage: number;
@@ -28,7 +28,7 @@ export type ContextContent = {
 };
 
 export const ReactCtx = createContext({
-    zstate: zstate_empty(),
+    zstate: zstateplus_empty(),
     tab: '',
     shownumbers: false,
     objpage: 0,

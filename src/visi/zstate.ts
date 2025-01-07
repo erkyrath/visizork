@@ -80,7 +80,7 @@ export function zobj_properties(zstate: ZState, onum: number): ZProp[]
     return res;
 }
 
-export function zstate_empty() : ZState
+export function zstateplus_empty() : ZStatePlus
 {
     return {
         globtableaddr: 0,
@@ -90,6 +90,8 @@ export function zstate_empty() : ZState
         strings: [],
         calltree: { type:'call', addr:0, children:[] },
         proptable: new Uint8Array(),
+
+        origglobals: [],
     };
 }
 
@@ -98,7 +100,11 @@ export interface ZStatePlus extends ZState
     origglobals: number[];
 }
 
-export function get_updated_report(engine: GnustoEngine)
+export function get_updated_report(engine: GnustoEngine) : ZStatePlus
 {
+    let report = engine.get_vm_report();
+    console.log('### got report');
+
+    return { ...report, origglobals: [] };
 }
 
