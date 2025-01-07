@@ -3,7 +3,7 @@ import { useState, useMemo, useContext } from 'react';
 
 import { ZObject, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
-import { gamedat_property_nums } from './gamedat';
+import { unpack_address, gamedat_string_map, gamedat_routine_addrs, gamedat_property_nums } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -129,6 +129,12 @@ function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
     case 'INT':
         propvalues = <IntProp values={ values } />;
         break;
+    case 'STR':
+        propvalues = <StrProp values={ values } />;
+        break;
+    case 'RTN':
+        propvalues = <RoutineProp values={ values } />;
+        break;
     default:
         propvalues = <BytesProp values={ values } />;
         break;
@@ -162,4 +168,36 @@ function IntProp({ values } : { values:number[] })
 
     let val = values[0] * 0x100 + values[1];
     return (<span>{ val }</span>);
+}
+
+function StrProp({ values } : { values:number[] })
+{
+    if (values.length != 2)
+        return BytesProp({ values });
+
+    let val = values[0] * 0x100 + values[1];
+    let obj = gamedat_string_map.get(unpack_address(val));
+
+    if (!obj)
+        return BytesProp({ values });
+    
+    return (<span className="PrintString">&#x201C;{ obj.text }&#x201D;</span>);
+}
+
+function RoutineProp({ values } : { values:number[] })
+{
+    if (values.length != 2)
+        return BytesProp({ values });
+
+    let val = values[0] * 0x100 + values[1];
+    if (val == 0)
+        return (<i>no function</i>);
+    
+    let obj = gamedat_routine_addrs.get(unpack_address(val));
+
+    if (!obj)
+        return BytesProp({ values });
+
+    //### linkify
+    return (<code>{ obj.name }</code>);
 }
