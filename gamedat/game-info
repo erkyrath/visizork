@@ -266,6 +266,21 @@ Object 248 TEETH
 Object 249 LOCAL-GLOBALS
 Object 250 BOARD
 
+Attribute 6 RLANDBIT
+Attribute 9 SACREDBIT
+Attribute 13 TRYTAKEBIT
+Attribute 14 NDESCBIT
+Attribute 15 TURNBIT
+Attribute 17 TAKEBIT
+Attribute 19 CONTBIT
+Attribute 20 ONBIT
+Attribute 21 FOODBIT
+Attribute 22 DRINKBIT
+Attribute 23 DOORBIT
+Attribute 24 CLIMBBIT
+Attribute 29 WEAPONBIT
+Attribute 30 ACTORBIT
+
 Property 2 CONTFCN
 Property 3 ADVFCN
 Property 4 PSEUDO
