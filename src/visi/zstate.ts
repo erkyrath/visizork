@@ -102,11 +102,16 @@ export interface ZStatePlus extends ZState
     origglobals: number[];
 }
 
+let origglobals: number[] | undefined;
+
 export function get_updated_report(engine: GnustoEngine) : ZStatePlus
 {
     let report = engine.get_vm_report();
-    console.log('### got report', report.counter);
 
-    return { ...report, origglobals: [] };
+    if (origglobals === undefined) {
+        origglobals = report.globals;
+    }
+
+    return { ...report, origglobals: origglobals };
 }
 
