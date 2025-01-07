@@ -110,6 +110,7 @@ export function ObjectPage({ onum } : { onum:number })
             if (attr) {
                 attrls.push(
                     <span key={ index }>
+                        { attrls.length ? ', ' : '' }
                         <code>{ attr.name }</code>{' '}
                     </span>
                 );
