@@ -2191,12 +2191,20 @@ GnustoEngine.prototype = {
     // The accumulated info which will go into the report:
     m_report_accum: null,
 
+    // A unique value for every report generated.
+    m_report_counter: 0,
+
+    // The last report. We cache this until the next reset_vm_report()
+    // call.
+    m_last_report: null,
+
     // This is called right after the engine is constructed. We pass in
     // various bits of information which are needed to structure the
     // VM report.
     prepare_vm_report: function(obj)
     {
         m_report_info = obj;
+        m_report_counter = 0;
     },
 
     // This is called at the beginning of each turn. We will accumulate
@@ -2204,14 +2212,20 @@ GnustoEngine.prototype = {
     // turn.
     reset_vm_report: function()
     {
+        m_last_report = null;
+        
         m_report_accum = {
             strings: [],
             calls: [],
         };
+        
+        // There are some calls already on the stack; note them as if
+        // they were just called, so the activity report will look right.
         for (var addr of this.m_func_stack)
              m_report_accum.calls.push({ t:'c', addr:addr });
     },
 
+    // Note that a string was printed.
     _vm_report_string(where, val)
     {
         if (m_report_accum) {
@@ -2221,6 +2235,7 @@ GnustoEngine.prototype = {
         return val;
     },
 
+    // Note that a function was called.
     _vm_report_call(addr)
     {
         if (m_report_accum)
@@ -2228,6 +2243,7 @@ GnustoEngine.prototype = {
         return addr;
     },
 
+    // Note that a function was returned from.
     _vm_report_return()
     {
         if (m_report_accum)
@@ -2240,8 +2256,12 @@ GnustoEngine.prototype = {
     {
         if (!m_report_info || !m_report_accum)
             return null;
-        
+
+        if (m_last_report)
+            return m_last_report;
+
         var report = {
+            counter: m_report_counter,
             globtableaddr: this.m_vars_start,
             objtableaddr: this.m_objs_start,
             proptable: this.m_memory.slice(m_report_info.PROP_TABLE_START, m_report_info.PROP_TABLE_END),
@@ -2297,7 +2317,9 @@ GnustoEngine.prototype = {
             }
         }
         report.calltree = calltree;
-        
+
+        m_report_counter++;
+        m_last_report = report;
         return report;
     },
 
