@@ -299,22 +299,22 @@ Attribute 29 WEAPONBIT
 Attribute 30 ACTORBIT
 Attribute 31 LIGHTBIT
 
-Property 2 CONTFCN  FUNC
-Property 3 ADVFCN  FUNC
+Property 2 CONTFCN  RTN
+Property 3 ADVFCN  RTN
 Property 4 PSEUDO
-Property 5 GLOBAL
-Property 6 VTYPE
+Property 5 GLOBAL  OBJS
+Property 6 VTYPE  INT
 Property 7 STRENGTH  INT
-Property 8 TEXT
-Property 9 DESCFCN  FUNC
+Property 8 TEXT  STR
+Property 9 DESCFCN  RTN
 Property 10 CAPACITY  INT
-Property 11 LDESC
+Property 11 LDESC  STR
 Property 12 TVALUE  INT
 Property 13 VALUE  INT
-Property 14 FDESC
+Property 14 FDESC  STR
 Property 15 SIZE  INT
 Property 16 ADJECTIVE
-Property 17 ACTION  FUNC
+Property 17 ACTION  RTN
 Property 18 SYNONYM
 Property 19 LAND  DIR
 Property 20 OUT  DIR
