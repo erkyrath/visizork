@@ -378,6 +378,13 @@ button.ObjPage {
     font-size: 85%;
 }
 
+.ChangedNote {
+    font-weight: bold;
+    color: #B00;
+    padding-left: 2px;
+    padding-right: 1px;
+}
+
 #scrollcontent_file.ScrollContent {
     padding-left: 8px;
 }
