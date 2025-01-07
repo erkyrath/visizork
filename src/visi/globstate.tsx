@@ -116,9 +116,20 @@ export function GlobalVar({ index, value, origvalue }: { index:number, value:num
         }
     }
 
-    let origtext = '';
+    let origtext = 'original value: ';
     if (changed) {
-        origtext = 'original value: ' + origvalue;
+        if (glo && glo.vartype == 'OBJ') {
+            if (origvalue == 0) {
+                origtext += 'nothing';
+            }
+            else {
+                let obj = gamedat_object_ids.get(origvalue);
+                origtext += (obj ? obj.name : '???');
+            }
+        }
+        else {
+            origtext += origvalue;
+        }
     }
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
