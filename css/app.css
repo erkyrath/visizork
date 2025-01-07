@@ -338,12 +338,16 @@ code {
 }
 
 .ObjLabel {
+    float: right;
+    font-family: "Courier Prime";
     font-size: 75%;
-    color: #888;
-    padding: 0px 2px;
-    border: 1px solid #888;
+    background: #888;
+    color: white;
+    padding: 1px 3px 0px 3px;
     border-radius: 4px;
+    margin-left: 4px;
     margin-right: 4px;
+    margin-top: 4px;
 }
 
 button.ObjPage {
