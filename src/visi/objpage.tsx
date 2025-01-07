@@ -122,7 +122,28 @@ function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
     if (!prop) {
         return <li>??? { prop }</li>;
     }
+
+    let propvalues;
     
+    switch (prop.vartype || '') {
+    case 'INT':
+        propvalues = <IntProp values={ values } />;
+        break;
+    default:
+        propvalues = <BytesProp values={ values } />;
+        break;
+    }
+    
+    return (
+        <li>
+            <code>{ prop.name }</code>:{' '}
+            { propvalues }
+        </li>
+    );
+}
+
+function BytesProp({ values } : { values:number[] })
+{
     let counter = 0;
     let valls = values.map((val) => {
         let index = counter++;
@@ -130,11 +151,15 @@ function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
             <span key={ index }> { val }</span>
         );
     });
-    
-    return (
-        <li>
-            <code>{ prop.name }</code>:
-            { valls }
-        </li>
-    );
+
+    return (<span>{ valls }</span>);
+}
+
+function IntProp({ values } : { values:number[] })
+{
+    if (values.length != 2)
+        return BytesProp({ values });
+
+    let val = values[0] * 0x100 + values[1];
+    return (<span>{ val }</span>);
 }

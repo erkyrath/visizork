@@ -304,15 +304,15 @@ Property 3 ADVFCN  FUNC
 Property 4 PSEUDO
 Property 5 GLOBAL
 Property 6 VTYPE
-Property 7 STRENGTH
+Property 7 STRENGTH  INT
 Property 8 TEXT
 Property 9 DESCFCN  FUNC
-Property 10 CAPACITY
+Property 10 CAPACITY  INT
 Property 11 LDESC
-Property 12 TVALUE
-Property 13 VALUE
+Property 12 TVALUE  INT
+Property 13 VALUE  INT
 Property 14 FDESC
-Property 15 SIZE
+Property 15 SIZE  INT
 Property 16 ADJECTIVE
 Property 17 ACTION  FUNC
 Property 18 SYNONYM
