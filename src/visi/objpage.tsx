@@ -80,7 +80,7 @@ export function ObjectPage({ onum } : { onum:number })
     }
 
     let propls = props.map((prop) =>
-        <ObjProperty key={ prop.pnum } pnum={ prop.pnum } values={ prop.values } />
+        <ObjPropertyList key={ prop.pnum } pnum={ prop.pnum } values={ prop.values } />
     );
     
     let label: string;
@@ -148,7 +148,7 @@ export function ObjectPage({ onum } : { onum:number })
     );
 }
 
-function ObjProperty({ pnum, values }: { pnum:number, values:number[] })
+function ObjPropertyList({ pnum, values }: { pnum:number, values:number[] })
 {
     let rctx = useContext(ReactCtx);
     
