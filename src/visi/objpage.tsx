@@ -102,19 +102,41 @@ export function ObjectPage({ onum } : { onum:number })
         index++;
     }
 
+    let origattrs = zstate.origattrs.get(onum) || 0;
+    
     let attrls = [];
     index = 0;
     while (index < 32) {
-        if (tup.attrs & (1 << (31-index))) {
+        let curflag = (tup.attrs & (1 << (31-index)));
+        let origflag = (origattrs & (1 << (31-index)));
+        if (curflag || origflag) {
             let attr = gamedat_attribute_nums.get(index);
-            if (attr) {
-                attrls.push(
-                    <span key={ index }>
-                        { attrls.length ? ', ' : '' }
-                        <code>{ attr.name }</code>{' '}
-                    </span>
-                );
+            if (!attr)
+                continue;
+
+            let changed = false;
+            let cla = '';
+            if (curflag) {
+                if (!origflag) {
+                    changed = true;
+                    cla = 'AddAttr';
+                }
             }
+            else {
+                if (origflag) {
+                    changed = true;
+                    cla = 'DelAttr';
+                }
+            }
+            attrls.push(
+                <span key={ index }>
+                    { attrls.length ? ', ' : '' }
+                    { (changed ?
+                       <span className="ChangedNote">*</span>
+                       : null) }
+                    <code className={ cla }>{ attr.name }</code>{' '}
+                </span>
+            );
         }
         index++;
     }

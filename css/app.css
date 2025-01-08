@@ -398,6 +398,11 @@ button.ObjPage {
     padding-right: 1px;
 }
 
+.DelAttr {
+    text-decoration-line: line-through;
+    text-decoration-color: #B00;
+}
+
 #scrollcontent_file.ScrollContent {
     padding-left: 8px;
 }
