@@ -151,6 +151,17 @@ def write_propattrs(filename):
     fl.write('\n')
     fl.close()
     
+def write_verbs(filename, zcode):
+    print('...writing verbs:', filename)
+
+    ls = [ verb.name for verb in zcode.verbs ]
+
+    fl = open(filename, 'w')
+    fl.write('window.gamedat_verbs = ');
+    json.dump(ls, fl)
+    fl.write(';\n')
+    fl.close()
+
 def write_routines(filename, zcode, txdat):
     print('...writing routine data:', filename)
     if len(zcode.routines) != len(txdat.routines):

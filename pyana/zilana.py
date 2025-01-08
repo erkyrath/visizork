@@ -207,11 +207,12 @@ class Zcode:
                 if eqpos:
                     verbtok = tok.children[eqpos+1]
                     if verbtok.idmatch(lambda val: val.startswith('V-')):
-                        verb = self.verbmap.get(verbtok.val)
+                        val = verbtok.val[ 2 : ]
+                        verb = self.verbmap.get(val)
                         if not verb:
-                            verb = ZVerb(verbtok.val)
+                            verb = ZVerb(val)
                             self.verbs.append(verb)
-                            self.verbmap[verbtok.val] = verb
+                            self.verbmap[val] = verb
                         verb.vtoks.append(tok)
                         
 
