@@ -25,6 +25,7 @@ export type ContextContent = {
     sourcelocpos: number;
     setLoc: (loc:string, hi:boolean) => void;
     shiftLoc: (forward: boolean) => void;
+    showCommentary: (topic:string) => void;
 };
 
 export const ReactCtx = createContext({
@@ -39,5 +40,6 @@ export const ReactCtx = createContext({
     sourcelocpos: 0,
     setLoc: (loc, hi) => {},
     shiftLoc: (forward) => {},
+    showCommentary: (topic) => {},
 } as ContextContent);
 

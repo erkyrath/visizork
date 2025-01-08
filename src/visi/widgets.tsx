@@ -16,3 +16,19 @@ export function ObjPageLink({ onum }: { onum:number } )
         <button className="ObjPage" onClick={ evhan_click_showpage }>i</button>
     );
 }
+
+export function Commentary({ topic }: { topic:string } )
+{
+    let rctx = useContext(ReactCtx);
+    
+    function evhan_click_showtopic(ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        ev.stopPropagation();
+        rctx.showCommentary(topic);
+    }
+
+    return (
+        <button className="CommentButton" onClick={ evhan_click_showtopic }>
+            <img src="css/comment.svg" />
+        </button>
+    );
+}

@@ -86,6 +86,10 @@ function VisiZorkApp()
         }
     }
 
+    function showCommentary(topic: string) {
+        console.log('### commentary', topic);
+    }
+
     useEffect(() => {
         function evhan(ev: Event) {
             setZState(get_updated_report(engine));
@@ -112,6 +116,7 @@ function VisiZorkApp()
         sourcelocpos: sourcelocpos,
         setLoc: setLoc,
         shiftLoc: shiftLoc,
+        showCommentary: showCommentary,
     };
 
     let menuel = document.getElementById('appcontrols');

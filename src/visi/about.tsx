@@ -5,7 +5,7 @@ import { gamedat_ids, gamedat_object_ids, gamedat_routine_names } from './gameda
 import { ZObject } from './zstate';
 
 import { ReactCtx } from './context';
-import { ObjPageLink } from './widgets';
+import { ObjPageLink, Commentary } from './widgets';
 
 export function AboutPage()
 {
@@ -117,6 +117,12 @@ export function AboutPage()
                     to see its current state and place in the world.
                     (This will initially match the source code, but
                     may change as you interact with the game!)
+                </p>
+                <p>
+                    <Commentary topic={ 'ABOUT' } />
+                    Click on the green buttons to see commentary about
+                    Zork's implementation. Notes, trivia, whatever came
+                    into my head as I was building the Visible Zorker!
                 </p>
                 <h2>Which Zork is this?</h2>
                 <p>
