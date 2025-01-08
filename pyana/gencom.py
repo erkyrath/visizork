@@ -7,6 +7,9 @@ import json
 def loadjsonp(filename):
     with open(filename) as infl:
         dat = infl.read()
+    dat = dat.strip()
+    if dat.endswith(';'):
+        dat = dat[ : -1 ]
     pos = dat.find('=')
     dat = dat[ pos+1 : ]
     return json.loads(dat)
@@ -59,6 +62,10 @@ def parse(filename):
             entry.add(ln)
                 
     return entries
+
+routines = loadjsonp('src/game/routines.js')
+globals = loadjsonp('src/game/globals.js')
+objects = loadjsonp('src/game/objects.js')
 
 entries = parse(sys.argv[1])
 print(entries)
