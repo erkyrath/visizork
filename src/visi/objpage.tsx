@@ -239,8 +239,12 @@ function ObjPropertyList({ pnum, values, origvalues }: { pnum:number, values:num
     case 'DIR':
         propvalues = <DirProp values={ values } />;
         break;
-    //### ADJS
-    //### WORDS
+    case 'ADJS':
+        propvalues = <AdjsProp values={ values } />;
+        break;
+    case 'WORDS':
+        propvalues = <DictWordsProp values={ values } />;
+        break;
     //### WORDRTNS
     default:
         propvalues = <BytesProp values={ values } />;
@@ -283,9 +287,6 @@ function ObjPropertyList({ pnum, values, origvalues }: { pnum:number, values:num
     );
 }
 
-//### change stars! (whole-prop changes)
-//### shownumbers!
-
 function BytesProp({ values } : { values:number[] })
 {
     let counter = 0;
@@ -306,6 +307,37 @@ function IntProp({ values } : { values:number[] })
 
     let val = values[0] * 0x100 + values[1];
     return (<span>{ val }</span>);
+}
+
+function AdjsProp({ values } : { values:number[] })
+{
+    let counter = 0;
+    let valls = values.map((val) => {
+        let index = counter++;
+        //###
+        return (
+            <i key={ index }> adj{ val }</i>
+        );
+    });
+
+    return (<span>{ valls }</span>);
+}
+
+function DictWordsProp({ values } : { values:number[] })
+{
+    let valls = [];
+    let counter = 0;
+    while (counter < values.length) {
+        let index = counter;
+        counter += 2;
+        let val = values[index] * 0x100 + values[index+1];
+        //###
+        valls.push(
+            <i key={ index }> dict{ val }</i>
+        );
+    };
+
+    return (<span>{ valls }</span>);
 }
 
 function StrProp({ values } : { values:number[] })
