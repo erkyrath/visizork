@@ -127,7 +127,7 @@ def write_strings(filename, zcode, txdat, objdat):
     fl = open(filename, 'w')
     fl.write('window.gamedat_strings = ');
     json.dump(ls, fl, separators=(',', ':'))
-    fl.write('\n')
+    fl.write(';\n')
     fl.close()
 
 def write_propattrs(filename):
@@ -145,10 +145,10 @@ def write_propattrs(filename):
     fl = open(filename, 'w')
     fl.write('window.gamedat_properties = ');
     json.dump(propls, fl)
-    fl.write('\n')
+    fl.write(';\n')
     fl.write('window.gamedat_attributes = ');
     json.dump(attrls, fl)
-    fl.write('\n')
+    fl.write(';\n')
     fl.close()
     
 def write_verbs(filename, zcode):
@@ -178,7 +178,7 @@ def write_routines(filename, zcode, txdat):
     fl = open(filename, 'w')
     fl.write('window.gamedat_routines = ');
     json.dump(ls, fl, separators=(',', ':'))
-    fl.write('\n')
+    fl.write(';\n')
     fl.close()
 
 def write_globals(filename, zcode):
@@ -200,7 +200,7 @@ def write_globals(filename, zcode):
     fl = open(filename, 'w')
     fl.write('window.gamedat_globals = ');
     json.dump(ls, fl)
-    fl.write('\n')
+    fl.write(';\n')
     fl.close()
 
 def write_objects(filename, zcode, objdat):
@@ -243,7 +243,7 @@ def write_objects(filename, zcode, objdat):
     fl = open(filename, 'w')
     fl.write('window.gamedat_objects = ');
     json.dump(ls, fl, separators=(',', ':'))
-    fl.write('\n')
+    fl.write(';\n')
     fl.close()
 
 def compute_room_distances(filename, zcode):
@@ -261,7 +261,7 @@ def compute_room_distances(filename, zcode):
     fl = open(filename, 'w')
     fl.write('window.gamedat_distances = ');
     json.dump(dat, fl, separators=(',', ':'))
-    fl.write('\n')
+    fl.write(';\n')
     fl.close()
 
 def compute_distance_from(zcode, map, fromroom):    
