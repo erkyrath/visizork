@@ -245,7 +245,9 @@ function ObjPropertyList({ pnum, values, origvalues }: { pnum:number, values:num
     case 'WORDS':
         propvalues = <DictWordsProp values={ values } />;
         break;
-    //### WORDRTNS
+    case 'WORDRTNS':
+        propvalues = <WordsRoutinesProp values={ values } />;
+        break;
     default:
         propvalues = <BytesProp values={ values } />;
         break;
@@ -335,6 +337,28 @@ function DictWordsProp({ values } : { values:number[] })
         valls.push(
             <i key={ index }> dict{ val }</i>
         );
+    };
+
+    return (<span>{ valls }</span>);
+}
+
+function WordsRoutinesProp({ values } : { values:number[] })
+{
+    let valls = [];
+    let counter = 0;
+    while (counter < values.length) {
+        let index = counter;
+        counter += 4;
+        let val = values[index] * 0x100 + values[index+1];
+        //###
+        valls.push(
+            <span key={ index }>
+                { index ? ', ' : '' }
+                <i key={ index }>dict{ val }</i>
+                {' '}
+            </span>
+        );
+        valls.push(<RoutineProp key={ index+2 } values={ values.slice(index+2, index+4) } />);
     };
 
     return (<span>{ valls }</span>);
