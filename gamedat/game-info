@@ -451,14 +451,14 @@ Global 116 P-ONEOBJ
 Global 117 P-TABLE
 Global 118 PRSO  OBJ
 Global 119 PRSI  OBJ
-Global 120 PRSA
+Global 120 PRSA  VERB
 Global 121 GWIM-DISABLE
 # 121 almost unused
 Global 122 P-NOT-HERE
 Global 123 P-MULT
-Global 124 L-PRSI
+Global 124 L-PRSI  OBJ
 Global 125 L-PRSO  OBJ
-Global 126 L-PRSA  OBJ
+Global 126 L-PRSA  VERB
 Global 127 P-WON
 Global 128 PLAYER
 Global 129 CLOCK-WAIT
