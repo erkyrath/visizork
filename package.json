@@ -8,7 +8,7 @@
     "build": "npm run minify && npm run buildts",
     "buildts": "npx tsc && npx rollup -c",
     "minify": "npm run min-gamedat.js && npm run min-lib.js && npm run min-glkio.js && npm run min-ifvms.js && npm run min-gnusto.js && npm run min-parchment.js",
-    "min-gamedat.js": "npx terser --config-file terser.config.json -o js/gamedat.js -- src/game/globals.js src/game/objects.js src/game/strings.js src/game/routines.js src/game/distances.js src/game/source.js src/game/savefiles.js src/game/propattrs.js src/game/gamedat.js",
+    "min-gamedat.js": "npx terser --config-file terser.config.json -o js/gamedat.js -- src/game/propattrs.js src/game/verbs.js src/game/globals.js src/game/objects.js src/game/strings.js src/game/routines.js src/game/distances.js src/game/source.js src/game/savefiles.js src/game/gamedat.js",
     "min-lib.js": "npx terser --config-file terser.config.json -o js/lib.js -- src/lib/class.js src/lib/iff.js src/lib/jquery-1.12.4.min.js",
     "min-glkio.js": "npx terser --config-file terser.config.json -o js/glkio.js -- src/glkio/io.js src/glkio/glkote.js src/glkio/dialog.js",
     "min-ifvms.js": "npx terser --config-file terser.config.json -o js/ifvms.js -- src/ifvms.js/quetzal.js src/ifvms.js/ui.js",

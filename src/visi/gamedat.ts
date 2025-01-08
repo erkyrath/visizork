@@ -162,5 +162,6 @@ export const gamedat_object_treesort = (window as any).gamedat_object_treesort a
 export const gamedat_string_map = (window as any).gamedat_string_map as Map<number, StringData>;
 export const gamedat_routine_addrs = (window as any).gamedat_routine_addrs as Map<number, RoutineData>;
 export const gamedat_routine_names = (window as any).gamedat_routine_names as Map<string, RoutineData>;
+export const gamedat_verbs = (window as any).gamedat_verbs as string[];
 export const gamedat_sourcefiles = (window as any).gamedat_sourcefiles as SourceLinesMap;
 export const gamedat_distances = (window as any).gamedat_distances as AllDistanceMap;
