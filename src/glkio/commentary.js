@@ -7,6 +7,13 @@ var CommentaryClass = function() {
 
     function show(text)
     {
+        if (!text || !text.length) {
+            closepane();
+            return;
+        }
+
+        $('#commentarycontent').text(text);
+        
         openpane();
     }
 
@@ -23,7 +30,7 @@ var CommentaryClass = function() {
         panel.animate({
             opacity: 1
         }, {
-            duration: 1300,
+            duration: 200,
             start: function() {
                 visible = true;
                 animating = true;
@@ -53,7 +60,7 @@ var CommentaryClass = function() {
         panel.animate({
             opacity: 0
         }, {
-            duration: 1300,
+            duration: 200,
             start: function() {
                 visible = false;
                 animating = true;
