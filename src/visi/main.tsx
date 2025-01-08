@@ -68,6 +68,8 @@ function VisiZorkApp()
     }
     
     function setLoc(loc: string, hi: boolean) {
+        if (!loc)
+            return;
         let ls = [ ...sourcelocs.slice(0, sourcelocpos+1), { loc:loc, lochi:hi } ];
         setSourceLocs(ls);
         setSourceLocPos(ls.length-1);
