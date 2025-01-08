@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject } from './zstate';
-import { gamedat_global_nums, gamedat_globals_sorted, gamedat_object_ids, gamedat_string_map } from './gamedat';
+import { gamedat_global_nums, gamedat_globals_sorted, gamedat_object_ids, gamedat_string_map, gamedat_verbs } from './gamedat';
 import { unpack_address } from './gamedat';
 
 import { ReactCtx } from './context';
@@ -96,6 +96,9 @@ export function GlobalVar({ index, value, origvalue }: { index:number, value:num
         case 'STR':
             vartype = <VarShowString value={ value } />;
             break;
+        case 'VERB':
+            vartype = <VarShowVerb value={ value } />;
+            break;
         case 'DATA':
             vartype = <i>data table in source</i>;
             break;
@@ -176,6 +179,19 @@ function VarShowObject({ value }: { value:number })
     }
 
     return (<i>invalid object { value }</i>);
+}
+
+function VarShowVerb({ value }: { value:number })
+{
+    if (value >= 0 && value < gamedat_verbs.length) {
+        return (
+            <>
+                <span><code>{ gamedat_verbs[value] }</code></span>
+            </>
+        );
+    }
+
+    return (<i>invalid verb { value }</i>);
 }
 
 function VarShowString({ value }: { value:number })
