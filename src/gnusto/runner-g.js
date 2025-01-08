@@ -20,7 +20,7 @@ var GnustoRunner = Object.subClass({
         var engine = window.engine = this.e = new GnustoEngine( function(msg) { console.log( msg ); } );
 
         this.io = new GlkIOClass( env, this );
-        
+        this.commentary = new CommentaryClass();
     },
 
     load: function ( data )
