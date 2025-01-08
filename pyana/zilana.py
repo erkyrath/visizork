@@ -45,6 +45,14 @@ class ZRoutine:
     def __repr__(self):
         return '<ZRoutine %s>' % (self.name,)
     
+class ZVerb:
+    def __init__(self, name):
+        self.name = name
+        self.vtoks = []
+
+    def __repr__(self):
+        return '<ZVerb %s>' % (self.name,)
+    
 def markcomments(ls):
     def setcomment(tok):
         tok.comment = True
@@ -127,6 +135,8 @@ class Zcode:
         self.routines = []
         self.objects = []
         self.roomnames = []
+        self.verbs = []
+        self.verbmap = {}
 
     def build(self):
         self.findall()
@@ -188,6 +198,22 @@ class Zcode:
                     self.objects.append(ZObject(idtok.val, flag, desc, desctok, tok))
                     if isroom:
                         self.roomnames.append(idtok.val)
+            if tok.matchform('SYNTAX', 3):
+                eqpos = None
+                for ix in range(len(tok.children)):
+                    if tok.children[ix].idmatch('='):
+                        eqpos = ix
+                        break
+                if eqpos:
+                    verbtok = tok.children[eqpos+1]
+                    if verbtok.idmatch(lambda val: val.startswith('V-')):
+                        verb = self.verbmap.get(verbtok.val)
+                        if not verb:
+                            verb = ZVerb(verbtok.val)
+                            self.verbs.append(verb)
+                            self.verbmap[verbtok.val] = verb
+                        verb.vtoks.append(tok)
+                        
 
     def findstringsintok(self, tok):
         for stok in tok.children:
