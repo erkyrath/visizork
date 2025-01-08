@@ -122,6 +122,23 @@ body {
     pointer-events: auto;
 }
 
+#commentarypane {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    width: 75%;
+    max-width: 400px;
+    background: #B0FFB0;
+    box-sizing: border-box;
+    border: 3px solid #40D040;
+    border-radius: 16px;
+    box-shadow: 4px 4px 12px 2px #00000040;
+}
+
+#commentarypane p {
+    margin: 10px 10px;
+}
+
 .ViewPane {
     position: absolute;
     width: 100%;
