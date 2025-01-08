@@ -36,7 +36,7 @@ def colorize(tokls, res):
         if tok.typ is TokType.ID:
             if tok.val in linkids:
                 stanzatok = linkids[tok.val]
-                if tokIN(tok, stanzatok):
+                if stanzatok and tokIN(tok, stanzatok):
                     res.append( (tok, Color.IDDEF) )
                 else:
                     res.append( (tok, Color.ID) )

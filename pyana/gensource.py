@@ -18,7 +18,7 @@ def write_source(filename):
     fl = open(filename, 'w')
     fl.write('window.gamedat_sourcefiles = ');
     json.dump(map, fl, separators=(',', ':'))
-    fl.write('\n')
+    fl.write(';\n')
     fl.close()
     
 def write_source_colored(filename, zcode):
@@ -40,6 +40,6 @@ def write_source_colored(filename, zcode):
     fl = open(filename, 'w')
     fl.write('window.gamedat_sourcefiles = ');
     json.dump(map, fl, separators=(',', ':'))
-    fl.write('\n')
+    fl.write(';\n')
     fl.close()
     
