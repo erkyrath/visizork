@@ -5,6 +5,7 @@ import { gamedat_ids, gamedat_object_ids, gamedat_routine_names } from './gameda
 import { ZObject } from './zstate';
 
 import { ReactCtx } from './context';
+import { ObjPageLink } from './widgets';
 
 export function AboutPage()
 {
@@ -107,11 +108,15 @@ export function AboutPage()
                     {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'globals') }>State</a>{' '}
                     shows the state of the world &#x2014; the 158 global variables
                     at least. (Objects have property variables
-                    as well, which you can view from the World tab.)
+                    as well, which you can view separately.)
                 </p>
                 <p>
                     Click on any function, object, or variable to see its
-                    definition in the source code.
+                    definition in the source code. Click on an object's
+                    {' '}<ObjPageLink onum={ 4 } /> button
+                    to see its current state and place in the world.
+                    (This will initially match the source code, but
+                    may change as you interact with the game!)
                 </p>
                 <h2>Which Zork is this?</h2>
                 <p>
