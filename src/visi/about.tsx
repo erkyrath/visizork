@@ -116,7 +116,7 @@ export function AboutPage()
                     {' '}<ObjPageLink onum={ 4 } /> button
                     to see its current state and place in the world.
                     (This will initially match the source code, but
-                    may change as you interact with the game!)
+                    may change as you interact with the game.)
                 </p>
                 <p>
                     <Commentary topic={ 'ABOUT' } />
@@ -146,7 +146,7 @@ export function AboutPage()
                 </p>
                 <p>
                     The common library (the files &#x201C;gverbs.zil&#x201D;,
-                    &#x201C;gparser.zil&#x201D;, etc) did contain bits of
+                    &#x201C;gparser.zil&#x201D;, etc) do contain bits of
                     code specific to each of the three games. (For example,
                     the game title banners printed in{' '}
                     <code><a className="Internal" href="#" onClick={ (ev)=>evhan_click_routine(ev, 'V-VERSION') }>V-VERSION</a></code>.)
