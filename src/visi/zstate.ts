@@ -44,6 +44,7 @@ export type ZState = {
     strings: number[];
     calltree: ZStackItem;
     proptable: Uint8Array;
+    timertable: Uint8Array;
 };
 
 export type ZProp = {
@@ -102,6 +103,7 @@ export function zstateplus_empty() : ZStatePlus
         strings: [],
         calltree: { type:'call', addr:0, children:[] },
         proptable: new Uint8Array(),
+        timertable: new Uint8Array(),
 
         origglobals: [],
         origprops: new Map(),
