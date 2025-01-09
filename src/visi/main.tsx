@@ -5,6 +5,7 @@ import { Root, createRoot } from 'react-dom/client';
 
 import { ZStatePlus, get_updated_report } from './zstate';
 import { GnustoRunner, GnustoEngine } from './zstate';
+import { set_runner, show_commentary } from './combuild';
 import { gamedat_ids, gamedat_object_ids, sourceloc_start } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
@@ -30,6 +31,8 @@ export function init(runnerref: any)
 {
     runner = runnerref;
     engine = runner.e;
+
+    set_runner(runner);
 
     engine.prepare_vm_report({
         MAX_OBJECTS: gamedat_ids.MAX_OBJECTS,
@@ -86,10 +89,6 @@ function VisiZorkApp()
         }
     }
 
-    function showCommentary(topic: string) {
-        console.log('### commentary', topic);
-    }
-
     useEffect(() => {
         function evhan(ev: Event) {
             setZState(get_updated_report(engine));
@@ -116,7 +115,7 @@ function VisiZorkApp()
         sourcelocpos: sourcelocpos,
         setLoc: setLoc,
         shiftLoc: shiftLoc,
-        showCommentary: showCommentary,
+        showCommentary: show_commentary,
     };
 
     let menuel = document.getElementById('appcontrols');

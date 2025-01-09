@@ -4,6 +4,7 @@ import { gamedat_object_ids, gamedat_ids } from './gamedat';
    bit used by VisiZorkApp. */
 export type GnustoRunner = {
     e: GnustoEngine;
+    commentary: any; //###
 };
 
 /* Highly abbreviated typedef for GnustoEngine. */

@@ -147,6 +147,12 @@ interface SourceLinesMap {
     [key: string]: SourceLine[];
 };
 
+export type CommentarySpan = string | string[];
+
+interface CommentaryMap {
+    [key: string]: CommentarySpan[];
+};
+
 export const gamedat_ids = (window as any).gamedat_ids;
 
 export const gamedat_property_nums = (window as any).gamedat_property_nums as Map<number, PropertyData>;
@@ -165,3 +171,4 @@ export const gamedat_routine_names = (window as any).gamedat_routine_names as Ma
 export const gamedat_verbs = (window as any).gamedat_verbs as string[];
 export const gamedat_sourcefiles = (window as any).gamedat_sourcefiles as SourceLinesMap;
 export const gamedat_distances = (window as any).gamedat_distances as AllDistanceMap;
+export const gamedat_commentary = (window as any).gamedat_commentary as CommentaryMap;
