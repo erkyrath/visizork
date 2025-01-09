@@ -76,6 +76,7 @@ window.gamedat_ids = {};
     gamedat_ids.MAX_GLOBALS = 158;
     gamedat_ids.PROP_TABLE_START = 0x0BB8;
     gamedat_ids.PROP_TABLE_END = 0x2270;
+    gamedat_ids.C_TABLE_LEN = 180;
 
     gamedat_ids.ROOMS = gamedat_object_names.get('ROOMS').onum;
     gamedat_ids.GLOBAL_OBJECTS = gamedat_object_names.get('GLOBAL-OBJECTS').onum;

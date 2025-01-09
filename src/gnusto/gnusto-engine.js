@@ -2298,6 +2298,9 @@ GnustoEngine.prototype = {
             gnum++;
         }
 
+        var ctableaddr = report.globals[m_report_info.C_TABLE_GLOB];
+        report.timertable = this.m_memory.slice(ctableaddr, ctableaddr+m_report_info.C_TABLE_LEN);
+
         var initpc = this.getUnsignedWord(0x6) - 1;
         var calltree = { type:'call', addr:initpc, children:[] };
         var stack = [ calltree ];
