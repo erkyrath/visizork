@@ -192,6 +192,9 @@ export function AboutPage()
                     <a target="_blank" href="https://ifarchive.org/indexes/if-archive/infocom/tools/reform/">Infocom analysis work</a>
                     {' '}done in 2007 by Allen Garvin, Ben Rudiak-Gould,
                     and Ethan Dicks.
+                    Allen Garvin's{' '}
+                    <a target="_blank" href="http://plover.net/~agarvin/zork1.txt">translation into Inform 6 syntax</a>
+                    {' '} was also helpful.
                 </p>
                 <p>
                     The fonts used are Courier Prime, Lato, and
