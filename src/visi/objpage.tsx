@@ -3,7 +3,7 @@ import { useState, useMemo, useContext } from 'react';
 
 import { ZObject, ZProp, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
-import { unpack_address, gamedat_string_map, gamedat_routine_addrs, gamedat_property_nums, gamedat_attribute_nums, gamedat_global_nums } from './gamedat';
+import { unpack_address, signed_zvalue, gamedat_string_map, gamedat_routine_addrs, gamedat_property_nums, gamedat_attribute_nums, gamedat_global_nums } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -308,7 +308,7 @@ function IntProp({ values } : { values:number[] })
         return BytesProp({ values });
 
     let val = values[0] * 0x100 + values[1];
-    return (<span>{ val }</span>);
+    return (<span>{ signed_zvalue(val) }</span>);
 }
 
 function AdjsProp({ values } : { values:number[] })

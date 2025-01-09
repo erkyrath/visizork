@@ -4,6 +4,11 @@ export function unpack_address(val: number) : number
     return val * 2;
 }
 
+export function signed_zvalue(val: number) : number
+{
+    return (val < 32768) ? val : (val - 65536);
+}
+
 export type SourceLoc = {
     filekey: string;
     line: number;
