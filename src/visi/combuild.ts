@@ -38,8 +38,12 @@ function build_commentary(topic: string) : Node|undefined
             token = id;
         
         console.log('###', cla, typ, id);
-        //### send event...
-        if (cla == 'loccom')
+        if (typ) {
+            let dat = { idtype:typ, id:id };
+            window.dispatchEvent(new CustomEvent('zil-source-location', { detail:dat }));
+        }
+        //### reverse default?
+        if (cla == 'loccom' || !typ)
             show_commentary(token);
     }
     
@@ -67,6 +71,13 @@ function build_commentary(topic: string) : Node|undefined
             
         case 'code': {
             let el = document.createElement('code');
+            el.appendChild(document.createTextNode(span[1]));
+            pel.appendChild(el);
+            break;
+        }
+            
+        case 'emph': {
+            let el = document.createElement('em');
             el.appendChild(document.createTextNode(span[1]));
             pel.appendChild(el);
             break;

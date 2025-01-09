@@ -90,12 +90,17 @@ function VisiZorkApp()
     }
 
     useEffect(() => {
-        function evhan(ev: Event) {
+        function evhan_zstate(ev: Event) {
             setZState(get_updated_report(engine));
         };
-        window.addEventListener('zmachine-update', evhan);
+        function evhan_sourceloc(ev: Event) {
+            console.log('### sourceloc', (ev as CustomEvent).detail);
+        }
+        window.addEventListener('zmachine-update', evhan_zstate);
+        window.addEventListener('zil-source-location', evhan_sourceloc);
         return () => {
-            window.removeEventListener('zmachine-update', evhan);
+            window.removeEventListener('zmachine-update', evhan_zstate);
+            window.removeEventListener('zil-source-location', evhan_sourceloc);
         };
     }, []);
 
