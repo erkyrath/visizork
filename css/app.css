@@ -149,10 +149,6 @@ body {
     pointer-events: none;
 }
 
-#commentarycontent p {
-    margin: 12px 16px;
-}
-
 .ViewPane {
     position: absolute;
     width: 100%;
@@ -330,6 +326,17 @@ body {
 }
 .AboutPage code {
     font-size: 90%
+}
+
+.Commentary {
+    font-style: italic;
+}
+.Commentary em {
+    font-style: normal;
+}
+
+.Commentary p {
+    margin: 16px 20px;
 }
 
 .Commentary code {
