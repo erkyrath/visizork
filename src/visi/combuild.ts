@@ -38,12 +38,13 @@ function build_commentary(topic: string) : Node|undefined
             token = id;
         
         console.log('###', cla, typ, id);
-        if (typ) {
-            let dat = { idtype:typ, id:id };
-            window.dispatchEvent(new CustomEvent('zil-source-location', { detail:dat }));
+        if (cla == 'src' || cla == 'comsrc') {
+            if (typ) {
+                let dat = { idtype:typ, id:id };
+                window.dispatchEvent(new CustomEvent('zil-source-location', { detail:dat }));
+            }
         }
-        //### reverse default?
-        if (cla == 'loccom' || !typ)
+        if (cla == 'com' || cla == 'comsrc')
             show_commentary(token);
     }
     
@@ -84,24 +85,34 @@ function build_commentary(topic: string) : Node|undefined
         }
             
         case 'extlink': {
+            let [ __, url, label ] = span;
+            if (!label.length)
+                label = url;
             let el = document.createElement('a');
             el.className = 'External';
             el.setAttribute('target', '_blank');
-            el.setAttribute('href', span[2]);
-            el.appendChild(document.createTextNode(span[1]));
+            el.setAttribute('href', url);
+            el.appendChild(document.createTextNode(label));
             pel.appendChild(el);
             break;
         }
             
-        case 'loc':
-        case 'loccom': {
-            let id = span[1];
-            let typ = span[2];
+        case 'com':
+        case 'src':
+        case 'comsrc': {
+            let [ __, id, idtyp, label ] = span;
+            if (!label.length)
+                label = id;
+            // This is a hack, yeah
+            let isid = (label == label.toUpperCase());
             let el = document.createElement('a');
-            el.className = 'Internal Com_Id';
+            let cla = (key == 'src' ? 'SourceOnly' : 'Internal');
+            if (isid)
+                cla += ' Com_Id';
+            el.className = cla;
             el.setAttribute('href', '#');
-            el.addEventListener('click', (ev) => { ev.preventDefault(); evhan_click(key, typ, id); });
-            el.appendChild(document.createTextNode(id));
+            el.addEventListener('click', (ev) => { ev.preventDefault(); evhan_click(key, idtyp, id); });
+            el.appendChild(document.createTextNode(label));
             pel.appendChild(el);
             break;
         }
