@@ -184,8 +184,14 @@ def write_routines(filename, zcode, txdat):
 def write_globals(filename, zcode):
     print('...writing globals data:', filename)
     load_gameinfo()
+    found = set()
     ls = []
     for glo in zcode.globals:
+        if glo.name in found:
+            # Annoyingly, WON-FLAG and LUCKY appear twice.
+            # TODO: record two sourcelocs?
+            continue
+        found.add(glo.name)
         if glo.name not in globname_to_num:
             raise Exception('missing global ' + glo.name)
         dat = {
