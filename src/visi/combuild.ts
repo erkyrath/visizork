@@ -10,14 +10,13 @@ export function set_runner(runnerref: GnustoRunner)
 
 export function show_commentary(topic: string)
 {
-    topic = 'OBJ:ADVENTURER'; //###
     console.log('### commentary', topic);
 
     let nod = build_commentary(topic);
 
     if (!runner) {
-	console.log('BUG: runner not set');
-	return;
+        console.log('BUG: runner not set');
+        return;
     }
     
     runner.commentary.show(nod);
@@ -26,8 +25,23 @@ export function show_commentary(topic: string)
 function build_commentary(topic: string) : Node|undefined
 {
     let spec = gamedat_commentary[topic];
-    if (!spec)
+    if (!spec) {
+        console.log('BUG: missing topic', topic);
         return undefined;
+    }
+
+    function evhan_click(cla: string, typ: string, id: string) {
+        let token;
+        if (typ)
+            token = typ+':'+id;
+        else
+            token = id;
+        
+        console.log('###', cla, typ, id);
+        //### send event...
+        if (cla == 'loccom')
+            show_commentary(token);
+    }
     
     let parel = document.createElement('div');
     parel.className = 'Commentary';
@@ -70,10 +84,13 @@ function build_commentary(topic: string) : Node|undefined
             
         case 'loc':
         case 'loccom': {
+            let id = span[1];
+            let typ = span[2];
             let el = document.createElement('a');
             el.className = 'Internal Com_Id';
             el.setAttribute('href', '#');
-            el.appendChild(document.createTextNode(span[1]));
+            el.addEventListener('click', (ev) => { ev.preventDefault(); evhan_click(key, typ, id); });
+            el.appendChild(document.createTextNode(id));
             pel.appendChild(el);
             break;
         }
