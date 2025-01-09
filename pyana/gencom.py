@@ -19,6 +19,7 @@ class Entry:
         self.token = token
         self.linenum = linenum
         self.text = None
+        self.outls = None
 
         self.prefix, self.id = checktoken(token, linenum=linenum)
 
@@ -44,11 +45,11 @@ class Entry:
         while pos < len(text):
             match = self.PAT_MARK.search(text, pos)
             if not match:
-                res.append(['', text[ pos : ]])
+                res.append(text[ pos : ])
                 break
             newpos = match.start()
             if newpos > pos:
-                res.append(['', text[ pos : newpos ]])
+                res.append(text[ pos : newpos ])
                 pos = newpos
             
             ch = match.group()
@@ -79,7 +80,7 @@ class Entry:
                 res.append([cla, val])
             pos = newpos+1
 
-        return res
+        self.outls = res
 
     def linkify(self, val):
         if '|' in val:
@@ -147,6 +148,14 @@ def parse(filename):
                 
     return entries
 
+def dump(entries, filename):
+    map = dict([ (entry.token, entry.outls) for entry in entries ])
+    fl = open(filename, 'w')
+    fl.write('window.gamedat_commentary = ');
+    json.dump(map, fl, separators=(',', ':'))
+    fl.write(';\n')
+    fl.close()
+
 routines = loadjsonp('src/game/routines.js')
 globals = loadjsonp('src/game/globals.js')
 objects = loadjsonp('src/game/objects.js')
@@ -158,7 +167,6 @@ objectnames = set([ obj['name'] for obj in objects ])
 entries = parse(sys.argv[1])
 
 for ent in entries:
-    ls = ent.build()
-    print(ent, ls)
+    ent.build()
     
-    
+dump(entries, 'src/game/commentary.js')
