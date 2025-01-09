@@ -6,7 +6,7 @@ import { Root, createRoot } from 'react-dom/client';
 import { ZStatePlus, get_updated_report } from './zstate';
 import { GnustoRunner, GnustoEngine } from './zstate';
 import { set_runner, show_commentary } from './combuild';
-import { gamedat_ids, gamedat_object_ids, sourceloc_start, find_sourceloc_for_id } from './gamedat';
+import { gamedat_ids, gamedat_global_names, gamedat_object_ids, sourceloc_start, find_sourceloc_for_id } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
 import { SourceLocState, new_sourcelocstate } from './context';
@@ -40,6 +40,8 @@ export function init(runnerref: any)
         MAX_GLOBALS: gamedat_ids.MAX_GLOBALS,
         PROP_TABLE_START: gamedat_ids.PROP_TABLE_START,
         PROP_TABLE_END: gamedat_ids.PROP_TABLE_END,
+        C_TABLE_LEN: gamedat_ids.C_TABLE_LEN,
+        C_TABLE_GLOB: gamedat_global_names.get('C-TABLE')!.num,
     });
     
     const appel = document.getElementById('appbody') as HTMLElement;
