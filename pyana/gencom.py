@@ -84,26 +84,37 @@ class Entry:
 
     def linkify(self, val):
         if '|' in val:
-            text, _, url = val.partition('|')
-            text = text.strip()
-            url = url.strip()
-            if not url.startswith('http'):
-                raise Exception('url link looks wrong: ' + val)
-            return ['extlink', text, url]
+            label, _, dest = val.partition('|')
+            label = label.strip()
+            dest = dest.strip()
+        else:
+            label = None
+            dest = val.strip()
+
+        if dest.startswith('http:') or dest.startswith('https:'):
+            return ['extlink', dest, (label or '') ]
         
-        val = val.strip().upper()
+        dest = dest.upper()
 
-        ###
-        cla = 'loc'
-        if val.startswith('*'):
-            cla = 'loccom'
-            val = val[ 1 : ].strip()
-        elif val.startswith('~'):
-            cla = 'loc'
-            val = val[ 1 : ].strip()
+        use = None
+        if dest.startswith('*'):
+            use = 'locsrc'
+            dest = dest[ 1 : ].strip()
+        elif dest.startswith('~'):
+            use = 'loc'
+            dest = dest[ 1 : ].strip()
+        # defaults to locsrc
 
-        prefix, id = checktoken(val, linenum=self.linenum) 
-        return [ cla, id, (prefix or '') ]
+        prefix, id = checktoken(dest, linenum=self.linenum)
+
+        if not prefix:
+            cla = 'com'
+        elif use == 'loc':
+            cla = 'src'
+        else:
+            cla = 'comsrc'
+        
+        return [ cla, id, (prefix or ''), (label or '') ]
 
 def checktoken(token, linenum=None):
     if ':' in token:
