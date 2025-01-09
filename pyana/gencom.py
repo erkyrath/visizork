@@ -98,8 +98,8 @@ class Entry:
             cla = 'loccom'
             val = val[ 1 : ].strip()
 
-        checktoken(val, linenum=self.linenum) 
-        return [ cla, val ]
+        prefix, id = checktoken(val, linenum=self.linenum) 
+        return [ cla, id, (prefix or '') ]
 
 def checktoken(token, linenum=None):
     if ':' in token:
