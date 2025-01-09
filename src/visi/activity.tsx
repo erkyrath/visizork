@@ -139,7 +139,7 @@ export function StackCall({ call }: { call:ZStackCall })
             </li>
             { (subls.length ?
                <ul className="DataList">
-                   { (iscollapse ? <li>...</li> : subls) }
+                   { (iscollapse ? <li><code>&lt;...&gt;</code></li> : subls) }
                </ul>
                : null ) }
         </>
