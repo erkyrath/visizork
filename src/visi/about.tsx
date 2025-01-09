@@ -106,9 +106,9 @@ export function AboutPage()
                     shows the functions called in
                     the most recent turn, and what they printed.
                     {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'globals') }>State</a>{' '}
-                    shows the state of the world &#x2014; the 158 global variables
-                    at least. (Objects have property variables
-                    as well, which you can view separately.)
+                    shows all the game's global variables.
+                    {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'timers') }>Timers</a>{' '}
+                    shows the table of timed events.
                 </p>
                 <p>
                     Click on any function, object, or variable to see its
