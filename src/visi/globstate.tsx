@@ -2,8 +2,8 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject } from './zstate';
-import { gamedat_global_nums, gamedat_globals_sorted, gamedat_object_ids, gamedat_string_map, gamedat_verbs } from './gamedat';
-import { unpack_address } from './gamedat';
+import { gamedat_global_nums, gamedat_globals_sort_index, gamedat_globals_sort_alpha, gamedat_object_ids, gamedat_string_map, gamedat_verbs } from './gamedat';
+import { GlobalData, unpack_address } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -31,16 +31,29 @@ export function GlobalState()
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
 
+    let sortglobs: GlobalData[];
+    if (sort == 'recent') {
+        let updatetimes = zstate.globalsupdate;
+        sortglobs = [ ...gamedat_globals_sort_index ];
+        sortglobs.sort((g1, g2) => {
+            let up2 = updatetimes[g2.num];
+            let up1 = updatetimes[g1.num];
+            if (up2 != up1)
+                return (up2 - up1);
+            return g1.num - g2.num;
+        });
+    }
+    else if (sort == 'alpha') {
+        sortglobs = gamedat_globals_sort_alpha;
+    }
+    else {
+        sortglobs = gamedat_globals_sort_index;
+    }
+
     let counter = 0;
     let globls = [];
     while (counter < zstate.globals.length) {
-        let index;
-        if (sort == 'alpha') {
-            index = gamedat_globals_sorted[counter].num;
-        }
-        else {
-            index = counter;
-        }
+        let index = sortglobs[counter].num;
         globls.push(<GlobalVar key={ index } index={ index } value={ zstate.globals[index] } origvalue={ zstate.origglobals[index] } />);
         counter++;
     }
@@ -63,6 +76,8 @@ export function GlobalState()
                     <label htmlFor="sortaddr_radio">Address</label>{' '}
                     <input id="sortalpha_radio" type="radio" name="sort" value="alpha" checked={ sort=='alpha' } onChange={ (ev) => evhan_sort_change('alpha') } />
                     <label htmlFor="sortalpha_radio">Alpha</label>
+                    <input id="sortrecent_radio" type="radio" name="sort" value="recent" checked={ sort=='recent' } onChange={ (ev) => evhan_sort_change('recent') } />
+                    <label htmlFor="sortrecent_radio">Recent</label>
                 </div>
                 { (rctx.shownumbers ?
                    <div>
