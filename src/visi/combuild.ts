@@ -68,7 +68,8 @@ function build_commentary(topic: string) : Node|undefined
             break;
         }
             
-        case 'loc': {
+        case 'loc':
+        case 'loccom': {
             let el = document.createElement('a');
             el.className = 'Internal Com_Id';
             el.setAttribute('href', '#');
