@@ -156,6 +156,8 @@ def dump(entries, filename):
     fl.write(';\n')
     fl.close()
 
+    ### and source-file-specific sets
+
 routines = loadjsonp('src/game/routines.js')
 globals = loadjsonp('src/game/globals.js')
 objects = loadjsonp('src/game/objects.js')
@@ -168,5 +170,7 @@ entries = parse(sys.argv[1])
 
 for ent in entries:
     ent.build()
+
+### safety checks: All com-trigger links go to existing topics. All source-trigger links have prefixes.
     
 dump(entries, 'src/game/commentary.js')
