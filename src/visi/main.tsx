@@ -13,6 +13,7 @@ import { SourceLocState, new_sourcelocstate } from './context';
 import { AppMenu } from './menu';
 import { ObjectTree } from './objtree';
 import { ObjectPage } from './objpage';
+import { TimerTable } from './timers';
 import { CallActivity } from './activity';
 import { SourceFileList } from './filelist';
 import { SourceView } from './sourceview';
@@ -146,6 +147,7 @@ const tab_list = [
     [ 'objtree', 'World' ],
     [ 'activity', 'Activity' ],
     [ 'globals', 'State' ],
+    [ 'timers', 'Timers' ],
     [ 'filelist', 'Files' ],
     [ 'about', '?' ],
 ];
@@ -185,6 +187,9 @@ function TabbedPane()
     case 'globals':
         tabcontent = <GlobalState />;
         break;
+    case 'timers':
+        tabcontent = <TimerTable />;
+        break;
     case 'filelist':
         tabcontent = <SourceFileList />;
         break;
@@ -192,7 +197,7 @@ function TabbedPane()
         tabcontent = <AboutPage />;
         break;
     default:
-        tabcontent = <></>;
+        tabcontent = <>{ rctx.tab } not implemented</>;
         break;
     }
     
