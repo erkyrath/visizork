@@ -3,7 +3,7 @@
 ABOUT: Welcome to the commentary track!
 
 objtree-legend: In this list, `Rooms` are rooms and `Items` are regular items. (Sometimes portable, sometimes not.)
-	`Scen` indicates scenery objects. These exist in multiple places; for example, the [obj:WHITE-HOUSE] is visible from many outdoor locations.
+	`Scen` indicates scenery objects. These exist in multiple places; for example, the [obj:WHITE-HOUSE] is visible from many outdoor locations. Sometimes as "You can't see that from here", but it's the same object.
 	`Glob` indicates a global object, which is *always* visible, or at least mentionable. For example, [obj:GRUE] is global – not because grues are always present, but so you can always ask `WHAT IS A GRUE`.
 
 obj:adventurer: Yes, the player’s printed name is “cretin”, although the game rarely says so. (The death message for `BURN BOOK` mentions it too.) This sort of sarcastic insult hasn’t aged too well, but MIT culture had a lot of it. Compare [*glob:WINNER], and also the old MIT [Jargon File|https://jargon-file.org/archive/jargon-1.0.0.33.dos.txt].
@@ -12,17 +12,33 @@ obj:adventurer: Yes, the player’s printed name is “cretin”, although the g
 obj:me: A global object which is always in scope. Commands referring to `ME` hit this, rather than [*obj:ADVENTURER], which is a stub that moves around the map.
 	Because of this, parser messages mostly refer to you as “you”, even though the `ADVENTURER`’s printed name is “cretin”. See [*obj:ADVENTURER].
 
-glob:player: `PLAYER` is always the [obj:ADVENTURER]. Compare [*glob:WINNER].
+glob:player: `PLAYER` is always the [~obj:ADVENTURER]. Compare [*glob:WINNER].
 
 glob:winner: `WINNER` is the actor in the current command. (Compare [*glob:PLAYER].) 
-	`WINNER` is usually [obj:ADVENTURER], but for a command like `ROBOT, GO EAST` it shifts to the named NPC. (But Zork 1 has no commandable NPCs, so this doesn’t come up.)
+	`WINNER` is usually [~obj:ADVENTURER], but for a command like `ROBOT, GO EAST` it shifts to the named NPC. (But Zork 1 has no commandable NPCs, so this doesn’t come up.)
 	“Winner” is just as sarcastic as “cretin”, but from the other side.
 ### [cretin|*obj:adventurer] ?
 
-glob:here: The location of the [glob:WINNER].
+glob:here: The location of the [*glob:WINNER].
 
-obj:songbird: The songbird is always present but never in reach. Except when using the [obj:CANARY], and even then the bird flies away before you can interact with it.
+glob:c-ints: Indicates how much of the timer table ([*glob:C-TABLE]) is used. This counts down from `C-TABLELEN`, which is 180.
+
+glob:c-table: The timer table. See the “Timers” tab for a current listing.
+
+timers-legend: A list of the timers running (or paused) in the timer table ([~glob:C-TABLE]). This list only expands as you play; timers can be added, started, and stopped, but not removed.
+	The [~rtn:I-LANTERN] and [~rtn:I-CANDLES] timers count down to the next dimming stage. Note that the candles politely don't start counting until you pick them up.
+	The [~rtn:I-THIEF] and [~rtn:I-SWORD] timers start at -1, meaning they run “forever”. (The sword runs when you are holding it; the thief runs until you kill him.) In fact they will probably stop working after 65535 turns, but in the ‘80s nobody cared!
+
+glob:c-demons: Indicates how much of the timer table is used for daemons. The difference between daemons and timers is that timers run every turn; daemons run every *input*, even if no turn passes. But Zork does not use daemons.
+
+glob:p-won: Set if the parser successfully parsed a command.
+
+glob:lamp-table: This table shows the successive stages of the lamp going out. The *first* stage is 200 turns, which is set in [~rtn:GO], not here.
+
+obj:songbird: The songbird is always present but never in reach. Except when using the [~obj:CANARY], and even then the bird flies away before you can interact with it.
 
 ### maze... for batteries
+
+### the fumble blog post
 
 
