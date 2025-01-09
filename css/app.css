@@ -350,6 +350,10 @@ body {
 .Commentary a.Internal {
     color: #A40;
 }
+.Commentary a.SourceOnly {
+    color: #A40;
+    text-decoration-style: dashed;
+}
 
 .Commentary .Com_Id {
     font-family: "Courier Prime";
