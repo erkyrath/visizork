@@ -2,6 +2,10 @@
 
 ABOUT: Welcome to the commentary track!
 
+objtree-legend: In this list, `Rooms` are rooms and `Items` are regular items. (Sometimes portable, sometimes not.)
+	`Scen` indicates scenery objects. These exist in multiple places; for example, the [obj:WHITE-HOUSE] is visible from many outdoor locations.
+	`Glob` indicates a global object, which is *always* visible, or at least mentionable. For example, [obj:GRUE] is global – not because grues are always present, but so you can always ask `WHAT IS A GRUE`.
+
 obj:adventurer: Yes, the player’s printed name is “cretin”, although the game rarely says so. (The death message for `BURN BOOK` mentions it too.) This sort of sarcastic insult hasn’t aged too well, but MIT culture had a lot of it. Compare [*glob:WINNER], and also the old MIT [Jargon File|https://jargon-file.org/archive/jargon-1.0.0.33.dos.txt].
 	Note that if you refer to `ME` (or `CRETIN`), you get the [*obj:ME] global object, not the `ADVENTURER`.
 
@@ -10,9 +14,10 @@ obj:me: A global object which is always in scope. Commands referring to `ME` hit
 
 glob:player: `PLAYER` is always the [obj:ADVENTURER]. Compare [*glob:WINNER].
 
-glob:winner: `WINNER` is the actor in the current command. (Compare [glob:PLAYER].) 
+glob:winner: `WINNER` is the actor in the current command. (Compare [*glob:PLAYER].) 
 	`WINNER` is usually [obj:ADVENTURER], but for a command like `ROBOT, GO EAST` it shifts to the named NPC. (But Zork 1 has no commandable NPCs, so this doesn’t come up.)
 	“Winner” is just as sarcastic as “cretin”, but from the other side.
+### [cretin|*obj:adventurer] ?
 
 glob:here: The location of the [glob:WINNER].
 
