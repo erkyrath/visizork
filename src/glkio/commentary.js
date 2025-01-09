@@ -5,14 +5,15 @@ var CommentaryClass = function() {
     let visible = false; // or will be when the current animation completes
     let animating = false;
 
-    function show(text)
+    function show(node)
     {
-        if (!text || !text.length) {
+        if (!node) {
             closepane();
             return;
         }
 
-        $('#commentarycontent').text(text);
+        $('#commentarycontent').empty();
+        $('#commentarycontent').get(0).appendChild(node);
         
         openpane();
     }
@@ -76,7 +77,7 @@ var CommentaryClass = function() {
             },
         })
     }
-    
+
     $('#commentaryclose').on('click', (ev) => {
         ev.preventDefault();
         ev.stopPropagation();
