@@ -6,7 +6,7 @@ import { Root, createRoot } from 'react-dom/client';
 import { ZStatePlus, get_updated_report } from './zstate';
 import { GnustoRunner, GnustoEngine } from './zstate';
 import { set_runner, show_commentary } from './combuild';
-import { gamedat_ids, gamedat_object_ids, sourceloc_start } from './gamedat';
+import { gamedat_ids, gamedat_object_ids, sourceloc_start, find_sourceloc_for_id } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
 import { SourceLocState, new_sourcelocstate } from './context';
@@ -94,7 +94,11 @@ function VisiZorkApp()
             setZState(get_updated_report(engine));
         };
         function evhan_sourceloc(ev: Event) {
-            console.log('### sourceloc', (ev as CustomEvent).detail);
+            let detail = (ev as CustomEvent).detail;
+            console.log('### sourceloc', detail);
+            let sourceloc = find_sourceloc_for_id(detail.idtype, detail.id);
+            if (sourceloc)
+                setLoc(sourceloc, (detail.idtype == 'GLOB'));
         }
         window.addEventListener('zmachine-update', evhan_zstate);
         window.addEventListener('zil-source-location', evhan_sourceloc);

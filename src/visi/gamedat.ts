@@ -22,6 +22,29 @@ export function sourceloc_for_key(filekey: string) : string
     return filekey + ':1:1:1:0';
 }
 
+export function find_sourceloc_for_id(idtype: string, id:string) : string|undefined
+{
+    switch (idtype) {
+    case 'OBJ':
+        let obj = gamedat_object_names.get(id);
+        if (obj)
+            return obj.sourceloc;
+        break;
+    case 'RTN':
+        let rtn = gamedat_routine_names.get(id);
+        if (rtn)
+            return rtn.sourceloc;
+        break;
+    case 'GLOB':
+        let glob = gamedat_global_names.get(id);
+        if (glob)
+            return glob.sourceloc;
+        break;
+    }
+
+    return undefined;
+}
+
 export function parse_sourceloc(val: string) : SourceLoc|undefined
 {
     if (!val.length)
