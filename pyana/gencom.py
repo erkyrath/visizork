@@ -20,7 +20,7 @@ class Entry:
         self.linenum = linenum
         self.text = None
 
-        self.prefix, self.id = checktoken(token)
+        self.prefix, self.id = checktoken(token, linenum=linenum)
 
     def __repr__(self):
         return '<Entry %s>' % (self.token,)
@@ -97,17 +97,29 @@ class Entry:
             cla = 'loccom'
             val = val[ 1 : ].strip()
 
-        checktoken(val) 
+        checktoken(val, linenum=self.linenum) 
         return [ cla, val ]
 
-def checktoken(token):
+def checktoken(token, linenum=None):
     if ':' in token:
         prefix, _, id = token.partition(':')
     else:
         prefix = None
         id = token
-    if prefix not in (None, 'OBJ', 'GLOB'):
-        raise Exception('invalid prefix: %s' % (token,))
+        
+    if prefix not in (None, 'OBJ', 'GLOB', 'RTN'):
+        raise Exception('invalid prefix %s: line %s' % (token, linenum))
+    
+    if prefix == 'OBJ':
+        if id not in objectnames:
+            raise Exception('invalid OBJ %s: line %s' % (id, linenum))
+    if prefix == 'GLOB':
+        if id not in globalnames:
+            raise Exception('invalid GLOB %s: line %s' % (id, linenum))
+    if prefix == 'RTN':
+        if id not in routinenames:
+            raise Exception('invalid RTN %s: line %s' % (id, linenum))
+        
     return prefix, id
 
 def parse(filename):
@@ -138,6 +150,10 @@ def parse(filename):
 routines = loadjsonp('src/game/routines.js')
 globals = loadjsonp('src/game/globals.js')
 objects = loadjsonp('src/game/objects.js')
+
+routinenames = set([ obj['name'] for obj in routines ])
+globalnames = set([ obj['name'] for obj in globals ])
+objectnames = set([ obj['name'] for obj in objects ])
 
 entries = parse(sys.argv[1])
 
