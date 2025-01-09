@@ -471,6 +471,14 @@ button.CommentButton img {
     text-decoration-color: #B00;
 }
 
+.TimerActive {
+    font-size: 130%;
+}
+.TimerInactive {
+    font-size: 130%;
+    color: #AAA;
+}
+
 #scrollcontent_file.ScrollContent {
     padding-left: 8px;
 }
