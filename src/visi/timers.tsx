@@ -4,6 +4,7 @@ import { useState, useContext, createContext } from 'react';
 import { gamedat_global_names, gamedat_routine_addrs, unpack_address, signed_zvalue } from './gamedat';
 
 import { ReactCtx } from './context';
+import { ObjPageLink, Commentary } from './widgets';
 
 export function TimerTable()
 {
@@ -51,6 +52,7 @@ export function TimerTable()
 
     return (
         <div className="ScrollContent">
+            <Commentary topic={ 'TIMERS-LEGEND' } />
             <ul className="DataList">
                 { ells }
             </ul>
