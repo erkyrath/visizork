@@ -193,6 +193,9 @@ var GnustoRunner = Object.subClass({
             ui.status = [];
         }
 
+        // We close the commentary pane on each input.
+        this.commentary.hide();
+
         // Notify listeners that the game state has changed
         window.dispatchEvent(new Event('zmachine-update'));
         
