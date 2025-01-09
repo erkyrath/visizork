@@ -2,13 +2,13 @@
 
 ABOUT: Welcome to the commentary track!
 
-obj:adventurer: Yes, the player’s printed name is “cretin”, although the game rarely says so. (The death message for `BURN BOOK` mentions it too.) This sort of sarcastic insult hasn’t aged too well, but MIT culture had a lot of it. Compare [glob:WINNER], and also the old MIT [Jargon File|https://jargon-file.org/archive/jargon-1.0.0.33.dos.txt].
-	Note that if you refer to `ME` (or `CRETIN`), you get the [obj:ME] global object, not the `ADVENTURER`.
+obj:adventurer: Yes, the player’s printed name is “cretin”, although the game rarely says so. (The death message for `BURN BOOK` mentions it too.) This sort of sarcastic insult hasn’t aged too well, but MIT culture had a lot of it. Compare [*glob:WINNER], and also the old MIT [Jargon File|https://jargon-file.org/archive/jargon-1.0.0.33.dos.txt].
+	Note that if you refer to `ME` (or `CRETIN`), you get the [*obj:ME] global object, not the `ADVENTURER`.
 
-obj:me: A global object which is always in scope. Commands referring to `ME` hit this, rather than [obj:ADVENTURER], which is a stub that moves around the map.
+obj:me: A global object which is always in scope. Commands referring to `ME` hit this, rather than [*obj:ADVENTURER], which is a stub that moves around the map.
 	Because of this, parser messages mostly refer to you as “you”, even though the `ADVENTURER`’s printed name is “cretin”. See [*obj:ADVENTURER].
 
-glob:player: `PLAYER` is always the [obj:ADVENTURER]. Compare [glob:WINNER].
+glob:player: `PLAYER` is always the [obj:ADVENTURER]. Compare [*glob:WINNER].
 
 glob:winner: `WINNER` is the actor in the current command. (Compare [glob:PLAYER].) 
 	`WINNER` is usually [obj:ADVENTURER], but for a command like `ROBOT, GO EAST` it shifts to the named NPC. (But Zork 1 has no commandable NPCs, so this doesn’t come up.)
