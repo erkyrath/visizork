@@ -6,7 +6,7 @@ import { gamedat_ids } from './gamedat';
 import { ZObject } from './zstate';
 
 import { ReactCtx } from './context';
-import { ObjPageLink } from './widgets';
+import { ObjPageLink, Commentary } from './widgets';
 
 export type ObjTreeContextContent = {
     map: Map<number, ZObject>;
@@ -79,6 +79,7 @@ export function ObjectTree()
     return (
         <ObjTreeCtx.Provider value={ { map, selected, setSelected } }>
             <div className="ScrollContent" onClick={ evhan_click_background }>
+                <Commentary topic={ 'OBJTREE-LEGEND' } />
                 <div>
                     Follow{' '}
                     <input id="followadv_radio" type="radio" name="follow" value="adv" checked={ follow=='adv' } onChange={ (ev) => evhan_follow_change('adv') } />
