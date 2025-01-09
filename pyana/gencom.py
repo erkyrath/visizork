@@ -92,10 +92,14 @@ class Entry:
             return ['extlink', text, url]
         
         val = val.strip().upper()
-        
+
+        ###
         cla = 'loc'
         if val.startswith('*'):
             cla = 'loccom'
+            val = val[ 1 : ].strip()
+        elif val.startswith('~'):
+            cla = 'loc'
             val = val[ 1 : ].strip()
 
         prefix, id = checktoken(val, linenum=self.linenum) 
