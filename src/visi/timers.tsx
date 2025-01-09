@@ -33,16 +33,16 @@ export function TimerTable()
         ells.push(
             <li key={ pos }>
                 { (flag ?
-                   <span className="TimerActive">active</span> :
-                   <span className="TimerInactive">inactive</span>) }
-                {', '}
-                <i>count is </i>
-                { signed_zvalue(count) }{', '}
-                <i>routine </i>
+                   <span className="TimerActive">&#x2611;</span> :
+                   <span className="TimerInactive">&#x2610;</span>) }
+                {' '}
                 { (rctx.shownumbers ?
                    <span className="ShowAddr">({ addr }) </span>
                    : null) }
                 <a className="Src_Id" href="#" onClick={ evhan_click }><code>{ rtn ? rtn.name : '' }</code></a>
+                {', '}
+                <i>count </i>
+                { signed_zvalue(count) }
             </li>
         );
         
