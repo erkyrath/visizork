@@ -38,6 +38,53 @@ class Entry:
         else:
             self.text += ('\n' + ln)
 
+    PAT_MARK = re.compile('[\n*`[]', re.MULTILINE)
+    PAT_CLOSEQUOTE = re.compile('`')
+    PAT_CLOSESTAR = re.compile('[*]')
+    PAT_CLOSEBRACKET = re.compile('[]]')
+            
+    def build(self):
+        text = self.text
+        res = []
+        pos = 0
+
+        while pos < len(text):
+            match = self.PAT_MARK.search(text, pos)
+            if not match:
+                res.append(['', text[ pos : ]])
+                break
+            newpos = match.start()
+            if newpos > pos:
+                res.append(['', text[ pos : newpos ]])
+                pos = newpos
+            
+            ch = match.group()
+            if ch == '\n':
+                res.append(['br', ''])
+                pos += 1
+                continue
+
+            newmatch = None
+            if ch == '`':
+                newmatch = self.PAT_CLOSEQUOTE.search(text, pos+1)
+                cla = 'code'
+            elif ch == '*':
+                newmatch = self.PAT_CLOSESTAR.search(text, pos+1)
+                cla = 'emph'
+            elif ch == '[':
+                newmatch = self.PAT_CLOSEBRACKET.search(text, pos+1)
+                cla = 'a'
+            else:
+                raise Exception('weird char at %s' % (self.linenum,))
+            if not newmatch:
+                raise Exception('mismatched group at %s' % (self.linenum,))
+            newpos = newmatch.start()
+            res.append([cla, text[ pos+1 : newpos ]])
+            pos = newpos+1
+
+        return res
+        
+
 def parse(filename):
     entries = []
     pat_head = re.compile(r'^\s*([a-zA-Z0-9-_:]+):')
@@ -68,4 +115,9 @@ globals = loadjsonp('src/game/globals.js')
 objects = loadjsonp('src/game/objects.js')
 
 entries = parse(sys.argv[1])
-print(entries)
+
+for ent in entries:
+    ls = ent.build()
+    print(ent, ls)
+    
+    
