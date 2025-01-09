@@ -54,7 +54,7 @@ class Entry:
             
             ch = match.group()
             if ch == '\n':
-                res.append(['br', ''])
+                res.append(['br'])
                 pos += 1
                 continue
 
