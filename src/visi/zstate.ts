@@ -88,6 +88,7 @@ export interface ZStatePlus extends ZState
     origglobals: number[];
     origprops: Map<number, ZProp[]>;
     origattrs: Map<number, number>;
+    globalsupdate: number[];
 }
 
 export function zstateplus_empty() : ZStatePlus
@@ -105,6 +106,7 @@ export function zstateplus_empty() : ZStatePlus
         origglobals: [],
         origprops: new Map(),
         origattrs: new Map(),
+        globalsupdate: [],
     };
 }
 
@@ -114,6 +116,13 @@ let origglobals: number[] | undefined;
 let origprops: Map<number, ZProp[]> | undefined;
 let origattrs: Map<number, number> | undefined;
 
+// This represents the previous turn.
+let lastglobals: number[] | undefined;
+
+// The update timestamp (counter) when each global last changed.
+// (Comparing lastglobals to the current globals.)
+let globalsupdate: number[] | undefined;
+
 export function get_updated_report(engine: GnustoEngine) : ZStatePlus
 {
     let report = engine.get_vm_report();
@@ -121,7 +130,21 @@ export function get_updated_report(engine: GnustoEngine) : ZStatePlus
     if (origglobals === undefined) {
         origglobals = report.globals;
     }
+    
+    if (globalsupdate === undefined || lastglobals === undefined) {
+        globalsupdate = report.globals.map((val) => report.counter);
+    }
+    else {
+        let ix = 0;
+        while (ix < report.globals.length) {
+            if (lastglobals[ix] != report.globals[ix])
+                globalsupdate[ix] = report.counter;
+            ix++;
+        }
+    }
 
+    lastglobals = report.globals;
+    
     if (origprops === undefined) {
         origprops = new Map();
         for (let obj of report.objects) {
@@ -141,7 +164,8 @@ export function get_updated_report(engine: GnustoEngine) : ZStatePlus
         ...report,
         origglobals: origglobals,
         origprops: origprops,
-        origattrs: origattrs
+        origattrs: origattrs,
+        globalsupdate: globalsupdate
     };
 }
 
