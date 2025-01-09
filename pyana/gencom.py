@@ -20,14 +20,7 @@ class Entry:
         self.linenum = linenum
         self.text = None
 
-        if ':' in token:
-            self.prefix, _, self.id = token.partition(':')
-        else:
-            self.prefix = None
-            self.id = token
-
-        if self.prefix not in (None, 'OBJ', 'GLOB'):
-            raise Exception('invalid prefix %s: line %s' % (self.prefix, self.linenum,))
+        self.prefix, self.id = checktoken(token)
 
     def __repr__(self):
         return '<Entry %s>' % (self.token,)
@@ -79,11 +72,43 @@ class Entry:
             if not newmatch:
                 raise Exception('mismatched group at %s' % (self.linenum,))
             newpos = newmatch.start()
-            res.append([cla, text[ pos+1 : newpos ]])
+            val = text[ pos+1 : newpos ]
+            if cla == 'a':
+                res.append(self.linkify(val))
+            else:
+                res.append([cla, val])
             pos = newpos+1
 
         return res
+
+    def linkify(self, val):
+        if '|' in val:
+            text, _, url = val.partition('|')
+            text = text.strip()
+            url = url.strip()
+            if not url.startswith('http'):
+                raise Exception('url link looks wrong: ' + val)
+            return ['extlink', text, url]
         
+        val = val.strip().upper()
+        
+        cla = 'loc'
+        if val.startswith('*'):
+            cla = 'loccom'
+            val = val[ 1 : ].strip()
+
+        checktoken(val) 
+        return [ cla, val ]
+
+def checktoken(token):
+    if ':' in token:
+        prefix, _, id = token.partition(':')
+    else:
+        prefix = None
+        id = token
+    if prefix not in (None, 'OBJ', 'GLOB'):
+        raise Exception('invalid prefix: %s' % (token,))
+    return prefix, id
 
 def parse(filename):
     entries = []
