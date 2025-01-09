@@ -332,6 +332,23 @@ body {
     font-size: 90%
 }
 
+.Commentary code {
+    font-size: 85%;
+}
+
+.Commentary a.External {
+    color: #00C;
+}
+
+.Commentary a.Internal {
+    color: #A40;
+}
+
+.Commentary .Com_Id {
+    font-family: "Courier Prime";
+    font-size: 85%;
+}
+
 ul.DataList {
     list-style: none;
     padding-left: 0px;
@@ -502,3 +519,4 @@ a.Src_Id {
 a.Src_Id:hover {
     text-decoration: underline;
 }
+
