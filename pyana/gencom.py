@@ -172,15 +172,23 @@ def parse(filename):
                 
     return entries
 
-def dump(entries, filename):
+def dump(entries, sourcekeymap, filename):
     map = dict([ (entry.token, entry.outls) for entry in entries ])
     fl = open(filename, 'w')
     fl.write('window.gamedat_commentary = ');
     json.dump(map, fl, separators=(',', ':'))
     fl.write(';\n')
+    
+    map = dict()
+    for key, submap in sourcekeymap.items():
+        ls = list(submap.items())
+        ls.sort()
+        map[key] = ls
+    fl.write('window.gamedat_commentarymap = ');
+    json.dump(map, fl, separators=(',', ':'))
+    fl.write(';\n')
     fl.close()
 
-    ### and source-file-specific sets
 
 routines = loadjsonp('src/game/routines.js')
 globals = loadjsonp('src/game/globals.js')
@@ -212,5 +220,5 @@ for key in linkedtopics:
         fromls = [ ent.token for ent in linkedtopics[key] ]
         print('missing topic:', key, 'from', ', '.join(fromls))
     
-dump(entries, 'src/game/commentary.js')
+dump(entries, sourcekeymap, 'src/game/commentary.js')
 
