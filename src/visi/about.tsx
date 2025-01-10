@@ -12,6 +12,8 @@ export function AboutPage()
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
 
+    let lastupdate = '__VISIZORKDATE__';
+        
     let curroom = '???';
     let firstobj = '';
 
@@ -209,6 +211,13 @@ export function AboutPage()
                     then Bobby Kotick bought it and renamed it Activision,
                     then Vivendi bought it and merged it with Blizzard,
                     then Microsoft consumed the lot. Got it? Good.
+                </p>
+                <hr/>
+                <p>
+                    Aside from the above, the Visible Zorker is copyright
+                    2025 by Andrew Plotkin. MIT license;{' '}
+                    <a target="_blank" href="https://github.com/erkyrath/visizork">Github repo</a>;
+                    {' '}last updated { lastupdate }.
                 </p>
             </div>
         </div>
