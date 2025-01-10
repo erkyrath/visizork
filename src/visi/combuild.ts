@@ -37,7 +37,6 @@ function build_commentary(topic: string) : Node|undefined
         else
             token = id;
         
-        console.log('###', cla, typ, id);
         if (cla == 'src' || cla == 'comsrc') {
             if (typ) {
                 let dat = { idtype:typ, id:id };

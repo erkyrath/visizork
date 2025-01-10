@@ -9,6 +9,20 @@ export function signed_zvalue(val: number) : number
     return (val < 32768) ? val : (val - 65536);
 }
 
+// Sorry, this map is in a lot of places.
+const sourcefile_key_map: any = {
+    'ZORK1':    'A',
+    '1ACTIONS': 'B',
+    '1DUNGEON': 'C',
+    'GCLOCK':   'D',
+    'GGLOBALS': 'E',
+    'GMACROS':  'F',
+    'GMAIN':    'G',
+    'GPARSER':  'H',
+    'GSYNTAX':  'I',
+    'GVERBS':   'J',
+};
+
 export type SourceLoc = {
     filekey: string;
     line: number;
@@ -25,6 +39,18 @@ export function sourceloc_start() : string
 export function sourceloc_for_key(filekey: string) : string
 {
     return filekey + ':1:1:1:0';
+}
+
+// This format ("GVERBS-90") turns up in the commentary system.
+export function sourceloc_for_srctoken(val: string) : string|undefined
+{
+    let pos = val.indexOf('-');
+    if (pos < 0)
+        return undefined;
+    let filekey = sourcefile_key_map[val.slice(0, pos)];
+    if (!filekey)
+        return undefined;
+    return filekey+':'+val.slice(pos+1)+':1';
 }
 
 export function find_sourceloc_for_id(idtype: string, id:string) : string|undefined
