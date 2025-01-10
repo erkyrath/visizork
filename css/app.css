@@ -339,6 +339,14 @@ body {
     font-size: 90%
 }
 
+.AboutPage hr {
+    border: none;
+    height: 1px;
+    background: #AAA;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
 .Commentary {
     font-style: italic;
 }
