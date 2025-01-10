@@ -109,10 +109,12 @@ class Entry:
 
         if not prefix:
             cla = 'com'
+            linkedtopics.add(dest)
         elif use == 'loc':
             cla = 'src'
         else:
             cla = 'comsrc'
+            linkedtopics.add(dest)
         
         return [ cla, id, (prefix or ''), (label or '') ]
 
@@ -183,9 +185,15 @@ objectnames = set([ obj['name'] for obj in objects ])
 
 entries = parse(sys.argv[1])
 
+linkedtopics = set()
+
 for ent in entries:
     ent.build()
 
-### safety checks: All com-trigger links go to existing topics. All source-trigger links have prefixes.
+entrytopics = set([ ent.token for ent in entries ])
+    
+for key in linkedtopics:
+    if key not in entrytopics:
+        print('missing topic:', key)
     
 dump(entries, 'src/game/commentary.js')
