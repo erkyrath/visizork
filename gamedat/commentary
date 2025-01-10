@@ -3,7 +3,7 @@
 ABOUT: Welcome to the commentary track!
 
 rtn:V-VERSION: Print the title, release, and serial number.
-	This function is shared between all three Zorks, which is why it has code to print all three titles. The passages meant for Zork 2 and 3 were skipped when compiling Zork 1. Skipped code is shaded green here.
+	This function is shared between all three Zorks, which is why it has code to print all three titles. The passages meant for Zork 2 and 3 were ignored when compiling Zork 1. (Skipped code is shown in grey.)
 
 src:GVERBS-90: The TRS-80 interpreter set a special bit which told the game to change certain behavior for no-doubt-contractual reasons. For Zork 1, it adds the line “Licensed to Tandy Corporation”, and also skips [mentioning Zork 2/3|~src:1ACTIONS-390] at the end.
 	For a complete list of “Tandy bit” behavior changes in Infocom games, [see this page|https://ifarchive.org/if-archive/infocom/info/tandy_bits.html].
@@ -66,7 +66,7 @@ rtn:GO: Set up the world at the start of the game. Start the timers. Print the b
 obj:songbird: The songbird is always present but never in reach. Except when using the [~obj:CANARY], and even then the bird flies away before you can interact with it.
 
 obj:maze-1: Everybody loves a maze.
-	[Enter the maze?|com-maze-1]
+	[Enter the maze|com-maze-1]?
 
 com-maze-1: You are in a maze of twisty little passages, all different.
 	You can go [north|com-maze-11], [east|com-maze-9], [west|com-maze-10], [northwest|com-maze-8], or [up|com-maze-7].
