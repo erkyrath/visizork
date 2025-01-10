@@ -17,6 +17,7 @@ export function TimerTable()
     }
 
     let ells = [];
+    let activecount = 0;
     
     let pos = zstate.globals[C_INTS.num];
     while (pos+6 < zstate.timertable.length) {
@@ -24,6 +25,9 @@ export function TimerTable()
         let count = zstate.timertable[pos+2] * 0x100 + zstate.timertable[pos+3];
         let addr = zstate.timertable[pos+4] * 0x100 + zstate.timertable[pos+5];
         let rtn = gamedat_routine_addrs.get(unpack_address(addr));
+
+        if (flag)
+            activecount++;
 
         function evhan_click(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
             ev.preventDefault();
@@ -53,6 +57,9 @@ export function TimerTable()
     return (
         <div className="ScrollContent">
             <Commentary topic={ 'TIMERS-LEGEND' } />
+                <div>
+                    { ells.length } timers, { activecount } active:
+                </div>
             <ul className="DataList">
                 { ells }
             </ul>

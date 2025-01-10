@@ -39,7 +39,7 @@ export function SourceFileList()
         <FileListCtx.Provider value={ { selected, setSelected } }>
             <div className="ScrollContent" onClick={ evhan_click_background }>
                 <div>
-                    Source files:
+                    { ells.length } source files:
                 </div>
                 <ul className="DataList">
                     { ells }
