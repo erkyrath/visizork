@@ -135,6 +135,17 @@ body {
     box-shadow: 2px 2px 12px 4px #00000040;
 }
 
+#commentaryheader {
+    background: #70E870;
+    min-height: 22px;
+}
+
+#commentarytitle {
+    font-family: "Courier Prime";
+    font-size: 100%;
+    margin-left: 20px;
+}
+
 #commentaryclose {
     width: 30px;
     height: 20px;

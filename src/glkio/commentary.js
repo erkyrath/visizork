@@ -84,6 +84,9 @@ var CommentaryClass = function() {
     // for display to humans.
     function format_topic(topic)
     {
+        if (!topic)
+            return '';
+        
         var pos = topic.indexOf(':');
         if (pos < 0) {
             // Internal labels like "ABOUT" don't get displayed at all.
