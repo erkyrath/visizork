@@ -10,8 +10,6 @@ export function set_runner(runnerref: GnustoRunner)
 
 export function show_commentary(topic: string)
 {
-    console.log('### commentary', topic);
-
     let nod = build_commentary(topic);
 
     if (!runner) {
