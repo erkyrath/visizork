@@ -1,4 +1,5 @@
 import { GnustoRunner } from './zstate';
+import { refresh_batteries } from './zstate';
 import { gamedat_commentary } from './gamedat';
 
 let runner: GnustoRunner|undefined;
@@ -15,6 +16,11 @@ export function show_commentary(topic: string)
     if (!runner) {
         console.log('BUG: runner not set');
         return;
+    }
+
+    // Special case!
+    if (topic == 'BATTERIES') {
+        refresh_batteries(runner.e);
     }
     
     runner.commentary.show(nod, topic);

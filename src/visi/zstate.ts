@@ -1,4 +1,5 @@
-import { gamedat_object_ids, gamedat_ids } from './gamedat';
+import { gamedat_object_ids, gamedat_ids, unpack_address } from './gamedat';
+import { gamedat_routine_names, gamedat_global_names } from './gamedat';
 
 /* Highly abbreviated typedef for GnustoRunner. This shows only the
    bit used by VisiZorkApp. */
@@ -9,7 +10,11 @@ export type GnustoRunner = {
 
 /* Highly abbreviated typedef for GnustoEngine. */
 export type GnustoEngine = {
+    getUnsignedWord: (address:number) => number;
+    setWord: (value:number, address:number) => void;
+    
     prepare_vm_report: (dat:any) => void;
+    reset_vm_report: () => void;
     get_vm_report: () => ZState;
 };
 
@@ -177,3 +182,47 @@ export function get_updated_report(engine: GnustoEngine) : ZStatePlus
     };
 }
 
+export function refresh_batteries(engine: GnustoEngine)
+{
+    // This should be the same as the last report we got this turn.
+    let report = engine.get_vm_report();
+
+    // Locate the timer entry for I-LANTERN.
+    let I_LANTERN = gamedat_routine_names.get('I-LANTERN');
+    if (!I_LANTERN)
+        return;
+
+    let C_TABLE = gamedat_global_names.get('C-TABLE');
+    if (!C_TABLE)
+        return;
+
+    let C_INTS = gamedat_global_names.get('C-INTS');
+    if (!C_INTS)
+        return;
+
+    let pos = report.globals[C_INTS.num];
+    let countpos = 0;
+    while (pos+6 < report.timertable.length) {
+        let addr = report.timertable[pos+4] * 0x100 + report.timertable[pos+5];
+        if (unpack_address(addr) == I_LANTERN.addr) {
+            let ctableaddr = report.globals[C_TABLE.num];
+            countpos = ctableaddr+pos+2;
+            break;
+        }
+        pos += 6;
+    }
+
+    if (!countpos) {
+        console.log('BUG: could not find I-LANTERN timer');
+        return;
+    }
+
+    engine.setWord(5000, countpos);
+
+    // But now we have to trigger the generation of a new report,
+    // so that the Timers UI updates. This is a hack; it leaves the
+    // Activity tab looking bare. Sorry!
+    
+    engine.reset_vm_report();
+    window.dispatchEvent(new Event('zmachine-update'));
+}
