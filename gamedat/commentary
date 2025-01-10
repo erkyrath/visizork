@@ -35,6 +35,8 @@ glob:p-won: Set if the parser successfully parsed a command.
 
 glob:lamp-table: This table shows the successive stages of the lamp going out. The *first* stage is 200 turns, which is set in [~rtn:GO], not here.
 
+rtn:GO: Set up the world at the start of the game. Start the timers. Print the banner. Set all those useful globals like [~glob:HERE] and [~glob:PLAYER].
+
 obj:songbird: The songbird is always present but never in reach. Except when using the [~obj:CANARY], and even then the bird flies away before you can interact with it.
 
 ### maze... for batteries
