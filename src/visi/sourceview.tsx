@@ -54,6 +54,10 @@ export function SourceView()
         rctx.setObjPage(onum);
     }
     
+    function evhan_click_comment(topic: string) {
+        rctx.showCommentary(topic);
+    }
+    
     useEffect(() => {
         if (noderef.current) {
             let hilites: string[] = [];
@@ -68,7 +72,7 @@ export function SourceView()
                     }
                 }
             }
-            rebuild_sourcefile(noderef.current, loc, lochi, hilites, evhan_click_id, evhan_click_obj);
+            rebuild_sourcefile(noderef.current, loc, lochi, hilites, evhan_click_id, evhan_click_obj, evhan_click_comment);
         }
     }, [ loc, lochi, zstate ]);
 
@@ -100,7 +104,7 @@ export function SourceView()
 
 const pat_tab = new RegExp('\t', 'g');
 
-function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolean, hilites: string[], handle_click_id: (val:string)=>void, handle_click_obj: (val:number)=>void)
+function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolean, hilites: string[], handle_click_id: (val:string)=>void, handle_click_obj: (val:number)=>void, handle_click_comment: (val:string)=>void)
 {
     let loc = parse_sourceloc(locstr);
     if (!loc)
@@ -161,6 +165,7 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                     let imgel = document.createElement('img');
                     imgel.setAttribute('src', 'css/comment.svg');
                     butel.appendChild(imgel);
+                    butel.addEventListener('click', (ev) => { ev.stopPropagation(); handle_click_comment(token); });
                     linel.appendChild(butel);
                     compos++;
                 }
@@ -187,7 +192,7 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                                     var butel = document.createElement('button');
                                     butel.className = 'ObjPage';
                                     butel.appendChild(document.createTextNode('i'));
-                                    butel.addEventListener('click', (ev) => { ev.preventDefault(); handle_click_obj(obj.onum); });
+                                    butel.addEventListener('click', (ev) => { ev.stopPropagation(); handle_click_obj(obj.onum); });
                                     linel.appendChild(butel);
                                 }
                                 spanel = document.createElement('span');
