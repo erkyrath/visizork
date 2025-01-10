@@ -205,4 +205,4 @@ export const gamedat_verbs = (window as any).gamedat_verbs as string[];
 export const gamedat_sourcefiles = (window as any).gamedat_sourcefiles as SourceLinesMap;
 export const gamedat_distances = (window as any).gamedat_distances as AllDistanceMap;
 export const gamedat_commentary = (window as any).gamedat_commentary as CommentaryMap;
-export const gamedat_commentarymap = (window as any).gamedat_commentary as CommentaryLineMap;
+export const gamedat_commentarymap = (window as any).gamedat_commentarymap as CommentaryLineMap;
