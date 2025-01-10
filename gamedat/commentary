@@ -17,7 +17,7 @@ objtree-legend: In this list, `Rooms` are rooms and `Items` are regular items. (
 obj:local-globals: This is a container for scenery objects like [~obj:WHITE-HOUSE], which are visible from many locations in the game.
 
 src:gglobals-26: This refers to the word `ZZMGCK` in [~obj:local-globals], above.
-	Why is this synonym necessary? Does it need to be alphabetically last? Not clear! Most Infocom games have it (or a variation), but some say “No, this synonym doesn't need to exist” instead.
+	Why is this synonym necessary? Does it need to be alphabetically last? Not clear! Most Infocom games have it (or a variation), but some say “No, this synonym doesn’t need to exist” instead.
 	If you type `EXAMINE ZZMGCK`, the parser finds [~obj:local-globals]. But that object is nameless, so you get a garbage reply. Go on, try it.
 
 obj:adventurer: Yes, the player’s printed name is “cretin”, although the game rarely says so. (The death message for `BURN BOOK` mentions it.) This sort of sarcastic insult hasn’t aged too well, but MIT culture had a lot of it. Compare [*glob:WINNER], and also the old MIT [Jargon File|https://jargon-file.org/archive/jargon-1.0.0.33.dos.txt].
@@ -45,7 +45,7 @@ timers-legend: A list of the timers running (or paused) in the timer table ([~gl
 glob:c-demons: Indicates how much of the timer table is used for daemons. The difference between daemons and timers is that timers run every turn; daemons run every *input*, even if no turn passes. But Zork does not use daemons.
 
 glob:p-won: Set if the parser successfully parsed a command. (As opposed to a blank line or an error.)
-	No relation to whether the *player* has won; that's [*glob:WON-FLAG].
+	No relation to whether the *player* has won; that’s [*glob:WON-FLAG].
 
 glob:won-flag: Set when you reach 350 points. See [rtn:SCORE-UPD].
 	Oddly, this global is defined in two places in the source. See [gverbs.zil|~src:GVERBS-1743].
@@ -53,11 +53,11 @@ glob:won-flag: Set when you reach 350 points. See [rtn:SCORE-UPD].
 src:GVERBS-1743: This global is also defined in [1dungeon.zil|*glob:won-flag]. The compiler seems to have been okay with this.
 
 glob:lucky: Set false if you break a mirror. Yes, this hurts probability checks; see [~rtn:ZPROB].
-	Oddly, this global is defined in two places in the source. See [1actions.zil|~src:1ACTIONS-940]. (Don't worry, `T` and `1` are the same value.)
+	Oddly, this global is defined in two places in the source. See [1actions.zil|~src:1ACTIONS-940]. (Don’t worry, `T` and `1` are the same value.)
 	
-src:1ACTIONS-940: This global is also defined in [gverbs.zil|*glob:lucky]. The compiler seems to have been okay with this. (Don't worry, `T` and `1` are the same value.)
+src:1ACTIONS-940: This global is also defined in [gverbs.zil|*glob:lucky]. The compiler seems to have been okay with this. (Don’t worry, `T` and `1` are the same value.)
 
-rtn:score-upd: Increases (or decreases) your score. Also checks whether you've reached 350, which sets [glob:WON-FLAG] and unlocks the secret [~obj:MAP] and the [~obj:STONE-BARROW].
+rtn:score-upd: Increases (or decreases) your score. Also checks whether you’ve reached 350, which sets [glob:WON-FLAG] and unlocks the secret [~obj:MAP] and the [~obj:STONE-BARROW].
 
 glob:lamp-table: This table shows the successive stages of the lamp going out. The *first* stage is 200 turns, which is set in [~rtn:GO], not here.
 
@@ -105,6 +105,7 @@ com-maze-12: You have reached a dead end. There is a massive vending machine her
 	[Press the button|BATTERIES] to receive fresh batteries for your lantern!
 
 batteries: Your lantern is now refreshed.
+	(Take a look at the “Timers” tab.)
 
 ### the fumble blog post
 
