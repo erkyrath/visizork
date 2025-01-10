@@ -65,7 +65,46 @@ rtn:GO: Set up the world at the start of the game. Start the timers. Print the b
 
 obj:songbird: The songbird is always present but never in reach. Except when using the [~obj:CANARY], and even then the bird flies away before you can interact with it.
 
-### maze... for batteries
+obj:maze-1: Everybody loves a maze.
+	[Enter the maze|com-maze-1]?
+
+com-maze-1: You are in a maze of twisty little passages, all different.
+	You can go [north|com-maze-11], [east|com-maze-9], [west|com-maze-10], [northwest|com-maze-8], or [up|com-maze-7].
+
+com-maze-2: You are in a little maze of twisting passages, all different.
+	You can go [south|com-maze-12], [northwest|com-maze-6], [southwest|com-maze-3], [southeast|com-maze-7], or [up|com-maze-11].
+
+com-maze-3: You are in a maze of twisting little passages, all different.
+	You can go [east|com-maze-2], [northeast|com-maze-7], [southeast|com-maze-4], or [up|com-maze-8].
+
+com-maze-4: You are in a little maze of twisty passages, all different.
+	You can go [north|com-maze-5], [northeast|com-maze-9], [southwest|com-maze-8], or [up|com-maze-3].
+
+com-maze-5: You are in a twisting maze of little passages, all different.
+	You can go [north|com-maze-9], [west|com-maze-4], [northeast|com-maze-6], or [northwest|com-maze-10].
+
+com-maze-6: You are in a twisting little maze of passages, all different.
+	You can go [west|com-maze-11], [southeast|com-maze-5], [southwest|com-maze-2], or [up|com-maze-10].
+
+com-maze-7: You are in a twisty little maze of passages, all different.
+	You can go [|com-maze-], [|com-maze-], [|com-maze-], [|com-maze-], or [|com-maze-].
+
+com-maze-8: You are in a twisty maze of little passages, all different.
+	You can go [|com-maze-], [|com-maze-], [|com-maze-], [|com-maze-], or [|com-maze-].
+
+com-maze-9: You are in a little twisty maze of passages, all different.
+	You can go [|com-maze-], [|com-maze-], [|com-maze-], [|com-maze-], or [|com-maze-].
+
+com-maze-10: You are in a maze of little twisting passages, all different.
+	You can go [|com-maze-], [|com-maze-], [|com-maze-], [|com-maze-], or [|com-maze-].
+
+com-maze-11: You are in a maze of little twisty passages, all different.
+	You can go [|com-maze-], [|com-maze-], [|com-maze-], [|com-maze-], or [|com-maze-].
+
+com-maze-12: You have reached a dead end. There is a massive vending machine here.
+	[Press the button|BATTERIES] to receive fresh batteries for your lantern!
+
+batteries: Your lantern is now [refreshed|timers-legend].
 
 ### the fumble blog post
 
