@@ -5,7 +5,7 @@ var CommentaryClass = function() {
     let visible = false; // or will be when the current animation completes
     let animating = false;
 
-    function show(node)
+    function show(node, topic)
     {
         if (!node) {
             closepane();
@@ -14,6 +14,8 @@ var CommentaryClass = function() {
 
         $('#commentarycontent').empty();
         $('#commentarycontent').get(0).appendChild(node);
+
+        $('#commentarytitle').text(format_topic(topic));
         
         openpane();
     }
@@ -76,6 +78,28 @@ var CommentaryClass = function() {
                 animating = false;
             },
         })
+    }
+
+    // We have a topic token ("OBJ:ADVENTURER"); return a string suitable
+    // for display to humans.
+    function format_topic(topic)
+    {
+        var pos = topic.indexOf(':');
+        if (pos < 0) {
+            // Internal labels like "ABOUT" don't get displayed at all.
+            // TODO: Support metadata in the comment! (I am such a nerd.)
+            return '';
+        }
+
+        var prefix = topic.slice(0, pos);
+        if (prefix == 'SRC') {
+            // Hack out the file and line number.
+            var val = topic.slice(pos+1);
+            pos = val.indexOf('-');
+            return val.slice(0, pos).toLowerCase()+'.zil, line ' + val.slice(pos+1);
+        }
+
+        return topic.slice(pos+1);
     }
 
     $('#commentaryclose').on('click', (ev) => {

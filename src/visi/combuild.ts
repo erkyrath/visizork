@@ -19,7 +19,7 @@ export function show_commentary(topic: string)
         return;
     }
     
-    runner.commentary.show(nod);
+    runner.commentary.show(nod, topic);
 }
 
 function build_commentary(topic: string) : Node|undefined

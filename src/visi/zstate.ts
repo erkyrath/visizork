@@ -4,13 +4,19 @@ import { gamedat_object_ids, gamedat_ids } from './gamedat';
    bit used by VisiZorkApp. */
 export type GnustoRunner = {
     e: GnustoEngine;
-    commentary: any; //###
+    commentary: CommentaryClass;
 };
 
 /* Highly abbreviated typedef for GnustoEngine. */
 export type GnustoEngine = {
     prepare_vm_report: (dat:any) => void;
     get_vm_report: () => ZState;
+};
+
+/* And for the Commentary module. */
+export type CommentaryClass = {
+    show: (node:Node|undefined, topic:string|undefined) => void;
+    hide: () => void;
 };
 
 export type ZObject = {
