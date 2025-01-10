@@ -27,6 +27,7 @@ class Color(StrEnum):
     IDDEF = 'IDDEF'
     DICT = 'DICT'
     COMMENT = 'COMMENT'
+    IFNDEF = 'IFNDEF'
 
 def colorize(tokls, res):
     for tok in tokls:
@@ -53,13 +54,13 @@ def colorize(tokls, res):
                 found = None
                 for cgrp in ctok.children[ 1 : ]:
                     if found:
-                        res.append( (cgrp, Color.COMMENT) )
+                        res.append( (cgrp, Color.IFNDEF) )
                         continue
                     found = teststaticcond(cgrp)
                     if found:
                         colorize([ cgrp ], res)
                     else:
-                        res.append( (cgrp, Color.COMMENT) )
+                        res.append( (cgrp, Color.IFNDEF) )
                         continue
                 continue
         if tok.typ is TokType.GROUP and tok.val == '()' and tok.children:

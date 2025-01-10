@@ -522,7 +522,11 @@ button.CommentButton img {
 }
 
 .Src_Comment {
-    color: #494;
+    color: #292;
+}
+
+.Src_Ifndef {
+    color: #999;
 }
 
 .Src_Str {
