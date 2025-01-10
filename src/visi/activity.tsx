@@ -116,6 +116,13 @@ export function StackCall({ call }: { call:ZStackCall })
     let subls = call.children.map((subitem) => (
         <StackItem key={ counter++ } item={ subitem } />
     ));
+
+    let showsubs = (subls.length > 0);
+    if (iscollapse && call.children.length == 1) {
+        let onechild = call.children[0];
+        if (onechild.type == 'call' && onechild.children.length == 0)
+            showsubs = false;
+    }
     
     let funcname = (funcdat ? funcdat.name : '???');
     if (call.addr == 0)
@@ -137,7 +144,7 @@ export function StackCall({ call }: { call:ZStackCall })
                    : null) }
                 <code>&lt;{ funcname }&gt;</code>
             </li>
-            { (subls.length ?
+            { (showsubs ?
                <ul className="DataList">
                    { (iscollapse ? <li><code>&lt;...&gt;</code></li> : subls) }
                </ul>
