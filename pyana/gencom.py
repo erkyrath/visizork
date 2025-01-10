@@ -109,12 +109,15 @@ class Entry:
 
         if not prefix:
             cla = 'com'
-            linkedtopics.add(dest)
         elif use == 'loc':
             cla = 'src'
         else:
             cla = 'comsrc'
-            linkedtopics.add(dest)
+
+        if cla in ('com', 'comsrc'):
+            if dest not in linkedtopics:
+                linkedtopics[dest] = []
+            linkedtopics[dest].append(self)
         
         return [ cla, id, (prefix or ''), (label or '') ]
 
@@ -185,7 +188,7 @@ objectnames = set([ obj['name'] for obj in objects ])
 
 entries = parse(sys.argv[1])
 
-linkedtopics = set()
+linkedtopics = {}
 
 for ent in entries:
     ent.build()
@@ -194,6 +197,7 @@ entrytopics = set([ ent.token for ent in entries ])
     
 for key in linkedtopics:
     if key not in entrytopics:
-        print('missing topic:', key)
+        fromls = [ ent.token for ent in linkedtopics[key] ]
+        print('missing topic:', key, 'from', ', '.join(fromls))
     
 dump(entries, 'src/game/commentary.js')
