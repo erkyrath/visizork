@@ -21,7 +21,7 @@ class Entry:
         self.text = None
         self.outls = None
 
-        self.prefix, self.id = checktoken(token, linenum=linenum)
+        self.prefix, self.id, self.srcloc = checktoken(token, linenum=linenum)
 
     def __repr__(self):
         return '<Entry %s>' % (self.token,)
@@ -105,7 +105,7 @@ class Entry:
             dest = dest[ 1 : ].strip()
         # defaults to locsrc
 
-        prefix, id = checktoken(dest, linenum=self.linenum)
+        prefix, id, _ = checktoken(dest, linenum=self.linenum)
 
         if not prefix:
             cla = 'com'
@@ -122,6 +122,7 @@ class Entry:
         return [ cla, id, (prefix or ''), (label or '') ]
 
 def checktoken(token, linenum=None):
+    dest = None
     if ':' in token:
         prefix, _, id = token.partition(':')
     else:
@@ -134,14 +135,17 @@ def checktoken(token, linenum=None):
     if prefix == 'OBJ':
         if id not in objectnames:
             raise Exception('invalid OBJ %s: line %s' % (id, linenum))
+        dest = objectnames[id]['sourceloc']
     if prefix == 'GLOB':
         if id not in globalnames:
             raise Exception('invalid GLOB %s: line %s' % (id, linenum))
+        dest = globalnames[id]['sourceloc']
     if prefix == 'RTN':
         if id not in routinenames:
             raise Exception('invalid RTN %s: line %s' % (id, linenum))
+        dest = routinenames[id]['sourceloc']
         
-    return prefix, id
+    return prefix, id, dest
 
 def parse(filename):
     entries = []
@@ -182,16 +186,24 @@ routines = loadjsonp('src/game/routines.js')
 globals = loadjsonp('src/game/globals.js')
 objects = loadjsonp('src/game/objects.js')
 
-routinenames = set([ obj['name'] for obj in routines ])
-globalnames = set([ obj['name'] for obj in globals ])
-objectnames = set([ obj['name'] for obj in objects ])
+routinenames = dict([ (obj['name'], obj) for obj in routines ])
+globalnames = dict([ (obj['name'], obj) for obj in globals ])
+objectnames = dict([ (obj['name'], obj) for obj in objects ])
 
 entries = parse(sys.argv[1])
 
 linkedtopics = {}
+sourcekeymap = dict([ (ch, {}) for ch in 'ABCDEFGHIJ' ])
 
 for ent in entries:
     ent.build()
+    if ent.srcloc:
+        srcls = ent.srcloc.split(':')
+        filekey = srcls[0]
+        linenum = int(srcls[1])
+        if linenum in sourcekeymap[filekey]:
+            raise Exception('two entries for srcloc %s, %s' % (ent.srcloc, ent,))
+        sourcekeymap[filekey][linenum] = ent.token
 
 entrytopics = set([ ent.token for ent in entries ])
     
@@ -201,3 +213,4 @@ for key in linkedtopics:
         print('missing topic:', key, 'from', ', '.join(fromls))
     
 dump(entries, 'src/game/commentary.js')
+
