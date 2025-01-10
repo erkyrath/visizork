@@ -221,7 +221,8 @@ export function refresh_batteries(engine: GnustoEngine)
 
     // But now we have to trigger the generation of a new report,
     // so that the Timers UI updates. This is a hack; it leaves the
-    // Activity tab looking bare. Sorry!
+    // Activity tab looking bare. Sorry! You want new batteries, you
+    // gotta put up with some jank.
     
     engine.reset_vm_report();
     window.dispatchEvent(new Event('zmachine-update'));
