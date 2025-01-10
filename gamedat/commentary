@@ -48,6 +48,14 @@ glob:p-won: Set if the parser successfully parsed a command. (As opposed to a bl
 	No relation to whether the *player* has won; that's [*glob:WON-FLAG].
 
 glob:won-flag: Set when you reach 350 points. See [rtn:SCORE-UPD].
+	Oddly, this global is defined in two places in the source. See [gverbs.zil|~src:GVERBS-1743].
+
+src:GVERBS-1743: This global is also defined in [1dungeon.zil|*glob:won-flag]. The compiler seems to have been okay with this.
+
+glob:lucky: Set false if you break a mirror. Yes, this hurts probability checks; see [~rtn:ZPROB].
+	Oddly, this global is defined in two places in the source. See [1actions.zil|~src:1ACTIONS-940]. (Don't worry, `T` and `1` are the same value.)
+	
+src:1ACTIONS-940: This global is also defined in [gverbs.zil|*glob:lucky]. The compiler seems to have been okay with this. (Don't worry, `T` and `1` are the same value.)
 
 rtn:score-upd: Increases (or decreases) your score. Also checks whether you've reached 350, which sets [glob:WON-FLAG] and unlocks the secret [~obj:MAP] and the [~obj:STONE-BARROW].
 
