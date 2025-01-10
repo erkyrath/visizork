@@ -3,7 +3,7 @@ import { useState, useContext, useRef, useEffect } from 'react';
 
 import { sourcefile_map, gamedat_sourcefiles } from './gamedat';
 import { gamedat_global_names, gamedat_object_names, gamedat_string_map, gamedat_routine_names, parse_sourceloc } from './gamedat';
-import { sourceloc_start } from './gamedat';
+import { sourceloc_start, gamedat_commentarymap } from './gamedat';
 
 import { ReactCtx } from './context';
 import { SourceLocState } from './context';
@@ -136,6 +136,7 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
         // Keep the node list
     }
     else {
+        // Clear the node list and rebuild it
         while (nodel.firstChild) {
             nodel.removeChild(nodel.firstChild);
         }
@@ -145,11 +146,24 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
         filel.className = 'SourceFile';
         
         let lines = gamedat_sourcefiles[filename];
+        let commentlist = gamedat_commentarymap[loc.filekey];
+        let compos = 0;
+        
         if (lines) {
             let counter = 1;
             for (let srcln of lines) {
                 let linel = document.createElement('div');
                 linel.id = 'line_' + counter;
+                if (compos < commentlist.length && counter == commentlist[compos][0]) {
+                    let token = commentlist[compos][1];
+                    let butel = document.createElement('button');
+                    butel.className = 'CommentButton';
+                    let imgel = document.createElement('img');
+                    imgel.setAttribute('src', 'css/comment.svg');
+                    butel.appendChild(imgel);
+                    linel.appendChild(butel);
+                    compos++;
+                }
                 if (srcln.length == 0) {
                     linel.appendChild(document.createTextNode(' '));
                 }
