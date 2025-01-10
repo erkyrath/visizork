@@ -4,6 +4,8 @@ import sys
 import re
 import json
 
+from writer import sourcefile_map
+
 def loadjsonp(filename):
     with open(filename) as infl:
         dat = infl.read()
@@ -129,7 +131,7 @@ def checktoken(token, linenum=None):
         prefix = None
         id = token
         
-    if prefix not in (None, 'OBJ', 'GLOB', 'RTN'):
+    if prefix not in (None, 'OBJ', 'GLOB', 'RTN', 'SRC'):
         raise Exception('invalid prefix %s: line %s' % (token, linenum))
     
     if prefix == 'OBJ':
@@ -144,6 +146,14 @@ def checktoken(token, linenum=None):
         if id not in routinenames:
             raise Exception('invalid RTN %s: line %s' % (id, linenum))
         dest = routinenames[id]['sourceloc']
+    if prefix == 'SRC':
+        file, _, flineno = id.partition('-')
+        if not file or not flineno:
+            raise Exception('invalid SRC %s: line %s' % (id, linenum))
+        flineno = int(flineno)
+        file = file.lower() + '.zil'
+        filekey = sourcefile_map[file]
+        dest = '%s:%d:1' % (filekey, flineno,)
         
     return prefix, id, dest
 
