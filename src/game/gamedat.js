@@ -10,6 +10,7 @@ window.gamedat_object_room_ids = new Set();
 window.gamedat_object_global_ids = new Set();
 window.gamedat_object_treesort = new Map();
 window.gamedat_string_map = new Map();
+window.gamedat_dictword_addrs = new Map();
 window.gamedat_routine_addrs = new Map();
 window.gamedat_routine_names = new Map();
 window.gamedat_property_nums = new Map();
@@ -18,6 +19,14 @@ window.gamedat_attribute_nums = new Map();
 window.gamedat_ids = {};
 
 (function() {
+    gamedat_ids.GAMEID = 'zork1-r88-s840726';
+    gamedat_ids.MAX_OBJECTS = 250;
+    gamedat_ids.MAX_GLOBALS = 158;
+    gamedat_ids.DICT_START = 15137;
+    gamedat_ids.PROP_TABLE_START = 0x0BB8;
+    gamedat_ids.PROP_TABLE_END = 0x2270;
+    gamedat_ids.C_TABLE_LEN = 180;
+
     for (let obj of window.gamedat_properties) {
         gamedat_property_nums.set(obj.num, obj);
     }
@@ -71,17 +80,14 @@ window.gamedat_ids = {};
         gamedat_string_map.set(tup[0], { text:tup[1], sourceloc:tup[2] });
     }
 
+    for (let obj of window.gamedat_dictwords) {
+        gamedat_dictword_addrs.set(gamedat_ids.DICT_START + obj.num * 7, obj);
+    }
+    
     for (let obj of window.gamedat_routines) {
         gamedat_routine_addrs.set(obj.addr, obj);
         gamedat_routine_names.set(obj.name, obj);
     }
-
-    gamedat_ids.GAMEID = 'zork1-r88-s840726';
-    gamedat_ids.MAX_OBJECTS = 250;
-    gamedat_ids.MAX_GLOBALS = 158;
-    gamedat_ids.PROP_TABLE_START = 0x0BB8;
-    gamedat_ids.PROP_TABLE_END = 0x2270;
-    gamedat_ids.C_TABLE_LEN = 180;
 
     gamedat_ids.ROOMS = gamedat_object_names.get('ROOMS').onum;
     gamedat_ids.GLOBAL_OBJECTS = gamedat_object_names.get('GLOBAL-OBJECTS').onum;

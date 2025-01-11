@@ -192,6 +192,12 @@ export type StringData = {
     sourceloc: string|string[];
 };
 
+export type DictWordData = {
+    num: number;
+    text: string;
+    flags: string;
+};
+
 export type RoutineData = {
     name: string;
     addr: number;
@@ -237,6 +243,7 @@ export const gamedat_object_room_ids = (window as any).gamedat_object_room_ids a
 export const gamedat_object_global_ids = (window as any).gamedat_object_global_ids as Set<number>;
 export const gamedat_object_treesort = (window as any).gamedat_object_treesort as Map<number, number>;
 export const gamedat_string_map = (window as any).gamedat_string_map as Map<number, StringData>;
+export const gamedat_dictword_addrs = (window as any).gamedat_dictword_addrs as Map<number, DictWordData>;
 export const gamedat_routine_addrs = (window as any).gamedat_routine_addrs as Map<number, RoutineData>;
 export const gamedat_routine_names = (window as any).gamedat_routine_names as Map<string, RoutineData>;
 export const gamedat_verbs = (window as any).gamedat_verbs as string[];
