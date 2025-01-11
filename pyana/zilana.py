@@ -38,11 +38,10 @@ class ZGlobal:
         return '<ZGlobal %s>' % (self.name,)
     
 class ZConstant:
-    def __init__(self, name, value, gtok):
+    def __init__(self, name, value, ctok):
         self.name = name
         self.value = value
-        self.gtok = gtok
-        self.valtok = None
+        self.ctok = ctok
 
     def __repr__(self):
         return '<ZConstant %s %d>' % (self.name, self.value,)
@@ -191,6 +190,12 @@ class Zcode:
                     self.constants.append(zconst)
                 else:
                     raise Exception('Constant has no name')
+            if tok.matchform('SETG', 2):
+                # We pretend ZORK-NUMBER is a regular CONSTANT.
+                idtok = tok.children[1]
+                if idtok.idmatch('ZORK-NUMBER'):
+                    zconst = ZConstant(idtok.val, 1, tok)
+                    self.constants.append(zconst)
             if tok.matchform('ROUTINE', 1):
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
