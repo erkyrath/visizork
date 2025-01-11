@@ -193,5 +193,26 @@ class DictDumpData:
             for ln in infl.readlines():
                 match = pat_word.match(ln.strip())
                 if match:
-                    print(match.groups())
+                    num = int(match.group(1))
+                    addr = int(match.group(2), 16)
+                    text = match.group(3)
+                    text = text.replace('\\"', '\"')
+                    flags = ''
+                    for flag in match.group(4).split():
+                        if flag == '<verb>':
+                            flags += 'V'
+                        elif flag == '<adj>':
+                            flags += 'A'
+                        elif flag == '<special>':
+                            flags += 'S'
+                        elif flag == '<noun>':
+                            flags += 'N'
+                        elif flag == '<prep>':
+                            flags += 'P'
+                        elif flag == '<dir>':
+                            flags += 'D'
+                        else:
+                            raise Exception('bad flag ' + flag)
+                    print(num, addr, text, flags)
+                    
                     
