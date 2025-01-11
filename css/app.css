@@ -527,7 +527,7 @@ a.CommentButton img {
     font-size: 90%;
 }
 
-.SourceFile div {
+.SourceFile > div {
     border-left: 8px solid #FFFFFE;
     padding-left: 8px;
 }
