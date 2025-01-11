@@ -224,7 +224,7 @@ class DictDumpData:
                         else:
                             raise Exception('bad flag ' + flag)
                     valls = match.group(4).split()
-                    special = int(valls[-1], 16)
+                    special = [ int(val, 16) for val in valls ]
                     self.words.append(DictWord(num, addr, text, special, flags))
                     
                     
