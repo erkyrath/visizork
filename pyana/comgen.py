@@ -163,7 +163,7 @@ def checktoken(token, linenum=None):
 
 def parse(filename):
     entries = []
-    pat_head = re.compile(r'^\s*([a-zA-Z0-9-_:]+):')
+    pat_head = re.compile(r'^\s*([a-zA-Z0-9-_?:]+):')
     
     with open(filename) as infl:
         entry = None
