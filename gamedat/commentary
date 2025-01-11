@@ -8,7 +8,7 @@ rtn:V-VERSION: Print the title, release, and serial number.
 src:GVERBS-90: The TRS-80 interpreter set a special bit which told the game to change certain behavior for no-doubt-contractual reasons. For Zork 1, it adds the line “Licensed to Tandy Corporation”, and also skips [mentioning Zork 2/3|~src:1ACTIONS-390] at the end.
 	For a complete list of “Tandy bit” behavior changes in Infocom games, [see this page|https://ifarchive.org/if-archive/infocom/info/tandy_bits.html].
 
-src:1ACTIONS-390: On the TRS-80, this skips mentioning Zork 2/3. See [*src:GVERBS-90].
+src:1ACTIONS-390: On the TRS-80, this skips mentioning Zork 2/3. See [V-VERSION|*src:GVERBS-90].
 
 objtree-legend: In this list, `Rooms` are rooms and `Items` are regular items. (Sometimes portable, sometimes not.)
 	`Scen` indicates scenery objects. These exist in multiple places; for example, the [~obj:WHITE-HOUSE] is visible from many outdoor locations. Sometimes as “You can’t see that from here”, but it’s the same object.
@@ -107,6 +107,7 @@ com-maze-12: You have reached a dead end. There is a massive vending machine her
 batteries: Your lantern is now refreshed.
 	(Take a look at the “Timers” tab.)
 
-src:GVERBS-1839: ### the fumble blog post
-
+src:GVERBS-1839: The “holding too many things” message is probabilistic. The more objects you have past seven, the greater the chance of failing to pick up another.
+	Note that there’s a *separate* check, a few lines up, for whether “your load is too heavy”. That one is *not* probabilistic.
+	I wrote a [blog post|https://blog.zarfhome.com/2017/08/your-load-is-too-heavy-zork-deep-reading] about this a few years back.
 
