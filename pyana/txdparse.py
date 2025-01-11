@@ -188,7 +188,7 @@ class DictDumpData:
         self.words = []
     
     def readdump(self, filename):
-        pat_word = re.compile(r'\[\s*([0-9]+)\] @ [$]([0-9a-f]+)\s+([^ ]+)\s+\[[0-9a-f ]+\]([a-z<> ]*)')
+        pat_word = re.compile(r'\[\s*([0-9]+)\] @ [$]([0-9a-f]+)\s+([^ ]+)\s+\[([0-9a-f ]+)\]([a-z<> ]*)')
         with open(filename) as infl:
             for ln in infl.readlines():
                 match = pat_word.match(ln.strip())
@@ -198,7 +198,7 @@ class DictDumpData:
                     text = match.group(3)
                     text = text.replace('\\"', '\"')
                     flags = ''
-                    for flag in match.group(4).split():
+                    for flag in match.group(5).split():
                         if flag == '<verb>':
                             flags += 'V'
                         elif flag == '<adj>':
@@ -213,6 +213,8 @@ class DictDumpData:
                             flags += 'D'
                         else:
                             raise Exception('bad flag ' + flag)
-                    print(num, addr, text, flags)
+                    valls = match.group(4).split()
+                    special = int(valls[-1], 16)
+                    print(num, addr, text, special, flags)
                     
                     
