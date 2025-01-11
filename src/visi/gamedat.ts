@@ -71,6 +71,11 @@ export function find_sourceloc_for_id(idtype: string, id:string) : string|undefi
         if (glob)
             return glob.sourceloc;
         break;
+    case 'CONST':
+        let con = gamedat_constant_names.get(id);
+        if (con)
+            return con.sourceloc;
+        break;
     }
 
     return undefined;
