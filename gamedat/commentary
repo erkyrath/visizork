@@ -92,7 +92,13 @@ rtn:v-treasure: A very obscure magic word. See [*obj:granite-wall].
 rtn:CELLAR-FCN: Who slams the trap door on you, anyhow? It must be the thief, the only mobile NPC in the game. But the thief is never seen above ground. And (to be really persnickety) the trap door slams even after the thief is dead.
 	Really, we should assume it's the Dungeon Master, who has a vested interest in your underground quest.
 
+obj:chimney: This is one of several places where the MIT kids used caving jargon without quite giving the sense that they knew what it meant. A “[climbable chimney|~rtn:CHIMNEY-F]” would have meant something very different to Will and Patricia Crowther.
+
+obj:bones: The idea of encountering your earlier self's luckless corpse will reappear in *Trinity*.
+
 obj:lowered-basket: The object names are misleading. `RAISED-BASKET` represents the basket at *this* end of the shaft, where you can interact with it. `LOWERED-BASKET` represents the basket at the *other* end of the shaft. When you raise or lower the basket, the two objects swap places.
+
+rtn:maze-diodes: This function defines one-way down-crawls in the maze. (Diodes are electrical components that pass current only one way.)
 
 obj:maze-1: Everybody loves a maze.
 	[Enter the maze|com-maze-1]?
@@ -135,6 +141,10 @@ com-maze-12: You have reached a dead end. There is a massive vending machine her
 
 batteries: Your lantern is now refreshed.
 	(Take a look at the “Timers” tab.)
+
+obj:atlantis-room: A very evocative room considering that the only detail is the [~obj:trident]'s description! I always imagined Byzantine undersea murals, but that was just me.
+	The text implies that the room was uncovered by emptying the reservoir, which is not really true. (You can arrive via mirror.)
+
 
 src:GVERBS-1813: This “floating over your head” check has to do with the `FLOAT` spell in Zork 2. That code is not used in Zork 1; that’s why it’s greyed out.
 
