@@ -79,6 +79,7 @@ obj:mountains: The game scale gets a bit loose here.
 
 obj:kitchen: The `DOWN` exit implies that you *could* go down if [~glob:FALSE-FLAG] were true, but of course it never is. In fact `FALSE-FLAG` has no other use in the game but blocking this exit. It’s not clear why it’s set up this way, rather than an unconditional failure message.
 	(Possibly so the sword will glow if the thief is passing through the [~obj:STUDIO] below? But the thief is normally `INVISIBLE` and does not trigger the sword.)
+	This has the side effect that `JUMP` in the Kitchen is fatal. See [V-LEAP|*src:GVERBS-769].
 
 obj:songbird: The songbird is always present but never in reach. Except when using the [~obj:CANARY], and even then the bird flies away before you can interact with it.
 
@@ -149,6 +150,8 @@ obj:COFFIN: Do you know how much a solid gold sarcophagus would weigh? More than
 
 glob:COFFIN-CURE: Set if you’re *not* carrying the [*obj:COFFIN]. But this is only updated in the [~obj:SOUTH-TEMPLE]’s [code|~rtn:SOUTH-TEMPLE-FCN], because that’s the only room where it matters.
 	Interestingly, there’s a comment on the northwest exit of the [~obj:DEEP-CANYON] which mentions this flag. This is left over from the MIT version of Zork, which had several other passages too narrow or steep to navigate with the coffin.
+
+src:GVERBS-769: Jumping is fatal if the room has a down exit which is impassable (with a failure message). This makes sense for, say, [~obj:EAST-OF-CHASM]. It's a bit odd in the [~obj:KITCHEN] or [~obj:RESERVOIR].
 
 src:GVERBS-1813: This “floating over your head” check has to do with the `FLOAT` spell in Zork 2. That code is not used in Zork 1; that’s why it’s greyed out.
 
