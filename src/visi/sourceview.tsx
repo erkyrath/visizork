@@ -156,15 +156,22 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
         
         let lines = gamedat_sourcefiles[filename];
         let commentlist = gamedat_commentarymap[loc.filekey];
+        
         let compos = 0;
+        let comline: number|undefined;
+        let comtoken: string|undefined;
+        if (compos+1 < commentlist.length) {
+            comline = commentlist[compos+0] as number;
+            comtoken = commentlist[compos+1] as string;
+        }
         
         if (lines) {
             let counter = 1;
             for (let srcln of lines) {
                 let linel = document.createElement('div');
                 linel.id = 'line_' + counter;
-                if (compos < commentlist.length && counter == commentlist[compos][0]) {
-                    let token = commentlist[compos][1];
+                if (comtoken !== undefined && counter == comline) {
+                    let token = comtoken;
                     let ael = document.createElement('a');
                     ael.className = 'CommentButton';
                     let imgel = document.createElement('img');
@@ -172,7 +179,16 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                     ael.appendChild(imgel);
                     ael.addEventListener('click', (ev) => { ev.preventDefault(); ev.stopPropagation(); handle_click_comment(token); });
                     linel.appendChild(ael);
-                    compos++;
+                    
+                    compos += 2;
+                    if (compos+1 < commentlist.length) {
+                        comline = commentlist[compos+0] as number;
+                        comtoken = commentlist[compos+1] as string;
+                    }
+                    else {
+                        comline = undefined;
+                        comtoken = undefined;
+                    }
                 }
                 if (srcln.length == 0) {
                     linel.appendChild(document.createTextNode(' '));

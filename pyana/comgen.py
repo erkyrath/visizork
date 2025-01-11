@@ -197,7 +197,8 @@ def dump(entries, sourcekeymap, filename):
     for key, submap in sourcekeymap.items():
         ls = list(submap.items())
         ls.sort()
-        map[key] = ls
+        flatls = [ val for subls in ls for val in subls ]
+        map[key] = flatls
     fl.write('window.gamedat_commentarymap = ');
     json.dump(map, fl, separators=(',', ':'))
     fl.write(';\n')

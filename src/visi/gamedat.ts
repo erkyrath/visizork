@@ -219,7 +219,7 @@ interface SourceLinesMap {
 };
 
 export type CommentarySpan = string | string[];
-export type CommentaryLine = [ number, string ];
+export type CommentaryLine = number | string;
 
 interface CommentaryMap {
     [key: string]: CommentarySpan[];
