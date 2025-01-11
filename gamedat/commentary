@@ -2,6 +2,10 @@
 
 ABOUT: Welcome to the commentary track!
 
+const:ZORK-NUMBER: The number of the Zorks shall be one.
+	(“Three, sir!”)
+	Yes, but *this* one is... one.
+
 rtn:V-VERSION: Print the title, release, and serial number.
 	This function is shared between all three Zorks, which is why it has code to print all three titles. The passages meant for Zork 2 and 3 were ignored when compiling Zork 1. (Skipped code is shown in grey.)
 
