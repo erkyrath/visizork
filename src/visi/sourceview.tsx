@@ -236,6 +236,8 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                 if (extraheight) {
                     // With two comment markers in a row, we need some
                     // extra vertical space. Sorry, hacky.
+                    // (We're not doing with with a line CSS class because
+                    // the line classes will be adjusted later.)
                     let spanel = document.createElement('span');
                     spanel.className = 'LineExtraHeight';
                     spanel.appendChild(document.createTextNode(' '));
