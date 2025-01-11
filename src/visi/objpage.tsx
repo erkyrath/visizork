@@ -3,7 +3,7 @@ import { useState, useMemo, useContext } from 'react';
 
 import { ZObject, ZProp, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
-import { unpack_address, signed_zvalue, gamedat_string_map, gamedat_dictword_addrs, gamedat_routine_addrs, gamedat_property_nums, gamedat_attribute_nums, gamedat_global_nums } from './gamedat';
+import { unpack_address, signed_zvalue, gamedat_string_map, gamedat_dictword_addrs, gamedat_dictword_adjs, gamedat_routine_addrs, gamedat_property_nums, gamedat_attribute_nums, gamedat_global_nums } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -313,12 +313,25 @@ function IntProp({ values } : { values:number[] })
 
 function AdjsProp({ values } : { values:number[] })
 {
+    let rctx = useContext(ReactCtx);
+    
     let counter = 0;
     let valls = values.map((val) => {
         let index = counter++;
-        //###
+        let wd = gamedat_dictword_adjs.get(val);
+        
         return (
-            <i key={ index }> adj{ val }</i>
+            <span key={ counter }>
+                { index ? ', ' : '' }
+                { (rctx.shownumbers ?
+                   <span className="ShowAddr">({ val }) </span>
+                   : null) }
+                { (wd ?
+                   <span className="PrintDictWord">&#x2018;{ wd.text }&#x2019;</span>
+                   :
+                   <i>invalid adj { val }</i>
+                  ) }
+            </span>
         );
     });
 
@@ -405,7 +418,7 @@ function DictWordProp({ addr } : { addr:number })
                <i>invalid word { addr }</i>
               ) }
         </span>
-    )
+    );
 }
 
 function RoutineProp({ values } : { values:number[] })
