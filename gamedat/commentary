@@ -42,6 +42,8 @@ glob:lit: Whether the current location has light.
 
 glob:sprayed?: Whether you've been sprayed with grue repellant. Sadly, there won't be any grue repellant until Zork 2, so this will never be set.
 
+src:GVERBS-1593: Not until Sorcerer!
+
 
 glob:c-ints: Indicates how much of the timer table ([*glob:C-TABLE]) is used. This counts down from `C-TABLELEN`, which is 180.
 
