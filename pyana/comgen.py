@@ -131,7 +131,7 @@ def checktoken(token, linenum=None):
         prefix = None
         id = token
         
-    if prefix not in (None, 'OBJ', 'GLOB', 'RTN', 'SRC'):
+    if prefix not in (None, 'OBJ', 'GLOB', 'CONST', 'RTN', 'SRC'):
         raise Exception('invalid prefix %s: line %s' % (token, linenum))
     
     if prefix == 'OBJ':
@@ -142,6 +142,10 @@ def checktoken(token, linenum=None):
         if id not in globalnames:
             raise Exception('invalid GLOB %s: line %s' % (id, linenum))
         dest = globalnames[id]['sourceloc']
+    if prefix == 'CONST':
+        if id not in constantnames:
+            raise Exception('invalid CONST %s: line %s' % (id, linenum))
+        dest = constantnames[id]['sourceloc']
     if prefix == 'RTN':
         if id not in routinenames:
             raise Exception('invalid RTN %s: line %s' % (id, linenum))
@@ -202,10 +206,12 @@ def dump(entries, sourcekeymap, filename):
 
 routines = loadjsonp('src/game/routines.js')
 globals = loadjsonp('src/game/globals.js')
+constants = loadjsonp('src/game/constants.js')
 objects = loadjsonp('src/game/objects.js')
 
 routinenames = dict([ (obj['name'], obj) for obj in routines ])
 globalnames = dict([ (obj['name'], obj) for obj in globals ])
+constantnames = dict([ (obj['name'], obj) for obj in constants ])
 objectnames = dict([ (obj['name'], obj) for obj in objects ])
 
 entries = parse(sys.argv[1])
