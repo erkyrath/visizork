@@ -76,6 +76,20 @@ def sourceloc(tup=None, endtup=None, tok=None):
         res += ':%d:%d' % (eline, echar,)
     return res
 
+def write_dictwords(filename, dictdat):
+    print('...writing dictword data:', filename)
+
+    ls = []
+    for wd in dictdat.words:
+        dat = { 'num': wd.num, 'text': wd.text, 'flags': wd.flags }
+        ls.append(dat)
+
+    fl = open(filename, 'w')
+    fl.write('window.gamedat_dictwords = ');
+    json.dump(ls, fl, separators=(',', ':'))
+    fl.write(';\n')
+    fl.close()
+
 def write_strings(filename, zcode, txdat, objdat):
     print('...writing string data:', filename)
     load_gameinfo()

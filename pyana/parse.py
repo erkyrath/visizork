@@ -11,7 +11,7 @@ from zilana import Zcode
 from zilana import stripcomments
 from zilana import stripifdefs
 from txdparse import TXDData, ObjDumpData, DictDumpData
-from writer import write_propattrs, write_verbs, write_constants, write_globals, write_objects, write_routines, write_strings, compute_room_distances
+from writer import write_propattrs, write_verbs, write_constants, write_globals, write_objects, write_routines, write_strings, write_dictwords, compute_room_distances
 from gensource import write_source, write_source_colored
 
 popt = optparse.OptionParser()
@@ -77,6 +77,8 @@ if opts.dictdump:
     
 if opts.gamedat:
     write_propattrs('src/game/propattrs.js')
+    if opts.dictdump:
+        write_dictwords('src/game/dictwords.js', dictdat)
     if opts.zilfile:
         write_verbs('src/game/verbs.js', zcode)
     if opts.zilfile:
