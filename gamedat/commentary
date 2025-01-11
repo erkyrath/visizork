@@ -75,6 +75,11 @@ glob:lamp-table: This table shows the successive stages of the lamp going out. T
 rtn:GO: Set up the world at the start of the game. Start the timers. Print the banner. Set all those useful globals like [~glob:HERE] and [~glob:PLAYER].
 
 
+obj:mountains: The game scale gets a bit loose here.
+
+obj:kitchen: The `DOWN` exit implies that you *could* go down if [~glob:FALSE-FLAG] were true, but of course it never is. In fact `FALSE-FLAG` has no other use in the game but blocking this exit. It's not clear why it's set up this way, rather than an unconditional failure message.
+	(Possibly so the sword will glow if the thief is passing through the [~obj:STUDIO] below? But the thief is normally `INVISIBLE` and does not trigger the sword.)
+
 obj:songbird: The songbird is always present but never in reach. Except when using the [~obj:CANARY], and even then the bird flies away before you can interact with it.
 
 obj:teeth: Why teeth? Because you can `BRUSH TEETH`, which isn’t interesting, but then you can `BRUSH TEETH WITH GUNK`, because the tube is described as “like a tube of toothpaste”. Spoiler: it’s a bad idea.
