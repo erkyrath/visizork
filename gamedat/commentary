@@ -89,6 +89,9 @@ obj:granite-wall: This object is global, but the granite wall is described as be
 
 rtn:v-treasure: A very obscure magic word. See [*obj:granite-wall].
 
+rtn:CELLAR-FCN: Who slams the trap door on you, anyhow? It must be the thief, the only mobile NPC in the game. But the thief is never seen above ground. And (to be really persnickety) the trap door slams even after the thief is dead.
+	Really, we should assume it's the Dungeon Master, who has a vested interest in your underground quest.
+
 obj:lowered-basket: The object names are misleading. `RAISED-BASKET` represents the basket at *this* end of the shaft, where you can interact with it. `LOWERED-BASKET` represents the basket at the *other* end of the shaft. When you raise or lower the basket, the two objects swap places.
 
 obj:maze-1: Everybody loves a maze.
