@@ -143,7 +143,7 @@ batteries: Your lantern is now refreshed.
 	(Take a look at the “Timers” tab.)
 
 obj:atlantis-room: A very evocative room considering that the only detail is the [~obj:trident]'s description! I always imagined Byzantine undersea murals, but that was just me.
-	The text implies that the room was uncovered by emptying the reservoir, which is not really true. (You can arrive via mirror.)
+	The text implies that the room was uncovered when you drained the reservoir, which is not really true. (You can check this by arriving by mirror.)
 
 
 src:GVERBS-1813: This “floating over your head” check has to do with the `FLOAT` spell in Zork 2. That code is not used in Zork 1; that’s why it’s greyed out.
