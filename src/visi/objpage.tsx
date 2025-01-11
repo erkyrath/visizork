@@ -3,7 +3,7 @@ import { useState, useMemo, useContext } from 'react';
 
 import { ZObject, ZProp, zobj_properties } from './zstate';
 import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids } from './gamedat';
-import { unpack_address, signed_zvalue, gamedat_string_map, gamedat_routine_addrs, gamedat_property_nums, gamedat_attribute_nums, gamedat_global_nums } from './gamedat';
+import { unpack_address, signed_zvalue, gamedat_string_map, gamedat_dictword_addrs, gamedat_routine_addrs, gamedat_property_nums, gamedat_attribute_nums, gamedat_global_nums } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -333,9 +333,11 @@ function DictWordsProp({ values } : { values:number[] })
         let index = counter;
         counter += 2;
         let val = values[index] * 0x100 + values[index+1];
-        //###
         valls.push(
-            <i key={ index }> dict{ val }</i>
+            <span key={ index }>
+                { index ? ', ' : '' }
+                <DictWordProp addr={ val } />
+            </span>
         );
     };
 
@@ -350,11 +352,10 @@ function WordsRoutinesProp({ values } : { values:number[] })
         let index = counter;
         counter += 4;
         let val = values[index] * 0x100 + values[index+1];
-        //###
         valls.push(
             <span key={ index }>
                 { index ? ', ' : '' }
-                <i key={ index }>dict{ val }</i>
+                <DictWordProp addr={ val } />
                 {' '}
             </span>
         );
@@ -385,6 +386,26 @@ function StrProp({ values } : { values:number[] })
             <span className="PrintString">&#x201C;{ obj.text }&#x201D;</span>
         </>
     );
+}
+
+function DictWordProp({ addr } : { addr:number })
+{
+    let rctx = useContext(ReactCtx);
+
+    let wd = gamedat_dictword_addrs.get(addr);
+    
+    return (
+        <span>
+            { (rctx.shownumbers ?
+               <span className="ShowAddr">({ addr }) </span>
+               : null) }
+            { (wd ?
+               <code>'{ wd.text }'</code>
+               :
+               <i>invalid word { addr }</i>
+              ) }
+        </span>
+    )
 }
 
 function RoutineProp({ values } : { values:number[] })
