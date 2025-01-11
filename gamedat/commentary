@@ -40,7 +40,7 @@ glob:here: The location of the [*glob:WINNER].
 
 glob:lit: Whether the current location has light.
 
-glob:sprayed?: Whether you've been sprayed with grue repellant. Sadly, there won't be any grue repellant until Zork 2, so this will never be set.
+glob:sprayed?: Whether you’ve been sprayed with grue repellant. Sadly, there won’t be any grue repellant until Zork 2, so this will never be set.
 
 src:GVERBS-1593: Not until Sorcerer!
 
@@ -77,7 +77,7 @@ rtn:GO: Set up the world at the start of the game. Start the timers. Print the b
 
 obj:mountains: The game scale gets a bit loose here.
 
-obj:kitchen: The `DOWN` exit implies that you *could* go down if [~glob:FALSE-FLAG] were true, but of course it never is. In fact `FALSE-FLAG` has no other use in the game but blocking this exit. It's not clear why it's set up this way, rather than an unconditional failure message.
+obj:kitchen: The `DOWN` exit implies that you *could* go down if [~glob:FALSE-FLAG] were true, but of course it never is. In fact `FALSE-FLAG` has no other use in the game but blocking this exit. It’s not clear why it’s set up this way, rather than an unconditional failure message.
 	(Possibly so the sword will glow if the thief is passing through the [~obj:STUDIO] below? But the thief is normally `INVISIBLE` and does not trigger the sword.)
 
 obj:songbird: The songbird is always present but never in reach. Except when using the [~obj:CANARY], and even then the bird flies away before you can interact with it.
@@ -90,11 +90,11 @@ obj:granite-wall: This object is global, but the granite wall is described as be
 rtn:v-treasure: A very obscure magic word. See [*obj:granite-wall].
 
 rtn:CELLAR-FCN: Who slams the trap door on you, anyhow? It must be the thief, the only mobile NPC in the game. But the thief is never seen above ground. And (to be really persnickety) the trap door slams even after the thief is dead.
-	Really, we should assume it's the Dungeon Master, who has a vested interest in your underground quest.
+	Really, we should assume it’s the Dungeon Master, who has a vested interest in your underground quest.
 
 obj:chimney: This is one of several places where the MIT kids used caving jargon without quite giving the sense that they knew what it meant. A “[climbable chimney|~rtn:CHIMNEY-F]” would have meant something very different to Will and Patricia Crowther.
 
-obj:bones: The idea of encountering your earlier self's luckless corpse will reappear in *Trinity*.
+obj:bones: The idea of encountering your earlier self’s luckless corpse will reappear in *Trinity*.
 
 obj:lowered-basket: The object names are misleading. `RAISED-BASKET` represents the basket at *this* end of the shaft, where you can interact with it. `LOWERED-BASKET` represents the basket at the *other* end of the shaft. When you raise or lower the basket, the two objects swap places.
 
@@ -142,13 +142,13 @@ com-maze-12: You have reached a dead end. There is a massive vending machine her
 batteries: Your lantern is now refreshed.
 	(Take a look at the “Timers” tab.)
 
-obj:atlantis-room: A very evocative room considering that the only detail is the [~obj:trident]'s description! I always imagined Byzantine undersea murals, but that was just me.
+obj:atlantis-room: A very evocative room considering that the only detail is the [~obj:trident]’s description! I always imagined Byzantine undersea murals, but that was just me.
 	The text implies that the room was exposed when you drained the reservoir, which is not really true. (You can check this by arriving by [mirror|~rtn:MIRROR-MIRROR].)
 
-obj:COFFIN: Do you know how much a solid gold sarcophagus would weigh? More than 55, that's for sure.
+obj:COFFIN: Do you know how much a solid gold sarcophagus would weigh? More than 55, that’s for sure.
 
-glob:COFFIN-CURE: Set if you're *not* carrying the [*obj:COFFIN]. But this is only updated in the [~obj:SOUTH-TEMPLE]'s [code|~rtn:SOUTH-TEMPLE-FCN], because that's the only room where it matters.
-	Interestingly, there's a comment on the northwest exit of the [~obj:DEEP-CANYON] which mentions this flag. This is left over from the MIT version of Zork, which had several other passages too narrow or steep to navigate with the coffin.
+glob:COFFIN-CURE: Set if you’re *not* carrying the [*obj:COFFIN]. But this is only updated in the [~obj:SOUTH-TEMPLE]’s [code|~rtn:SOUTH-TEMPLE-FCN], because that’s the only room where it matters.
+	Interestingly, there’s a comment on the northwest exit of the [~obj:DEEP-CANYON] which mentions this flag. This is left over from the MIT version of Zork, which had several other passages too narrow or steep to navigate with the coffin.
 
 src:GVERBS-1813: This “floating over your head” check has to do with the `FLOAT` spell in Zork 2. That code is not used in Zork 1; that’s why it’s greyed out.
 
