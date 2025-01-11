@@ -459,25 +459,12 @@ button.ObjPage {
     color: #A40;
 }
 
-button.CommentButton {
-    float: right;
-    padding: 1px;
-    border: none;
-    margin-left: 8px;
-    background: none;
-}
-
 a.CommentButton {
     float: right;
     padding: 1px;
     border: none;
     margin-left: 8px;
     background: none;
-}
-
-button.CommentButton img {
-    width: 36px;
-    height: 27px;
 }
 
 a.CommentButton img {

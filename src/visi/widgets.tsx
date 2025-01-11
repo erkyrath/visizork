@@ -21,14 +21,15 @@ export function Commentary({ topic }: { topic:string } )
 {
     let rctx = useContext(ReactCtx);
     
-    function evhan_click_showtopic(ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    function evhan_click_showtopic(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+        ev.preventDefault();
         ev.stopPropagation();
         rctx.showCommentary(topic);
     }
 
     return (
-        <button className="CommentButton" onClick={ evhan_click_showtopic }>
+        <a className="CommentButton" onClick={ evhan_click_showtopic }>
             <img src="css/comment.svg" />
-        </button>
+        </a>
     );
 }
