@@ -275,11 +275,17 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
         linel.className = cla;
         counter++;
     }
+
+    // It looks nicer if large highlighted spans are at the top, but
+    // single highlighted lines are partway down.
+    let heightratio = 0.25;
+    if (loc.endline - loc.line > 7)
+        heightratio = 0.125;
     
     let scrollel = document.getElementById('scrollcontent_file');
     let linel = document.getElementById('line_'+loc.line);
     if (scrollel && linel) {
-        scrollel.scrollTop = linel.offsetTop - Math.floor(scrollel.offsetHeight/4);
+        scrollel.scrollTop = linel.offsetTop - Math.floor(scrollel.offsetHeight * heightratio);
     }
 }
 
