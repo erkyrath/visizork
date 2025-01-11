@@ -45,7 +45,7 @@ class ZConstant:
         self.valtok = None
 
     def __repr__(self):
-        return '<ZConstant %s %s>' % (self.name, self.value,)
+        return '<ZConstant %s %d>' % (self.name, self.value,)
     
 class ZRoutine:
     def __init__(self, name, rtok):
@@ -180,7 +180,14 @@ class Zcode:
                 idtok = tok.children[1]
                 zconst = None
                 if idtok.typ is TokType.ID:
-                    zconst = ZConstant(idtok.val, tok, None)
+                    valtok = tok.children[2]
+                    if valtok.typ is TokType.NUM:
+                        constval = valtok.num
+                    elif valtok.typ is TokType.GROUP and not valtok.children:
+                        constval = 0
+                    else:
+                        raise Exception('Constant has no value')
+                    zconst = ZConstant(idtok.val, constval, tok)
                     self.constants.append(zconst)
                 else:
                     raise Exception('Constant has no name')
