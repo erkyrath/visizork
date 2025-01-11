@@ -170,6 +170,7 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
             for (let srcln of lines) {
                 let linel = document.createElement('div');
                 linel.id = 'line_' + counter;
+                let extraheight = false;
                 if (comtoken !== undefined && counter == comline) {
                     let token = comtoken;
                     let ael = document.createElement('a');
@@ -184,12 +185,16 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                     if (compos+1 < commentlist.length) {
                         comline = commentlist[compos+0] as number;
                         comtoken = commentlist[compos+1] as string;
+                        if (comline == counter+1) {
+                            extraheight = true;
+                        }
                     }
                     else {
                         comline = undefined;
                         comtoken = undefined;
                     }
                 }
+                
                 if (srcln.length == 0) {
                     linel.appendChild(document.createTextNode(' '));
                 }
@@ -228,6 +233,15 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                         }
                     }
                 }
+                if (extraheight) {
+                    // With two comment markers in a row, we need some
+                    // extra vertical space. Sorry, hacky.
+                    let spanel = document.createElement('span');
+                    spanel.className = 'LineExtraHeight';
+                    spanel.appendChild(document.createTextNode(' '));
+                    linel.appendChild(spanel);
+                }
+                
                 filel.appendChild(linel);
                 counter++;
             }

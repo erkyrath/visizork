@@ -544,6 +544,10 @@ a.CommentButton img {
     background: #FFF4DD;
 }
 
+.SourceFile .LineExtraHeight {
+    line-height: 38px;
+}
+
 .Src_Comment {
     color: #292;
 }
