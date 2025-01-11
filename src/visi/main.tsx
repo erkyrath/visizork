@@ -55,7 +55,7 @@ function VisiZorkApp()
     let viewpaneref = useRefDiv();
     
     const [ zstate, setZState ] = useState(get_updated_report(engine));
-    const [ tab, setTab ] = useState('objtree');
+    const [ tab, setTab ] = useState('activity');
     const [ objpage, setObjPage ] = useState(0);
     const [ shownumbers, setShowNumbers ] = useState(false);
     const [ sourcelocs, setSourceLocs ] = useState([ new_sourcelocstate() ]);
@@ -175,8 +175,8 @@ function VisiZorkApp()
 }
 
 const tab_list = [
-    [ 'objtree', 'World' ],
     [ 'activity', 'Activity' ],
+    [ 'objtree', 'World' ],
     [ 'globals', 'State' ],
     [ 'timers', 'Timers' ],
     [ 'filelist', 'Files' ],
