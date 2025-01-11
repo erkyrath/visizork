@@ -183,3 +183,15 @@ class ObjDumpData:
                     continue
                 
 
+class DictDumpData:
+    def __init__(self):
+        self.words = []
+    
+    def readdump(self, filename):
+        pat_word = re.compile(r'\[\s*([0-9]+)\] @ [$]([0-9a-f]+)\s+([^ ]+)\s+\[[0-9a-f ]+\]([a-z<> ]*)')
+        with open(filename) as infl:
+            for ln in infl.readlines():
+                match = pat_word.match(ln.strip())
+                if match:
+                    print(match.groups())
+                    

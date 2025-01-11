@@ -10,7 +10,7 @@ from zillex import Lexer, dumptokens
 from zilana import Zcode
 from zilana import stripcomments
 from zilana import stripifdefs
-from txdparse import TXDData, ObjDumpData
+from txdparse import TXDData, ObjDumpData, DictDumpData
 from writer import write_propattrs, write_verbs, write_constants, write_globals, write_objects, write_routines, write_strings, compute_room_distances
 from gensource import write_source, write_source_colored
 
@@ -28,6 +28,8 @@ popt.add_option('-t', '--txd',
                 action='store_true', dest='txdfile')
 popt.add_option('-o', '--obj',
                 action='store_true', dest='objdump')
+popt.add_option('-d', '--dict',
+                action='store_true', dest='dictdump')
 popt.add_option('--src',
                 action='store_true', dest='sourcelist')
 
@@ -66,6 +68,12 @@ if opts.objdump:
     objdat = ObjDumpData()
     objdat.readdump('gamedat/obj-dump.txt')
     print('objects:', len(objdat.objects))
+    
+if opts.dictdump:
+    print('reading dict dump...')
+    dictdat = DictDumpData()
+    dictdat.readdump('gamedat/dict-dump.txt')
+    print('dict words:', len(dictdat.words))
     
 if opts.gamedat:
     write_propattrs('src/game/propattrs.js')
