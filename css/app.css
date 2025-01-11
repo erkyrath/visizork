@@ -467,7 +467,20 @@ button.CommentButton {
     background: none;
 }
 
+a.CommentButton {
+    float: right;
+    padding: 1px;
+    border: none;
+    margin-left: 8px;
+    background: none;
+}
+
 button.CommentButton img {
+    width: 36px;
+    height: 27px;
+}
+
+a.CommentButton img {
     width: 36px;
     height: 27px;
 }
@@ -507,6 +520,7 @@ button.CommentButton img {
 }
 
 .SourceFile {
+    display: block flow-root;
     white-space: pre-wrap;
     font-family: "Courier Prime";
     font-size: 90%;

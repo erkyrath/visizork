@@ -160,13 +160,13 @@ function rebuild_sourcefile(nodel: HTMLDivElement, locstr: string, lochi: boolea
                 linel.id = 'line_' + counter;
                 if (compos < commentlist.length && counter == commentlist[compos][0]) {
                     let token = commentlist[compos][1];
-                    let butel = document.createElement('button');
-                    butel.className = 'CommentButton';
+                    let ael = document.createElement('a');
+                    ael.className = 'CommentButton';
                     let imgel = document.createElement('img');
                     imgel.setAttribute('src', 'css/comment.svg');
-                    butel.appendChild(imgel);
-                    butel.addEventListener('click', (ev) => { ev.stopPropagation(); handle_click_comment(token); });
-                    linel.appendChild(butel);
+                    ael.appendChild(imgel);
+                    ael.addEventListener('click', (ev) => { ev.preventDefault(); ev.stopPropagation(); handle_click_comment(token); });
+                    linel.appendChild(ael);
                     compos++;
                 }
                 if (srcln.length == 0) {
