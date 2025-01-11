@@ -120,8 +120,13 @@ function VisiZorkApp()
                 if (entries.length) {
                     let newsize = entries[0].contentRect.width;
                     if (newsize < panesize-1 || newsize > panesize+1) {
-                        console.log('### resize', newsize);
                         panesize = newsize;
+                        if (viewpaneref.current) {
+                            if (panesize < 360)
+                                viewpaneref.current.classList.add('Narrow');
+                            else
+                                viewpaneref.current.classList.remove('Narrow');
+                        }
                     }
                 }
             });

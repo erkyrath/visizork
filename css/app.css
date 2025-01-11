@@ -265,6 +265,9 @@ body {
     padding-left: 8px;
     box-sizing: border-box;
 }
+.Narrow .TabBar {
+    height: 64px;
+}
 
 .TabBar .TabItem {
     display: inline-block;
@@ -309,6 +312,9 @@ body {
     width: 100%;
     top: 32px;
     bottom: 0px;
+}
+.Narrow .TabContent {
+    top: 64px;
 }
 
 .ScrollContent {
