@@ -400,7 +400,7 @@ function DictWordProp({ addr } : { addr:number })
                <span className="ShowAddr">({ addr }) </span>
                : null) }
             { (wd ?
-               <code>'{ wd.text }'</code>
+               <span className="PrintDictWord">&#x2018;{ wd.text }&#x2019;</span>
                :
                <i>invalid word { addr }</i>
               ) }

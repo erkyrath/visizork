@@ -486,6 +486,12 @@ a.CommentButton img {
     font-weight: bold;
 }
 
+.PrintDictWord {
+    font-family: "Libre Baskerville", serif;
+    font-size: 90%;
+    font-weight: bold;
+}
+
 .ShowAddr {
     font-size: 85%;
 }
