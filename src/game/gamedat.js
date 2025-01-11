@@ -3,6 +3,7 @@ window.gamedat_global_nums = new Map();
 window.gamedat_global_names = new Map();
 window.gamedat_globals_sort_index = [];
 window.gamedat_globals_sort_alpha = [];
+window.gamedat_constant_names = new Map();
 window.gamedat_object_ids = new Map();
 window.gamedat_object_names = new Map();
 window.gamedat_object_room_ids = new Set();
@@ -23,6 +24,10 @@ window.gamedat_ids = {};
     
     for (let obj of window.gamedat_attributes) {
         gamedat_attribute_nums.set(obj.num, obj);
+    }
+    
+    for (let obj of window.gamedat_constants) {
+        gamedat_constant_names.set(obj.name, obj);
     }
 
     for (let obj of window.gamedat_globals) {

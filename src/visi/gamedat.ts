@@ -164,6 +164,12 @@ export type GlobalData = {
     sourceloc: string;
 };
 
+export type ConstantData = {
+    name: string;
+    value: number;
+    sourceloc: string;
+};
+
 export type ObjectData = {
     onum: number;
     name: string;
@@ -219,6 +225,7 @@ export const gamedat_global_nums = (window as any).gamedat_global_nums as Map<nu
 export const gamedat_global_names = (window as any).gamedat_global_names as Map<string, GlobalData>;
 export const gamedat_globals_sort_index = (window as any).gamedat_globals_sort_index as GlobalData[];
 export const gamedat_globals_sort_alpha = (window as any).gamedat_globals_sort_alpha as GlobalData[];
+export const gamedat_constant_names = (window as any).gamedat_constant_names as Map<string, ConstantData>;
 export const gamedat_object_ids = (window as any).gamedat_object_ids as Map<number, ObjectData>;
 export const gamedat_object_names = (window as any).gamedat_object_names as Map<string, ObjectData>;
 export const gamedat_object_room_ids = (window as any).gamedat_object_room_ids as Set<number>;
