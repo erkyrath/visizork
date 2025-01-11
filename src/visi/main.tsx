@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Root, createRoot } from 'react-dom/client';
 
@@ -52,6 +52,8 @@ export function init(runnerref: any)
 
 function VisiZorkApp()
 {
+    let viewpaneref = useRefDiv();
+    
     const [ zstate, setZState ] = useState(get_updated_report(engine));
     const [ tab, setTab ] = useState('objtree');
     const [ objpage, setObjPage ] = useState(0);
@@ -111,9 +113,25 @@ function VisiZorkApp()
         }
         window.addEventListener('zmachine-update', evhan_zstate);
         window.addEventListener('zil-source-location', evhan_sourceloc);
+        let resizer: ResizeObserver|undefined;
+        let panesize = -1;
+        if (viewpaneref.current) {
+            resizer = new ResizeObserver((entries) => {
+                if (entries.length) {
+                    let newsize = entries[0].contentRect.width;
+                    if (newsize < panesize-1 || newsize > panesize+1) {
+                        console.log('### resize', newsize);
+                        panesize = newsize;
+                    }
+                }
+            });
+            resizer.observe(viewpaneref.current);
+        }
         return () => {
             window.removeEventListener('zmachine-update', evhan_zstate);
             window.removeEventListener('zil-source-location', evhan_sourceloc);
+            if (resizer)
+                resizer.disconnect();
         };
     }, []);
 
@@ -140,7 +158,7 @@ function VisiZorkApp()
     
     return (
         <ReactCtx.Provider value={ rctx }>
-            <div className="ViewPane">
+            <div className="ViewPane" ref={ viewpaneref }>
                 <TabbedPane />
             </div>
             <div className="SourcePane">
@@ -220,3 +238,5 @@ function TabbedPane()
         </>
     );
 }
+
+const useRefDiv = () => useRef<HTMLDivElement>(null);
