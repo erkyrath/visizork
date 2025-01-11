@@ -142,6 +142,7 @@ function VisiZorkApp()
 
     if (releaseTarget == 'development') {
         (window as any).curzstate = zstate;
+        (window as any).show_commentary = show_commentary;
     }
 
     let rctx: ContextContent = {
