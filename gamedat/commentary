@@ -38,6 +38,11 @@ glob:winner: `WINNER` is the actor in the current command. (Compare [*glob:PLAYE
 
 glob:here: The location of the [*glob:WINNER].
 
+glob:lit: Whether the current location has light.
+
+glob:sprayed?: Whether you've been sprayed with grue repellant. Sadly, there won't be any grue repellant until Zork 2, so this will never be set.
+
+
 glob:c-ints: Indicates how much of the timer table ([*glob:C-TABLE]) is used. This counts down from `C-TABLELEN`, which is 180.
 
 glob:c-table: The timer table. See the “Timers” tab for a current listing.
