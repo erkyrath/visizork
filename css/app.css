@@ -460,6 +460,8 @@ button.ObjPage {
 }
 
 a.CommentButton {
+    position: relative;
+    top: -4px;
     float: right;
     padding: 1px;
     border: none;
