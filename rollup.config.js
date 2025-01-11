@@ -3,7 +3,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 
-const datestr = 'Jan 10, 2025'
+const datestr = 'Jan 11, 2025'
 const release = false;
 
 const nodeenv = (release ? 'production' : 'development')
