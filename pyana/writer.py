@@ -82,6 +82,7 @@ def write_dictwords(filename, dictdat):
     ls = []
     for wd in dictdat.words:
         dat = { 'num': wd.num, 'text': wd.text, 'flags': wd.flags }
+        dat['spec2'] = wd.special[1]
         ls.append(dat)
 
     fl = open(filename, 'w')

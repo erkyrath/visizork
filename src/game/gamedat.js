@@ -11,6 +11,7 @@ window.gamedat_object_global_ids = new Set();
 window.gamedat_object_treesort = new Map();
 window.gamedat_string_map = new Map();
 window.gamedat_dictword_addrs = new Map();
+window.gamedat_dictword_adjs = new Map();
 window.gamedat_routine_addrs = new Map();
 window.gamedat_routine_names = new Map();
 window.gamedat_property_nums = new Map();
@@ -82,6 +83,8 @@ window.gamedat_ids = {};
 
     for (let obj of window.gamedat_dictwords) {
         gamedat_dictword_addrs.set(gamedat_ids.DICT_START + obj.num * 7, obj);
+        if (obj.flags.includes('A'))
+            gamedat_dictword_adjs.set(obj.spec2, obj);
     }
     
     for (let obj of window.gamedat_routines) {
