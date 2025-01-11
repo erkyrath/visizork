@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, useRef, useEffect } from 'react';
 
 import { sourcefile_map, gamedat_sourcefiles } from './gamedat';
-import { gamedat_global_names, gamedat_object_names, gamedat_string_map, gamedat_routine_names, parse_sourceloc } from './gamedat';
+import { gamedat_global_names, gamedat_constant_names, gamedat_object_names, gamedat_string_map, gamedat_routine_names, parse_sourceloc } from './gamedat';
 import { sourceloc_start, gamedat_commentarymap } from './gamedat';
 
 import { ReactCtx } from './context';
@@ -45,6 +45,11 @@ export function SourceView()
         let glo = gamedat_global_names.get(val);
         if (glo) {
             rctx.setLoc(glo.sourceloc, false);
+            return;
+        }
+        let con = gamedat_constant_names.get(val);
+        if (con) {
+            rctx.setLoc(con.sourceloc, false);
             return;
         }
         console.log('BUG: clicked unknown id', val);

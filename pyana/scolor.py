@@ -9,7 +9,7 @@ def colorize_file(filename, zcode):
     linkids.update([ (obj.name, obj.objtok) for obj in zcode.objects ])
     linkids.update([ (rtn.name, rtn.rtok) for rtn in zcode.routines ])
     linkids.update([ (glo.name, glo.gtok) for glo in zcode.globals ])
-    ### other symbols like ZORK-NUMBER? CONSTANTs?
+    linkids.update([ (con.name, con.ctok) for con in zcode.constants ])
     
     lex = Lexer(filename)
     tokls = lex.readfile(includes=False)
