@@ -145,6 +145,10 @@ batteries: Your lantern is now refreshed.
 obj:atlantis-room: A very evocative room considering that the only detail is the [~obj:trident]'s description! I always imagined Byzantine undersea murals, but that was just me.
 	The text implies that the room was exposed when you drained the reservoir, which is not really true. (You can check this by arriving by [mirror|~rtn:MIRROR-MIRROR].)
 
+obj:COFFIN: Do you know how much a solid gold sarcophagus would weigh? More than 55, that's for sure.
+
+glob:COFFIN-CURE: Set if you're *not* carrying the [*obj:COFFIN]. But this is only updated in the [~obj:SOUTH-TEMPLE]'s [code|~rtn:SOUTH-TEMPLE-FCN], because that's the only room where it matters.
+	Interestingly, there's a comment on the northwest exit of the [~obj:DEEP-CANYON] which mentions this flag. This is left over from the MIT version of Zork, which had several other passages too narrow or steep to navigate with the coffin.
 
 src:GVERBS-1813: This “floating over your head” check has to do with the `FLOAT` spell in Zork 2. That code is not used in Zork 1; that’s why it’s greyed out.
 
