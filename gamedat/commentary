@@ -74,7 +74,16 @@ glob:lamp-table: This table shows the successive stages of the lamp going out. T
 
 rtn:GO: Set up the world at the start of the game. Start the timers. Print the banner. Set all those useful globals like [~glob:HERE] and [~glob:PLAYER].
 
+
 obj:songbird: The songbird is always present but never in reach. Except when using the [~obj:CANARY], and even then the bird flies away before you can interact with it.
+
+obj:teeth: Why teeth? Because you can `BRUSH TEETH`, which isn’t interesting, but then you can `BRUSH TEETH WITH GUNK`, because the tube is described as “like a tube of toothpaste”. Spoiler: it’s a bad idea.
+
+obj:granite-wall: This object is global, but the granite wall is described as being between the [~obj:NORTH-TEMPLE] and the [~obj:TREASURE-ROOM]. And then the [~obj:SLIDE-ROOM] has the *words* “Granite Wall”.
+	What’s going on? Well, it turns out that you can transport yourself through the granite wall. Typing the magic word `TREASURE` (or `TEMPLE`) will move you from the `NORTH-TEMPLE` to the `TREASURE-ROOM` and back. This is completely ridiculous as a puzzle – *nobody* figures it out – so it’s good that there are two other ways to get past the [~obj:CYCLOPS].
+
+rtn:v-treasure: A very obscure magic word. See [*obj:granite-wall].
+
 
 obj:maze-1: Everybody loves a maze.
 	[Enter the maze|com-maze-1]?
