@@ -37,6 +37,16 @@ class ZGlobal:
     def __repr__(self):
         return '<ZGlobal %s>' % (self.name,)
     
+class ZConstant:
+    def __init__(self, name, value, gtok):
+        self.name = name
+        self.value = value
+        self.gtok = gtok
+        self.valtok = None
+
+    def __repr__(self):
+        return '<ZConstant %s %s>' % (self.name, self.value,)
+    
 class ZRoutine:
     def __init__(self, name, rtok):
         self.name = name
@@ -130,6 +140,7 @@ class Zcode:
     def __init__(self, tokls):
         self.tokls = tokls
         self.globals = []
+        self.constants = []
         self.strings = []
         self.istrings = []
         self.routines = []
@@ -165,6 +176,14 @@ class Zcode:
                     if globtok.typ is TokType.GROUP and globtok.children:
                         if globtok.children[0].val in ('TABLE', 'LTABLE'):
                             self.findstringsintok(globtok)
+            if tok.matchform('CONSTANT', 2):
+                idtok = tok.children[1]
+                zconst = None
+                if idtok.typ is TokType.ID:
+                    zconst = ZConstant(idtok.val, tok, None)
+                    self.constants.append(zconst)
+                else:
+                    raise Exception('Constant has no name')
             if tok.matchform('ROUTINE', 1):
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:

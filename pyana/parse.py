@@ -46,6 +46,7 @@ if opts.zilfile:
     zcode.build()
     strset = set([ val.text for val in zcode.strings ])
     print('globals:', len(zcode.globals))
+    print('constants:', len(zcode.constants))
     print('static strings:', len(zcode.strings), '/', 'unique:', len(strset))
     print('inline strings:', len(zcode.istrings))
     print('routines:', len(zcode.routines))
