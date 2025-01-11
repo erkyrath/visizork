@@ -84,6 +84,7 @@ obj:granite-wall: This object is global, but the granite wall is described as be
 
 rtn:v-treasure: A very obscure magic word. See [*obj:granite-wall].
 
+obj:lowered-basket: The object names are misleading. `RAISED-BASKET` represents the basket at *this* end of the shaft, where you can interact with it. `LOWERED-BASKET` represents the basket at the *other* end of the shaft. When you raise or lower the basket, the two objects swap places.
 
 obj:maze-1: Everybody loves a maze.
 	[Enter the maze|com-maze-1]?
