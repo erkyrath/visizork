@@ -182,6 +182,16 @@ class ObjDumpData:
                     curobj.props[propnum] = ls
                     continue
                 
+class DictWord:
+    def __init__(self, num, addr, text, special, flags):
+        self.num = num
+        self.addr = addr
+        self.text = text
+        self.special = special
+        self.flags = flags
+    
+    def __repr__(self):
+        return '<DictWord %d "%s">' % (self.num, self.text,)
 
 class DictDumpData:
     def __init__(self):
@@ -215,6 +225,6 @@ class DictDumpData:
                             raise Exception('bad flag ' + flag)
                     valls = match.group(4).split()
                     special = int(valls[-1], 16)
-                    print(num, addr, text, special, flags)
+                    self.words.append(DictWord(num, addr, text, special, flags))
                     
                     
