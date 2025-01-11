@@ -209,6 +209,23 @@ def write_globals(filename, zcode):
     fl.write(';\n')
     fl.close()
 
+def write_constants(filename, zcode):
+    print('...writing constants data:', filename)
+    ls = []
+    for con in zcode.constants:
+        dat = {
+            'name': con.name,
+            'value': con.value,
+            'sourceloc': sourceloc(tok=con.ctok),
+        }
+        ls.append(dat)
+
+    fl = open(filename, 'w')
+    fl.write('window.gamedat_constants = ');
+    json.dump(ls, fl, separators=(',', ':'))
+    fl.write(';\n')
+    fl.close()
+
 def write_objects(filename, zcode, objdat):
     print('...writing object data:', filename)
     load_gameinfo()
