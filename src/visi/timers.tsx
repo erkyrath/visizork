@@ -21,8 +21,9 @@ export function TimerTable()
     let ells = [];
     let activecount = 0;
     
-    let pos = zstate.globals[C_INTS.num];
-    while (pos+6 < zstate.timertable.length) {
+    let timerpos = zstate.globals[C_INTS.num];
+    while (timerpos+6 < zstate.timertable.length) {
+        let pos = timerpos;
         let flag = zstate.timertable[pos] * 0x100 + zstate.timertable[pos+1];
         let count = zstate.timertable[pos+2] * 0x100 + zstate.timertable[pos+3];
         let addr = zstate.timertable[pos+4] * 0x100 + zstate.timertable[pos+5];
@@ -54,7 +55,7 @@ export function TimerTable()
             </li>
         );
         
-        pos += 6;
+        timerpos += 6;
     }
 
     function evhan_click_background(ev: React.MouseEvent<HTMLDivElement, MouseEvent>) {
