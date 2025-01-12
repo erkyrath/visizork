@@ -8,6 +8,8 @@ import { ObjPageLink, Commentary } from './widgets';
 
 export function TimerTable()
 {
+    const [ selected, setSelected ] = useState(-1);
+    
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
 
@@ -29,14 +31,15 @@ export function TimerTable()
         if (flag)
             activecount++;
 
-        function evhan_click(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-            ev.preventDefault();
+        function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+            ev.stopPropagation();
+            setSelected(pos);
             if (rtn)
                 rctx.setLoc(rtn.sourceloc, false);
         }
     
         ells.push(
-            <li key={ pos }>
+            <li key={ pos } className={ (pos==selected) ? 'Selected' : '' } onClick={ evhan_click }>
                 { (flag ?
                    <span className="TimerActive">&#x2611;</span> :
                    <span className="TimerInactive">&#x2610;</span>) }
@@ -44,7 +47,7 @@ export function TimerTable()
                 { (rctx.shownumbers ?
                    <span className="ShowAddr">({ addr }) </span>
                    : null) }
-                <a className="Src_Id" href="#" onClick={ evhan_click }><code>{ rtn ? rtn.name : '' }</code></a>
+                <code>{ rtn ? rtn.name : '???' }</code>
                 {', '}
                 <i>count </i>
                 { signed_zvalue(count) }
@@ -54,8 +57,13 @@ export function TimerTable()
         pos += 6;
     }
 
+    function evhan_click_background(ev: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+        ev.stopPropagation();
+        setSelected(-1);
+    }
+
     return (
-        <div className="ScrollContent">
+        <div className="ScrollContent" onClick={ evhan_click_background }>
             <Commentary topic={ 'TIMERS-LEGEND' } />
                 <div>
                     { ells.length } timers, { activecount } active:
