@@ -138,6 +138,8 @@ body {
 #commentaryheader {
     background: #70E870;
     min-height: 22px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
 #commentarytitle {
