@@ -81,6 +81,8 @@ obj:kitchen: The `DOWN` exit implies that you *could* go down if [~glob:FALSE-FL
 	(Possibly so the sword will glow if the thief is passing through the [~obj:STUDIO] below? But the thief is normally `INVISIBLE` and does not trigger the sword.)
 	This has the side effect that `JUMP` in the Kitchen is fatal. See [V-LEAP|*src:GVERBS-769].
 
+obj:garlic: Who carries around one clove of garlic? As a kid, I assumed this was a *head* of garlic, which left me permanently confused about what "clove" meant. Thanks Zork.
+
 obj:songbird: The songbird is always present but never in reach. Except when using the [~obj:CANARY], and even then the bird flies away before you can interact with it.
 
 obj:teeth: Why teeth? Because you can `BRUSH TEETH`, which isn’t interesting, but then you can `BRUSH TEETH WITH GUNK`, because the tube is described as “like a tube of toothpaste”. Spoiler: it’s a bad idea.
@@ -155,6 +157,8 @@ obj:COFFIN: Do you know how much a solid gold sarcophagus would weigh? More than
 
 glob:COFFIN-CURE: Set if you’re *not* carrying the [*obj:COFFIN]. But this is only updated in the [~obj:SOUTH-TEMPLE]’s [code|~rtn:SOUTH-TEMPLE-FCN], because that’s the only room where it matters.
 	Interestingly, there’s a comment on the northwest exit of the [~obj:DEEP-CANYON] which mentions this flag. This is left over from the MIT version of Zork, which had several other passages too narrow or steep to navigate with the coffin.
+
+obj:BAT: A reject from *Wumpus!* So said early versions of Zork, including the release I played in 1980. But here the reference has been deleted. Sigh.
 
 obj:TIMBER-ROOM: The timbers are left over from an MIT Zork puzzle in which you had to anchor the rope at the top of the [~obj:SLIDE-ROOM] and lower yourself halfway down. The puzzle was dropped from this version of Zork, but a variation appeared in *Sorcerer*.
 
