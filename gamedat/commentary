@@ -95,7 +95,7 @@ rtn:v-treasure: A very obscure magic word. See [*obj:granite-wall].
 rtn:CELLAR-FCN: Who slams the trap door on you, anyhow? It must be the thief, the only mobile NPC in the game. But the thief is never seen above ground. And (to be really persnickety) the trap door slams even after the thief is dead.
 	Really, we should assume it’s the Dungeon Master, who has a vested interest in your underground quest.
 
-obj:chimney: This is one of several places where the MIT kids used caving jargon without quite giving the sense that they knew what it meant. A “[climbable chimney|~rtn:CHIMNEY-F]” would have meant something very different to Will and Patricia Crowther.
+obj:chimney: This is one of several places where the MIT kids used caving jargon without quite conveying that they knew what it meant. A “[climbable chimney|~rtn:CHIMNEY-F]” would have meant something very different to Will and Patricia Crowther.
 
 obj:bones: The idea of encountering your earlier self’s luckless corpse will reappear in *Trinity*.
 
@@ -162,6 +162,11 @@ obj:BAT: A reject from *Wumpus!* So said early versions of Zork, including the r
 
 obj:TIMBER-ROOM: The timbers are left over from an MIT Zork puzzle in which you had to anchor the rope at the top of the [~obj:SLIDE-ROOM] and lower yourself halfway down. The puzzle was dropped from this version of Zork, but a variation appeared in *Sorcerer*.
 
+rtn:PERFORM: Perform one game action. To simplify a bit, this sets up some globals ([~glob:PRSA], [~glob:PRSI], [~glob:PRSO]). Then it runs the action by invoking various handlers (drawn from the player, the location, the noun, the generic action table...) until one reports that the action is handled.
+	Note that there are two complete implementations of `PERFORM` here. We observe that the first one is compiled and the second is ignored, based on the existence of the `PREDGEN` constant. I don’t know what that means, though.
+
+src:GMAIN-143: We run the game’s “every turn” timers if the parser parsed a command ([*glob:P-WON]) and the command was not an out-of-world action (`SCORE`, `SAVE`, etc.)
+	Curiously, the `TELL` action also skips the timers. Presumably the timers will run for the NPC’s commanded action. (But Zork 1 has no commandable NPCs, so this doesn’t come up.)
 
 src:GVERBS-769: Jumping is fatal if the room has a down exit which is impassable (with a failure message). This makes sense for, say, [~obj:EAST-OF-CHASM]. It’s a bit odd in the [~obj:KITCHEN] or [~obj:RESERVOIR].
 
@@ -173,3 +178,4 @@ src:GVERBS-1839: The “holding too many things” message is probabilistic. The
 	Note that there’s a *separate* check, a few lines up, for whether “your load is too heavy”. That one is *not* probabilistic.
 	I wrote a [blog post|https://blog.zarfhome.com/2017/08/your-load-is-too-heavy-zork-deep-reading] about this a few years back.
 
+rtn:V-WAIT: The `WAIT` command waits three full turns, including the “every turn” timers. But a timer can interrupt this – for example, if the thief shows up and robs you.
