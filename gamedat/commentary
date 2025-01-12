@@ -72,21 +72,21 @@ rtn:score-upd: Increases (or decreases) your score. Also checks whether you’ve
 
 glob:lamp-table: This table shows the successive stages of the lamp going out. The *first* stage is 200 turns, which is set in [~rtn:GO], not here.
 
-rtn:i-lantern: This routine sits in the timers table. When it fires, it prints a "lantern has gotten dimmer" message and re-queues itself for the next dimming stage. (Until the lantern goes out entirely, of course.) The messages themselves (and their durations) are found in [*glob:lamp-table].
+rtn:i-lantern: This routine sits in the timers table. When it fires, it prints a “lantern has gotten dimmer” message and re-queues itself for the next dimming stage. (Until the lantern goes out entirely, of course.) The messages themselves (and their durations) are found in [*glob:lamp-table].
 
 glob:candle-table: This table shows the successive stages of the candles burning down. The *first* stage is 40 turns, which is set in [~rtn:GO], not here.
 
-rtn:i-candles: This routine sits in the timers table. When it fires, it prints a "candles have gotten shorter" message and re-queues itself for the next shortening stage. (Until the candles burn out entirely, of course.) The messages themselves (and their durations) are found in [*glob:candle-table].
+rtn:i-candles: This routine sits in the timers table. When it fires, it prints a “candles have gotten shorter” message and re-queues itself for the next shortening stage. (Until the candles burn out entirely, of course.) The messages themselves (and their durations) are found in [*glob:candle-table].
 
-rtn:i-sword: This routine runs every turn that you are carrying the sword. It checks adjacent rooms for enemies and displays the "sword is glowing" message.
-	The sword's glow level is stored in its `TVALUE` property, which is normally used for treasure values.
+rtn:i-sword: This routine runs every turn that you are carrying the sword. It checks adjacent rooms for enemies and displays the “sword is glowing” message.
+	The sword’s glow level is stored in its `TVALUE` property, which is normally used for treasure values.
 
 rtn:GO: Set up the world at the start of the game. Start the timers. Print the banner. Set all those useful globals like [~glob:HERE] and [~glob:PLAYER].
 
 
 glob:house-around: If you type `WALK AROUND HOUSE` while standing near the house, this table takes you in a neat circle around it.
 
-glob:in-house-around: If you type `WALK AROUND HOUSE` while standing *inside* the house... it doesn't work because the [~obj:WHITE-HOUSE] scenery object isn't visible. There's a [bit of code|~src:1ACTIONS-93] which wants to use this table but it never runs.
+glob:in-house-around: If you type `WALK AROUND HOUSE` while standing *inside* the house... it doesn’t work because the [~obj:WHITE-HOUSE] scenery object isn’t visible. There’s a [bit of code|~src:1ACTIONS-93] which wants to use this table but it never runs.
 
 glob:forest-around: If you type `WALK AROUND FOREST` while in the forest, this table takes you for a nice (non-random) ramble.
 
