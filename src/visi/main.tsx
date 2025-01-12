@@ -98,6 +98,13 @@ function VisiZorkApp()
         function evhan_zstate(ev: Event) {
             setZState(get_updated_report(engine));
         };
+        window.addEventListener('zmachine-update', evhan_zstate);
+        return () => {
+            window.removeEventListener('zmachine-update', evhan_zstate);
+        };
+    }, []);
+
+    useEffect(() => {
         function evhan_sourceloc(ev: Event) {
             let detail = (ev as CustomEvent).detail;
             let sourceloc;
@@ -111,13 +118,11 @@ function VisiZorkApp()
             }
             setLoc(sourceloc, (detail.idtype == 'GLOB'));
         }
-        window.addEventListener('zmachine-update', evhan_zstate);
         window.addEventListener('zil-source-location', evhan_sourceloc);
         return () => {
-            window.removeEventListener('zmachine-update', evhan_zstate);
             window.removeEventListener('zil-source-location', evhan_sourceloc);
         };
-    }, []);
+    }, [ sourcelocs, sourcelocpos ]);
 
     useEffect(() => {
         let resizer: ResizeObserver|undefined;
