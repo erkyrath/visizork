@@ -197,6 +197,13 @@ obj:BAT: A reject from *Wumpus!* So said early versions of Zork, including the r
 
 obj:TIMBER-ROOM: The timbers are left over from an MIT Zork puzzle in which you had to anchor the rope at the top of the [~obj:SLIDE-ROOM] and lower yourself halfway down. The puzzle was dropped from this version of Zork, but a variation appeared in *Sorcerer*.
 
+rtn:I-MAINT-ROOM: Timer event that floods the [~obj:MAINTENANCE-ROOM] when you push the wrong button.
+
+rtn:I-REMPTY: Timer event for draining the [~obj:RESERVOIR].
+
+rtn:I-RFILL: Timer event for refilling the [~obj:RESERVOIR].
+
+
 rtn:PERFORM: Perform one game action. To simplify a bit, this sets up some globals ([~glob:PRSA], [~glob:PRSI], [~glob:PRSO]). Then it runs the action by invoking various handlers (drawn from the player, the location, the noun, the generic action table...) until one reports that the action is handled.
 	Note that there are two complete implementations of `PERFORM` here. We observe that the first one is compiled and the second is ignored, based on the existence of the `PREDGEN` constant. I don’t know what that means, though.
 
