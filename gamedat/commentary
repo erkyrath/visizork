@@ -146,6 +146,8 @@ batteries: Your lantern is now refreshed.
 obj:dam-room: The reservoir is underground (dark), but the dam and the river downstream are sunlit. (You can tell by the [~obj:RAINBOW], and also by not needing a light source.) This is hard to visualize.
 	In MIT Zork, the [~obj:CANYON-VIEW] says “I can discern the top of the Flood Control Dam #3 far to the distant north.” By this version that has changed to “The mighty Frigid River flows out from a great dark cavern,” thus hanging a lantern on the problem.
 
+obj:canyon-view: The mighty Frigid River runs aboveground until it doesn't. See [*obj:DAM-ROOM].
+
 obj:atlantis-room: A very evocative room considering that the only detail is the [~obj:trident]’s description! I always imagined Byzantine undersea murals, but that was just me.
 	The text implies that the room was exposed when you drained the reservoir, which is not really true. (You can check this by arriving by [mirror|~rtn:MIRROR-MIRROR].)
 
@@ -153,6 +155,9 @@ obj:COFFIN: Do you know how much a solid gold sarcophagus would weigh? More than
 
 glob:COFFIN-CURE: Set if you’re *not* carrying the [*obj:COFFIN]. But this is only updated in the [~obj:SOUTH-TEMPLE]’s [code|~rtn:SOUTH-TEMPLE-FCN], because that’s the only room where it matters.
 	Interestingly, there’s a comment on the northwest exit of the [~obj:DEEP-CANYON] which mentions this flag. This is left over from the MIT version of Zork, which had several other passages too narrow or steep to navigate with the coffin.
+
+obj:TIMBER-ROOM: The timbers are left over from an MIT Zork puzzle in which you had to anchor the rope at the top of the [~obj:SLIDE-ROOM] and lower yourself halfway down. The puzzle was dropped from this version of Zork, but a variation appeared in *Sorcerer*.
+
 
 src:GVERBS-769: Jumping is fatal if the room has a down exit which is impassable (with a failure message). This makes sense for, say, [~obj:EAST-OF-CHASM]. It's a bit odd in the [~obj:KITCHEN] or [~obj:RESERVOIR].
 
