@@ -75,6 +75,16 @@ glob:lamp-table: This table shows the successive stages of the lamp going out. T
 rtn:GO: Set up the world at the start of the game. Start the timers. Print the banner. Set all those useful globals like [~glob:HERE] and [~glob:PLAYER].
 
 
+glob:house-around: If you type `WALK AROUND HOUSE` while standing near the house, this table takes you in a neat circle around it.
+
+glob:in-house-around: If you type `WALK AROUND HOUSE` while standing *inside* the house... it doesn't work because the [~obj:WHITE-HOUSE] scenery object isn't visible. There's a [bit of code|~src:1ACTIONS-93] which wants to use this table but it never runs.
+
+glob:forest-around: If you type `WALK AROUND FOREST` while in the forest, this table takes you for a nice (non-random) ramble.
+
+glob:above-ground: If you die, your possessions are scattered above ground according to this table. See [rtn:RANDOMIZE-OBJECTS].
+
+rtn:RANDOMIZE-OBJECTS: If you die, your possessions are scattered above ground. Except for the lamp (always found in the [~obj:LIVING-ROOM]) and the coffin (returned to the [~obj:EGYPT-ROOM]).
+
 obj:mountains: The game scale gets a bit loose here.
 
 obj:kitchen: The `DOWN` exit implies that you *could* go down if [~glob:FALSE-FLAG] were true, but of course it never is. In fact `FALSE-FLAG` has no other use in the game but blocking this exit. It’s not clear why it’s set up this way, rather than an unconditional failure message.
