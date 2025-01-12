@@ -168,6 +168,18 @@ obj:COFFIN: Do you know how much a solid gold sarcophagus would weigh? More than
 glob:COFFIN-CURE: Set if you’re *not* carrying the [*obj:COFFIN]. But this is only updated in the [~obj:SOUTH-TEMPLE]’s [code|~rtn:SOUTH-TEMPLE-FCN], because that’s the only room where it matters.
 	Interestingly, there’s a comment on the northwest exit of the [~obj:DEEP-CANYON] which mentions this flag. This is left over from the MIT version of Zork, which had several other passages too narrow or steep to navigate with the coffin.
 
+glob:XB: Set when you perform the [~obj:BELL] stage of the exorcism. See [~rtn:LLD-ROOM].
+
+rtn:I-XB: Timer event after the [~obj:BELL] stage of the exorcism. When this fires, the exorcism fails.
+
+glob:XC: Set when you perform the [~obj:CANDLES] stage of the exorcism. See [~rtn:LLD-ROOM].
+
+rtn:I-XC: Timer event after the [~obj:CANDLES] stage of the exorcism. When this fires, the exorcism fails.
+
+rtn:I-XBH: Timer event for the bell cooling down after the [~obj:BELL] stage of the exorcism.
+
+glob:LLD-FLAG: Set when the Land of the Living Dead exorcism is complete. See [~rtn:LLD-ROOM].
+
 obj:BAT: A reject from *Wumpus!* So said early versions of Zork, including the release I played in 1980. But here the reference has been deleted. Sigh.
 
 obj:TIMBER-ROOM: The timbers are left over from an MIT Zork puzzle in which you had to anchor the rope at the top of the [~obj:SLIDE-ROOM] and lower yourself halfway down. The puzzle was dropped from this version of Zork, but a variation appeared in *Sorcerer*.
