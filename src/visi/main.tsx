@@ -113,6 +113,13 @@ function VisiZorkApp()
         }
         window.addEventListener('zmachine-update', evhan_zstate);
         window.addEventListener('zil-source-location', evhan_sourceloc);
+        return () => {
+            window.removeEventListener('zmachine-update', evhan_zstate);
+            window.removeEventListener('zil-source-location', evhan_sourceloc);
+        };
+    }, []);
+
+    useEffect(() => {
         let resizer: ResizeObserver|undefined;
         let panesize = -1;
         if (viewpaneref.current) {
@@ -133,12 +140,11 @@ function VisiZorkApp()
             resizer.observe(viewpaneref.current);
         }
         return () => {
-            window.removeEventListener('zmachine-update', evhan_zstate);
-            window.removeEventListener('zil-source-location', evhan_sourceloc);
             if (resizer)
                 resizer.disconnect();
-        };
+        };        
     }, []);
+        
 
     if (releaseTarget == 'development') {
         (window as any).curzstate = zstate;
