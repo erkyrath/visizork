@@ -200,7 +200,7 @@ function TabbedPane()
     
         return (
             <div key={ key } className={ cla } onClick={ evhan_click }>
-                { label }
+                <span>{ label }</span>
             </div>
         );
     });

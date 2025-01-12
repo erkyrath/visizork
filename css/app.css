@@ -279,6 +279,10 @@ body {
     border-radius: 8px;
 }
 
+.TabBar .TabItem span {
+    pointer-events: none;
+}
+
 .TabBar .TabItem.Selected {
     background: #FFD066;
 }
