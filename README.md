@@ -66,12 +66,13 @@ Javascript and Typescript sources for the Visible Zorker app itself.
 - `src/parchment`: Another component of Parchment, responsible for loading the game file and launching the app.
 - `src/ifvms.js`: Another component of Parchment which acts as a glue layer between Gnusto and the browser display. Also a component which is responsible for the save-file format.
 - `src/glkio`: The [GlkOte][] IF display library. Also a glue layer which allows Gnusto/IFVMS to use GlkOte.
-- `src/lib`: Low-level JS libraries used by Gnusto and GlkOte. This includes jQuery.
+- `src/lib`: Low-level JS libraries used by Gnusto and GlkOte. This includes [jQuery][].
 - `src/game`: JSON data files describing the Zork game file. This includes the names and addresses of global variables, functions, objects, and everything else needed to make the game's operation visible. This folder also includes the ZIL source and the game commentary, translated into JSON form.
 
 [GlkOte]: https://eblong.com/zarf/glk/glkote.html
+[jQuery]: https://jquery.com/
 
-Yeah, there's a lot of glue layers in there. It's the usual software-engineering story. Gnusto was originally written in 2003 as a browser extension. Then it was modified into a browser *application*, which was turned into a [web site][iplayif], which was expanded to support other formats besides Z-code. Each of this steps added more layers of abstraction.
+Yeah, there's a lot of glue layers in there. It's the usual software-engineering story. Gnusto was originally written in 2003 as a browser extension. Then it was modified into a browser *application*, which was turned into a [web site][iplayif], which was expanded to support other formats besides Z-code. Each of these steps added more layers of abstraction.
 
 [iplayif]: https://iplayif.com/
 
