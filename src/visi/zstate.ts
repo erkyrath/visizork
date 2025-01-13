@@ -1,5 +1,5 @@
 import { gamedat_object_ids, gamedat_ids, unpack_address } from './gamedat';
-import { gamedat_routine_names, gamedat_global_names } from './gamedat';
+import { gamedat_routine_names, gamedat_global_names, gamedat_string_map } from './gamedat';
 
 /* Highly abbreviated typedef for GnustoRunner. This shows only the
    bit used by VisiZorkApp. */
@@ -57,6 +57,29 @@ export type ZState = {
     proptable: Uint8Array;
     timertable: Uint8Array;
 };
+
+export function sourceloc_for_first_text(item: ZStackItem) : string|undefined
+{
+    if (item.type == 'print') {
+        let obj = gamedat_string_map.get(item.addr);
+        if (obj) {
+            if (typeof obj.sourceloc === 'string')
+                return obj.sourceloc;
+            else
+                return obj.sourceloc[0];
+        }
+        return undefined;
+    }
+
+    if (item.type == 'call') {
+        for (let child of item.children) {
+            let res = sourceloc_for_first_text(child);
+            if (res !== undefined)
+                return res;
+        }
+        return undefined;
+    }
+}
 
 export type ZProp = {
     pnum: number;

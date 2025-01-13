@@ -5,6 +5,7 @@ import { Root, createRoot } from 'react-dom/client';
 
 import { ZStatePlus, get_updated_report } from './zstate';
 import { GnustoRunner, GnustoEngine } from './zstate';
+import { sourceloc_for_first_text } from './zstate';
 import { set_runner, show_commentary } from './combuild';
 import { gamedat_ids, gamedat_global_names, gamedat_object_ids, sourceloc_start, find_sourceloc_for_id, sourceloc_for_srctoken } from './gamedat';
 
@@ -96,7 +97,13 @@ function VisiZorkApp()
 
     useEffect(() => {
         function evhan_zstate(ev: Event) {
-            setZState(get_updated_report(engine));
+            let newstate = get_updated_report(engine);
+            setZState(newstate);
+            if (tab == 'activity') {
+                let loc = sourceloc_for_first_text(newstate.calltree);
+                if (loc)
+                    setLoc(loc, true);
+            }
         };
         window.addEventListener('zmachine-update', evhan_zstate);
         return () => {
