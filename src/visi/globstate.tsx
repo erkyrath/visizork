@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject } from './zstate';
-import { gamedat_global_nums, gamedat_globals_sort_index, gamedat_globals_sort_alpha, gamedat_object_ids, gamedat_string_map, gamedat_verbs, gamedat_commentary } from './gamedat';
+import { gamedat_global_nums, gamedat_globals_sort_index, gamedat_globals_sort_alpha, gamedat_object_ids, gamedat_string_map, gamedat_verbs, check_commentary } from './gamedat';
 import { GlobalData, unpack_address, signed_zvalue } from './gamedat';
 
 import { ReactCtx } from './context';
@@ -152,8 +152,8 @@ export function GlobalVar({ index, value, origvalue }: { index:number, value:num
     }
 
     let withcom: string|undefined;
-    if (glo && gamedat_commentary['GLOB:'+glo.name]) {
-        withcom = 'GLOB:'+glo.name;
+    if (glo) {
+        withcom = check_commentary(glo.name, 'GLOB');
     }
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {

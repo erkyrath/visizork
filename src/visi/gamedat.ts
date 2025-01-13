@@ -121,6 +121,15 @@ export function parse_sourceloc(val: string) : SourceLoc|undefined
     };
 }
 
+export function check_commentary(id: string, idtype: string) : string|undefined
+{
+    let res = idtype+':'+id;
+    if (gamedat_commentary[res])
+        return res;
+    else
+        return undefined;
+}
+
 interface SourceFileMap {
     [key: string]: string;
 }
