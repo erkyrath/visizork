@@ -109,7 +109,7 @@ function VisiZorkApp()
         return () => {
             window.removeEventListener('zmachine-update', evhan_zstate);
         };
-    }, []);
+    }, [ tab ]);
 
     useEffect(() => {
         function evhan_sourceloc(ev: Event) {
