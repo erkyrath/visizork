@@ -167,7 +167,7 @@ export function GlobalVar({ index, value, origvalue }: { index:number, value:num
     return (
         <li className={ (index==selected) ? 'Selected' : '' } onClick={ evhan_click }>
             { (withcom ?
-               <Commentary topic={ withcom } />
+               <Commentary topic={ withcom } smaller={ true } />
                : null) }
             { (rctx.shownumbers ?
                <span className="ShowAddr">{ index }: </span>
@@ -182,9 +182,6 @@ export function GlobalVar({ index, value, origvalue }: { index:number, value:num
                </>
                : null) }
             { vartype ? vartype : null }
-            { (withcom ?
-               <span className="LineExtraHeight"> </span>
-               : null) }
         </li>
     );
 }

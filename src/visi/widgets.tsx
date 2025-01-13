@@ -17,7 +17,7 @@ export function ObjPageLink({ onum }: { onum:number } )
     );
 }
 
-export function Commentary({ topic }: { topic:string } )
+export function Commentary({ topic, smaller }: { topic:string, smaller?:boolean } )
 {
     let rctx = useContext(ReactCtx);
     
@@ -27,8 +27,10 @@ export function Commentary({ topic }: { topic:string } )
         rctx.showCommentary(topic);
     }
 
+    let cla = (smaller ? "CommentButtonSmall" : "CommentButton");
+    
     return (
-        <a className="CommentButton" onClick={ evhan_click_showtopic }>
+        <a className={ cla } onClick={ evhan_click_showtopic }>
             <img src="css/comment.svg" />
         </a>
     );

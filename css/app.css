@@ -486,6 +486,20 @@ a.CommentButton img {
     height: 27px;
 }
 
+a.CommentButtonSmall {
+    position: relative;
+    float: right;
+    padding: 1px;
+    border: none;
+    margin-left: 8px;
+    background: none;
+}
+
+a.CommentButtonSmall img {
+    width: 24px;
+    height: 18px;
+}
+
 .PrintString {
     font-family: "Libre Baskerville", serif;
     font-size: 90%;
