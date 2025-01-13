@@ -175,6 +175,9 @@ batteries: Your lantern is now refreshed.
 obj:dam-room: The reservoir is underground (dark), but the dam and the river downstream are sunlit. (You can tell by the [~obj:RAINBOW], and also by not needing a light source.) This is hard to visualize.
 	In MIT Zork, the [~obj:CANYON-VIEW] says “I can discern the top of the Flood Control Dam #3 far to the distant north.” By this version that has changed to “The mighty Frigid River flows out from a great dark cavern,” thus hanging a lantern on the problem.
 
+obj:bubble: This is a slightly quirky concept. The whole point of the “green bubble” is that it’s a *light bulb*, but you don’t know that because you’re a fantasy adventurer character.
+	But you *do* know what “plastic” is! Not to mention a battery-powered lantern. Zork’s patchwork setting is part of its charm, but here it trips up.
+
 obj:canyon-view: The mighty Frigid River runs aboveground until it doesn’t. See [*obj:DAM-ROOM].
 
 obj:atlantis-room: A very evocative room considering that the only detail is the [~obj:trident]’s description! I always imagined Byzantine undersea murals, but that was just me.
