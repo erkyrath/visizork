@@ -128,5 +128,6 @@ The fonts used are Courier Prime, Lato, and Libre Baskerville. The header backgr
 
 Zork itself was originally written by Tim Anderson, Marc Blank, Bruce Daniels, and Dave Lebling. The commercial versions are copyright 1981 (etc) by Infocom, then Activision, then renamed to Mediagenic, then Bobby Kotick bought it and renamed it Activision, then Vivendi bought it and merged it with Blizzard, then Microsoft consumed the lot. Got it? Good.
 
-Aside from the above, the Visible Zorker is copyright 2025 by Andrew Plotkin.
+Aside from the above, the Visible Zorker is copyright 2025 by Andrew Plotkin. My work on this project is under the MIT license.
+
 
