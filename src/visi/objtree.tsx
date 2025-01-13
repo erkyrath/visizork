@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
-import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids, gamedat_object_treesort, gamedat_distances } from './gamedat';
+import { ObjectData, gamedat_object_ids, gamedat_object_room_ids, gamedat_object_global_ids, gamedat_object_treesort, gamedat_distances, check_commentary } from './gamedat';
 import { gamedat_ids } from './gamedat';
 import { ZObject } from './zstate';
 
@@ -190,10 +190,15 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
         cla += 'IsRoom';
     }
     
+    let withcom = check_commentary(obj.name, 'OBJ');
+    
     return (
         <>
             <li className={ cla } onClick={ evhan_click_select }>
                 <span className={ ("ObjLabel ObjLabel"+label) }>{ label }</span>
+                { (withcom ?
+                   <Commentary topic={ withcom } smaller={ true } />
+                   : null) }
                 { (rctx.shownumbers ?
                    <span className="ShowAddr"> { onum }:</span>
                    : null) }
@@ -204,6 +209,9 @@ function ShowObject({ tup, parentnum } : {tup:ZObject, parentnum:number})
                    <span className="PrintString">&#x201C;{ obj.desc }&#x201D;</span>
                    :
                    <i>(nameless)</i> ) }
+                { (withcom ?
+                   <span className="LineExtraHeightSmall"></span>
+                   : null) }
             </li>
             { (childls.length ? (
                 <ul className="DataList">
