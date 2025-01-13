@@ -96,6 +96,8 @@ glob:forest-around: If you type `WALK AROUND FOREST` while in the forest, this t
 
 glob:above-ground: If you die, your possessions are scattered above ground according to this table. See [rtn:RANDOMIZE-OBJECTS].
 
+rtn:I-FOREST-ROOM: Timer event for occasional birdsong while you are in the forest.
+
 rtn:RANDOMIZE-OBJECTS: If you die, your possessions are scattered above ground. Except for the lamp (always found in the [~obj:LIVING-ROOM]) and the coffin (returned to the [~obj:EGYPT-ROOM]).
 
 obj:mountains: The game scale gets a bit loose here.
@@ -202,6 +204,8 @@ rtn:I-MAINT-ROOM: Timer event that floods the [~obj:MAINTENANCE-ROOM] when you p
 rtn:I-REMPTY: Timer event for draining the [~obj:RESERVOIR].
 
 rtn:I-RFILL: Timer event for refilling the [~obj:RESERVOIR].
+
+rtn:I-RIVER: Timer event for the river current carrying you downstream.
 
 
 rtn:PERFORM: Perform one game action. To simplify a bit, this sets up some globals ([~glob:PRSA], [~glob:PRSI], [~glob:PRSO]). Then it runs the action by invoking various handlers (drawn from the player, the location, the noun, the generic action table...) until one reports that the action is handled.
