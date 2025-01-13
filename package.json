@@ -1,6 +1,6 @@
 {
   "name": "VisiZork",
-  "version": "0.01",
+  "version": "0.99",
   "description": "An interactive fiction visualizer",
   "author": "Andrew Plotkin <erkyrath@eblong.com>",
   "license": "MIT",
