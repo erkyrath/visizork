@@ -7,7 +7,7 @@ This is a web app that plays Zork, and simultaneously displays the code that run
 
 To try the Visible Zorker, [play it here][visizork]. For more about the intent and origins of the project, see my [blog post on the subject][post].
 
-[post]: !###
+[post]: https://blog.zarfhome.com/2025/01/the-visible-zorker
 [visizork]: https://eblong.com/infocom/visi-zork1/
 
 ## The contents of this repository
