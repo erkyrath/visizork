@@ -27,6 +27,7 @@ This contains the Zork game file itself, plus a bonanza of information about how
 - [`game-info`](./gamedat/game-info): A text file mapping game object numbers, global variables, and other numeric values to their ZIL source names. I created this in the course of building the Visible Zorker. It draws on *all* of the above data sources.
 - [`commentary`](./gamedat/commentary): A text file containing my commentary and notes on the Zork source.
 
+[masterpieces]: https://archive.org/details/InfocomClassicTextAdventureMasterpieces1996JewelCaseArt
 [ocicat]: https://eblong.com/infocom/
 [ocicatz]: https://eblong.com/infocom/#zork1
 [ztools]: https://ifarchive.org/indexes/if-archive/infocom/tools/ztools/
@@ -66,7 +67,7 @@ Javascript used in running the app. This is all generated, compiled, or minified
 
 ### The [`css`](./css) directory
 
-CSS files. Also some icon images in SVG and animated-GIF format.
+CSS files. Also some icon images in SVG, PNG, and animated-GIF format.
 
 ### The [`font`](./font) directory
 
@@ -112,3 +113,20 @@ python3 pyana/comgen.py gamedat/commentary
 ```
 
 There's no reason for you to do this, but I'm documenting it anyway.
+
+## Sources and acknowledgements
+
+The Visible Zorker is built on a seriously customized version of the [Parchment][] Z-machine interpreter by Marnanel Thurman, Atul Varma, and Dannii Willis.
+
+[Parchment]: https://github.com/curiousdannii/parchment
+
+Some of the files in [`gamedat`](./gamedat) were created by Allen Garvin, Ben Rudiak-Gould, and Ethan Dicks. See links above.
+
+The fonts used are Courier Prime, Lato, and Libre Baskerville. The header background is copied from Infocom's [Zork hint maps][zorkmap].
+
+[zorkmap]: https://infodoc.plover.net/maps/zork1.pdf
+
+Zork itself was originally written by Tim Anderson, Marc Blank, Bruce Daniels, and Dave Lebling. The commercial versions are copyright 1981 (etc) by Infocom, then Activision, then renamed to Mediagenic, then Bobby Kotick bought it and renamed it Activision, then Vivendi bought it and merged it with Blizzard, then Microsoft consumed the lot. Got it? Good.
+
+Aside from the above, the Visible Zorker is copyright 2025 by Andrew Plotkin.
+
