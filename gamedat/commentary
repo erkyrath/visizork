@@ -79,7 +79,7 @@ glob:candle-table: This table shows the successive stages of the candles burning
 rtn:i-candles: This routine sits in the timers table. When it fires, it prints a “candles have gotten shorter” message and re-queues itself for the next shortening stage. (Until the candles burn out entirely, of course.) The messages themselves (and their durations) are found in [*glob:candle-table].
 
 rtn:i-sword: This routine runs every turn that you are carrying the sword. It checks adjacent rooms for enemies and displays the “sword is glowing” message.
-	The sword’s glow level is stored in its `TVALUE` property, which is normally used for treasure values.
+	The sword’s glow level is stored in its `TVALUE` property, which is normally used for treasure values. This might lead to a score exploit if you could put the glowing sword in the trophy case. But that’s impossible.
 
 rtn:i-thief: This routine is the [~obj:THIEF]’s heartbeat; it runs every turn until you kill him. (Or knock him unconscious.) It handles all of the thief’s movement and, well, thieving activity.
 	The thief moves in a regular round through the dungeon. This is not defined by room connections; rather, it’s the order that rooms appear in the [~obj:ROOMS] container.
