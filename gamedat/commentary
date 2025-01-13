@@ -110,7 +110,7 @@ obj:kitchen: The `DOWN` exit implies that you *could* go down if [~glob:FALSE-FL
 
 obj:garlic: Who carries around one clove of garlic? As a kid, I assumed this was a *head* of garlic, which left me permanently confused about what “clove” meant. Thanks Zork.
 
-obj:songbird: The songbird is always present but never in reach. Except when using the [~obj:CANARY], and even then the bird flies away before you can interact with it.
+obj:songbird: The songbird is always present but never in reach. Except when using the [CANARY|~rtn:CANARY-OBJECT], and even then the bird flies away before you can interact with it.
 
 obj:teeth: Why teeth? Because you can `BRUSH TEETH`, which isn’t interesting, but then you can `BRUSH TEETH WITH GUNK`, because the tube is described as “like a tube of toothpaste”. Spoiler: it’s a bad idea.
 
