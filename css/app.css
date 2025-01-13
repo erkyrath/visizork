@@ -289,6 +289,16 @@ body {
     background: #FFD066;
 }
 
+.TabBar .TabItem.Flashing {
+    animation: buttonflash 0.3s linear alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes buttonflash {
+    0% { background: #FFFFFF; }
+    100% { background: #C0FFC0; }
+}
+
 .TabBar .TabLabel {
     display: inline-block;
     font-weight: bold;
