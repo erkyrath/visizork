@@ -42,7 +42,7 @@ glob:lit: Whether the current location has light.
 
 glob:sprayed?: Whether you’ve been sprayed with grue repellant. Sadly, the grue repellant is in Zork 2, so this will never be set.
 
-glob:load-allowed: The total weight you can carry (see [rtn:WEIGHT]). This is normally the same as [~glob:LOAD-MAX], but it decreases when you're wounded.
+glob:load-allowed: The total weight you can carry (see [rtn:WEIGHT]). This is normally the same as [~glob:LOAD-MAX], but it decreases when you’re wounded.
 
 src:GVERBS-1593: Not until Sorcerer!
 
@@ -231,5 +231,5 @@ src:GVERBS-1839: The “holding too many things” message is probabilistic. The
 
 rtn:V-WAIT: The `WAIT` command waits three full turns, including the “every turn” timers. But a timer can interrupt this – for example, if the thief shows up and robs you.
 
-rtn:WEIGHT: Measure the total `SIZE` of an object, including its contents. (There is no separate "weight" property; `SIZE` describes both weight and bulk.)
+rtn:WEIGHT: Measure the total `SIZE` of an object, including its contents. (There is no separate “weight” property; `SIZE` describes both weight and bulk.)
 	Anything the player is `WEAR`ing only counts as `SIZE` 1, regardless of contents. This simulates the fact that a backpack, for example, lets you carry more stuff. Sadly, Zork has no backpack, nor anything else you can `WEAR`.
