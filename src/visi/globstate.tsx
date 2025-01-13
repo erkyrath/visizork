@@ -2,11 +2,11 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject } from './zstate';
-import { gamedat_global_nums, gamedat_globals_sort_index, gamedat_globals_sort_alpha, gamedat_object_ids, gamedat_string_map, gamedat_verbs } from './gamedat';
+import { gamedat_global_nums, gamedat_globals_sort_index, gamedat_globals_sort_alpha, gamedat_object_ids, gamedat_string_map, gamedat_verbs, gamedat_commentary } from './gamedat';
 import { GlobalData, unpack_address, signed_zvalue } from './gamedat';
 
 import { ReactCtx } from './context';
-import { ObjPageLink } from './widgets';
+import { ObjPageLink, Commentary } from './widgets';
 
 export type GlobListContextContent = {
     selected: number;
@@ -150,6 +150,11 @@ export function GlobalVar({ index, value, origvalue }: { index:number, value:num
             origtext += origvalue;
         }
     }
+
+    let withcom: string|undefined;
+    if (glo && gamedat_commentary['GLOB:'+glo.name]) {
+        withcom = 'GLOB:'+glo.name;
+    }
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
@@ -161,6 +166,9 @@ export function GlobalVar({ index, value, origvalue }: { index:number, value:num
     
     return (
         <li className={ (index==selected) ? 'Selected' : '' } onClick={ evhan_click }>
+            { (withcom ?
+               <Commentary topic={ withcom } />
+               : null) }
             { (rctx.shownumbers ?
                <span className="ShowAddr">{ index }: </span>
                : null) }
@@ -174,6 +182,9 @@ export function GlobalVar({ index, value, origvalue }: { index:number, value:num
                </>
                : null) }
             { vartype ? vartype : null }
+            { (withcom ?
+               <span className="LineExtraHeight"> </span>
+               : null) }
         </li>
     );
 }
