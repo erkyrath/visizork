@@ -7,7 +7,7 @@ This is a web app that plays Zork, and simultaneously displays the code that run
 
 To try the Visible Zorker, [play it here][visizork]. For more about the intent and origins of the project, see my [blog post on the subject][post].
 
-[post]: ###
+[post]: !###
 [visizork]: https://eblong.com/infocom/visi-zork1/
 
 ## The contents of this repository
@@ -56,6 +56,26 @@ Python scripts which parse the [`gamedat`](./gamedat) and [`gamesrc`](./gamesrc)
 
 Roughly, we need to parse all the ZIL source *and* the disassembled data, match up numeric addresses with source code names, and write it out in a format that the Javascript app can handle. We use a motley boatload of strategies to accomplish this. The [`game-info`](./gamedat/game-info) gives us a lot of the needed mappings. Others are based on source code order, memory address order, or whatever else works.
 
+### The [`src`](./src) directory
+
+!###
+
+### The [`js`](./js) directory
+
+Javascript used in running the app. This is all generated, compiled, or minified from the contents of the [`src`](./src), [`gamesrc`](./gamesrc), and [`gamedat`](./gamedat) directories.
+
+### The [`css`](./css) directory
+
+CSS files. Also some icon images in SVG and animated-GIF format.
+
+### The [`font`](./font) directory
+
+Open-source fonts used in the app.
+
+- [Courier Prime](https://fonts.google.com/specimen/Courier+Prime)
+- [Lato](https://fonts.google.com/specimen/Lato)
+- [Libre Baskerville](https://fonts.google.com/specimen/Libre+Baskerville)
+
 ## Building the Visible Zorker
 
 This repository comes with everything built. You can load [`index.html`](./index.html) and play right from the repo. (Not on Github, though. You'll have to check it out first.)
@@ -71,5 +91,24 @@ npm install
 npm run build
 ```
 
-This regenerates (almost) everything in the [`js`](./js) directory. Hopefully that will be identical, or almost identical, to what was already there.
+This regenerates (almost) everything in the [`js`](./js) directory. Hopefully the result will be identical, or almost identical, to what was already there.
 
+If you're doing dev work, you may want to load [`index-full.html`](./index-full.html) instead of `index.html`. The `index-full.html` version uses the *non*-minified Javascript from the [`src`](./src) directory. You can edit JS files and reload `index-full.html` without an `npm run build` step, which makes for a much faster work loop.
+
+If you edit the Typescript files (`*.ts` and `*.tsx`), you *do* have to recompile them, even when playing from `index-full.html`. You'll want the following command:
+
+```
+npm run buildts
+```
+
+This recompiles Typescript but skips the JS minification steps, which saves a lot of time.
+
+If you want to rebuild the game data files, do:
+
+```
+python3 pyana/parse.py -z gamesrc/zork1.zil --obj --txd --gamedat
+python3 pyana/parse.py -z gamesrc/zork1.zil --src
+python3 pyana/comgen.py gamedat/commentary
+```
+
+There's no reason for you to do this, but I'm documenting it anyway.
