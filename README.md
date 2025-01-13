@@ -25,8 +25,10 @@ This contains the Zork game file itself, plus a bonanza of information about how
 - [`zork1-i6.inf`](./gamedat/zork1-i6.inf): A translation of the disassembled game code into Inform 6 source, done by Allen Garvin. (Original file [here][z1i6].) We're not going to use this directly, but (if you know I6) it's very helpful in understanding the ZIL behavior.
 - [`zork1.reform`](./gamedat/zork1.reform): A text file mapping game object numbers, global variables, and other numeric values to human-readable names. This is taken from the [analysis work][reform] done in 2007 by Allen Garvin, Ben Rudiak-Gould, and Ethan Dicks. (Original file [here][z1reform].)
 - [`game-info`](./gamedat/game-info): A text file mapping game object numbers, global variables, and other numeric values to their ZIL source names. I created this in the course of building the Visible Zorker. It draws on *all* of the above data sources.
+- [`commentary`](./gamedat/commentary): A text file containing my commentary and notes on the Zork source.
 
 [ocicat]: https://eblong.com/infocom/
+[ocicatz]: https://eblong.com/infocom/#zork1
 [ztools]: https://ifarchive.org/indexes/if-archive/infocom/tools/ztools/
 [reform]: https://ifarchive.org/indexes/if-archive/infocom/tools/reform/
 [z1i6]: http://plover.net/~agarvin/zork1.txt
@@ -36,15 +38,23 @@ Note that the human-readable symbol names in `zork1.reform` do *not* match the a
 
 The `game-info` file is my own work, which *does* associate everything with its original ZIL name.
 
-Also note that I'm using a slight modification of the [ztools][] package, which displays output in ways that are a bit easier to parse. (We have a lot of scripts which imbibe the `game-dump.txt`, `obj-dump.txt`, `dict-dump.txt` files.)
+Also note that I'm using a slight modification of the [ztools][] package, which displays output in ways that are a bit easier to parse. (We have a lot of scripts which imbibe the `game-dump.txt`, `obj-dump.txt`, `dict-dump.txt` files.) See [my fork here][ztools-esc].
+
+[ztools-esc]: https://github.com/erkyrath/ztools/tree/c-out
 
 ### The [`gamesrc`](./gamesrc) directory
 
 This contains the original ZIL source code for Zork 1.
 
-A version of this source was [publicly released][histzork1] in April 2019 by Jason Scott. That wasn't zork1-r88-s840726, though; it was zork1-r119-s880429. I combed through a number of sources to locate every possible variation for the [Catalog][ocicat]. Happily, the source for zork1-r88-s840726 -- the most commonly played version today -- *did* turn up.
+A version of this source was [publicly released][histzork1] in April 2019 by Jason Scott. That wasn't zork1-r88-s840726, though; it was zork1-r119-s880429. I combed through a number of sources to locate every possible variation for the [Catalog][ocicatz]. Happily, the source for zork1-r88-s840726 -- the most commonly played version today -- *did* turn up.
 
 [histzork1]: https://github.com/historicalsource/zork1
+
+### The [`pyana`](./pyana) directory
+
+Python scripts which parse the [`gamedat`](./gamedat) and [`gamesrc`](./gamesrc) files and convert them into JSON data in [`js`](./js) for the Visible Zorker to load.
+
+Roughly, we need to parse all the ZIL source *and* the disassembled data, match up numeric addresses with source code names, and write it out in a format that the Javascript app can handle. We use a motley boatload of strategies to accomplish this. The [`game-info`](./gamedat/game-info) gives us a lot of the needed mappings. Others are based on source code order, memory address order, or whatever else works.
 
 ## Building the Visible Zorker
 
