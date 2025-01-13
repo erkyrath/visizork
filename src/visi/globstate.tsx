@@ -182,6 +182,9 @@ export function GlobalVar({ index, value, origvalue }: { index:number, value:num
                </>
                : null) }
             { vartype ? vartype : null }
+            { (withcom ?
+               <span className="LineExtraHeightSmall"></span>
+               : null) }
         </li>
     );
 }

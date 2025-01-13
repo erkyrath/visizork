@@ -111,6 +111,9 @@ function TimerEntry({ addr, flag, count }: { addr:number, flag:number, count:num
             {', '}
             <i>count </i>
             { signed_zvalue(count) }
+            { (withcom ?
+               <span className="LineExtraHeightSmall"></span>
+               : null) }
         </li>
     );
 }

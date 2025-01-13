@@ -578,6 +578,10 @@ a.CommentButtonSmall img {
     line-height: 38px;
 }
 
+.LineExtraHeightSmall {
+    line-height: 23px;
+}
+
 .Src_Comment {
     color: #292;
 }
