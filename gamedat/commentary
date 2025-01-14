@@ -111,6 +111,8 @@ obj:kitchen: The `DOWN` exit implies that you *could* go down if [~glob:FALSE-FL
 
 obj:garlic: Who carries around one clove of garlic? As a kid, I assumed this was a *head* of garlic, which left me permanently confused about what “clove” meant. Thanks Zork.
 
+obj:trap-door: This object is defined as being `IN` the [~obj:LIVING-ROOM], but is also in the scenery list (the `GLOBAL` property) of the [~obj:CELLAR]. This isn't very interesting, I admit.
+
 obj:egg: This egg is not an easter egg.
 
 obj:songbird: The songbird is always present but never in reach. Except when using the [CANARY|~rtn:CANARY-OBJECT], and even then the bird flies away before you can interact with it.
