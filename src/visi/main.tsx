@@ -7,7 +7,7 @@ import { ZStatePlus, get_updated_report } from './zstate';
 import { GnustoRunner, GnustoEngine } from './zstate';
 import { sourceloc_for_first_text } from './zstate';
 import { set_runner, show_commentary } from './combuild';
-import { get_cookie_bool, set_cookie} from './cookie';
+import { default_prefs, get_cookie_prefs, set_cookie} from './cookie';
 import { gamedat_ids, gamedat_global_names, gamedat_object_ids, sourceloc_start, find_sourceloc_for_id, sourceloc_for_srctoken } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
@@ -30,6 +30,8 @@ let engine: GnustoEngine;
    so we can check it. */
 const releaseTarget = process.env.NODE_ENV;
 
+let initprefs = default_prefs();
+
 export function init(runnerref: any)
 {
     runner = runnerref;
@@ -46,6 +48,8 @@ export function init(runnerref: any)
         C_TABLE_GLOB: gamedat_global_names.get('C-TABLE')!.num,
     });
     
+    initprefs = get_cookie_prefs();
+
     const appel = document.getElementById('appbody') as HTMLElement;
     let root = createRoot(appel);
     if (root)
@@ -59,9 +63,9 @@ function VisiZorkApp()
     const [ zstate, setZState ] = useState(get_updated_report(engine));
     const [ tab, setTab ] = useState('activity');
     const [ objpage, setObjPage ] = useState(0);
-    const [ shownumbers, setShowNumbers ] = useState(get_cookie_bool('shownumbers'));
-    const [ readabout, setReadAbout ] = useState(get_cookie_bool('readabout'));
-    const [ arrangement, setArrangement ] = useState('12');
+    const [ shownumbers, setShowNumbers ] = useState(initprefs.shownumbers);
+    const [ readabout, setReadAbout ] = useState(initprefs.readabout);
+    const [ arrangement, setArrangement ] = useState(initprefs.arrange);
     const [ sourcelocs, setSourceLocs ] = useState([ new_sourcelocstate() ]);
     const [ sourcelocpos, setSourceLocPos ] = useState(0);
 

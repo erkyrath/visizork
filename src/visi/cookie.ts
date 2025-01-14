@@ -1,13 +1,34 @@
 
-export function get_cookie_bool(key: string)
+type CookiePrefs = {
+    readabout: boolean;
+    shownumbers: boolean;
+    arrange: string;
+};
+
+export function default_prefs() : CookiePrefs
 {
-    let res = false;
-    for (var val of document.cookie.split(';')) {
-        if (val.trim() == 'visizork_'+key+'=true') {
-            res = true;
+    return {
+        readabout: false,
+        shownumbers: false,
+        arrange: '12',
+    };
+}
+
+export function get_cookie_prefs() : CookiePrefs
+{
+    let res = default_prefs();
+    
+    for (let val of document.cookie.split(';')) {
+        switch (val.trim()) {
+        case 'visizork_shownumbers=true':
+            res.shownumbers = true;
+            break;
+        case 'visizork_readabout=true':
+            res.readabout = true;
             break;
         }
     }
+    
     return res;
 }
 
