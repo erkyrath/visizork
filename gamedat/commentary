@@ -86,7 +86,7 @@ rtn:i-sword: This routine runs every turn that you are carrying the sword. It ch
 
 rtn:i-thief: This routine is the [~obj:THIEF]’s heartbeat; it runs every turn until you kill him. (Or knock him unconscious.) It handles all of the thief’s movement and, well, thieving activity.
 	The thief moves in a regular round through the dungeon. This is not defined by room connections; rather, it’s the order that rooms appear in the [~obj:ROOMS] container.
-	The thief is normally stealthy – the `INVISIBLE` flag, which also prevents your sword from detecting him. He has a chance of appearing when he enters your location; see [~rtn:THIEF-VS-ADVENTURER].
+	The thief is normally stealthy – the `INVISIBLE` flag, which also prevents the [SWORD|*rtn:I-SWORD] from detecting him. He has a chance of appearing when he enters your location; see [~rtn:THIEF-VS-ADVENTURER].
 
 rtn:GO: Set up the world at the start of the game. Start the timers. Print the banner. Set all those useful globals like [~glob:HERE] and [~glob:PLAYER].
 
