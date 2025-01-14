@@ -1,10 +1,17 @@
 'use strict';
 
+/* This module displays and hides the commentary pane, with a tiny bit
+   of animation.
+ */
+
 var CommentaryClass = function() {
 
     let visible = false; // or will be when the current animation completes
     let animating = false;
 
+    /* Display the commentary pane. The node must be a DOM node containing
+       the text to display. The topitc argument is used in the pane's
+       title bar. */
     function show(node, topic)
     {
         if (!node) {
@@ -20,6 +27,8 @@ var CommentaryClass = function() {
         openpane();
     }
 
+    /* Open the commentary pane, if it isn't already. This should be safe
+       to call even if the pane is already animating closed or open. */
     function openpane()
     {
         let panel = $('#commentarypane');
@@ -50,6 +59,8 @@ var CommentaryClass = function() {
         })
     }
     
+    /* Close the commentary pane, if it isn't already. This should be safe
+       to call even if the pane is already animating closed or open. */
     function closepane()
     {
         let panel = $('#commentarypane');
@@ -80,8 +91,9 @@ var CommentaryClass = function() {
         })
     }
 
-    // We have a topic token ("OBJ:ADVENTURER"); return a string suitable
-    // for display to humans.
+    /* We have a topic token ("OBJ:ADVENTURER"); return a string suitable
+       for display in the title bar.
+    */
     function format_topic(topic)
     {
         if (!topic)

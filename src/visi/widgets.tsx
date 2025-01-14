@@ -1,8 +1,12 @@
 import React from 'react';
 import { useContext } from 'react';
 
+/* React widgets which are used across the UI. */
+
 import { ReactCtx } from './context';
 
+/* The "(i)" button which displays an object detail page. 
+*/
 export function ObjPageLink({ onum }: { onum:number } )
 {
     let rctx = useContext(ReactCtx);
@@ -17,6 +21,8 @@ export function ObjPageLink({ onum }: { onum:number } )
     );
 }
 
+/* The green button which displays a commentary item.
+*/
 export function Commentary({ topic, smaller }: { topic:string, smaller?:boolean } )
 {
     let rctx = useContext(ReactCtx);
