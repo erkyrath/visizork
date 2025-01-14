@@ -49,6 +49,7 @@ export function init(runnerref: any)
     });
     
     initprefs = get_cookie_prefs();
+    document.body.className = 'Arrange'+initprefs.arrange;
 
     const appel = document.getElementById('appbody') as HTMLElement;
     let root = createRoot(appel);

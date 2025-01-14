@@ -26,6 +26,18 @@ export function get_cookie_prefs() : CookiePrefs
         case 'visizork_readabout=true':
             res.readabout = true;
             break;
+        case 'visizork_arrange=12':
+            res.arrange = '12';
+            break;
+        case 'visizork_arrange=21':
+            res.arrange = '21';
+            break;
+        case 'visizork_arrange=121':
+            res.arrange = '121';
+            break;
+        case 'visizork_arrange=111':
+            res.arrange = '111';
+            break;
         }
     }
     
