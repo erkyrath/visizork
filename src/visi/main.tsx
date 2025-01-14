@@ -51,6 +51,24 @@ export function init(runnerref: any)
         root.render( <VisiZorkApp /> );
 }
 
+function get_cookie_bool(key: string)
+{
+    let res = false;
+    for (var val of document.cookie.split(';')) {
+        if (val.trim() == 'visizork_'+key+'=true') {
+            res = true;
+            break;
+        }
+    }
+    return res;
+}
+
+function set_cookie(key: string, val: string)
+{
+    let cookie = 'visizork_'+key+'='+val+'; path=/; max-age=31536000';
+    document.cookie = cookie;
+}
+
 function VisiZorkApp()
 {
     let viewpaneref = useRefDiv();
@@ -58,10 +76,15 @@ function VisiZorkApp()
     const [ zstate, setZState ] = useState(get_updated_report(engine));
     const [ tab, setTab ] = useState('activity');
     const [ objpage, setObjPage ] = useState(0);
-    const [ shownumbers, setShowNumbers ] = useState(false);
+    const [ shownumbers, setShowNumbers ] = useState(get_cookie_bool('shownumbers'));
     const [ sourcelocs, setSourceLocs ] = useState([ new_sourcelocstate() ]);
     const [ sourcelocpos, setSourceLocPos ] = useState(0);
 
+    function setShowNumbersWrap(val: boolean) {
+        set_cookie('shownumbers', (val ? 'true' : 'false'));
+        setShowNumbers(val);
+    }
+    
     function setTabWrap(tab: string) {
         setTab(tab);
         setObjPage(0);
@@ -170,7 +193,7 @@ function VisiZorkApp()
         objpage: objpage,
         setObjPage: setObjPageWrap,
         shownumbers: shownumbers,
-        setShowNumbers: setShowNumbers,
+        setShowNumbers: setShowNumbersWrap,
         sourcelocs: sourcelocs,
         sourcelocpos: sourcelocpos,
         setLoc: setLoc,
