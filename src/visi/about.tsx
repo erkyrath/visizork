@@ -80,8 +80,7 @@ export function AboutPage()
                 <p>
                     Type commands in the left pane. (If you're not familiar
                     with Zork,{' '}
-                    <a target="_blank" href="https://pr-if.org/doc/play-if-card/">here's
-                    a quick intro</a>.)
+                    <ExtWebLink url={ 'https://pr-if.org/doc/play-if-card/' } text={ 'here\'s a quick intro' } />.)
                     As the game responds, the panes on the right will display
                     the current game state and the code that is
                     executing.
@@ -132,7 +131,7 @@ export function AboutPage()
                     MIT students, in a LISP-y language called MDL. A few
                     years later, as part of Infocom, they rewrote it &#x2014; 
                     piecewise &#x2014; with a homebrew portable tool they called{' '}
-                    <a target="_blank" href="https://blog.zarfhome.com/2019/04/what-is-zil-anyway">ZIL</a>.
+                    <ExtWebLink url={ 'https://blog.zarfhome.com/2019/04/what-is-zil-anyway' } text={ 'ZIL' } />.
                     (For &#x201C;Zork Implementation Language&#x201D;.)
                 </p>
                 <p>
@@ -157,7 +156,7 @@ export function AboutPage()
                     This &#x201C;renovated&#x201D; 1984 release is
                     the one most commonly seen today,
                     because it was included in the &#x201C;
-                    <a target="_blank" href="https://archive.org/details/lost-treasures-of-infocom">Lost Treasures of Infocom</a>
+                    <ExtWebLink url={ 'https://archive.org/details/lost-treasures-of-infocom' } text={ 'Lost Treasures of Infocom' } />
                     &#x201D; collection and later collections.
                     I have therefore selected it for this exhibit.
                     That was not the final version, however. In 1987
@@ -168,31 +167,31 @@ export function AboutPage()
                 <h2>Sources and acknowledgements</h2>
                 <p>
                     Zork's source code was first{' '}
-                    <a target="_blank" href="https://github.com/historicalsource/zork1">publicly released</a>
+                    <ExtWebLink url={ 'https://github.com/historicalsource/zork1' } text={ 'publicly released' } />
                     {' '}by Jason Scott in April 2019.
                     I then combed through all known versions and posted my{' '}
-                    <a target="_blank" href="https://eblong.com/infocom/">Obsessively Complete Infocom Catalog</a>,
+                    <ExtWebLink url={ 'https://eblong.com/infocom/' } text={ 'Obsessively Complete Infocom Catalog' } />,
                     which now includes this Visible Zorker exhibition.
                 </p>
                 <p>
                     The Visible Zorker is built on a seriously customized
                     version of the{' '}
-                    <a target="_blank" href="https://github.com/curiousdannii/parchment">Parchment</a> Z-machine interpreter
+                    <ExtWebLink url={ 'https://github.com/curiousdannii/parchment' } text={ 'Parchment' } /> Z-machine interpreter
                     by Marnanel Thurman, Atul Varma, and Dannii Willis.
                     You can find this, and the rest of the Visible Zorker
                     machinery, on{' '}
-                    <a target="_blank" href="https://github.com/erkyrath/visizork">Github</a>.
+                    <ExtWebLink url={ 'https://github.com/erkyrath/visizork' } text={ 'Github' } />.
                 </p>
                 <p>
                     I used TXD from the{' '}
-                    <a target="_blank" href="https://ifarchive.org/indexes/if-archive/infocom/tools/ztools/">ZTools</a>
+                    <ExtWebLink url={ 'https://ifarchive.org/indexes/if-archive/infocom/tools/ztools/' } text={ 'ZTools' } />
                     {' '}package to analyze the Zork game file. That
                     process was invaluably aided by the{' '}
-                    <a target="_blank" href="https://ifarchive.org/indexes/if-archive/infocom/tools/reform/">Infocom analysis work</a>
+                    <ExtWebLink url={ 'https://ifarchive.org/indexes/if-archive/infocom/tools/reform/' } text={ 'Infocom analysis work' } />
                     {' '}done in 2007 by Allen Garvin, Ben Rudiak-Gould,
                     and Ethan Dicks.
                     Allen Garvin's{' '}
-                    <a target="_blank" href="http://plover.net/~agarvin/zork1.txt">translation into Inform 6 syntax</a>
+                    <ExtWebLink url={ 'http://plover.net/~agarvin/zork1.txt' } text={ 'translation into Inform 6 syntax' } />
                     {' '} was also helpful.
                 </p>
                 <p>
@@ -213,7 +212,7 @@ export function AboutPage()
                 <p>
                     Aside from the above, the Visible Zorker is copyright
                     2025 by Andrew Plotkin. MIT license;{' '}
-                    <a target="_blank" href="https://github.com/erkyrath/visizork">Github repo</a>;
+                    <ExtWebLink url={ 'https://github.com/erkyrath/visizork' } text={ 'Github repo' } />;
                     {' '}last updated { lastupdate }.
                 </p>
             </div>
@@ -221,3 +220,9 @@ export function AboutPage()
     );
 }
 
+function ExtWebLink({ url, text }: { url:string, text:string })
+{
+    return (
+        <a target="_blank" href={ url }>{ text }</a>
+    );
+}
