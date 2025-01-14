@@ -220,6 +220,8 @@ export function AboutPage()
                     2025 by Andrew Plotkin. MIT license;{' '}
                     <ExtWebLink url={ 'https://github.com/erkyrath/visizork' } text={ 'Github repo' } />;
                     {' '}last updated { lastupdate }.
+                    This exhibit is hosted by the{' '}
+                    <ExtWebLink url={ 'https://eblong.com/infocom/' } text={ 'Obsessively Complete Infocom Catalog' } />.
                 </p>
             </div>
         </div>
