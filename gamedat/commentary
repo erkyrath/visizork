@@ -49,6 +49,8 @@ glob:cyclops-flag: Set if the [~obj:CYCLOPS] is scared off or unconscious. (See 
 glob:magic-flag: Set if the [~obj:CYCLOPS] has been scared off, thus breaking down the door in the [~obj:LIVING-ROOM]. (See also [*glob:cyclops-flag].)
 	Why “magic”? Why not, I guess.
 
+glob:false-flag: Always false. See [*obj:kitchen].
+
 glob:load-allowed: The total weight you can carry (see [rtn:WEIGHT]). This is normally the same as [~glob:LOAD-MAX], but it decreases when you’re wounded.
 
 src:GVERBS-1593: Not until Sorcerer!
