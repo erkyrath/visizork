@@ -6,9 +6,9 @@ import { ReactCtx } from './context';
 export function AppMenu()
 {
     const [ menuopen, setMenuOpen ] = useState(false);
-    const [ arrangement, setArrangement ] = useState('12');
 
     let rctx = useContext(ReactCtx);
+    let arrangement = rctx.arrangement;
     
     function handle_click_menu(ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         ev.stopPropagation();
@@ -16,7 +16,7 @@ export function AppMenu()
     }
     
     function handle_click_arrange(val: string) {
-        setArrangement(val);
+        rctx.setArrangement(val);
         document.body.className = 'Arrange'+val;
         setMenuOpen(false);
     }

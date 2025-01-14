@@ -78,6 +78,7 @@ function VisiZorkApp()
     const [ objpage, setObjPage ] = useState(0);
     const [ shownumbers, setShowNumbers ] = useState(get_cookie_bool('shownumbers'));
     const [ readabout, setReadAbout ] = useState(get_cookie_bool('readabout'));
+    const [ arrangement, setArrangement ] = useState('12');
     const [ sourcelocs, setSourceLocs ] = useState([ new_sourcelocstate() ]);
     const [ sourcelocpos, setSourceLocPos ] = useState(0);
 
@@ -199,11 +200,13 @@ function VisiZorkApp()
         sourcelocpos: sourcelocpos,
         shownumbers: shownumbers,
         readabout: readabout,
+        arrangement: arrangement,
         setTab: setTabWrap,
         setObjPage: setObjPageWrap,
         setShowNumbers: setShowNumbersWrap,
         setLoc: setLoc,
         shiftLoc: shiftLoc,
+        setArrangement: setArrangement,
         showCommentary: show_commentary,
     };
 
