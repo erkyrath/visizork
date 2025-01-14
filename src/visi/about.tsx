@@ -78,8 +78,14 @@ export function AboutPage()
                     live, as you play.
                 </p>
                 <p>
+                    (In case it's not obvious: <em>SPOILERS</em> for Zork 1.
+                    The source code gives away everything in the game.
+                    The whole point of this project is to demonstrate how
+                    Zork works!)
+                </p>
+                <p>
                     Type commands in the left pane. (If you're not familiar
-                    with Zork,{' '}
+                    with parser games,{' '}
                     <ExtWebLink url={ 'https://pr-if.org/doc/play-if-card/' } text={ 'here\'s a quick intro' } />.)
                     As the game responds, the panes on the right will display
                     the current game state and the code that is
