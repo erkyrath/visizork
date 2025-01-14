@@ -78,15 +78,15 @@ export function AboutPage()
                     live, as you play.
                 </p>
                 <p>
-                    (In case it's not obvious: <em>SPOILERS</em> for Zork 1.
+                    (In case it&#x2019;s not obvious: <em>SPOILERS</em> for Zork 1.
                     The source code gives away everything in the game.
                     The whole point of this project is to demonstrate how
                     Zork works!)
                 </p>
                 <p>
-                    Type commands in the left pane. (If you're not familiar
+                    Type commands in the left pane. (If you&#x2019;re not familiar
                     with parser games,{' '}
-                    <ExtWebLink url={ 'https://pr-if.org/doc/play-if-card/' } text={ 'here\'s a quick intro' } />.)
+                    <ExtWebLink url={ 'https://pr-if.org/doc/play-if-card/' } text={ 'here\u2019s a quick intro' } />.)
                     As the game responds, the panes on the right will display
                     the current game state and the code that is
                     executing.
@@ -113,13 +113,13 @@ export function AboutPage()
                     shows the functions called in
                     the most recent turn, and what they printed.
                     {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'globals') }>State</a>{' '}
-                    shows all the game's global variables.
+                    shows all the game&#x2019;s global variables.
                     {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'timers') }>Timers</a>{' '}
                     shows the table of timed events.
                 </p>
                 <p>
                     Click on any function, object, or variable to see its
-                    definition in the source code. Click on an object's
+                    definition in the source code. Click on an object&#x2019;s
                     {' '}<ObjPageLink onum={ 4 } /> button
                     to see its current state and place in the world.
                     (This will initially match the source code, but
@@ -128,7 +128,7 @@ export function AboutPage()
                 <p>
                     <Commentary topic={ 'ABOUT' } />
                     Click on the green buttons to see commentary about
-                    Zork's implementation. Notes, trivia, whatever came
+                    Zork&#x2019;s implementation. Notes, trivia, whatever came
                     into my head as I was building the Visible Zorker!
                 </p>
                 <h2>Which Zork is this?</h2>
@@ -172,7 +172,7 @@ export function AboutPage()
                 </p>
                 <h2>Sources and acknowledgements</h2>
                 <p>
-                    Zork's source code was first{' '}
+                    Zork&#x2019;s source code was first{' '}
                     <ExtWebLink url={ 'https://github.com/historicalsource/zork1' } text={ 'publicly released' } />
                     {' '}by Jason Scott in April 2019.
                     I then combed through all known versions and posted my{' '}
@@ -196,14 +196,14 @@ export function AboutPage()
                     <ExtWebLink url={ 'https://ifarchive.org/indexes/if-archive/infocom/tools/reform/' } text={ 'Infocom analysis work' } />
                     {' '}done in 2007 by Allen Garvin, Ben Rudiak-Gould,
                     and Ethan Dicks.
-                    Allen Garvin's{' '}
+                    Allen Garvin&#x2019;s{' '}
                     <ExtWebLink url={ 'http://plover.net/~agarvin/zork1.txt' } text={ 'translation into Inform 6 syntax' } />
                     {' '} was also helpful.
                 </p>
                 <p>
                     The fonts used are Courier Prime, Lato, and
                     Libre Baskerville. The header background is copied from
-                    Infocom's Zork hint maps.
+                    Infocom&#x2019;s Zork hint maps.
                 </p>
                 <p>
                     Zork itself was originally written by Tim Anderson,
