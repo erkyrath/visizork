@@ -133,15 +133,13 @@ export function AboutPage()
                     years later, as part of Infocom, they rewrote it &#x2014; 
                     piecewise &#x2014; with a homebrew portable tool they called{' '}
                     <a target="_blank" href="https://blog.zarfhome.com/2019/04/what-is-zil-anyway">ZIL</a>.
-                    (For &#x201C;
-                    <a target="_blank" href="https://blog.zarfhome.com/2019/04/what-is-zil-anyway">Zork Implementation Language</a>
-                    &#x201D;.)
+                    (For &#x201C;Zork Implementation Language&#x201D;.)
                 </p>
                 <p>
                     The version you see here dates from 1984. (The serial number
                     &#x201C;840726&#x201D; shows the compile date.) By this point,
                     the Infocom folks had combined the common parts of
-                    Zork 1, 2, and 3 into a common library.
+                    Zork 1, 2, and 3 into a de-facto library.
                     This library, containing the
                     parser and generic action code, was shared with (almost)
                     no changes between the three games.
@@ -172,8 +170,7 @@ export function AboutPage()
                     Zork's source code was first{' '}
                     <a target="_blank" href="https://github.com/historicalsource/zork1">publicly released</a>
                     {' '}by Jason Scott in April 2019.
-                    I (Andrew Plotkin) then combed through all known versions
-                    and posted my{' '}
+                    I then combed through all known versions and posted my{' '}
                     <a target="_blank" href="https://eblong.com/infocom/">Obsessively Complete Infocom Catalog</a>,
                     which now includes this Visible Zorker exhibition.
                 </p>
