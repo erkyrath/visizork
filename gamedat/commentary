@@ -240,9 +240,11 @@ src:GVERBS-1813: This “floating over your head” check has to do with the `FL
 
 src:GVERBS-1848: Another Zork 2 spell (`FANTASIZE`) which has no effect in Zork 1. See [FLOAT|*src:GVERBS-1813], above.
 
-src:GVERBS-1839: The “holding too many things” message is probabilistic. The more objects you have past seven, the greater the chance of failing to pick up another.
+src:GVERBS-1839: The “holding too many things” message is probabilistic. The more objects you have past [seven|~glob:fumble-number], the greater the [chance|~glob:fumble-prob] of failing to pick up another.
 	Note that there’s a *separate* check, a few lines up, for whether “your load is too heavy”. That one is *not* probabilistic.
 	I wrote a [blog post|https://blog.zarfhome.com/2017/08/your-load-is-too-heavy-zork-deep-reading] about this a few years back.
+
+glob:fumble-number: See “[holding too many things|*src:GVERBS-1839]”.
 
 rtn:V-WAIT: The `WAIT` command waits three full turns, including the “every turn” timers. But a timer can interrupt this – for example, if the thief shows up and robs you.
 
