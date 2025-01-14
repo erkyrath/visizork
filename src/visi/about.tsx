@@ -223,6 +223,6 @@ export function AboutPage()
 function ExtWebLink({ url, text }: { url:string, text:string })
 {
     return (
-        <a target="_blank" href={ url }>{ text }</a>
+        <a className="External" target="_blank" href={ url }>{ text }</a>
     );
 }
