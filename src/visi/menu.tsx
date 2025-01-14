@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useContext, useEffect } from 'react';
 
+import { set_cookie } from './cookie';
+
 import { ReactCtx } from './context';
 
 export function AppMenu()
@@ -17,6 +19,7 @@ export function AppMenu()
     
     function handle_click_arrange(val: string) {
         rctx.setArrangement(val);
+        set_cookie('arrange', val);
         document.body.className = 'Arrange'+val;
         setMenuOpen(false);
     }

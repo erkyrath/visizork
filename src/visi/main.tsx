@@ -7,6 +7,7 @@ import { ZStatePlus, get_updated_report } from './zstate';
 import { GnustoRunner, GnustoEngine } from './zstate';
 import { sourceloc_for_first_text } from './zstate';
 import { set_runner, show_commentary } from './combuild';
+import { get_cookie_bool, set_cookie} from './cookie';
 import { gamedat_ids, gamedat_global_names, gamedat_object_ids, sourceloc_start, find_sourceloc_for_id, sourceloc_for_srctoken } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
@@ -49,24 +50,6 @@ export function init(runnerref: any)
     let root = createRoot(appel);
     if (root)
         root.render( <VisiZorkApp /> );
-}
-
-function get_cookie_bool(key: string)
-{
-    let res = false;
-    for (var val of document.cookie.split(';')) {
-        if (val.trim() == 'visizork_'+key+'=true') {
-            res = true;
-            break;
-        }
-    }
-    return res;
-}
-
-function set_cookie(key: string, val: string)
-{
-    let cookie = 'visizork_'+key+'='+val+'; path=/; max-age=31536000';
-    document.cookie = cookie;
 }
 
 function VisiZorkApp()
