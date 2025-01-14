@@ -447,7 +447,7 @@ Global 112 P-DIR
 Global 113 P-LEN
 Global 114 P-CCSRC
 Global 115 P-SYNTAX
-Global 116 P-ONEOBJ
+Global 116 P-ONEOBJ  WORD
 Global 117 P-TABLE
 Global 118 PRSO  OBJ
 Global 119 PRSI  OBJ
