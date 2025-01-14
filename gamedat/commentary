@@ -111,6 +111,8 @@ obj:kitchen: The `DOWN` exit implies that you *could* go down if [~glob:FALSE-FL
 
 obj:garlic: Who carries around one clove of garlic? As a kid, I assumed this was a *head* of garlic, which left me permanently confused about what “clove” meant. Thanks Zork.
 
+obj:egg: This egg is not an easter egg.
+
 obj:songbird: The songbird is always present but never in reach. Except when using the [CANARY|~rtn:CANARY-OBJECT], and even then the bird flies away before you can interact with it.
 
 obj:teeth: Why teeth? Because you can `BRUSH TEETH`, which isn’t interesting, but then you can `BRUSH TEETH WITH GUNK`, because the tube is described as “like a tube of toothpaste”. Spoiler: it’s a bad idea.
@@ -185,6 +187,7 @@ obj:atlantis-room: A very evocative room considering that the only detail is the
 	The text implies that the room was exposed when you drained the reservoir, which is not really true. (You can check this by arriving by [mirror|~rtn:MIRROR-MIRROR].)
 
 obj:COFFIN: Do you know how much a solid gold sarcophagus would weigh? More than 55, that’s for sure.
+	The real Ramses II was buried in gilded *wood* coffin inside an alabaster sarcophagus inside a larger granite sarcophagus. A fragment of the granite one was identified [just last year|https://www.smithsonianmag.com/smart-news/ramses-II-long-lost-sarcophagus-finally-been-identified-180984441/]!
 
 glob:COFFIN-CURE: Set if you’re *not* carrying the [*obj:COFFIN]. But this is only updated in the [~obj:SOUTH-TEMPLE]’s [code|~rtn:SOUTH-TEMPLE-FCN], because that’s the only room where it matters.
 	Interestingly, there’s a comment on the northwest exit of the [~obj:DEEP-CANYON] which mentions this flag. This is left over from the MIT version of Zork, which had several other passages too narrow or steep to navigate with the coffin.
