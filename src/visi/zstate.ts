@@ -1,8 +1,14 @@
+/* Typescript type definitions used by the Gnusto engine report.
+
+   Gnusto is not itself written in Typescript, so nothing validates its
+   report format. But it's a pretty simple format.
+*/
+
 import { gamedat_object_ids, gamedat_ids, unpack_address } from './gamedat';
 import { gamedat_routine_names, gamedat_global_names, gamedat_string_map } from './gamedat';
 
 /* Highly abbreviated typedef for GnustoRunner. This shows only the
-   bit used by VisiZorkApp. */
+   bits used by VisiZorkApp. */
 export type GnustoRunner = {
     e: GnustoEngine;
     commentary: CommentaryClass;
@@ -58,6 +64,9 @@ export type ZState = {
     timertable: Uint8Array;
 };
 
+/* Extract the source location for the first string printed in a
+   calltree.
+*/
 export function sourceloc_for_first_text(item: ZStackItem) : string|undefined
 {
     if (item.type == 'print') {
@@ -86,6 +95,7 @@ export type ZProp = {
     values: number[];
 };
 
+/* Parse a property-table slice into a list of object properties. */
 export function zobj_properties(zstate: ZState, onum: number): ZProp[]
 {
     let res: ZProp[] = [];

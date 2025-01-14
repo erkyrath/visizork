@@ -1,3 +1,6 @@
+/* Utilities to load some simple preferences from a cookie, and save them
+   back out.
+*/
 
 type CookiePrefs = {
     readabout: boolean;
@@ -14,6 +17,7 @@ export function default_prefs() : CookiePrefs
     };
 }
 
+/* Load prefs from cookies, validating as we go. */
 export function get_cookie_prefs() : CookiePrefs
 {
     let res = default_prefs();

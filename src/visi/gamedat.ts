@@ -1,4 +1,3 @@
-
 /* Typescript types and utilities for the game data.
    All of the window.gamedat_foo maps and lists are set up by
    gamedat.js (which is not this file!) 
