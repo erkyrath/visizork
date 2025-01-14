@@ -1,14 +1,22 @@
+/* Code to build a commentary DOM element for display. */
+
 import { GnustoRunner } from './zstate';
 import { refresh_batteries } from './zstate';
 import { gamedat_commentary } from './gamedat';
 
 let runner: GnustoRunner|undefined;
 
+/* Called at startup to stash the GnustoRunner reference.
+   (Which will also be available as window.runner, so this isn't really
+   necessary. But hey, let's work clean.)
+*/
 export function set_runner(runnerref: GnustoRunner)
 {
     runner = runnerref;
 }
 
+/* Display a commentary topic.
+*/
 export function show_commentary(topic: string)
 {
     let nod = build_commentary(topic);
@@ -26,6 +34,9 @@ export function show_commentary(topic: string)
     runner.commentary.show(nod, topic);
 }
 
+/* Construct a DOM node containing the text of a commentary topic.
+   This will be passed to CommentaryClass.show().
+*/
 function build_commentary(topic: string) : Node|undefined
 {
     let spec = gamedat_commentary[topic];
