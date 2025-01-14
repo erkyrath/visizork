@@ -71,6 +71,10 @@ glob:c-demons: Indicates how much of the timer table is used for daemons. The di
 glob:p-won: Set if the parser successfully parsed a command. (As opposed to a blank line or an error.)
 	No relation to whether the *player* has won; that’s [*glob:WON-FLAG].
 
+rtn:GWIM: “Get What I Mean”. The parser uses this to infer a missing object or ask a disambiguation question.
+
+glob:p-gwimbit: A filter used when [*rtn:GWIM] searches for objects. For example, for an `IGNITE` command, `P-GWIMBIT` would be set to `ONBIT` so the parser can search for a *flaming* object.
+
 glob:won-flag: Set when you reach 350 points. See [rtn:SCORE-UPD].
 	Oddly, this global is defined in two places in the source. See [gverbs.zil|~src:GVERBS-1743].
 
