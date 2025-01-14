@@ -128,11 +128,18 @@ export function zobj_properties(proptable: Uint8Array, onum: number): ZProp[]
     return res;
 }
 
+/* Gnusto generates a ZState report, but we want to keep track of more
+   information than that. This extended type has the extra info.
+*/
 export interface ZStatePlus extends ZState
 {
+    // Global values from when the game first started.
     origglobals: number[];
+    // Property values from when the game first started.
     origprops: Map<number, ZProp[]>;
+    // Attribute values from when the game first started.
     origattrs: Map<number, number>;
+    // The counter value when each global last changed.
     globalsupdate: number[];
 }
 
@@ -169,6 +176,15 @@ let lastglobals: number[] | undefined;
 // (Comparing lastglobals to the current globals.)
 let globalsupdate: number[] | undefined;
 
+/* Get the ZState report from the engine, and then beef it up with extra
+   information.
+   
+   On the first turn, this caches the original values of globs/props/attrs.
+   We'll use those cached values for later reports.
+
+   We also keep the previous turn's globals, so that we can do the
+   "when did each global last change?" check.
+*/
 export function get_updated_report(engine: GnustoEngine) : ZStatePlus
 {
     let report = engine.get_vm_report();
@@ -215,6 +231,9 @@ export function get_updated_report(engine: GnustoEngine) : ZStatePlus
     };
 }
 
+/* A terrible hack: dig into the VM and overwrite the I-LANTERN timer
+   entry with 5000!
+*/
 export function refresh_batteries(engine: GnustoEngine)
 {
     // This should be the same as the last report we got this turn.
