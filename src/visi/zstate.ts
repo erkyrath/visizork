@@ -96,7 +96,7 @@ export type ZProp = {
 };
 
 /* Parse a property-table slice into a list of object properties. */
-export function zobj_properties(zstate: ZState, onum: number): ZProp[]
+export function zobj_properties(proptable: Uint8Array, onum: number): ZProp[]
 {
     let res: ZProp[] = [];
 
@@ -108,17 +108,17 @@ export function zobj_properties(zstate: ZState, onum: number): ZProp[]
     if (pos < 0)
         return res;
 
-    let val = zstate.proptable[pos];
+    let val = proptable[pos];
     pos += (1 + 2*val);
     while (true) {
-        val = zstate.proptable[pos];
+        val = proptable[pos];
         if (!val)
             break;
         let len = (val >> 5) + 1;
         let pnum = (val & 0x1F);
         let prop = {
             pnum: pnum,
-            values: [ ...zstate.proptable.slice(pos+1, pos+1+len) ]
+            values: [ ...proptable.slice(pos+1, pos+1+len) ]
         };
         res.push(prop);
         pos += (1+len);
@@ -194,7 +194,7 @@ export function get_updated_report(engine: GnustoEngine) : ZStatePlus
     if (origprops === undefined) {
         origprops = new Map();
         for (let obj of report.objects) {
-            let res = zobj_properties(report, obj.onum);
+            let res = zobj_properties(report.proptable, obj.onum);
             origprops.set(obj.onum, res);
         }
     }

@@ -14,7 +14,7 @@ export function ObjectPage({ onum } : { onum:number })
     let zstate = rctx.zstate;
 
     let props = useMemo(
-        () => zobj_properties(zstate, onum),
+        () => zobj_properties(zstate.proptable, onum),
         [ zstate, onum ]
     );
 
