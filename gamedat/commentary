@@ -51,9 +51,9 @@ glob:c-ints: Indicates how much of the timer table ([*glob:C-TABLE]) is used. Th
 
 glob:c-table: The timer table. See the “Timers” tab for a current listing.
 
-timers-legend: A list of the timers running (or paused) in the timer table ([~glob:C-TABLE]). This list only grows as you play; timers can be added, started, and stopped, but not removed.
-	The [*rtn:I-LANTERN] and [*rtn:I-CANDLES] timers count down to the next dimming stage. Note that the candles politely don’t start counting until you pick them up.
-	The [~rtn:I-THIEF] and [*rtn:I-SWORD] timers start at -1, meaning they run “forever”. (The sword runs when you are holding it; the thief runs until you kill him.) In fact they will probably stop working after 65535 turns, but back then nobody tried this!
+timers-legend: A list of the timers running (or paused) in the timer table ([~glob:C-TABLE]). Positive numbers count down (while enabled) and call the named function after that many turns. Negative numbers are called every turn while the timer is enabled.
+	This list only grows as you play; timers can be added, started, and stopped, but not removed.
+	Note that enabled negative timers, like [*rtn:I-THIEF], count down towards “negative infinity”. They’ll wrap and stop working after 65535 turns, but back then nobody worried about this!
 
 glob:c-demons: Indicates how much of the timer table is used for daemons. The difference between daemons and timers is that timers run every turn; daemons run every *input*, even if no turn passes. But Zork does not use daemons.
 
@@ -79,6 +79,7 @@ rtn:i-lantern: This routine sits in the timers table. When it fires, it prints a
 glob:candle-table: This table shows the successive stages of the candles burning down. The *first* stage is 40 turns, which is set in [~rtn:GO], not here.
 
 rtn:i-candles: This routine sits in the timers table. When it fires, it prints a “candles have gotten shorter” message and re-queues itself for the next shortening stage. (Until the candles burn out entirely, of course.) The messages themselves (and their durations) are found in [*glob:candle-table].
+	Even though the candles begin the game lit, they politely don’t start counting down until you pick them up.
 
 rtn:i-sword: This routine runs every turn that you are carrying the sword. It checks adjacent rooms for enemies and displays the “sword is glowing” message.
 	The sword’s glow level is stored in its `TVALUE` property, which is normally used for treasure values. This might lead to a score exploit if you could put the glowing sword in the trophy case. But that’s impossible.
