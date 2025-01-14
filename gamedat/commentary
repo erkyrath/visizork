@@ -42,6 +42,13 @@ glob:lit: Whether the current location has light.
 
 glob:sprayed?: Whether you’ve been sprayed with grue repellant. Sadly, the grue repellant is in Zork 2, so this will never be set.
 
+glob:troll-flag: Set if the [~obj:TROLL] is dead or unconscious.
+
+glob:cyclops-flag: Set if the [~obj:CYCLOPS] is scared off or unconscious. (See also [*glob:magic-flag].)
+
+glob:magic-flag: Set if the [~obj:CYCLOPS] has been scared off, thus breaking down the door in the [~obj:LIVING-ROOM]. (See also [*glob:cyclops-flag].)
+	Why “magic”? Why not, I guess.
+
 glob:load-allowed: The total weight you can carry (see [rtn:WEIGHT]). This is normally the same as [~glob:LOAD-MAX], but it decreases when you’re wounded.
 
 src:GVERBS-1593: Not until Sorcerer!
