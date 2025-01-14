@@ -124,7 +124,7 @@ obj:granite-wall: This object is global, but the granite wall is described as be
 
 rtn:v-treasure: A very obscure magic word. See [*obj:granite-wall].
 
-rtn:CELLAR-FCN: Who slams the trap door on you, anyhow? It must be the thief, the only mobile NPC in the game. But the thief is never seen above ground. And (to be really persnickety) the trap door slams even after the thief is dead.
+src:1actions-514: Who slams the trap door on you, anyhow? It must be the thief, the only mobile NPC in the game. But the thief is never seen above ground. And (to be really persnickety) the trap door slams even after the thief is dead.
 	Really, we should assume it’s the Dungeon Master, who has a vested interest in your underground quest.
 
 obj:chimney: This is one of several places where the MIT kids used caving jargon without quite conveying that they knew what it meant. A “[climbable chimney|~rtn:CHIMNEY-F]” would have meant something very different to Will and Patricia Crowther.
