@@ -296,7 +296,7 @@ body {
 
 @keyframes buttonflash {
     0% { background: #FFFFFF; }
-    100% { background: #C0FFC0; }
+    100% { background: #B0FFB0; }
 }
 
 .TabBar .TabLabel {

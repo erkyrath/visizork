@@ -17,12 +17,13 @@ export type ContextContent = {
     zstate: ZStatePlus;
     tab: string;
     shownumbers: boolean;
+    readabout: boolean;
     objpage: number;
+    sourcelocs: SourceLocState[];
+    sourcelocpos: number;
     setObjPage: (loc:number) => void;
     setShowNumbers: (loc:boolean) => void;
     setTab: (loc:string) => void;
-    sourcelocs: SourceLocState[];
-    sourcelocpos: number;
     setLoc: (loc:string, hi:boolean) => void;
     shiftLoc: (forward: boolean) => void;
     showCommentary: (topic:string) => void;
@@ -32,12 +33,13 @@ export const ReactCtx = createContext({
     zstate: zstateplus_empty(),
     tab: '',
     shownumbers: false,
+    readabout: false,
     objpage: 0,
+    sourcelocs: [],
+    sourcelocpos: 0,
     setObjPage: (val) => {},
     setShowNumbers: (val) => {},
     setTab: (loc) => {},
-    sourcelocs: [],
-    sourcelocpos: 0,
     setLoc: (loc, hi) => {},
     shiftLoc: (forward) => {},
     showCommentary: (topic) => {},

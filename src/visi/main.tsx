@@ -77,6 +77,7 @@ function VisiZorkApp()
     const [ tab, setTab ] = useState('activity');
     const [ objpage, setObjPage ] = useState(0);
     const [ shownumbers, setShowNumbers ] = useState(get_cookie_bool('shownumbers'));
+    const [ readabout, setReadAbout ] = useState(get_cookie_bool('readabout'));
     const [ sourcelocs, setSourceLocs ] = useState([ new_sourcelocstate() ]);
     const [ sourcelocpos, setSourceLocPos ] = useState(0);
 
@@ -88,6 +89,10 @@ function VisiZorkApp()
     function setTabWrap(tab: string) {
         setTab(tab);
         setObjPage(0);
+        if (tab == 'about') {
+            set_cookie('readabout', 'true');
+            setReadAbout(true);
+        }
     }
 
     function setObjPageWrap(onum: number) {
@@ -189,13 +194,14 @@ function VisiZorkApp()
     let rctx: ContextContent = {
         zstate: zstate,
         tab: tab,
-        setTab: setTabWrap,
         objpage: objpage,
-        setObjPage: setObjPageWrap,
-        shownumbers: shownumbers,
-        setShowNumbers: setShowNumbersWrap,
         sourcelocs: sourcelocs,
         sourcelocpos: sourcelocpos,
+        shownumbers: shownumbers,
+        readabout: readabout,
+        setTab: setTabWrap,
+        setObjPage: setObjPageWrap,
+        setShowNumbers: setShowNumbersWrap,
         setLoc: setLoc,
         shiftLoc: shiftLoc,
         showCommentary: show_commentary,
@@ -233,6 +239,8 @@ function TabbedPane()
         let cla = 'TabItem';
         if (key == rctx.tab)
             cla += ' Selected';
+        else if (key == 'about' && !rctx.readabout)
+            cla += ' Flashing';
         
         function evhan_click(ev: React.MouseEvent<HTMLDivElement, MouseEvent>) {
             ev.stopPropagation();
