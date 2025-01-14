@@ -55,6 +55,8 @@ glob:load-allowed: The total weight you can carry (see [rtn:WEIGHT]). This is no
 
 src:GVERBS-1593: Not until Sorcerer!
 
+src:1actions-707: If you throw the [~obj:TROLL] a weapon, he has a 20% chance of eating it and dying. (Taking the weapon with him.)
+	I've seen it argued that this was the intended way to kill the troll, back before randomized combat was implemented. However, we have no version of (MIT) Zork that early in development.
 
 glob:c-ints: Indicates how much of the timer table ([*glob:C-TABLE]) is used. This counts down from `C-TABLELEN`, which is 180.
 
