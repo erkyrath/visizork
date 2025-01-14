@@ -146,8 +146,8 @@ export function ObjectPage({ onum } : { onum:number })
         label = 'room';
     else if (gamedat_object_global_ids.has(onum))
         label = 'global object';
-    /*###else if (tup.parent != parentnum)
-        label = 'scenery'; ###*/
+    else if (obj.iscenery && obj.iscenery.length)
+        label = 'scenery';
     else
         label = 'object';
 
