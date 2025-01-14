@@ -1,15 +1,25 @@
 
+/* Typescript types and utilities for the game data.
+   All of the window.gamedat_foo maps and lists are set up by
+   gamedat.js (which is not this file!) 
+*/
+
+/* Convert a 16-bit Z-machine packed address into its true address value.
+   For Z-machine version 3, this just means doubling it. (If we
+   ever support more versions, we'll need to do more work.)
+*/
 export function unpack_address(val: number) : number
 {
     return val * 2;
 }
 
+/* Return a 16-bit Z-machine value as a signed integer. */
 export function signed_zvalue(val: number) : number
 {
     return (val < 32768) ? val : (val - 65536);
 }
 
-// Sorry, this map is in a lot of places.
+// Sorry, this map is in a lot of places. Redundantly.
 const sourcefile_key_map: any = {
     'ZORK1':    'A',
     '1ACTIONS': 'B',
@@ -31,17 +41,21 @@ export type SourceLoc = {
     endchar: number;
 };
 
+/* Return the initial sourceloc to display. */
 export function sourceloc_start() : string
 {
     return 'J:78:1:102:0';  // 'gverbs.zil', lines 78-101
 }
 
+/* Given a file key, return the sourceloc of its first line. */
 export function sourceloc_for_key(filekey: string) : string
 {
     return filekey + ':1:1:1:0';
 }
 
-// This format ("GVERBS-90") turns up in the commentary system.
+/* Turn a location in "GVERBS-90" form into "J:90:1" form.
+   (This format turns up in the commentary system.)
+*/
 export function sourceloc_for_srctoken(val: string) : string|undefined
 {
     let pos = val.indexOf('-');
@@ -53,6 +67,9 @@ export function sourceloc_for_srctoken(val: string) : string|undefined
     return filekey+':'+val.slice(pos+1)+':1';
 }
 
+/* Given a game symbol, return its source location in sourceloc form
+   (like  "C:5:1:6:0").
+*/
 export function find_sourceloc_for_id(idtype: string, id:string) : string|undefined
 {
     switch (idtype) {
@@ -81,6 +98,8 @@ export function find_sourceloc_for_id(idtype: string, id:string) : string|undefi
     return undefined;
 }
 
+/* Parse a sourceloc string like "C:5:1" or "C:5:1:6:0" into its component
+   parts. */
 export function parse_sourceloc(val: string) : SourceLoc|undefined
 {
     if (!val.length)
@@ -121,6 +140,9 @@ export function parse_sourceloc(val: string) : SourceLoc|undefined
     };
 }
 
+/* Check if a commentary entry exists. If so, return back the arguments
+   in "OBJ:SWORD" format. If not, don't.
+*/
 export function check_commentary(id: string, idtype: string) : string|undefined
 {
     let res = idtype+':'+id;
