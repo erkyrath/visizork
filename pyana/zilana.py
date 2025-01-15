@@ -165,6 +165,7 @@ class Zcode:
                 if idtok.typ is TokType.ID:
                     zglob = ZGlobal(idtok.val, tok)
                     self.globals.append(zglob)
+                    tok.defentity = zglob
                 else:
                     raise Exception('Global has no name')
                 if len(tok.children) >= 3:
@@ -199,13 +200,17 @@ class Zcode:
             if tok.matchform('ROUTINE', 1):
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
-                    self.routines.append(ZRoutine(idtok.val, tok))
+                    rtn = ZRoutine(idtok.val, tok)
+                    self.routines.append(rtn)
+                    tok.defentity = rtn
                     self.findstringsinroutine(tok, idtok.val)
             if tok.typ is TokType.GROUP and tok.val == "'" and tok.children[0].matchform('ROUTINE', 1):
                 qtok = tok.children[0]
                 idtok = qtok.children[1]
                 if idtok.typ is TokType.ID:
-                    self.routines.append(ZRoutine(idtok.val, qtok))
+                    rtn = ZRoutine(idtok.val, qtok)
+                    self.routines.append(rtn)
+                    qtok.defentity = rtn
                     self.findstringsinroutine(qtok, idtok.val)
             isobj = tok.matchform('OBJECT', 1)
             isroom = tok.matchform('ROOM', 1)
@@ -226,7 +231,9 @@ class Zcode:
                                     self.strings.append(ZString(strtok.val, strtok.pos, strtok.endpos))
                         if proptok.matchgroup(Zcode.directions, 1):
                             self.findstringsintok(proptok)
-                    self.objects.append(ZObject(idtok.val, flag, desc, desctok, tok))
+                    newobj = ZObject(idtok.val, flag, desc, desctok, tok)
+                    self.objects.append(newobj)
+                    tok.defentity = newobj
                     if isroom:
                         self.roomnames.append(idtok.val)
             if tok.matchform('SYNTAX', 3):

@@ -23,6 +23,9 @@ class Token:
         self.ifdef = False
         self.children = None
 
+        # Filled in by Zcode.findall().
+        self.defentity = None
+
         if typ is TokType.NUM:
             self.num = int(val)
         elif typ is TokType.GROUP:
