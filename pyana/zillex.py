@@ -264,6 +264,22 @@ class Lexer:
             res = self.resolveincludes(res)
         return res
 
+
+def posLE(tup1, tup2):
+    if len(tup1) > 2:
+        tup1 = tup1[ -2 : ]
+    if len(tup2) > 2:
+        tup2 = tup2[ -2 : ]
+    return (tup1 <= tup2)
+
+def posGT(tup1, tup2):
+    return not posLE(tup1, tup2)
+
+def tokIN(tok1, tok2):
+    if tok1.pos[0] == tok2.pos[0]:
+        if posLE(tok2.pos, tok1.pos) and posLE(tok1.endpos, tok2.endpos):
+            return True
+
 def dumptokens(ls, withpos=False, skipdead=False, depth=0, prefix='', atpos=None):
     for tok in ls:
         if skipdead and (tok.comment or tok.ifdef):

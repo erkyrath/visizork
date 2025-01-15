@@ -1,4 +1,5 @@
 from zillex import Token, TokType
+from zillex import tokIN
 
 class ZObject:
     def __init__(self, name, flag, desc, desctok, objtok):
@@ -277,8 +278,11 @@ class Zcode:
         rname = rtn.name
         for stok in tok.children:
             if stok.typ is TokType.STR:
-                if stok.val not in ('', 'AUX', 'OPTIONAL'):
-                    self.strings.append(ZString(stok.val, stok.pos, stok.endpos, rname))
+                if stok.val == '':
+                    continue
+                if tokIN(stok, rtn.argstok) and stok.val in ('AUX', 'OPTIONAL'):
+                    continue
+                self.strings.append(ZString(stok.val, stok.pos, stok.endpos, rname))
             if stok.typ is TokType.GROUP and stok.val in ('<>', '()', "'") and stok.children:
                 if stok.children[0].typ is TokType.ID and stok.children[0].val in ('TELL', 'PRINTI'):
                     self.findstringsintell(stok, rname)
