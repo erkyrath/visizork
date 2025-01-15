@@ -596,7 +596,7 @@ a.CommentButtonSmall img {
 }
 
 .Src_Dict {
-    color: #84A;
+    color: #A2A;
 }
 
 .Src_Iddef {
@@ -606,6 +606,10 @@ a.CommentButtonSmall img {
 
 .Src_Id {
     color: #44C;
+}
+
+.Src_Localid {
+    color: #850;
 }
 
 a.Src_Id {
