@@ -32,6 +32,10 @@ class Color(StrEnum):
 def colorize(tokls, res):
     for tok in tokls:
         if tok.typ is TokType.STR:
+            if tok.val in ('AUX', 'OPTIONAL'):
+                ### check arg span!
+                # not really a string
+                continue
             res.append( (tok, Color.STR) )
             continue
         if tok.typ is TokType.ID:
