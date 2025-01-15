@@ -290,7 +290,21 @@ class Zcode:
                     self.findstringsinroutine(stok, rtn)
 
     def parseroutineargs(self, tok):
-        return None ###
+        if tok.typ is not TokType.GROUP:
+            raise Exception('args group is not a group')
+        args = []
+        for atok in tok.children:
+            if atok.typ is TokType.STR:
+                continue
+            if atok.typ is TokType.ID:
+                args.append(atok.val)
+                continue
+            if atok.typ is TokType.GROUP and atok.val == '()' and atok.children:
+                gatok = atok.children[0]
+                if gatok.typ is TokType.ID:
+                    args.append(gatok.val)
+                continue
+        return args
                     
     def findstringsintell(self, tok, rname):
         for stok in tok.children:
