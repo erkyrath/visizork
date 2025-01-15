@@ -213,7 +213,7 @@ class Zcode:
                     rtn = ZRoutine(idtok.val, self.parseroutineargs(argstok), tok, argstok)
                     self.routines.append(rtn)
                     tok.defentity = rtn
-                    self.findstringsinroutine(tok, idtok.val)
+                    self.findstringsinroutine(tok, rtn)
             if tok.typ is TokType.GROUP and tok.val == "'" and tok.children[0].matchform('ROUTINE', 2):
                 qtok = tok.children[0]
                 idtok = qtok.children[1]
@@ -222,7 +222,7 @@ class Zcode:
                     rtn = ZRoutine(idtok.val, self.parseroutineargs(argstok), qtok, argstok)
                     self.routines.append(rtn)
                     qtok.defentity = rtn
-                    self.findstringsinroutine(qtok, idtok.val)
+                    self.findstringsinroutine(qtok, rtn)
             isobj = tok.matchform('OBJECT', 1)
             isroom = tok.matchform('ROOM', 1)
             if isobj or isroom:
@@ -273,7 +273,8 @@ class Zcode:
             if stok.typ is TokType.GROUP and stok.val == '<>' and stok.children:
                 self.findstringsintok(stok)
         
-    def findstringsinroutine(self, tok, rname):
+    def findstringsinroutine(self, tok, rtn):
+        rname = rtn.name
         for stok in tok.children:
             if stok.typ is TokType.STR:
                 if stok.val not in ('', 'AUX', 'OPTIONAL'):
@@ -282,7 +283,7 @@ class Zcode:
                 if stok.children[0].typ is TokType.ID and stok.children[0].val in ('TELL', 'PRINTI'):
                     self.findstringsintell(stok, rname)
                 else:
-                    self.findstringsinroutine(stok, rname)
+                    self.findstringsinroutine(stok, rtn)
 
     def parseroutineargs(self, tok):
         return None ###
