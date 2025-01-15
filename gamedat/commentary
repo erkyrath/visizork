@@ -256,3 +256,11 @@ rtn:V-WAIT: The `WAIT` command waits three full turns, including the “every tu
 
 rtn:WEIGHT: Measure the total `SIZE` of an object, including its contents. (There is no separate “weight” property; `SIZE` describes both weight and bulk.)
 	Anything the player is `WEAR`ing only counts as `SIZE` 1, regardless of contents. This simulates the fact that a backpack, for example, lets you carry more stuff. Sadly, Zork has no backpack, nor anything else you can `WEAR`.
+
+rtn:I-CURE: Timer event for your wounds healing. Takes 30 turns per wound level.
+
+rtn:WINNING?: The thief compares your strength with his. Used to decide whether he flees combat.
+
+rtn:FIGHT-STRENGTH: Determine your combat strength. This is initially 2, but increases to 7 as your score approaches 350.
+	This can be adjusted by your `STRENGTH` property, which, like the comment says, is normally zero. When you are wounded, your `STRENGTH` is negative.
+	(Monsters have negative `STRENGTH` when unconscious.)
