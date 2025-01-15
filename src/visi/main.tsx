@@ -214,12 +214,12 @@ function VisiZorkApp()
 }
 
 const tab_list = [
+    [ 'about', '?' ],
     [ 'activity', 'Activity' ],
     [ 'objtree', 'World' ],
     [ 'globals', 'State' ],
     [ 'timers', 'Timers' ],
     [ 'filelist', 'Files' ],
-    [ 'about', '?' ],
 ];
 
 function TabbedPane()
