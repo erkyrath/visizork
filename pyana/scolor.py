@@ -48,7 +48,7 @@ class Color(StrEnum):
 def colorize(tokls, res, defentity):
     for tok in tokls:
         if tok.typ is TokType.STR:
-            if tok.val in ('AUX', 'OPTIONAL') and False:
+            if tok.val in ('AUX', 'OPTIONAL') and False: ###
                 ### check arg span!
                 # not really a string
                 continue
@@ -99,11 +99,13 @@ def colorize(tokls, res, defentity):
                         res.append( (subtok, Color.ID) )
                 continue
         ### <SYNTAX>, <SYNONYM>, <BUZZ>
+        
         if tok.children:
             subentity = defentity
-            if not subentity and tok.defentity:
-                subentity = tok.defentity
-                print('### entering', subentity, tok)
+            if not subentity:
+                lockey = tok.posstr()
+                if lockey in loctoentity:
+                    subentity = loctoentity[lockey]
             colorize(tok.children, res, subentity)
 
 def dumpcolors(ls):
