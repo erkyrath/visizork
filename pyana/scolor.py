@@ -2,7 +2,7 @@ from enum import StrEnum
 
 from zillex import Lexer, TokType, dumptokens
 from zillex import posLE, posGT
-from zilana import teststaticcond
+from zilana import teststaticcond, ZRoutine
 
 linkids = {}
 loctoentity = {}
@@ -41,12 +41,17 @@ def absorb_entities(ls):
 class Color(StrEnum):
     STR = 'STR'
     ID = 'ID'
+    LOCALID = 'LOCALID'
     IDDEF = 'IDDEF'
     DICT = 'DICT'
     COMMENT = 'COMMENT'
     IFNDEF = 'IFNDEF'
 
 def colorize(tokls, res, defentity):
+    localids = set()
+    if defentity and isinstance(defentity, ZRoutine):
+        localids = set(defentity.args)
+        
     for tok in tokls:
         if tok.typ is TokType.STR:
             if tok.val in ('AUX', 'OPTIONAL') and False: ###
@@ -56,7 +61,9 @@ def colorize(tokls, res, defentity):
             res.append( (tok, Color.STR) )
             continue
         if tok.typ is TokType.ID:
-            if tok.val in linkids:
+            if tok.val in localids:
+                res.append( (tok, Color.LOCALID) )
+            elif tok.val in linkids:
                 if defentity and defentity.name == tok.val:
                     res.append( (tok, Color.IDDEF) )
                 else:
