@@ -54,8 +54,7 @@ def colorize(tokls, res, defentity):
         
     for tok in tokls:
         if tok.typ is TokType.STR:
-            if tok.val in ('AUX', 'OPTIONAL') and False: ###
-                ### check arg span!
+            if tok.val in ('AUX', 'OPTIONAL', 'ARGS'):
                 # not really a string
                 continue
             res.append( (tok, Color.STR) )
