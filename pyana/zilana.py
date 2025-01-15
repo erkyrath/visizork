@@ -189,14 +189,21 @@ class Zcode:
                         raise Exception('Constant has no value')
                     zconst = ZConstant(idtok.val, constval, tok)
                     self.constants.append(zconst)
+                    tok.defentity = zconst
                 else:
                     raise Exception('Constant has no name')
             if tok.matchform('SETG', 2):
                 # We pretend ZORK-NUMBER is a regular CONSTANT.
                 idtok = tok.children[1]
                 if idtok.idmatch('ZORK-NUMBER'):
-                    zconst = ZConstant(idtok.val, 1, tok)
+                    valtok = tok.children[2]
+                    if valtok.typ is TokType.NUM:
+                        constval = valtok.num
+                    else:
+                        raise Exception('Constant has no value')
+                    zconst = ZConstant(idtok.val, constval, tok)
                     self.constants.append(zconst)
+                    tok.defentity = zconst
             if tok.matchform('ROUTINE', 1):
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
