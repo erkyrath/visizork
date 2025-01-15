@@ -122,8 +122,9 @@ def posGT(tup1, tup2):
     return not posLE(tup1, tup2)
 
 def tokIN(tok1, tok2):
-    if posLE(tok2.pos, tok1.pos) and posLE(tok1.endpos, tok2.endpos):
-        return True
+    if tok1.pos[0] == tok2.pos[0]:
+        if posLE(tok2.pos, tok1.pos) and posLE(tok1.endpos, tok2.endpos):
+            return True
 
 def color_file_lines(filename, colorls):
     colorls = list(colorls)
