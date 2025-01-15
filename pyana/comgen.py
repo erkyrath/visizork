@@ -236,6 +236,7 @@ for key in linkedtopics:
     if key not in entrytopics:
         fromls = [ ent.token for ent in linkedtopics[key] ]
         print('missing topic:', key, 'from', ', '.join(fromls))
-    
+
+print('found', len(entries), 'topics')
 dump(entries, sourcekeymap, 'src/game/commentary.js')
 
