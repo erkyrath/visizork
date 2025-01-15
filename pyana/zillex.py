@@ -265,6 +265,8 @@ class Lexer:
         return res
 
 
+# Compare the positions of two sourceloc tuples. (Ignoring filename.)
+# True if tup1 <= tup2.
 def posLE(tup1, tup2):
     if len(tup1) > 2:
         tup1 = tup1[ -2 : ]
@@ -272,9 +274,12 @@ def posLE(tup1, tup2):
         tup2 = tup2[ -2 : ]
     return (tup1 <= tup2)
 
+# True if tup1 > tup2.
 def posGT(tup1, tup2):
     return not posLE(tup1, tup2)
 
+# Return whether tok1 is contained inside tok2.
+# (Both must have both pos and endpos.)
 def tokIN(tok1, tok2):
     if tok1.pos[0] == tok2.pos[0]:
         if posLE(tok2.pos, tok1.pos) and posLE(tok1.endpos, tok2.endpos):
