@@ -47,9 +47,11 @@ class ZConstant:
         return '<ZConstant %s %d>' % (self.name, self.value,)
     
 class ZRoutine:
-    def __init__(self, name, rtok):
+    def __init__(self, name, args, rtok, argstok):
         self.name = name
+        self.args = args
         self.rtok = rtok
+        self.argstok = argstok
 
     def __repr__(self):
         return '<ZRoutine %s>' % (self.name,)
@@ -204,18 +206,20 @@ class Zcode:
                     zconst = ZConstant(idtok.val, constval, tok)
                     self.constants.append(zconst)
                     tok.defentity = zconst
-            if tok.matchform('ROUTINE', 1):
+            if tok.matchform('ROUTINE', 2):
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
-                    rtn = ZRoutine(idtok.val, tok)
+                    argstok = tok.children[2]
+                    rtn = ZRoutine(idtok.val, self.parseroutineargs(argstok), tok, argstok)
                     self.routines.append(rtn)
                     tok.defentity = rtn
                     self.findstringsinroutine(tok, idtok.val)
-            if tok.typ is TokType.GROUP and tok.val == "'" and tok.children[0].matchform('ROUTINE', 1):
+            if tok.typ is TokType.GROUP and tok.val == "'" and tok.children[0].matchform('ROUTINE', 2):
                 qtok = tok.children[0]
                 idtok = qtok.children[1]
                 if idtok.typ is TokType.ID:
-                    rtn = ZRoutine(idtok.val, qtok)
+                    argstok = qtok.children[2]
+                    rtn = ZRoutine(idtok.val, self.parseroutineargs(argstok), qtok, argstok)
                     self.routines.append(rtn)
                     qtok.defentity = rtn
                     self.findstringsinroutine(qtok, idtok.val)
@@ -280,6 +284,9 @@ class Zcode:
                 else:
                     self.findstringsinroutine(stok, rname)
 
+    def parseroutineargs(self, tok):
+        return None ###
+                    
     def findstringsintell(self, tok, rname):
         for stok in tok.children:
             if stok.typ is TokType.STR:
