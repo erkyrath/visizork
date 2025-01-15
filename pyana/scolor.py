@@ -4,22 +4,38 @@ from zillex import Lexer, TokType, dumptokens
 from zilana import teststaticcond
 
 linkids = {}
+loctoentity = {}
+
+def prep_syntax_coloring(zcode):
+    absorb_entities([ (obj, obj.objtok) for obj in zcode.objects ])
+    absorb_entities([ (rtn, rtn.rtok) for rtn in zcode.routines ])
+    absorb_entities([ (glo, glo.gtok) for glo in zcode.globals ])
+    absorb_entities([ (con, con.ctok) for con in zcode.constants ])
 
 def colorize_file(filename, zcode):
-    linkids.update([ (obj.name, obj.objtok) for obj in zcode.objects ])
-    linkids.update([ (rtn.name, rtn.rtok) for rtn in zcode.routines ])
-    linkids.update([ (glo.name, glo.gtok) for glo in zcode.globals ])
-    linkids.update([ (con.name, con.ctok) for con in zcode.constants ])
+    # This is awkward. We just parsed the ZIL for the zcode object,
+    # but we want to do it again for the syntax coloring. (The first
+    # time we stripped out comments and conditional compilation, but
+    # now we leave them in.)
     
     lex = Lexer(filename)
     tokls = lex.readfile(includes=False)
     #dumptokens(tokls, withpos=True)
     
     res = []
-    colorize(tokls, res)
+    colorize(tokls, res, None)
     #dumpcolors(res)
     lines = color_file_lines(filename, res)
     return lines
+
+def absorb_entities(ls):
+    for obj, tok in ls:
+        linkids[obj.name] = tok
+        if tok:
+            lockey = tok.posstr()
+            if lockey in loctoentity:
+                raise Exception('location clash (%s): %s' % (obj, lockey,))
+            loctoentity[lockey] = obj
 
 class Color(StrEnum):
     STR = 'STR'
@@ -29,10 +45,10 @@ class Color(StrEnum):
     COMMENT = 'COMMENT'
     IFNDEF = 'IFNDEF'
 
-def colorize(tokls, res):
+def colorize(tokls, res, defentity):
     for tok in tokls:
         if tok.typ is TokType.STR:
-            if tok.val in ('AUX', 'OPTIONAL'):
+            if tok.val in ('AUX', 'OPTIONAL') and False:
                 ### check arg span!
                 # not really a string
                 continue
@@ -54,7 +70,7 @@ def colorize(tokls, res):
         if tok.typ is TokType.GROUP and tok.val == '%' and tok.children:
             ctok = tok.children[0]
             if ctok.matchform('COND', 0):
-                colorize([ ctok.children[0] ], res)
+                colorize([ ctok.children[0] ], res, defentity)
                 found = None
                 for cgrp in ctok.children[ 1 : ]:
                     if found:
@@ -62,7 +78,7 @@ def colorize(tokls, res):
                         continue
                     found = teststaticcond(cgrp)
                     if found:
-                        colorize([ cgrp ], res)
+                        colorize([ cgrp ], res, defentity)
                     else:
                         res.append( (cgrp, Color.IFNDEF) )
                         continue
@@ -84,7 +100,11 @@ def colorize(tokls, res):
                 continue
         ### <SYNTAX>, <SYNONYM>, <BUZZ>
         if tok.children:
-            colorize(tok.children, res)
+            subentity = defentity
+            if not subentity and tok.defentity:
+                subentity = tok.defentity
+                print('### entering', subentity, tok)
+            colorize(tok.children, res, subentity)
 
 def dumpcolors(ls):
     for (tok, color) in ls:
