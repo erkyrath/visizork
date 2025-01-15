@@ -259,8 +259,18 @@ rtn:WEIGHT: Measure the total `SIZE` of an object, including its contents. (Ther
 
 rtn:I-CURE: Timer event for your wounds healing. Takes 30 turns per wound level.
 
+glob:VILLAINS: The table of creatures you can fight. Each row shows: monster, weak-against, weakness penalty, awakening probability, combat routine.
+	That is, the [~obj:TROLL] is weaker against the [~obj:SWORD], with a -1 strength penalty if you’re using it.
+	The “awakening probability” entry starts at zero when the monster is knocked out, and increases every turn until they wake up. (But the Visible Zorker does not currently display data table updates, so you can’t see this! Sorry.)
+
 rtn:WINNING?: The thief compares your strength with his. Used to decide whether he flees combat.
 
 rtn:FIGHT-STRENGTH: Determine your combat strength. This is initially 2, but increases to 7 as your score approaches 350.
 	This can be adjusted by your `STRENGTH` property, which, like the comment says, is normally zero. When you are wounded, your `STRENGTH` is negative.
-	(Monsters have negative `STRENGTH` when unconscious.)
+
+rtn:VILLAIN-STRENGTH: Determine the combat strength of an enemy. This is their `STRENGTH` property, with a couple of adjustments. The thief and troll are weaker against certain weapons (see [*glob:VILLAINS]), so their strength is decreased if the current action is `...WITH SWORD` or `...WITH KNIFE`. Also you can distract the thief and temporarily reduce his strength by giving him a treasure!
+	(Enemies have lower `STRENGTH` when wounded, and negative `STRENGTH` when unconscious.)
+
+glob:THIEF-ENGROSSED: Set if you have distracted the thief by giving him a treasure. This reduces his effective strength to 2 (see [*rtn:VILLAIN-STRENGTH]), but only for the next blow.
+
+
