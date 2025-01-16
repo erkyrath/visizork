@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject, ZStackCall, ZStackItem, ZStackPrint } from './zstate';
-import { gamedat_string_map, gamedat_routine_addrs } from './gamedat';
+import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, DictWordData, StringData } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -72,8 +72,33 @@ export function StackPrint({ print }: { print:ZStackPrint })
     let ctx = useContext(ListCtx);
     let [ selindex, seladdr ] = ctx.selected;
 
-    let strdat = gamedat_string_map.get(print.addr);
     let issel = (print.addr == seladdr);
+    let strdat: StringData|undefined = gamedat_string_map.get(print.addr);
+    let dictdat: DictWordData|undefined;
+    if (!strdat) {
+        dictdat = gamedat_dictword_addrs.get(print.addr);
+    }
+
+    let textel;
+    if (strdat) {
+        textel = (
+            <>
+                {' '}<span className="PrintString">&#x201C;{ strdat.text }&#x201D;</span>
+            </>
+        );
+    }
+    else if (dictdat) {
+        textel = (
+            <>
+                {' '}<span className="PrintDictWord">&#x2018;{ dictdat.text }&#x2019;</span>
+            </>
+        );
+    }
+    else {
+        textel = (
+            <> <i>string not recognized</i></>
+        );
+    }
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
@@ -90,13 +115,7 @@ export function StackPrint({ print }: { print:ZStackPrint })
                 { (rctx.shownumbers ?
                    <span className="ShowAddr">{ print.addr }: </span>
                    : null) }
-                { strdat ? (
-                    <>
-                        {' '}<span className="PrintString">&#x201C;{ strdat.text }&#x201D;</span>
-                    </>
-                ) : (
-                    <> <i>string not recognized</i></>
-                ) }
+                { textel }
             </li>
         </>
     );
