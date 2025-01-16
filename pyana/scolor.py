@@ -104,7 +104,11 @@ def colorize(tokls, res, defentity):
                     if subtok.typ is TokType.ID and subtok.val in linkids:
                         res.append( (subtok, Color.ID) )
                 continue
-        ### <SYNTAX>, <SYNONYM>, <BUZZ>
+        if tok.matchform('BUZZ', 1):
+            for subtok in tok.children[1:]:
+                res.append( (subtok, Color.DICT) )
+            continue
+        ### <SYNTAX>, <SYNONYM>
         
         if tok.children:
             subentity = defentity
