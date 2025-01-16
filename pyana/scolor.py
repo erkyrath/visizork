@@ -106,13 +106,24 @@ def colorize(tokls, res, defentity):
                 continue
         if tok.matchform('BUZZ', 1):
             for subtok in tok.children[1:]:
-                res.append( (subtok, Color.DICT) )
+                if subtok.typ is TokType.ID:
+                    res.append( (subtok, Color.DICT) )
             continue
         if tok.matchform('SYNONYM', 1):
             for subtok in tok.children[1:]:
-                res.append( (subtok, Color.DICT) )
+                if subtok.typ is TokType.ID:
+                    res.append( (subtok, Color.DICT) )
             continue
-        ### <SYNTAX>
+        if tok.matchform('SYNTAX', 3):
+            eqpos = 1
+            for subtok in tok.children[1:]:
+                if subtok.idmatch('='):
+                    break
+                if subtok.typ is TokType.ID and subtok.val != 'OBJECT':
+                    res.append( (subtok, Color.DICT) )
+                eqpos += 1
+            colorize(tok.children[ eqpos+1 : ], res, defentity)
+            continue
         
         if tok.children:
             subentity = defentity
