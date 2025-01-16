@@ -108,7 +108,11 @@ def colorize(tokls, res, defentity):
             for subtok in tok.children[1:]:
                 res.append( (subtok, Color.DICT) )
             continue
-        ### <SYNTAX>, <SYNONYM>
+        if tok.matchform('SYNONYM', 1):
+            for subtok in tok.children[1:]:
+                res.append( (subtok, Color.DICT) )
+            continue
+        ### <SYNTAX>
         
         if tok.children:
             subentity = defentity
