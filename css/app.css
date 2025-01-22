@@ -164,6 +164,8 @@ body {
 
 .ViewPane {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     background: #FFFFFE;
@@ -172,6 +174,8 @@ body {
 
 .SourcePane {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     background: #FFFFFE;
@@ -257,18 +261,13 @@ body {
 }
 
 .TabBar {
-    position: absolute;
-    left: 0px;
+    flex: 0 0 auto;
     width: 100%;
-    top: 0px;
-    height: 32px;
+    min-height: 32px;
     background: #DFDCCF;
     overflow: hidden;
     padding-left: 8px;
     box-sizing: border-box;
-}
-.Narrow .TabBar {
-    height: 64px;
 }
 
 .TabBar .TabItem {
@@ -323,14 +322,9 @@ body {
 }
 
 .TabContent {
-    position: absolute;
-    left: 0px;
+    flex: 1 1 auto;
     width: 100%;
-    top: 32px;
-    bottom: 0px;
-}
-.Narrow .TabContent {
-    top: 64px;
+    height: 1px;
 }
 
 .ScrollContent {
