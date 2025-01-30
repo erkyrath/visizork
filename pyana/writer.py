@@ -110,7 +110,10 @@ def write_strings(filename, zcode, txdat, objdat):
     for st in zcode.istrings:
         text = st.text.replace('.  ', '. ')
         text = text.replace('    ****', '   ****')
-        istrtext_to_pos[(st.rtn, text)] = st
+        tup = (st.rtn, text)
+        if tup not in istrtext_to_pos:
+            istrtext_to_pos[tup] = []
+        istrtext_to_pos[tup].append(st)
 
     funcaddr_to_name = {}
     for zfunc, tfunc in zip(zcode.routines, txdat.routines):
@@ -130,7 +133,7 @@ def write_strings(filename, zcode, txdat, objdat):
         ls.append([ str.addr, str.text, posval ])
     for str in txdat.istrings:
         fname = funcaddr_to_name[str.rtn.addr]
-        srctok = istrtext_to_pos.get((fname, str.text))
+        srctok = istrtext_to_pos.get((fname, str.text)).pop(0)
         ls.append([ str.addr, str.text, sourceloc(tok=srctok), str.rtn.addr ])
     for obj in objdat.objects:
         if not obj.desc:
@@ -138,6 +141,10 @@ def write_strings(filename, zcode, txdat, objdat):
         oname = objnum_to_name[obj.num]
         srctok = objname_to_descloc.get(oname)
         ls.append([ obj.propaddr+1, obj.desc, sourceloc(tok=srctok), obj.num ])
+
+    for tup, tls in istrtext_to_pos.items():
+        if tls:
+            raise Exception('unused istrings: %s, %s' % tup)
 
     fl = open(filename, 'w')
     fl.write('window.gamedat_strings = ');
