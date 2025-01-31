@@ -283,7 +283,7 @@ body {
     box-sizing: border-box;
 }
 .DarkTheme .TabBar {
-    background: #444030;
+    background: #555040;
 }
 
 .TabBar .TabItem {
@@ -432,6 +432,9 @@ ul.DataList ul {
 
 .DataList li.Selected {
     background: #FFDD88;
+}
+.DarkTheme .DataList li.Selected {
+    background: #705000;
 }
 
 .DataList li.IsRoom {
@@ -616,31 +619,52 @@ a.CommentButtonSmall img {
 .Src_Comment {
     color: #292;
 }
+.DarkTheme .Src_Comment {
+    color: #8D8;
+}
 
 .Src_Ifndef {
     color: #999;
+}
+.DarkTheme .Src_Ifndef {
+    color: #777;
 }
 
 .Src_Str {
     color: #A44;
     font-weight: bold;
 }
+.DarkTheme .Src_Str {
+    color: #F99;
+}
 
 .Src_Dict {
     color: #A2A;
+}
+.DarkTheme .Src_Dict {
+    color: #E7E;
 }
 
 .Src_Iddef {
     color: #44C;
     font-weight: bold;
 }
+.DarkTheme .Src_Iddef {
+    color: #AAF;
+}
 
 .Src_Id {
     color: #44C;
 }
+.DarkTheme .Src_Id {
+    color: #AAF;
+}
 
 .Src_Localid {
     color: #850;
+}
+.DarkTheme .Src_Localid {
+    color: #FC8;
 }
 
 a.Src_Id {
