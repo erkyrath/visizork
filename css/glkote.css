@@ -62,6 +62,10 @@
   margin: 0px;
   background: #FFF4DD;
 }
+.DarkTheme .WindowFrame {
+  background: black;
+  color: #FFF4EE;
+}
 
 .BufferWindow {
   overflow: scroll;   /* vertical scrollbar is mandatory */
@@ -94,6 +98,10 @@
   font-family: "Courier Prime", "Courier", monospace; /* necessary! */
   font-size: 15px;
   padding: 8px 10px 7px 10px;
+}
+.DarkTheme .GridWindow {
+  background: #432;
+  color: #DDDACC;
 }
 
 .GridLine {
@@ -140,6 +148,10 @@
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
 }
+.DarkTheme .MorePrompt {
+  background: #FDA;
+  color: #420;
+}
 
 .PreviousMark {
   /* This describes the small horizontal mark that appears in a window
@@ -162,6 +174,9 @@
   outline-style: none;
   background: none;
   font-weight: bold;
+}
+.DarkTheme .Input {
+  color: #CFC;
 }
 
 .BufferWindow .Input {
@@ -252,6 +267,9 @@
 .Style_input {
   font-weight: bold;
   color: #300000;
+}
+.DarkTheme .Style_input {
+  color: #CFC;
 }
 
 .Style_user1 {

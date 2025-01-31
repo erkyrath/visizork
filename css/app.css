@@ -111,6 +111,9 @@ body {
     font-family: "Lato";
     line-height: 1.33;
 }
+.DarkTheme #appbody {
+    background: #111;
+}
 
 #gameport {
     position: absolute;
@@ -168,8 +171,13 @@ body {
     flex-direction: column;
     width: 100%;
     height: 100%;
+    color: black;
     background: #FFFFFE;
     box-sizing: border-box;
+}
+.DarkTheme .ViewPane {
+    background: #010000;
+    color: white;
 }
 
 .SourcePane {
@@ -178,8 +186,13 @@ body {
     flex-direction: column;
     width: 100%;
     height: 100%;
+    color: black;
     background: #FFFFFE;
     box-sizing: border-box;
+}
+.DarkTheme .SourcePane {
+    color: white;
+    background: #010000;
 }
 
 .Arrange12 #gameport {
@@ -269,6 +282,9 @@ body {
     padding-left: 8px;
     box-sizing: border-box;
 }
+.DarkTheme .TabBar {
+    background: #444030;
+}
 
 .TabBar .TabItem {
     display: inline-block;
@@ -279,6 +295,9 @@ body {
     border: 1px solid #888;
     border-radius: 8px;
 }
+.DarkTheme .TabBar .TabItem {
+    background: #202010;
+}
 
 .TabBar .TabItem span {
     pointer-events: none;
@@ -286,6 +305,9 @@ body {
 
 .TabBar .TabItem.Selected {
     background: #FFD066;
+}
+.DarkTheme .TabBar .TabItem.Selected {
+    background: #805000;
 }
 
 .TabBar .TabItem.Flashing {
@@ -612,4 +634,3 @@ a.Src_Id {
 a.Src_Id:hover {
     text-decoration: underline;
 }
-
