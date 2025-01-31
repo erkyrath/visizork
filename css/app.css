@@ -491,6 +491,10 @@ button.ObjPage {
     margin-left: 3px;
     margin-right: 3px;
 }
+.DarkTheme button.ObjPage {
+    background: black;
+    color: #CCC;
+}
 
 .ObjPageBack {
     float: right;
