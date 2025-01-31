@@ -561,6 +561,9 @@ a.CommentButtonSmall img {
     font-size: 130%;
     color: #AAA;
 }
+.DarkTheme .TimerInactive {
+    color: #888;
+}
 
 #scrollcontent_file.ScrollContent {
     padding-left: 8px;
@@ -577,17 +580,29 @@ a.CommentButtonSmall img {
     border-left: 8px solid #FFFFFE;
     padding-left: 8px;
 }
+.DarkTheme .SourceFile > div {
+    border-left: 8px solid #010000;
+}
 
 .SourceFile .Selected {
     background: #FFDD88;
+}
+.DarkTheme .SourceFile .Selected {
+    background: #705000;
 }
 
 .SourceFile .SelRange {
     border-left: 8px solid #FFDD88;
 }
+.DarkTheme .SourceFile .SelRange {
+    border-left: 8px solid #705000;
+}
 
 .SourceFile .Hilit {
     background: #FFF4DD;
+}
+.DarkTheme .SourceFile .Hilit {
+    background: #403000;
 }
 
 .LineExtraHeight {
