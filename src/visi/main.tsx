@@ -67,6 +67,7 @@ function VisiZorkApp()
     const [ shownumbers, setShowNumbers ] = useState(initprefs.shownumbers);
     const [ readabout, setReadAbout ] = useState(initprefs.readabout);
     const [ arrangement, setArrangement ] = useState(initprefs.arrange);
+    const [ darktheme, setDarkTheme ] = useState(initprefs.darktheme);
     const [ sourcelocs, setSourceLocs ] = useState([ new_sourcelocstate() ]);
     const [ sourcelocpos, setSourceLocPos ] = useState(0);
 
@@ -188,12 +189,14 @@ function VisiZorkApp()
         sourcelocpos: sourcelocpos,
         shownumbers: shownumbers,
         readabout: readabout,
+        darktheme: darktheme,
         arrangement: arrangement,
         setTab: setTabWrap,
         setObjPage: setObjPageWrap,
         setShowNumbers: setShowNumbersWrap,
         setLoc: setLoc,
         shiftLoc: shiftLoc,
+        setDarkTheme: setDarkTheme,
         setArrangement: setArrangement,
         showCommentary: show_commentary,
     };
