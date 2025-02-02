@@ -5,6 +5,7 @@
 type CookiePrefs = {
     readabout: boolean;
     shownumbers: boolean;
+    darktheme: boolean;
     arrange: string;
 };
 
@@ -13,6 +14,7 @@ export function default_prefs() : CookiePrefs
     return {
         readabout: false,
         shownumbers: false,
+        darktheme: false,
         arrange: '12',
     };
 }
@@ -29,6 +31,9 @@ export function get_cookie_prefs() : CookiePrefs
             break;
         case 'visizork_readabout=true':
             res.readabout = true;
+            break;
+        case 'visizork_theme=dark':
+            res.darktheme = true;
             break;
         case 'visizork_arrange=12':
             res.arrange = '12';
