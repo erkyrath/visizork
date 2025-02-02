@@ -504,6 +504,10 @@ button.ObjPage {
     color: #A40;
 }
 
+.DarkTheme .ObjPageBack a {
+    color: #FA6;
+}
+
 a.CommentButton {
     position: relative;
     top: -4px;
