@@ -59,3 +59,10 @@ export function set_cookie(key: string, val: string)
     document.cookie = cookie;
 }
 
+export function set_body_class(arrange: string, darktheme: boolean)
+{
+    let cla = 'Arrange'+arrange;
+    if (darktheme)
+        cla += ' DarkTheme';
+    document.body.className = cla;
+}

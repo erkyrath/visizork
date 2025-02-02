@@ -7,7 +7,7 @@ import { ZStatePlus, get_updated_report } from './zstate';
 import { GnustoRunner, GnustoEngine } from './zstate';
 import { sourceloc_for_first_text } from './zstate';
 import { set_runner, show_commentary } from './combuild';
-import { default_prefs, get_cookie_prefs, set_cookie} from './cookie';
+import { default_prefs, get_cookie_prefs, set_cookie, set_body_class } from './cookie';
 import { gamedat_ids, gamedat_global_names, gamedat_object_ids, sourceloc_start, find_sourceloc_for_id, sourceloc_for_srctoken } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
@@ -49,7 +49,7 @@ export function init(runnerref: any)
     });
     
     initprefs = get_cookie_prefs();
-    document.body.className = 'Arrange'+initprefs.arrange;
+    set_body_class(initprefs.arrange, initprefs.darktheme);
 
     const appel = document.getElementById('appbody') as HTMLElement;
     let root = createRoot(appel);
