@@ -63,7 +63,7 @@
   background: #FFF4DD;
 }
 .DarkTheme .WindowFrame {
-  background: black;
+  background: #382800;
   color: #FFF4EE;
 }
 
@@ -100,8 +100,8 @@
   padding: 8px 10px 7px 10px;
 }
 .DarkTheme .GridWindow {
-  background: #432;
-  color: #DDDACC;
+  background: #644C22;
+  color: white;
 }
 
 .GridLine {
@@ -173,10 +173,11 @@
   outline-width: 0px;
   outline-style: none;
   background: none;
+  color: #300000;
   font-weight: bold;
 }
 .DarkTheme .Input {
-  color: #CFC;
+    color: #FEE;
 }
 
 .BufferWindow .Input {
@@ -269,7 +270,7 @@
   color: #300000;
 }
 .DarkTheme .Style_input {
-  color: #CFC;
+  color: #FEE;
 }
 
 .Style_user1 {
