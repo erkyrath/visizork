@@ -478,6 +478,10 @@ code {
     background: #87C;
 }
 
+.DarkTheme .ObjLabel {
+    color: black;
+}
+
 button.ObjPage {
     font-family: "Courier Prime";
     font-weight: bold;
