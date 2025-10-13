@@ -328,10 +328,18 @@ body {
     animation: buttonflash 0.3s linear alternate;
     animation-iteration-count: infinite;
 }
+.DarkTheme .TabBar .TabItem.Flashing {
+    animation: darkbuttonflash 0.3s linear alternate;
+    animation-iteration-count: infinite;
+}
 
 @keyframes buttonflash {
     0% { background: #FFFFFF; }
     100% { background: #B0FFB0; }
+}
+@keyframes darkbuttonflash {
+    0% { background: #000000; }
+    100% { background: #005000; }
 }
 
 .TabBar .TabLabel {
