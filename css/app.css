@@ -369,9 +369,15 @@ body {
 .AboutPage a {
     color: #00C;
 }
+.DarkTheme .AboutPage a {
+    color: #88F;
+}
 
 .AboutPage a.Internal {
     color: #A40;
+}
+.DarkTheme .AboutPage a.Internal {
+    color: #F99;
 }
 .AboutPage code {
     font-size: 90%
