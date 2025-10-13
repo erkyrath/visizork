@@ -1109,7 +1109,11 @@ function handleZ_saveV123(engine, a) {
     var setter = 'm_rebound=function(){'+
         engine._brancher('m_answers[0]')+'};';
 
-    return "m_state_to_save=_saveable_state(1);m_pc="+engine.m_pc+";"+setter+";m_effects=["+GNUSTO_EFFECT_SAVE+"];return";
+    //return "m_state_to_save=_saveable_state(1);m_pc="+engine.m_pc+";"+setter+";m_effects=["+GNUSTO_EFFECT_SAVE+"];return";
+    // The above *seems* to be wrong. It relies on the value of m_pc when the routine function is invoked, which is not consistent between the original (JIT) invocation and later invocations.
+    // The below fixes m_pc to be the opcode address, which is known at JIT time. It works as far as I can tell.
+    
+    return "m_pc="+engine.m_pc+";m_state_to_save=_saveable_state(1);"+setter+";m_effects=["+GNUSTO_EFFECT_SAVE+"];return";
 }
 
 function handleZ_saveV45678(engine, a) {
@@ -1118,9 +1122,14 @@ function handleZ_saveV45678(engine, a) {
     var setter = "m_rebound=function() { " +
         engine._storer('m_answers[0]') + "};";
 
-    return "m_state_to_save=_saveable_state("+
-        (engine.m_version==4? '1': '3') +
-        ");m_pc="+engine.m_pc+";" +
+    //return "m_state_to_save=_saveable_state("+
+    //    (engine.m_version==4? '1': '3') +
+    //    ");m_pc="+engine.m_pc+";" +
+    //    setter+";m_effects=["+GNUSTO_EFFECT_SAVE+"];return";
+    // Same comment as above. (Not yet tested.)
+    
+    return "m_pc="+engine.m_pc+";m_state_to_save=_saveable_state("+
+        (engine.m_version==4? '1': '3') + ");" +
         setter+";m_effects=["+GNUSTO_EFFECT_SAVE+"];return";
 }
 
