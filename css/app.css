@@ -423,13 +423,22 @@ body {
 .Commentary a.External {
     color: #00C;
 }
+.DarkTheme .Commentary a.External {
+    color: #AAF;
+}
 
 .Commentary a.Internal {
     color: #A40;
 }
+.DarkTheme .Commentary a.Internal {
+    color: #F99;
+}
 .Commentary a.SourceOnly {
     color: #A40;
     text-decoration-style: dashed;
+}
+.DarkTheme .Commentary a.SourceOnly {
+    color: #F99;
 }
 
 .Commentary .Com_Id {
