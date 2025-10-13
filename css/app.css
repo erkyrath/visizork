@@ -569,10 +569,16 @@ a.CommentButtonSmall img {
     padding-left: 2px;
     padding-right: 1px;
 }
+.DarkTheme .ChangedNote {
+    color: #F44;
+}
 
 .DelAttr {
     text-decoration-line: line-through;
     text-decoration-color: #B00;
+}
+.DarkTheme .DelAttr {
+    text-decoration-color: #F44;
 }
 
 .TimerActive {
