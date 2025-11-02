@@ -37,7 +37,7 @@ export function TimerTable()
     let activecount = 0;
     
     let timerpos = zstate.globals[C_INTS.num];
-    while (timerpos+6 < zstate.timertable.length) {
+    while (timerpos+5 < zstate.timertable.length) {
         let pos = timerpos;
         let flag = zstate.timertable[pos] * 0x100 + zstate.timertable[pos+1];
         let count = zstate.timertable[pos+2] * 0x100 + zstate.timertable[pos+3];
