@@ -103,6 +103,10 @@ rtn:i-thief: This routine is the [~obj:THIEF]’s heartbeat; it runs every turn 
 	The thief moves in a regular round through the dungeon. This is not defined by room connections; rather, it’s the order that rooms appear in the [~obj:ROOMS] container.
 	The thief is normally stealthy – the `INVISIBLE` flag, which also prevents the [SWORD|*rtn:I-SWORD] from detecting him. He has a chance of appearing when he enters your location; see [~rtn:THIEF-VS-ADVENTURER].
 
+rtn:i-fight: This routine handles the turn-by-turn behavior of hostile creatures. This includes [attacking you|rtn:DO-FIGHT], as the name implies, but also waking up after you’ve knocked them out.
+
+rtn:do-fight: Run through the table of [~glob:VILLAINS] and have each one attack you, if appropriate.
+
 rtn:GO: Set up the world at the start of the game. Start the timers. Print the banner. Set all those useful globals like [~glob:HERE] and [~glob:PLAYER].
 
 
