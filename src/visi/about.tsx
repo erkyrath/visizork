@@ -215,7 +215,8 @@ export function AboutPage()
                     then Microsoft consumed the lot.
                 </p>
                 <p>
-                    As of November 2025, the Zork 1 source code is{' '}
+                    Thus, the Zork 1 source code is copyright 2025 by
+                    Microsoft. As of November 2025, it is{' '}
                     <ExtWebLink url={ 'https://opensource.microsoft.com/blog/2025/11/20/preserving-code-that-shaped-generations-zork-i-ii-and-iii-go-open-source' } text={ 'open source' } />
                     {' '}under the MIT license. Thanks to Microsoft for making
                     this project completely legal!
