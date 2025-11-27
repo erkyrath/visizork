@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject, ZStackCall, ZStackItem, ZStackPrint } from './zstate';
-import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, gamedat_object_ids, signed_zvalue, DictWordData, StringData } from './gamedat';
+import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, gamedat_object_ids, unpack_address, signed_zvalue, DictWordData, StringData } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -185,15 +185,20 @@ export function StackCall({ call }: { call:ZStackCall })
 
 export function StackCallArg({ value, argtype }: { value:number, argtype:string|null })
 {
-    if (argtype == 'OBJ') {
+    switch (argtype) {
+    case 'OBJ':
         return (
             <span> <ArgShowObject value={ value } /></span>
         )
+    case 'STR':
+        return (
+            <span> <ArgShowString value={ value } /></span>
+        )
+    default:
+        return (
+            <span> { signed_zvalue(value) }</span>
+        );
     }
-    
-    return (
-        <span> { signed_zvalue(value) }</span>
-    );
 }
 
 function ArgShowObject({ value }: { value:number })
@@ -212,6 +217,16 @@ function ArgShowObject({ value }: { value:number })
     }
 
     return (<i>?obj:{ value }</i>);
+}
+
+function ArgShowString({ value }: { value:number })
+{
+    let obj = gamedat_string_map.get(unpack_address(value));
+    if (obj) {
+        return (<span className="PrintString">&#x201C;{ obj.text }&#x201D;</span>);
+    }
+
+    return (<span>???</span>);
 }
 
 
