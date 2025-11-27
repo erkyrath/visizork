@@ -190,6 +190,10 @@ export function StackCallArg({ value, argtype }: { value:number, argtype:string|
         return (
             <span> <ArgShowObject value={ value } /></span>
         )
+    case 'RTN':
+        return (
+            <span> <ArgShowRoutine value={ value } /></span>
+        )
     case 'STR':
         return (
             <span> <ArgShowString value={ value } /></span>
@@ -217,6 +221,21 @@ function ArgShowObject({ value }: { value:number })
     }
 
     return (<i>?obj:{ value }</i>);
+}
+
+function ArgShowRoutine({ value }: { value:number })
+{
+    if (value == 0)
+        return (<i>false</i>);
+
+    let func = gamedat_routine_addrs.get(unpack_address(value));
+    if (func) {
+        return (
+            <span><code>{ func.name }</code></span>
+        );
+    }
+
+    return (<i>?rtn:{ value }</i>);
 }
 
 function ArgShowString({ value }: { value:number })
