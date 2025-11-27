@@ -213,7 +213,7 @@ class Zcode:
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     argstok = tok.children[2]
-                    callargcount, args, argtypes = self.parseroutineargs(argstok)
+                    callargcount, args, argtypes = self.parseroutineargs(idtok.val, argstok)
                     rtn = ZRoutine(idtok.val, callargcount, args, argtypes, tok, argstok)
                     self.routines.append(rtn)
                     tok.defentity = rtn
@@ -223,7 +223,7 @@ class Zcode:
                 idtok = qtok.children[1]
                 if idtok.typ is TokType.ID:
                     argstok = qtok.children[2]
-                    callargcount, args, argtypes = self.parseroutineargs(argstok)
+                    callargcount, args, argtypes = self.parseroutineargs(idtok.val, argstok)
                     rtn = ZRoutine(idtok.val, callargcount, args, argtypes, qtok, argstok)
                     self.routines.append(rtn)
                     qtok.defentity = rtn
@@ -293,7 +293,7 @@ class Zcode:
                 else:
                     self.findstringsinroutine(stok, rtn)
 
-    def parseroutineargs(self, tok):
+    def parseroutineargs(self, funcname, tok):
         if tok.typ is not TokType.GROUP:
             raise Exception('args group is not a group')
         args = []
@@ -313,8 +313,11 @@ class Zcode:
                 continue
         if callargcount is None:
             callargcount = len(args)
-        argtypes = []
+        argtypes = [ self.guessargtype(funcname, arg, ix) for (ix, arg) in enumerate(args[ : callargcount ]) ]
         return callargcount, args, argtypes
+
+    def guessargtype(self, funcname, argname, index):
+        return None
                     
     def findstringsintell(self, tok, rname):
         for stok in tok.children:
