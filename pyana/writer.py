@@ -195,6 +195,8 @@ def write_routines(filename, zcode, txdat):
             'addr': tfunc.addr,
             'sourceloc': sourceloc(tok=zfunc.rtok),
         }
+        if zfunc.argtypes and any(zfunc.argtypes):
+            dat['argtypes'] = zfunc.argtypes
         ls.append(dat)
 
     fl = open(filename, 'w')
