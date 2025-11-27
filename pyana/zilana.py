@@ -317,6 +317,12 @@ class Zcode:
         return callargcount, args, argtypes
 
     def guessargtype(self, funcname, argname, index):
+        if argname in ('O', 'OBJ', 'RM', 'ROOM'):
+            return 'OBJ'
+        if argname == 'STR':
+            return 'STR'
+        if argname == 'RTN':
+            return 'RTN'
         return None
                     
     def findstringsintell(self, tok, rname):
