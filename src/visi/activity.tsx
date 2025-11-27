@@ -147,10 +147,15 @@ export function StackCall({ call }: { call:ZStackCall })
     if (call.addr == 0)
         funcname = 'false';
 
+    let argtypes: string[] = funcdat?.argtypes ?? [];
+    let argls: JSX.Element[] = []
     counter = 0;
-    let argls = call.args.map((arg) => (
-        <StackCallArg key={ counter++ } arg={ arg } />
-    ));
+    for (let arg of call.args) {
+        let argtype: string|null = argtypes[counter];
+        let el = <StackCallArg key={ counter } arg={ arg } argtype={ argtype } />
+        argls.push(el);
+        counter++;
+    }
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
@@ -177,7 +182,7 @@ export function StackCall({ call }: { call:ZStackCall })
     );
 }
 
-export function StackCallArg({ arg }: { arg:number })
+export function StackCallArg({ arg, argtype }: { arg:number, argtype:string|null })
 {
     return (
         <span> { signed_zvalue(arg) }</span>
