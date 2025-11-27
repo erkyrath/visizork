@@ -48,9 +48,11 @@ class ZConstant:
         return '<ZConstant %s %d>' % (self.name, self.value,)
     
 class ZRoutine:
-    def __init__(self, name, args, rtok, argstok):
+    def __init__(self, name, callargcount, args, argtypes, rtok, argstok):
         self.name = name
+        self.callargcount = callargcount
         self.args = args
+        self.argtypes = argtypes
         self.rtok = rtok
         self.argstok = argstok
 
@@ -211,7 +213,8 @@ class Zcode:
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     argstok = tok.children[2]
-                    rtn = ZRoutine(idtok.val, self.parseroutineargs(argstok), tok, argstok)
+                    callargcount, args, argtypes = self.parseroutineargs(argstok)
+                    rtn = ZRoutine(idtok.val, callargcount, args, argtypes, tok, argstok)
                     self.routines.append(rtn)
                     tok.defentity = rtn
                     self.findstringsinroutine(tok, rtn)
@@ -220,7 +223,8 @@ class Zcode:
                 idtok = qtok.children[1]
                 if idtok.typ is TokType.ID:
                     argstok = qtok.children[2]
-                    rtn = ZRoutine(idtok.val, self.parseroutineargs(argstok), qtok, argstok)
+                    callargcount, args, argtypes = self.parseroutineargs(argstok)
+                    rtn = ZRoutine(idtok.val, callargcount, args, argtypes, qtok, argstok)
                     self.routines.append(rtn)
                     qtok.defentity = rtn
                     self.findstringsinroutine(qtok, rtn)
@@ -293,8 +297,11 @@ class Zcode:
         if tok.typ is not TokType.GROUP:
             raise Exception('args group is not a group')
         args = []
+        callargcount = None
         for atok in tok.children:
             if atok.typ is TokType.STR:
+                if atok.val == 'AUX':
+                    callargcount = len(args)
                 continue
             if atok.typ is TokType.ID:
                 args.append(atok.val)
@@ -304,7 +311,10 @@ class Zcode:
                 if gatok.typ is TokType.ID:
                     args.append(gatok.val)
                 continue
-        return args
+        if callargcount is None:
+            callargcount = len(args)
+        argtypes = []
+        return callargcount, args, argtypes
                     
     def findstringsintell(self, tok, rname):
         for stok in tok.children:
