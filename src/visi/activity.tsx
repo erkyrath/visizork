@@ -2,9 +2,10 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject, ZStackCall, ZStackItem, ZStackPrint } from './zstate';
-import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, signed_zvalue, DictWordData, StringData } from './gamedat';
+import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, gamedat_object_ids, signed_zvalue, DictWordData, StringData } from './gamedat';
 
 import { ReactCtx } from './context';
+import { ObjPageLink } from './widgets';
 
 type SelPair = [ number, number ];
 
@@ -152,7 +153,7 @@ export function StackCall({ call }: { call:ZStackCall })
     counter = 0;
     for (let arg of call.args) {
         let argtype: string|null = argtypes[counter];
-        let el = <StackCallArg key={ counter } arg={ arg } argtype={ argtype } />
+        let el = <StackCallArg key={ counter } value={ arg } argtype={ argtype } />
         argls.push(el);
         counter++;
     }
@@ -182,11 +183,36 @@ export function StackCall({ call }: { call:ZStackCall })
     );
 }
 
-export function StackCallArg({ arg, argtype }: { arg:number, argtype:string|null })
+export function StackCallArg({ value, argtype }: { value:number, argtype:string|null })
 {
+    if (argtype == 'OBJ') {
+        return (
+            <span> <ArgShowObject value={ value } /></span>
+        )
+    }
+    
     return (
-        <span> { signed_zvalue(arg) }</span>
+        <span> { signed_zvalue(value) }</span>
     );
 }
+
+function ArgShowObject({ value }: { value:number })
+{
+    if (value == 0)
+        return (<i>nothing</i>);
+
+    let obj = gamedat_object_ids.get(value);
+    if (obj) {
+        return (
+            <>
+                <ObjPageLink onum={ value } />
+                <span><code>{ obj.name }</code></span>
+            </>
+        );
+    }
+
+    return (<i>?obj:{ value }</i>);
+}
+
 
 type ChangeEv = React.ChangeEvent<HTMLInputElement>;
