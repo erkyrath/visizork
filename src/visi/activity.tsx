@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject, ZStackCall, ZStackItem, ZStackPrint } from './zstate';
-import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, DictWordData, StringData } from './gamedat';
+import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, signed_zvalue, DictWordData, StringData } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -146,6 +146,11 @@ export function StackCall({ call }: { call:ZStackCall })
     let funcname = (funcdat ? funcdat.name : '???');
     if (call.addr == 0)
         funcname = 'false';
+
+    counter = 0;
+    let argls = call.args.map((arg) => (
+        <StackCallArg key={ counter++ } arg={ arg } />
+    ));
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
@@ -161,7 +166,7 @@ export function StackCall({ call }: { call:ZStackCall })
                 { (rctx.shownumbers ?
                    <span className="ShowAddr">{ call.addr }: </span>
                    : null) }
-                <code>&lt;{ funcname }&gt;</code>
+                <code>&lt;{ funcname }{ argls }&gt;</code>
             </li>
             { (showsubs ?
                <ul className="DataList">
@@ -169,6 +174,13 @@ export function StackCall({ call }: { call:ZStackCall })
                </ul>
                : null ) }
         </>
+    );
+}
+
+export function StackCallArg({ arg }: { arg:number })
+{
+    return (
+        <span> { signed_zvalue(arg) }</span>
     );
 }
 
