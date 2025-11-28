@@ -498,3 +498,4 @@ RoutineType 0 OPEN-CLOSE OBJ STR STR
 RoutineType 0 PERFORM VERB OBJ OBJ
 ### PERFORM 3 is a property sometimes
 RoutineType 0 REMARK - OBJ OBJ
+RoutineType 0 VILLAIN-RESULT OBJ - -
