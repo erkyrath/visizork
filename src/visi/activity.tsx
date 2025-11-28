@@ -242,7 +242,10 @@ function ArgShowString({ value }: { value:number })
 {
     let obj = gamedat_string_map.get(unpack_address(value));
     if (obj) {
-        return (<span className="PrintString">&#x201C;{ obj.text }&#x201D;</span>);
+        let text = obj.text;
+        if (text.length > 16)
+            text = text.slice(0, 16)+'...';
+        return (<span className="PrintString">&#x201C;{ text }&#x201D;</span>);
     }
 
     return (<span>???</span>);
