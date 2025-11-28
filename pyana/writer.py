@@ -26,6 +26,7 @@ globname_to_vartype = {}
 attribute_list = []
 property_list = []
 propname_to_vartype = {}
+funcname_to_argtypes = {}
 
 def load_gameinfo():
     global info_loaded
@@ -66,7 +67,7 @@ def load_gameinfo():
                     argtypes.append(None)
                     continue
                 argtypes.append(val)
-            print('### %s %r' % (name, argtypes,))
+            funcname_to_argtypes[name] = argtypes
     fl.close()
     info_loaded = True
 
@@ -196,6 +197,8 @@ def write_verbs(filename, zcode):
 
 def write_routines(filename, zcode, txdat):
     print('...writing routine data:', filename)
+    load_gameinfo()
+    
     if len(zcode.routines) != len(txdat.routines):
         raise Exception('routine length mismatch')
     ls = []
@@ -206,7 +209,9 @@ def write_routines(filename, zcode, txdat):
             'sourceloc': sourceloc(tok=zfunc.rtok),
         }
         args = zfunc.args[ : zfunc.callargcount ]
-        argtypes = [ guessargtype(zfunc.name, arg, ix) for (ix, arg) in enumerate(args) ]
+        argtypes = funcname_to_argtypes.get(zfunc.name)
+        if argtypes is None:
+            argtypes = [ guessargtype(zfunc.name, arg, ix) for (ix, arg) in enumerate(args) ]
         if any(argtypes):
             dat['argtypes'] = argtypes
         ls.append(dat)
