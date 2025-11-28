@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject, ZStackCall, ZStackItem, ZStackPrint } from './zstate';
-import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, gamedat_object_ids, unpack_address, signed_zvalue, DictWordData, StringData } from './gamedat';
+import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, gamedat_object_ids, gamedat_verbs, unpack_address, signed_zvalue, DictWordData, StringData } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -198,6 +198,10 @@ export function StackCallArg({ value, argtype }: { value:number, argtype:string|
         return (
             <span> <ArgShowString value={ value } /></span>
         )
+    case 'VERB':
+        return (
+            <span> <ArgShowVerb value={ value } /></span>
+        )
     default:
         return (
             <span> { signed_zvalue(value) }</span>
@@ -249,6 +253,19 @@ function ArgShowString({ value }: { value:number })
     }
 
     return (<span>???</span>);
+}
+
+function ArgShowVerb({ value }: { value:number })
+{
+    if (value >= 0 && value < gamedat_verbs.length) {
+        return (
+            <>
+                <span><code>{ gamedat_verbs[value] }</code></span>
+            </>
+        );
+    }
+
+    return (<i>?verb:{ value }</i>);
 }
 
 
