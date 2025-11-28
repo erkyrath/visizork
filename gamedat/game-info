@@ -494,5 +494,7 @@ Global 157 VERBS  table created from SYNTAX
 
 RoutineType 0 HELD? OBJ
 RoutineType 0 JIGS-UP STR -
+RoutineType 0 OPEN-CLOSE OBJ STR STR
 RoutineType 0 PERFORM VERB OBJ OBJ
+### PERFORM 3 is a property sometimes
 RoutineType 0 REMARK - OBJ OBJ
