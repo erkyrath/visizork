@@ -48,11 +48,10 @@ class ZConstant:
         return '<ZConstant %s %d>' % (self.name, self.value,)
     
 class ZRoutine:
-    def __init__(self, name, callargcount, args, argtypes, rtok, argstok):
+    def __init__(self, name, callargcount, args, rtok, argstok):
         self.name = name
         self.callargcount = callargcount
         self.args = args
-        self.argtypes = argtypes
         self.rtok = rtok
         self.argstok = argstok
 
@@ -213,8 +212,8 @@ class Zcode:
                 idtok = tok.children[1]
                 if idtok.typ is TokType.ID:
                     argstok = tok.children[2]
-                    callargcount, args, argtypes = self.parseroutineargs(idtok.val, argstok)
-                    rtn = ZRoutine(idtok.val, callargcount, args, argtypes, tok, argstok)
+                    callargcount, args = self.parseroutineargs(idtok.val, argstok)
+                    rtn = ZRoutine(idtok.val, callargcount, args, tok, argstok)
                     self.routines.append(rtn)
                     tok.defentity = rtn
                     self.findstringsinroutine(tok, rtn)
@@ -223,8 +222,8 @@ class Zcode:
                 idtok = qtok.children[1]
                 if idtok.typ is TokType.ID:
                     argstok = qtok.children[2]
-                    callargcount, args, argtypes = self.parseroutineargs(idtok.val, argstok)
-                    rtn = ZRoutine(idtok.val, callargcount, args, argtypes, qtok, argstok)
+                    callargcount, args = self.parseroutineargs(idtok.val, argstok)
+                    rtn = ZRoutine(idtok.val, callargcount, args, qtok, argstok)
                     self.routines.append(rtn)
                     qtok.defentity = rtn
                     self.findstringsinroutine(qtok, rtn)
@@ -313,18 +312,8 @@ class Zcode:
                 continue
         if callargcount is None:
             callargcount = len(args)
-        argtypes = [ self.guessargtype(funcname, arg, ix) for (ix, arg) in enumerate(args[ : callargcount ]) ]
-        return callargcount, args, argtypes
+        return callargcount, args
 
-    def guessargtype(self, funcname, argname, index):
-        if argname in ('O', 'OBJ', 'RM', 'ROOM'):
-            return 'OBJ'
-        if argname == 'STR':
-            return 'STR'
-        if argname == 'RTN':
-            return 'RTN'
-        return None
-                    
     def findstringsintell(self, tok, rname):
         for stok in tok.children:
             if stok.typ is TokType.STR:

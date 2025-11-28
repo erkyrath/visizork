@@ -57,6 +57,16 @@ def load_gameinfo():
             globnum_to_name[num] = name
             if extra:
                 globname_to_vartype[name] = extra
+        if typ == 'RoutineType':
+            argtypes = []
+            for val in extra.split(' '):
+                if not val:
+                    continue
+                if val == '-':
+                    argtypes.append(None)
+                    continue
+                argtypes.append(val)
+            print('### %s %r' % (name, argtypes,))
     fl.close()
     info_loaded = True
 
@@ -195,8 +205,10 @@ def write_routines(filename, zcode, txdat):
             'addr': tfunc.addr,
             'sourceloc': sourceloc(tok=zfunc.rtok),
         }
-        if zfunc.argtypes and any(zfunc.argtypes):
-            dat['argtypes'] = zfunc.argtypes
+        args = zfunc.args[ : zfunc.callargcount ]
+        argtypes = [ guessargtype(zfunc.name, arg, ix) for (ix, arg) in enumerate(args) ]
+        if any(argtypes):
+            dat['argtypes'] = argtypes
         ls.append(dat)
 
     fl = open(filename, 'w')
@@ -204,6 +216,15 @@ def write_routines(filename, zcode, txdat):
     json.dump(ls, fl, separators=(',', ':'))
     fl.write(';\n')
     fl.close()
+
+def guessargtype(funcname, argname, index):
+    if argname in ('O', 'OBJ', 'RM', 'ROOM'):
+        return 'OBJ'
+    if argname == 'STR':
+        return 'STR'
+    if argname == 'RTN':
+        return 'RTN'
+    return None
 
 def write_globals(filename, zcode):
     print('...writing globals data:', filename)
