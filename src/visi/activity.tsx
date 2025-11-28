@@ -153,7 +153,13 @@ export function StackCall({ call }: { call:ZStackCall })
     counter = 0;
     for (let arg of call.args) {
         let argtype: string|null = argtypes[counter];
-        let el = <StackCallArg key={ counter } value={ arg } argtype={ argtype } />
+        let el = (
+            <>
+                {' '}
+                { ((rctx.shownumbers && argtype) ? <span className="ShowAddr">{ arg }:</span> : null) }
+                <StackCallArg key={ counter } value={ arg } argtype={ argtype } />
+            </>
+        )
         argls.push(el);
         counter++;
     }
@@ -188,27 +194,27 @@ export function StackCallArg({ value, argtype }: { value:number, argtype:string|
     switch (argtype) {
     case 'OBJ':
         return (
-            <span> <ArgShowObject value={ value } /></span>
+            <ArgShowObject value={ value } />
         )
     case 'RTN':
         return (
-            <span> <ArgShowRoutine value={ value } /></span>
+            <ArgShowRoutine value={ value } />
         )
     case 'STR':
         return (
-            <span> <ArgShowString value={ value } /></span>
+            <ArgShowString value={ value } />
         )
     case 'VERB':
         return (
-            <span> <ArgShowVerb value={ value } /></span>
+            <ArgShowVerb value={ value } />
         )
     case 'MFLAG':
         return (
-            <span> <ArgShowMFlag value={ value } /></span>
+            <ArgShowMFlag value={ value } />
         )
     default:
         return (
-            <span> { signed_zvalue(value) }</span>
+            <span>{ signed_zvalue(value) }</span>
         );
     }
 }
