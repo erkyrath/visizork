@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
-import { ZObject, ZStackCall, ZStackItem, ZStackPrint } from './zstate';
+import { ZObject, ZStackCall, ZStackItem, ZStackPrint, new_stack_call } from './zstate';
 import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, gamedat_object_ids, gamedat_verbs, unpack_address, signed_zvalue, DictWordData, StringData } from './gamedat';
 
 import { ReactCtx } from './context';
@@ -25,6 +25,7 @@ function new_context() : ListContextContent
 }
 
 const ListCtx = createContext(new_context());
+const StackCallCtx = createContext(new_stack_call());
 
 export function CallActivity()
 {
@@ -157,7 +158,9 @@ export function StackCall({ call }: { call:ZStackCall })
             <>
                 {' '}
                 { ((rctx.shownumbers && argtype) ? <span className="ShowAddr">{ arg }:</span> : null) }
-                <StackCallArg key={ counter } value={ arg } argtype={ argtype } />
+                <StackCallCtx.Provider value={ call }>
+                    <StackCallArg key={ counter } value={ arg } argtype={ argtype } />
+                </StackCallCtx.Provider>
             </>
         )
         argls.push(el);
