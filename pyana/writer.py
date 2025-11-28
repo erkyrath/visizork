@@ -223,7 +223,7 @@ def write_routines(filename, zcode, txdat):
     fl.close()
 
 def guessargtype(funcname, argname, index):
-    if argname in ('O', 'OBJ', 'RM', 'ROOM'):
+    if argname in ('O', 'OBJ', 'R', 'RM', 'ROOM'):
         return 'OBJ'
     if argname == 'STR':
         return 'STR'
