@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject, ZStackCall, ZStackItem, ZStackPrint, new_stack_call } from './zstate';
-import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, gamedat_object_ids, gamedat_verbs, unpack_address, signed_zvalue, DictWordData, StringData } from './gamedat';
+import { gamedat_property_nums, gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, gamedat_object_ids, gamedat_verbs, unpack_address, signed_zvalue, DictWordData, StringData } from './gamedat';
 
 import { ReactCtx } from './context';
 import { ObjPageLink } from './widgets';
@@ -215,6 +215,20 @@ export function StackCallArg({ value, argtype }: { value:number, argtype:string|
         return (
             <ArgShowMFlag value={ value } />
         )
+    case 'PERFORMO': /* Zork-specific */
+        let ctx = useContext(StackCallCtx);
+        if (ctx.args[0] == 137) {
+            return (
+                <ArgShowProperty value={ value } />
+            );
+        }
+        return (
+            <ArgShowObject value={ value } />
+        )
+    case 'PERFORMI': /* Zork-specific */
+        return (
+            <ArgShowObject value={ value } />
+        )
     default:
         return (
             <span>{ signed_zvalue(value) }</span>
@@ -255,6 +269,18 @@ function ArgShowRoutine({ value }: { value:number })
     return (<i>?rtn:{ value }</i>);
 }
 
+function ArgShowProperty({ value }: { value:number })
+{
+    let prop = gamedat_property_nums.get(value);
+    if (prop) {
+        return (
+            <span><code>P?{ prop.name }</code></span>
+        );
+    }
+
+    return (<i>?prop:{ value }</i>);
+}
+
 function ArgShowString({ value }: { value:number })
 {
     let obj = gamedat_string_map.get(unpack_address(value));
@@ -288,17 +314,17 @@ function ArgShowMFlag({ value }: { value:number })
 
     switch (value) {
     case 1:
-        return (<span><code>?BEG</code></span>);
+        return (<span><code>,M-BEG</code></span>);
     case 2:
-        return (<span><code>?ENTER</code></span>);
+        return (<span><code>,M-ENTER</code></span>);
     case 3:
-        return (<span><code>?LOOK</code></span>);
+        return (<span><code>,M-LOOK</code></span>);
     case 4:
-        return (<span><code>?FLASH</code></span>);
+        return (<span><code>,M-FLASH</code></span>);
     case 5:
-        return (<span><code>?OBJDESC</code></span>);
+        return (<span><code>,M-OBJDESC</code></span>);
     case 6:
-        return (<span><code>?END</code></span>);
+        return (<span><code>,M-END</code></span>);
     default:
         return (<span> { signed_zvalue(value) }</span>);
     }
