@@ -202,6 +202,10 @@ export function StackCallArg({ value, argtype }: { value:number, argtype:string|
         return (
             <span> <ArgShowVerb value={ value } /></span>
         )
+    case 'MFLAG':
+        return (
+            <span> <ArgShowMFlag value={ value } /></span>
+        )
     default:
         return (
             <span> { signed_zvalue(value) }</span>
@@ -268,5 +272,27 @@ function ArgShowVerb({ value }: { value:number })
     return (<i>?verb:{ value }</i>);
 }
 
+function ArgShowMFlag({ value }: { value:number })
+{
+    /* Zork-specific -- see gmain.zil */
+    let flag: string|null;
+
+    switch (value) {
+    case 1:
+        return (<span><code>?BEG</code></span>);
+    case 2:
+        return (<span><code>?ENTER</code></span>);
+    case 3:
+        return (<span><code>?LOOK</code></span>);
+    case 4:
+        return (<span><code>?FLASH</code></span>);
+    case 5:
+        return (<span><code>?OBJDESC</code></span>);
+    case 6:
+        return (<span><code>?END</code></span>);
+    default:
+        return (<span> { signed_zvalue(value) }</span>);
+    }
+}
 
 type ChangeEv = React.ChangeEvent<HTMLInputElement>;

@@ -229,6 +229,8 @@ def guessargtype(funcname, argname, index):
         return 'STR'
     if argname == 'RTN':
         return 'RTN'
+    if argname == 'RARG':
+        return 'MFLAG'
     return None
 
 def write_globals(filename, zcode):
