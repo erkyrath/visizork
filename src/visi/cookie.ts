@@ -9,10 +9,6 @@ type CookiePrefs = {
     arrange: string;
 };
 
-//### m = window.matchMedia('(prefers-color-scheme: dark)')
-//### m.addEventListener('change', (ev) => console.log(ev))
-//### m.matches, ev.matches
-
 export function default_prefs() : CookiePrefs
 {
     return {
@@ -66,10 +62,18 @@ export function set_cookie(key: string, val: string)
     document.cookie = cookie;
 }
 
-export function set_body_class(arrange: string, darktheme: boolean|null)
+/* The OS dark/light theme flag, last time we checked it. I know, caching
+   values isn't React-style -- sorry. (It's only set by an Effect.)
+*/
+let os_dark_theme: boolean|null = null;
+
+export function set_body_class(arrange: string, darkpref: boolean|null, darkos?: boolean)
 {
+    if (darkos !== undefined)
+        os_dark_theme = darkos;
+    
     let cla = 'Arrange'+arrange;
-    if (darktheme)
+    if (darkpref === true || (darkpref === null && os_dark_theme))
         cla += ' DarkTheme';
     document.body.className = cla;
 }
