@@ -50,7 +50,7 @@ export function AppMenu()
                     <ArrangeButton arrange='111' curarrange={ arrangement} handle={ handle_click_arrange } />
                 </div>
                 <div>
-                    <input id="darktheme_checkbox" type="checkbox" checked={ rctx.darktheme } onChange={ evhan_change_theme } />{' '}
+                    <input id="darktheme_checkbox" type="checkbox" checked={ rctx.darktheme===true } onChange={ evhan_change_theme } />{' '}
                     <label htmlFor="darktheme_checkbox">Dark theme</label>
                 </div>
                 <div>

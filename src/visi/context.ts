@@ -18,7 +18,7 @@ export type ContextContent = {
     tab: string;
     shownumbers: boolean;
     readabout: boolean;
-    darktheme: boolean;
+    darktheme: boolean|null;
     arrangement: string;
     objpage: number;
     sourcelocs: SourceLocState[];

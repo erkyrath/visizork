@@ -5,7 +5,7 @@
 type CookiePrefs = {
     readabout: boolean;
     shownumbers: boolean;
-    darktheme: boolean;
+    darktheme: boolean|null;
     arrange: string;
 };
 
@@ -18,7 +18,7 @@ export function default_prefs() : CookiePrefs
     return {
         readabout: false,
         shownumbers: false,
-        darktheme: false,
+        darktheme: null,
         arrange: '12',
     };
 }
@@ -66,7 +66,7 @@ export function set_cookie(key: string, val: string)
     document.cookie = cookie;
 }
 
-export function set_body_class(arrange: string, darktheme: boolean)
+export function set_body_class(arrange: string, darktheme: boolean|null)
 {
     let cla = 'Arrange'+arrange;
     if (darktheme)
