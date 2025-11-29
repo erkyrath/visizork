@@ -178,10 +178,14 @@ function VisiZorkApp()
     useEffect(() => {
         let matcher = window.matchMedia('(prefers-color-scheme: dark)');
         set_body_class(rctx.arrangement, rctx.darktheme, matcher.matches);
-        matcher.addEventListener('change', (ev) => {
-            set_body_class(rctx.arrangement, rctx.darktheme, ev.matches);
-        });
-    }, []);
+        let callback = (ev: MediaQueryListEvent) => {
+            set_body_class(arrangement, darktheme, ev.matches)
+        };
+        matcher.addEventListener('change', callback);
+        return () => {
+            matcher.removeEventListener('change', callback);
+        };
+    }, [arrangement, darktheme]);
 
     if (releaseTarget == 'development') {
         (window as any).curzstate = zstate;

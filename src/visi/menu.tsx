@@ -27,7 +27,12 @@ export function AppMenu()
     
     function evhan_change_theme(val: boolean|null) {
         rctx.setDarkTheme(val);
-        set_cookie('theme', val ? 'dark' : 'light');
+        if (val === null)
+            set_cookie('theme', 'system');
+        else if (val === false)
+            set_cookie('theme', 'light');
+        else if (val === true)
+            set_cookie('theme', 'dark');
         set_body_class(rctx.arrangement, val);
         setMenuOpen(false);
     }
