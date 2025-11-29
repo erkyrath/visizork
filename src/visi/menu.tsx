@@ -25,11 +25,10 @@ export function AppMenu()
         setMenuOpen(false);
     }
     
-    function evhan_change_theme(ev: ChangeEv) {
-        let newval = !rctx.darktheme;
-        rctx.setDarkTheme(newval);
-        set_cookie('theme', newval ? 'dark' : 'light');
-        set_body_class(rctx.arrangement, newval);
+    function evhan_change_theme(val: boolean|null) {
+        rctx.setDarkTheme(val);
+        set_cookie('theme', val ? 'dark' : 'light');
+        set_body_class(rctx.arrangement, val);
         setMenuOpen(false);
     }
     
@@ -50,8 +49,17 @@ export function AppMenu()
                     <ArrangeButton arrange='111' curarrange={ arrangement} handle={ handle_click_arrange } />
                 </div>
                 <div>
-                    <input id="darktheme_checkbox" type="checkbox" checked={ rctx.darktheme===true } onChange={ evhan_change_theme } />{' '}
-                    <label htmlFor="darktheme_checkbox">Dark theme</label>
+                    <input id="darktheme_radio" type="radio" name="theme" value="dark" checked={ rctx.darktheme===true } onChange={ (ev) => evhan_change_theme(true) } />
+                    {' '}
+                    <label htmlFor="darktheme_radio">Dark</label>
+                    {' '}
+                    <input id="lighttheme_radio" type="radio" name="theme" value="light" checked={ rctx.darktheme===false } onChange={ (ev) => evhan_change_theme(false) } />
+                    {' '}
+                    <label htmlFor="lighttheme_radio">Light</label>
+                    {' '}
+                    <input id="systheme_radio" type="radio" name="theme" value="sys" checked={ rctx.darktheme===null } onChange={ (ev) => evhan_change_theme(null) } />
+                    {' '}
+                    <label htmlFor="systheme_radio">System theme</label>
                 </div>
                 <div>
                     <input id="numbers_checkbox" type="checkbox" checked={ rctx.shownumbers } onChange={ evhan_change_numbers } />{' '}

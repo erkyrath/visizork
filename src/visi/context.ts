@@ -28,7 +28,7 @@ export type ContextContent = {
     setTab: (loc:string) => void;
     setLoc: (loc:string, hi:boolean) => void;
     shiftLoc: (forward: boolean) => void;
-    setDarkTheme: (arr: boolean) => void;
+    setDarkTheme: (arr: boolean|null) => void;
     setArrangement: (arr: string) => void;
     showCommentary: (topic:string) => void;
 };
