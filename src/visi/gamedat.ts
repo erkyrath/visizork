@@ -231,6 +231,7 @@ export type DictWordData = {
 export type RoutineData = {
     name: string;
     addr: number;
+    argtypes?: string[];
     sourceloc: string;
 };
 

@@ -26,6 +26,7 @@ globname_to_vartype = {}
 attribute_list = []
 property_list = []
 propname_to_vartype = {}
+funcname_to_argtypes = {}
 
 def load_gameinfo():
     global info_loaded
@@ -57,6 +58,16 @@ def load_gameinfo():
             globnum_to_name[num] = name
             if extra:
                 globname_to_vartype[name] = extra
+        if typ == 'RoutineType':
+            argtypes = []
+            for val in extra.split(' '):
+                if not val:
+                    continue
+                if val == '-':
+                    argtypes.append(None)
+                    continue
+                argtypes.append(val)
+            funcname_to_argtypes[name] = argtypes
     fl.close()
     info_loaded = True
 
@@ -186,6 +197,8 @@ def write_verbs(filename, zcode):
 
 def write_routines(filename, zcode, txdat):
     print('...writing routine data:', filename)
+    load_gameinfo()
+    
     if len(zcode.routines) != len(txdat.routines):
         raise Exception('routine length mismatch')
     ls = []
@@ -195,6 +208,12 @@ def write_routines(filename, zcode, txdat):
             'addr': tfunc.addr,
             'sourceloc': sourceloc(tok=zfunc.rtok),
         }
+        args = zfunc.args[ : zfunc.callargcount ]
+        argtypes = funcname_to_argtypes.get(zfunc.name)
+        if argtypes is None:
+            argtypes = [ guessargtype(zfunc.name, arg, ix) for (ix, arg) in enumerate(args) ]
+        if any(argtypes):
+            dat['argtypes'] = argtypes
         ls.append(dat)
 
     fl = open(filename, 'w')
@@ -202,6 +221,17 @@ def write_routines(filename, zcode, txdat):
     json.dump(ls, fl, separators=(',', ':'))
     fl.write(';\n')
     fl.close()
+
+def guessargtype(funcname, argname, index):
+    if argname in ('O', 'OBJ', 'R', 'RM', 'ROOM'):
+        return 'OBJ'
+    if argname == 'STR':
+        return 'STR'
+    if argname == 'RTN':
+        return 'RTN'
+    if argname == 'RARG':
+        return 'MFLAG'
+    return None
 
 def write_globals(filename, zcode):
     print('...writing globals data:', filename)

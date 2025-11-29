@@ -41,6 +41,7 @@ export type ZObject = {
 export type ZStackCall = {
     type: 'call';
     addr: number;
+    args: number[];
     children: ZStackItem[];
     hasprint?: boolean;
 };
@@ -51,6 +52,11 @@ export type ZStackPrint = {
 };
 
 export type ZStackItem = ZStackCall | ZStackPrint;
+
+export function new_stack_call(): ZStackCall
+{
+    return { type:'call', addr:0, args:[], children:[] };
+};
 
 export type ZState = {
     counter: number;
@@ -152,7 +158,7 @@ export function zstateplus_empty() : ZStatePlus
         globals: [],
         objects: [],
         strings: [],
-        calltree: { type:'call', addr:0, children:[] },
+        calltree: new_stack_call(),
         proptable: new Uint8Array(),
         timertable: new Uint8Array(),
 

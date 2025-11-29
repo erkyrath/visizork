@@ -1722,7 +1722,7 @@ GnustoEngine.prototype = {
 
             var oldval = old_func_stack[this.m_func_stack.length];
             this.m_func_stack.push(oldval);
-            this._vm_report_call(oldval);
+            this._vm_report_call(oldval, []);
             
             cursor+=3;
 
@@ -2230,8 +2230,9 @@ GnustoEngine.prototype = {
         
         // There are some calls already on the stack; note them as if
         // they were just called, so the activity report will look right.
+        // (We don't try to copy the arguments, sorry.)
         for (var addr of this.m_func_stack)
-             m_report_accum.calls.push({ t:'c', addr:addr });
+            m_report_accum.calls.push({ t:'c', addr:addr, args:[] });
     },
 
     // Note that a string was printed.
@@ -2245,10 +2246,10 @@ GnustoEngine.prototype = {
     },
 
     // Note that a function was called.
-    _vm_report_call(addr)
+    _vm_report_call(addr, args)
     {
         if (m_report_accum)
-             m_report_accum.calls.push({ t:'c', addr:addr });
+            m_report_accum.calls.push({ t:'c', addr:addr, args:[ ...args ] });
         return addr;
     },
 
@@ -2311,11 +2312,11 @@ GnustoEngine.prototype = {
         report.timertable = this.m_memory.slice(ctableaddr, ctableaddr+m_report_info.C_TABLE_LEN);
 
         var initpc = this.getUnsignedWord(0x6) - 1;
-        var calltree = { type:'call', addr:initpc, children:[] };
+        var calltree = { type:'call', addr:initpc, args:[], children:[] };
         var stack = [ calltree ];
         for (var obj of m_report_accum.calls) {
             if (obj.t == 'c') {
-                var call = { type:'call', addr:obj.addr, children:[] };
+                var call = { type:'call', addr:obj.addr, args:obj.args, children:[] };
                 stack[stack.length-1].children.push(call);
                 stack.push(call);
             }
@@ -3108,7 +3109,7 @@ GnustoEngine.prototype = {
 
         this.m_call_stack.push(from_address);
         this.m_func_stack.push(to_address);
-        this._vm_report_call(to_address);
+        this._vm_report_call(to_address, actuals);
         this.m_pc = to_address;
 
         var count = this.m_memory[this.m_pc++];

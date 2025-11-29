@@ -56,7 +56,7 @@ glob:load-allowed: The total weight you can carry (see [rtn:WEIGHT]). This is no
 src:GVERBS-1593: Not until Sorcerer!
 
 src:1actions-707: If you throw the [~obj:TROLL] a weapon, he has a 20% chance of eating it and dying. (Taking the weapon with him.)
-	I've seen it argued that this was the intended way to kill the troll, back before randomized combat was implemented. However, we have no version of (MIT) Zork that early in development.
+	I’ve seen it argued that this was the intended way to kill the troll, back before randomized combat was implemented. However, we have no version of (MIT) Zork that early in development.
 
 glob:c-ints: Indicates how much of the timer table ([*glob:C-TABLE]) is used. This counts down from `C-TABLELEN`, which is 180.
 
@@ -103,6 +103,10 @@ rtn:i-thief: This routine is the [~obj:THIEF]’s heartbeat; it runs every turn 
 	The thief moves in a regular round through the dungeon. This is not defined by room connections; rather, it’s the order that rooms appear in the [~obj:ROOMS] container.
 	The thief is normally stealthy – the `INVISIBLE` flag, which also prevents the [SWORD|*rtn:I-SWORD] from detecting him. He has a chance of appearing when he enters your location; see [~rtn:THIEF-VS-ADVENTURER].
 
+rtn:i-fight: This routine handles the turn-by-turn behavior of hostile creatures. This includes [attacking you|rtn:DO-FIGHT], as the name implies, but also waking up after you’ve knocked them out.
+
+rtn:do-fight: Run through the table of [~glob:VILLAINS] and have each one attack you, if appropriate.
+
 rtn:GO: Set up the world at the start of the game. Start the timers. Print the banner. Set all those useful globals like [~glob:HERE] and [~glob:PLAYER].
 
 
@@ -126,7 +130,7 @@ obj:kitchen: The `DOWN` exit implies that you *could* go down if [~glob:FALSE-FL
 
 obj:garlic: Who carries around one clove of garlic? As a kid, I assumed this was a *head* of garlic, which left me permanently confused about what “clove” meant. Thanks Zork.
 
-obj:trap-door: This object is defined as being `IN` the [~obj:LIVING-ROOM], but is also in the scenery list (the `GLOBAL` property) of the [~obj:CELLAR]. This isn't very interesting, I admit.
+obj:trap-door: This object is defined as being `IN` the [~obj:LIVING-ROOM], but is also in the scenery list (the `GLOBAL` property) of the [~obj:CELLAR]. This isn’t very interesting, I admit.
 
 obj:egg: This egg is not an easter egg.
 
@@ -268,9 +272,10 @@ rtn:WINNING?: The thief compares your strength with his. Used to decide whether 
 rtn:FIGHT-STRENGTH: Determine your combat strength. This is initially 2, but increases to 7 as your score approaches 350.
 	This can be adjusted by your `STRENGTH` property, which, like the comment says, is normally zero. When you are wounded, your `STRENGTH` is negative.
 
-rtn:VILLAIN-STRENGTH: Determine the combat strength of an enemy. This is their `STRENGTH` property, with a couple of adjustments. The thief and troll are weaker against certain weapons (see [*glob:VILLAINS]), so their strength is decreased if the current action is `...WITH SWORD` or `...WITH KNIFE`. Also you can distract the thief and temporarily reduce his strength by giving him a treasure!
+rtn:VILLAIN-STRENGTH: Determine the combat strength of an enemy. This is their `STRENGTH` property, with a couple of adjustments. The thief and troll are weaker against certain weapons (see [*glob:VILLAINS]), so their strength is decreased if the current action is `...WITH SWORD` or `...WITH KNIFE`.
 	(Enemies have lower `STRENGTH` when wounded, and negative `STRENGTH` when unconscious.)
+	
+src:1ACTIONS-3333: This line is supposed to reduce the thief’s strength once after you give him a treasure. It never happens, though. See [*glob:THIEF-ENGROSSED].
 
-glob:THIEF-ENGROSSED: Set if you have distracted the thief by giving him a treasure. This reduces his effective strength to 2 (see [*rtn:VILLAIN-STRENGTH]), but only for the next blow.
-
-
+glob:THIEF-ENGROSSED: Set if you have distracted the thief by giving him a treasure.
+	*Bug:* This is also supposed to reduce his effective strength to 2 on the next blow (see [*rtn:VILLAIN-STRENGTH]). But it [turns out|https://intfiction.org/t/in-zork-i-does-thief-engrossed-actually-work/77855] that the flag is cleared by the “thief distracted” check. By the time he attacks you, his strength is back to normal!

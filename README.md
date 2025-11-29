@@ -143,7 +143,11 @@ The fonts used are Courier Prime, Lato, and Libre Baskerville. The header backgr
 
 [zorkmap]: https://infodoc.plover.net/maps/zork1.pdf
 
-Zork itself was originally written by Tim Anderson, Marc Blank, Bruce Daniels, and Dave Lebling. The commercial versions are copyright 1981 (etc) by Infocom, then Activision, then renamed to Mediagenic, then Bobby Kotick bought it and renamed it Activision, then Vivendi bought it and merged it with Blizzard, then Microsoft consumed the lot. Got it? Good.
+Zork itself was originally written by Tim Anderson, Marc Blank, Bruce Daniels, and Dave Lebling. The commercial versions are copyright 1981 (etc) by Infocom, then Activision, then renamed to Mediagenic, then Bobby Kotick bought it and renamed it Activision, then Vivendi bought it and merged it with Blizzard, then Microsoft consumed the lot.
+
+Thus, the Zork 1 source code is copyright 2025 by Microsoft. As of November 2025, it is [open source][oz] under the MIT license. Thanks to Microsoft for making this project completely legal!
+
+[oz]: https://opensource.microsoft.com/blog/2025/11/20/preserving-code-that-shaped-generations-zork-i-ii-and-iii-go-open-source
 
 Aside from the above, the Visible Zorker is copyright 2025 by Andrew Plotkin. My work on this project is under the MIT license.
 

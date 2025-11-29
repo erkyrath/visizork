@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
-import { ZObject, ZStackCall, ZStackItem, ZStackPrint } from './zstate';
-import { gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, DictWordData, StringData } from './gamedat';
+import { ZObject, ZStackCall, ZStackItem, ZStackPrint, new_stack_call } from './zstate';
+import { gamedat_property_nums, gamedat_string_map, gamedat_routine_addrs, gamedat_dictword_addrs, gamedat_object_ids, gamedat_verbs, unpack_address, signed_zvalue, DictWordData, StringData } from './gamedat';
 
 import { ReactCtx } from './context';
+import { ObjPageLink } from './widgets';
 
 type SelPair = [ number, number ];
 
@@ -24,6 +25,7 @@ function new_context() : ListContextContent
 }
 
 const ListCtx = createContext(new_context());
+const StackCallCtx = createContext(new_stack_call());
 
 export function CallActivity()
 {
@@ -146,6 +148,24 @@ export function StackCall({ call }: { call:ZStackCall })
     let funcname = (funcdat ? funcdat.name : '???');
     if (call.addr == 0)
         funcname = 'false';
+
+    let argtypes: string[] = funcdat?.argtypes ?? [];
+    let argls: JSX.Element[] = []
+    counter = 0;
+    for (let arg of call.args) {
+        let argtype: string|null = argtypes[counter];
+        let el = (
+            <>
+                {' '}
+                { ((rctx.shownumbers && argtype) ? <span className="ShowAddr">{ arg }:</span> : null) }
+                <StackCallCtx.Provider value={ call }>
+                    <StackCallArg key={ counter } value={ arg } argtype={ argtype } />
+                </StackCallCtx.Provider>
+            </>
+        )
+        argls.push(el);
+        counter++;
+    }
     
     function evhan_click(ev: React.MouseEvent<HTMLLIElement, MouseEvent>) {
         ev.stopPropagation();
@@ -161,7 +181,7 @@ export function StackCall({ call }: { call:ZStackCall })
                 { (rctx.shownumbers ?
                    <span className="ShowAddr">{ call.addr }: </span>
                    : null) }
-                <code>&lt;{ funcname }&gt;</code>
+                <code>&lt;{ funcname }{ argls }&gt;</code>
             </li>
             { (showsubs ?
                <ul className="DataList">
@@ -170,6 +190,144 @@ export function StackCall({ call }: { call:ZStackCall })
                : null ) }
         </>
     );
+}
+
+export function StackCallArg({ value, argtype }: { value:number, argtype:string|null })
+{
+    switch (argtype) {
+    case 'OBJ':
+        return (
+            <ArgShowObject value={ value } />
+        )
+    case 'RTN':
+        return (
+            <ArgShowRoutine value={ value } />
+        )
+    case 'STR':
+        return (
+            <ArgShowString value={ value } />
+        )
+    case 'VERB':
+        return (
+            <ArgShowVerb value={ value } />
+        )
+    case 'MFLAG':
+        return (
+            <ArgShowMFlag value={ value } />
+        )
+    case 'PERFORMO': /* Zork-specific */
+        let ctx = useContext(StackCallCtx);
+        if (ctx.args[0] == 137) {
+            return (
+                <ArgShowProperty value={ value } />
+            );
+        }
+        return (
+            <ArgShowObject value={ value } />
+        )
+    case 'PERFORMI': /* Zork-specific */
+        return (
+            <ArgShowObject value={ value } />
+        )
+    default:
+        return (
+            <span>{ signed_zvalue(value) }</span>
+        );
+    }
+}
+
+function ArgShowObject({ value }: { value:number })
+{
+    if (value == 0)
+        return (<i>nothing</i>);
+
+    let obj = gamedat_object_ids.get(value);
+    if (obj) {
+        return (
+            <>
+                <ObjPageLink onum={ value } />
+                <span><code>{ obj.name }</code></span>
+            </>
+        );
+    }
+
+    return (<i>?obj:{ value }</i>);
+}
+
+function ArgShowRoutine({ value }: { value:number })
+{
+    if (value == 0)
+        return (<i>false</i>);
+
+    let func = gamedat_routine_addrs.get(unpack_address(value));
+    if (func) {
+        return (
+            <span><code>{ func.name }</code></span>
+        );
+    }
+
+    return (<i>?rtn:{ value }</i>);
+}
+
+function ArgShowProperty({ value }: { value:number })
+{
+    let prop = gamedat_property_nums.get(value);
+    if (prop) {
+        return (
+            <span><code>P?{ prop.name }</code></span>
+        );
+    }
+
+    return (<i>?prop:{ value }</i>);
+}
+
+function ArgShowString({ value }: { value:number })
+{
+    let obj = gamedat_string_map.get(unpack_address(value));
+    if (obj) {
+        let text = obj.text;
+        if (text.length > 16)
+            text = text.slice(0, 16)+'...';
+        return (<span className="PrintString">&#x201C;{ text }&#x201D;</span>);
+    }
+
+    return (<span>???</span>);
+}
+
+function ArgShowVerb({ value }: { value:number })
+{
+    if (value >= 0 && value < gamedat_verbs.length) {
+        return (
+            <>
+                <span><code>{ gamedat_verbs[value] }</code></span>
+            </>
+        );
+    }
+
+    return (<i>?verb:{ value }</i>);
+}
+
+function ArgShowMFlag({ value }: { value:number })
+{
+    /* Zork-specific -- see gmain.zil */
+    let flag: string|null;
+
+    switch (value) {
+    case 1:
+        return (<span><code>,M-BEG</code></span>);
+    case 2:
+        return (<span><code>,M-ENTER</code></span>);
+    case 3:
+        return (<span><code>,M-LOOK</code></span>);
+    case 4:
+        return (<span><code>,M-FLASH</code></span>);
+    case 5:
+        return (<span><code>,M-OBJDESC</code></span>);
+    case 6:
+        return (<span><code>,M-END</code></span>);
+    default:
+        return (<span> { signed_zvalue(value) }</span>);
+    }
 }
 
 type ChangeEv = React.ChangeEvent<HTMLInputElement>;
