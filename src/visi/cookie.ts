@@ -9,6 +9,10 @@ type CookiePrefs = {
     arrange: string;
 };
 
+//### m = window.matchMedia('(prefers-color-scheme: dark)')
+//### m.addEventListener('change', (ev) => console.log(ev))
+//### m.matches, ev.matches
+
 export function default_prefs() : CookiePrefs
 {
     return {
@@ -34,6 +38,9 @@ export function get_cookie_prefs() : CookiePrefs
             break;
         case 'visizork_theme=dark':
             res.darktheme = true;
+            break;
+        case 'visizork_theme=light':
+            res.darktheme = false;
             break;
         case 'visizork_arrange=12':
             res.arrange = '12';
