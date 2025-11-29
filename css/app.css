@@ -339,6 +339,14 @@ body {
     font-size: 120%;
 }
 
+.ScrollXYContent {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    box-sizing: border-box;
+    overflow: scroll;
+}
+
 .AboutPage h2 {
     font-size: 110%;
     font-family: "Libre Baskerville", serif;

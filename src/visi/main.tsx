@@ -20,6 +20,7 @@ import { CallActivity } from './activity';
 import { SourceFileList } from './filelist';
 import { SourceView } from './sourceview';
 import { GlobalState } from './globstate';
+import { GameMap } from './map';
 import { AboutPage } from './about';
 
 let runner: GnustoRunner;
@@ -216,6 +217,7 @@ function VisiZorkApp()
 const tab_list = [
     [ 'activity', 'Activity' ],
     [ 'objtree', 'World' ],
+    [ 'map', 'Map' ],
     [ 'globals', 'State' ],
     [ 'timers', 'Timers' ],
     [ 'filelist', 'Files' ],
@@ -255,6 +257,9 @@ function TabbedPane()
         break;
     case 'activity':
         tabcontent = <CallActivity />;
+        break;
+    case 'map':
+        tabcontent = <GameMap />;
         break;
     case 'globals':
         tabcontent = <GlobalState />;
