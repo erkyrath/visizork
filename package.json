@@ -15,6 +15,7 @@
     "min-gnusto.js": "npx terser --config-file terser.config.json -o js/gnusto.js -- src/gnusto/remedial.js src/gnusto/runner-g.js src/gnusto/gnusto-engine.js",
     "min-parchment.js": "npx terser --config-file terser.config.json -o js/parchment.js -- src/parchment/intro.js src/parchment/outro.js"
   },
+  "type": "module",
   "dependencies": {
     "react": "^18.3",
     "react-dom": "^18.3"
