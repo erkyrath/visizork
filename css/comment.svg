@@ -165,7 +165,7 @@
        rx="67.73333"
        ry="46.566666" />
     <ellipse
-       style="fill:#e1ffe1;fill-opacity:1;stroke:#00d900;stroke-width:10.5833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#00ff00;fill-opacity:0.12;stroke:#00d900;stroke-width:10.5833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        id="path1"
        cx="84.666664"
        cy="63.499996"
