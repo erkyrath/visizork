@@ -18,6 +18,7 @@ export type ContextContent = {
     tab: string;
     shownumbers: boolean;
     readabout: boolean;
+    theme: 'light'|'dark'|'system'|null;
     arrangement: string;
     objpage: number;
     sourcelocs: SourceLocState[];
@@ -27,6 +28,7 @@ export type ContextContent = {
     setTab: (loc:string) => void;
     setLoc: (loc:string, hi:boolean) => void;
     shiftLoc: (forward: boolean) => void;
+    setTheme: (arr: 'light'|'dark'|'system') => void;
     setArrangement: (arr: string) => void;
     showCommentary: (topic:string) => void;
 };
@@ -36,6 +38,7 @@ export const ReactCtx = createContext({
     tab: '',
     shownumbers: false,
     readabout: false,
+    theme: null,
     arrangement: '',
     objpage: 0,
     sourcelocs: [],
@@ -45,6 +48,7 @@ export const ReactCtx = createContext({
     setTab: (loc) => {},
     setLoc: (loc, hi) => {},
     shiftLoc: (forward) => {},
+    setTheme: (val) => {},
     setArrangement: (arr) => {},
     showCommentary: (topic) => {},
 } as ContextContent);
