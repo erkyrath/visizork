@@ -391,6 +391,10 @@ body {
     overflow: scroll;
 }
 
+.ScrollXYContent object {
+    pointer-events: none;
+}
+
 .AboutPage h2 {
     font-size: 110%;
     font-family: "Libre Baskerville", serif;
