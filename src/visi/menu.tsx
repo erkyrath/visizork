@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext, useEffect } from 'react';
 
-import { set_cookie, set_body_class } from './cookie';
+import { set_cookie, set_body_pref_theme, set_body_pref_arrange } from './cookie';
 
 import { ReactCtx } from './context';
 
@@ -11,7 +11,7 @@ export function AppMenu()
 
     let rctx = useContext(ReactCtx);
     let arrangement = rctx.arrangement;
-    let darktheme = rctx.darktheme;
+    let theme = rctx.theme;
     
     function handle_click_menu(ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         ev.stopPropagation();
@@ -21,19 +21,14 @@ export function AppMenu()
     function handle_click_arrange(val: string) {
         rctx.setArrangement(val);
         set_cookie('arrange', val);
-        set_body_class(val, rctx.darktheme);
+        set_body_pref_arrange(val);
         setMenuOpen(false);
     }
     
-    function evhan_change_theme(val: boolean|null) {
-        rctx.setDarkTheme(val);
-        if (val === null)
-            set_cookie('theme', 'system');
-        else if (val === false)
-            set_cookie('theme', 'light');
-        else if (val === true)
-            set_cookie('theme', 'dark');
-        set_body_class(rctx.arrangement, val);
+    function evhan_change_theme(val: 'light'|'dark'|'system') {
+        rctx.setTheme(val);
+        set_cookie('theme', val);
+        set_body_pref_theme(val);
         setMenuOpen(false);
     }
     
@@ -54,15 +49,15 @@ export function AppMenu()
                     <ArrangeButton arrange='111' curarrange={ arrangement} handle={ handle_click_arrange } />
                 </div>
                 <div>
-                    <input id="darktheme_radio" type="radio" name="theme" value="dark" checked={ rctx.darktheme===true } onChange={ (ev) => evhan_change_theme(true) } />
+                    <input id="darktheme_radio" type="radio" name="theme" value="dark" checked={ rctx.theme==='dark' } onChange={ (ev) => evhan_change_theme('dark') } />
                     {' '}
                     <label htmlFor="darktheme_radio">Dark</label>
                     {' '}
-                    <input id="lighttheme_radio" type="radio" name="theme" value="light" checked={ rctx.darktheme===false } onChange={ (ev) => evhan_change_theme(false) } />
+                    <input id="lighttheme_radio" type="radio" name="theme" value="light" checked={ rctx.theme==='light' } onChange={ (ev) => evhan_change_theme('light') } />
                     {' '}
                     <label htmlFor="lighttheme_radio">Light</label>
                     {' '}
-                    <input id="systheme_radio" type="radio" name="theme" value="sys" checked={ rctx.darktheme===null } onChange={ (ev) => evhan_change_theme(null) } />
+                    <input id="systheme_radio" type="radio" name="theme" value="sys" checked={ rctx.theme==='system' } onChange={ (ev) => evhan_change_theme('system') } />
                     {' '}
                     <label htmlFor="systheme_radio">System theme</label>
                 </div>

@@ -7,7 +7,7 @@ import { ZStatePlus, get_updated_report } from './zstate';
 import { GnustoRunner, GnustoEngine } from './zstate';
 import { sourceloc_for_first_text } from './zstate';
 import { set_runner, show_commentary } from './combuild';
-import { default_prefs, get_cookie_prefs, set_cookie, set_body_class } from './cookie';
+import { default_prefs, get_cookie_prefs, set_cookie, set_body_ospref_theme, set_body_pref_theme, set_body_pref_arrange } from './cookie';
 import { gamedat_ids, gamedat_global_names, gamedat_object_ids, sourceloc_start, find_sourceloc_for_id, sourceloc_for_srctoken } from './gamedat';
 
 import { ContextContent, ReactCtx } from './context';
@@ -49,7 +49,8 @@ export function init(runnerref: any)
     });
     
     initprefs = get_cookie_prefs();
-    set_body_class(initprefs.arrange, initprefs.darktheme);
+    set_body_pref_arrange(initprefs.arrange);
+    set_body_pref_theme(initprefs.theme);
 
     const appel = document.getElementById('appbody') as HTMLElement;
     let root = createRoot(appel);
@@ -67,7 +68,7 @@ function VisiZorkApp()
     const [ shownumbers, setShowNumbers ] = useState(initprefs.shownumbers);
     const [ readabout, setReadAbout ] = useState(initprefs.readabout);
     const [ arrangement, setArrangement ] = useState(initprefs.arrange);
-    const [ darktheme, setDarkTheme ] = useState(initprefs.darktheme);
+    const [ theme, setTheme ] = useState(initprefs.theme);
     const [ sourcelocs, setSourceLocs ] = useState([ new_sourcelocstate() ]);
     const [ sourcelocpos, setSourceLocPos ] = useState(0);
 
@@ -177,15 +178,15 @@ function VisiZorkApp()
 
     useEffect(() => {
         let matcher = window.matchMedia('(prefers-color-scheme: dark)');
-        set_body_class(rctx.arrangement, rctx.darktheme, matcher.matches);
+        set_body_ospref_theme(matcher.matches ? 'dark' : 'light');
         let callback = (ev: MediaQueryListEvent) => {
-            set_body_class(arrangement, darktheme, ev.matches)
+            set_body_ospref_theme(ev.matches ? 'dark' : 'light')
         };
         matcher.addEventListener('change', callback);
         return () => {
             matcher.removeEventListener('change', callback);
         };
-    }, [arrangement, darktheme]);
+    }, []);
 
     if (releaseTarget == 'development') {
         (window as any).curzstate = zstate;
@@ -200,14 +201,14 @@ function VisiZorkApp()
         sourcelocpos: sourcelocpos,
         shownumbers: shownumbers,
         readabout: readabout,
-        darktheme: darktheme,
+        theme: theme,
         arrangement: arrangement,
         setTab: setTabWrap,
         setObjPage: setObjPageWrap,
         setShowNumbers: setShowNumbersWrap,
         setLoc: setLoc,
         shiftLoc: shiftLoc,
-        setDarkTheme: setDarkTheme,
+        setTheme: setTheme,
         setArrangement: setArrangement,
         showCommentary: show_commentary,
     };

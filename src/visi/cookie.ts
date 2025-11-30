@@ -5,7 +5,7 @@
 type CookiePrefs = {
     readabout: boolean;
     shownumbers: boolean;
-    darktheme: boolean|null;
+    theme: 'light'|'dark'|'system';
     arrange: string;
 };
 
@@ -14,7 +14,7 @@ export function default_prefs() : CookiePrefs
     return {
         readabout: false,
         shownumbers: false,
-        darktheme: null,
+        theme: 'system',
         arrange: '12',
     };
 }
@@ -33,10 +33,10 @@ export function get_cookie_prefs() : CookiePrefs
             res.readabout = true;
             break;
         case 'visizork_theme=dark':
-            res.darktheme = true;
+            res.theme = 'dark';
             break;
         case 'visizork_theme=light':
-            res.darktheme = false;
+            res.theme = 'light';
             break;
         case 'visizork_arrange=12':
             res.arrange = '12';
@@ -62,18 +62,49 @@ export function set_cookie(key: string, val: string)
     document.cookie = cookie;
 }
 
-/* The OS dark/light theme flag, last time we checked it. I know, caching
-   values isn't React-style -- sorry. (It's only set by an Effect.)
+/* The various prefs that affect top-level body class. We cache their
+   last known values. I know, that's not React-style -- sorry.
 */
-let os_dark_theme: boolean|null = null;
+let cur_os_theme: 'light'|'dark'|null = null;
+let cur_theme: 'light'|'dark'|'system'|null = null;
+let cur_arrange: string = '12';
 
-export function set_body_class(arrange: string, darkpref: boolean|null, darkos?: boolean)
+export function set_body_pref_arrange(arrange: string)
 {
-    if (darkos !== undefined)
-        os_dark_theme = darkos;
-    
-    let cla = 'Arrange'+arrange;
-    if (darkpref === true || (darkpref === null && os_dark_theme))
+    if (cur_arrange !== arrange) {
+        cur_arrange = arrange;
+        set_body_class()
+    }
+}
+
+export function set_body_pref_theme(theme: 'light'|'dark'|'system')
+{
+    if (cur_theme !== theme) {
+        cur_theme = theme;
+        set_body_class();
+    }
+}
+
+export function set_body_ospref_theme(theme: 'light'|'dark')
+{
+    if (cur_os_theme !== theme) {
+        cur_os_theme = theme;
+        set_body_class();
+    }
+}
+
+function set_body_class()
+{
+    let cla = 'Arrange'+cur_arrange;
+    if (cur_theme === 'dark') {
         cla += ' DarkTheme';
+    }
+    else if (cur_theme === 'light') {
+        // leave it
+    }
+    else {
+        if (cur_os_theme === 'dark')
+            cla += ' DarkTheme';
+    }
     document.body.className = cla;
 }
