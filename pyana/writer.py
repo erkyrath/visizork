@@ -93,7 +93,13 @@ def write_dictwords(filename, dictdat):
     ls = []
     for wd in dictdat.words:
         dat = { 'num': wd.num, 'text': wd.text, 'flags': wd.flags }
-        dat['spec2'] = wd.special[1]
+        # This is a simplification of the actual dict-flag rules. I look
+        # forward to seeing where it goes wrong.
+        if 'A' in wd.flags:
+            if wd.special[0] & 0x02:
+                dat['adjnum'] = wd.special[1]
+            else:
+                dat['adjnum'] = wd.special[2]
         ls.append(dat)
 
     fl = open(filename, 'w')

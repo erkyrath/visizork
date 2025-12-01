@@ -81,7 +81,7 @@ window.gamedat_ids = {};
     for (let obj of window.gamedat_dictwords) {
         gamedat_dictword_addrs.set(gamedat_ids.DICT_START + obj.num * gamedat_ids.DICT_WORD_SIZE, obj);
         if (obj.flags.includes('A'))
-            gamedat_dictword_adjs.set(obj.spec2, obj);
+            gamedat_dictword_adjs.set(obj.adjnum, obj);
     }
     
     for (let obj of window.gamedat_routines) {
