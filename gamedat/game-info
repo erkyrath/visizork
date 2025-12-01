@@ -492,6 +492,7 @@ Global 155 ACTIONS  table created from SYNTAX
 Global 156 PREACTIONS  table created from SYNTAX
 Global 157 VERBS  table created from SYNTAX
 
+RoutineType 0 CLAUSE - - WORD
 RoutineType 0 HELD? OBJ
 RoutineType 0 JIGS-UP STR -
 RoutineType 0 OPEN-CLOSE OBJ STR STR
@@ -499,3 +500,4 @@ RoutineType 0 PERFORM VERB PERFORMO PERFORMI
 RoutineType 0 REMARK - OBJ OBJ
 RoutineType 0 ROB OBJ OBJ -
 RoutineType 0 VILLAIN-RESULT OBJ - -
+RoutineType 0 WT? WORD - -
