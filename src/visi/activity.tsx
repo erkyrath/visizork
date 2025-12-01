@@ -211,6 +211,10 @@ export function StackCallArg({ value, argtype }: { value:number, argtype:string|
         return (
             <ArgShowVerb value={ value } />
         )
+    case 'WORD':
+        return (
+            <ArgShowWord value={ value } />
+        )
     case 'MFLAG':
         return (
             <ArgShowMFlag value={ value } />
@@ -305,6 +309,21 @@ function ArgShowVerb({ value }: { value:number })
     }
 
     return (<i>?verb:{ value }</i>);
+}
+
+function ArgShowWord({ value }: { value:number })
+{
+    if (value == 0) {
+        return <i>no word</i>;
+    }
+    
+    let wd = gamedat_dictword_addrs.get(value);
+
+    if (wd) {
+        return (<span className="PrintDictWord">&#x2018;{ wd.text }&#x2019;</span>);
+    }
+
+    return (<i>?word{ value }</i>);
 }
 
 function ArgShowMFlag({ value }: { value:number })
