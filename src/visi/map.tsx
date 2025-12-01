@@ -4,27 +4,30 @@ import { useRef } from 'react';
 export function GameMap()
 {
     let scrollref = useRefDiv();
-    let dragpos: {x:number, y:number}|null = null;
+    let dragstart: {x:number, y:number}|null = null;
+    let scrollstart: {x:number, y:number}|null = null;
 
     function evhan_mousedown(ev: React.PointerEvent<HTMLDivElement>) {
         ev.preventDefault();
         ev.stopPropagation();
-        if (ev.button == 0 && scrollref.current) {
-            dragpos = { x: ev.clientX, y: ev.clientY };
+        if (scrollref.current && ev.button == 0) {
+            dragstart = { x: ev.clientX, y: ev.clientY };
+            scrollstart = { x: scrollref.current.scrollLeft, y: scrollref.current.scrollTop };
             scrollref.current.setPointerCapture(ev.pointerId);
-            console.log('### down', dragpos);
         }
     }
 
     function evhan_mousemove(ev: React.PointerEvent<HTMLDivElement>) {
-        if (dragpos) {
+        if (scrollref.current && dragstart && scrollstart) {
             ev.preventDefault();
-            console.log('### move', ev.clientX, ev.clientY);
+            scrollref.current.scrollLeft = scrollstart.x - (ev.clientX - dragstart.x);
+            scrollref.current.scrollTop = scrollstart.y - (ev.clientY - dragstart.y);
         }
     }
 
     function evhan_mouseup(ev: React.PointerEvent<HTMLDivElement>) {
-        dragpos = null;
+        dragstart = null;
+        scrollstart = null;
         if (scrollref.current) {
             scrollref.current.releasePointerCapture(ev.pointerId);
         }
