@@ -124,7 +124,7 @@ This recompiles Typescript but skips the JS minification steps, which saves a lo
 If you want to rebuild the game data files, do:
 
 ```
-python3 pyana/parse.py -z gamesrc/zork1.zil --obj --txd --gamedat
+python3 pyana/parse.py -z gamesrc/zork1.zil --obj --dict --txd --gamedat
 python3 pyana/parse.py -z gamesrc/zork1.zil --src
 python3 pyana/comgen.py gamedat/commentary
 ```
