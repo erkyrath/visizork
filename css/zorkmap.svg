@@ -50,6 +50,11 @@
   </sodipodi:namedview>
   <style
      id="style1">
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    src: url("../font/Lato-Regular.ttf") format("truetype");
+}
 #rectlayer rect { 
     fill:#DDD;
     stroke:#000;
