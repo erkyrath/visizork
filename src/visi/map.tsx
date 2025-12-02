@@ -34,6 +34,9 @@ export function GameMap()
         }
     }
 
+    /* This callback is used for *both* the map-load event and the useEffect
+       that depends on zstate. This is because the SVG loads slightly later
+       than the first useEffect invocation. */
     function select_location() {
         if (mapref.current) {
             let herenum = zstate.globals[0];
