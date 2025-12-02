@@ -1,11 +1,14 @@
 import React from 'react';
-import { useRef, useContext } from 'react';
+import { useRef, useContext, useEffect } from 'react';
+
+import { gamedat_object_ids } from './gamedat';
 
 import { ReactCtx } from './context';
 
 export function GameMap()
 {
     let scrollref = useRefDiv();
+    let mapref = useRefObject();
     
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
@@ -30,6 +33,35 @@ export function GameMap()
             scrollref.current.scrollTop = scrollstart.y - (ev.clientY - dragstart.y);
         }
     }
+
+    useEffect(() => {
+        if (mapref.current) {
+            let herenum = zstate.globals[0];
+            let hereobj = gamedat_object_ids.get(herenum);
+            let herestr = '';
+            if (hereobj) {
+                herestr = hereobj.name;
+            }
+
+            let mapdoc = mapref.current.contentDocument;
+            if (mapdoc && mapdoc.rootElement) {
+                let curstr = mapdoc.rootElement.getAttribute('data-curselect') ?? '';
+                if (herestr != curstr) {
+                    let el = mapdoc.getElementById('r-'+curstr.toLowerCase());
+                    if (el) {
+                        el.classList.remove('Selected');
+                    }
+
+                    el = mapdoc.getElementById('r-'+herestr.toLowerCase());
+                    if (el) {
+                        el.classList.add('Selected');
+                    }
+
+                    mapdoc.rootElement.setAttribute('data-curselect', herestr);
+                }
+            }
+        }
+    }, [ zstate ]);
                                                        
     function evhan_mouseup(ev: PointerEv) {
         dragstart = null;
@@ -41,10 +73,11 @@ export function GameMap()
     
     return (
         <div className="ScrollXYContent" ref={ scrollref } onPointerDown={ evhan_mousedown } onPointerMove={ evhan_mousemove } onPointerUp={ evhan_mouseup } >
-            <object className="GameMap" width="1200" height="800" type="image/svg+xml" data="css/zorkmap.svg" />
+            <object className="GameMap" ref={ mapref } width="1200" height="800" type="image/svg+xml" data="css/zorkmap.svg" />
         </div>
     );
 }
 
 const useRefDiv = () => useRef<HTMLDivElement>(null);
+const useRefObject = () => useRef<HTMLObjectElement>(null);
 type PointerEv = React.PointerEvent<HTMLDivElement>;
