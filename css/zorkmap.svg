@@ -48,9 +48,32 @@
        enabled="true"
        visible="false" />
   </sodipodi:namedview>
+
   <style
      id="style1">
 #roomlayer rect { fill:#F8F0E8; stroke:#000; stroke-width:0.7; }
+#roomlayer rect.Selected { fill:#FFD080; }
+
+
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    src: url("../font/Lato-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lato";
+    font-style: italic;
+    src: url("../font/Lato-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: bold;
+    src: url("../font/Lato-Bold.ttf") format("truetype");
+}
+
 </style>
   <defs
      id="defs1" />
