@@ -124,6 +124,13 @@ function VisiZorkApp()
                 if (loc)
                     setLoc(loc, true);
             }
+            else if (tab == 'map') {
+                let herenum = newstate.globals[0];
+                let hereobj = gamedat_object_ids.get(herenum);
+                if (hereobj) {
+                    setLoc(hereobj.sourceloc, false);
+                }
+            }
         };
         window.addEventListener('zmachine-update', evhan_zstate);
         return () => {
