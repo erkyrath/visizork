@@ -49,13 +49,14 @@
        visible="false" />
   </sodipodi:namedview>
   <style
-     id="style1">#rectlayer rect { fill:#F8F0E8;    stroke:#000;    stroke-width:0.7; }
+     id="style1">
+#roomlayer rect { fill:#F8F0E8; stroke:#000; stroke-width:0.7; }
 </style>
   <defs
      id="defs1" />
   <g
      inkscape:groupmode="layer"
-     id="layer3"
+     id="decorlayer"
      inkscape:label="Back-Decor">
     <rect
        style="font-variation-settings:normal;opacity:1;fill:#f1f1f1;fill-opacity:1;stroke:#c8c8c8;stroke-width:1.05833332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
@@ -68,7 +69,7 @@
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer1"
+     id="connlayer"
      inkscape:label="Connections"
      style="display:inline">
     <path
@@ -95,7 +96,7 @@
   <g
      inkscape:label="Rooms"
      inkscape:groupmode="layer"
-     id="rectlayer"
+     id="roomlayer"
      style="display:inline">
     <rect
        id="r-kitchen"
@@ -149,7 +150,7 @@
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer2"
+     id="labellayer"
      inkscape:label="Labels"
      style="display:inline">
     <text
