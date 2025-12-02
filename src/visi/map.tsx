@@ -34,7 +34,7 @@ export function GameMap()
         }
     }
 
-    useEffect(() => {
+    function select_location() {
         if (mapref.current) {
             let herenum = zstate.globals[0];
             let hereobj = gamedat_object_ids.get(herenum);
@@ -42,7 +42,7 @@ export function GameMap()
             if (hereobj) {
                 herestr = hereobj.name;
             }
-
+            
             let mapdoc = mapref.current.contentDocument;
             if (mapdoc && mapdoc.rootElement) {
                 let curstr = mapdoc.rootElement.getAttribute('data-curselect') ?? '';
@@ -61,7 +61,9 @@ export function GameMap()
                 }
             }
         }
-    }, [ zstate ]);
+    }
+
+    useEffect(select_location, [ zstate ]);
                                                        
     function evhan_mouseup(ev: PointerEv) {
         dragstart = null;
@@ -73,7 +75,7 @@ export function GameMap()
     
     return (
         <div className="ScrollXYContent" ref={ scrollref } onPointerDown={ evhan_mousedown } onPointerMove={ evhan_mousemove } onPointerUp={ evhan_mouseup } >
-            <object className="GameMap" ref={ mapref } width="1200" height="800" type="image/svg+xml" data="css/zorkmap.svg" />
+            <object className="GameMap" ref={ mapref } onLoad = { select_location } width="1200" height="800" type="image/svg+xml" data="css/zorkmap.svg" />
         </div>
     );
 }
