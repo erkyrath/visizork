@@ -53,6 +53,7 @@ class Room:
         return '<Room "%s">' % (self.name,)
     def tojson(self):
         return {
+            'name': self.name,
             'x': self.xpos,
             'y': self.ypos,
             'width': self.width,
@@ -157,8 +158,7 @@ obj = {
     'docsize': { 'w': docsize[0], 'h': docsize[1] },
     'viewsize': { 'w': viewbox[2], 'h': viewbox[3] },
 }
-map = { room.name: room.tojson() for room in roomlist }
-obj['rooms'] = map
+obj['rooms'] = [ room.tojson() for room in roomlist ]
 
 outfl = open('src/game/mapinfo.js', 'w')
 outfl.write('window.gamedat_mapinfo = ')

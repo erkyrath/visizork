@@ -78,7 +78,7 @@ export function GameMap()
     
     return (
         <div className="ScrollXYContent" ref={ scrollref } onPointerDown={ evhan_mousedown } onPointerMove={ evhan_mousemove } onPointerUp={ evhan_mouseup } >
-            <object className="GameMap" ref={ mapref } onLoad = { select_location } width="1200" height="800" type="image/svg+xml" data="css/zorkmap.svg" />
+            <object className="GameMap" ref={ mapref } onLoad = { select_location } width="1200" height="800" type="image/svg+xml" data="css/map.svg" />
         </div>
     );
 }
