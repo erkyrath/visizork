@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+import json
 from xml.dom.minidom import parse, Node
 
 fontcss = '''
@@ -38,6 +39,25 @@ fontcss = '''
     src: url("../font/CourierPrime-Bold.ttf") format("truetype");
 }
 '''
+
+class Room:
+    def __init__(self, nod):
+        val = nod.getAttribute('id')
+        assert val.startswith('r-')
+        self.name = val[ 2 : ].upper()
+        self.xpos = float(nod.getAttribute('x'))
+        self.ypos = float(nod.getAttribute('y'))
+        self.width = float(nod.getAttribute('width'))
+        self.height = float(nod.getAttribute('height'))
+    def __repr__(self):
+        return '<Room "%s">' % (self.name,)
+    def tojson(self):
+        return {
+            'x': self.xpos,
+            'y': self.ypos,
+            'width': self.width,
+            'height': self.height,
+        }
 
 doc = parse('gamedat/zork1-map.svg')
 
@@ -77,8 +97,32 @@ def clean_all_styles(nod):
 def clean_textnode_styles(nod):
     if nod.nodeName == 'tspan':
         clean_all_styles(nod)
-    
+    if nod.nodeName == 'text':
+        if 'style' in nod.attributes:
+            prop = nod.getAttribute('style')
+            ls = prop.split(';')
+            newls = []
+            for val in ls:
+                if val.startswith('-inkscape'):
+                    continue
+                if val.startswith('stroke-'):
+                    continue
+                if val.startswith('font-variant'):
+                    continue
+                if val.startswith('text-decoration'):
+                    continue
+                if val.endswith('-spacing:normal'):
+                    continue
+                if val in ('text-transform:none', 'dominant-baseline:auto', 'baseline-shift:baseline', 'text-orientation:mixed', 'text-indent:0', 'vector-effect:none', 'font-feature-settings:normal', 'font-variation-settings:normal'):
+                    continue
+                newls.append(val)
+            nod.setAttribute('style', ';'.join(newls))
+
 svgnod = doc.childNodes[1]
+docsize = (int(svgnod.getAttribute('width')), int(svgnod.getAttribute('height')))
+viewbox = svgnod.getAttribute('viewBox')
+viewbox = [ float(val) for val in viewbox.split(' ') ]
+
 remove_children(svgnod, lambda nod: nod.prefix=='sodipodi')
 
 for nod in svgnod.childNodes:
@@ -95,6 +139,30 @@ for nod in roomlayer.childNodes:
 labellayer = find_by_id(doc, 'labellayer')
 iterate(labellayer, clean_textnode_styles)
 
+roomlist = []
+            
+for nod in roomlayer.childNodes:
+    if nod.nodeName == 'rect':
+        room = Room(nod)
+        roomlist.append(room)
+roomlist.sort(key=lambda room:room.name)
+        
 outfl = open('css/map.svg', 'w')
 doc.writexml(outfl)
 outfl.close()
+
+assert(viewbox[0] == 0)
+assert(viewbox[1] == 0)
+obj = {
+    'docsize': { 'w': docsize[0], 'h': docsize[1] },
+    'viewsize': { 'w': viewbox[2], 'h': viewbox[3] },
+}
+map = { room.name: room.tojson() for room in roomlist }
+obj['rooms'] = map
+
+outfl = open('src/game/mapinfo.js', 'w')
+outfl.write('window.gamedat_mapinfo = ')
+json.dump(obj, outfl, separators=(',', ':'))
+outfl.write(';\n')
+outfl.close()
+
