@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef, useContext, useEffect } from 'react';
 
-import { gamedat_object_ids } from './gamedat';
+import { gamedat_ids, gamedat_object_ids } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -75,10 +75,11 @@ export function GameMap()
             scrollref.current.releasePointerCapture(ev.pointerId);
         }
     }
-    
+
+    let docsize: { x:number, y:number } = gamedat_ids.MAP_DOCSIZE;
     return (
         <div className="ScrollXYContent" ref={ scrollref } onPointerDown={ evhan_mousedown } onPointerMove={ evhan_mousemove } onPointerUp={ evhan_mouseup } >
-            <object className="GameMap" ref={ mapref } onLoad = { select_location } width="1200" height="800" type="image/svg+xml" data="css/map.svg" />
+            <object className="GameMap" ref={ mapref } onLoad = { select_location } width={ docsize.x } height={ docsize.y } type="image/svg+xml" data="css/map.svg" />
         </div>
     );
 }
