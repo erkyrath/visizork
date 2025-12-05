@@ -68,8 +68,8 @@ export function GameMap()
                     if (el) {
                         el.classList.add('Selected');
                         if (scrollref.current && herecen) {
-                            scrollref.current.scrollLeft = herecen.x * docsize.w / viewsize.w;
-                            scrollref.current.scrollTop = herecen.y * docsize.h / viewsize.h;
+                            scrollref.current.scrollLeft = herecen.x * docsize.w / viewsize.w - 0.5 * scrollref.current.clientWidth;
+                            scrollref.current.scrollTop = herecen.y * docsize.h / viewsize.h - 0.5 * scrollref.current.clientHeight;
                         }
                     }
 
