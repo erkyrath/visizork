@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef, useContext, useEffect } from 'react';
 
-import { gamedat_ids, gamedat_object_ids } from './gamedat';
+import { gamedat_ids, gamedat_object_ids, gamedat_roominfo_names } from './gamedat';
 
 import { ReactCtx } from './context';
 
@@ -16,6 +16,9 @@ export function GameMap()
     let dragstart: {x:number, y:number}|null = null;
     let scrollstart: {x:number, y:number}|null = null;
 
+    let docsize: { w:number, h:number } = gamedat_ids.MAP_DOCSIZE;
+    let viewsize: { w:number, h:number } = gamedat_ids.MAP_VIEWSIZE;
+    
     function evhan_mousedown(ev: PointerEv) {
         ev.preventDefault();
         ev.stopPropagation();
@@ -45,6 +48,12 @@ export function GameMap()
             if (hereobj) {
                 herestr = hereobj.name;
             }
+
+            let herecen: { x:number, y:number }|null = null;
+            let roomobj = gamedat_roominfo_names.get(herestr);
+            if (roomobj) {
+                herecen = roomobj.center;
+            }
             
             let mapdoc = mapref.current.contentDocument;
             if (mapdoc && mapdoc.rootElement) {
@@ -58,6 +67,10 @@ export function GameMap()
                     el = mapdoc.getElementById('r-'+herestr.toLowerCase());
                     if (el) {
                         el.classList.add('Selected');
+                        if (scrollref.current && herecen) {
+                            scrollref.current.scrollLeft = herecen.x * docsize.w / viewsize.w;
+                            scrollref.current.scrollTop = herecen.y * docsize.h / viewsize.h;
+                        }
                     }
 
                     mapdoc.rootElement.setAttribute('data-curselect', herestr);
@@ -76,10 +89,9 @@ export function GameMap()
         }
     }
 
-    let docsize: { x:number, y:number } = gamedat_ids.MAP_DOCSIZE;
     return (
         <div className="ScrollXYContent" ref={ scrollref } onPointerDown={ evhan_mousedown } onPointerMove={ evhan_mousemove } onPointerUp={ evhan_mouseup } >
-            <object className="GameMap" ref={ mapref } onLoad = { select_location } width={ docsize.x } height={ docsize.y } type="image/svg+xml" data="css/map.svg" />
+            <object className="GameMap" ref={ mapref } onLoad = { select_location } width={ docsize.w } height={ docsize.h } type="image/svg+xml" data="css/map.svg" />
         </div>
     );
 }
