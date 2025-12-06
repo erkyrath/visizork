@@ -114,7 +114,7 @@ def clean_textnode_styles(nod):
                     continue
                 if val.endswith('-spacing:normal'):
                     continue
-                if val in ('text-transform:none', 'dominant-baseline:auto', 'baseline-shift:baseline', 'text-orientation:mixed', 'text-indent:0', 'vector-effect:none', 'font-feature-settings:normal', 'font-variation-settings:normal', 'paint-order:stroke fill markers'):
+                if val in ('text-transform:none', 'dominant-baseline:auto', 'baseline-shift:baseline', 'text-orientation:mixed', 'text-indent:0', 'vector-effect:none', 'font-feature-settings:normal', 'font-variation-settings:normal', 'paint-order:stroke fill markers', 'stop-color:#000000', 'stop-opacity:1'):
                     continue
                 newls.append(val)
             nod.setAttribute('style', ';'.join(newls))
