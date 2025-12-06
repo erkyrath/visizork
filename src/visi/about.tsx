@@ -201,6 +201,10 @@ export function AboutPage()
                     {' '} was also helpful.
                 </p>
                 <p>
+                    The map layout follows the Zork Users Group map
+                    designed by David Ardito and Steve Meretzky.
+                </p>
+                <p>
                     The fonts used are Courier Prime, Lato, and
                     Libre Baskerville. The header background is copied from
                     Infocom&#x2019;s Zork hint maps.
