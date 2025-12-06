@@ -166,3 +166,21 @@ json.dump(obj, outfl, separators=(',', ':'))
 outfl.write(';\n')
 outfl.close()
 
+fl = open('src/game/objects.js')
+dat = fl.read()
+fl.close()
+
+dat = dat[ dat.find('[') : ]
+dat = dat[ : dat.rfind(']')+1 ]
+objinfo = json.loads(dat)
+orooms = [ val['name'] for val in objinfo if 'isroom' in val ]
+
+roomnames = [ room.name for room in roomlist ]
+
+diff = set(roomnames) - set(orooms)
+if diff:
+    print('Wrong:', diff)
+diff = set(orooms) - set(roomnames)
+if diff:
+    print('Missing:', diff)
+
