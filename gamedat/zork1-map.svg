@@ -26,14 +26,14 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="758.5"
-     inkscape:cy="1363.5"
+     inkscape:cx="1510.5"
+     inkscape:cy="1945.5"
      inkscape:window-width="1976"
      inkscape:window-height="1103"
-     inkscape:window-x="2113"
+     inkscape:window-x="2111"
      inkscape:window-y="61"
      inkscape:window-maximized="0"
-     inkscape:current-layer="connlayer">
+     inkscape:current-layer="labellayer">
     <inkscape:grid
        id="grid1"
        units="px"
@@ -1727,17 +1727,17 @@
          id="tspan59">to Hades</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;line-height:1.3;font-family:Lato;-inkscape-font-specification:'Lato Bold';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;line-height:1.3;font-family:Lato;-inkscape-font-specification:'Lato Bold';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#1f1f1f;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke markers fill"
        x="425.97916"
        y="604.83752"
        id="text60"><tspan
          sodipodi:role="line"
          id="tspan60"
-         style="stroke-width:1"
+         style="stroke-width:1;stroke:#1f1f1f;stroke-opacity:1;fill:#ffffff;fill-opacity:1;paint-order:stroke markers fill"
          x="425.97916"
          y="604.83752">Land of</tspan><tspan
          sodipodi:role="line"
-         style="stroke-width:1"
+         style="stroke-width:1;stroke:#1f1f1f;stroke-opacity:1;fill:#ffffff;fill-opacity:1;paint-order:stroke markers fill"
          x="425.97916"
          y="610.34088"
          id="tspan61">the Dead</tspan></text>
