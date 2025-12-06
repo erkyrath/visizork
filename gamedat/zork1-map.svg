@@ -26,14 +26,14 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="1510.5"
-     inkscape:cy="1945.5"
+     inkscape:cx="710"
+     inkscape:cy="1457.5"
      inkscape:window-width="1976"
      inkscape:window-height="1103"
      inkscape:window-x="2111"
      inkscape:window-y="61"
      inkscape:window-maximized="0"
-     inkscape:current-layer="labellayer">
+     inkscape:current-layer="decorlayer">
     <inkscape:grid
        id="grid1"
        units="px"
@@ -181,7 +181,7 @@
      id="decorlayer"
      inkscape:label="Back-Decor">
     <path
-       id="rect1"
+       id="house-outline"
        style="opacity:1;fill:#f1f1f1;stroke:#c8c8c8;stroke-width:1.05833;paint-order:stroke fill markers"
        d="m 89.958331,325.43752 h 39.687499 l 15.875,15.875 H 142.875 v 42.33333 H 76.729164 v -42.33333 h -2.645833 z"
        sodipodi:nodetypes="ccccccccc" />
