@@ -119,6 +119,21 @@ def clean_textnode_styles(nod):
                 newls.append(val)
             nod.setAttribute('style', ';'.join(newls))
 
+def clear_connnode_styles(nod):
+    if nod.nodeName == 'path':
+        if 'style' in nod.attributes:
+            prop = nod.getAttribute('style')
+            ls = prop.split(';')
+            newls = []
+            for val in ls:
+                if val.startswith('-inkscape'):
+                    continue
+                if val.startswith('font-'):
+                    continue
+                newls.append(val)
+            nod.setAttribute('style', ';'.join(newls))
+    
+            
 svgnod = doc.childNodes[1]
 docsize = (int(svgnod.getAttribute('width')), int(svgnod.getAttribute('height')))
 viewbox = svgnod.getAttribute('viewBox')
@@ -139,6 +154,10 @@ for nod in roomlayer.childNodes:
 
 labellayer = find_by_id(doc, 'labellayer')
 iterate(labellayer, clean_textnode_styles)
+
+connlayer = find_by_id(doc, 'connlayer')
+for nod in connlayer.childNodes:
+    clear_connnode_styles(nod)
 
 roomlist = []
             
