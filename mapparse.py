@@ -130,7 +130,7 @@ def clear_connnode_styles(nod):
                     continue
                 if val.startswith('font-'):
                     continue
-                if val in ('stroke-dasharray:none', 'stroke-dashoffset:0', 'vector-effect:none', 'fill-opacity:1'):
+                if val in ('stroke-dasharray:none', 'stroke-dashoffset:0', 'vector-effect:none', 'fill-opacity:1', 'opacity:1'):
                     continue
                 newls.append(val)
             nod.setAttribute('style', ';'.join(newls))
