@@ -141,6 +141,7 @@ docsize = (int(svgnod.getAttribute('width')), int(svgnod.getAttribute('height'))
 viewbox = svgnod.getAttribute('viewBox')
 viewbox = [ float(val) for val in viewbox.split(' ') ]
 
+remove_children(svgnod, lambda nod: nod.nodeType == Node.ELEMENT_NODE and nod.getAttribute('id')=='sketchlayer')
 remove_children(svgnod, lambda nod: nod.prefix=='sodipodi')
 
 for nod in svgnod.childNodes:
