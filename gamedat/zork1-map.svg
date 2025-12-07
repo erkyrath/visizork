@@ -26,14 +26,14 @@
      inkscape:document-units="px"
      showgrid="true"
      inkscape:zoom="1"
-     inkscape:cx="702.5"
-     inkscape:cy="1299.5"
+     inkscape:cx="2188.5"
+     inkscape:cy="861.5"
      inkscape:window-width="1976"
      inkscape:window-height="1103"
      inkscape:window-x="2099"
      inkscape:window-y="63"
      inkscape:window-maximized="0"
-     inkscape:current-layer="labellayer">
+     inkscape:current-layer="roomlayer">
     <inkscape:grid
        id="grid1"
        units="px"
@@ -841,6 +841,10 @@
        d="m 415.39582,248.70834 c -10.58333,0 -10.58333,5.29167 -10.58333,13.22917 v 7.9375"
        id="path95-3"
        sodipodi:nodetypes="ccc" />
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#4d4d4d;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers;stop-color:#000000;stop-opacity:1"
+       d="m 370.41666,227.54167 v 10.58334 l -7.9375,-2.64584 -15.875,13.22917"
+       id="path32" />
   </g>
   <g
      inkscape:label="Rooms"
@@ -1610,6 +1614,110 @@
        height="15.875001"
        x="539.74994"
        y="537.10419"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-shaft-room"
+       width="21.166666"
+       height="15.875001"
+       x="513.29163"
+       y="161.39584"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-smelly-room"
+       width="21.166666"
+       height="15.875001"
+       x="513.29163"
+       y="134.9375"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-gas-room"
+       width="21.166666"
+       height="15.875001"
+       x="547.6875"
+       y="156.10417"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-mine-1"
+       width="15.875003"
+       height="15.874997"
+       x="579.4375"
+       y="182.5625"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-mine-2"
+       width="15.875003"
+       height="15.874997"
+       x="600.60413"
+       y="153.45834"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-mine-3"
+       width="15.875003"
+       height="15.874997"
+       x="608.54163"
+       y="182.5625"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-mine-4"
+       width="15.875003"
+       height="15.874997"
+       x="592.66663"
+       y="209.02084"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-ladder-top"
+       width="21.166666"
+       height="15.875001"
+       x="590.02081"
+       y="235.47917"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-ladder-bottom"
+       width="21.166666"
+       height="15.875001"
+       x="590.02081"
+       y="256.64584"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-dead-end-5"
+       width="15.874976"
+       height="15.87501"
+       x="592.66663"
+       y="283.10419"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-timber-room"
+       width="21.166666"
+       height="15.875001"
+       x="558.27081"
+       y="256.64584"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-lower-shaft"
+       width="21.166666"
+       height="15.875001"
+       x="513.29163"
+       y="256.64584"
+       ry="2.6458292"
+       style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
+    <rect
+       id="r-machine-room"
+       width="21.166666"
+       height="15.875001"
+       x="513.29163"
+       y="283.10419"
        ry="2.6458292"
        style="display:inline;fill:#f8f0e8;stroke:#000000;stroke-width:0.7" />
   </g>
