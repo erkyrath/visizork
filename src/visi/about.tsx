@@ -79,7 +79,7 @@ export function AboutPage()
                 </p>
                 <p>
                     (In case it&#x2019;s not obvious: <em>SPOILERS</em> for Zork 1.
-                    The source code gives away everything in the game.
+                    The source code gives away every secret and solution in the game.
                     The whole point of this project is to demonstrate how
                     Zork works!)
                 </p>
