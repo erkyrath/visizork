@@ -25,15 +25,15 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="0.35355339"
-     inkscape:cx="961.66522"
-     inkscape:cy="1805.9507"
+     inkscape:zoom="0.5"
+     inkscape:cx="1120"
+     inkscape:cy="1327"
      inkscape:window-width="1976"
      inkscape:window-height="1103"
      inkscape:window-x="2099"
      inkscape:window-y="61"
      inkscape:window-maximized="0"
-     inkscape:current-layer="decorlayer">
+     inkscape:current-layer="connlayer">
     <inkscape:grid
        id="grid1"
        units="px"
@@ -157,40 +157,40 @@
        inkscape:collect="always"
        xlink:href="#linearGradient10"
        id="linearGradient107"
-       x1="97.366669"
-       y1="423.33334"
-       x2="323.32083"
-       y2="423.33334"
+       x1="111.125"
+       y1="296.33337"
+       x2="306.91666"
+       y2="476.25003"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(0,-127.00002)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient10"
        id="linearGradient109"
-       x1="128.01723"
-       y1="429.00839"
-       x2="368.29999"
-       y2="429.00839"
+       x1="142.875"
+       y1="291.04169"
+       x2="354.54166"
+       y2="476.25003"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(0,-127.00002)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient10"
        id="linearGradient111"
-       x1="112.14222"
-       y1="436.94589"
-       x2="177.8"
-       y2="436.94589"
+       x1="132.29166"
+       y1="177.27086"
+       x2="129.64583"
+       y2="518.58337"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(0,-127.00002)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient10"
        id="linearGradient110"
-       x1="76.200066"
-       y1="510.64584"
-       x2="355.07077"
-       y2="510.64584"
+       x1="89.958328"
+       y1="285.75003"
+       x2="301.625"
+       y2="587.37506"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(0,-127.00002)" />
     <marker
@@ -576,7 +576,7 @@
        sodipodi:nodetypes="ccc" />
     <path
        style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#4d4d4d;stroke-width:1.05096;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;marker-end:url(#marker46);paint-order:stroke fill markers"
-       d="m 248.9729,370.29298 5.02709,0.12362 c 23.8125,0 39.6875,-34.39583 60.85417,-34.39583 l 7.68601,0.11597"
+       d="m 206.37499,285.75001 5.02709,0.12362 c 23.8125,0 82.28541,50.14714 103.45208,50.14714 l 7.68601,0.11597"
        id="path103"
        sodipodi:nodetypes="cccc" />
     <path
@@ -730,7 +730,7 @@
        sodipodi:nodetypes="cccc" />
     <path
        style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:url(#linearGradient111);stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;marker-end:url(#marker46);paint-order:stroke fill markers"
-       d="m 177.27083,489.47911 v -7.93749 l -5.29167,2.64583 -52.91666,-444.500026 -5.29167,2.64584 v -7.9375"
+       d="m 142.875,402.16668 v -7.93749 l -5.29167,2.64583 -18.52083,-357.187596 -5.29167,2.64584 v -7.9375"
        id="path149"
        sodipodi:nodetypes="cccccc" />
     <path
@@ -787,7 +787,7 @@
        sodipodi:nodetypes="cccc" />
     <path
        style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:url(#linearGradient110);stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers;stop-color:#000000;stop-opacity:1"
-       d="m 336.02082,555.62494 h 23.8125 L 76.729163,148.16661 h 10.583333"
+       d="m 293.68749,470.95835 h 23.8125 L 76.729163,148.16661 h 10.583333"
        id="path107"
        sodipodi:nodetypes="cccc" />
     <path
