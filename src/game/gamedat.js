@@ -23,6 +23,7 @@ window.gamedat_routine_addrs = new Map();
 window.gamedat_routine_names = new Map();
 window.gamedat_property_nums = new Map();
 window.gamedat_attribute_nums = new Map();
+window.gamedat_roominfo_names = new Map();
 
 window.gamedat_ids = {};
 
@@ -112,6 +113,13 @@ window.gamedat_ids = {};
         else
             gamedat_object_treesort.set(obj.onum, 2);
     }
-    
+
+    gamedat_ids.MAP_DOCSIZE = window.gamedat_mapinfo.docsize;
+    gamedat_ids.MAP_VIEWSIZE = window.gamedat_mapinfo.viewsize;
+    for (let obj of window.gamedat_mapinfo.rooms) {
+        obj.center = { x: obj.x + 0.5*obj.width, y: obj.y + 0.5*obj.height };
+        gamedat_roominfo_names.set(obj.name, obj);
+    }
+  
 })();
 

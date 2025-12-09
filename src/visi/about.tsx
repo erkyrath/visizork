@@ -79,7 +79,7 @@ export function AboutPage()
                 </p>
                 <p>
                     (In case it&#x2019;s not obvious: <em>SPOILERS</em> for Zork 1.
-                    The source code gives away everything in the game.
+                    The source code gives away every secret and solution in the game.
                     The whole point of this project is to demonstrate how
                     Zork works!)
                 </p>
@@ -116,6 +116,8 @@ export function AboutPage()
                     shows all the game&#x2019;s global variables.
                     {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'timers') }>Timers</a>{' '}
                     shows the table of timed events.
+                    {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'map') }>Map</a>{' '}
+                    is what you think.
                 </p>
                 <p>
                     Click on any function, object, or variable to see its
@@ -199,6 +201,10 @@ export function AboutPage()
                     Allen Garvin&#x2019;s{' '}
                     <ExtWebLink url={ 'http://plover.net/~agarvin/zork1.txt' } text={ 'translation into Inform 6 syntax' } />
                     {' '} was also helpful.
+                </p>
+                <p>
+                    The map layout follows the Zork Users Group map
+                    designed by David Ardito and Steve Meretzky.
                 </p>
                 <p>
                     The fonts used are Courier Prime, Lato, and

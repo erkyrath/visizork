@@ -383,6 +383,18 @@ body {
     font-size: 120%;
 }
 
+.ScrollXYContent {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    box-sizing: border-box;
+    overflow: scroll;
+}
+
+.ScrollXYContent object {
+    pointer-events: none;
+}
+
 .AboutPage h2 {
     font-size: 110%;
     font-family: "Libre Baskerville", serif;
@@ -669,6 +681,9 @@ a.CommentButtonSmall img {
 
 .LineExtraHeightSmall {
     line-height: 23px;
+}
+
+.GameMap {
 }
 
 .Src_Comment {
