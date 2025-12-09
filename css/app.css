@@ -389,6 +389,10 @@ body {
     padding: 0px;
     box-sizing: border-box;
     overflow: scroll;
+    background: white;
+}
+.DarkTheme .ScrollXYContent {
+    filter: invert(90%) hue-rotate(180deg);
 }
 
 .ScrollXYContent object {
