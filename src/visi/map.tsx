@@ -16,8 +16,9 @@ export function GameMap()
     let dragstart: {x:number, y:number}|null = null;
     let scrollstart: {x:number, y:number}|null = null;
 
-    let docsize: { w:number, h:number } = gamedat_ids.MAP_DOCSIZE;
+    let origdocsize: { w:number, h:number } = gamedat_ids.MAP_DOCSIZE;
     let viewsize: { w:number, h:number } = gamedat_ids.MAP_VIEWSIZE;
+    let docsize: { w:number, h:number } = { w:0.8*origdocsize.w, h:0.8*origdocsize.h };
     
     function evhan_mousedown(ev: PointerEv) {
         ev.preventDefault();
