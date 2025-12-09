@@ -26,8 +26,8 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="2066"
-     inkscape:cy="271.5"
+     inkscape:cx="989"
+     inkscape:cy="1689.5"
      inkscape:window-width="1976"
      inkscape:window-height="1103"
      inkscape:window-x="2098"
@@ -1938,6 +1938,10 @@
        style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.3;stroke:none;stroke-width:1.27602;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers"
        d="m 346.07805,38.654516 c 0.13485,-0.15647 0.30867,-0.27171 0.49009,-0.35705 -0.56273,-1.67044 -0.8716,-2.002397 -0.40559,-3.920317 h 5.90732 c 0.58686,1.67714 0.26653,2.454727 -0.39219,4.181447 0.0326,0.03 0.0635,0.062 0.0927,0.0959 0.48837,0.56667 1.04429,2.92433 0.82051,4.544407 -0.73584,-1.09482 -1.46097,-2.036787 -1.93938,-2.497987 -0.17037,-0.16424 -0.32339,-0.42751 -0.44989,-0.69879 -0.29621,0.12685 -0.64647,0.22893 -1.05477,0.27779 -0.63147,0.0755 -1.12025,-0.084 -1.48426,-0.31177 -0.12944,0.28304 -0.28818,0.56171 -0.46561,0.73277 -0.47841,0.4612 -1.319,1.551467 -1.89262,2.544757 -0.65518,-1.00385 -0.12164,-3.625887 0.77369,-4.591157 z m 1.01807,0.14922 c 0.52214,-0.59687 1.33068,-1.38032 1.96328,-1.38027 0.63259,5e-5 1.46851,0.71945 1.84147,1.295 0.0933,-0.59687 -0.42831,-1.73599 -0.42831,-1.73599 0,0 -0.70549,0.0697 -1.39977,0.1079 -0.69427,0.0382 -1.53029,-0.0652 -1.53029,-0.0652 0,0 -0.27855,0.862 -0.44638,1.77863 z"
        sodipodi:nodetypes="sccccccscscscsssccsccs" />
+    <path
+       id="path49"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.24;stroke:none;stroke-width:0.165553;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;marker-end:url(#marker46);paint-order:fill markers stroke;stop-color:#000000;stop-opacity:1"
+       d="M 276.02656 442.91249 L 275.39817 443.04479 L 265.5502 450.0671 L 264.2526 448.93177 L 263.8888 449.22942 L 264.90631 450.5265 L 263.525 451.51145 C 263.35963 451.70989 263.75651 452.669 264.05416 452.70208 L 265.50214 451.51817 L 266.13776 452.83437 L 266.63385 452.60286 L 266.0897 451.03758 L 276.02656 442.91249 z " />
   </g>
   <g
      inkscape:groupmode="layer"
