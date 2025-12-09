@@ -3,8 +3,8 @@
 
 <svg
    width="2400"
-   height="2400"
-   viewBox="0 0 634.99998 635.00001"
+   height="2000"
+   viewBox="0 0 634.99998 529.16667"
    version="1.1"
    id="svg1"
    inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
@@ -25,12 +25,12 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="0.5"
-     inkscape:cx="1120"
-     inkscape:cy="1327"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="1165.312"
+     inkscape:cy="1149.7556"
      inkscape:window-width="1976"
      inkscape:window-height="1103"
-     inkscape:window-x="2099"
+     inkscape:window-x="2098"
      inkscape:window-y="61"
      inkscape:window-maximized="0"
      inkscape:current-layer="connlayer">
@@ -2705,7 +2705,7 @@
          sodipodi:role="line"
          style="stroke-width:1"
          x="423.33331"
-         y="125.62405"
+         y="125.62404"
          id="tspan114">Room</tspan></text>
     <text
        xml:space="preserve"
@@ -2764,7 +2764,7 @@
          sodipodi:role="line"
          style="stroke-width:1"
          x="441.85413"
-         y="253.15355"
+         y="253.15353"
          id="tspan123">South</tspan></text>
     <text
        xml:space="preserve"
@@ -2807,7 +2807,7 @@
          sodipodi:role="line"
          style="stroke-width:1"
          x="402.16666"
-         y="253.15358"
+         y="253.15356"
          id="tspan128">View</tspan></text>
     <text
        xml:space="preserve"
@@ -3454,7 +3454,7 @@
          sodipodi:role="line"
          style="stroke-width:1"
          x="590.02087"
-         y="118.74494"
+         y="118.74495"
          id="tspan119">Top</tspan></text>
     <text
        xml:space="preserve"
