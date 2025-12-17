@@ -21,6 +21,16 @@ export function GameMap()
     let docsize: { w:number, h:number } = { w:0.8*origdocsize.w, h:0.8*origdocsize.h };
     
     function evhan_mousedown(ev: PointerEv) {
+        if (!scrollref.current) {
+            return;
+        }
+        /* Clip the drag area to inside the scrollbar box. (Firefox would
+           allow this handler to snipe scrollbar dragging.) */
+        let offx = ev.nativeEvent.offsetX;
+        let offy = ev.nativeEvent.offsetY;
+        if (offx < 0 || offx >= scrollref.current.clientWidth || offy < 0 || offy >= scrollref.current.clientHeight) {
+            return;
+        }
         ev.preventDefault();
         ev.stopPropagation();
         if (scrollref.current && ev.button == 0) {
