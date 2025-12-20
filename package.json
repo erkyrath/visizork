@@ -5,7 +5,7 @@
   "author": "Andrew Plotkin <erkyrath@eblong.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npm run minifyall && npm run buildts",
+    "build": "npm run minify && npm run buildts",
     "buildts": "npx tsc && npx rollup -c",
     "minify": "./minify gamedat.js && ./minify lib.js && ./minify glkio.js && ./minify ifvms.js && ./minify gnusto.js && ./minify parchment.js"
   },
