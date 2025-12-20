@@ -10,20 +10,20 @@ filename=$1
 case $filename in
 
 gamedat.js)
-  src="visiterp/src/game/propattrs.js \
-       visiterp/src/game/verbs.js \
-       visiterp/src/game/globals.js \
-       visiterp/src/game/constants.js \
-       visiterp/src/game/objects.js \
-       visiterp/src/game/strings.js \
-       visiterp/src/game/dictwords.js \
-       visiterp/src/game/routines.js \
-       visiterp/src/game/distances.js \
-       visiterp/src/game/source.js \
-       visiterp/src/game/savefiles.js \
-       visiterp/src/game/commentary.js \
-       visiterp/src/game/mapinfo.js \
-       visiterp/src/game/gamedat.js"
+  src="src/game/propattrs.js \
+       src/game/verbs.js \
+       src/game/globals.js \
+       src/game/constants.js \
+       src/game/objects.js \
+       src/game/strings.js \
+       src/game/dictwords.js \
+       src/game/routines.js \
+       src/game/distances.js \
+       src/game/source.js \
+       src/game/savefiles.js \
+       src/game/commentary.js \
+       src/game/mapinfo.js \
+       src/game/gamedat.js"
   ;;
 
 lib.js)
