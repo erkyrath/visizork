@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# Minify collections of .js files into smaller .js files.
+# This uses the terser tool, which is installed as a dependency
+# of rollup.
+
 filename=$1
 
 case $filename in
