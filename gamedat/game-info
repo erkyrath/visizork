@@ -19,6 +19,17 @@
 # Functions (high memory): $4E37 / 20023
 # Strings (high memory): $10B16 / 68374
 
+SourceFile 1 zork1.zil
+SourceFile 2 1actions.zil
+SourceFile 3 1dungeon.zil
+SourceFile 4 gclock.zil
+SourceFile 5 gglobals.zil
+SourceFile 6 gmacros.zil
+SourceFile 7 gmain.zil
+SourceFile 8 gparser.zil
+SourceFile 9 gsyntax.zil
+SourceFile 10 gverbs.zil
+
 Object 1 HANDS
 Object 2 ZORKMID
 Object 3 PATHOBJ
