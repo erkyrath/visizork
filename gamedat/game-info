@@ -1,6 +1,10 @@
 # Maps game file indexes to ZIL source code names.
+# Also some other kinds of info.
+#
 # This information was compiled manually; there is no simple way to
-# extract it from the source and game file.
+# extract it from the source and game file. (Everything that could
+# be extracted automatically is handled by pyana. Which loads this info
+# to orient itself.)
 #
 # Much of this work was done by Allen Garvin et al in 2007:
 #   https://ifarchive.org/indexes/if-archive/infocom/tools/reform/
@@ -492,6 +496,8 @@ Global 155 ACTIONS  table created from SYNTAX
 Global 156 PREACTIONS  table created from SYNTAX
 Global 157 VERBS  table created from SYNTAX
 
+# Argument type info for routines that are hard to guess.
+
 RoutineType - CLAUSE - - WORD
 RoutineType - HELD? OBJ
 RoutineType - JIGS-UP STR -
@@ -501,6 +507,10 @@ RoutineType - REMARK - OBJ OBJ
 RoutineType - ROB OBJ OBJ -
 RoutineType - VILLAIN-RESULT OBJ - -
 RoutineType - WT? WORD - -
+
+# Map connections that don't come directly from room properties.
+# (These are used for the "list rooms in order of closeness to you"
+# display tab.)
 
 MapExtraConn - LIVING-ROOM DOWN CELLAR
 MapExtraConn - STUDIO UP KITCHEN
