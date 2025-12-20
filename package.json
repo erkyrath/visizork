@@ -5,15 +5,9 @@
   "author": "Andrew Plotkin <erkyrath@eblong.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npm run minify && npm run buildts",
+    "build": "npm run minifyall && npm run buildts",
     "buildts": "npx tsc && npx rollup -c",
-    "minify": "npm run min-gamedat.js && npm run min-lib.js && npm run min-glkio.js && npm run min-ifvms.js && npm run min-gnusto.js && npm run min-parchment.js",
-    "min-gamedat.js": "npx terser --config-file terser.config.json -o js/gamedat.js -- visiterp/src/game/propattrs.js visiterp/src/game/verbs.js visiterp/src/game/globals.js visiterp/src/game/constants.js visiterp/src/game/objects.js visiterp/src/game/strings.js visiterp/src/game/dictwords.js visiterp/src/game/routines.js visiterp/src/game/distances.js visiterp/src/game/source.js visiterp/src/game/savefiles.js visiterp/src/game/commentary.js visiterp/src/game/mapinfo.js visiterp/src/game/gamedat.js",
-    "min-lib.js": "npx terser --config-file terser.config.json -o js/lib.js -- visiterp/src/lib/class.js visiterp/src/lib/iff.js visiterp/src/lib/jquery-1.12.4.min.js",
-    "min-glkio.js": "npx terser --config-file terser.config.json -o js/glkio.js -- visiterp/src/glkio/io.js visiterp/src/glkio/commentary.js visiterp/src/glkio/glkote.js visiterp/src/glkio/dialog.js",
-    "min-ifvms.js": "npx terser --config-file terser.config.json -o js/ifvms.js -- visiterp/src/ifvms.js/quetzal.js visiterp/src/ifvms.js/ui.js",
-    "min-gnusto.js": "npx terser --config-file terser.config.json -o js/gnusto.js -- visiterp/src/gnusto/remedial.js visiterp/src/gnusto/runner-g.js visiterp/src/gnusto/gnusto-engine.js",
-    "min-parchment.js": "npx terser --config-file terser.config.json -o js/parchment.js -- visiterp/src/parchment/intro.js visiterp/src/parchment/outro.js"
+    "minify": "./minify gamedat.js && ./minify lib.js && ./minify glkio.js && ./minify ifvms.js && ./minify gnusto.js && ./minify parchment.js"
   },
   "type": "module",
   "dependencies": {
