@@ -7,6 +7,7 @@ import { CallActivity } from '../visi/activity';
 import { TimerTable } from '../visi/timers';
 import { GameMap } from '../visi/map';
 import { ObjectTree } from '../visi/objtree';
+import { ObjectAttrList } from '../visi/objlist';
 import { ObjectPage } from '../visi/objpage';
 import { GlobalState } from '../visi/globstate';
 import { SourceFileList } from '../visi/filelist';
@@ -50,8 +51,12 @@ export function TabbedPane()
     case 'objtree':
         if (rctx.objpage == null)
             tabcontent = <ObjectTree />;
-        else
+        else if (rctx.objpage.type == 'OBJ')
             tabcontent = <ObjectPage onum={ rctx.objpage.val } />;
+        else if (rctx.objpage.type == 'ATTR')
+            tabcontent = <ObjectAttrList attr={ rctx.objpage.val } />;
+        else
+            tabcontent = <div>Unimplemented focus { rctx.objpage.type }</div>
         break;
     case 'activity':
         tabcontent = <CallActivity />;
