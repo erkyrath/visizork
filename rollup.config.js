@@ -13,7 +13,7 @@ const tersopt = { format: { ascii_only:true } };
 const tersplugin = (release ? terser(tersopt) : null);
 
 export default {
-    input: 'buildjs/visi/main.js',
+    input: 'buildjs/custom/initapp.js',
     output: {
         file: 'js/bundle.js',
         name: 'bundle',
