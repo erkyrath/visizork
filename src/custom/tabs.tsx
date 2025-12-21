@@ -48,10 +48,10 @@ export function TabbedPane()
     let tabcontent;
     switch (rctx.tab) {
     case 'objtree':
-        if (rctx.objpage == 0)
+        if (rctx.objpage == null)
             tabcontent = <ObjectTree />;
         else
-            tabcontent = <ObjectPage onum={ rctx.objpage } />;
+            tabcontent = <ObjectPage onum={ rctx.objpage.val } />;
         break;
     case 'activity':
         tabcontent = <CallActivity />;
