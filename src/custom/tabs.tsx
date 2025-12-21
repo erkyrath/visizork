@@ -10,7 +10,7 @@ import { ObjectTree } from '../visi/objtree';
 import { ObjectPage } from '../visi/objpage';
 import { GlobalState } from '../visi/globstate';
 import { SourceFileList } from '../visi/filelist';
-import { AboutPage } from '../visi/about';
+import { AboutPage } from './about';
 
 const tab_list = [
     [ 'activity', 'Activity' ],
