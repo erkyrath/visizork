@@ -65,6 +65,10 @@ attr:lightbit: Set for objects which the player can sensibly `TURN ON` (e.g. the
 attr:burnbit: Set for objects which the player can `BURN`. (It might be a bad idea, but you can do it.)
 	This is different from [attr:FLAMEBIT], which indicates objects that are currently on fire. See also [attr:LIGHTBIT], objects which the player can `TURN ON`.
 
+attr:rlandbit: Set for rooms which are dry land. (Most of them.) The opposite is [attr:nonlandbit].
+
+attr:nonlandbit: Set for rooms which are flooded. These can only be traversed with the [boat|~obj:inflatable-boat].
+
 src:GVERBS-1593: Not until Sorcerer!
 
 src:1actions-707: If you throw the [~obj:TROLL] a weapon, he has a 20% chance of eating it and dying. (Taking the weapon with him.)
