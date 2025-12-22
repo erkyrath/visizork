@@ -69,10 +69,17 @@ attr:rlandbit: Set for rooms which are dry land. (Most of them.) The opposite is
 
 attr:nonlandbit: Set for rooms which are flooded. These can only be traversed with the [boat|~obj:inflatable-boat].
 
+attr:mazebit: Set for rooms in the twisty maze (but not the coal mine maze).
+	This flag is the basis for the thief’s [maze-shuffling taunt|rtn:ROB-MAZE].
+
+attr:sacredbit: Indicates objects the thief will not touch, and rooms where the thief will not go.
+
 src:GVERBS-1593: Not until Sorcerer!
 
 src:1actions-707: If you throw the [~obj:TROLL] a weapon, he has a 20% chance of eating it and dying. (Taking the weapon with him.)
 	I’ve seen it argued that this was the intended way to kill the troll, back before randomized combat was implemented. However, we have no version of (MIT) Zork that early in development.
+
+rtn:ROB-MAZE: If you leave objects around the maze (as a mapping aid), and the thief discovers them, he is particularly likely to mess with them. He taunts you about it, too.
 
 glob:c-ints: Indicates how much of the timer table ([*glob:C-TABLE]) is used. This counts down from `C-TABLELEN`, which is 180.
 
