@@ -23,6 +23,7 @@ window.gamedat_routine_addrs = new Map();
 window.gamedat_routine_names = new Map();
 window.gamedat_property_nums = new Map();
 window.gamedat_attribute_nums = new Map();
+window.gamedat_attribute_names = new Map();
 window.gamedat_roominfo_names = new Map();
 
 window.gamedat_ids = {};
@@ -44,6 +45,7 @@ window.gamedat_ids = {};
     
     for (let obj of window.gamedat_attributes) {
         gamedat_attribute_nums.set(obj.num, obj);
+        gamedat_attribute_names.set(obj.name, obj);
     }
     
     for (let obj of window.gamedat_constants) {
