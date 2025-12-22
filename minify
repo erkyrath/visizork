@@ -1,0 +1,66 @@
+#!/bin/bash
+set -e
+
+# Minify collections of .js files into smaller .js files.
+# This uses the terser tool, which is installed as a dependency
+# of rollup.
+
+filename=$1
+
+case $filename in
+
+gamedat.js)
+  src="src/game/properties.js \
+       src/game/attributes.js \
+       src/game/verbs.js \
+       src/game/globals.js \
+       src/game/constants.js \
+       src/game/objects.js \
+       src/game/strings.js \
+       src/game/dictwords.js \
+       src/game/routines.js \
+       src/game/distances.js \
+       src/game/source.js \
+       src/game/savefiles.js \
+       src/game/commentary.js \
+       src/game/mapinfo.js \
+       src/game/gamedat.js"
+  ;;
+
+lib.js)
+  src="visiterp/src/lib/class.js \
+       visiterp/src/lib/iff.js \
+       visiterp/src/lib/jquery-1.12.4.min.js"
+  ;;
+
+glkio.js)
+  src="visiterp/src/glkio/io.js \
+       visiterp/src/glkio/commentary.js \
+       visiterp/src/glkio/glkote.js \
+       visiterp/src/glkio/dialog.js"
+  ;;
+
+ifvms.js)
+  src="visiterp/src/ifvms.js/quetzal.js \
+       visiterp/src/ifvms.js/ui.js"
+  ;;
+
+gnusto.js)
+  src="visiterp/src/gnusto/remedial.js \
+       visiterp/src/gnusto/runner-g.js \
+       visiterp/src/gnusto/gnusto-engine.js"
+  ;;
+
+parchment.js)
+  src="visiterp/src/parchment/intro.js \
+       visiterp/src/parchment/outro.js"
+  ;;
+
+*)
+  echo "not known: $filename"
+  exit 1
+  ;;
+
+esac
+
+npx terser --config-file terser.config.json -o js/$filename -- $src

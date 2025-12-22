@@ -2,10 +2,10 @@ import React from 'react';
 import { useContext } from 'react';
 
 import { gamedat_ids, gamedat_object_ids, gamedat_routine_names } from './gamedat';
-import { ZObject } from './zstate';
+import { ZObject } from '../visi/zstate';
 
-import { ReactCtx } from './context';
-import { ObjPageLink, Commentary } from './widgets';
+import { ReactCtx } from '../visi/context';
+import { ObjPageLink, Commentary } from '../visi/widgets';
 
 export function AboutPage()
 {

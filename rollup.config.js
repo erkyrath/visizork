@@ -3,15 +3,17 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 
-const datestr = 'Dec 16, 2025'
+const datestr = 'Dec 21, 2025'
 const release = true;
+
+// See: https://rollupjs.org/configuration-options/
 
 const nodeenv = (release ? 'production' : 'development')
 const tersopt = { format: { ascii_only:true } };
 const tersplugin = (release ? terser(tersopt) : null);
 
 export default {
-    input: 'buildjs/main.js',
+    input: 'buildjs/custom/initapp.js',
     output: {
         file: 'js/bundle.js',
         name: 'bundle',

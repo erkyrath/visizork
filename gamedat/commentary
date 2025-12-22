@@ -53,10 +53,33 @@ glob:false-flag: Always false. See [*obj:kitchen].
 
 glob:load-allowed: The total weight you can carry (see [rtn:WEIGHT]). This is normally the same as [~glob:LOAD-MAX], but it decreases when you’re wounded.
 
+attr:onbit: Set for glowing objects and naturally-illuminated rooms.
+	This is different from [attr:LIGHTBIT], which indicates objects that the player can `TURN ON`. See also [attr:FLAMEBIT], objects which are on fire.
+
+attr:flamebit: Set for objects which are on fire. Such objects normally also have [attr:ONBIT].
+	This is different from [attr:BURNBIT], which indicates objects that the player can `BURN`.
+
+attr:lightbit: Set for objects which the player can sensibly `TURN ON` (e.g. the [~obj:lamp]).
+	This is different from [attr:ONBIT], which indicates objects that are currently lit up. See also [attr:BURNBIT], objects which the player can `BURN`.
+
+attr:burnbit: Set for objects which the player can `BURN`. (It might be a bad idea, but you can do it.)
+	This is different from [attr:FLAMEBIT], which indicates objects that are currently on fire. See also [attr:LIGHTBIT], objects which the player can `TURN ON`.
+
+attr:rlandbit: Set for rooms which are dry land. (Most of them.) The opposite is [attr:nonlandbit].
+
+attr:nonlandbit: Set for rooms which are flooded. These can only be traversed with the [boat|~obj:inflatable-boat].
+
+attr:mazebit: Set for rooms in the twisty maze (but not the coal mine maze).
+	This flag is the basis for the thief’s [maze-shuffling taunt|rtn:ROB-MAZE].
+
+attr:sacredbit: Indicates objects the thief will not touch, and rooms where the thief will not go.
+
 src:GVERBS-1593: Not until Sorcerer!
 
 src:1actions-707: If you throw the [~obj:TROLL] a weapon, he has a 20% chance of eating it and dying. (Taking the weapon with him.)
 	I’ve seen it argued that this was the intended way to kill the troll, back before randomized combat was implemented. However, we have no version of (MIT) Zork that early in development.
+
+rtn:ROB-MAZE: If you leave objects around the maze (as a mapping aid), and the thief discovers them, he is particularly likely to mess with them. He taunts you about it, too.
 
 glob:c-ints: Indicates how much of the timer table ([*glob:C-TABLE]) is used. This counts down from `C-TABLELEN`, which is 180.
 

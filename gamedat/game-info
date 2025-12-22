@@ -1,6 +1,10 @@
 # Maps game file indexes to ZIL source code names.
+# Also some other kinds of info.
+#
 # This information was compiled manually; there is no simple way to
-# extract it from the source and game file.
+# extract it from the source and game file. (Everything that could
+# be extracted automatically is handled by pyana. Which loads this info
+# to orient itself.)
 #
 # Much of this work was done by Allen Garvin et al in 2007:
 #   https://ifarchive.org/indexes/if-archive/infocom/tools/reform/
@@ -14,6 +18,17 @@
 # Dictionary: $3B21 / 15137
 # Functions (high memory): $4E37 / 20023
 # Strings (high memory): $10B16 / 68374
+
+SourceFile 1 zork1.zil
+SourceFile 2 1actions.zil
+SourceFile 3 1dungeon.zil
+SourceFile 4 gclock.zil
+SourceFile 5 gglobals.zil
+SourceFile 6 gmacros.zil
+SourceFile 7 gmain.zil
+SourceFile 8 gparser.zil
+SourceFile 9 gsyntax.zil
+SourceFile 10 gverbs.zil
 
 Object 1 HANDS
 Object 2 ZORKMID
@@ -492,12 +507,35 @@ Global 155 ACTIONS  table created from SYNTAX
 Global 156 PREACTIONS  table created from SYNTAX
 Global 157 VERBS  table created from SYNTAX
 
-RoutineType 0 CLAUSE - - WORD
-RoutineType 0 HELD? OBJ
-RoutineType 0 JIGS-UP STR -
-RoutineType 0 OPEN-CLOSE OBJ STR STR
-RoutineType 0 PERFORM VERB PERFORMO PERFORMI
-RoutineType 0 REMARK - OBJ OBJ
-RoutineType 0 ROB OBJ OBJ -
-RoutineType 0 VILLAIN-RESULT OBJ - -
-RoutineType 0 WT? WORD - -
+# Argument type info for routines that are hard to guess.
+
+RoutineType - CLAUSE - - WORD
+RoutineType - HELD? OBJ
+RoutineType - JIGS-UP STR -
+RoutineType - OPEN-CLOSE OBJ STR STR
+RoutineType - PERFORM VERB PERFORMO PERFORMI
+RoutineType - REMARK - OBJ OBJ
+RoutineType - ROB OBJ OBJ -
+RoutineType - VILLAIN-RESULT OBJ - -
+RoutineType - WT? WORD - -
+
+# Map connections that don't come directly from room properties.
+# (These are used for the "list rooms in order of closeness to you"
+# display tab.)
+
+MapExtraConn - LIVING-ROOM DOWN CELLAR
+MapExtraConn - STUDIO UP KITCHEN
+# These are from MAZE-DIODES
+MapExtraConn - MAZE-2 DOWN MAZE-4
+MapExtraConn - MAZE-7 DOWN DEAD-END-1
+MapExtraConn - MAZE-9 DOWN MAZE-11
+MapExtraConn - MAZE-12 DOWN MAZE-5
+# These are from RIVER-LAUNCH
+MapExtraConn - DAM-BASE LAUNCH RIVER-1
+MapExtraConn - WHITE-CLIFFS-NORTH LAUNCH RIVER-3
+MapExtraConn - WHITE-CLIFFS-SOUTH LAUNCH RIVER-4
+MapExtraConn - SHORE LAUNCH RIVER-5
+MapExtraConn - SANDY-BEACH LAUNCH RIVER-4
+MapExtraConn - RESERVOIR-SOUTH LAUNCH RESERVOIR
+MapExtraConn - RESERVOIR-NORTH LAUNCH RESERVOIR
+MapExtraConn - STREAM-VIEW LAUNCH IN-STREAM

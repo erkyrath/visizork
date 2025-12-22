@@ -1,5 +1,5 @@
 {
-  "include": [ "./src/visi/*.tsx", "./src/visi/*.ts" ],
+  "include": [ "./src/visi/*.tsx", "./src/visi/*.ts", "./src/custom/*.ts" ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
@@ -11,7 +11,7 @@
     /* Modules */
     "module": "esnext",                                  /* Specify what module code is generated. */
     "moduleResolution": "bundler",                       /* Specify how TypeScript looks up a file from a given module specifier. */
-    // "rootDir": "./",                                  /* Specify the root folder within your source files. */
+    "rootDir": "./src",                                  /* Specify the root folder within your source files. */
 
     /* Emit */
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If 'declaration' is true, also designates a file that bundles all .d.ts output. */
