@@ -53,6 +53,18 @@ glob:false-flag: Always false. See [*obj:kitchen].
 
 glob:load-allowed: The total weight you can carry (see [rtn:WEIGHT]). This is normally the same as [~glob:LOAD-MAX], but it decreases when you’re wounded.
 
+attr:onbit: Set for glowing objects and naturally-illuminated rooms.
+	This is different from [attr:LIGHTBIT], which indicates objects that the player can `TURN ON`. See also [attr:FLAMEBIT], objects which are on fire.
+
+attr:flamebit: Set for objects which are on fire. Such objects normally also have [attr:ONBIT].
+	This is different from [attr:BURNBIT], which indicates objects that the player can `BURN`.
+
+attr:lightbit: Set for objects which the player can sensibly `TURN ON` (e.g. the [~obj:lamp]).
+	This is different from [attr:ONBIT], which indicates objects that are currently lit up. See also [attr:BURNBIT], objects which the player can `BURN`.
+
+attr:burnbit: Set for objects which the player can `BURN`. (It might be a bad idea, but you can do it.)
+	This is different from [attr:FLAMEBIT], which indicates objects that are currently on fire. See also [attr:LIGHTBIT], objects which the player can `TURN ON`.
+
 src:GVERBS-1593: Not until Sorcerer!
 
 src:1actions-707: If you throw the [~obj:TROLL] a weapon, he has a 20% chance of eating it and dying. (Taking the weapon with him.)
