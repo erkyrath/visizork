@@ -2,7 +2,19 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject } from '../visi/zstate';
+import { ObjectData } from './gamedat';
 import { gamedat_ids, gamedat_distances, gamedat_object_treesort } from './gamedat';
+
+export function contains_label(obj: ObjectData) : string
+{
+    if (!obj.isroom) {
+        if (obj.onum == gamedat_ids.ADVENTURER || obj.onum == gamedat_ids.THIEF || obj.onum == gamedat_ids.TROLL)
+            return 'carries';
+        else
+            return 'contains'
+    }
+    return '';
+}
 
 export function sorter_for_key(key: number) : (roots:ZObject[], map:Map<number, ZObject>) => void
 {
