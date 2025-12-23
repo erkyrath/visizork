@@ -47,9 +47,12 @@ Also note that I'm using a slight modification of the [ztools][] package, which 
 
 This contains the original ZIL source code for Zork 1.
 
-A version of this source was [publicly released][histzork1] in April 2019 by Jason Scott. That wasn't zork1-r88-s840726, though; it was zork1-r119-s880429. I combed through a number of sources to locate every possible variation for the [Catalog][ocicatz]. Happily, the source for zork1-r88-s840726 -- the most commonly played version today -- *did* turn up.
+A version of this source was [publicly released][histzork1] in April 2019 by Jason Scott. If you look at that repository up front, you'll see zork1-r119-s880429. The version here, zork1-r88-s840726, can be found in its commit history [here][histzork1-r88].
+
+(Other versions can be found in the [Catalog][ocicatz].)
 
 [histzork1]: https://github.com/historicalsource/zork1
+[histzork1-r88]: https://github.com/historicalsource/zork1/commit/34cc828c4fa3b5e2581ea24c43bb8acb386d25d0
 
 ### The [`js`](./js) directory
 
