@@ -1,10 +1,17 @@
 import { gamedat_routine_names, gamedat_global_names, gamedat_string_map, unpack_address } from './gamedat';
 import { GnustoEngine } from '../visi/zstate';
 
+export function show_commentary_hook(topic: string, engine: GnustoEngine)
+{
+    if (topic == 'BATTERIES') {
+        refresh_batteries(engine);
+    }
+}
+
 /* A terrible hack: dig into the VM and overwrite the I-LANTERN timer
    entry with 5000!
 */
-export function refresh_batteries(engine: GnustoEngine)
+function refresh_batteries(engine: GnustoEngine)
 {
     // This should be the same as the last report we got this turn.
     let report = engine.get_vm_report();
