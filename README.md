@@ -56,7 +56,7 @@ A version of this source was [publicly released][histzork1] in April 2019 by Jas
 
 ### The [`js`](./js) directory
 
-Javascript used in running the app. This is all generated, compiled, or minified from the contents of the [`src`][terpsrc], [`gamesrc`](./gamesrc), and [`gamedat`](./gamedat) directories.
+Javascript used in running the app. This is all generated, compiled, or minified from the contents of the [`visiterp/src`][terpsrc], [`gamesrc`](./gamesrc), and [`gamedat`](./gamedat) directories.
 
 ### The [`visiterp`][visiterp] submodule
 
@@ -74,7 +74,7 @@ Sorry. Submodules are a pain in the ass,
 [visiterp]: https://github.com/erkyrath/visiterp
 [terpsrc]: https://github.com/erkyrath/visiterp/tree/master/src
 [terppyana]: https://github.com/erkyrath/visiterp/tree/master/pyana
-[terpfonts]: https://github.com/erkyrath/visiterp/tree/master/fonts
+[terpfont]: https://github.com/erkyrath/visiterp/tree/master/font
 [terpcss]: https://github.com/erkyrath/visiterp/tree/master/css
 
 The `visiterp` repository provides: 
