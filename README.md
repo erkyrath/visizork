@@ -72,10 +72,10 @@ git submodule update
 Sorry. Submodules are a pain in the ass,
 
 [visiterp]: https://github.com/erkyrath/visiterp
-[terpsrc]: https://github.com/erkyrath/visiterp/src
-[terppyana]: https://github.com/erkyrath/visiterp/pyana
-[terpfonts]: https://github.com/erkyrath/visiterp/fonts
-[terpcss]: https://github.com/erkyrath/visiterp/css
+[terpsrc]: https://github.com/erkyrath/visiterp/tree/master/src
+[terppyana]: https://github.com/erkyrath/visiterp/tree/master/pyana
+[terpfonts]: https://github.com/erkyrath/visiterp/tree/master/fonts
+[terpcss]: https://github.com/erkyrath/visiterp/tree/master/css
 
 The `visiterp` repository provides: 
 
