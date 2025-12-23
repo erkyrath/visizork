@@ -51,13 +51,38 @@ A version of this source was [publicly released][histzork1] in April 2019 by Jas
 
 [histzork1]: https://github.com/historicalsource/zork1
 
-### The [`pyana`](./pyana) directory
+### The [`js`](./js) directory
+
+Javascript used in running the app. This is all generated, compiled, or minified from the contents of the [`src`][terpsrc], [`gamesrc`](./gamesrc), and [`gamedat`](./gamedat) directories.
+
+### The [`visiterp`][visiterp] submodule
+
+Most of the source code involved in running and displaying the game is collected in [`visiterp`][visiterp]. This is a separate repository so that it can be shared between many games.
+
+If you find that the `visiterp` directory is empty, you need to fill it out:
+
+```
+git submodule init
+git submodule update
+```
+
+Sorry. Submodules are a pain in the ass,
+
+[visiterp]: https://github.com/erkyrath/visiterp
+[terpsrc]: https://github.com/erkyrath/visiterp/src
+[terppyana]: https://github.com/erkyrath/visiterp/pyana
+[terpfonts]: https://github.com/erkyrath/visiterp/fonts
+[terpcss]: https://github.com/erkyrath/visiterp/css
+
+The `visiterp` repository provides: 
+
+### The [`visiterp/pyana`][terppyana] directory
 
 Python scripts which parse the [`gamedat`](./gamedat) and [`gamesrc`](./gamesrc) files and convert them into JSON data in [`js`](./js) for the Visible Zorker to load.
 
 Roughly, we need to parse all the ZIL source *and* the disassembled data, match up numeric addresses with source code names, and write it out in a format that the Javascript app can handle. We use a motley boatload of strategies to accomplish this. The [`game-info`](./gamedat/game-info) gives us a lot of the needed mappings. Others are based on source code order, memory address order, or whatever else works.
 
-### The [`src`](./src) directory
+### The [`visiterp/src`][terpsrc] directory
 
 Javascript and Typescript sources for the Visible Zorker app itself.
 
@@ -78,15 +103,11 @@ Yeah, there's a lot of glue layers in there. It's the usual software-engineering
 
 I unwound a lot of that work in creating the Visible Zorker. I wanted a *simple* interpreter engine, and I didn't need the web site or any of the newer formats. But there's still traces of some of the layers.
 
-### The [`js`](./js) directory
-
-Javascript used in running the app. This is all generated, compiled, or minified from the contents of the [`src`](./src), [`gamesrc`](./gamesrc), and [`gamedat`](./gamedat) directories.
-
-### The [`css`](./css) directory
+### The [`visiterp/css`][terpcss] directory
 
 CSS files. Also some icon images in SVG, PNG, and animated-GIF format.
 
-### The [`font`](./font) directory
+### The [`visiterp/font`][terpfont] directory
 
 Open-source fonts used in the app.
 
@@ -111,7 +132,7 @@ npm run build
 
 This regenerates (almost) everything in the [`js`](./js) directory. Hopefully the result will be identical, or almost identical, to what was already there.
 
-If you're doing dev work, you may want to load [`index-full.html`](./index-full.html) instead of `index.html`. The `index-full.html` version uses the *non*-minified Javascript from the [`src`](./src) directory. You can edit JS files and reload `index-full.html` without an `npm run build` step, which makes for a much faster work loop.
+If you're doing dev work, you may want to load [`index-full.html`](./index-full.html) instead of `index.html`. The `index-full.html` version uses the *non*-minified Javascript from the [`visiterp/src`][terpsrc] directory. You can edit JS files and reload `index-full.html` without an `npm run build` step, which makes for a much faster work loop.
 
 If you edit the Typescript files (`*.ts` and `*.tsx`), you *do* have to recompile them, even when playing from `index-full.html`. You'll want the following command:
 
