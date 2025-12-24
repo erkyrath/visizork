@@ -68,7 +68,7 @@ Code specific to parsing and displaying Zork 1.
 
 ### The [`src/visi`](./src/visi) directory
 
-This is a symlink to `visiterp/src/visi`. See below. It's convenient for compilation if all the source files are at the same depth.
+This is a symlink to `visiterp/src/visi`; see below. (It's convenient for compilation if all the source files are at the same depth.)
 
 ### The [`visiterp`][visiterp] submodule
 
