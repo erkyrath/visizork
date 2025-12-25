@@ -20,19 +20,17 @@
 # Strings (high memory): $10B16 / 68374
 
 
-# Source files in presentation order. The second number is the order that
-# code is generated in the game file. (Which is the same order that the
-# files are included, but we specify it anyway.)
-SourceFile 1 zork1.zil     1
-SourceFile 2 1actions.zil  10
-SourceFile 3 1dungeon.zil  4
-SourceFile 4 gclock.zil    6
-SourceFile 5 gglobals.zil  5
-SourceFile 6 gmacros.zil   2
-SourceFile 7 gmain.zil     7
-SourceFile 8 gparser.zil   8
-SourceFile 9 gsyntax.zil   3
-SourceFile 10 gverbs.zil   9
+# Source files in presentation order.
+SourceFile 1 zork1.zil
+SourceFile 2 1actions.zil
+SourceFile 3 1dungeon.zil
+SourceFile 4 gclock.zil
+SourceFile 5 gglobals.zil
+SourceFile 6 gmacros.zil
+SourceFile 7 gmain.zil
+SourceFile 8 gparser.zil
+SourceFile 9 gsyntax.zil
+SourceFile 10 gverbs.zil
 
 Object 1 HANDS
 Object 2 ZORKMID
