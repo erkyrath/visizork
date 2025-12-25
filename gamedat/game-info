@@ -19,6 +19,10 @@
 # Functions (high memory): $4E37 / 20023
 # Strings (high memory): $10B16 / 68374
 
+
+# Source files in presentation order. The second number is the order that
+# code is generated in the game file. (Which is the same order that the
+# files are included, but we specify it anyway.)
 SourceFile 1 zork1.zil     1
 SourceFile 2 1actions.zil  10
 SourceFile 3 1dungeon.zil  4
