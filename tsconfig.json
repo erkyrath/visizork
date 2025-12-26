@@ -1,5 +1,5 @@
 {
-  "include": [ "./src/visi/*.tsx", "./src/visi/*.ts", "./src/custom/*.ts" ],
+  "include": [ "./src/visi/*.tsx", "./src/visi/*.ts", "./src/custom/*.ts", "./src/custom/*.tsx" ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
