@@ -39,7 +39,7 @@ export function sorter_for_key(key: number) : (roots:ZObject[], map:Map<number, 
             let sort2 = gamedat_object_treesort.get(o2.onum) ?? 0;
             if (sort1 != sort2)
                 return sort1 - sort2;
-            if (sort1 == 1)
+            if (sort1 == 1 && distmap !== undefined)
                 return distmap[o1.onum] - distmap[o2.onum];
             return (o1.onum - o2.onum);
         });
