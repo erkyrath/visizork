@@ -168,6 +168,7 @@ export const sourcefile_map: SourceFileMap = {
     J: 'gverbs.zil',
 };
 
+// Presentation order
 export const sourcefile_list: [ string, string ][] = [
     ['zork1.zil',    'A'],
     ['1actions.zil', 'B'],

@@ -20,7 +20,7 @@
 # Strings (high memory): $10B16 / 68374
 
 
-# Source files in presentation order.
+# Source files in arbitrary (alphabetical) order.
 SourceFile 1 zork1.zil
 SourceFile 2 1actions.zil
 SourceFile 3 1dungeon.zil
