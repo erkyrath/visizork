@@ -4,37 +4,37 @@
 #roomlayer rect.Selected { fill:#FFD080; }
 
 @font-face {
-    font-family: &quot;Lato&quot;;
+    font-family: "Lato";
     font-style: normal;
-    src: url(&quot;../font/Lato-Regular.ttf&quot;) format(&quot;truetype&quot;);
+    src: url("../font/Lato-Regular.ttf") format("truetype");
 }
 @font-face {
-    font-family: &quot;Lato&quot;;
+    font-family: "Lato";
     font-style: italic;
-    src: url(&quot;../font/Lato-Italic.ttf&quot;) format(&quot;truetype&quot;);
+    src: url("../font/Lato-Italic.ttf") format("truetype");
 }
 @font-face {
-    font-family: &quot;Lato&quot;;
+    font-family: "Lato";
     font-style: normal;
     font-weight: bold;
-    src: url(&quot;../font/Lato-Bold.ttf&quot;) format(&quot;truetype&quot;);
+    src: url("../font/Lato-Bold.ttf") format("truetype");
 }
 @font-face {
-    font-family: &quot;Lato&quot;;
+    font-family: "Lato";
     font-style: italic;
     font-weight: bold;
-    src: url(&quot;../font/Lato-BoldItalic.ttf&quot;) format(&quot;truetype&quot;);
+    src: url("../font/Lato-BoldItalic.ttf") format("truetype");
 }
 @font-face {
-    font-family: &quot;Courier Prime&quot;;
+    font-family: "Courier Prime";
     font-style: normal;
-    src: url(&quot;../font/CourierPrime-Regular.ttf&quot;) format(&quot;truetype&quot;);
+    src: url("../font/CourierPrime-Regular.ttf") format("truetype");
 }
 @font-face {
-    font-family: &quot;Courier Prime&quot;;
+    font-family: "Courier Prime";
     font-style: normal;
     font-weight: bold;
-    src: url(&quot;../font/CourierPrime-Bold.ttf&quot;) format(&quot;truetype&quot;);
+    src: url("../font/CourierPrime-Bold.ttf") format("truetype");
 }
 </style>
   <defs id="defs1">
@@ -345,6 +345,12 @@
     </g>
     <path id="path182" style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.3;stroke:none;stroke-width:1.27602;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers" d="m 346.07805,38.654516 c 0.13485,-0.15647 0.30867,-0.27171 0.49009,-0.35705 -0.56273,-1.67044 -0.8716,-2.002397 -0.40559,-3.920317 h 5.90732 c 0.58686,1.67714 0.26653,2.454727 -0.39219,4.181447 0.0326,0.03 0.0635,0.062 0.0927,0.0959 0.48837,0.56667 1.04429,2.92433 0.82051,4.544407 -0.73584,-1.09482 -1.46097,-2.036787 -1.93938,-2.497987 -0.17037,-0.16424 -0.32339,-0.42751 -0.44989,-0.69879 -0.29621,0.12685 -0.64647,0.22893 -1.05477,0.27779 -0.63147,0.0755 -1.12025,-0.084 -1.48426,-0.31177 -0.12944,0.28304 -0.28818,0.56171 -0.46561,0.73277 -0.47841,0.4612 -1.319,1.551467 -1.89262,2.544757 -0.65518,-1.00385 -0.12164,-3.625887 0.77369,-4.591157 z m 1.01807,0.14922 c 0.52214,-0.59687 1.33068,-1.38032 1.96328,-1.38027 0.63259,5e-5 1.46851,0.71945 1.84147,1.295 0.0933,-0.59687 -0.42831,-1.73599 -0.42831,-1.73599 0,0 -0.70549,0.0697 -1.39977,0.1079 -0.69427,0.0382 -1.53029,-0.0652 -1.53029,-0.0652 0,0 -0.27855,0.862 -0.44638,1.77863 z"/>
     <path id="path49" style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.24;stroke:none;stroke-width:0.165553;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;marker-end:url(#marker46);paint-order:fill markers stroke;stop-color:#000000;stop-opacity:1" d="M 276.02656 442.91249 L 275.39817 443.04479 L 265.5502 450.0671 L 264.2526 448.93177 L 263.8888 449.22942 L 264.90631 450.5265 L 263.525 451.51145 C 263.35963 451.70989 263.75651 452.669 264.05416 452.70208 L 265.50214 451.51817 L 266.13776 452.83437 L 266.63385 452.60286 L 266.0897 451.03758 L 276.02656 442.91249 z "/>
+  </g>
+  <g id="layer2">
+    <g id="mob-thief" transform="translate(15.875,15.875)">
+      <rect style="fill:#fad2dc;fill-opacity:1;stroke:#000000;stroke-width:1.05833;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" id="rect33" width="12.170835" height="5.2916751" x="-6.085422" y="-2.6458466" ry="2.6341505"/>
+      <text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.13293px;line-height:1.3;font-family:Lato;-inkscape-font-specification:'Lato Bold';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:normal;display:inline;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.740063;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers" x="0.0041163671" y="1.0478791" id="text46-7"><tspan id="tspan46-6" style="stroke-width:0.740063" x="0.0041162847" y="1.0478791">Thief</tspan></text>
+    </g>
   </g>
   <g id="labellayer" style="display:inline">
     <text xml:space="preserve" style="font-style:normal;font-weight:bold;font-size:4.23333px;line-height:1.3;font-family:Lato;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:normal;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none" x="243.41667" y="170.92097" id="text33"><tspan id="tspan33" x="243.41667" y="170.92097">Canyon</tspan><tspan x="243.41667" y="176.4243" id="tspan34">View</tspan></text>
