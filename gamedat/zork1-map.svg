@@ -52,6 +52,7 @@
   <style
      id="style1">#roomlayer rect { fill:#F8F0E8; stroke:#000; stroke-width:0.7; }
 #roomlayer rect.Selected { fill:#FFD080; }
+#mobilelayer rect.Offstage { display:none; }
 </style>
   <defs
      id="defs1">
@@ -1951,7 +1952,7 @@
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer2"
+     id="mobilelayer"
      inkscape:label="Mobiles">
     <g
        id="mob-thief"
