@@ -8,35 +8,35 @@ fontcss = '''
 @font-face {
     font-family: "Lato";
     font-style: normal;
-    src: url("../font/Lato-Regular.ttf") format("truetype");
+    src: url("../visiterp/font/Lato-Regular.ttf") format("truetype");
 }
 @font-face {
     font-family: "Lato";
     font-style: italic;
-    src: url("../font/Lato-Italic.ttf") format("truetype");
+    src: url("../visiterp/font/Lato-Italic.ttf") format("truetype");
 }
 @font-face {
     font-family: "Lato";
     font-style: normal;
     font-weight: bold;
-    src: url("../font/Lato-Bold.ttf") format("truetype");
+    src: url("../visiterp/font/Lato-Bold.ttf") format("truetype");
 }
 @font-face {
     font-family: "Lato";
     font-style: italic;
     font-weight: bold;
-    src: url("../font/Lato-BoldItalic.ttf") format("truetype");
+    src: url("../visiterp/font/Lato-BoldItalic.ttf") format("truetype");
 }
 @font-face {
     font-family: "Courier Prime";
     font-style: normal;
-    src: url("../font/CourierPrime-Regular.ttf") format("truetype");
+    src: url("../visiterp/font/CourierPrime-Regular.ttf") format("truetype");
 }
 @font-face {
     font-family: "Courier Prime";
     font-style: normal;
     font-weight: bold;
-    src: url("../font/CourierPrime-Bold.ttf") format("truetype");
+    src: url("../visiterp/font/CourierPrime-Bold.ttf") format("truetype");
 }
 '''
 
