@@ -273,6 +273,7 @@ interface CommentaryLineMap {
 export const gamedat_ids = (window as any).gamedat_ids;
 
 export const gamedat_property_nums = (window as any).gamedat_property_nums as Map<number, PropertyData>;
+export const gamedat_property_names = (window as any).gamedat_property_names as Map<string, PropertyData>;
 export const gamedat_attribute_nums = (window as any).gamedat_attribute_nums as Map<number, AttributeData>;
 export const gamedat_attribute_names = (window as any).gamedat_attribute_names as Map<string, AttributeData>;
 export const gamedat_global_nums = (window as any).gamedat_global_nums as Map<number, GlobalData>;
