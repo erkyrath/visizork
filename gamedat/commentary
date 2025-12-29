@@ -58,6 +58,8 @@ glob:false-flag: Always false. See [*obj:kitchen].
 
 glob:load-allowed: The total weight you can carry (see [rtn:WEIGHT]). This is normally the same as [~glob:LOAD-MAX], but it decreases when you’re wounded.
 
+glob:low-direction: Properties with this value and up are directions.
+
 attr:onbit: Set for glowing objects and naturally-illuminated rooms.
 	This is different from [attr:LIGHTBIT], which indicates objects that the player can `TURN ON`. See also [attr:FLAMEBIT], objects which are on fire.
 

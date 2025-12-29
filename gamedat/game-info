@@ -502,7 +502,7 @@ Global 149 CYCLOPS-FLAG
 Global 150 FALSE-FLAG
 # 150 used to block chimney down
 Global 151 SCORE-MAX
-Global 152 LOW-DIRECTION  table created from DIRECTIONS
+Global 152 LOW-DIRECTION
 Global 153 BIGFIX
 Global 154 PREPOSITIONS  table created from SYNTAX
 Global 155 ACTIONS  table created from SYNTAX
