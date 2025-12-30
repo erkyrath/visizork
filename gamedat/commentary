@@ -182,6 +182,10 @@ obj:bones: The idea of encountering your earlier self’s luckless corpse will r
 
 obj:lowered-basket: The object names are misleading. `RAISED-BASKET` represents the basket at *this* end of the shaft, where you can interact with it. `LOWERED-BASKET` represents the basket at the *other* end of the shaft. When you raise or lower the basket, the two objects swap places.
 
+glob:LIGHT-SHAFT: The score bonus for bringing light to the [dark room|~obj:LOWER-SHAFT].
+
+glob:EMPTY-HANDED: This is only checked for the passage between the [~obj:TIMBER-ROOM] and the [~obj:LOWER-SHAFT]. Therefore it is only computed when in those two rooms. See [~rtn:NO-OBJS].
+
 rtn:maze-diodes: This function defines one-way down-crawls in the maze. (Diodes are electrical components that pass current only one way.)
 
 obj:maze-1: Everybody loves a maze.
