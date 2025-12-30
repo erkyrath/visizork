@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject } from '../visi/zstate';
-import { ObjectData } from './gamedat';
+import { ObjectData, GlobalData } from './gamedat';
 import { gamedat_ids, gamedat_distances, gamedat_object_treesort } from './gamedat';
 
 export function contains_label(obj: ObjectData) : string
@@ -66,4 +66,9 @@ export function ObjListSorter({ followKey, setFollowKey } : { followKey:number, 
             <label htmlFor="followthief_radio">Thief</label>
         </div>
     );
+}
+
+export function global_value_display(tag: string, value: number, glo: GlobalData) : JSX.Element|null
+{
+    return null;
 }
