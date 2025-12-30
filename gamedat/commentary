@@ -4,7 +4,7 @@ ABOUT: Welcome to the commentary track!
 
 const:ZORK-NUMBER: The number of the Zorks shall be one.
 	(“Three, sir!”)
-	Yes, but *this* one is... one.
+	Yes, but *this* one is Zork 1.
 
 rtn:V-VERSION: Print the title, release, and serial number.
 	This function is shared between all three Zorks, which is why it has code to print all three titles. The passages meant for Zork 2 and 3 were ignored when compiling Zork 1. (Skipped code is shown in grey.)
@@ -58,7 +58,7 @@ glob:false-flag: Always false. See [*obj:kitchen].
 
 glob:load-allowed: The total weight you can carry (see [rtn:WEIGHT]). This is normally the same as [~glob:LOAD-MAX], but it decreases when you’re wounded.
 
-glob:low-direction: Properties with this value and up are directions.
+glob:low-direction: Properties with this value and above are directions.
 
 attr:onbit: Set for glowing objects and naturally-illuminated rooms.
 	This is different from [attr:LIGHTBIT], which indicates objects that the player can `TURN ON`. See also [attr:FLAMEBIT], objects which are on fire.
