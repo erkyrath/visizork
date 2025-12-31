@@ -18,20 +18,6 @@ export function signed_zvalue(val: number) : number
     return (val < 32768) ? val : (val - 65536);
 }
 
-// Sorry, this map is in a lot of places. Redundantly.
-const sourcefile_key_map: any = {
-    'ZORK1':    'A',
-    '1ACTIONS': 'B',
-    '1DUNGEON': 'C',
-    'GCLOCK':   'D',
-    'GGLOBALS': 'E',
-    'GMACROS':  'F',
-    'GMAIN':    'G',
-    'GPARSER':  'H',
-    'GSYNTAX':  'I',
-    'GVERBS':   'J',
-};
-
 export type SourceLoc = {
     filekey: string;
     line: number;
@@ -60,7 +46,7 @@ export function sourceloc_for_srctoken(val: string) : string|undefined
     let pos = val.indexOf('-');
     if (pos < 0)
         return undefined;
-    let filekey = sourcefile_key_map[val.slice(0, pos)];
+    let filekey = sourcefile_capkey_map[val.slice(0, pos)];
     if (!filekey)
         return undefined;
     return filekey+':'+val.slice(pos+1)+':1';
@@ -155,31 +141,18 @@ interface SourceFileMap {
     [key: string]: string;
 }
 
-export const sourcefile_map: SourceFileMap = {
-    A: 'zork1.zil',
-    B: '1actions.zil',
-    C: '1dungeon.zil',
-    D: 'gclock.zil',
-    E: 'gglobals.zil',
-    F: 'gmacros.zil',
-    G: 'gmain.zil',
-    H: 'gparser.zil',
-    I: 'gsyntax.zil',
-    J: 'gverbs.zil',
-};
-
-// Presentation order
-export const sourcefile_list: [ string, string ][] = [
-    ['zork1.zil',    'A'],
-    ['1actions.zil', 'B'],
-    ['1dungeon.zil', 'C'],
-    ['gmain.zil',    'G'],
-    ['gmacros.zil',  'F'],
-    ['gglobals.zil', 'E'],
-    ['gparser.zil',  'H'],
-    ['gsyntax.zil',  'I'],
-    ['gverbs.zil',   'J'],
-    ['gclock.zil',   'D'],
+// Presentation order. Filenames must match game-info!
+export const sourcefile_presentation_list: string[] = [
+    'zork1.zil',
+    '1actions.zil',
+    '1dungeon.zil',
+    'gmain.zil',
+    'gmacros.zil',
+    'gglobals.zil',
+    'gparser.zil',
+    'gsyntax.zil',
+    'gverbs.zil',
+    'gclock.zil',
 ];
 
 export type AttributeData = {
@@ -272,6 +245,9 @@ interface CommentaryLineMap {
 
 export const gamedat_ids = (window as any).gamedat_ids;
 
+const sourcefile_capkey_map: SourceFileMap = (window as any).gamedat_sourcefile_capkeymap;
+export const gamedat_sourcefile_keymap: SourceFileMap = (window as any).gamedat_sourcefile_keymap;
+export const gamedat_sourcefile_revkeymap: SourceFileMap = (window as any).gamedat_sourcefile_revkeymap;
 export const gamedat_property_nums = (window as any).gamedat_property_nums as Map<number, PropertyData>;
 export const gamedat_property_names = (window as any).gamedat_property_names as Map<string, PropertyData>;
 export const gamedat_attribute_nums = (window as any).gamedat_attribute_nums as Map<number, AttributeData>;
