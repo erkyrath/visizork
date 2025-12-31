@@ -10,7 +10,8 @@ filename=$1
 case $filename in
 
 gamedat.js)
-  src="src/game/properties.js \
+  src="src/game/filenames.js \
+       src/game/properties.js \
        src/game/attributes.js \
        src/game/verbs.js \
        src/game/globals.js \
