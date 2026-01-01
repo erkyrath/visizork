@@ -25,6 +25,7 @@ This contains the Zork game file itself, plus a bonanza of information about how
 - [`zork1-i6.inf`](./gamedat/zork1-i6.inf): A translation of the disassembled game code into Inform 6 source, done by Allen Garvin. (Original file [here][z1i6].) We're not going to use this directly, but (if you know I6) it's very helpful in understanding the ZIL behavior.
 - [`zork1.reform`](./gamedat/zork1.reform): A text file mapping game object numbers, global variables, and other numeric values to human-readable names. This is taken from the [analysis work][reform] done in 2007 by Allen Garvin, Ben Rudiak-Gould, and Ethan Dicks. (Original file [here][z1reform].)
 - [`game-info`](./gamedat/game-info): A text file mapping game object numbers, global variables, and other numeric values to their ZIL source names. I created this in the course of building the Visible Zorker. It draws on *all* of the above data sources.
+- [`zork1-map.svg`](./gamedat/zork1-map.svg): The map image. This is an Inkscape document with a rather fussy layout.
 - [`commentary`](./gamedat/commentary): A text file containing my commentary and notes on the Zork source.
 
 [masterpieces]: https://archive.org/details/InfocomClassicTextAdventureMasterpieces1996JewelCaseArt
