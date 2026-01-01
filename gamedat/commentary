@@ -313,3 +313,11 @@ src:1ACTIONS-3333: This line is supposed to reduce the thief’s strength once a
 
 glob:THIEF-ENGROSSED: Set if you have distracted the thief by giving him a treasure.
 	*Bug:* This is also supposed to reduce his effective strength to 2 on the next blow (see [*rtn:VILLAIN-STRENGTH]). But it [turns out|https://intfiction.org/t/in-zork-i-does-thief-engrossed-actually-work/77855] that the flag is cleared by the “thief distracted” check. By the time he attacks you, his strength is back to normal!
+
+src:1ACTIONS-3995: Surprisingly, it *is* possible to get killed while already dead. See [rtn:I-MAINT-ROOM].
+
+src:1ACTIONS-1318: You can drown in the [~obj:MAINTENANCE-ROOM] even if you’re [already dead|src:1ACTIONS-3995]!
+	(c:Torbjörn Andersson)
+
+glob:DROWNINGS: The last two entries in this table are never printed. The water is “up to your neck” when [~glob:WATER-LEVEL] is 13 (the value is [divided by two|~src:1ACTIONS-1318]), and then you drown at 14. The final entries are left over from MIT Zork.
+	(c:Torbjörn Andersson)
