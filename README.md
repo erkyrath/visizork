@@ -12,7 +12,7 @@ To try the Visible Zorker, [play it here][visizork]. For more about the intent a
 
 ## The contents of this repository
 
-This repo contains quite a lot of material relating to Zork. Some of this is needed to run the game; some is used in the app UI; some was just useful to me in creating the app.
+This repo contains quite a lot of material relating to Zork 1. Some of this is needed to run the game; some is used in the app UI; some was just useful to me in creating the app.
 
 ### The [`gamedat`](./gamedat) directory
 
@@ -160,10 +160,10 @@ This recompiles Typescript but skips the JS minification steps, which saves a lo
 If you want to rebuild the game data files, do:
 
 ```
-python3 visiterp/pyana/parse.py --game zork1-r88-s840726 -z gamesrc/zork1.zil --obj --dict --txd --gamedat
-python3 visiterp/pyana/parse.py --game zork1-r88-s840726 -z gamesrc/zork1.zil --src
-python3 visiterp/pyana/comgen.py gamedat/commentary
-python3 mapparse.py
+npm run recreate-gamedata
+npm run recolor-source
+npm run regenerate-commentary
+npm run reparse-map
 ```
 
 There's no reason for you to do this, but I'm documenting it anyway.
