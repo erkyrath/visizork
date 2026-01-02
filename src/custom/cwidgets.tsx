@@ -4,6 +4,8 @@ import { useState, useContext, createContext } from 'react';
 import { ZObject } from '../visi/zstate';
 import { ObjectData, GlobalData } from './gamedat';
 import { gamedat_ids, gamedat_distances, gamedat_object_treesort } from './gamedat';
+import { ArgShowObject, ArgShowProperty } from '../visi/actshowers';
+import { StackCallCtx } from '../visi/context';
 
 export function contains_label(obj: ObjectData) : string
 {
@@ -72,3 +74,28 @@ export function global_value_display(tag: string, value: number, glo: GlobalData
 {
     return null;
 }
+
+export function stack_call_arg_display(tag: string, value: number) : JSX.Element|null
+{
+    switch (tag) {
+        
+    case 'PERFORMO':
+        let ctx = useContext(StackCallCtx);
+        if (ctx.args[0] == 137) {      /* verb WALK */
+            return (
+                <ArgShowProperty value={ value } />
+            );
+        }
+        return (
+            <ArgShowObject value={ value } />
+        )
+        
+    case 'PERFORMI':
+        return (
+            <ArgShowObject value={ value } />
+        )
+    }
+
+    return null;
+}
+
