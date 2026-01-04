@@ -33,7 +33,7 @@ function refresh_batteries(engine: GnustoEngine)
 
     let pos = report.globals[C_INTS.num];
     let countpos = 0;
-    while (pos+6 < report.timertable.length) {
+    while (pos+5 < report.timertable.length) {
         let addr = report.timertable[pos+4] * 0x100 + report.timertable[pos+5];
         if (unpack_address(addr) == I_LANTERN.addr) {
             let ctableaddr = report.globals[C_TABLE.num];
