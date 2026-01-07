@@ -173,6 +173,15 @@ obj:songbird: The songbird is always present but never in reach. Except when usi
 
 obj:teeth: Why teeth? Because you can `BRUSH TEETH`, which isn’t interesting, but then you can `BRUSH TEETH WITH GUNK`, because the tube is described as “like a tube of toothpaste”. Spoiler: it’s a bad idea.
 
+src:1DUNGEON-22: But why is `OVERBOARD` listed as a synonym of `TEETH`? Because the game accepts `THROW OBJECT OVERBOARD` (if you’re in the boat), and it does it by a terrible hack.
+	The grammar table includes [THROW OBJECT OBJECT|~src:GSYNTAX-475]. The [rtn:V-OVERBOARD] routine then checks whether the second object is the `TEETH`. The `TEETH` are global, meaning they’re always available. By sneaking the synonym `OVERBOARD` into the teeth, the game can check the validity of that second word without defining a whole new object.
+
+rtn:V-OVERBOARD: Why the `TEETH` check? Because of a [sneaky grammar hack|src:1DUNGEON-22].
+	This routine has a rather silly bug. You can type `THROW OBJECT OVERBOARD` (if you’re sailing the boat), but nothing checks that the object is *portable*. So you can throw `GRUE` or `HANDS` or `ADVENTURER` overboard, with unfortunate effects on the game grammar.
+	(c:Torbjörn Andersson)
+
+src:GSYNTAX-475: The second object has to be `OVERBOARD`. See the note about [TEETH|src:1DUNGEON-22].
+
 obj:granite-wall: This object is global, but the granite wall is described as being between the [~obj:NORTH-TEMPLE] and the [~obj:TREASURE-ROOM]. And then the [~obj:SLIDE-ROOM] has the *words* “Granite Wall”.
 	What’s going on? Well, it turns out that you can transport yourself through the granite wall. Typing the magic word `TREASURE` (or `TEMPLE`) will move you from the `NORTH-TEMPLE` to the `TREASURE-ROOM` and back. This is completely ridiculous as a puzzle – *nobody* figures it out – so it’s good that there are two other ways to get past the [~obj:CYCLOPS].
 
