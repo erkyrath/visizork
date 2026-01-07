@@ -42,7 +42,7 @@ glob:lit: Whether the current location has light. Set by calling the [rtn:LIT?] 
 
 glob:always-lit: Whether the player is inherently emitting light. This is set when you are dead, so that you can move spectrally around the world without carrying a light source.
 
-rtn:LIT?: Determine whether the current location has light. This is true if the room or anything in it has [attr:ONBIT]. It's also true if the player is [glob:ALWAYS-LIT].
+rtn:LIT?: Determine whether the current location has light. This is true if the room or anything in it has [attr:ONBIT]. It’s also true if the player is [glob:ALWAYS-LIT].
 	This routine is always used to set the [glob:LIT] variable.
 
 glob:sprayed?: Whether you’ve been sprayed with grue repellant. Sadly, the grue repellant is in Zork 2, so this will never be set.
