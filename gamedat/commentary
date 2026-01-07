@@ -84,7 +84,7 @@ attr:sacredbit: Indicates objects the thief will not touch, and rooms where the 
 src:GVERBS-1593: Not until Sorcerer!
 
 src:1actions-707: If you throw the [~obj:TROLL] a weapon, he has a 20% chance of eating it and dying. (Taking the weapon with him.)
-	I’ve seen it argued that this was the intended way to kill the troll, back before randomized combat was implemented. However, we have no version of (MIT) Zork that early in development.
+	In the very earliest version of MIT Zork (June 1977), this was the intended way to kill the troll. (He had a higher chance of eating the knife.) By December 1977, this was replaced with the familiar hand-to-hand combat code. But at some point the “internal hemorrhage” was added back into the commercial Zork 1 as an alternate solution.
 
 rtn:ROB-MAZE: If you leave objects around the maze (as a mapping aid), and the thief discovers them, he is particularly likely to mess with them. He taunts you about it, too.
 
