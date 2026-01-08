@@ -33,7 +33,12 @@ export function init(runnerref: any)
     set_body_pref_arrange(initprefs.arrange);
     set_body_pref_theme(initprefs.theme);
 
-    set_app_context(engine, initprefs);
+    let launchtoken: string|undefined;
+    if (window.location.hash && window.location.hash.length > 1) {
+        launchtoken = window.location.hash.slice(1);
+    }
+    
+    set_app_context(engine, initprefs, launchtoken);
     
     const appel = document.getElementById('appbody') as HTMLElement;
     let root = createRoot(appel);
