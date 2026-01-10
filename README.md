@@ -10,6 +10,29 @@ To try the Visible Zorker, [play it here][visizork]. For more about the intent a
 [post]: https://blog.zarfhome.com/2025/01/the-visible-zorker
 [visizork]: https://eblong.com/infocom/visi-zork1/
 
+### What to do
+
+Type commands in the left pane. (If you’re not familiar with parser games, [here’s a quick intro][prifcard].) As the game responds, the panes on the right will display the current game state and the code that is executing.
+
+[prifcard]: https://pr-if.org/doc/play-if-card/
+
+Hit the `?` button in the top right pane for more help.
+
+### Deep links
+
+To refer to specific features of Zork from an external web site, use a link like those below. The app will launch with that item highlighted in the source pane. If a commentary item is associated with that source location, it will be displayed as well.
+
+Deep link formats:
+
+- https://eblong.com/infocom/visi-zork1/#OBJ:EGG
+- https://eblong.com/infocom/visi-zork1/#RTN:GO
+- https://eblong.com/infocom/visi-zork1/#GLOB:HERE
+- https://eblong.com/infocom/visi-zork1/#CONST:ZORK-NUMBER
+
+You can also specify any source line by filename and line number:
+
+- https://eblong.com/infocom/visi-zork1/#SRC:GVERBS-90
+
 ## The contents of this repository
 
 This repo contains quite a lot of material relating to Zork 1. Some of this is needed to run the game; some is used in the app UI; some was just useful to me in creating the app.
