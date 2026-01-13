@@ -121,6 +121,7 @@ glob:lucky: Set false if you break a mirror. Yes, this hurts probability checks;
 src:1ACTIONS-940: This global is also defined in [gverbs.zil|*glob:lucky]. The compiler seems to have been okay with this. (Don’t worry, `T` and `1` are the same value.)
 
 rtn:score-upd: Increases (or decreases) your score. Also checks whether you’ve reached 350, which sets [glob:WON-FLAG] and unlocks the secret [~obj:MAP] and the [~obj:STONE-BARROW].
+	(You can get your score up to 352 by exploiting a [bug|src:1ACTIONS-3798]. Sadly, this routine only checks if your score is `EQUAL?` to 350. Going over will not end the game!)
 
 glob:lamp-table: This table shows the successive stages of the lamp going out. The *first* stage is 200 turns, which is set in [~rtn:GO], not here.
 
@@ -336,7 +337,7 @@ glob:THIEF-ENGROSSED: Set if you have distracted the thief by giving him a treas
 
 src:1ACTIONS-3995: Surprisingly, it *is* possible to get killed while already dead. See [I-MAINT-ROOM|src:1ACTIONS-1318].
 
-src:1ACTIONS-1318: You can drown in the [~obj:MAINTENANCE-ROOM] even if you’re [already dead|src:1ACTIONS-3995]! See [this post|https://intfiction.org/t/causes-of-zombification-in-zork-i-and-possibly-other-infocom-games/53439/27].
+src:1ACTIONS-1318: You can drown in the [~obj:MAINTENANCE-ROOM] even if you’re [already dead|src:1ACTIONS-3995]! See [this forum post|https://intfiction.org/t/causes-of-zombification-in-zork-i-and-possibly-other-infocom-games/53439/27].
 	(c:Torbjörn Andersson)
 
 glob:DROWNINGS: The last two entries in this table are never printed. The water is “up to your neck” when [~glob:WATER-LEVEL] is 13 (the value is [divided by two|~src:1ACTIONS-1318]), and then you drown at 14. The final entries are left over from MIT Zork.
