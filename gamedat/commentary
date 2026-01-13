@@ -132,7 +132,12 @@ rtn:i-candles: This routine sits in the timers table. When it fires, it prints a
 	Even though the candles begin the game lit, they politely don’t start counting down until you pick them up.
 
 rtn:i-sword: This routine runs every turn that you are carrying the sword. It checks adjacent rooms for enemies and displays the “sword is glowing” message.
-	The sword’s glow level is stored in its `TVALUE` property, which is normally used for treasure values. This might lead to a score exploit if you could put the glowing sword in the trophy case. But that’s impossible.
+	The sword’s glow level is stored in its `TVALUE` property, which is normally used for treasure values. This might lead to a score exploit if you could put the glowing sword in the trophy case. But that’s impossible, right?
+	Wrong! See [this bug|src:1ACTIONS-3798].
+
+src:1ACTIONS-3798: The sword’s glow level is only updated while you’re carrying it. If you put it in a large container (the [~obj:COFFIN] or [~obj:INFLATED-BOAT]) and carry *that* around, the sword will glow forever.
+	Since the glow level is stored in its `TVALUE` property, this means you can put it into the trophy case and score two “impossible” points. This lets you win the game with 352 points. See [this forum post|https://intfiction.org/t/causes-of-zombification-in-zork-i-and-possibly-other-infocom-games/53439/36].
+	(c:Torbjörn Andersson)
 
 rtn:i-thief: This routine is the [~obj:THIEF]’s heartbeat; it runs every turn until you kill him. (Or knock him unconscious.) It handles all of the thief’s movement and, well, thieving activity.
 	The thief moves in a regular round through the dungeon. This is not defined by room connections; rather, it’s the order that rooms appear in the [~obj:ROOMS] container.
