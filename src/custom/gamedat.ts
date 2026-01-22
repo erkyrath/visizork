@@ -203,6 +203,10 @@ export type DictWordData = {
     num: number;
     text: string;
     flags: string;
+    prepnum?: number;
+    adjnum?: number;
+    verbnum?: number;
+    dirnum?: number;
 };
 
 export type RoutineData = {
