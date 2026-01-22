@@ -13,7 +13,7 @@ gamedat.js)
   src="src/game/filenames.js \
        src/game/properties.js \
        src/game/attributes.js \
-       src/game/verbs.js \
+       src/game/actions.js \
        src/game/globals.js \
        src/game/constants.js \
        src/game/objects.js \
