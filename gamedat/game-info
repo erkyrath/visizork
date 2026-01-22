@@ -470,14 +470,14 @@ Global 116 P-ONEOBJ  WORD
 Global 117 P-TABLE
 Global 118 PRSO  OBJ
 Global 119 PRSI  OBJ
-Global 120 PRSA  VERB
+Global 120 PRSA  ACTION
 Global 121 GWIM-DISABLE
 # 121 almost unused
 Global 122 P-NOT-HERE
 Global 123 P-MULT
 Global 124 L-PRSI  OBJ
 Global 125 L-PRSO  OBJ
-Global 126 L-PRSA  VERB
+Global 126 L-PRSA  ACTION
 Global 127 P-WON
 Global 128 PLAYER  OBJ
 Global 129 CLOCK-WAIT
@@ -517,7 +517,7 @@ RoutineType - CLAUSE - - WORD
 RoutineType - HELD? OBJ
 RoutineType - JIGS-UP STR -
 RoutineType - OPEN-CLOSE OBJ STR STR
-RoutineType - PERFORM VERB PERFORMO PERFORMI
+RoutineType - PERFORM ACTION PERFORMO PERFORMI
 RoutineType - REMARK - OBJ OBJ
 RoutineType - ROB OBJ OBJ -
 RoutineType - VILLAIN-RESULT OBJ - -
