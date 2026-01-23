@@ -8,7 +8,7 @@
     "build": "npm run minify && npm run buildts",
     "buildts": "npx tsc && npx rollup -c",
     "minify": "./minify gamedat.js && ./minify lib.js && ./minify glkio.js && ./minify ifvms.js && ./minify gnusto.js && ./minify parchment.js",
-    "recreate-gamedata": "python3 visiterp/pyana/parse.py --game zork1-r88-s840726 -z gamesrc/zork1.zil --obj --dict --txd --gamedat",
+    "recreate-gamedata": "python3 visiterp/pyana/parse.py --game zork1-r88-s840726 -z gamesrc/zork1.zil --obj --dict --grammar --txd --gamedat",
     "recolor-source": "python3 visiterp/pyana/parse.py --game zork1-r88-s840726 -z gamesrc/zork1.zil --src",
     "regenerate-commentary": "python3 visiterp/pyana/comgen.py gamedat/commentary",
     "reparse-map": "python3 visiterp/pyana/mapparse.py gamedat/zork1-map.svg"
