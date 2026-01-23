@@ -5,6 +5,7 @@ import { ReactCtx } from '../visi/context';
 
 import { CallActivity } from '../visi/activity';
 import { TimerTable } from '../visi/timers';
+import { GrammarTable } from '../visi/grammar';
 import { GameMap } from '../visi/map';
 import { ObjectTree } from '../visi/objtree';
 import { ObjectAttrList, ObjectPropList } from '../visi/objlist';
@@ -20,6 +21,7 @@ const tab_list = [
     [ 'map', 'Map' ],
     [ 'globals', 'State' ],
     [ 'timers', 'Timers' ],
+    [ 'grammar', 'Grammar' ],
     [ 'filelist', 'Files' ],
     [ 'about', '?' ],
 ];
@@ -72,6 +74,9 @@ export function TabbedPane()
         break;
     case 'timers':
         tabcontent = <TimerTable />;
+        break;
+    case 'grammar':
+        tabcontent = <GrammarTable />;
         break;
     case 'filelist':
         tabcontent = <SourceFileList />;
