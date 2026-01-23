@@ -19,6 +19,7 @@ gamedat.js)
        src/game/objects.js \
        src/game/strings.js \
        src/game/dictwords.js \
+       src/game/grammar.js \
        src/game/routines.js \
        src/game/distances.js \
        src/game/source.js \
