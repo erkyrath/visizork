@@ -209,6 +209,13 @@ export type DictWordData = {
     dirnum?: number;
 };
 
+export type ActionData = {
+    num: number;
+    name: string;
+    acrtn?: number;
+    preacrtn?: number;
+}
+
 export type RoutineData = {
     name: string;
     addr: number;
@@ -274,7 +281,7 @@ export const gamedat_dictword_addrs = (window as any).gamedat_dictword_addrs as 
 export const gamedat_dictword_adjs = (window as any).gamedat_dictword_adjs as Map<number, DictWordData>;
 export const gamedat_routine_addrs = (window as any).gamedat_routine_addrs as Map<number, RoutineData>;
 export const gamedat_routine_names = (window as any).gamedat_routine_names as Map<string, RoutineData>;
-export const gamedat_actions = (window as any).gamedat_actions as string[];
+export const gamedat_actions = (window as any).gamedat_actions as ActionData[];
 export const gamedat_sourcefiles = (window as any).gamedat_sourcefiles as SourceLinesMap;
 export const gamedat_distances = (window as any).gamedat_distances as AllDistanceMap;
 export const gamedat_roominfo_names = (window as any).gamedat_roominfo_names as Map<string, MapRoom>;
