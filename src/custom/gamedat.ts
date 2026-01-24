@@ -220,11 +220,12 @@ export type GrammarLineData = {
     num: number;
     addr: number;
     action: number;
-    clauses: GrammarClause[];
+    clauses: GrammarClauseData[];
 };
 
-export type GrammarClause = {
-    prep?: string;
+export type GrammarClauseData = {
+    count?: number;
+    prep?: number;
     attr?: string;
     loc?: string;
 };
