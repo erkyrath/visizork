@@ -19,6 +19,7 @@ window.gamedat_object_treesort = new Map();
 window.gamedat_string_map = new Map();
 window.gamedat_dictword_addrs = new Map();
 window.gamedat_dictword_adjs = new Map();
+window.gamedat_preposition_nums = new Map();
 window.gamedat_grammar_verbnums = new Map();
 window.gamedat_grammar_lines = [];
 window.gamedat_grammar_line_addrs = new Map();
@@ -98,6 +99,10 @@ window.gamedat_ids = {};
             gamedat_grammar_lines.push(ln);
             gamedat_grammar_line_addrs.set(ln.addr, ln);
         }
+    }
+
+    for (let obj of window.gamedat_prepositions) {
+        gamedat_preposition_nums.set(obj.num, obj);
     }
     
     for (let obj of window.gamedat_routines) {
