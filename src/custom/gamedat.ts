@@ -310,6 +310,7 @@ export const gamedat_preposition_nums = (window as any).gamedat_preposition_nums
 export const gamedat_grammar_verbnums = (window as any).gamedat_grammar_verbnums as Map<number, GrammarVerbData>;
 export const gamedat_grammar_lines = (window as any).gamedat_grammar_lines as GrammarLineData[];
 export const gamedat_grammar_line_addrs = (window as any).gamedat_grammar_line_addrs as Map<number, GrammarLineData>;
+export const gamedat_grammaractionlines = (window as any).gamedat_grammaractionlines as number[];
 export const gamedat_routine_addrs = (window as any).gamedat_routine_addrs as Map<number, RoutineData>;
 export const gamedat_routine_names = (window as any).gamedat_routine_names as Map<string, RoutineData>;
 export const gamedat_actions = (window as any).gamedat_actions as ActionData[];
