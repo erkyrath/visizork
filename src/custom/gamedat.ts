@@ -217,6 +217,7 @@ export type GrammarVerbData = {
 };
 
 export type GrammarLineData = {
+    num: number;
     addr: number;
     action: number;
     clauses: GrammarClause[];
