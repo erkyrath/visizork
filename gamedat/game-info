@@ -514,6 +514,7 @@ Global 157 VERBS  table created from SYNTAX
 # Argument type info for routines that are hard to guess.
 
 RoutineType - CLAUSE - - WORD
+RoutineType - DO-WALK PROP
 RoutineType - GWIM - - PREP
 RoutineType - HELD? OBJ
 RoutineType - JIGS-UP STR -
