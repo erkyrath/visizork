@@ -465,7 +465,7 @@ Global 111 WINNER  OBJ
 Global 112 P-DIR
 Global 113 P-LEN
 Global 114 P-CCSRC
-Global 115 P-SYNTAX
+Global 115 P-SYNTAX  GLINE
 Global 116 P-ONEOBJ  WORD
 Global 117 P-TABLE
 Global 118 PRSO  OBJ
@@ -518,9 +518,11 @@ RoutineType - GWIM - - PREP
 RoutineType - HELD? OBJ
 RoutineType - JIGS-UP STR -
 RoutineType - OPEN-CLOSE OBJ STR STR
+RoutineType - ORPHAN GLINE GLINE
 RoutineType - PERFORM ACTION PERFORMO PERFORMI
 RoutineType - REMARK - OBJ OBJ
 RoutineType - ROB OBJ OBJ -
+RoutineType - SYNTAX-FOUND GLINE
 RoutineType - VILLAIN-RESULT OBJ - -
 RoutineType - WT? WORD - -
 
