@@ -14,6 +14,12 @@ src:GVERBS-90: The TRS-80 interpreter set a special bit which told the game to c
 
 src:1ACTIONS-390: On the TRS-80, this skips mentioning Zork 2/3. See [V-VERSION|*src:GVERBS-90].
 
+
+GRAMMAR-LEGEND: This is the list of verb forms which the game recognizes. (Simple directions like `NORTH` are a special case; they’re not listed here.) These are compiled from the [GSYNTAX|~src:GSYNTAX-71] file.
+	Objects in a verb line have various flags which give hints about their usage. An object attribute (like `LIGHTBIT`) means that if the player doesn’t name an object, the parser will try to guess one with that attribute.
+	The other flag letters have specific meanings: the object must be **h**eld; the object will be **t**aken if not held; the object should be **i**n the room or **o**n the ground; the object should be **p**ossessed or **c**arried in a container. (Yes, they’re confusing. Infocom’s own docs say “No one really understands them except Stu” (Galley).)
+	
+
 objtree-legend: In this list, `Rooms` are rooms and `Items` are regular items. (Sometimes portable, sometimes not.)
 	`Scen` indicates scenery objects. These exist in multiple places; for example, the [~obj:WHITE-HOUSE] is visible from many outdoor locations. Sometimes as “You can’t see that from here”, but it’s the same object.
 	`Glob` indicates a global object, which is *always* visible, or at least mentionable. For example, [~obj:GRUE] is global – not because grues are always present, but so you can always ask `WHAT IS A GRUE`.
