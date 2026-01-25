@@ -21,6 +21,8 @@ GRAMMAR-LEGEND: This is the list of verb forms which the game recognizes. (Simpl
 	
 attr:RMUNGBIT: Not applied to real objects. `RMUNGBIT` is a hack used in grammar lines; it means the object is optional (but the preposition before it is required). This allows the parser to accept commands like [LOOK AROUND|~src:GSYNTAX-286].
 
+glob:P-SYNTAX: The grammar line found when the most recent command was parsed. (Except for simple direction commands, which are a special case.) See the Grammar tab.
+
 
 objtree-legend: In this list, `Rooms` are rooms and `Items` are regular items. (Sometimes portable, sometimes not.)
 	`Scen` indicates scenery objects. These exist in multiple places; for example, the [~obj:WHITE-HOUSE] is visible from many outdoor locations. Sometimes as “You can’t see that from here”, but it’s the same object.
