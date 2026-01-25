@@ -19,6 +19,8 @@ GRAMMAR-LEGEND: This is the list of verb forms which the game recognizes. (Simpl
 	Objects in a verb line have various flags which give hints about their usage. An object attribute (like `LIGHTBIT`) means that if the player doesn’t name an object, the parser will try to guess one with that attribute.
 	The other flag letters have specific meanings: the object must be **h**eld; the object will be **t**aken if not held; the object should be **i**n the room or **o**n the ground; the object should be **p**ossessed or **c**arried in a container. (Yes, they’re confusing. Infocom’s own docs say “No one really understands them except Stu” (Galley).)
 	
+attr:RMUNGBIT: Not applied to real objects. `RMUNGBIT` is a hack used in grammar lines; it means the object is optional (but the preposition before it is required). This allows the parser to accept commands like [LOOK AROUND|~src:GSYNTAX-286].
+
 
 objtree-legend: In this list, `Rooms` are rooms and `Items` are regular items. (Sometimes portable, sometimes not.)
 	`Scen` indicates scenery objects. These exist in multiple places; for example, the [~obj:WHITE-HOUSE] is visible from many outdoor locations. Sometimes as “You can’t see that from here”, but it’s the same object.
