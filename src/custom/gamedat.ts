@@ -319,3 +319,14 @@ export const gamedat_distances = (window as any).gamedat_distances as AllDistanc
 export const gamedat_roominfo_names = (window as any).gamedat_roominfo_names as Map<string, MapRoom>;
 export const gamedat_commentary = (window as any).gamedat_commentary as CommentaryMap;
 export const gamedat_commentarymap = (window as any).gamedat_commentarymap as CommentaryLineMap;
+
+
+let assetdir = 'visiterp';
+
+export function getasset(filename?: string) : string
+{
+    if (!filename)
+        return assetdir;
+    else
+        return assetdir+filename;
+}
