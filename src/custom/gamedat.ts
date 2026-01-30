@@ -322,6 +322,9 @@ export const gamedat_commentarymap = (window as any).gamedat_commentarymap as Co
 
 
 let assetdir = 'visiterp';
+if ((window as any).visizork_options?.assetdir) {
+    assetdir = (window as any).visizork_options?.assetdir;
+}
 
 export function getasset(filename?: string) : string
 {
