@@ -3,7 +3,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 
-const datestr = 'Jan 24, 2026'
+const datestr = 'Jan 30, 2026'
 const release = true;
 
 // See: https://rollupjs.org/configuration-options/
