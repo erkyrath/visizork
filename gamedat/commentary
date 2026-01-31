@@ -313,7 +313,7 @@ src:GVERBS-769: Jumping is fatal if the room has a down exit which is impassable
 src:GVERBS-1813: This “floating over your head” check has to do with the `FLOAT` spell in Zork 2. That code is not used in Zork 1; that’s why it’s greyed out.
 
 src:GVERBS-1848: Another Zork 2 spell (`FANTASIZE`) which has no effect in Zork 1. See [FLOAT|*src:GVERBS-1813], above.
-	(Turns out the spell has no effect in [Zork 2|https://eblong.com/infocom/visi-zork2/#SRC:GVERBS-1712] either!)
+	(Turns out the spell has no effect in [Zork 2|relative:../zork2/#SRC:GVERBS-1712] either!)
 
 src:GVERBS-1839: The “holding too many things” message is probabilistic. The more objects you have past [seven|~glob:fumble-number], the greater the [chance|~glob:fumble-prob] of failing to pick up another.
 	Note that there’s a *separate* check, a few lines up, for whether “your load is too heavy”. That one is *not* probabilistic.
