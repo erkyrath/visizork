@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
 import { ZObject } from '../visi/zstate';
-import { ObjectData, GlobalData } from './gamedat';
+import { ObjectData, GlobalData, signed_zvalue } from './gamedat';
 import { gamedat_ids, gamedat_distances, gamedat_object_treesort } from './gamedat';
 import { ArgShowObject, ArgShowProperty } from '../visi/actshowers';
 import { StackCallCtx } from '../visi/context';
@@ -94,8 +94,42 @@ export function stack_call_arg_display(tag: string, value: number) : JSX.Element
         return (
             <ArgShowObject value={ value } />
         )
+        
+    case 'COMBATRES':
+        return (
+            <ArgShowCombatRes value={ value } />
+        )
+    
     }
+
 
     return null;
 }
 
+function ArgShowCombatRes({ value }: { value:number })
+{
+    let flag: string|null;
+
+    switch (value) {
+    case 1:
+        return (<span><code>,MISSED</code></span>);
+    case 2:
+        return (<span><code>,UNCONSCIOUS</code></span>);
+    case 3:
+        return (<span><code>,KILLED</code></span>);
+    case 4:
+        return (<span><code>,LIGHT-WOUND</code></span>);
+    case 5:
+        return (<span><code>,SERIOUS-WOUND</code></span>);
+    case 6:
+        return (<span><code>,STAGGER</code></span>);
+    case 7:
+        return (<span><code>,LOSE-WEAPON</code></span>);
+    case 8:
+        return (<span><code>,HESITATE</code></span>);
+    case 9:
+        return (<span><code>,SITTING-DUCK</code></span>);
+    default:
+        return (<span> { signed_zvalue(value) }</span>);
+    }
+}
