@@ -100,6 +100,11 @@ export function stack_call_arg_display(tag: string, value: number) : JSX.Element
             <ArgShowCombatRes value={ value } />
         )
     
+    case 'MELEEMODE':
+        return (
+            <ArgShowMeleeMode value={ value } />
+        )
+    
     }
 
 
@@ -129,6 +134,26 @@ function ArgShowCombatRes({ value }: { value:number })
         return (<span><code>,HESITATE</code></span>);
     case 9:
         return (<span><code>,SITTING-DUCK</code></span>);
+    default:
+        return (<span> { signed_zvalue(value) }</span>);
+    }
+}
+
+function ArgShowMeleeMode({ value }: { value:number })
+{
+    let flag: string|null;
+
+    switch (value) {
+    case 1:
+        return (<span><code>,F-BUSY?</code></span>);
+    case 2:
+        return (<span><code>,F-DEAD</code></span>);
+    case 3:
+        return (<span><code>,F-UNCONSCIOUS</code></span>);
+    case 4:
+        return (<span><code>,F-CONSCIOUS</code></span>);
+    case 5:
+        return (<span><code>,F-FIRST?</code></span>);
     default:
         return (<span> { signed_zvalue(value) }</span>);
     }
