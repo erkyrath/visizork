@@ -125,7 +125,7 @@ glob:won-flag: Set when you reach 350 points. See [rtn:SCORE-UPD].
 
 src:GVERBS-1743: This global is also defined in [1dungeon.zil|*glob:won-flag]. The compiler seems to have been okay with this.
 
-glob:lucky: Set false if you break a mirror. Yes, this hurts probability checks; see [~rtn:ZPROB].
+glob:LUCKY: Set false if you break a mirror. Yes, this hurts probability checks; see [rtn:ZPROB].
 	Oddly, this global is defined in two places in the source. See [1actions.zil|~src:1ACTIONS-940]. (Don’t worry, `T` and `1` are the same value.)
 	
 src:1ACTIONS-940: This global is also defined in [gverbs.zil|*glob:lucky]. The compiler seems to have been okay with this. (Don’t worry, `T` and `1` are the same value.)
@@ -356,3 +356,16 @@ glob:DROWNINGS: The last two entries in this table are never printed. The water 
 src:1ACTIONS-2684: This location check omits [~obj:RIVER-5]. So typing `LAUNCH` near the waterfall *doesn’t* say “You are on the river...”
 	Instead, it follows the logic for launching from a shore room. It searches the [~glob:RIVER-LAUNCH] table and finds [~obj:RIVER-5] – which is supposed to be a *destination* in the table, but [~rtn:GO-NEXT] finds it anyway. The next value happens to be [~obj:SANDY-BEACH], so that’s where you wind up.
 	(c:Torbjörn Andersson)
+
+src:GMACROS-122: The `PROB` macro can be called two ways. `<PROB 50>` has a straight 50% chance of success. (Or actually 49% – there's an off-by-one bug! But let that slide.)
+	`<PROB 50 T>` invokes [rtn:ZPROB], which reduces your chance of success if you are not [glob:LUCKY]. See [~src:1ACTIONS-3884] for an example.
+	However, a few places in the code call `PROB` with two numbers. (See [here|src:1ACTIONS-617], [here|src:1ACTIONS-2363].) This usage is left over from MIT Zork; the second number is supposed to be the un-[~glob:LUCKY] chance. But in this version, it is ignored! The code just follows the "divide by three" logic of [rtn:ZPROB]. This leads to some probability bugs.
+	(c:Monica Morse)
+
+rtn:ZPROB: This is a tweaked random die roll. Normally, it succeeds at a rate of `BASE` out of 100. But if you are not [glob:LUCKY], it's `BASE` out of 300 – effectively dividing your chance of success by three.
+
+src:1ACTIONS-617: This is not the right way to call [PROB|src:GMACROS-122]. It's meant to give the troll a higher chance of recovering (90% vs 75%) if you are not [~glob:LUCKY]. But the second argument gets lost; [~rtn:ZPROB] calculates a 25% chance instead. Your bad luck actually makes the troll *less* likely to recover!
+	(c:Monica Morse)
+
+src:1ACTIONS-2363: This is not the right way to call [PROB|src:GMACROS-122]. It's meant to give the candles a higher chance of blowing out (80% vs 50%) if you are not [~glob:LUCKY]. But the second argument gets lost; [~rtn:ZPROB] calculates a 16% chance instead. Your bad luck actually makes the candles *less* likely to blow out!
+	(c:Monica Morse)
