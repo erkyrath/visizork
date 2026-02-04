@@ -105,6 +105,11 @@ export function stack_call_arg_display(tag: string, value: number) : JSX.Element
             <ArgShowMeleeMode value={ value } />
         )
     
+    case 'VILLAINOO':
+        return (
+            <ArgShowVillainOO value={ value } />
+        )
+    
     }
 
 
@@ -154,6 +159,24 @@ function ArgShowMeleeMode({ value }: { value:number })
         return (<span><code>,F-CONSCIOUS</code></span>);
     case 5:
         return (<span><code>,F-FIRST?</code></span>);
+    default:
+        return (<span> { signed_zvalue(value) }</span>);
+    }
+}
+
+function ArgShowVillainOO({ value }: { value:number })
+{
+    let flag: string|null;
+
+    // These values are the sub-table addresses in VILLAINS.
+
+    switch (value) {
+    case 11821:
+        return (<span><i>troll-data</i></span>);
+    case 11831:
+        return (<span><i>thief-data</i></span>);
+    case 11841:
+        return (<span><i>cyclops-data</i></span>);
     default:
         return (<span> { signed_zvalue(value) }</span>);
     }
