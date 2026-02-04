@@ -20,9 +20,24 @@ const table_def3a = [ '---', '---', '---', '---', '---', 'sta', 'sta', 'lig', 'l
 const table_def3b = [ '---', '---', '---', 'sta', 'sta', 'lig', 'lig', 'lig', 'ser', 'ser', 'ser' ];
 const table_def3c = [ '---', 'sta', 'sta', 'lig', 'lig', 'lig', 'lig', 'ser', 'ser', 'ser' ];
 
-const table_def1_res = [ table_def1, table_def1.slice(1), table_def1.slice(2) ];
-const table_def2_res = [ table_def2a, table_def2b, table_def2b.slice(1), table_def2b.slice(2) ];
-const table_def3_res = [ table_def3a, table_def3a.slice(1), table_def3b, table_def3b.slice(1), table_def3c ];
+const table_def1_res = [
+    table_def1.slice(0, 9),
+    table_def1.slice(1, 10),
+    table_def1.slice(2, 11)
+];
+const table_def2_res = [
+    table_def2a.slice(0, 9),
+    table_def2b.slice(0, 9),
+    table_def2b.slice(1, 10),
+    table_def2b.slice(2, 11)
+];
+const table_def3_res = [
+    table_def3a.slice(0, 9),
+    table_def3a.slice(1, 10),
+    table_def3b.slice(0, 9),
+    table_def3b.slice(1, 10),
+    table_def3c.slice(0, 9)
+];
 
 export function HitTable()
 {
@@ -58,18 +73,13 @@ export function HitTable()
 
 export function HitTableRow({ label, arr }: { label:string, arr:string[] })
 {
+    let index = 0;
+    let ls = arr.map((val) => <td key={ index++ }>{ val }</td>);
+    
     return (
         <tr>
-        <th>{ label }</th>
-            <td>{ arr[0] }</td>
-            <td>{ arr[1] }</td>
-            <td>{ arr[2] }</td>
-            <td>{ arr[3] }</td>
-            <td>{ arr[4] }</td>
-            <td>{ arr[5] }</td>
-            <td>{ arr[6] }</td>
-            <td>{ arr[7] }</td>
-            <td>{ arr[8] }</td>
+            <th>{ label }</th>
+            { ls }
         </tr>
     );
 }
