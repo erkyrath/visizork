@@ -74,13 +74,13 @@ export function HitTable()
             <HitTableRow label="1/+1" arr={ table_def1_res[1] } />
             <HitTableRow label="1/+2" arr={ table_def1_res[2] } />
             <HitTableLabel label="Defender strength 2" />
-            <HitTableRow label="2/-1" arr={ table_def2_res[0] } />
+            <HitTableRow label="2/&#x2212;1" arr={ table_def2_res[0] } />
             <HitTableRow label="2/+0" arr={ table_def2_res[1] } />
             <HitTableRow label="2/+1" arr={ table_def2_res[2] } />
             <HitTableRow label="2/+2" arr={ table_def2_res[3] } />
             <HitTableLabel label="Defender strength 3+" />
-            <HitTableRow label="3/-2" arr={ table_def3_res[0] } />
-            <HitTableRow label="3/-1" arr={ table_def3_res[1] } />
+            <HitTableRow label="3/&#x2212;2" arr={ table_def3_res[0] } />
+            <HitTableRow label="3/&#x2212;1" arr={ table_def3_res[1] } />
             <HitTableRow label="3/+0" arr={ table_def3_res[2] } />
             <HitTableRow label="3/+1" arr={ table_def3_res[3] } />
             <HitTableRow label="3/+2" arr={ table_def3_res[4] } />
