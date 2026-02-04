@@ -1,4 +1,29 @@
 
+.CombatHitTable {
+    border-spacing: 0px 2px;
+}
+
+.CombatHitTable tr {
+}
+
 .CombatHitTable td {
     font-family: "Courier Prime";
+    font-size: 85%;
+    padding: 0px 4px;
+}
+
+.ComEntry_sta {
+    background-color: #FED;
+}
+.ComEntry_lig {
+    background-color: #FDC;
+}
+.ComEntry_ser {
+    background-color: #FCB;
+}
+.ComEntry_unc {
+    background-color: #FBA;
+}
+.ComEntry_kil {
+    background-color: #FA8;
 }

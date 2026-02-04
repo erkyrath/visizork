@@ -5,7 +5,13 @@ export function CombatTables()
     return (
         <div className="ScrollContent">
             <p>
-                Outcomes: staggered, light wound, serious wound, unconscious, killed.
+                Outcomes:
+                miss,{' '}
+                <span className="ComEntry_sta">staggered</span>,{' '}
+                <span className="ComEntry_lig">light wound</span>,{' '}
+                <span className="ComEntry_ser">serious wound</span>,{' '}
+                <span className="ComEntry_unc">unconscious</span>,{' '}
+                <span className="ComEntry_kil">killed</span>.
             </p>
             <HitTable />
         </div>
@@ -13,12 +19,12 @@ export function CombatTables()
 }
 
 // Copied straight from the DEF tables
-const table_def1 = [ '---', '---', '---', '---', 'sta', 'sta', 'unc', 'unc', 'kil', 'kil', 'kil', 'kil', 'kil' ];
-const table_def2a = [ '---', '---', '---', '---', '---', 'sta', 'sta', 'lig', 'lig', 'unc' ];
-const table_def2b = [ '---', '---', '---', 'sta', 'sta', 'lig', 'lig', 'lig', 'unc', 'kil', 'kil', 'kil' ];
-const table_def3a = [ '---', '---', '---', '---', '---', 'sta', 'sta', 'lig', 'lig', 'ser', 'ser' ];
-const table_def3b = [ '---', '---', '---', 'sta', 'sta', 'lig', 'lig', 'lig', 'ser', 'ser', 'ser' ];
-const table_def3c = [ '---', 'sta', 'sta', 'lig', 'lig', 'lig', 'lig', 'ser', 'ser', 'ser' ];
+const table_def1 = [ ''   , ''   , ''   , ''   , 'sta', 'sta', 'unc', 'unc', 'kil', 'kil', 'kil', 'kil', 'kil' ];
+const table_def2a = [ ''   , ''   , ''   , ''   , ''   , 'sta', 'sta', 'lig', 'lig', 'unc' ];
+const table_def2b = [ ''   , ''   , ''   , 'sta', 'sta', 'lig', 'lig', 'lig', 'unc', 'kil', 'kil', 'kil' ];
+const table_def3a = [ ''   , ''   , ''   , ''   , ''   , 'sta', 'sta', 'lig', 'lig', 'ser', 'ser' ];
+const table_def3b = [ ''   , ''   , ''   , 'sta', 'sta', 'lig', 'lig', 'lig', 'ser', 'ser', 'ser' ];
+const table_def3c = [ ''   , 'sta', 'sta', 'lig', 'lig', 'lig', 'lig', 'ser', 'ser', 'ser' ];
 
 const table_def1_res = [
     table_def1.slice(0, 9),
@@ -74,7 +80,7 @@ export function HitTable()
 export function HitTableRow({ label, arr }: { label:string, arr:string[] })
 {
     let index = 0;
-    let ls = arr.map((val) => <td key={ index++ }>{ val }</td>);
+    let ls = arr.map((val) => <td key={ index++ } className={ 'ComEntry_'+val }>{ val.toUpperCase() || '\xA0-\xA0' }</td>);
     
     return (
         <tr>
