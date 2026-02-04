@@ -12,6 +12,7 @@ import { ObjectAttrList, ObjectPropList } from '../visi/objlist';
 import { ObjectPage } from '../visi/objpage';
 import { GlobalState } from '../visi/globstate';
 import { SourceFileList } from '../visi/filelist';
+import { CombatTables } from './combat';
 import { AboutPage } from './about';
 import { gamedat_ids } from './gamedat';
 
@@ -21,6 +22,7 @@ const tab_list = [
     [ 'map', 'Map' ],
     [ 'globals', 'State' ],
     [ 'timers', 'Timers' ],
+    [ 'combat', 'Combat' ],
     [ 'grammar', 'Grammar' ],
     [ 'filelist', 'Files' ],
     [ 'about', '?' ],
@@ -74,6 +76,9 @@ export function TabbedPane()
         break;
     case 'timers':
         tabcontent = <TimerTable />;
+        break;
+    case 'combat':
+        tabcontent = <CombatTables />;
         break;
     case 'grammar':
         tabcontent = <GrammarTable />;
