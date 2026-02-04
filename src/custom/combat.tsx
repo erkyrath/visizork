@@ -9,7 +9,8 @@ export function CombatTables()
                 Select a row based on the defender's strength and the
                 attacker's <em>advantage</em> over the defender. That is,
                 if the defender has strength 2 and the attacker has
-                strength 3, use line 2/+1.
+                strength 3, use line
+                2<span className="SlightlySpacySlash">/</span>D+1.
             </p>
             <p>
                 Then roll a nine-sided die.
@@ -95,7 +96,7 @@ export function HitTableRow({ deflabel, label, arr }: { deflabel:string, label:s
     
     return (
         <tr>
-            <th>{ deflabel }<span className="Slash">/</span>{ label }</th>
+            <th>D{ label }</th>
             { ls }
         </tr>
     );

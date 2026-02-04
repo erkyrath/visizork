@@ -21,6 +21,10 @@
     padding: 0px 4px;
 }
 
+.SlightlySpacySlash {
+    padding: 0px 2px;
+}
+
 .ComEntry_sta {
     background-color: #FED;
 }
