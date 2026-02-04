@@ -1,9 +1,18 @@
 
 .CombatHitTable {
     border-spacing: 0px 2px;
+    border: 1px solid #CCC;
+    padding: 4px;
 }
 
-.CombatHitTable tr {
+.CombatHitTable th {
+    font-weight: normal;
+}
+
+.CombatHitTable tr.RowLabel td {
+    padding-top: 12px;
+    padding-bottom: 4px;
+    text-align: center;
 }
 
 .CombatHitTable td {

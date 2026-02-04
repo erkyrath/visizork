@@ -5,7 +5,15 @@ export function CombatTables()
     return (
         <div className="ScrollContent">
             <p>
-                Outcomes:
+                The combat table is used for all attacks, player and monster.
+                Select a row based on the defender's strength and the
+                attacker's <em>advantage</em> over the defender. That is,
+                if the defender has strength 2 and the attacker has
+                strength 3, use line 2/+1.
+            </p>
+            <p>
+                Then roll a nine-sided die.
+                Outcomes (for the defender) are:
                 miss,{' '}
                 <span className="ComEntry_sta">staggered</span>,{' '}
                 <span className="ComEntry_lig">light wound</span>,{' '}
@@ -50,7 +58,7 @@ export function HitTable()
     return (
         <table className="CombatHitTable">
             <tr>
-                <th></th>
+                <th>roll:</th>
                 <th>1</th>
                 <th>2</th>
                 <th>3</th>
@@ -61,18 +69,21 @@ export function HitTable()
                 <th>8</th>
                 <th>9</th>
             </tr>
-            <HitTableRow label="1:1" arr={ table_def1_res[0] } />
-            <HitTableRow label="1:2" arr={ table_def1_res[1] } />
-            <HitTableRow label="1:3" arr={ table_def1_res[2] } />
-            <HitTableRow label="2:1" arr={ table_def2_res[0] } />
-            <HitTableRow label="2:2" arr={ table_def2_res[1] } />
-            <HitTableRow label="2:3" arr={ table_def2_res[2] } />
-            <HitTableRow label="2:4" arr={ table_def2_res[3] } />
-            <HitTableRow label="3:1" arr={ table_def3_res[0] } />
-            <HitTableRow label="3:2" arr={ table_def3_res[1] } />
-            <HitTableRow label="3:3" arr={ table_def3_res[2] } />
-            <HitTableRow label="3:4" arr={ table_def3_res[3] } />
-            <HitTableRow label="3:5" arr={ table_def3_res[4] } />
+            <HitTableLabel label="Defender strength 1" />
+            <HitTableRow label="1/+0" arr={ table_def1_res[0] } />
+            <HitTableRow label="1/+1" arr={ table_def1_res[1] } />
+            <HitTableRow label="1/+2" arr={ table_def1_res[2] } />
+            <HitTableLabel label="Defender strength 2" />
+            <HitTableRow label="2/-1" arr={ table_def2_res[0] } />
+            <HitTableRow label="2/+0" arr={ table_def2_res[1] } />
+            <HitTableRow label="2/+1" arr={ table_def2_res[2] } />
+            <HitTableRow label="2/+2" arr={ table_def2_res[3] } />
+            <HitTableLabel label="Defender strength 3+" />
+            <HitTableRow label="3/-2" arr={ table_def3_res[0] } />
+            <HitTableRow label="3/-1" arr={ table_def3_res[1] } />
+            <HitTableRow label="3/+0" arr={ table_def3_res[2] } />
+            <HitTableRow label="3/+1" arr={ table_def3_res[3] } />
+            <HitTableRow label="3/+2" arr={ table_def3_res[4] } />
         </table>
     )
 }
@@ -86,6 +97,15 @@ export function HitTableRow({ label, arr }: { label:string, arr:string[] })
         <tr>
             <th>{ label }</th>
             { ls }
+        </tr>
+    );
+}
+
+export function HitTableLabel({ label }: { label:string })
+{
+    return (
+        <tr className="RowLabel">
+            <td colSpan={ 10 }>{ label }</td>
         </tr>
     );
 }
