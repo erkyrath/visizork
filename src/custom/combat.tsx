@@ -70,32 +70,32 @@ export function HitTable()
                 <th>9</th>
             </tr>
             <HitTableLabel label="Defender strength 1" />
-            <HitTableRow label="1/+0" arr={ table_def1_res[0] } />
-            <HitTableRow label="1/+1" arr={ table_def1_res[1] } />
-            <HitTableRow label="1/+2" arr={ table_def1_res[2] } />
+            <HitTableRow deflabel="1" label="+0" arr={ table_def1_res[0] } />
+            <HitTableRow deflabel="1" label="+1" arr={ table_def1_res[1] } />
+            <HitTableRow deflabel="1" label="+2" arr={ table_def1_res[2] } />
             <HitTableLabel label="Defender strength 2" />
-            <HitTableRow label="2/&#x2212;1" arr={ table_def2_res[0] } />
-            <HitTableRow label="2/+0" arr={ table_def2_res[1] } />
-            <HitTableRow label="2/+1" arr={ table_def2_res[2] } />
-            <HitTableRow label="2/+2" arr={ table_def2_res[3] } />
+            <HitTableRow deflabel="2" label="&#x2212;1" arr={ table_def2_res[0] } />
+            <HitTableRow deflabel="2" label="+0" arr={ table_def2_res[1] } />
+            <HitTableRow deflabel="2" label="+1" arr={ table_def2_res[2] } />
+            <HitTableRow deflabel="2" label="+2" arr={ table_def2_res[3] } />
             <HitTableLabel label="Defender strength 3+" />
-            <HitTableRow label="3/&#x2212;2" arr={ table_def3_res[0] } />
-            <HitTableRow label="3/&#x2212;1" arr={ table_def3_res[1] } />
-            <HitTableRow label="3/+0" arr={ table_def3_res[2] } />
-            <HitTableRow label="3/+1" arr={ table_def3_res[3] } />
-            <HitTableRow label="3/+2" arr={ table_def3_res[4] } />
+            <HitTableRow deflabel="3" label="&#x2212;2" arr={ table_def3_res[0] } />
+            <HitTableRow deflabel="3" label="&#x2212;1" arr={ table_def3_res[1] } />
+            <HitTableRow deflabel="3" label="+0" arr={ table_def3_res[2] } />
+            <HitTableRow deflabel="3" label="+1" arr={ table_def3_res[3] } />
+            <HitTableRow deflabel="3" label="+2" arr={ table_def3_res[4] } />
         </table>
     )
 }
 
-export function HitTableRow({ label, arr }: { label:string, arr:string[] })
+export function HitTableRow({ deflabel, label, arr }: { deflabel:string, label:string, arr:string[] })
 {
     let index = 0;
     let ls = arr.map((val) => <td key={ index++ } className={ 'ComEntry_'+val }>{ val.toUpperCase() || '\xA0-\xA0' }</td>);
     
     return (
         <tr>
-            <th>{ label }</th>
+            <th>{ deflabel }<span className="Slash">/</span>{ label }</th>
             { ls }
         </tr>
     );
