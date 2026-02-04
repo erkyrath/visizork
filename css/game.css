@@ -25,5 +25,21 @@
     background-color: #FBA;
 }
 .ComEntry_kil {
-    background-color: #FA8;
+    background-color: #FFAF88;
+}
+
+.DarkTheme .ComEntry_sta {
+    background-color: #500;
+}
+.DarkTheme .ComEntry_lig {
+    background-color: #6C1700;
+}
+.DarkTheme .ComEntry_ser {
+    background-color: #820;
+}
+.DarkTheme .ComEntry_unc {
+    background-color: #A42200;
+}
+.DarkTheme .ComEntry_kil {
+    background-color: #BB3800;
 }
