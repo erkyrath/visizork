@@ -330,7 +330,8 @@ rtn:I-CURE: Timer event for your wounds healing. Takes 30 turns per wound level.
 
 glob:VILLAINS: The table of creatures you can fight. Each row shows: monster, weak-against, weakness penalty, awakening probability, combat outcomes table.
 	That is, the [~obj:TROLL] is weaker against the [~obj:SWORD], with a -1 strength penalty if you’re using it.
-	The “awakening probability” entry starts at zero when the monster is knocked out, and increases every turn until they wake up. (But the Visible Zorker does not currently display data table updates, so you can’t see this! Sorry.)
+	The “awakening probability” entry starts at zero when the monster is knocked out, and increases every turn until they wake up.
+	(The “Combat” tab shows this table as a table.)
 
 rtn:WINNING?: The thief compares your strength with his. Used to decide whether he flees combat.
 
