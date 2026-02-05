@@ -195,9 +195,18 @@ export function VillainTable({ evhan_click_id }: { evhan_click_id:(ev: React.Mou
             </tr>
             <tr>
                 <th>Awaken</th>
-                <td>{ specifics.awaken[0] }</td>
-                <td>{ specifics.awaken[1] }</td>
-                <td>{ specifics.awaken[2] }</td>
+                <td>
+                    { (specifics.awaken[0] ? <span className="ChangedNote">*</span> : null) }
+                    { specifics.awaken[0] }
+                </td>
+                <td>
+                    { (specifics.awaken[1] ? <span className="ChangedNote">*</span> : null) }
+                    { specifics.awaken[1] }
+                </td>
+                <td>
+                    { (specifics.awaken[2] ? <span className="ChangedNote">*</span> : null) }
+                    { specifics.awaken[2] }
+                </td>
             </tr>
             <tr>
                 <th>Message<br/>table</th>
