@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext } from 'react';
 
 import { zobj_properties } from '../visi/zstate';
-import { gamedat_object_names, gamedat_global_names } from '../custom/gamedat';
+import { gamedat_object_names, gamedat_global_names, signed_zvalue } from './gamedat';
 
 import { ReactCtx } from '../visi/context';
 
@@ -189,9 +189,18 @@ export function VillainTable()
             </tr>
             <tr>
                 <th><code>STRENGTH</code></th>
-                <td>{ strength[217].cur }</td>
-                <td>{ strength[114].cur }</td>
-                <td>{ strength[186].cur }</td>
+                <td>
+                    { ((strength[217].cur!=strength[217].orig) ? <span className="ChangedNote">*</span> : null) }
+                    { signed_zvalue(strength[217].cur) }
+                </td>
+                <td>
+                    { ((strength[114].cur!=strength[114].orig) ? <span className="ChangedNote">*</span> : null) }
+                    { signed_zvalue(strength[114].cur) }
+                </td>
+                <td>
+                    { ((strength[186].cur!=strength[186].orig) ? <span className="ChangedNote">*</span> : null) }
+                    { signed_zvalue(strength[186].cur) }
+                </td>
             </tr>
         </table>
     );
