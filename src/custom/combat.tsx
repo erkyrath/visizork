@@ -33,8 +33,11 @@ export function CombatTables()
                 combat rules, so his entries are never used.)
             </p>
             <p>
-                (<code>STRENGTH</code> is really a property, not a table
-                entry, but I&#x2019;m including it here anyway.)
+                The table shows what weapon the monster is weak again,
+                the weakness penalty, the awakening probability (if it is
+                unconscious), and the table of melee outcome messages. Also
+                {' '}<code>STRENGTH</code>, which is really a property rather
+                than a table entry, but I&#x2019;m including it here anyway.
             </p>
             <VillainTable evhan_click_id={ evhan_click_id } />
             <p>
@@ -183,7 +186,7 @@ export function VillainTable({ evhan_click_id }: { evhan_click_id:(ev: React.Mou
                 <td>nothing</td>
             </tr>
             <tr>
-                <th>Weaken</th>
+                <th>Penalty</th>
                 <td>1</td>
                 <td>1</td>
                 <td>0</td>
