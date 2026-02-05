@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 
+import { zobj_properties } from '../visi/zstate';
 import { gamedat_object_names, gamedat_global_names } from '../custom/gamedat';
 
 import { ReactCtx } from '../visi/context';
@@ -120,6 +121,25 @@ export function HitTableLabel({ label }: { label:string })
 export function VillainTable()
 {
     let rctx = useContext(ReactCtx);
+    let zstate = rctx.zstate;
+
+    let strength: { [key:number]: { orig:number, cur:number }} = {
+        217: { orig: 2, cur: 0 },
+        114: { orig: 5, cur: 0 },
+        186: { orig: 10000, cur: 0 },
+    };
+
+    // TROLL, THIEF, CYCLOPS
+    for (let onum of [ 217, 114, 186 ]) {
+        let props = zobj_properties(zstate.proptable, onum);
+        let origprops = zstate.origprops.get(onum);
+        for (let prop of props) {
+            if (prop.pnum == 7) {
+                strength[onum].cur = prop.values[0]*256+prop.values[1];
+                break;
+            }
+        }
+    }
 
     function evhan_click_id(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) {
         ev.preventDefault();
@@ -169,9 +189,9 @@ export function VillainTable()
             </tr>
             <tr>
                 <th><code>STRENGTH</code></th>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
+                <td>{ strength[217].cur }</td>
+                <td>{ strength[114].cur }</td>
+                <td>{ strength[186].cur }</td>
             </tr>
         </table>
     );
