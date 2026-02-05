@@ -2,6 +2,7 @@ import React from 'react';
 import { Root, createRoot } from 'react-dom/client';
 
 import { gamedat_ids, gamedat_global_names } from './gamedat';
+import { get_combat_info } from './modgame';
 
 import { GnustoRunner, GnustoEngine } from '../visi/zstate';
 import { default_prefs, get_cookie_prefs, set_body_pref_theme, set_body_pref_arrange } from '../visi/cookie';
@@ -39,7 +40,8 @@ export function init(runnerref: any)
     }
 
     let appctx: AppContext = {
-        launchtoken: launchtoken
+        launchtoken: launchtoken,
+        reportspecs: get_combat_info,
     }
     
     set_app_context(engine, initprefs, appctx);

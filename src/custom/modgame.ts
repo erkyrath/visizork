@@ -1,5 +1,15 @@
 import { gamedat_routine_names, gamedat_global_names, gamedat_string_map, unpack_address } from './gamedat';
-import { GnustoEngine } from '../visi/zstate';
+import { GnustoEngine, ZState } from '../visi/zstate';
+
+export function get_combat_info(engine: GnustoEngine, state: ZState): any
+{
+    let trollwake = engine.getWord(11827);
+    let thiefwake = engine.getWord(11837);
+    let cyclopswake = engine.getWord(11847);
+    return {
+        awaken: [ trollwake, thiefwake, cyclopswake ]
+    };
+}
 
 export function show_commentary_hook(topic: string, engine: GnustoEngine): string|null
 {

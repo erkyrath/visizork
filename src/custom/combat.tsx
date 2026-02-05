@@ -153,6 +153,8 @@ export function VillainTable({ evhan_click_id }: { evhan_click_id:(ev: React.Mou
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
 
+    let specifics = zstate.specifics as { awaken: number[] };
+
     let strength: { [key:number]: { orig:number, cur:number }} = {
         217: { orig: 2, cur: 0 },
         114: { orig: 5, cur: 0 },
@@ -193,9 +195,9 @@ export function VillainTable({ evhan_click_id }: { evhan_click_id:(ev: React.Mou
             </tr>
             <tr>
                 <th>Awaken</th>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td>{ specifics.awaken[0] }</td>
+                <td>{ specifics.awaken[1] }</td>
+                <td>{ specifics.awaken[2] }</td>
             </tr>
             <tr>
                 <th>Message<br/>table</th>
