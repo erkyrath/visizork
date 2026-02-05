@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 
-import { gamedat_object_names, gamedat_routine_names } from '../custom/gamedat';
+import { gamedat_object_names, gamedat_global_names } from '../custom/gamedat';
 
 import { ReactCtx } from '../visi/context';
 
@@ -128,6 +128,11 @@ export function VillainTable()
             rctx.setLoc(obj.sourceloc, false);
             return
         }
+        let glob = gamedat_global_names.get(id);
+        if (glob) {
+            rctx.setLoc(glob.sourceloc, false);
+            return
+        }
     }
 
     return (
@@ -140,8 +145,8 @@ export function VillainTable()
             </tr>
             <tr>
                 <th>Weakness</th>
-                <td>SWORD</td>
-                <td>KNIFE</td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'SWORD') }>SWORD</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'KNIFE') }>KNIFE</a></td>
                 <td>nothing</td>
             </tr>
             <tr>
@@ -157,10 +162,10 @@ export function VillainTable()
                 <td>0</td>
             </tr>
             <tr>
-                <th>Melee<br/>routine</th>
-                <td>TROLL-<br/>MELEE</td>
-                <td>THIEF-<br/>MELEE</td>
-                <td>CYCLOPS-<br/>MELEE</td>
+                <th>Message<br/>table</th>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'TROLL-MELEE') }>TROLL-<br/>MELEE</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'THIEF-MELEE') }>THIEF-<br/>MELEE</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'CYCLOPS-MELEE') }>CYCLOPS-<br/>MELEE</a></td>
             </tr>
             <tr>
                 <th><code>STRENGTH</code></th>
