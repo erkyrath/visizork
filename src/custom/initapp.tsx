@@ -6,7 +6,7 @@ import { gamedat_ids, gamedat_global_names } from './gamedat';
 import { GnustoRunner, GnustoEngine } from '../visi/zstate';
 import { default_prefs, get_cookie_prefs, set_body_pref_theme, set_body_pref_arrange } from '../visi/cookie';
 import { set_runner } from '../visi/combuild';
-import { VisiZorkApp, set_app_context } from '../visi/main';
+import { VisiZorkApp, AppContext, set_app_context } from '../visi/main';
 
 let runner: GnustoRunner;
 let engine: GnustoEngine;
@@ -37,8 +37,12 @@ export function init(runnerref: any)
     if (window.location.hash && window.location.hash.length > 1) {
         launchtoken = window.location.hash.slice(1);
     }
+
+    let appctx: AppContext = {
+        launchtoken: launchtoken
+    }
     
-    set_app_context(engine, initprefs, launchtoken);
+    set_app_context(engine, initprefs, appctx);
     
     const appel = document.getElementById('appbody') as HTMLElement;
     let root = createRoot(appel);
