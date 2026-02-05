@@ -1,6 +1,9 @@
 import { gamedat_routine_names, gamedat_global_names, gamedat_string_map, unpack_address } from './gamedat';
 import { GnustoEngine, ZState } from '../visi/zstate';
 
+/* Pull the "probability of waking" (V-PROB) entries out of the VILLAINS
+   table. We'll display these in the Combat tab.
+*/
 export function get_combat_info(engine: GnustoEngine, state: ZState): any
 {
     let trollwake = engine.getWord(11827);
