@@ -1,3 +1,9 @@
+.CombatVillainTable {
+    border-spacing: 8px 0px;
+    border: 1px solid #CCC;
+    padding: 4px;
+}
+
 .CombatVillainTable td {
     font-family: "Courier Prime";
     font-size: 85%;
