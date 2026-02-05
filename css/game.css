@@ -1,3 +1,14 @@
+.CombatVillainTable td {
+    font-family: "Courier Prime";
+    font-size: 85%;
+}
+
+.CombatVillainTable th {
+    font-weight: normal;
+    font-size: 85%;
+    text-align: left;
+}
+
 
 .CombatHitTable {
     border-spacing: 0px 2px;
@@ -7,6 +18,7 @@
 
 .CombatHitTable th {
     font-weight: normal;
+    font-size: 85%;
 }
 
 .CombatHitTable tr.RowLabel td {

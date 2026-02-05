@@ -4,6 +4,7 @@ export function CombatTables()
 {
     return (
         <div className="ScrollContent">
+            <VillainTable />
             <p>
                 The combat table is used for all attacks, player and monster.
                 Select a row based on the defender's strength and the
@@ -110,3 +111,48 @@ export function HitTableLabel({ label }: { label:string })
         </tr>
     );
 }
+
+export function VillainTable()
+{
+    return (
+        <table className="CombatVillainTable">
+            <tr>
+                <th>Enemy</th>
+                <td>TROLL</td>
+                <td>THIEF</td>
+                <td>CYCLOPS</td>
+            </tr>
+            <tr>
+                <th>Weakness</th>
+                <td>SWORD</td>
+                <td>KNIFE</td>
+                <td>nothing</td>
+            </tr>
+            <tr>
+                <th>Weaken</th>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th>Awaken</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th>Melee<br/>routine</th>
+                <td>TROLL-<br/>MELEE</td>
+                <td>THIEF-<br/>MELEE</td>
+                <td>CYCLOPS-<br/>MELEE</td>
+            </tr>
+            <tr>
+                <th><code>STRENGTH</code></th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </table>
+    );
+}
+    
