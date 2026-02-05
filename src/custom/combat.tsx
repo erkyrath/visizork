@@ -17,7 +17,7 @@ export function CombatTables()
                 attacker's <em>advantage</em> over the defender. That is,
                 if the defender has strength 2 and the attacker has
                 strength 3, use line
-                2<span className="SlightlySpacySlash">/</span>D+1.
+                &#x201C;2<span className="SlightlySpacySlash">/</span>D+1&#x201D;.
             </p>
             <p>
                 Then roll a nine-sided die.
