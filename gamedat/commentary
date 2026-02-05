@@ -339,11 +339,13 @@ rtn:FIGHT-STRENGTH: Determine your combat strength. This is initially 2, but inc
 
 rtn:VILLAIN-STRENGTH: Determine the combat strength of an enemy. This is their `STRENGTH` property, with a couple of adjustments. The thief and troll are weaker against certain weapons (see [*glob:VILLAINS]), so their strength is decreased if the current action is `...WITH SWORD` or `...WITH KNIFE`.
 	(Enemies have lower `STRENGTH` when wounded, and negative `STRENGTH` when unconscious.)
-	
+
 src:1ACTIONS-3333: This line is supposed to reduce the thief’s strength once after you give him a treasure. It never happens, though. See [*glob:THIEF-ENGROSSED].
 
 glob:THIEF-ENGROSSED: Set if you have distracted the thief by giving him a treasure.
 	*Bug:* This is also supposed to reduce his effective strength to 2 on the next blow (see [*rtn:VILLAIN-STRENGTH]). But it [turns out|https://intfiction.org/t/in-zork-i-does-thief-engrossed-actually-work/77855] that the flag is cleared by the “thief distracted” check. By the time he attacks you, his strength is back to normal!
+
+glob:CYCLOPS-MELEE: Yes, the cyclops has a whole table of combat messages that he never uses.
 
 src:1ACTIONS-3995: Surprisingly, it *is* possible to get killed while already dead. See [I-MAINT-ROOM|src:1ACTIONS-1318].
 
