@@ -8,16 +8,38 @@ import { ReactCtx } from '../visi/context';
 
 export function CombatTables()
 {
+    let rctx = useContext(ReactCtx);
+    
+    function evhan_click_id(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) {
+        ev.preventDefault();
+        let obj = gamedat_object_names.get(id);
+        if (obj) {
+            rctx.setLoc(obj.sourceloc, false);
+            return
+        }
+        let glob = gamedat_global_names.get(id);
+        if (glob) {
+            rctx.setLoc(glob.sourceloc, false);
+            return
+        }
+    }
+
     return (
         <div className="ScrollContent">
             <p>
-                The villain table describes the three enemies you can
+                The <a href="#" onClick={ (ev) => evhan_click_id(ev, 'VILLAINS') }>villain table</a>{' '}
+                describes the three enemies you can
                 fight. (Although the cyclops does not follow regular
                 combat rules, so his entries are never used.)
             </p>
-            <VillainTable />
             <p>
-                The combat table is used for all attacks, player and monster.
+                (<code>STRENGTH</code> is really a property, not a table
+                entry, but I&#x2019;m including it here anyway.)
+            </p>
+            <VillainTable evhan_click_id={ evhan_click_id } />
+            <p>
+                The <a href="#" onClick={ (ev) => evhan_click_id(ev, 'DEF1') }>combat table</a>{' '}
+                is used for all attacks, player and monster.
                 Select a row based on the defender&#x2019;s strength and the
                 attacker&#x2019;s <em>advantage</em> over the defender. That is,
                 if the defender has strength 2 and the attacker has
@@ -123,7 +145,7 @@ export function HitTableLabel({ label }: { label:string })
     );
 }
 
-export function VillainTable()
+export function VillainTable({ evhan_click_id }: { evhan_click_id:(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string)=>void })
 {
     let rctx = useContext(ReactCtx);
     let zstate = rctx.zstate;
@@ -143,20 +165,6 @@ export function VillainTable()
                 strength[onum].cur = prop.values[0]*256+prop.values[1];
                 break;
             }
-        }
-    }
-
-    function evhan_click_id(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) {
-        ev.preventDefault();
-        let obj = gamedat_object_names.get(id);
-        if (obj) {
-            rctx.setLoc(obj.sourceloc, false);
-            return
-        }
-        let glob = gamedat_global_names.get(id);
-        if (glob) {
-            rctx.setLoc(glob.sourceloc, false);
-            return
         }
     }
 
