@@ -13,7 +13,7 @@ export function CombatTables()
             <p>
                 The villain table describes the three enemies you can
                 fight. (Although the cyclops does not follow regular
-                combat rules.)
+                combat rules, so his entries are never used.)
             </p>
             <VillainTable />
             <p>
