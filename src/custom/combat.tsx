@@ -10,11 +10,16 @@ export function CombatTables()
 {
     return (
         <div className="ScrollContent">
+            <p>
+                The villain table describes the three enemies you can
+                fight. (Although the cyclops does not follow regular
+                combat rules.)
+            </p>
             <VillainTable />
             <p>
                 The combat table is used for all attacks, player and monster.
-                Select a row based on the defender's strength and the
-                attacker's <em>advantage</em> over the defender. That is,
+                Select a row based on the defender&#x2019;s strength and the
+                attacker&#x2019;s <em>advantage</em> over the defender. That is,
                 if the defender has strength 2 and the attacker has
                 strength 3, use line
                 &#x201C;2<span className="SlightlySpacySlash">/</span>D+1&#x201D;.
