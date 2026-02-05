@@ -1,4 +1,9 @@
 import React from 'react';
+import { useState, useContext } from 'react';
+
+import { gamedat_object_names, gamedat_routine_names } from '../custom/gamedat';
+
+import { ReactCtx } from '../visi/context';
 
 export function CombatTables()
 {
@@ -114,13 +119,24 @@ export function HitTableLabel({ label }: { label:string })
 
 export function VillainTable()
 {
+    let rctx = useContext(ReactCtx);
+
+    function evhan_click_id(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) {
+        ev.preventDefault();
+        let obj = gamedat_object_names.get(id);
+        if (obj) {
+            rctx.setLoc(obj.sourceloc, false);
+            return
+        }
+    }
+
     return (
         <table className="CombatVillainTable">
             <tr>
                 <th>Enemy</th>
-                <td>TROLL</td>
-                <td>THIEF</td>
-                <td>CYCLOPS</td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'TROLL') }>TROLL</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'THIEF') }>THIEF</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'CYCLOPS') }>CYCLOPS</a></td>
             </tr>
             <tr>
                 <th>Weakness</th>
