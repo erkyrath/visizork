@@ -346,6 +346,11 @@ src:1ACTIONS-3333: This line is supposed to reduce the thief’s strength once a
 glob:THIEF-ENGROSSED: Set if you have distracted the thief by giving him a treasure.
 	*Bug:* This is also supposed to reduce his effective strength to 2 on the next blow (see [*rtn:VILLAIN-STRENGTH]). But it [turns out|https://intfiction.org/t/in-zork-i-does-thief-engrossed-actually-work/77855] that the flag is cleared by the “thief distracted” check. By the time he attacks you, his strength is back to normal!
 
+rtn:VILLAIN-RESULT: Apply the results of your attack to the monster you attacked. This may be a wound (decreased `STRENGTH`), unconsciousness, or death.
+	If you attack a monster with the weapon it’s weak against (see [rtn:VILLAIN-STRENGTH]), its combat strength is decreased by one (but not to zero). Due to the order of operations, that decrease is applied here – even if your attack missed!
+	This looks like a bug; it gives you a distinct advantage in combat. But the bug seems to have been present in every version of Zork 1. So this is the combat difficulty that everybody expects, I guess.
+	(c:Monica Morse)
+
 glob:CYCLOPS-MELEE: Yes, the cyclops has a whole table of combat messages that he never uses.
 
 src:1ACTIONS-3995: Surprisingly, it *is* possible to get killed while already dead. See [I-MAINT-ROOM|src:1ACTIONS-1318].
@@ -360,7 +365,7 @@ src:1ACTIONS-2684: This location check omits [~obj:RIVER-5]. So typing `LAUNCH` 
 	Instead, it follows the logic for launching from a shore room. It searches the [~glob:RIVER-LAUNCH] table and finds [~obj:RIVER-5] – which is supposed to be a *destination* in the table, but [~rtn:GO-NEXT] finds it anyway. The next value happens to be [~obj:SANDY-BEACH], so that’s where you wind up.
 	(c:Torbjörn Andersson)
 
-src:GMACROS-122: The `PROB` macro can be called two ways. `<PROB 50>` has a straight 50% chance of success. (Or actually 49% – there's an off-by-one bug! But let that slide.)
+src:GMACROS-122: The `PROB` macro can be called two ways. `<PROB 50>` has a straight 50% chance of success. (Or actually 49% – there’s an off-by-one bug! But let that slide.)
 	`<PROB 50 T>` invokes [rtn:ZPROB], which reduces your chance of success if you are not [glob:LUCKY]. See [here|~src:1ACTIONS-3884] for an example.
 	However, a few places in the code call `PROB` with two numbers. (See [here|src:1ACTIONS-617], [here|src:1ACTIONS-2363], [here|src:1ACTIONS-3391].) This usage is left over from MIT Zork; the second number is supposed to be the un-[~glob:LUCKY] chance. But in this version, it is ignored! The code just follows the "divide by three" logic of [rtn:ZPROB]. This leads to some probability bugs.
 	(c:Monica Morse)
