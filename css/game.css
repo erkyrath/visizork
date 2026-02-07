@@ -7,12 +7,14 @@
 .CombatVillainTable td {
     font-family: "Courier Prime";
     font-size: 85%;
+    text-indent: 10px hanging;
 }
 
 .CombatVillainTable th {
     font-weight: normal;
     font-size: 85%;
     text-align: left;
+    text-indent: 10px hanging;
 }
 
 
