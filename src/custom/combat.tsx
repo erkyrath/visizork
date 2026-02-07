@@ -48,14 +48,14 @@ export function CombatTables()
             <p>
                 The <a href="#" onClick={ (ev) => evhan_click_id(ev, 'DEF1') }>combat table</a>{' '}
                 is used for all attacks, player and monster.
-                Select a row based on the defender&#x2019;s strength and the
+                Select a row based on the defender&#x2019;s combat strength and the
                 attacker&#x2019;s <em>advantage</em> over the defender. That is,
                 if the defender has strength 2 and the attacker has
                 strength 3, use line
                 &#x201C;2<span className="SlightlySpacySlash">/</span>D+1&#x201D;.
             </p>
             <p>
-                (For the computation of strength, see
+                (For the computation of combat strength, see
                 {' '}<a href="#" onClick={ (ev) => evhan_click_id(ev, 'FIGHT-STRENGTH') }><code>FIGHT-STRENGTH</code></a>{' '}
                 and
                 {' '}<a href="#" onClick={ (ev) => evhan_click_id(ev, 'VILLAIN-STRENGTH') }><code>VILLAIN-STRENGTH</code></a>.)
