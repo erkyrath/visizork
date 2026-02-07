@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext } from 'react';
 
 import { zobj_properties } from '../visi/zstate';
-import { gamedat_object_names, gamedat_global_names, signed_zvalue } from './gamedat';
+import { gamedat_object_names, gamedat_routine_names, gamedat_global_names, signed_zvalue } from './gamedat';
 
 import { ReactCtx } from '../visi/context';
 
@@ -20,6 +20,11 @@ export function CombatTables()
         let glob = gamedat_global_names.get(id);
         if (glob) {
             rctx.setLoc(glob.sourceloc, false);
+            return
+        }
+        let rtn = gamedat_routine_names.get(id);
+        if (rtn) {
+            rctx.setLoc(rtn.sourceloc, false);
             return
         }
     }
@@ -50,6 +55,12 @@ export function CombatTables()
                 &#x201C;2<span className="SlightlySpacySlash">/</span>D+1&#x201D;.
             </p>
             <p>
+                (For the computation of strength, see
+                {' '}<a href="#" onClick={ (ev) => evhan_click_id(ev, 'FIGHT-STRENGTH') }><code>FIGHT-STRENGTH</code></a>{' '}
+                and
+                {' '}<a href="#" onClick={ (ev) => evhan_click_id(ev, 'VILLAIN-STRENGTH') }><code>VILLAIN-STRENGTH</code></a>.)
+            </p>
+            <p>
                 Then roll a nine-sided die.
                 Outcomes (for the defender) are:
                 miss,{' '}
@@ -60,6 +71,14 @@ export function CombatTables()
                 <span className="ComEntry_kil">killed</span>.
             </p>
             <HitTable />
+            <p>
+                If you are staggered, you have a 25% chance of being
+                disarmed.
+                If you are knocked out, your opponent gets 1-3
+                free shots at you, and most of the results are
+                &#x201C;killed&#x201D;. (The dungeon is unkind to
+                the unconscious.)
+            </p>
         </div>
     );
 }
