@@ -336,7 +336,7 @@ glob:VILLAINS: The table of creatures you can fight. Each row shows: monster, we
 rtn:WINNING?: The thief compares your strength with his. Used to decide whether he flees combat.
 
 rtn:FIGHT-STRENGTH: Determine your combat strength. This is initially 2, but increases to 7 as your score approaches 350.
-	This can be adjusted by your `STRENGTH` property, which, like the comment says, is normally zero. When you are wounded, your `STRENGTH` is negative.
+	This can be adjusted by your `STRENGTH` property, which, like the comment says, is normally zero. When you are wounded, your `STRENGTH` is negative, thus decreasing your adjusted combat strength.
 
 rtn:VILLAIN-STRENGTH: Determine the combat strength of an enemy. This is their `STRENGTH` property, with a couple of adjustments. The thief and troll are weaker against certain weapons (see [*glob:VILLAINS]), so their strength is decreased if the current action is `...WITH SWORD` or `...WITH KNIFE`.
 	(Enemies have lower `STRENGTH` when wounded, and negative `STRENGTH` when unconscious.)
