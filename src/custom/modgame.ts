@@ -1,4 +1,5 @@
-import { gamedat_routine_names, gamedat_global_names, gamedat_string_map, unpack_address } from './gamedat';
+import { unpack_address } from '../visi/gametypes';
+import { gamedat_routine_names, gamedat_global_names, gamedat_string_map } from './gamedat';
 import { GnustoEngine, ZState } from '../visi/zstate';
 
 /* Pull the "probability of waking" (V-PROB) entries out of the VILLAINS
