@@ -4,6 +4,7 @@ import { useState, useContext } from 'react';
 import { zobj_properties } from '../visi/zstate';
 import { gamedat_object_names, gamedat_routine_names, gamedat_global_names, signed_zvalue } from './gamedat';
 
+import { ZilSourceLoc } from '../visi/main';
 import { ReactCtx } from '../visi/context';
 
 export function CombatTables()
@@ -12,27 +13,14 @@ export function CombatTables()
     
     function evhan_click_id(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) {
         ev.preventDefault();
-        let obj = gamedat_object_names.get(id);
-        if (obj) {
-            rctx.setLoc(obj.sourceloc, false);
-            return
-        }
-        let glob = gamedat_global_names.get(id);
-        if (glob) {
-            rctx.setLoc(glob.sourceloc, false);
-            return
-        }
-        let rtn = gamedat_routine_names.get(id);
-        if (rtn) {
-            rctx.setLoc(rtn.sourceloc, false);
-            return
-        }
+        let dat: ZilSourceLoc = { id: id, commentary: true };
+        window.dispatchEvent(new CustomEvent('zil-source-location', { detail:dat }));
     }
 
     return (
         <div className="ScrollContent">
             <p>
-                The <a href="#" onClick={ (ev) => evhan_click_id(ev, 'VILLAINS') }>villain table</a>{' '}
+                The <a href="#" onClick={ (ev) => evhan_click_id(ev, 'GLOB:VILLAINS') }>villain table</a>{' '}
                 describes the three enemies you can
                 fight. (Although the cyclops does not follow regular
                 combat rules, so his entries are never used.)
@@ -46,7 +34,7 @@ export function CombatTables()
             </p>
             <VillainTable evhan_click_id={ evhan_click_id } />
             <p>
-                The <a href="#" onClick={ (ev) => evhan_click_id(ev, 'DEF1') }>combat table</a>{' '}
+                The <a href="#" onClick={ (ev) => evhan_click_id(ev, 'GLOB:DEF1') }>combat table</a>{' '}
                 is used for all attacks, player and monster.
                 Select a row based on the defender&#x2019;s combat strength and the
                 attacker&#x2019;s <em>advantage</em> over the defender. That is,
@@ -56,9 +44,9 @@ export function CombatTables()
             </p>
             <p>
                 (For the computation of combat strength, see
-                {' '}<a href="#" onClick={ (ev) => evhan_click_id(ev, 'FIGHT-STRENGTH') }><code>FIGHT-STRENGTH</code></a>{' '}
+                {' '}<a href="#" onClick={ (ev) => evhan_click_id(ev, 'RTN:FIGHT-STRENGTH') }><code>FIGHT-STRENGTH</code></a>{' '}
                 and
-                {' '}<a href="#" onClick={ (ev) => evhan_click_id(ev, 'VILLAIN-STRENGTH') }><code>VILLAIN-STRENGTH</code></a>.)
+                {' '}<a href="#" onClick={ (ev) => evhan_click_id(ev, 'RTN:VILLAIN-STRENGTH') }><code>VILLAIN-STRENGTH</code></a>.)
             </p>
             <p>
                 Then roll a nine-sided die.
@@ -196,14 +184,14 @@ export function VillainTable({ evhan_click_id }: { evhan_click_id:(ev: React.Mou
         <table className="CombatVillainTable">
             <tr>
                 <th>Enemy</th>
-                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'TROLL') }>TROLL</a></td>
-                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'THIEF') }>THIEF</a></td>
-                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'CYCLOPS') }>CYCLOPS</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'OBJ:TROLL') }>TROLL</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'OBJ:THIEF') }>THIEF</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'OBJ:CYCLOPS') }>CYCLOPS</a></td>
             </tr>
             <tr>
                 <th>Weakness</th>
-                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'SWORD') }>SWORD</a></td>
-                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'KNIFE') }>KNIFE</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'OBJ:SWORD') }>SWORD</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'OBJ:KNIFE') }>KNIFE</a></td>
                 <td>nothing</td>
             </tr>
             <tr>
@@ -229,9 +217,9 @@ export function VillainTable({ evhan_click_id }: { evhan_click_id:(ev: React.Mou
             </tr>
             <tr>
                 <th>Message<br/>table</th>
-                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'TROLL-MELEE') }>TROLL-<br/>MELEE</a></td>
-                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'THIEF-MELEE') }>THIEF-<br/>MELEE</a></td>
-                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'CYCLOPS-MELEE') }>CYCLOPS-<br/>MELEE</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'GLOB:TROLL-MELEE') }>TROLL-<br/>MELEE</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'GLOB:THIEF-MELEE') }>THIEF-<br/>MELEE</a></td>
+                <td><a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'GLOB:CYCLOPS-MELEE') }>CYCLOPS-<br/>MELEE</a></td>
             </tr>
             <tr>
                 <th><code>STRENGTH</code></th>
