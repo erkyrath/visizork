@@ -17,12 +17,6 @@ export function sourceloc_start() : string
     return 'J:78:1:102:0';  // 'gverbs.zil', lines 78-101
 }
 
-/* Given a file key, return the sourceloc of its first line. */
-export function sourceloc_for_key(filekey: string) : string
-{
-    return filekey + ':1:1:1:0';
-}
-
 /* Turn a location in "GVERBS-90" form into "J:90:1" form.
    (This format turns up in the commentary system.)
 */
