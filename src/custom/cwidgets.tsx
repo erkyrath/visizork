@@ -3,7 +3,7 @@ import { useState, useContext, createContext } from 'react';
 
 import { ZObject } from '../visi/zstate';
 import { signed_zvalue } from '../visi/gametypes';
-import { ObjectData, GlobalData } from './gamedat';
+import { ObjectData, GlobalData } from '../visi/gametypes';
 import { gamedat_ids, gamedat_distances, gamedat_object_treesort } from './gamedat';
 import { ArgShowObject, ArgShowProperty } from '../visi/actshowers';
 import { StackCallCtx } from '../visi/context';

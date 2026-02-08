@@ -3,6 +3,8 @@
    gamedat.js (which is not this file!) 
 */
 
+import { SourceFileMap, ObjectData, AttributeData, PropertyData, GlobalData, ConstantData } from '../visi/gametypes';
+
 /* Return the initial sourceloc to display. */
 export function sourceloc_start() : string
 {
@@ -69,10 +71,6 @@ export function check_commentary(id: string, idtype: string = '') : string|undef
         return undefined;
 }
 
-interface SourceFileMap {
-    [key: string]: string;
-}
-
 // Presentation order. Filenames must match game-info!
 export const sourcefile_presentation_list: string[] = [
     'zork1.zil',
@@ -86,42 +84,6 @@ export const sourcefile_presentation_list: string[] = [
     'gverbs.zil',
     'gclock.zil',
 ];
-
-export type AttributeData = {
-    name: string;
-    num: number;
-};
-
-export type PropertyData = {
-    name: string;
-    num: number;
-    vartype?: string;
-};
-
-export type GlobalData = {
-    name: string;
-    num: number;
-    vartype?: string;
-    sourceloc: string;
-};
-
-export type ConstantData = {
-    name: string;
-    value: number;
-    sourceloc: string;
-};
-
-export type ObjectData = {
-    onum: number;
-    name: string;
-    isroom?: boolean;
-    desc: string;
-    propaddr: number;
-    origparent: number;
-    scenery?: number[];
-    iscenery?: number[];
-    sourceloc: string;
-};
 
 export type StringData = {
     text: string;
