@@ -3,14 +3,6 @@
    gamedat.js (which is not this file!) 
 */
 
-export type SourceLoc = {
-    filekey: string;
-    line: number;
-    char: number;
-    endline: number;
-    endchar: number;
-};
-
 /* Return the initial sourceloc to display. */
 export function sourceloc_start() : string
 {
@@ -60,48 +52,6 @@ export function find_sourceloc_for_id(idtype: string, id:string) : string|undefi
     }
 
     return undefined;
-}
-
-/* Parse a sourceloc string like "C:5:1" or "C:5:1:6:0" into its component
-   parts. */
-export function parse_sourceloc(val: string) : SourceLoc|undefined
-{
-    if (!val.length)
-        return undefined;
-
-    let tup = val.split(':');
-    if (tup.length < 3)
-        return undefined;
-
-    let filekey = tup[0];
-    let line = parseInt(tup[1]);
-    let char = parseInt(tup[2]);
-    
-    if (tup.length < 5) {
-        return {
-            filekey: filekey,
-            line: line,
-            char: char,
-            endline: line,
-            endchar: 99999
-        };
-    }
-    
-    let endline = parseInt(tup[3]);
-    let endchar = parseInt(tup[4]);
-    
-    if (endchar == 0) {
-        endline -= 1;
-        endchar = 99999;
-    }
-    
-    return {
-        filekey: filekey,
-        line: line,
-        char: char,
-        endline: endline,
-        endchar: endchar
-    };
 }
 
 /* Check if a commentary entry exists. If so, return back the arguments
