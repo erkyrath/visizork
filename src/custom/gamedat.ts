@@ -3,7 +3,7 @@
    gamedat.js (which is not this file!) 
 */
 
-import { SourceFileMap, ObjectData, AttributeData, PropertyData, GlobalData, ConstantData, RoutineData, StringData, DictWordData, PrepositionData, GrammarVerbData, GrammarLineData, ActionData, CommentaryMap, CommentaryLineMap } from '../visi/gametypes';
+import { SourceFileMap, ObjectData, AttributeData, PropertyData, GlobalData, ConstantData, RoutineData, StringData, DictWordData, PrepositionData, GrammarVerbData, GrammarLineData, ActionData, CommentaryMap, CommentaryLineMap, AllDistanceMap, MapRoom, SourceLinesMap } from '../visi/gametypes';
 
 /* Return the initial sourceloc to display. */
 export function sourceloc_start() : string
@@ -84,30 +84,6 @@ export const sourcefile_presentation_list: string[] = [
     'gverbs.zil',
     'gclock.zil',
 ];
-
-interface DistanceMap {
-    [key: number]: number;
-};
-interface AllDistanceMap {
-    [key: number]: DistanceMap;
-};
-
-export type MapRoom = {
-    name: string;
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-    center: { x:number, y:number };
-    bottom: { x:number, y:number };
-};
-
-export type SourceSpan = string | [ string, string ];
-export type SourceLine = SourceSpan[];
-
-interface SourceLinesMap {
-    [key: string]: SourceLine[];
-};
 
 export const gamedat_ids = (window as any).gamedat_ids;
 
