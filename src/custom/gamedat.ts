@@ -3,7 +3,7 @@
    gamedat.js (which is not this file!) 
 */
 
-import { SourceFileMap, ObjectData, AttributeData, PropertyData, GlobalData, ConstantData, RoutineData, StringData, DictWordData, PrepositionData, GrammarVerbData, GrammarLineData, ActionData } from '../visi/gametypes';
+import { SourceFileMap, ObjectData, AttributeData, PropertyData, GlobalData, ConstantData, RoutineData, StringData, DictWordData, PrepositionData, GrammarVerbData, GrammarLineData, ActionData, CommentaryMap, CommentaryLineMap } from '../visi/gametypes';
 
 /* Return the initial sourceloc to display. */
 export function sourceloc_start() : string
@@ -107,16 +107,6 @@ export type SourceLine = SourceSpan[];
 
 interface SourceLinesMap {
     [key: string]: SourceLine[];
-};
-
-export type CommentarySpan = string | string[];
-export type CommentaryLine = number | string;
-
-interface CommentaryMap {
-    [key: string]: CommentarySpan[];
-};
-interface CommentaryLineMap {
-    [key: string]: CommentaryLine[];
 };
 
 export const gamedat_ids = (window as any).gamedat_ids;
