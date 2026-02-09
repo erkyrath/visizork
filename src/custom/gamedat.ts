@@ -56,21 +56,6 @@ export function find_sourceloc_for_id(idtype: string, id:string) : string|undefi
     return undefined;
 }
 
-/* Check if a commentary entry exists. If so, return back the arguments
-   in "OBJ:SWORD" format. If not, don't.
-*/
-export function check_commentary(id: string, idtype: string = '') : string|undefined
-{
-    let res = id;
-    if (idtype.length)
-        res = idtype+':'+id;
-    
-    if (gamedat_commentary[res])
-        return res;
-    else
-        return undefined;
-}
-
 // Presentation order. Filenames must match game-info!
 export const sourcefile_presentation_list: string[] = [
     'zork1.zil',
