@@ -25,6 +25,7 @@ window.gamedat_grammar_lines = [];
 window.gamedat_grammar_line_addrs = new Map();
 window.gamedat_routine_addrs = new Map();
 window.gamedat_routine_names = new Map();
+window.gamedat_table_addrs = new Map();
 window.gamedat_property_nums = new Map();
 window.gamedat_property_names = new Map();
 window.gamedat_attribute_nums = new Map();
@@ -108,6 +109,10 @@ window.gamedat_ids = {};
     for (let obj of window.gamedat_routines) {
         gamedat_routine_addrs.set(obj.addr, obj);
         gamedat_routine_names.set(obj.name, obj);
+    }
+
+    for (let obj of window.gamedat_tables) {
+        gamedat_table_addrs.set(obj.addr, obj);
     }
 
     gamedat_ids.ROOMS = gamedat_object_names.get('ROOMS').onum;
