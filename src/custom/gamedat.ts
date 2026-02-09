@@ -3,7 +3,7 @@
    gamedat.js (which is not this file!) 
 */
 
-import { SourceFileMap, ObjectData, AttributeData, PropertyData, GlobalData, ConstantData, RoutineData, StringData, DictWordData, PrepositionData, GrammarVerbData, GrammarLineData, ActionData, CommentaryMap, CommentaryLineMap, AllDistanceMap, MapRoom, SourceLinesMap } from '../visi/gametypes';
+import { SourceFileMap, ObjectData, AttributeData, PropertyData, GlobalData, ConstantData, RoutineData, StringData, TableData, DictWordData, PrepositionData, GrammarVerbData, GrammarLineData, ActionData, CommentaryMap, CommentaryLineMap, AllDistanceMap, MapRoom, SourceLinesMap } from '../visi/gametypes';
 
 /* Return the initial sourceloc to display. */
 export function sourceloc_start() : string
@@ -101,6 +101,7 @@ export const gamedat_grammar_line_addrs = winany.gamedat_grammar_line_addrs as M
 export const gamedat_grammaractionlines = winany.gamedat_grammaractionlines as number[];
 export const gamedat_routine_addrs = winany.gamedat_routine_addrs as Map<number, RoutineData>;
 export const gamedat_routine_names = winany.gamedat_routine_names as Map<string, RoutineData>;
+export const gamedat_table_addrs = winany.gamedat_table_addrs as Map<number, TableData>;
 export const gamedat_actions = winany.gamedat_actions as ActionData[];
 export const gamedat_sourcefiles = winany.gamedat_sourcefiles as SourceLinesMap;
 export const gamedat_distances = winany.gamedat_distances as AllDistanceMap;
