@@ -3,7 +3,7 @@
    gamedat.js (which is not this file!) 
 */
 
-import { SourceFileMap, ObjectData, AttributeData, PropertyData, GlobalData, ConstantData } from '../visi/gametypes';
+import { SourceFileMap, ObjectData, AttributeData, PropertyData, GlobalData, ConstantData, RoutineData, StringData } from '../visi/gametypes';
 
 /* Return the initial sourceloc to display. */
 export function sourceloc_start() : string
@@ -85,11 +85,6 @@ export const sourcefile_presentation_list: string[] = [
     'gclock.zil',
 ];
 
-export type StringData = {
-    text: string;
-    sourceloc: string|string[];
-};
-
 export type DictWordData = {
     num: number;
     text: string;
@@ -133,13 +128,6 @@ export type ActionData = {
     acrtn?: number;
     preacrtn?: number;
 }
-
-export type RoutineData = {
-    name: string;
-    addr: number;
-    argtypes?: string[];
-    sourceloc: string;
-};
 
 interface DistanceMap {
     [key: number]: number;
