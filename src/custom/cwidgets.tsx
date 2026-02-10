@@ -173,11 +173,11 @@ function ArgShowVillainOO({ value }: { value:number })
 
     switch (value) {
     case 11821:
-        return (<span><i>troll-data</i></span>);
+        return (<span><code>,VILLAINS</code><i>[troll]</i></span>);
     case 11831:
-        return (<span><i>thief-data</i></span>);
+        return (<span><code>,VILLAINS</code><i>[thief]</i></span>);
     case 11841:
-        return (<span><i>cyclops-data</i></span>);
+        return (<span><code>,VILLAINS</code><i>[cyclops]</i></span>);
     default:
         return (<span> { signed_zvalue(value) }</span>);
     }
